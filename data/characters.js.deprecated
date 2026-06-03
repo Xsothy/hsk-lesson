@@ -1,0 +1,75 @@
+// Comprehensive character dictionary
+// Single source of truth for all character data
+window.HSK_CHARACTERS = {
+  // Lesson 1 characters
+  "你": { p: "nǐ", e: "you" },
+  "好": { p: "hǎo", e: "good" },
+  "再": { p: "zài", e: "again" },
+  "见": { p: "jiàn", e: "see / meet" },
+  "谢": { p: "xiè", e: "thank" },
+  "对": { p: "duì", e: "correct / face" },
+  "不": { p: "bù", e: "not" },
+  "起": { p: "qǐ", e: "rise / start" },
+  "没": { p: "méi", e: "not / none" },
+  "关": { p: "guān", e: "relate / close" },
+  "系": { p: "xì", e: "connection / relation" },
+  "我": { p: "wǒ", e: "I / me" },
+  "他": { p: "tā", e: "he" },
+  "她": { p: "tā", e: "she" },
+  "名": { p: "míng", e: "name" },
+  "字": { p: "zì", e: "character" },
+  "叫": { p: "jiào", e: "call / be called" },
+  "是": { p: "shì", e: "be / is" },
+  
+  // Lesson 2 characters
+  "家": { p: "jiā", e: "home / family" },
+  "爸": { p: "bà", e: "dad / father" },
+  "妈": { p: "mā", e: "mom / mother" },
+  "儿": { p: "ér", e: "child" },
+  "子": { p: "zi", e: "child (suffix)" },
+  "女": { p: "nǚ", e: "female / woman" },
+  "朋": { p: "péng", e: "companion" },
+  "友": { p: "yǒu", e: "friend" },
+  "的": { p: "de", e: "(possession)" },
+  "岁": { p: "suì", e: "years old" },
+  "几": { p: "jǐ", e: "how many" },
+  
+  // Lesson 3 characters
+  "今": { p: "jīn", e: "now / today" },
+  "天": { p: "tiān", e: "day / sky" },
+  "明": { p: "míng", e: "bright / clear" },
+  "昨": { p: "zuó", e: "past / yesterday" },
+  "现": { p: "xiàn", e: "appear / current" },
+  "在": { p: "zài", e: "at / in / exist" },
+  "点": { p: "diǎn", e: "o'clock / point" },
+  "分": { p: "fēn", e: "divide / minute" },
+  "钟": { p: "zhōng", e: "clock / bell" },
+  "星": { p: "xīng", e: "star" },
+  "期": { p: "qī", e: "period" },
+  "上": { p: "shàng", e: "up / above" },
+  "下": { p: "xià", e: "down / below" },
+  "中": { p: "zhōng", e: "middle / center" },
+  "午": { p: "wǔ", e: "noon" },
+  "月": { p: "yuè", e: "month / moon" },
+  
+  // Common components (add more as needed)
+  "学": { p: "xué", e: "study / learn" },
+  "生": { p: "shēng", e: "life / birth" },
+  "人": { p: "rén", e: "person" },
+  "大": { p: "dà", e: "big / large" },
+  "小": { p: "xiǎo", e: "small / little" },
+  "年": { p: "nián", e: "year" },
+  "日": { p: "rì", e: "day / sun" },
+  "时": { p: "shí", e: "time / hour" },
+  "间": { p: "jiān", e: "between / room" }
+};
+
+// Backwards compatibility with constructs.js
+window.HSK_CONSTRUCTS = window.HSK_CONSTRUCTS || {};
+Object.keys(window.HSK_CHARACTERS).forEach(char => {
+  window.HSK_CONSTRUCTS[char] = {
+    c: char,
+    p: window.HSK_CHARACTERS[char].p,
+    e: window.HSK_CHARACTERS[char].e
+  };
+});
