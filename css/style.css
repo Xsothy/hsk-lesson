@@ -787,6 +787,17 @@ nav {
   }
   .modal-body {
     padding: 1.3rem 1.6rem 1.6rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .modal-breakdown {
+    grid-column: auto;
+  }
+  .modal-stroke {
+    grid-column: auto;
+  }
+  .modal-examples {
+    grid-column: auto;
   }
 
   /* Sentences */
@@ -1057,6 +1068,17 @@ nav {
   }
   .modal-body {
     padding: 0.9rem 1rem 1.4rem;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+  .modal-breakdown {
+    grid-column: auto;
+  }
+  .modal-stroke {
+    grid-column: auto;
+  }
+  .modal-examples {
+    grid-column: auto;
   }
 
   /* Breakdown */
@@ -1382,9 +1404,21 @@ body.hide-pinyin .card-pinyin { display: none; }
 .modal-body {
   overflow-y: auto;
   padding: 1.5rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 .modal-section {
-  margin-bottom: 2rem;
+  margin-bottom: 0;
+}
+.modal-breakdown {
+  grid-column: 1 / -1;
+}
+.modal-stroke {
+  grid-column: 1;
+}
+.modal-examples {
+  grid-column: 2;
 }
 .modal-section:last-child {
   margin-bottom: 0;
