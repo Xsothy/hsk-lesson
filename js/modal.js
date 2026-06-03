@@ -1,0 +1,348 @@
+(function () {
+  let currentModal = null;
+  let currentWriter = null;
+
+  function openVocabModal(vocabItem, lessonData) {
+    closeModal();
+
+    const modal = createModalElement(vocabItem, lessonData);
+    document.body.appendChild(modal);
+    currentModal = modal;
+
+    // Store last focused element
+    const lastFocused = document.activeElement;
+
+    // Trigger animation
+    setTimeout(() => {
+      modal.classList.add('active');
+      modal.querySelector('.modal-close')?.focus();
+    }, 10);
+
+    // Restore focus on close
+    modal.dataset.lastFocused = lastFocused;
+  }
+
+  function closeModal() {
+    if (!currentModal) return;
+
+    const lastFocused = currentModal.dataset.lastFocused;
+
+    if (currentWriter) {
+      currentWriter = null;
+    }
+
+    currentModal.classList.remove('active');
+    setTimeout(() => {
+      currentModal?.remove();
+      currentModal = null;
+      
+      // Restore focus
+      if (lastFocused && document.body.contains(lastFocused)) {
+        lastFocused.focus();
+      }
+    }, 200);
+  }
+
+  function createModalElement(vocabItem, lessonData) {
+    const modal = document.createElement('div');
+    modal.className = 'vocab-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'modal-title');
+    modal.innerHTML = `
+      <div class="modal-backdrop"></div>
+      <div class="modal-container">
+        <div class="modal-header">
+          <div class="modal-header-content">
+            <div class="modal-word" id="modal-title">${vocabItem.c}</div>
+            <div class="modal-pinyin">${vocabItem.p}</div>
+            <div class="modal-english">${vocabItem.e}</div>
+          </div>
+          <div class="modal-header-actions">
+            <button class="modal-audio-btn" type="button" aria-label="Pronounce word">🔊</button>
+            <a class="modal-dict-link" href="${window.HSK_UTILS.dictLink(vocabItem.c)}" target="_blank" rel="noopener noreferrer" title="View in external dictionary" aria-label="Open external dictionary">📖</a>
+            <button class="modal-close" type="button" aria-label="Close modal">✕</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="modal-section modal-breakdown" id="modal-breakdown"></div>
+          <div class="modal-section modal-stroke" id="modal-stroke"></div>
+          <div class="modal-section modal-examples" id="modal-examples"></div>
+        </div>
+      </div>
+    `;
+
+    // Event listeners
+    modal.querySelector('.modal-backdrop').addEventListener('click', closeModal);
+    modal.querySelector('.modal-close').addEventListener('click', closeModal);
+    modal.querySelector('.modal-audio-btn').addEventListener('click', () => {
+      window.HSK_UTILS.speakChinese(vocabItem.c);
+    });
+
+    // ESC key
+    const escHandler = (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+        document.removeEventListener('keydown', escHandler);
+      }
+    };
+    document.addEventListener('keydown', escHandler);
+
+    // Populate modal sections
+    populateBreakdownSection(modal, vocabItem);
+    populateStrokeSection(modal, vocabItem);
+    populateExamplesSection(modal, vocabItem, lessonData);
+
+    return modal;
+  }
+
+  function populateBreakdownSection(modal, vocabItem) {
+    const container = modal.querySelector('#modal-breakdown');
+    
+    if (!vocabItem.parts || vocabItem.parts.length === 0) {
+      container.style.display = 'none';
+      return;
+    }
+
+    let html = '<div class="modal-section-title">WORD BREAKDOWN · 词汇结构</div>';
+    html += '<div class="breakdown-grid">';
+
+    vocabItem.parts.forEach((char, index) => {
+      const construct = window.HSK_CONSTRUCTS?.[char] || { c: char, p: '?', e: '?' };
+      html += `
+        <button class="breakdown-item ${index === 0 ? 'selected' : ''}" 
+                data-char="${char}" 
+                data-index="${index}"
+                type="button">
+          <div class="breakdown-char">${char}</div>
+          <div class="breakdown-pinyin">${construct.p || '?'}</div>
+          <div class="breakdown-meaning">${construct.e || '?'}</div>
+        </button>
+      `;
+    });
+
+    html += '</div>';
+
+    if (vocabItem.literal) {
+      html += `<div class="breakdown-literal"><strong>Literal meaning:</strong> ${vocabItem.literal}</div>`;
+    }
+
+    container.innerHTML = html;
+  }
+
+  function populateStrokeSection(modal, vocabItem) {
+    const container = modal.querySelector('#modal-stroke');
+    
+    // Default to first part or the word itself
+    const defaultChar = vocabItem.parts?.[0] || vocabItem.c.charAt(0);
+    const construct = window.HSK_CONSTRUCTS?.[defaultChar] || { c: defaultChar, p: '?', e: '?' };
+
+    container.innerHTML = `
+      <div class="modal-section-title">STROKE ORDER · 笔画顺序</div>
+      <div class="stroke-info">
+        <div class="stroke-char-display">${construct.c}</div>
+        <div class="stroke-char-meta">
+          <div class="stroke-char-pinyin">${construct.p || '?'}</div>
+          <div class="stroke-char-meaning">${construct.e || '?'}</div>
+        </div>
+      </div>
+      <div class="stroke-writer-container">
+        <svg class="stroke-grid" xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+          <line x1="0" y1="0" x2="200" y2="200" stroke="#E5E0D8" stroke-width="1"/>
+          <line x1="200" y1="0" x2="0" y2="200" stroke="#E5E0D8" stroke-width="1"/>
+          <line x1="100" y1="0" x2="100" y2="200" stroke="#E5E0D8" stroke-width="1"/>
+          <line x1="0" y1="100" x2="200" y2="100" stroke="#E5E0D8" stroke-width="1"/>
+        </svg>
+        <div id="hanzi-writer-target"></div>
+        <div class="stroke-loading">Loading stroke data...</div>
+        <div class="stroke-error" style="display: none;">Stroke data not available</div>
+      </div>
+      <div class="stroke-controls">
+        <button class="stroke-btn" id="stroke-replay" type="button">↻ Replay</button>
+        <button class="stroke-btn" id="stroke-slow" type="button">🐢 Slow</button>
+      </div>
+    `;
+
+    loadStrokeAnimation(defaultChar, modal);
+
+    // Setup click handlers for breakdown items
+    const breakdownItems = modal.querySelectorAll('.breakdown-item');
+    breakdownItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const char = item.dataset.char;
+        
+        // Update selection
+        breakdownItems.forEach(b => b.classList.remove('selected'));
+        item.classList.add('selected');
+        
+        // Load new character
+        loadStrokeAnimation(char, modal);
+      });
+    });
+  }
+
+  function loadStrokeAnimation(character, modal) {
+    if (!window.HanziWriter) {
+      console.error('HanziWriter not loaded');
+      return;
+    }
+
+    const target = modal.querySelector('#hanzi-writer-target');
+    const loading = modal.querySelector('.stroke-loading');
+    const errorMsg = modal.querySelector('.stroke-error');
+    const replayBtn = modal.querySelector('#stroke-replay');
+    const slowBtn = modal.querySelector('#stroke-slow');
+
+    // Clear previous writer
+    if (currentWriter) {
+      target.innerHTML = '';
+      currentWriter = null;
+    }
+
+    // Show loading
+    loading.style.display = 'block';
+    errorMsg.style.display = 'none';
+    target.style.opacity = '0';
+
+    // Update stroke info
+    const construct = window.HSK_CONSTRUCTS?.[character] || { c: character, p: '?', e: '?' };
+    modal.querySelector('.stroke-char-display').textContent = construct.c;
+    modal.querySelector('.stroke-char-pinyin').textContent = construct.p || '?';
+    modal.querySelector('.stroke-char-meaning').textContent = construct.e || '?';
+
+    try {
+      const writer = HanziWriter.create(target, character, {
+        width: 200,
+        height: 200,
+        padding: 10,
+        strokeColor: '#555',
+        outlineColor: '#DDD',
+        radicalColor: '#b8892e',
+        showOutline: true,
+        showCharacter: false,
+        delayBetweenStrokes: 300,
+        strokeAnimationSpeed: 1,
+        onLoadCharDataSuccess: () => {
+          loading.style.display = 'none';
+          target.style.opacity = '1';
+          writer.animateCharacter();
+        },
+        onLoadCharDataError: () => {
+          loading.style.display = 'none';
+          errorMsg.style.display = 'block';
+        }
+      });
+
+      currentWriter = writer;
+
+      // Replay button (normal speed)
+      replayBtn.onclick = () => {
+        if (currentWriter) {
+          currentWriter.animateCharacter({
+            strokeAnimationSpeed: 1,
+            delayBetweenStrokes: 300
+          });
+        }
+      };
+
+      // Slow replay button
+      slowBtn.onclick = () => {
+        if (currentWriter) {
+          currentWriter.animateCharacter({
+            strokeAnimationSpeed: 0.5,
+            delayBetweenStrokes: 800
+          });
+        }
+      };
+
+    } catch (err) {
+      console.error('HanziWriter error:', err);
+      loading.style.display = 'none';
+      errorMsg.style.display = 'block';
+    }
+  }
+
+  function populateExamplesSection(modal, vocabItem, lessonData) {
+    const container = modal.querySelector('#modal-examples');
+    
+    if (!lessonData) {
+      container.style.display = 'none';
+      return;
+    }
+
+    const examples = findExamplesInLesson(vocabItem.c, lessonData);
+    
+    if (examples.length === 0) {
+      container.style.display = 'none';
+      return;
+    }
+
+    let html = '<div class="modal-section-title">EXAMPLE SENTENCES · 例句</div>';
+    html += '<div class="examples-list">';
+
+    examples.forEach((ex, index) => {
+      html += `
+        <div class="example-item">
+          <div class="example-header">
+            <span class="example-type">${ex.type}</span>
+            <button class="audio-btn audio-btn-sm" data-text="${ex.zh}" type="button" aria-label="Pronounce sentence">🔊</button>
+          </div>
+          <div class="example-zh">${ex.zh}</div>
+          <div class="example-pinyin">${ex.py}</div>
+          <div class="example-en">${ex.en}</div>
+        </div>
+      `;
+    });
+
+    html += '</div>';
+    container.innerHTML = html;
+
+    // Add audio button listeners
+    container.querySelectorAll('.audio-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        window.HSK_UTILS.speakChinese(btn.dataset.text);
+      });
+    });
+  }
+
+  function findExamplesInLesson(vocabChar, lessonData) {
+    const examples = [];
+    
+    // Search sentences
+    if (lessonData.sentences) {
+      lessonData.sentences.forEach(sent => {
+        if (sent.zh.includes(vocabChar)) {
+          examples.push({
+            type: 'Sentence',
+            zh: sent.zh,
+            py: sent.py,
+            en: sent.en
+          });
+        }
+      });
+    }
+
+    // Search dialogue
+    if (lessonData.dialogue) {
+      lessonData.dialogue.forEach(line => {
+        if (line.zh.includes(vocabChar)) {
+          examples.push({
+            type: `Dialogue (${line.speaker})`,
+            zh: line.zh,
+            py: line.py,
+            en: line.en
+          });
+        }
+      });
+    }
+
+    return examples;
+  }
+
+  window.HSK_MODAL = {
+    open: openVocabModal,
+    close: closeModal,
+    setWriter: (writer) => { currentWriter = writer; }
+  };
+})();
