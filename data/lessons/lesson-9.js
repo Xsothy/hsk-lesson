@@ -13,71 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-9"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-    {
-      "c": "起床",
-      "p": "qǐchuáng",
-      "e": "to get up"
-    },
-    {
-      "c": "睡觉",
-      "p": "shuìjiào",
-      "e": "to sleep"
-    },
-    {
-      "c": "吃饭",
-      "p": "chīfàn",
-      "e": "to eat a meal"
-    },
-    {
-      "c": "上课",
-      "p": "shàngkè",
-      "e": "to attend class"
-    },
-    {
-      "c": "下课",
-      "p": "xiàkè",
-      "e": "class ends"
-    },
-    {
-      "c": "回家",
-      "p": "huíjiā",
-      "e": "to go home"
-    },
-    {
-      "c": "看电视",
-      "p": "kàn diànshì",
-      "e": "to watch TV"
-    },
-    {
-      "c": "打电话",
-      "p": "dǎ diànhuà",
-      "e": "to make a call"
-    },
-    {
-      "c": "每天",
-      "p": "měitiān",
-      "e": "every day",
-      "preview": true
-    },
-    {
-      "c": "早上",
-      "p": "zǎoshang",
-      "e": "morning",
-      "preview": true
-    },
-    {
-      "c": "晚上",
-      "p": "wǎnshang",
-      "e": "evening / night",
-      "preview": true
-    },
-    {
-      "c": "然后",
-      "p": "ránhòu",
-      "e": "then / after that",
-      "preview": true
-    }
-  ],
+      "起床",
+      "睡觉",
+      "吃饭",
+      "上课",
+      "下课",
+      "回家",
+      "看电视",
+      "打电话",
+      "每天",
+      "早上",
+      "晚上",
+      "然后"
+      ],
   "grammar": [
     {
       "title": "Sequence: 先…然后…",

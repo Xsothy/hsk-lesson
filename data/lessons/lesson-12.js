@@ -13,74 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-12"] = {
   "isPreview": true,
   "content": "",
   "vocab": [
-    {
-      "c": "漂亮",
-      "p": "piàoliang",
-      "e": "beautiful / pretty"
-    },
-    {
-      "c": "大",
-      "p": "dà",
-      "e": "big"
-    },
-    {
-      "c": "小",
-      "p": "xiǎo",
-      "e": "small"
-    },
-    {
-      "c": "高",
-      "p": "gāo",
-      "e": "tall / high"
-    },
-    {
-      "c": "好",
-      "p": "hǎo",
-      "e": "good"
-    },
-    {
-      "c": "红色",
-      "p": "hóngsè",
-      "e": "red (color)",
-      "preview": true
-    },
-    {
-      "c": "白色",
-      "p": "báisè",
-      "e": "white (color)",
-      "preview": true
-    },
-    {
-      "c": "黑色",
-      "p": "hēisè",
-      "e": "black (color)",
-      "preview": true
-    },
-    {
-      "c": "新",
-      "p": "xīn",
-      "e": "new",
-      "preview": true
-    },
-    {
-      "c": "旧",
-      "p": "jiù",
-      "e": "old (things)",
-      "preview": true
-    },
-    {
-      "c": "最",
-      "p": "zuì",
-      "e": "most / -est",
-      "preview": true
-    },
-    {
-      "c": "一样",
-      "p": "yīyàng",
-      "e": "the same / alike",
-      "preview": true
-    }
-  ],
+      "漂亮",
+      "大",
+      "小",
+      "高",
+      "好",
+      "红色",
+      "白色",
+      "黑色",
+      "新",
+      "旧",
+      "最",
+      "一样"
+      ],
   "grammar": [
     {
       "title": "Adjective + 的 + noun",

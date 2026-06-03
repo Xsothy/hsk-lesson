@@ -13,67 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-5"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-    {
-      "c": "老师",
-      "p": "lǎoshī",
-      "e": "teacher"
-    },
-    {
-      "c": "学生",
-      "p": "xuésheng",
-      "e": "student"
-    },
-    {
-      "c": "同学",
-      "p": "tóngxué",
-      "e": "classmate"
-    },
-    {
-      "c": "学校",
-      "p": "xuéxiào",
-      "e": "school"
-    },
-    {
-      "c": "学习",
-      "p": "xuéxí",
-      "e": "to study"
-    },
-    {
-      "c": "工作",
-      "p": "gōngzuò",
-      "e": "to work / work"
-    },
-    {
-      "c": "会",
-      "p": "huì",
-      "e": "can / know how to"
-    },
-    {
-      "c": "能",
-      "p": "néng",
-      "e": "can / able to"
-    },
-    {
-      "c": "说",
-      "p": "shuō",
-      "e": "to speak"
-    },
-    {
-      "c": "写",
-      "p": "xiě",
-      "e": "to write"
-    },
-    {
-      "c": "汉语",
-      "p": "Hànyǔ",
-      "e": "Chinese language"
-    },
-    {
-      "c": "忙",
-      "p": "máng",
-      "e": "busy"
-    }
-  ],
+      "老师",
+      "学生",
+      "同学",
+      "学校",
+      "学习",
+      "工作",
+      "会",
+      "能",
+      "说",
+      "写",
+      "汉语",
+      "忙"
+      ],
   "grammar": [
     {
       "title": "Ability: 会 + verb",

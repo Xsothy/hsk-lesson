@@ -1,4 +1,41 @@
 (function () {
+  /**
+   * Enriches vocab words by fetching data from dictionary and vocabulary
+   * Dictionary = source of truth for p, e, cat
+   * Vocabulary = source of truth for parts, literal
+   */
+  function enrichVocabWord(wordChar) {
+    // If it's already an object with data, return it
+    if (typeof wordChar === 'object' && wordChar.c) {
+      return wordChar;
+    }
+    
+    // Otherwise, it's just a character string - enrich it
+    const dict = window.HSK_DICTIONARY || { words: [] };
+    const wordData = dict.words.find(w => w.c === wordChar);
+    const breakdown = window.HSK_VOCABULARY?.[wordChar];
+    
+    if (!wordData) {
+      // Fallback if not in dictionary
+      return {
+        c: wordChar,
+        p: '?',
+        e: '?',
+        parts: breakdown?.parts,
+        literal: breakdown?.literal
+      };
+    }
+    
+    return {
+      c: wordData.c,
+      p: wordData.p,
+      e: wordData.e,
+      cat: wordData.cat,
+      parts: breakdown?.parts,
+      literal: breakdown?.literal
+    };
+  }
+
   function getLessons() {
     return window.HSK_LESSONS || [];
   }
@@ -20,6 +57,9 @@
       if (!lesson) {
         throw new Error(`Lesson data not found: ${slug}`);
       }
+
+      // Enrich lesson vocabulary from dictionary + vocabulary breakdown
+      lesson.vocab = lesson.vocab.map(enrichVocabWord);
 
       return lesson;
     });
@@ -47,6 +87,7 @@
   window.HSK_API = {
     getDictionary,
     getLesson,
-    getLessons
+    getLessons,
+    enrichVocabWord
   };
 })();

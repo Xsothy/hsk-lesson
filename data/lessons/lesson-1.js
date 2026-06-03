@@ -13,79 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-1"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-    {
-      "c": "你好",
-      "p": "nǐ hǎo",
-      "e": "hello",
-      "parts": ["你", "好"],
-      "literal": "you + good = hello"
-    },
-    {
-      "c": "再见",
-      "p": "zàijiàn",
-      "e": "goodbye",
-      "parts": ["再", "见"],
-      "literal": "again + see = goodbye (see you again)"
-    },
-    {
-      "c": "谢谢",
-      "p": "xièxie",
-      "e": "thank you",
-      "parts": ["谢", "谢"],
-      "literal": "thank + thank = thank you (doubled for emphasis)"
-    },
-    {
-      "c": "对不起",
-      "p": "duìbuqǐ",
-      "e": "sorry",
-      "parts": ["对", "不", "起"],
-      "literal": "face + not + able = sorry (unable to face you)"
-    },
-    {
-      "c": "没关系",
-      "p": "méiguānxi",
-      "e": "it's OK",
-      "parts": ["没", "关", "系"],
-      "literal": "not + relate + connection = it's OK (no connection/problem)"
-    },
-    {
-      "c": "我",
-      "p": "wǒ",
-      "e": "I / me"
-    },
-    {
-      "c": "你",
-      "p": "nǐ",
-      "e": "you"
-    },
-    {
-      "c": "他",
-      "p": "tā",
-      "e": "he"
-    },
-    {
-      "c": "她",
-      "p": "tā",
-      "e": "she"
-    },
-    {
-      "c": "名字",
-      "p": "míngzi",
-      "e": "name",
-      "parts": ["名", "字"],
-      "literal": "name + character = name"
-    },
-    {
-      "c": "叫",
-      "p": "jiào",
-      "e": "to be called"
-    },
-    {
-      "c": "是",
-      "p": "shì",
-      "e": "to be"
-    }
-  ],
+      "你好",
+      "再见",
+      "谢谢",
+      "对不起",
+      "没关系",
+      "我",
+      "你",
+      "他",
+      "她",
+      "名字",
+      "叫",
+      "是"
+      ],
   "grammar": [
     {
       "title": "Introducing yourself: 我叫…",

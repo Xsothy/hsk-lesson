@@ -13,67 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-2"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-    {
-      "c": "家",
-      "p": "jiā",
-      "e": "home / family"
-    },
-    {
-      "c": "爸爸",
-      "p": "bàba",
-      "e": "dad"
-    },
-    {
-      "c": "妈妈",
-      "p": "māma",
-      "e": "mom"
-    },
-    {
-      "c": "儿子",
-      "p": "érzi",
-      "e": "son"
-    },
-    {
-      "c": "女儿",
-      "p": "nǚ'ér",
-      "e": "daughter"
-    },
-    {
-      "c": "朋友",
-      "p": "péngyou",
-      "e": "friend"
-    },
-    {
-      "c": "的",
-      "p": "de",
-      "e": "(possession particle)"
-    },
-    {
-      "c": "岁",
-      "p": "suì",
-      "e": "years old"
-    },
-    {
-      "c": "几",
-      "p": "jǐ",
-      "e": "how many"
-    },
-    {
-      "c": "多少",
-      "p": "duōshao",
-      "e": "how much/many"
-    },
-    {
-      "c": "今年",
-      "p": "jīnnián",
-      "e": "this year"
-    },
-    {
-      "c": "两",
-      "p": "liǎng",
-      "e": "two (of)"
-    }
-  ],
+      "家",
+      "爸爸",
+      "妈妈",
+      "儿子",
+      "女儿",
+      "朋友",
+      "的",
+      "岁",
+      "几",
+      "多少",
+      "今年",
+      "两"
+      ],
   "grammar": [
     {
       "title": "Possession with 的",

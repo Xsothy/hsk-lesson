@@ -8,9 +8,14 @@ function renderLessonList(container, lessons) {
     card.className = 'lesson-card';
     card.href = `lesson.html?slug=${lesson.slug}`;
     card.style.animationDelay = `${index * 0.05}s`;
+    
+    // Apply dynamic colors
+    const bgColor = lesson.color || '#ffffff';
+    const emojiBg = lesson.emojiColor || '#f3ede3';
+    
     card.innerHTML = `
       <div class="lesson-card-top">
-        <div class="lesson-emoji" style="background:${lesson.color};">${lesson.emoji}</div>
+        <div class="lesson-emoji" style="background:${emojiBg};">${lesson.emoji}</div>
         <div class="lesson-meta">
           <div class="lesson-num">Lesson ${lesson.id} of ${lessons.length}</div>
           <div class="lesson-title-zh">${lesson.zhTitle}${previewFlag}</div>
@@ -25,6 +30,15 @@ function renderLessonList(container, lessons) {
         <div class="lesson-words-count"><strong>${lesson.vocabularyCount}</strong> vocabulary words</div>
         <div class="lesson-arrow">→</div>
       </div>`;
+    
+    // Smooth background transition on hover
+    card.addEventListener('mouseenter', () => {
+      card.style.background = `linear-gradient(135deg, ${bgColor} 0%, #ffffff 100%)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.background = '#ffffff';
+    });
+
     container.appendChild(card);
   });
 }
@@ -55,6 +69,49 @@ function renderLessonDetail(lesson, totalLessons) {
     content.appendChild(wrapper);
     body.appendChild(content);
   }
+
+  // Add Finish Lesson reward button
+  const finishWrapper = document.createElement('div');
+  finishWrapper.style.padding = '2rem 0';
+  finishWrapper.style.textAlign = 'center';
+  
+  const finishBtn = document.createElement('button');
+  finishBtn.className = 'finish-lesson-btn';
+  finishBtn.innerHTML = `✨ Finish Lesson ${lesson.emoji}`;
+  finishBtn.style.cssText = `
+    background: linear-gradient(135deg, var(--ink) 0%, #333 100%);
+    color: white;
+    border: 0;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  `;
+
+  finishBtn.onmouseenter = () => {
+    finishBtn.style.transform = 'scale(1.05) translateY(-4px)';
+    finishBtn.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
+  };
+  finishBtn.onmouseleave = () => {
+    finishBtn.style.transform = 'scale(1) translateY(0)';
+    finishBtn.style.boxShadow = 'var(--shadow-md)';
+  };
+
+  finishBtn.onclick = () => {
+    window.HSK_UTILS.triggerConfetti();
+    finishBtn.innerHTML = `🎊 Lesson Complete! 🎊`;
+    finishBtn.style.background = 'linear-gradient(135deg, var(--gold) 0%, var(--gold-lt) 100%)';
+    finishBtn.style.color = 'var(--ink)';
+    finishBtn.disabled = true;
+    finishBtn.style.cursor = 'default';
+    finishBtn.style.transform = 'scale(1.1)';
+  };
+
+  finishWrapper.appendChild(finishBtn);
+  body.appendChild(finishWrapper);
 }
 
 function renderVocabularySection(lesson) {
@@ -76,7 +133,7 @@ function renderVocabularySection(lesson) {
     item.innerHTML = `
       ${word.preview ? '<span class="word-preview-star">★</span>' : ''}
       <span class="vocab-char ${word.preview ? 'is-preview' : ''}">${word.c}</span>
-      <span class="vocab-pinyin">${word.p}</span>
+      <span class="vocab-pinyin">${window.HSK_UTILS.colorizePinyin(word.p)}</span>
       <span class="vocab-en">${word.e}</span>`;
     
     item.insertBefore(audioBtn, item.firstChild);
@@ -129,7 +186,7 @@ function renderSentenceSection(sentences) {
     item.innerHTML = `
       <div>
         <div class="sentence-zh">${sentence.zh}</div>
-        <div class="sentence-pinyin">${sentence.py}</div>
+        <div class="sentence-pinyin">${window.HSK_UTILS.colorizePinyin(sentence.py)}</div>
       </div>
       <div class="sentence-en">${sentence.en}</div>`;
     
@@ -148,20 +205,31 @@ function renderDialogueSection(dialogue) {
 
   dialogue.forEach((line) => {
     const item = document.createElement('div');
-    item.className = 'dialogue-line';
-    
-    const audioBtn = window.HSK_UTILS.createAudioButton(line.zh, 'sm');
-    audioBtn.className = 'dialogue-audio-btn';
+    item.className = `dialogue-line speaker-${line.speaker.toLowerCase()}-row`;
     
     item.innerHTML = `
       <div class="dialogue-speaker ${line.speaker === 'A' ? 'speaker-a' : 'speaker-b'}">${line.speaker}</div>
-      <div class="dialogue-content">
+      <div class="dialogue-content" title="Click to hear pronunciation">
         <div class="dialogue-zh">${line.zh}</div>
-        <div class="dialogue-pinyin">${line.py}</div>
-        <div class="dialogue-en">${line.en}</div>
+        <div class="dialogue-pinyin">${window.HSK_UTILS.colorizePinyin(line.py)}</div>
+        <div class="dialogue-en blur-reveal" title="Click to reveal translation">${line.en}</div>
       </div>`;
     
-    item.appendChild(audioBtn);
+    const content = item.querySelector('.dialogue-content');
+    const english = item.querySelector('.dialogue-en');
+
+    // Click bubble to speak
+    content.addEventListener('click', (e) => {
+      if (e.target === english) return; // Don't speak when clicking translation
+      window.HSK_UTILS.speakChinese(line.zh);
+    });
+
+    // Click translation to reveal
+    english.addEventListener('click', (e) => {
+      e.stopPropagation();
+      english.classList.toggle('revealed');
+    });
+
     box.appendChild(item);
   });
 
@@ -201,7 +269,7 @@ function renderDictionary(filtersContainer, grid, dictionary) {
     card.innerHTML = `
       <span class="dict-cat-tag">${word.cat}</span>
       <span class="dict-char">${word.c}</span>
-      <span class="dict-pinyin">${word.p}</span>
+      <span class="dict-pinyin">${window.HSK_UTILS.colorizePinyin(word.p)}</span>
       <span class="dict-en">${word.e}</span>`;
     grid.appendChild(card);
   });

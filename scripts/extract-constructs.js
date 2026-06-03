@@ -25,26 +25,31 @@ if (fs.existsSync(constructsPath)) {
   }
 }
 
-// 2. Read all lesson files to find unique characters
+// 2. Read all lesson files and master vocabulary to find unique characters
 const files = fs.readdirSync(lessonsDir).filter(f => f.endsWith('.js'));
 const uniqueChars = new Set();
 
-files.forEach(file => {
-  const content = fs.readFileSync(path.join(lessonsDir, file), 'utf-8');
-  
-  // Extract vocab items - look for "c": "..." pattern
+function extractChars(content) {
   const vocabMatches = content.matchAll(/"c":\s*"([^"]+)"/g);
-  
   for (const match of vocabMatches) {
     const word = match[1];
-    // Split into individual characters
     for (const char of word) {
-      // Only Chinese characters (Unicode range for CJK)
       if (/[\u4e00-\u9fff]/.test(char)) {
         uniqueChars.add(char);
       }
     }
   }
+}
+
+// Scan master vocab
+const vocabRegistryPath = path.join(__dirname, '../data/vocabulary.js');
+if (fs.existsSync(vocabRegistryPath)) {
+  extractChars(fs.readFileSync(vocabRegistryPath, 'utf-8'));
+}
+
+// Scan lessons
+files.forEach(file => {
+  extractChars(fs.readFileSync(path.join(lessonsDir, file), 'utf-8'));
 });
 
 // 3. Sort characters

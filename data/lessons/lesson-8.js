@@ -13,67 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-8"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-    {
-      "c": "买",
-      "p": "mǎi",
-      "e": "to buy"
-    },
-    {
-      "c": "卖",
-      "p": "mài",
-      "e": "to sell"
-    },
-    {
-      "c": "钱",
-      "p": "qián",
-      "e": "money"
-    },
-    {
-      "c": "块",
-      "p": "kuài",
-      "e": "yuan (informal)"
-    },
-    {
-      "c": "多少",
-      "p": "duōshao",
-      "e": "how much / many"
-    },
-    {
-      "c": "贵",
-      "p": "guì",
-      "e": "expensive"
-    },
-    {
-      "c": "衣服",
-      "p": "yīfu",
-      "e": "clothes"
-    },
-    {
-      "c": "大",
-      "p": "dà",
-      "e": "big / large"
-    },
-    {
-      "c": "小",
-      "p": "xiǎo",
-      "e": "small"
-    },
-    {
-      "c": "个",
-      "p": "gè",
-      "e": "(measure word)"
-    },
-    {
-      "c": "有",
-      "p": "yǒu",
-      "e": "to have"
-    },
-    {
-      "c": "没有",
-      "p": "méiyǒu",
-      "e": "don't have / not have"
-    }
-  ],
+      "买",
+      "卖",
+      "钱",
+      "块",
+      "多少",
+      "贵",
+      "衣服",
+      "大",
+      "小",
+      "个",
+      "有",
+      "没有"
+      ],
   "grammar": [
     {
       "title": "Have / Don't have: 有 / 没有",

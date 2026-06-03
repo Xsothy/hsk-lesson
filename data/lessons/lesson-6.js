@@ -13,67 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-6"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-    {
-      "c": "去",
-      "p": "qù",
-      "e": "to go"
-    },
-    {
-      "c": "来",
-      "p": "lái",
-      "e": "to come"
-    },
-    {
-      "c": "在",
-      "p": "zài",
-      "e": "at / in"
-    },
-    {
-      "c": "哪儿",
-      "p": "nǎr",
-      "e": "where"
-    },
-    {
-      "c": "飞机",
-      "p": "fēijī",
-      "e": "airplane"
-    },
-    {
-      "c": "出租车",
-      "p": "chūzūchē",
-      "e": "taxi"
-    },
-    {
-      "c": "火车站",
-      "p": "huǒchēzhàn",
-      "e": "train station"
-    },
-    {
-      "c": "医院",
-      "p": "yīyuàn",
-      "e": "hospital"
-    },
-    {
-      "c": "商店",
-      "p": "shāngdiàn",
-      "e": "shop"
-    },
-    {
-      "c": "坐",
-      "p": "zuò",
-      "e": "to sit / travel by"
-    },
-    {
-      "c": "从",
-      "p": "cóng",
-      "e": "from"
-    },
-    {
-      "c": "到",
-      "p": "dào",
-      "e": "to / arrive"
-    }
-  ],
+      "去",
+      "来",
+      "在",
+      "哪儿",
+      "飞机",
+      "出租车",
+      "火车站",
+      "医院",
+      "商店",
+      "坐",
+      "从",
+      "到"
+      ],
   "grammar": [
     {
       "title": "Going somewhere: 去 + place",
@@ -116,6 +68,16 @@ window.HSK_LESSONS_BY_SLUG["lesson-6"] = {
       "zh": "从这里到学校远吗？",
       "py": "Cóng zhèlǐ dào xuéxiào yuǎn ma?",
       "en": "Is it far from here to school?"
+    },
+    {
+      "zh": "从北京到上海坐飞机。",
+      "py": "Cóng Běijīng dào Shànghǎi zuò fēijī.",
+      "en": "Go from Beijing to Shanghai by airplane."
+    },
+    {
+      "zh": "商店在哪儿？",
+      "py": "Shāngdiàn zài nǎr?",
+      "en": "Where is the shop?"
     }
   ],
   "dialogue": [

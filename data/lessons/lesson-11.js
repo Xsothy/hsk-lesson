@@ -13,73 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-11"] = {
   "isPreview": true,
   "content": "",
   "vocab": [
-    {
-      "c": "医生",
-      "p": "yīshēng",
-      "e": "doctor"
-    },
-    {
-      "c": "医院",
-      "p": "yīyuàn",
-      "e": "hospital"
-    },
-    {
-      "c": "好",
-      "p": "hǎo",
-      "e": "good / well"
-    },
-    {
-      "c": "不",
-      "p": "bù",
-      "e": "not"
-    },
-    {
-      "c": "很",
-      "p": "hěn",
-      "e": "very"
-    },
-    {
-      "c": "去",
-      "p": "qù",
-      "e": "to go"
-    },
-    {
-      "c": "头",
-      "p": "tóu",
-      "e": "head",
-      "preview": true
-    },
-    {
-      "c": "手",
-      "p": "shǒu",
-      "e": "hand",
-      "preview": true
-    },
-    {
-      "c": "眼睛",
-      "p": "yǎnjing",
-      "e": "eyes",
-      "preview": true
-    },
-    {
-      "c": "不舒服",
-      "p": "bù shūfu",
-      "e": "unwell / uncomfortable",
-      "preview": true
-    },
-    {
-      "c": "发烧",
-      "p": "fāshāo",
-      "e": "to have a fever",
-      "preview": true
-    },
-    {
-      "c": "有点儿",
-      "p": "yǒudiǎnr",
-      "e": "a little / somewhat",
-      "preview": true
-    }
-  ],
+      "医生",
+      "医院",
+      "好",
+      "不",
+      "很",
+      "去",
+      "头",
+      "手",
+      "眼睛",
+      "不舒服",
+      "发烧",
+      "有点儿"
+      ],
   "grammar": [
     {
       "title": "Feeling unwell: 有点儿 + adj",

@@ -13,73 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-10"] = {
   "isPreview": true,
   "content": "",
   "vocab": [
-    {
-      "c": "喜欢",
-      "p": "xǐhuan",
-      "e": "to like"
-    },
-    {
-      "c": "爱",
-      "p": "ài",
-      "e": "to love"
-    },
-    {
-      "c": "看",
-      "p": "kàn",
-      "e": "to watch / read"
-    },
-    {
-      "c": "听",
-      "p": "tīng",
-      "e": "to listen"
-    },
-    {
-      "c": "书",
-      "p": "shū",
-      "e": "book"
-    },
-    {
-      "c": "电视",
-      "p": "diànshì",
-      "e": "television"
-    },
-    {
-      "c": "电影",
-      "p": "diànyǐng",
-      "e": "movie",
-      "preview": true
-    },
-    {
-      "c": "音乐",
-      "p": "yīnyuè",
-      "e": "music",
-      "preview": true
-    },
-    {
-      "c": "运动",
-      "p": "yùndòng",
-      "e": "sport / exercise",
-      "preview": true
-    },
-    {
-      "c": "唱歌",
-      "p": "chànggē",
-      "e": "to sing",
-      "preview": true
-    },
-    {
-      "c": "跑步",
-      "p": "pǎobù",
-      "e": "to run / jogging",
-      "preview": true
-    },
-    {
-      "c": "游泳",
-      "p": "yóuyǒng",
-      "e": "to swim",
-      "preview": true
-    }
-  ],
+      "喜欢",
+      "爱",
+      "看",
+      "听",
+      "书",
+      "电视",
+      "电影",
+      "音乐",
+      "运动",
+      "唱歌",
+      "跑步",
+      "游泳"
+      ],
   "grammar": [
     {
       "title": "Expressing likes: 喜欢 + verb/noun",

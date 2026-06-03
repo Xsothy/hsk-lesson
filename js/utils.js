@@ -1,4 +1,12 @@
 (function () {
+  const TONE_COLORS = {
+    1: '#ef4444', // Red
+    2: '#22c55e', // Green
+    3: '#3b82f6', // Blue
+    4: '#a855f7', // Purple
+    0: '#94a3b8'  // Gray (Neutral)
+  };
+
   function getUrlParam(name, fallback = '') {
     return new URLSearchParams(window.location.search).get(name) || fallback;
   }
@@ -53,11 +61,60 @@
     return btn;
   }
 
+  /**
+   * Helper to parse tone from a pinyin syllable
+   */
+  function getTone(pinyin) {
+    if (!pinyin) return 0;
+    // Pinyin tone marks mapping
+    const tones = {
+      'āēīōūǖ': 1,
+      'áéíóúǘ': 2,
+      'ǎěǐǒǔǚ': 3,
+      'àèìòùǜ': 4
+    };
+    
+    for (let char of pinyin) {
+      for (let [marks, tone] of Object.entries(tones)) {
+        if (marks.includes(char)) return tone;
+      }
+    }
+    return 0; // Neutral
+  }
+
+  /**
+   * Wraps pinyin syllables in colored spans
+   */
+  function colorizePinyin(pinyinStr) {
+    if (!pinyinStr) return '';
+    // Handle complex strings with punctuation, but keep it simple for now
+    return pinyinStr.split(/(\s+|[,.!?;:])/).map(part => {
+      if (/^\s+$/.test(part) || /^[,.!?;:]$/.test(part)) return part;
+      const tone = getTone(part);
+      const color = TONE_COLORS[tone];
+      return `<span class="tone-${tone}" style="color: ${color}">${part}</span>`;
+    }).join('');
+  }
+
+  function triggerConfetti() {
+    if (window.confetti) {
+      window.confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ef4444', '#22c55e', '#3b82f6', '#a855f7', '#e8c96a']
+      });
+    }
+  }
+
   window.HSK_UTILS = {
     dictLink,
     getUrlParam,
     setupPinyinToggle,
     speakChinese,
-    createAudioButton
+    createAudioButton,
+    getTone,
+    colorizePinyin,
+    triggerConfetti
   };
 })();

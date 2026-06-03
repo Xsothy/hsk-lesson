@@ -255,6 +255,90 @@ window.HSK_DICTIONARY = {
       "cat": "time"
     },
     {
+      "c": "今",
+      "p": "jīn",
+      "e": "now / this",
+      "cat": "time"
+    },
+    {
+      "c": "天",
+      "p": "tiān",
+      "e": "day / sky",
+      "cat": "time"
+    },
+    {
+      "c": "明",
+      "p": "míng",
+      "e": "bright / next",
+      "cat": "adj"
+    },
+    {
+      "c": "昨",
+      "p": "zuó",
+      "e": "past / yesterday",
+      "cat": "time"
+    },
+    {
+      "c": "现",
+      "p": "xiàn",
+      "e": "current / appear",
+      "cat": "adj"
+    },
+    {
+      "c": "在",
+      "p": "zài",
+      "e": "at / in / exist",
+      "cat": "prep"
+    },
+    {
+      "c": "分",
+      "p": "fēn",
+      "e": "divide / minute",
+      "cat": "verb"
+    },
+    {
+      "c": "钟",
+      "p": "zhōng",
+      "e": "clock / bell",
+      "cat": "noun"
+    },
+    {
+      "c": "星",
+      "p": "xīng",
+      "e": "star",
+      "cat": "noun"
+    },
+    {
+      "c": "期",
+      "p": "qī",
+      "e": "period",
+      "cat": "noun"
+    },
+    {
+      "c": "上",
+      "p": "shàng",
+      "e": "up / above",
+      "cat": "prep"
+    },
+    {
+      "c": "下",
+      "p": "xià",
+      "e": "down / below",
+      "cat": "prep"
+    },
+    {
+      "c": "中",
+      "p": "zhōng",
+      "e": "middle / center",
+      "cat": "prep"
+    },
+    {
+      "c": "午",
+      "p": "wǔ",
+      "e": "noon",
+      "cat": "time"
+    },
+    {
       "c": "人",
       "p": "rén",
       "e": "person",
@@ -311,6 +395,48 @@ window.HSK_DICTIONARY = {
     {
       "c": "朋友",
       "p": "péngyou",
+      "e": "friend",
+      "cat": "noun"
+    },
+    {
+      "c": "爸",
+      "p": "bà",
+      "e": "dad / father",
+      "cat": "noun"
+    },
+    {
+      "c": "妈",
+      "p": "mā",
+      "e": "mom / mother",
+      "cat": "noun"
+    },
+    {
+      "c": "儿",
+      "p": "ér",
+      "e": "child / son",
+      "cat": "noun"
+    },
+    {
+      "c": "子",
+      "p": "zi",
+      "e": "child (suffix)",
+      "cat": "noun"
+    },
+    {
+      "c": "女",
+      "p": "nǚ",
+      "e": "female / daughter",
+      "cat": "noun"
+    },
+    {
+      "c": "朋",
+      "p": "péng",
+      "e": "companion",
+      "cat": "noun"
+    },
+    {
+      "c": "友",
+      "p": "yǒu",
       "e": "friend",
       "cat": "noun"
     },
@@ -753,6 +879,84 @@ window.HSK_DICTIONARY = {
       "cat": "verb"
     },
     {
+      "c": "你",
+      "p": "nǐ",
+      "e": "you",
+      "cat": "pronoun"
+    },
+    {
+      "c": "好",
+      "p": "hǎo",
+      "e": "good",
+      "cat": "adj"
+    },
+    {
+      "c": "再",
+      "p": "zài",
+      "e": "again",
+      "cat": "adverb"
+    },
+    {
+      "c": "见",
+      "p": "jiàn",
+      "e": "see / meet",
+      "cat": "verb"
+    },
+    {
+      "c": "谢",
+      "p": "xiè",
+      "e": "thank",
+      "cat": "verb"
+    },
+    {
+      "c": "对",
+      "p": "duì",
+      "e": "correct / face",
+      "cat": "verb"
+    },
+    {
+      "c": "不",
+      "p": "bù",
+      "e": "not",
+      "cat": "adverb"
+    },
+    {
+      "c": "起",
+      "p": "qǐ",
+      "e": "rise / start",
+      "cat": "verb"
+    },
+    {
+      "c": "没",
+      "p": "méi",
+      "e": "not / none",
+      "cat": "adverb"
+    },
+    {
+      "c": "关",
+      "p": "guān",
+      "e": "relate / close",
+      "cat": "verb"
+    },
+    {
+      "c": "系",
+      "p": "xì",
+      "e": "connection",
+      "cat": "noun"
+    },
+    {
+      "c": "名",
+      "p": "míng",
+      "e": "name",
+      "cat": "noun"
+    },
+    {
+      "c": "字",
+      "p": "zì",
+      "e": "character / word",
+      "cat": "noun"
+    },
+    {
       "c": "没关系",
       "p": "méiguānxi",
       "e": "it's OK",
@@ -1081,6 +1285,1014 @@ window.HSK_DICTIONARY = {
       "p": "rúguǒ",
       "e": "if",
       "cat": "conj"
+    },
+    {
+      "c": "今年",
+      "p": "jīnnián",
+      "e": "this year",
+      "cat": "time"
+    },
+    {
+      "c": "没有",
+      "p": "méiyǒu",
+      "e": "not have / there is not",
+      "cat": "verb"
+    },
+    {
+      "c": "吃饭",
+      "p": "chīfàn",
+      "e": "to eat a meal",
+      "cat": "verb"
+    },
+    {
+      "c": "上课",
+      "p": "shàngkè",
+      "e": "to attend class",
+      "cat": "verb"
+    },
+    {
+      "c": "下课",
+      "p": "xiàkè",
+      "e": "class ends",
+      "cat": "verb"
+    },
+    {
+      "c": "回家",
+      "p": "huíjiā",
+      "e": "to go home",
+      "cat": "verb"
+    },
+    {
+      "c": "看电视",
+      "p": "kàn diànshì",
+      "e": "to watch TV",
+      "cat": "verb"
+    },
+    {
+      "c": "一样",
+      "p": "yīyàng",
+      "e": "the same / alike",
+      "cat": "adj"
+    },
+    {
+      "c": "不舒服",
+      "p": "bù shūfu",
+      "e": "unwell / uncomfortable",
+      "cat": "adj"
+    },
+    {
+      "c": "发烧",
+      "p": "fāshāo",
+      "e": "to have a fever",
+      "cat": "verb"
+    },
+    {
+      "c": "唱歌",
+      "p": "chànggē",
+      "e": "to sing",
+      "cat": "verb"
+    },
+    {
+      "c": "头",
+      "p": "tóu",
+      "e": "head",
+      "cat": "noun"
+    },
+    {
+      "c": "手",
+      "p": "shǒu",
+      "e": "hand",
+      "cat": "noun"
+    },
+    {
+      "c": "新",
+      "p": "xīn",
+      "e": "new",
+      "cat": "adj"
+    },
+    {
+      "c": "旧",
+      "p": "jiù",
+      "e": "old (things)",
+      "cat": "adj"
+    },
+    {
+      "c": "早上",
+      "p": "zǎoshang",
+      "e": "morning",
+      "cat": "time"
+    },
+    {
+      "c": "晚上",
+      "p": "wǎnshang",
+      "e": "evening / night",
+      "cat": "time"
+    },
+    {
+      "c": "最",
+      "p": "zuì",
+      "e": "most / -est",
+      "cat": "adverb"
+    },
+    {
+      "c": "有点儿",
+      "p": "yǒudiǎnr",
+      "e": "a little / somewhat",
+      "cat": "adverb"
+    },
+    {
+      "c": "每天",
+      "p": "měitiān",
+      "e": "every day",
+      "cat": "time"
+    },
+    {
+      "c": "游泳",
+      "p": "yóuyǒng",
+      "e": "to swim",
+      "cat": "verb"
+    },
+    {
+      "c": "然后",
+      "p": "ránhòu",
+      "e": "then / after that",
+      "cat": "conj"
+    },
+    {
+      "c": "电影",
+      "p": "diànyǐng",
+      "e": "movie",
+      "cat": "noun"
+    },
+    {
+      "c": "白色",
+      "p": "báisè",
+      "e": "white color",
+      "cat": "noun"
+    },
+    {
+      "c": "眼睛",
+      "p": "yǎnjing",
+      "e": "eyes",
+      "cat": "noun"
+    },
+    {
+      "c": "红色",
+      "p": "hóngsè",
+      "e": "red color",
+      "cat": "noun"
+    },
+    {
+      "c": "跑步",
+      "p": "pǎobù",
+      "e": "to run / jogging",
+      "cat": "verb"
+    },
+    {
+      "c": "运动",
+      "p": "yùndòng",
+      "e": "sport / exercise",
+      "cat": "noun"
+    },
+    {
+      "c": "音乐",
+      "p": "yīnyuè",
+      "e": "music",
+      "cat": "noun"
+    },
+    {
+      "c": "黑色",
+      "p": "hēisè",
+      "e": "black color",
+      "cat": "noun"
+    },
+    {
+      "c": "喜",
+      "p": "xǐ",
+      "e": "to like / happy",
+      "cat": "verb"
+    },
+    {
+      "c": "欢",
+      "p": "huān",
+      "e": "joyous / happy",
+      "cat": "adj"
+    },
+    {
+      "c": "电",
+      "p": "diàn",
+      "e": "electric / electricity",
+      "cat": "noun"
+    },
+    {
+      "c": "视",
+      "p": "shì",
+      "e": "vision / to look at",
+      "cat": "verb"
+    },
+    {
+      "c": "医",
+      "p": "yī",
+      "e": "medical / to cure",
+      "cat": "noun"
+    },
+    {
+      "c": "生",
+      "p": "shēng",
+      "e": "to be born / life",
+      "cat": "verb"
+    },
+    {
+      "c": "院",
+      "p": "yuàn",
+      "e": "courtyard / institution",
+      "cat": "noun"
+    },
+    {
+      "c": "漂",
+      "p": "piào",
+      "e": "elegant / polished",
+      "cat": "adj"
+    },
+    {
+      "c": "亮",
+      "p": "liàng",
+      "e": "bright / light",
+      "cat": "adj"
+    },
+    {
+      "c": "店",
+      "p": "diàn",
+      "e": "shop / store",
+      "cat": "noun"
+    },
+    {
+      "c": "米",
+      "p": "mǐ",
+      "e": "rice / meter",
+      "cat": "noun"
+    },
+    {
+      "c": "果",
+      "p": "guǒ",
+      "e": "fruit / result",
+      "cat": "noun"
+    },
+    {
+      "c": "苹",
+      "p": "píng",
+      "e": "apple",
+      "cat": "noun"
+    },
+    {
+      "c": "老",
+      "p": "lǎo",
+      "e": "old / venerable",
+      "cat": "adj"
+    },
+    {
+      "c": "师",
+      "p": "shī",
+      "e": "teacher / master",
+      "cat": "noun"
+    },
+    {
+      "c": "学",
+      "p": "xué",
+      "e": "to study / learn",
+      "cat": "verb"
+    },
+    {
+      "c": "同",
+      "p": "tóng",
+      "e": "same / together",
+      "cat": "adj"
+    },
+    {
+      "c": "校",
+      "p": "xiào",
+      "e": "school",
+      "cat": "noun"
+    },
+    {
+      "c": "习",
+      "p": "xí",
+      "e": "to practice / habit",
+      "cat": "verb"
+    },
+    {
+      "c": "工",
+      "p": "gōng",
+      "e": "work / worker",
+      "cat": "noun"
+    },
+    {
+      "c": "作",
+      "p": "zuò",
+      "e": "to do / to make",
+      "cat": "verb"
+    },
+    {
+      "c": "汉",
+      "p": "hàn",
+      "e": "Han / Chinese",
+      "cat": "noun"
+    },
+    {
+      "c": "语",
+      "p": "yǔ",
+      "e": "language / speech",
+      "cat": "noun"
+    },
+    {
+      "c": "飞",
+      "p": "fēi",
+      "e": "to fly",
+      "cat": "verb"
+    },
+    {
+      "c": "机",
+      "p": "jī",
+      "e": "machine / plane",
+      "cat": "noun"
+    },
+    {
+      "c": "出",
+      "p": "chū",
+      "e": "to go out / exit",
+      "cat": "verb"
+    },
+    {
+      "c": "租",
+      "p": "zū",
+      "e": "to rent",
+      "cat": "verb"
+    },
+    {
+      "c": "车",
+      "p": "chē",
+      "e": "vehicle / car",
+      "cat": "noun"
+    },
+    {
+      "c": "火",
+      "p": "huǒ",
+      "e": "fire",
+      "cat": "noun"
+    },
+    {
+      "c": "站",
+      "p": "zhàn",
+      "e": "station / to stand",
+      "cat": "noun"
+    },
+    {
+      "c": "商",
+      "p": "shāng",
+      "e": "commerce / merchant",
+      "cat": "noun"
+    },
+    {
+      "c": "气",
+      "p": "qì",
+      "e": "air / gas / spirit",
+      "cat": "noun"
+    },
+    {
+      "c": "兴",
+      "p": "xìng",
+      "e": "interest / excitement",
+      "cat": "noun"
+    },
+    {
+      "c": "怎",
+      "p": "zěn",
+      "e": "how",
+      "cat": "question"
+    },
+    {
+      "c": "么",
+      "p": "me",
+      "e": "interrogative particle",
+      "cat": "question"
+    },
+    {
+      "c": "样",
+      "p": "yàng",
+      "e": "manner / appearance",
+      "cat": "question"
+    },
+    {
+      "c": "衣",
+      "p": "yī",
+      "e": "clothes",
+      "cat": "noun"
+    },
+    {
+      "c": "服",
+      "p": "fú",
+      "e": "clothes / to serve",
+      "cat": "noun"
+    },
+    {
+      "c": "床",
+      "p": "chuáng",
+      "e": "bed",
+      "cat": "noun"
+    },
+    {
+      "c": "睡",
+      "p": "shuì",
+      "e": "to sleep",
+      "cat": "verb"
+    },
+    {
+      "c": "觉",
+      "p": "jiào",
+      "e": "sleep",
+      "cat": "noun"
+    },
+    {
+      "c": "打",
+      "p": "dǎ",
+      "e": "to hit / to play",
+      "cat": "verb"
+    },
+    {
+      "c": "话",
+      "p": "huà",
+      "e": "word / speech",
+      "cat": "noun"
+    },
+    {
+      "c": "舒",
+      "p": "shū",
+      "e": "comfortable / easy",
+      "cat": "adj"
+    },
+    {
+      "c": "发",
+      "p": "fā",
+      "e": "to send out / issue",
+      "cat": "verb"
+    },
+    {
+      "c": "烧",
+      "p": "shāo",
+      "e": "to burn / fever",
+      "cat": "verb"
+    },
+    {
+      "c": "唱",
+      "p": "chàng",
+      "e": "to sing",
+      "cat": "verb"
+    },
+    {
+      "c": "歌",
+      "p": "gē",
+      "e": "song",
+      "cat": "noun"
+    },
+    {
+      "c": "早",
+      "p": "zǎo",
+      "e": "early / morning",
+      "cat": "time"
+    },
+    {
+      "c": "晚",
+      "p": "wǎn",
+      "e": "late / evening",
+      "cat": "time"
+    },
+    {
+      "c": "每",
+      "p": "měi",
+      "e": "every / each",
+      "cat": "pronoun"
+    },
+    {
+      "c": "游",
+      "p": "yóu",
+      "e": "to swim / travel",
+      "cat": "verb"
+    },
+    {
+      "c": "泳",
+      "p": "yǒng",
+      "e": "to swim",
+      "cat": "verb"
+    },
+    {
+      "c": "然",
+      "p": "rán",
+      "e": "so / thus / correct",
+      "cat": "conj"
+    },
+    {
+      "c": "后",
+      "p": "hòu",
+      "e": "behind / after",
+      "cat": "prep"
+    },
+    {
+      "c": "影",
+      "p": "yǐng",
+      "e": "shadow / movie",
+      "cat": "noun"
+    },
+    {
+      "c": "白",
+      "p": "bái",
+      "e": "white",
+      "cat": "adj"
+    },
+    {
+      "c": "色",
+      "p": "sè",
+      "e": "color",
+      "cat": "noun"
+    },
+    {
+      "c": "眼",
+      "p": "yǎn",
+      "e": "eye",
+      "cat": "noun"
+    },
+    {
+      "c": "睛",
+      "p": "jīng",
+      "e": "eye / eyeball",
+      "cat": "noun"
+    },
+    {
+      "c": "红",
+      "p": "hóng",
+      "e": "red",
+      "cat": "adj"
+    },
+    {
+      "c": "跑",
+      "p": "pǎo",
+      "e": "to run",
+      "cat": "verb"
+    },
+    {
+      "c": "步",
+      "p": "bù",
+      "e": "step / pace",
+      "cat": "noun"
+    },
+    {
+      "c": "运",
+      "p": "yùn",
+      "e": "to move / transport",
+      "cat": "verb"
+    },
+    {
+      "c": "动",
+      "p": "dòng",
+      "e": "to move / action",
+      "cat": "verb"
+    },
+    {
+      "c": "音",
+      "p": "yīn",
+      "e": "sound / tone",
+      "cat": "noun"
+    },
+    {
+      "c": "乐",
+      "p": "yuè",
+      "e": "music",
+      "cat": "noun"
+    },
+    {
+      "c": "黑",
+      "p": "hēi",
+      "e": "black",
+      "cat": "adj"
+    },
+    {
+      "c": "与",
+      "p": "yǔ",
+      "e": "and / with",
+      "cat": "conj"
+    },
+    {
+      "c": "为",
+      "p": "wèi",
+      "e": "for / because of",
+      "cat": "prep"
+    },
+    {
+      "c": "京",
+      "p": "jīng",
+      "e": "capital city",
+      "cat": "noun"
+    },
+    {
+      "c": "什",
+      "p": "shén",
+      "e": "what",
+      "cat": "question"
+    },
+    {
+      "c": "介",
+      "p": "jiè",
+      "e": "to introduce",
+      "cat": "verb"
+    },
+    {
+      "c": "以",
+      "p": "yǐ",
+      "e": "by / with / according to",
+      "cat": "prep"
+    },
+    {
+      "c": "们",
+      "p": "men",
+      "e": "plural marker",
+      "cat": "particle"
+    },
+    {
+      "c": "但",
+      "p": "dàn",
+      "e": "but / yet",
+      "cat": "conj"
+    },
+    {
+      "c": "位",
+      "p": "wèi",
+      "e": "polite measure word for people",
+      "cat": "measure"
+    },
+    {
+      "c": "体",
+      "p": "tǐ",
+      "e": "body / form",
+      "cat": "noun"
+    },
+    {
+      "c": "便",
+      "p": "biàn",
+      "e": "convenient",
+      "cat": "adj"
+    },
+    {
+      "c": "候",
+      "p": "hòu",
+      "e": "time / wait",
+      "cat": "noun"
+    },
+    {
+      "c": "健",
+      "p": "jiàn",
+      "e": "healthy",
+      "cat": "adj"
+    },
+    {
+      "c": "先",
+      "p": "xiān",
+      "e": "first / early",
+      "cat": "adverb"
+    },
+    {
+      "c": "刻",
+      "p": "kè",
+      "e": "quarter (hour)",
+      "cat": "measure"
+    },
+    {
+      "c": "北",
+      "p": "běi",
+      "e": "north",
+      "cat": "noun"
+    },
+    {
+      "c": "半",
+      "p": "bàn",
+      "e": "half",
+      "cat": "number"
+    },
+    {
+      "c": "华",
+      "p": "huá",
+      "e": "magnificent / China",
+      "cat": "noun"
+    },
+    {
+      "c": "受",
+      "p": "shòu",
+      "e": "to receive / to suffer",
+      "cat": "verb"
+    },
+    {
+      "c": "可",
+      "p": "kě",
+      "e": "can / may",
+      "cat": "verb"
+    },
+    {
+      "c": "右",
+      "p": "yòu",
+      "e": "right (side)",
+      "cat": "noun"
+    },
+    {
+      "c": "吧",
+      "p": "ba",
+      "e": "suggestion particle",
+      "cat": "particle"
+    },
+    {
+      "c": "因",
+      "p": "yīn",
+      "e": "cause / reason",
+      "cat": "conj"
+    },
+    {
+      "c": "国",
+      "p": "guó",
+      "e": "country / nation",
+      "cat": "noun"
+    },
+    {
+      "c": "如",
+      "p": "rú",
+      "e": "as / if",
+      "cat": "conj"
+    },
+    {
+      "c": "宜",
+      "p": "yí",
+      "e": "suitable",
+      "cat": "adj"
+    },
+    {
+      "c": "常",
+      "p": "cháng",
+      "e": "often / frequent",
+      "cat": "adverb"
+    },
+    {
+      "c": "康",
+      "p": "kāng",
+      "e": "healthy",
+      "cat": "adj"
+    },
+    {
+      "c": "得",
+      "p": "de",
+      "e": "structural particle",
+      "cat": "particle"
+    },
+    {
+      "c": "感",
+      "p": "gǎn",
+      "e": "to feel",
+      "cat": "verb"
+    },
+    {
+      "c": "或",
+      "p": "huò",
+      "e": "or",
+      "cat": "conj"
+    },
+    {
+      "c": "所",
+      "p": "suǒ",
+      "e": "place / that which",
+      "cat": "particle"
+    },
+    {
+      "c": "描",
+      "p": "miáo",
+      "e": "to trace / describe",
+      "cat": "verb"
+    },
+    {
+      "c": "数",
+      "p": "shù",
+      "e": "number / figure",
+      "cat": "noun"
+    },
+    {
+      "c": "方",
+      "p": "fāng",
+      "e": "square / direction",
+      "cat": "noun"
+    },
+    {
+      "c": "时",
+      "p": "shí",
+      "e": "time / hour",
+      "cat": "noun"
+    },
+    {
+      "c": "李",
+      "p": "lǐ",
+      "e": "plum / surname",
+      "cat": "noun"
+    },
+    {
+      "c": "杯",
+      "p": "bēi",
+      "e": "cup / glass",
+      "cat": "measure"
+    },
+    {
+      "c": "桌",
+      "p": "zhuō",
+      "e": "table / desk",
+      "cat": "noun"
+    },
+    {
+      "c": "椅",
+      "p": "yǐ",
+      "e": "chair",
+      "cat": "noun"
+    },
+    {
+      "c": "法",
+      "p": "fǎ",
+      "e": "law / method",
+      "cat": "noun"
+    },
+    {
+      "c": "活",
+      "p": "huó",
+      "e": "to live / alive",
+      "cat": "verb"
+    },
+    {
+      "c": "海",
+      "p": "hǎi",
+      "e": "sea / ocean",
+      "cat": "noun"
+    },
+    {
+      "c": "物",
+      "p": "wù",
+      "e": "thing / object",
+      "cat": "noun"
+    },
+    {
+      "c": "王",
+      "p": "wáng",
+      "e": "king / surname",
+      "cat": "noun"
+    },
+    {
+      "c": "疼",
+      "p": "téng",
+      "e": "ache / pain",
+      "cat": "adj"
+    },
+    {
+      "c": "知",
+      "p": "zhī",
+      "e": "to know",
+      "cat": "verb"
+    },
+    {
+      "c": "碗",
+      "p": "wǎn",
+      "e": "bowl",
+      "cat": "noun"
+    },
+    {
+      "c": "绍",
+      "p": "shào",
+      "e": "to introduce",
+      "cat": "verb"
+    },
+    {
+      "c": "者",
+      "p": "zhě",
+      "e": "person who / -er",
+      "cat": "noun"
+    },
+    {
+      "c": "脑",
+      "p": "nǎo",
+      "e": "brain",
+      "cat": "noun"
+    },
+    {
+      "c": "芳",
+      "p": "fāng",
+      "e": "fragrant",
+      "cat": "adj"
+    },
+    {
+      "c": "行",
+      "p": "xíng",
+      "e": "to walk / OK",
+      "cat": "verb"
+    },
+    {
+      "c": "认",
+      "p": "rèn",
+      "e": "to recognize",
+      "cat": "verb"
+    },
+    {
+      "c": "识",
+      "p": "shí",
+      "e": "to know",
+      "cat": "verb"
+    },
+    {
+      "c": "购",
+      "p": "gòu",
+      "e": "to purchase",
+      "cat": "verb"
+    },
+    {
+      "c": "趣",
+      "p": "qù",
+      "e": "interest / fun",
+      "cat": "noun"
+    },
+    {
+      "c": "身",
+      "p": "shēn",
+      "e": "body",
+      "cat": "noun"
+    },
+    {
+      "c": "边",
+      "p": "biān",
+      "e": "side / edge",
+      "cat": "noun"
+    },
+    {
+      "c": "远",
+      "p": "yuǎn",
+      "e": "far / distant",
+      "cat": "adj"
+    },
+    {
+      "c": "述",
+      "p": "shù",
+      "e": "to state / narrate",
+      "cat": "verb"
+    },
+    {
+      "c": "道",
+      "p": "dào",
+      "e": "road / path / to say",
+      "cat": "noun"
+    },
+    {
+      "c": "里",
+      "p": "lǐ",
+      "e": "inside",
+      "cat": "noun"
+    },
+    {
+      "c": "问",
+      "p": "wèn",
+      "e": "to ask",
+      "cat": "verb"
+    },
+    {
+      "c": "间",
+      "p": "jiān",
+      "e": "between / room",
+      "cat": "noun"
+    },
+    {
+      "c": "陪",
+      "p": "péi",
+      "e": "to accompany",
+      "cat": "verb"
+    },
+    {
+      "c": "颜",
+      "p": "yán",
+      "e": "color / face",
+      "cat": "noun"
+    },
+    {
+      "c": "食",
+      "p": "shí",
+      "e": "food / to eat",
+      "cat": "noun"
+    },
+    {
+      "c": "饮",
+      "p": "yǐn",
+      "e": "to drink",
+      "cat": "verb"
+    },
+    {
+      "c": "龄",
+      "p": "líng",
+      "e": "age",
+      "cat": "noun"
     }
   ]
 };

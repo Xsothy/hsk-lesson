@@ -13,67 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-3"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-    {
-      "c": "今天",
-      "p": "jīntiān",
-      "e": "today"
-    },
-    {
-      "c": "明天",
-      "p": "míngtiān",
-      "e": "tomorrow"
-    },
-    {
-      "c": "昨天",
-      "p": "zuótiān",
-      "e": "yesterday"
-    },
-    {
-      "c": "现在",
-      "p": "xiànzài",
-      "e": "now"
-    },
-    {
-      "c": "点",
-      "p": "diǎn",
-      "e": "o'clock"
-    },
-    {
-      "c": "分钟",
-      "p": "fēnzhōng",
-      "e": "minute"
-    },
-    {
-      "c": "星期",
-      "p": "xīngqī",
-      "e": "week / weekday"
-    },
-    {
-      "c": "上午",
-      "p": "shàngwǔ",
-      "e": "morning (AM)"
-    },
-    {
-      "c": "下午",
-      "p": "xiàwǔ",
-      "e": "afternoon"
-    },
-    {
-      "c": "中午",
-      "p": "zhōngwǔ",
-      "e": "noon"
-    },
-    {
-      "c": "月",
-      "p": "yuè",
-      "e": "month"
-    },
-    {
-      "c": "号",
-      "p": "hào",
-      "e": "date number"
-    }
-  ],
+      "今天",
+      "明天",
+      "昨天",
+      "现在",
+      "点",
+      "分钟",
+      "星期",
+      "上午",
+      "下午",
+      "中午",
+      "月",
+      "号"
+      ],
   "grammar": [
     {
       "title": "Asking the time: 现在几点？",

@@ -5,8 +5,11 @@
   function openVocabModal(vocabItem, lessonData) {
     closeModal();
 
+    // Ensure item is enriched with breakdown data
+    const enrichedItem = window.HSK_API.enrichVocabWord(vocabItem);
+
     const lastFocused = document.activeElement;
-    const modal = createModalElement(vocabItem, lessonData);
+    const modal = createModalElement(enrichedItem, lessonData);
     document.body.appendChild(modal);
     currentModal = modal;
     
@@ -53,7 +56,7 @@
         <div class="modal-header">
           <div class="modal-header-content">
             <div class="modal-word" id="modal-title">${vocabItem.c}</div>
-            <div class="modal-pinyin">${vocabItem.p}</div>
+            <div class="modal-pinyin">${window.HSK_UTILS.colorizePinyin(vocabItem.p)}</div>
             <div class="modal-english">${vocabItem.e}</div>
           </div>
           <div class="modal-header-actions">
@@ -117,24 +120,39 @@
   function populateBreakdownSection(modal, vocabItem) {
     const container = modal.querySelector('#modal-breakdown');
     
-    if (!vocabItem.parts || vocabItem.parts.length === 0) {
+    let parts = vocabItem.parts;
+    
+    // Fallback: If no parts defined, but word has multiple characters, split them!
+    if (!parts || parts.length === 0) {
+      if (vocabItem.c && vocabItem.c.length > 1) {
+        // Only split if they are Chinese characters
+        parts = Array.from(vocabItem.c).filter(char => /[\u4e00-\u9fff]/.test(char));
+      }
+    }
+
+    if (!parts || parts.length === 0) {
       container.style.display = 'none';
       return;
     }
 
-    let html = '<div class="modal-section-title">WORD BREAKDOWN · 词汇结构</div>';
+    container.style.display = 'block';
+    let html = '<div class="modal-section-title">CHARACTER FUSION · 汉字组合</div>';
     html += '<div class="breakdown-grid">';
 
-    vocabItem.parts.forEach((char, index) => {
-      const construct = window.HSK_CONSTRUCTS?.[char] || { c: char, p: '?', e: '?' };
+    parts.forEach((char, index) => {
+      // Fetch character data from dictionary
+      const charData = window.HSK_API.enrichVocabWord(char);
+      if (index > 0) {
+        html += '<div class="breakdown-separator" style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#ccc">+</div>';
+      }
       html += `
         <button class="breakdown-item ${index === 0 ? 'selected' : ''}" 
                 data-char="${char}" 
                 data-index="${index}"
                 type="button">
           <div class="breakdown-char">${char}</div>
-          <div class="breakdown-pinyin">${construct.p || '?'}</div>
-          <div class="breakdown-meaning">${construct.e || '?'}</div>
+          <div class="breakdown-pinyin">${window.HSK_UTILS.colorizePinyin(charData.p || '?')}</div>
+          <div class="breakdown-meaning">${charData.e || '?'}</div>
         </button>
       `;
     });
@@ -142,7 +160,10 @@
     html += '</div>';
 
     if (vocabItem.literal) {
-      html += `<div class="breakdown-literal"><strong>Literal meaning:</strong> ${vocabItem.literal}</div>`;
+      html += `<div class="breakdown-literal"><strong>Fusion:</strong> ${vocabItem.literal} </div>`;
+    } else if (!vocabItem.parts && vocabItem.e) {
+      // Simple fallback literal if we auto-split
+      html += `<div class="breakdown-literal"><strong>Fusion:</strong> ${parts.join(' + ')} = ${vocabItem.e}</div>`;
     }
 
     container.innerHTML = html;
@@ -151,17 +172,27 @@
   function populateStrokeSection(modal, vocabItem) {
     const container = modal.querySelector('#modal-stroke');
     
-    // Default to first part or the word itself
-    const defaultChar = vocabItem.parts?.[0] || vocabItem.c.charAt(0);
-    const construct = window.HSK_CONSTRUCTS?.[defaultChar] || { c: defaultChar, p: '?', e: '?' };
+    // Default to first part or the word itself (filtered for CJK)
+    let defaultChar = vocabItem.parts?.[0];
+    if (!defaultChar && vocabItem.c) {
+      const chars = Array.from(vocabItem.c).filter(char => /[\u4e00-\u9fff]/.test(char));
+      defaultChar = chars[0];
+    }
+    
+    if (!defaultChar) {
+      container.style.display = 'none';
+      return;
+    }
+
+    const charData = window.HSK_API.enrichVocabWord(defaultChar);
 
     container.innerHTML = `
       <div class="modal-section-title">STROKE ORDER · 笔画顺序</div>
       <div class="stroke-info">
-        <div class="stroke-char-display">${construct.c}</div>
+        <div class="stroke-char-display">${charData.c}</div>
         <div class="stroke-char-meta">
-          <div class="stroke-char-pinyin">${construct.p || '?'}</div>
-          <div class="stroke-char-meaning">${construct.e || '?'}</div>
+          <div class="stroke-char-pinyin">${window.HSK_UTILS.colorizePinyin(charData.p || '?')}</div>
+          <div class="stroke-char-meaning">${charData.e || '?'}</div>
         </div>
       </div>
       <div class="stroke-writer-container">
@@ -223,10 +254,10 @@
     target.style.opacity = '0';
 
     // Update stroke info
-    const construct = window.HSK_CONSTRUCTS?.[character] || { c: character, p: '?', e: '?' };
-    modal.querySelector('.stroke-char-display').textContent = construct.c;
-    modal.querySelector('.stroke-char-pinyin').textContent = construct.p || '?';
-    modal.querySelector('.stroke-char-meaning').textContent = construct.e || '?';
+    const charData = window.HSK_API.enrichVocabWord(character);
+    modal.querySelector('.stroke-char-display').textContent = charData.c;
+    modal.querySelector('.stroke-char-pinyin').innerHTML = window.HSK_UTILS.colorizePinyin(charData.p || '?');
+    modal.querySelector('.stroke-char-meaning').textContent = charData.e || '?';
 
     try {
       const writer = HanziWriter.create(target, character, {
@@ -306,7 +337,7 @@
             <button class="audio-btn audio-btn-sm" data-text="${ex.zh}" type="button" aria-label="Pronounce sentence">🔊</button>
           </div>
           <div class="example-zh">${ex.zh}</div>
-          <div class="example-pinyin">${ex.py}</div>
+          <div class="example-pinyin">${window.HSK_UTILS.colorizePinyin(ex.py)}</div>
           <div class="example-en">${ex.en}</div>
         </div>
       `;

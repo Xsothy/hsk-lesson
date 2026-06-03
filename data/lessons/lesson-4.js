@@ -13,67 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-4"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-    {
-      "c": "饭店",
-      "p": "fàndiàn",
-      "e": "restaurant"
-    },
-    {
-      "c": "菜",
-      "p": "cài",
-      "e": "dish / vegetable"
-    },
-    {
-      "c": "米饭",
-      "p": "mǐfàn",
-      "e": "cooked rice"
-    },
-    {
-      "c": "茶",
-      "p": "chá",
-      "e": "tea"
-    },
-    {
-      "c": "水",
-      "p": "shuǐ",
-      "e": "water"
-    },
-    {
-      "c": "水果",
-      "p": "shuǐguǒ",
-      "e": "fruit"
-    },
-    {
-      "c": "苹果",
-      "p": "píngguǒ",
-      "e": "apple"
-    },
-    {
-      "c": "吃",
-      "p": "chī",
-      "e": "to eat"
-    },
-    {
-      "c": "喝",
-      "p": "hē",
-      "e": "to drink"
-    },
-    {
-      "c": "要",
-      "p": "yào",
-      "e": "to want"
-    },
-    {
-      "c": "请",
-      "p": "qǐng",
-      "e": "please / to invite"
-    },
-    {
-      "c": "钱",
-      "p": "qián",
-      "e": "money"
-    }
-  ],
+      "饭店",
+      "菜",
+      "米饭",
+      "茶",
+      "水",
+      "水果",
+      "苹果",
+      "吃",
+      "喝",
+      "要",
+      "请",
+      "钱"
+      ],
   "grammar": [
     {
       "title": "Ordering / wanting: 想要 + noun",

@@ -13,67 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-7"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-    {
-      "c": "天气",
-      "p": "tiānqì",
-      "e": "weather"
-    },
-    {
-      "c": "热",
-      "p": "rè",
-      "e": "hot"
-    },
-    {
-      "c": "冷",
-      "p": "lěng",
-      "e": "cold"
-    },
-    {
-      "c": "好",
-      "p": "hǎo",
-      "e": "good"
-    },
-    {
-      "c": "高兴",
-      "p": "gāoxìng",
-      "e": "happy"
-    },
-    {
-      "c": "累",
-      "p": "lèi",
-      "e": "tired"
-    },
-    {
-      "c": "忙",
-      "p": "máng",
-      "e": "busy"
-    },
-    {
-      "c": "很",
-      "p": "hěn",
-      "e": "very"
-    },
-    {
-      "c": "太",
-      "p": "tài",
-      "e": "too / extremely"
-    },
-    {
-      "c": "不",
-      "p": "bù",
-      "e": "not"
-    },
-    {
-      "c": "怎么样",
-      "p": "zěnmeyàng",
-      "e": "how is it?"
-    },
-    {
-      "c": "也",
-      "p": "yě",
-      "e": "also / too"
-    }
-  ],
+      "天气",
+      "热",
+      "冷",
+      "好",
+      "高兴",
+      "累",
+      "忙",
+      "很",
+      "太",
+      "不",
+      "怎么样",
+      "也"
+      ],
   "grammar": [
     {
       "title": "Describing with 很 + adjective",
