@@ -787,7 +787,8 @@ nav {
   }
   .modal-body {
     padding: 1.3rem 1.6rem 1.6rem;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
@@ -1069,7 +1070,8 @@ nav {
   }
   .modal-body {
     padding: 0.9rem 1rem 1.4rem;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     grid-template-columns: 1fr;
     gap: 1.2rem;
   }
@@ -1405,9 +1407,12 @@ body.hide-pinyin .card-pinyin { display: none; }
 }
 .modal-body {
   overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   padding: 1.5rem 2rem 2rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 }
 .modal-section {

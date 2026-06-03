@@ -142,9 +142,7 @@
     parts.forEach((char, index) => {
       // Fetch character data from dictionary
       const charData = window.HSK_API.enrichVocabWord(char);
-      if (index > 0) {
-        html += '<div class="breakdown-separator" style="display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#ccc">+</div>';
-      }
+ 
       html += `
         <button class="breakdown-item ${index === 0 ? 'selected' : ''}" 
                 data-char="${char}" 
