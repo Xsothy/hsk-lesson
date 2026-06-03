@@ -14,6 +14,7 @@
     window.HSK_RENDER.renderDictionary(document.getElementById('dict-filters'), document.getElementById('dict-grid'), dictionary);
     setupDictionaryFilters();
     setupDictionarySearch();
+    setupDictionaryModalHandlers();
 
     if (window.location.hash === '#dictionary') {
       showPage('dictionary');
@@ -64,5 +65,15 @@
     });
 
     document.getElementById('dict-no-results').style.display = shown === 0 ? 'block' : 'none';
+  }
+
+  function setupDictionaryModalHandlers() {
+    document.addEventListener('click', (e) => {
+      const dictCard = e.target.closest('.dict-card');
+      if (dictCard && dictCard.dataset.vocabWord) {
+        const word = JSON.parse(dictCard.dataset.vocabWord);
+        window.HSK_MODAL.open(word, null);
+      }
+    });
   }
 })();

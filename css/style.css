@@ -336,14 +336,26 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  text-decoration: none;
-  color: inherit;
   transition: background 0.15s;
   cursor: pointer;
   position: relative;
 }
-.vocab-item:hover { background: #fdf9f3; }
-.vocab-item:hover .vocab-char { color: var(--red); }
+.vocab-item:hover { 
+  background: #fdf9f3;
+}
+.vocab-item:hover .vocab-char { 
+  color: var(--red); 
+}
+.vocab-audio-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+.vocab-item:hover .vocab-audio-btn {
+  opacity: 1;
+}
 .vocab-char {
   font-family: 'Noto Serif SC', serif;
   font-size: 1.7rem;
@@ -404,8 +416,19 @@ nav {
   grid-template-columns: 1fr 1fr;
   gap: 0.5rem 1.5rem;
   align-items: start;
+  position: relative;
 }
 .sentence-item:last-child { border-bottom: none; }
+.sentence-audio-btn {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+.sentence-item:hover .sentence-audio-btn {
+  opacity: 1;
+}
 .sentence-zh {
   font-family: 'Noto Serif SC', serif;
   font-size: 1.05rem;
@@ -435,6 +458,17 @@ nav {
   display: flex;
   gap: 0.8rem;
   align-items: flex-start;
+  position: relative;
+}
+.dialogue-audio-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.4;
+  transition: opacity 0.2s;
+}
+.dialogue-line:hover .dialogue-audio-btn {
+  opacity: 1;
 }
 .dialogue-speaker {
   width: 28px;
@@ -555,8 +589,6 @@ nav {
   border: 1px solid var(--mist);
   border-radius: 10px;
   padding: 1rem 0.9rem 0.85rem;
-  text-decoration: none;
-  color: inherit;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -796,4 +828,350 @@ body.hide-pinyin .card-pinyin { display: none; }
   overflow: auto;
   padding: 1rem;
   white-space: pre-wrap;
+}
+
+/* ══════════════════════════════
+   VOCABULARY MODAL
+══════════════════════════════ */
+.vocab-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.vocab-modal.active {
+  opacity: 1;
+}
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 12, 8, 0.6);
+  backdrop-filter: blur(4px);
+}
+.modal-container {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  width: 90%;
+  max-width: 700px;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.95);
+  transition: transform 0.2s;
+}
+.vocab-modal.active .modal-container {
+  transform: scale(1);
+}
+.modal-header {
+  background: var(--ink);
+  color: white;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.modal-header-content {
+  flex: 1;
+}
+.modal-word {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+.modal-pinyin {
+  font-size: 1.1rem;
+  color: var(--gold-lt);
+  margin-bottom: 0.2rem;
+}
+.modal-english {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+.modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.modal-audio-btn,
+.modal-dict-link,
+.modal-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1.1rem;
+  text-decoration: none;
+}
+.modal-audio-btn:hover,
+.modal-dict-link:hover,
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.modal-close {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+.modal-body {
+  overflow-y: auto;
+  padding: 1.5rem 2rem 2rem;
+}
+.modal-section {
+  margin-bottom: 2rem;
+}
+.modal-section:last-child {
+  margin-bottom: 0;
+}
+.modal-section-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9a8d7e;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+/* Breakdown section */
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+.breakdown-item {
+  background: var(--warm-white);
+  border: 2px solid var(--mist);
+  border-radius: var(--radius-sm);
+  padding: 1rem 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.breakdown-item:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+.breakdown-item.selected {
+  border-color: var(--gold);
+  background: #fffbf5;
+  box-shadow: 0 2px 8px rgba(184, 137, 46, 0.15);
+}
+.breakdown-char {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+.breakdown-pinyin {
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+.breakdown-meaning {
+  font-size: 0.75rem;
+  color: #6b6357;
+}
+.breakdown-literal {
+  background: #f5f1ea;
+  border-left: 3px solid var(--gold);
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  color: #5a5349;
+  line-height: 1.5;
+}
+.breakdown-literal strong {
+  color: var(--ink);
+}
+
+/* Stroke section */
+.stroke-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background: var(--warm-white);
+  border-radius: var(--radius-sm);
+}
+.stroke-char-display {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+.stroke-char-meta {
+  flex: 1;
+}
+.stroke-char-pinyin {
+  font-size: 1rem;
+  color: var(--gold);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+.stroke-char-meaning {
+  font-size: 0.85rem;
+  color: #6b6357;
+}
+.stroke-writer-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  background: white;
+  border: 2px solid var(--mist);
+  border-radius: var(--radius-sm);
+  margin-bottom: 1rem;
+}
+.stroke-grid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+#hanzi-writer-target {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+}
+.stroke-loading,
+.stroke-error {
+  position: absolute;
+  font-size: 0.85rem;
+  color: #9a8d7e;
+}
+.stroke-error {
+  color: var(--red);
+}
+.stroke-controls {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.stroke-btn {
+  background: var(--ink);
+  color: white;
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1.2rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.stroke-btn:hover {
+  background: #1f1c18;
+  transform: translateY(-1px);
+}
+
+/* Examples section */
+.examples-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.example-item {
+  background: var(--warm-white);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  border-left: 3px solid var(--gold-lt);
+}
+.example-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.example-type {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9a8d7e;
+  font-weight: 600;
+}
+.example-zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+.example-pinyin {
+  font-size: 0.88rem;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.example-en {
+  font-size: 0.85rem;
+  color: #6b6357;
+  line-height: 1.4;
+}
+
+/* Audio buttons */
+.audio-btn {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.2rem 0.4rem;
+  transition: opacity 0.2s;
+  opacity: 0.6;
+}
+.audio-btn:hover {
+  opacity: 1;
+}
+.audio-btn-sm {
+  font-size: 0.85rem;
+}
+.audio-btn-lg {
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .modal-container {
+    width: 95%;
+    max-height: 90vh;
+  }
+  .modal-header {
+    padding: 1.2rem 1.5rem;
+  }
+  .modal-body {
+    padding: 1.2rem 1.5rem 1.5rem;
+  }
+  .modal-word {
+    font-size: 1.8rem;
+  }
+  .breakdown-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  }
+}
+
+/* Hide pinyin when toggle is off */
+body.hide-pinyin .modal-pinyin,
+body.hide-pinyin .breakdown-pinyin,
+body.hide-pinyin .stroke-char-pinyin,
+body.hide-pinyin .example-pinyin {
+  display: none;
 }

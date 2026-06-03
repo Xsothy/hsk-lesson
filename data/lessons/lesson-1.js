@@ -16,27 +16,37 @@ window.HSK_LESSONS_BY_SLUG["lesson-1"] = {
     {
       "c": "你好",
       "p": "nǐ hǎo",
-      "e": "hello"
+      "e": "hello",
+      "parts": ["你", "好"],
+      "literal": "you + good = hello"
     },
     {
       "c": "再见",
       "p": "zàijiàn",
-      "e": "goodbye"
+      "e": "goodbye",
+      "parts": ["再", "见"],
+      "literal": "again + see = goodbye (see you again)"
     },
     {
       "c": "谢谢",
       "p": "xièxie",
-      "e": "thank you"
+      "e": "thank you",
+      "parts": ["谢", "谢"],
+      "literal": "thank + thank = thank you (doubled for emphasis)"
     },
     {
       "c": "对不起",
       "p": "duìbuqǐ",
-      "e": "sorry"
+      "e": "sorry",
+      "parts": ["对", "不", "起"],
+      "literal": "face + not + able = sorry (unable to face you)"
     },
     {
       "c": "没关系",
       "p": "méiguānxi",
-      "e": "it's OK"
+      "e": "it's OK",
+      "parts": ["没", "关", "系"],
+      "literal": "not + relate + connection = it's OK (no connection/problem)"
     },
     {
       "c": "我",
@@ -61,7 +71,9 @@ window.HSK_LESSONS_BY_SLUG["lesson-1"] = {
     {
       "c": "名字",
       "p": "míngzi",
-      "e": "name"
+      "e": "name",
+      "parts": ["名", "字"],
+      "literal": "name + character = name"
     },
     {
       "c": "叫",

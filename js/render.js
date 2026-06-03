@@ -66,17 +66,20 @@ function renderVocabularySection(lesson) {
   list.className = 'vocab-list';
 
   lesson.vocab.forEach((word) => {
-    const item = document.createElement('a');
+    const item = document.createElement('div');
     item.className = 'vocab-item';
-    item.href = window.HSK_UTILS.dictLink(word.c);
-    item.target = '_blank';
-    item.rel = 'noopener noreferrer';
+    item.dataset.vocabWord = JSON.stringify(word);
+    
+    const audioBtn = window.HSK_UTILS.createAudioButton(word.c, 'sm');
+    audioBtn.className = 'vocab-audio-btn';
+    
     item.innerHTML = `
       ${word.preview ? '<span class="word-preview-star">★</span>' : ''}
-      <span class="vocab-dict-hint">↗ dict</span>
       <span class="vocab-char ${word.preview ? 'is-preview' : ''}">${word.c}</span>
       <span class="vocab-pinyin">${word.p}</span>
       <span class="vocab-en">${word.e}</span>`;
+    
+    item.insertBefore(audioBtn, item.firstChild);
     list.appendChild(item);
   });
 
@@ -119,12 +122,18 @@ function renderSentenceSection(sentences) {
   sentences.forEach((sentence) => {
     const item = document.createElement('div');
     item.className = 'sentence-item';
+    
+    const audioBtn = window.HSK_UTILS.createAudioButton(sentence.zh, 'sm');
+    audioBtn.className = 'sentence-audio-btn';
+    
     item.innerHTML = `
       <div>
         <div class="sentence-zh">${sentence.zh}</div>
         <div class="sentence-pinyin">${sentence.py}</div>
       </div>
       <div class="sentence-en">${sentence.en}</div>`;
+    
+    item.appendChild(audioBtn);
     list.appendChild(item);
   });
 
@@ -140,6 +149,10 @@ function renderDialogueSection(dialogue) {
   dialogue.forEach((line) => {
     const item = document.createElement('div');
     item.className = 'dialogue-line';
+    
+    const audioBtn = window.HSK_UTILS.createAudioButton(line.zh, 'sm');
+    audioBtn.className = 'dialogue-audio-btn';
+    
     item.innerHTML = `
       <div class="dialogue-speaker ${line.speaker === 'A' ? 'speaker-a' : 'speaker-b'}">${line.speaker}</div>
       <div class="dialogue-content">
@@ -147,6 +160,8 @@ function renderDialogueSection(dialogue) {
         <div class="dialogue-pinyin">${line.py}</div>
         <div class="dialogue-en">${line.en}</div>
       </div>`;
+    
+    item.appendChild(audioBtn);
     box.appendChild(item);
   });
 
@@ -176,15 +191,13 @@ function renderDictionary(filtersContainer, grid, dictionary) {
   });
 
   dictionary.words.forEach((word) => {
-    const card = document.createElement('a');
+    const card = document.createElement('div');
     card.className = 'dict-card';
-    card.href = window.HSK_UTILS.dictLink(word.c);
-    card.target = '_blank';
-    card.rel = 'noopener noreferrer';
     card.dataset.cat = word.cat;
     card.dataset.char = word.c;
     card.dataset.pinyin = word.p.toLowerCase();
     card.dataset.english = word.e.toLowerCase();
+    card.dataset.vocabWord = JSON.stringify(word);
     card.innerHTML = `
       <span class="dict-cat-tag">${word.cat}</span>
       <span class="dict-char">${word.c}</span>
