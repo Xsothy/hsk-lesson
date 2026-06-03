@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Export Lessons JSON · 汉字课堂</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="data/lessons.js"></script>
+  <script defer src="js/export-lessons.js"></script>
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="index.html" aria-label="HSK lessons home">汉字<span>课堂</span></a>
+    <div class="nav-tabs" aria-label="Main sections">
+      <a class="nav-tab" href="index.html">
+        <span class="tab-icon" aria-hidden="true">📖</span> Lessons
+      </a>
+      <a class="nav-tab" href="index.html#dictionary">
+        <span class="tab-icon" aria-hidden="true">📚</span> Dictionary
+      </a>
+    </div>
+  </nav>
+
+  <main class="export-page">
+    <div class="detail-header">
+      <div class="detail-label">Data export</div>
+      <h1 class="detail-title">Lessons JSON</h1>
+      <div class="detail-subtitle">All lesson metadata and full lesson content.</div>
+    </div>
+
+    <div class="export-actions">
+      <a class="export-download" id="download-json" download="hsk-lessons.json" href="#">Download JSON</a>
+    </div>
+
+    <pre class="json-output" id="json-output">Loading lesson data...</pre>
+  </main>
+</body>
+</html>
