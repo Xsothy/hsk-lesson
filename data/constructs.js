@@ -6,8 +6,8 @@ window.HSK_CONSTRUCTS = window.HSK_CONSTRUCTS || {};
 
 window.HSK_CONSTRUCTS["一"] = {
   c: "一",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "yī",
+  e: "one"
 };
 
 window.HSK_CONSTRUCTS["上"] = {
@@ -150,20 +150,20 @@ window.HSK_CONSTRUCTS["再"] = {
 
 window.HSK_CONSTRUCTS["写"] = {
   c: "写",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "xiě",
+  e: "to write"
 };
 
 window.HSK_CONSTRUCTS["冷"] = {
   c: "冷",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "lěng",
+  e: "cold"
 };
 
 window.HSK_CONSTRUCTS["几"] = {
   c: "几",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "jǐ",
+  e: "how many (small)"
 };
 
 window.HSK_CONSTRUCTS["出"] = {
@@ -180,8 +180,8 @@ window.HSK_CONSTRUCTS["分"] = {
 
 window.HSK_CONSTRUCTS["到"] = {
   c: "到",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "dào",
+  e: "to / arrive"
 };
 
 window.HSK_CONSTRUCTS["动"] = {
@@ -204,14 +204,14 @@ window.HSK_CONSTRUCTS["午"] = {
 
 window.HSK_CONSTRUCTS["卖"] = {
   c: "卖",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "mài",
+  e: "to sell"
 };
 
 window.HSK_CONSTRUCTS["去"] = {
   c: "去",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "qù",
+  e: "to go"
 };
 
 window.HSK_CONSTRUCTS["友"] = {
@@ -264,14 +264,14 @@ window.HSK_CONSTRUCTS["后"] = {
 
 window.HSK_CONSTRUCTS["听"] = {
   c: "听",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "tīng",
+  e: "to listen"
 };
 
 window.HSK_CONSTRUCTS["哪"] = {
   c: "哪",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "nǎ",
+  e: "which"
 };
 
 window.HSK_CONSTRUCTS["唱"] = {
@@ -294,44 +294,44 @@ window.HSK_CONSTRUCTS["喜"] = {
 
 window.HSK_CONSTRUCTS["喝"] = {
   c: "喝",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "hē",
+  e: "to drink"
 };
 
 window.HSK_CONSTRUCTS["回"] = {
   c: "回",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "huí",
+  e: "to return"
 };
 
 window.HSK_CONSTRUCTS["在"] = {
   c: "在",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "zài",
+  e: "at / in / on"
 };
 
 window.HSK_CONSTRUCTS["坐"] = {
   c: "坐",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "zuò",
+  e: "to sit / travel by"
 };
 
 window.HSK_CONSTRUCTS["块"] = {
   c: "块",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "kuài",
+  e: "yuan (informal)"
 };
 
 window.HSK_CONSTRUCTS["多"] = {
   c: "多",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "duō",
+  e: "many / much"
 };
 
 window.HSK_CONSTRUCTS["大"] = {
   c: "大",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "dà",
+  e: "big / large"
 };
 
 window.HSK_CONSTRUCTS["天"] = {
@@ -342,8 +342,8 @@ window.HSK_CONSTRUCTS["天"] = {
 
 window.HSK_CONSTRUCTS["太"] = {
   c: "太",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "tài",
+  e: "too / extremely"
 };
 
 window.HSK_CONSTRUCTS["头"] = {
@@ -408,20 +408,20 @@ window.HSK_CONSTRUCTS["对"] = {
 
 window.HSK_CONSTRUCTS["小"] = {
   c: "小",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "xiǎo",
+  e: "small"
 };
 
 window.HSK_CONSTRUCTS["少"] = {
   c: "少",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "shǎo",
+  e: "few / little"
 };
 
 window.HSK_CONSTRUCTS["岁"] = {
   c: "岁",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "suì",
+  e: "years old"
 };
 
 window.HSK_CONSTRUCTS["工"] = {
@@ -438,8 +438,8 @@ window.HSK_CONSTRUCTS["师"] = {
 
 window.HSK_CONSTRUCTS["年"] = {
   c: "年",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "nián",
+  e: "year"
 };
 
 window.HSK_CONSTRUCTS["床"] = {
@@ -462,14 +462,14 @@ window.HSK_CONSTRUCTS["影"] = {
 
 window.HSK_CONSTRUCTS["很"] = {
   c: "很",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "hěn",
+  e: "very"
 };
 
 window.HSK_CONSTRUCTS["忙"] = {
   c: "忙",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "máng",
+  e: "busy"
 };
 
 window.HSK_CONSTRUCTS["怎"] = {
@@ -552,14 +552,14 @@ window.HSK_CONSTRUCTS["最"] = {
 
 window.HSK_CONSTRUCTS["月"] = {
   c: "月",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "yuè",
+  e: "month"
 };
 
 window.HSK_CONSTRUCTS["有"] = {
   c: "有",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "yǒu",
+  e: "to have"
 };
 
 window.HSK_CONSTRUCTS["朋"] = {
@@ -588,8 +588,8 @@ window.HSK_CONSTRUCTS["机"] = {
 
 window.HSK_CONSTRUCTS["来"] = {
   c: "来",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "lái",
+  e: "to come"
 };
 
 window.HSK_CONSTRUCTS["果"] = {
@@ -642,8 +642,8 @@ window.HSK_CONSTRUCTS["气"] = {
 
 window.HSK_CONSTRUCTS["水"] = {
   c: "水",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "shuǐ",
+  e: "water"
 };
 
 window.HSK_CONSTRUCTS["汉"] = {
@@ -684,8 +684,8 @@ window.HSK_CONSTRUCTS["火"] = {
 
 window.HSK_CONSTRUCTS["点"] = {
   c: "点",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "diǎn",
+  e: "o'clock"
 };
 
 window.HSK_CONSTRUCTS["烧"] = {
@@ -696,8 +696,8 @@ window.HSK_CONSTRUCTS["烧"] = {
 
 window.HSK_CONSTRUCTS["热"] = {
   c: "热",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "rè",
+  e: "hot"
 };
 
 window.HSK_CONSTRUCTS["然"] = {
@@ -708,8 +708,8 @@ window.HSK_CONSTRUCTS["然"] = {
 
 window.HSK_CONSTRUCTS["爱"] = {
   c: "爱",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "ài",
+  e: "to love"
 };
 
 window.HSK_CONSTRUCTS["爸"] = {
@@ -744,14 +744,14 @@ window.HSK_CONSTRUCTS["白"] = {
 
 window.HSK_CONSTRUCTS["的"] = {
   c: "的",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "de",
+  e: "structural particle"
 };
 
 window.HSK_CONSTRUCTS["看"] = {
   c: "看",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "kàn",
+  e: "to look / watch"
 };
 
 window.HSK_CONSTRUCTS["眼"] = {
@@ -798,8 +798,8 @@ window.HSK_CONSTRUCTS["系"] = {
 
 window.HSK_CONSTRUCTS["累"] = {
   c: "累",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "lèi",
+  e: "tired"
 };
 
 window.HSK_CONSTRUCTS["红"] = {
@@ -816,8 +816,8 @@ window.HSK_CONSTRUCTS["老"] = {
 
 window.HSK_CONSTRUCTS["能"] = {
   c: "能",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "néng",
+  e: "can / be able to"
 };
 
 window.HSK_CONSTRUCTS["舒"] = {
@@ -840,14 +840,14 @@ window.HSK_CONSTRUCTS["苹"] = {
 
 window.HSK_CONSTRUCTS["茶"] = {
   c: "茶",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "chá",
+  e: "tea"
 };
 
 window.HSK_CONSTRUCTS["菜"] = {
   c: "菜",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "cài",
+  e: "dish / vegetable"
 };
 
 window.HSK_CONSTRUCTS["衣"] = {
@@ -858,8 +858,8 @@ window.HSK_CONSTRUCTS["衣"] = {
 
 window.HSK_CONSTRUCTS["要"] = {
   c: "要",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "yào",
+  e: "to want / will"
 };
 
 window.HSK_CONSTRUCTS["见"] = {
@@ -894,20 +894,20 @@ window.HSK_CONSTRUCTS["语"] = {
 
 window.HSK_CONSTRUCTS["说"] = {
   c: "说",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "shuō",
+  e: "to speak / say"
 };
 
 window.HSK_CONSTRUCTS["请"] = {
   c: "请",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "qǐng",
+  e: "please / invite"
 };
 
 window.HSK_CONSTRUCTS["课"] = {
   c: "课",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "kè",
+  e: "lesson / class"
 };
 
 window.HSK_CONSTRUCTS["谢"] = {
@@ -918,8 +918,8 @@ window.HSK_CONSTRUCTS["谢"] = {
 
 window.HSK_CONSTRUCTS["贵"] = {
   c: "贵",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "guì",
+  e: "expensive"
 };
 
 window.HSK_CONSTRUCTS["起"] = {
@@ -954,8 +954,8 @@ window.HSK_CONSTRUCTS["钟"] = {
 
 window.HSK_CONSTRUCTS["钱"] = {
   c: "钱",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "qián",
+  e: "money"
 };
 
 window.HSK_CONSTRUCTS["院"] = {
@@ -978,14 +978,14 @@ window.HSK_CONSTRUCTS["飞"] = {
 
 window.HSK_CONSTRUCTS["饭"] = {
   c: "饭",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "fàn",
+  e: "meal / rice"
 };
 
 window.HSK_CONSTRUCTS["高"] = {
   c: "高",
-  p: "", // TODO: Add pinyin
-  e: ""  // TODO: Add English meaning
+  p: "gāo",
+  e: "tall / high"
 };
 
 window.HSK_CONSTRUCTS["黑"] = {

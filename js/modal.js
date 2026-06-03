@@ -5,27 +5,25 @@
   function openVocabModal(vocabItem, lessonData) {
     closeModal();
 
+    const lastFocused = document.activeElement;
     const modal = createModalElement(vocabItem, lessonData);
     document.body.appendChild(modal);
     currentModal = modal;
-
-    // Store last focused element
-    const lastFocused = document.activeElement;
+    
+    // Store last focused element on the modal object
+    modal._lastFocused = lastFocused;
 
     // Trigger animation
     setTimeout(() => {
       modal.classList.add('active');
       modal.querySelector('.modal-close')?.focus();
     }, 10);
-
-    // Restore focus on close
-    modal.dataset.lastFocused = lastFocused;
   }
 
   function closeModal() {
     if (!currentModal) return;
 
-    const lastFocused = currentModal.dataset.lastFocused;
+    const lastFocused = currentModal._lastFocused;
 
     if (currentWriter) {
       currentWriter = null;
@@ -79,14 +77,34 @@
       window.HSK_UTILS.speakChinese(vocabItem.c);
     });
 
-    // ESC key
-    const escHandler = (e) => {
+    // Keyboard handlers
+    const keyHandler = (e) => {
       if (e.key === 'Escape') {
         closeModal();
-        document.removeEventListener('keydown', escHandler);
+        document.removeEventListener('keydown', keyHandler);
+      }
+      
+      if (e.key === 'Tab') {
+        const focusables = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusables.length === 0) return;
+        
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            last.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === last) {
+            first.focus();
+            e.preventDefault();
+          }
+        }
       }
     };
-    document.addEventListener('keydown', escHandler);
+    document.addEventListener('keydown', keyHandler);
 
     // Populate modal sections
     populateBreakdownSection(modal, vocabItem);
