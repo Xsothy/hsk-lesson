@@ -787,6 +787,7 @@ nav {
   }
   .modal-body {
     padding: 1.3rem 1.6rem 1.6rem;
+    display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
@@ -1068,6 +1069,7 @@ nav {
   }
   .modal-body {
     padding: 0.9rem 1rem 1.4rem;
+    display: grid;
     grid-template-columns: 1fr;
     gap: 1.2rem;
   }
