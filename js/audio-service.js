@@ -15,6 +15,10 @@
   const synth = window.speechSynthesis;
   let chineseVoice = null;
   
+  // Speech queue to prevent interruptions
+  let isSpeaking = false;
+  let speechQueue = [];
+  
   // Load available voices
   function loadVoices() {
     const voices = synth.getVoices();
@@ -54,6 +58,10 @@
    * Stop any currently playing audio
    */
   function stopCurrentAudio() {
+    // Clear speech queue
+    speechQueue = [];
+    isSpeaking = false;
+    
     // Stop Web Speech API
     if (synth && synth.speaking) {
       synth.cancel();
@@ -68,35 +76,75 @@
   }
 
   /**
-   * Speak using Web Speech API (browser built-in)
+   * Process the speech queue
+   */
+  function processQueue() {
+    if (isSpeaking || speechQueue.length === 0) {
+      return;
+    }
+    
+    const nextItem = speechQueue.shift();
+    speakImmediately(nextItem.text, nextItem.resolve, nextItem.reject);
+  }
+
+  /**
+   * Speak immediately using Web Speech API
+   */
+  function speakImmediately(text, resolve, reject) {
+    if (!synth) {
+      reject(new Error('Web Speech API not available'));
+      isSpeaking = false;
+      processQueue();
+      return;
+    }
+    
+    isSpeaking = true;
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = config.webSpeech.lang;
+    utterance.rate = config.playbackRate;
+    utterance.pitch = config.webSpeech.pitch;
+    
+    if (chineseVoice) {
+      utterance.voice = chineseVoice;
+    }
+    
+    utterance.onend = () => {
+      isSpeaking = false;
+      resolve();
+      processQueue(); // Process next item in queue
+    };
+    
+    utterance.onerror = (event) => {
+      // Ignore 'interrupted' errors as they're expected when we cancel
+      if (event.error !== 'interrupted') {
+        console.error('Web Speech error:', event.error);
+        reject(new Error(`Web Speech error: ${event.error}`));
+      } else {
+        resolve(); // Treat interrupted as success (user cancelled)
+      }
+      isSpeaking = false;
+      processQueue(); // Process next item in queue
+    };
+    
+    synth.speak(utterance);
+  }
+
+  /**
+   * Speak using Web Speech API (browser built-in) with queue
    */
   async function speakWithWebSpeech(text) {
     return new Promise((resolve, reject) => {
-      if (!synth) {
-        reject(new Error('Web Speech API not available'));
-        return;
+      // If already speaking, cancel current and clear queue for immediate playback
+      if (isSpeaking || synth.speaking) {
+        synth.cancel();
+        speechQueue = [];
+        isSpeaking = false;
       }
       
-      stopCurrentAudio();
-      
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = config.webSpeech.lang;
-      utterance.rate = config.playbackRate;
-      utterance.pitch = config.webSpeech.pitch;
-      
-      if (chineseVoice) {
-        utterance.voice = chineseVoice;
-      }
-      
-      utterance.onend = () => {
-        resolve();
-      };
-      
-      utterance.onerror = (event) => {
-        reject(new Error(`Web Speech error: ${event.error}`));
-      };
-      
-      synth.speak(utterance);
+      // Add to queue
+      speechQueue.push({ text, resolve, reject });
+      processQueue();
     });
   }
 
@@ -146,7 +194,7 @@
    * Check if audio is currently playing
    */
   function isPlaying() {
-    return (synth && synth.speaking) || currentAudio !== null;
+    return isSpeaking || (synth && synth.speaking) || currentAudio !== null;
   }
 
   /**
