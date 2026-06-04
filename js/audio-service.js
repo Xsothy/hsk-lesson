@@ -51,6 +51,12 @@
       enabled: true,
       lang: 'zh-CN',
       pitch: 1.0
+    },
+    // Fallback TTS URL when no Chinese voice available
+    fallbackTTS: {
+      enabled: true,
+      // Using a more reliable alternative endpoint
+      url: (text) => `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=zh-CN&client=gtx`
     }
   };
 
@@ -149,6 +155,37 @@
   }
 
   /**
+   * Speak using fallback online TTS (when no Chinese voice available)
+   */
+  async function speakWithFallbackTTS(text) {
+    return new Promise((resolve, reject) => {
+      if (!config.fallbackTTS.enabled) {
+        reject(new Error('Fallback TTS is disabled'));
+        return;
+      }
+      
+      const url = config.fallbackTTS.url(text);
+      const audio = new Audio(url);
+      audio.playbackRate = config.playbackRate;
+      currentAudio = audio;
+      
+      audio.onended = () => {
+        currentAudio = null;
+        resolve();
+      };
+      
+      audio.onerror = (e) => {
+        currentAudio = null;
+        reject(new Error(`Fallback TTS failed: ${e.type}`));
+      };
+      
+      audio.play().catch(err => {
+        reject(new Error(`Audio play failed: ${err.message}`));
+      });
+    });
+  }
+
+  /**
    * Main speak function - uses Web Speech API (browser built-in)
    */
   async function speak(text, options = {}) {
@@ -158,11 +195,21 @@
     }
     
     try {
-      if (config.webSpeech.enabled) {
+      // Check if Chinese voice is available
+      const hasChineseVoice = chineseVoice && (
+        chineseVoice.lang.startsWith('zh') || 
+        chineseVoice.lang.includes('CN')
+      );
+      
+      if (config.webSpeech.enabled && hasChineseVoice) {
+        // Use Web Speech API if Chinese voice is available
         await speakWithWebSpeech(text);
         console.log(`✓ Audio played via Web Speech API (${config.playbackRate}x speed)`);
       } else {
-        throw new Error('Web Speech API is disabled');
+        // Fall back to online TTS if no Chinese voice
+        console.warn('No Chinese voice available, using fallback TTS');
+        await speakWithFallbackTTS(text);
+        console.log(`✓ Audio played via Fallback TTS (${config.playbackRate}x speed)`);
       }
     } catch (error) {
       console.error('Audio playback error:', error);
@@ -214,13 +261,30 @@
   function getAvailableProviders() {
     const providers = [];
     
-    if (synth) {
+    const hasChineseVoice = chineseVoice && (
+      chineseVoice.lang.startsWith('zh') || 
+      chineseVoice.lang.includes('CN')
+    );
+    
+    if (synth && hasChineseVoice) {
       providers.push({ 
         name: 'Web Speech API', 
         type: 'built-in', 
         quality: 'good', 
         speed: `${config.playbackRate}x (slower for learning)`,
-        voice: chineseVoice ? chineseVoice.name : 'default'
+        voice: chineseVoice.name,
+        status: 'active'
+      });
+    }
+    
+    if (!hasChineseVoice && config.fallbackTTS.enabled) {
+      providers.push({ 
+        name: 'Fallback Online TTS', 
+        type: 'online', 
+        quality: 'good', 
+        speed: `${config.playbackRate}x (slower for learning)`,
+        voice: 'Google TTS',
+        status: 'active (no local Chinese voice found)'
       });
     }
     
@@ -243,8 +307,21 @@
   };
 
   console.log('✓ Audio Service initialized');
-  console.log(`  Provider: Web Speech API (browser built-in)`);
+  
+  const hasChineseVoice = chineseVoice && (
+    chineseVoice.lang.startsWith('zh') || 
+    chineseVoice.lang.includes('CN')
+  );
+  
+  if (hasChineseVoice) {
+    console.log(`  Provider: Web Speech API (browser built-in)`);
+    console.log(`  Voice: ${chineseVoice.name}`);
+  } else {
+    console.log(`  Provider: Fallback Online TTS (no local Chinese voice found)`);
+    console.log(`  Voice: Google TTS (requires internet)`);
+    console.log(`  💡 Tip: Install Chinese language pack for offline audio`);
+  }
+  
   console.log(`  Speed: ${config.playbackRate}x (slower for pronunciation learning)`);
-  console.log(`  Voice: ${chineseVoice ? chineseVoice.name : 'loading...'}`);
 
 })();
