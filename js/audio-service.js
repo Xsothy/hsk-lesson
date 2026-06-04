@@ -15,20 +15,21 @@
    * Configuration - Google TTS only
    */
   const config = {
-    // Google Translate TTS with slow speed for learning
+    // Google Translate TTS
     apis: [
       {
         name: 'Google Translate TTS',
         url: (text) => {
           const truncated = text.substring(0, 200);
-          // ttsspeed=0.4 makes it slower for better pronunciation learning
-          return `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(truncated)}&tl=zh-CN&client=tw-ob&ttsspeed=0.4`;
+          return `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(truncated)}&tl=zh-CN&client=tw-ob`;
         },
         type: 'audio/mpeg',
         enabled: true,
         requiresKey: false
       }
-    ]
+    ],
+    // Playback speed: 0.5 = slow (50% speed for learning)
+    playbackRate: 0.5
   };
 
   /**
@@ -43,7 +44,7 @@
   }
 
   /**
-   * Play audio using HTML5 Audio element
+   * Play audio using HTML5 Audio element with slow playback
    */
   async function playAudioUrl(url, text) {
     return new Promise((resolve, reject) => {
@@ -55,6 +56,7 @@
         console.log(`  Using cached audio for: "${text}"`);
         
         const audio = new Audio(cachedUrl);
+        audio.playbackRate = config.playbackRate; // Slow down playback
         currentAudio = audio;
         
         audio.onended = () => {
@@ -65,7 +67,6 @@
         audio.onerror = (e) => {
           currentAudio = null;
           console.warn('Cached audio playback failed, will retry without cache');
-          // Remove from cache and reject to try fresh
           audioCache.delete(text);
           reject(new Error('Cached audio playback failed'));
         };
@@ -76,6 +77,7 @@
       
       // Create new audio element
       const audio = new Audio(url);
+      audio.playbackRate = config.playbackRate; // Slow down playback (0.5 = 50% speed)
       currentAudio = audio;
       
       audio.onended = () => {
@@ -203,7 +205,7 @@
         name: 'Google Translate TTS', 
         type: 'free', 
         quality: 'good', 
-        speed: 'slow (0.4x for learning)' 
+        speed: `${config.playbackRate}x (slow for learning)` 
       }
     ];
   }
@@ -221,8 +223,8 @@
   };
 
   console.log('✓ Audio Service initialized');
-  console.log(`  Provider: Google Translate TTS ONLY (slow speed for learning)`);
-  console.log(`  Speed: 0.4x (slower for better pronunciation learning)`);
-  console.log(`  No fallback - Google TTS required`);
+  console.log(`  Provider: Google Translate TTS only`);
+  console.log(`  Speed: ${config.playbackRate}x (slow for pronunciation learning)`);
+  console.log(`  Caching: Enabled`);
 
 })();
