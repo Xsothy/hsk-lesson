@@ -1,6 +1,6 @@
 /**
  * Audio Service for Chinese Text-to-Speech
- * Provides multiple fallback methods for reliable audio playback
+ * Uses Web Speech API (browser built-in) with Google TTS as fallback
  */
 (function () {
   'use strict';
@@ -10,32 +10,56 @@
   
   // Current playing audio element
   let currentAudio = null;
+  
+  // Web Speech API synthesis
+  const synth = window.speechSynthesis;
+  let chineseVoice = null;
+  
+  // Load available voices
+  function loadVoices() {
+    const voices = synth.getVoices();
+    // Try to find a Chinese voice
+    chineseVoice = voices.find(v => v.lang.startsWith('zh')) || 
+                   voices.find(v => v.lang.includes('CN')) ||
+                   voices[0]; // Fallback to first available
+    
+    if (chineseVoice) {
+      console.log('✓ Chinese voice loaded:', chineseVoice.name, chineseVoice.lang);
+    }
+  }
+  
+  // Load voices on page load and when they change
+  if (synth) {
+    loadVoices();
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = loadVoices;
+    }
+  }
 
   /**
-   * Configuration - Google TTS only
+   * Configuration
    */
   const config = {
-    // Google Translate TTS
-    apis: [
-      {
-        name: 'Google Translate TTS',
-        url: (text) => {
-          const truncated = text.substring(0, 200);
-          return `blob:https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(truncated)}&tl=zh-CN&client=tw-ob`;
-        },
-        type: 'audio/mpeg',
-        enabled: true,
-        requiresKey: false
-      }
-    ],
-    // Playback speed: 0.5 = slow (50% speed for learning)
-    playbackRate: 0.5
+    // Playback speed: 0.7 = slower (70% speed for learning)
+    playbackRate: 0.7,
+    // Web Speech API settings
+    webSpeech: {
+      enabled: true,
+      lang: 'zh-CN',
+      pitch: 1.0
+    }
   };
 
   /**
    * Stop any currently playing audio
    */
   function stopCurrentAudio() {
+    // Stop Web Speech API
+    if (synth && synth.speaking) {
+      synth.cancel();
+    }
+    
+    // Stop HTML5 audio
     if (currentAudio) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
@@ -44,84 +68,40 @@
   }
 
   /**
-   * Play audio using HTML5 Audio element with slow playback
+   * Speak using Web Speech API (browser built-in)
    */
-  async function playAudioUrl(url, text) {
+  async function speakWithWebSpeech(text) {
     return new Promise((resolve, reject) => {
-      stopCurrentAudio();
-      
-      // Check cache first
-      if (audioCache.has(text)) {
-        const cachedUrl = audioCache.get(text);
-        console.log(`  Using cached audio for: "${text}"`);
-        
-        const audio = new Audio(cachedUrl);
-        audio.playbackRate = config.playbackRate; // Slow down playback
-        currentAudio = audio;
-        
-        audio.onended = () => {
-          currentAudio = null;
-          resolve();
-        };
-        
-        audio.onerror = (e) => {
-          currentAudio = null;
-          console.warn('Cached audio playback failed, will retry without cache');
-          audioCache.delete(text);
-          reject(new Error('Cached audio playback failed'));
-        };
-        
-        audio.play().catch(reject);
+      if (!synth) {
+        reject(new Error('Web Speech API not available'));
         return;
       }
       
-      // Create new audio element
-      const audio = new Audio(url);
-      audio.playbackRate = config.playbackRate; // Slow down playback (0.5 = 50% speed)
-      currentAudio = audio;
+      stopCurrentAudio();
       
-      audio.onended = () => {
-        currentAudio = null;
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = config.webSpeech.lang;
+      utterance.rate = config.playbackRate;
+      utterance.pitch = config.webSpeech.pitch;
+      
+      if (chineseVoice) {
+        utterance.voice = chineseVoice;
+      }
+      
+      utterance.onend = () => {
         resolve();
       };
       
-      audio.onerror = (e) => {
-        currentAudio = null;
-        reject(new Error(`Audio playback failed: ${e.type}`));
+      utterance.onerror = (event) => {
+        reject(new Error(`Web Speech error: ${event.error}`));
       };
       
-      audio.oncanplaythrough = () => {
-        // Cache the audio URL for future use
-        audioCache.set(text, url);
-        console.log(`  Cached audio for: "${text}" (cache size: ${audioCache.size})`);
-      };
-      
-      // Play audio
-      audio.play().catch(err => {
-        reject(new Error(`Audio play failed: ${err.message}`));
-      });
+      synth.speak(utterance);
     });
   }
 
   /**
-   * Try Google TTS API
-   */
-  async function tryGoogleTTS(text) {
-    const api = config.apis[0]; // Google TTS
-    
-    try {
-      const url = api.url(text);
-      await playAudioUrl(url, text);
-      console.log(`✓ Audio played via ${api.name} (slow speed for learning)`);
-      return true;
-    } catch (error) {
-      console.error(`Google TTS failed:`, error.message);
-      return false;
-    }
-  }
-
-  /**
-   * Main speak function - Google TTS only (no fallback)
+   * Main speak function - uses Web Speech API (browser built-in)
    */
   async function speak(text, options = {}) {
     if (!text) {
@@ -130,49 +110,32 @@
     }
     
     try {
-      const success = await tryGoogleTTS(text);
-      
-      if (!success) {
-        throw new Error('Google TTS failed - please check internet connection');
+      if (config.webSpeech.enabled) {
+        await speakWithWebSpeech(text);
+        console.log(`✓ Audio played via Web Speech API (${config.playbackRate}x speed)`);
+      } else {
+        throw new Error('Web Speech API is disabled');
       }
     } catch (error) {
       console.error('Audio playback error:', error);
       if (options.onError) {
         options.onError(error);
       } else {
-        console.warn('Audio unavailable. Please check your internet connection.');
+        console.warn('Audio unavailable:', error.message);
       }
     }
   }
 
   /**
-   * Preload audio for faster playback
+   * Preload audio - not applicable for Web Speech API
    */
   async function preloadAudio(text) {
-    if (audioCache.has(text)) {
-      return; // Already cached
-    }
-    
-    try {
-      // Preload using first available API
-      const api = config.apis[0];
-      const url = api.url(text);
-      
-      // Create audio element but don't play
-      const audio = new Audio(url);
-      audio.preload = 'auto';
-      
-      audio.onloadedmetadata = () => {
-        audioCache.set(text, url);
-        console.log(`✓ Preloaded audio for: ${text}`);
-      };
-    } catch (error) {
-      console.warn('Audio preload failed:', error);
-    }
+    // Web Speech API doesn't need preloading
+    console.log('Preload not needed for Web Speech API');
   }
 
   /**
-   * Clear audio cache
+   * Clear audio cache - not applicable for Web Speech API
    */
   function clearCache() {
     audioCache.clear();
@@ -183,7 +146,7 @@
    * Check if audio is currently playing
    */
   function isPlaying() {
-    return currentAudio !== null;
+    return (synth && synth.speaking) || currentAudio !== null;
   }
 
   /**
@@ -191,8 +154,9 @@
    */
   function getCacheStats() {
     return {
-      size: audioCache.size,
-      items: Array.from(audioCache.keys())
+      size: 0,
+      items: [],
+      provider: 'Web Speech API (no caching needed)'
     };
   }
 
@@ -200,14 +164,19 @@
    * Get available TTS providers
    */
   function getAvailableProviders() {
-    return [
-      { 
-        name: 'Google Translate TTS', 
-        type: 'free', 
+    const providers = [];
+    
+    if (synth) {
+      providers.push({ 
+        name: 'Web Speech API', 
+        type: 'built-in', 
         quality: 'good', 
-        speed: `${config.playbackRate}x (slow for learning)` 
-      }
-    ];
+        speed: `${config.playbackRate}x (slower for learning)`,
+        voice: chineseVoice ? chineseVoice.name : 'default'
+      });
+    }
+    
+    return providers;
   }
 
   // Public API
@@ -219,12 +188,15 @@
     isPlaying,
     getCacheStats,
     getAvailableProviders,
-    config
+    config,
+    // New methods
+    getVoices: () => synth ? synth.getVoices() : [],
+    setVoice: (voice) => { chineseVoice = voice; }
   };
 
   console.log('✓ Audio Service initialized');
-  console.log(`  Provider: Google Translate TTS only`);
-  console.log(`  Speed: ${config.playbackRate}x (slow for pronunciation learning)`);
-  console.log(`  Caching: Enabled`);
+  console.log(`  Provider: Web Speech API (browser built-in)`);
+  console.log(`  Speed: ${config.playbackRate}x (slower for pronunciation learning)`);
+  console.log(`  Voice: ${chineseVoice ? chineseVoice.name : 'loading...'}`);
 
 })();
