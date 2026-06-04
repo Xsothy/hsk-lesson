@@ -381,34 +381,28 @@
       return;
     }
     
-    const forceOnline = options.forceOnline || config.preferOnline;
+    const forceSynthesis = options.forceSynthesis === true;
     
     try {
-      // Strategy 1: Try online APIs first (if preferred or forced)
-      if (forceOnline) {
-        const success = await tryOnlineApis(text);
-        if (success) return;
-        
-        // If online failed, try Web Speech API as fallback
-        console.log('Online APIs failed, trying Web Speech API...');
+      // Strategy 1: Force Web Speech API (if explicitly requested)
+      if (forceSynthesis) {
         await speakWithSynthesis(text, options);
+        console.log('✓ Audio played via Web Speech API (forced)');
         return;
       }
       
-      // Strategy 2: Try Web Speech API first (for desktop browsers)
+      // Strategy 2: Try online APIs FIRST (default for all platforms)
+      // This provides consistent, cacheable, high-quality audio
+      const success = await tryOnlineApis(text);
+      if (success) return;
+      
+      // Strategy 3: Fallback to Web Speech API if online fails
+      console.log('Online APIs failed, trying Web Speech API as fallback...');
       try {
         await speakWithSynthesis(text, options);
-        console.log('✓ Audio played via Web Speech API');
-        return;
+        console.log('✓ Audio played via Web Speech API (fallback)');
       } catch (synthError) {
-        console.warn('Web Speech API failed:', synthError.message);
-        
-        // Fallback to online APIs
-        console.log('Trying online APIs...');
-        const success = await tryOnlineApis(text);
-        if (!success) {
-          throw new Error('All audio playback methods failed');
-        }
+        throw new Error(`All audio playback methods failed: ${synthError.message}`);
       }
     } catch (error) {
       console.error('Audio playback error:', error);
@@ -548,7 +542,8 @@
   };
 
   console.log('✓ Audio Service initialized');
-  console.log(`  Platform: ${config.preferOnline ? 'iOS (Online TTS preferred)' : 'Desktop (Web Speech API preferred)'}`);
+  console.log(`  Strategy: Google Translate TTS (primary), Web Speech API (fallback)`);
+  console.log(`  Platform: ${config.preferOnline ? 'iOS' : 'Desktop'}`);
   
   // Log available providers
   const providers = getAvailableProviders();
