@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Service Test</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #f5f5f5;
+    }
+    h1 {
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+    .test-section {
+      background: white;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .test-word {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 1rem 0;
+      color: #ef4444;
+    }
+    button {
+      background: #1f2937;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #374151;
+    }
+    button:active {
+      transform: scale(0.98);
+    }
+    .stop-btn {
+      background: #ef4444;
+    }
+    .stop-btn:hover {
+      background: #dc2626;
+    }
+    .status {
+      padding: 0.75rem;
+      margin: 1rem 0;
+      border-radius: 6px;
+      font-size: 0.875rem;
+    }
+    .status.info {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .status.success {
+      background: #dcfce7;
+      color: #166534;
+    }
+    .status.error {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    .log {
+      background: #f9fafb;
+      padding: 1rem;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.875rem;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-top: 1rem;
+    }
+    .log div {
+      padding: 0.25rem 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+    .badge.ios {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .badge.desktop {
+      background: #dcfce7;
+      color: #166534;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔊 Audio Service Test</h1>
+  
+  <div class="status info" id="platform-info">
+    Detecting platform...
+  </div>
+
+  <div class="test-section">
+    <h2>Test Chinese TTS</h2>
+    <div class="test-word">你好</div>
+    <button onclick="testSpeak('你好')">🔊 Play "你好"</button>
+    <button onclick="testSpeak('谢谢')">🔊 Play "谢谢"</button>
+    <button onclick="testSpeak('学习汉语')">🔊 Play "学习汉语"</button>
+    <button onclick="testSpeak('我喜欢学中文')">🔊 Play Sentence</button>
+    <br>
+    <button class="stop-btn" onclick="stopAudio()">⏹️ Stop</button>
+  </div>
+
+  <div class="test-section">
+    <h2>Force Methods</h2>
+    <p>Test specific TTS methods:</p>
+    <button onclick="testOnline('你好')">🌐 Force Online TTS</button>
+    <button onclick="testSpeech('你好')">🗣️ Force Web Speech</button>
+    <br>
+    <button onclick="testPreload()">⚡ Test Preload</button>
+    <button onclick="testCache()">📦 Check Cache</button>
+    <button onclick="clearCache()">🗑️ Clear Cache</button>
+  </div>
+
+  <div class="test-section">
+    <h2>Status</h2>
+    <div id="status" class="status info">
+      Click a button to test audio...
+    </div>
+    <div class="log" id="log"></div>
+  </div>
+
+  <!-- Load audio service -->
+  <script src="js/audio-service.js"></script>
+  
+  <script>
+    // Initialize
+    const statusEl = document.getElementById('status');
+    const logEl = document.getElementById('log');
+    const platformEl = document.getElementById('platform-info');
+
+    // Detect platform
+    const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    platformEl.innerHTML = `
+      <strong>Platform:</strong> ${isIOS ? 'iOS' : isMobile ? 'Mobile' : 'Desktop'}
+      <span class="badge ${isIOS ? 'ios' : 'desktop'}">${isIOS ? 'Online TTS Preferred' : 'Web Speech Preferred'}</span>
+      <br>
+      <strong>User Agent:</strong> ${navigator.userAgent.substring(0, 80)}...
+    `;
+
+    function log(message, type = 'info') {
+      const time = new Date().toLocaleTimeString();
+      const div = document.createElement('div');
+      div.textContent = `[${time}] ${message}`;
+      logEl.insertBefore(div, logEl.firstChild);
+      
+      // Keep only last 10 logs
+      while (logEl.children.length > 10) {
+        logEl.removeChild(logEl.lastChild);
+      }
+    }
+
+    function setStatus(message, type = 'info') {
+      statusEl.className = `status ${type}`;
+      statusEl.textContent = message;
+    }
+
+    async function testSpeak(text) {
+      try {
+        setStatus(`Playing: ${text}...`, 'info');
+        log(`Speaking: ${text}`);
+        
+        await HSK_AUDIO.speak(text, {
+          onError: (err) => {
+            setStatus(`Error: ${err.message}`, 'error');
+            log(`Error: ${err.message}`, 'error');
+          }
+        });
+        
+        setStatus(`✓ Played: ${text}`, 'success');
+        log(`✓ Completed: ${text}`, 'success');
+      } catch (err) {
+        setStatus(`Error: ${err.message}`, 'error');
+        log(`Error: ${err.message}`, 'error');
+      }
+    }
+
+    async function testOnline(text) {
+      try {
+        setStatus(`Playing via Online TTS: ${text}...`, 'info');
+        log(`Force online: ${text}`);
+        
+        await HSK_AUDIO.speak(text, { forceOnline: true });
+        
+        setStatus(`✓ Played via Online TTS`, 'success');
+        log(`✓ Online TTS success`, 'success');
+      } catch (err) {
+        setStatus(`Online TTS Error: ${err.message}`, 'error');
+        log(`Online TTS error: ${err.message}`, 'error');
+      }
+    }
+
+    async function testSpeech(text) {
+      try {
+        if (!window.speechSynthesis) {
+          throw new Error('Web Speech API not supported');
+        }
+        
+        setStatus(`Playing via Web Speech: ${text}...`, 'info');
+        log(`Force Web Speech: ${text}`);
+        
+        await HSK_AUDIO.speak(text, { forceOnline: false });
+        
+        setStatus(`✓ Played via Web Speech API`, 'success');
+        log(`✓ Web Speech success`, 'success');
+      } catch (err) {
+        setStatus(`Web Speech Error: ${err.message}`, 'error');
+        log(`Web Speech error: ${err.message}`, 'error');
+      }
+    }
+
+    function stopAudio() {
+      HSK_AUDIO.stop();
+      setStatus('Audio stopped', 'info');
+      log('Stopped audio');
+    }
+
+    async function testPreload() {
+      try {
+        setStatus('Preloading audio...', 'info');
+        log('Preloading: 你好, 谢谢, 学习');
+        
+        await Promise.all([
+          HSK_AUDIO.preload('你好'),
+          HSK_AUDIO.preload('谢谢'),
+          HSK_AUDIO.preload('学习')
+        ]);
+        
+        setStatus('✓ Audio preloaded', 'success');
+        log('✓ Preload complete', 'success');
+        
+        const stats = HSK_AUDIO.getCacheStats();
+        log(`Cache size: ${stats.size} items`);
+      } catch (err) {
+        setStatus(`Preload error: ${err.message}`, 'error');
+        log(`Preload error: ${err.message}`, 'error');
+      }
+    }
+
+    function testCache() {
+      const stats = HSK_AUDIO.getCacheStats();
+      setStatus(`Cache: ${stats.size} items cached`, 'info');
+      log(`Cache stats: ${stats.size} items`);
+      
+      if (stats.size > 0) {
+        log(`Cached items: ${stats.items.join(', ')}`);
+      }
+    }
+
+    function clearCache() {
+      HSK_AUDIO.clearCache();
+      setStatus('Cache cleared', 'info');
+      log('Cache cleared');
+    }
+
+    // Log initialization
+    log('Audio service initialized');
+    log(`Platform: ${isIOS ? 'iOS' : isMobile ? 'Mobile' : 'Desktop'}`);
+  </script>
+</body>
+</html>

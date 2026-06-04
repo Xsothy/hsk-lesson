@@ -29,6 +29,13 @@
   }
 
   function speakChinese(text, options = {}) {
+    // Use new audio service if available, otherwise fallback to old method
+    if (window.HSK_AUDIO) {
+      window.HSK_AUDIO.speak(text, options);
+      return;
+    }
+    
+    // Fallback to old Web Speech API method
     if (!window.speechSynthesis) {
       console.warn('Speech synthesis not supported');
       return;
