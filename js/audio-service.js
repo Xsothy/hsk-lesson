@@ -21,7 +21,7 @@
         name: 'Google Translate TTS',
         url: (text) => {
           const truncated = text.substring(0, 200);
-          return `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(truncated)}&tl=zh-CN&client=tw-ob`;
+          return `blob:https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(truncated)}&tl=zh-CN&client=tw-ob`;
         },
         type: 'audio/mpeg',
         enabled: true,
