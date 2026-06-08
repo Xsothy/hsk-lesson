@@ -539,6 +539,241 @@ nav {
   user-select: text;
 }
 
+/* Reading Section Styles */
+.readings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+.reading-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reading-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.reading-card-header {
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #f8f9fa;
+  padding-bottom: 1.5rem;
+}
+
+.reading-type-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: #f0f4f8;
+  color: #486581;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.reading-title {
+  font-size: 1.75rem;
+  margin: 0;
+  color: var(--ink);
+  font-family: 'Noto Serif SC', serif;
+}
+
+.reading-title-en {
+  color: #627d98;
+  margin: 0.25rem 0 0 0;
+  font-size: 1rem;
+}
+
+.reading-passage {
+  background: #fff9f0;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  border-left: 4px solid #f9c08a;
+}
+
+.reading-line {
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.reading-line:hover {
+  background: rgba(249, 192, 138, 0.1);
+}
+
+.reading-line:last-child {
+  margin-bottom: 0;
+}
+
+.reading-zh {
+  font-size: 1.5rem;
+  font-family: 'Noto Serif SC', serif;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.reading-py {
+  font-size: 0.9rem;
+  color: #829ab1;
+  margin-top: 0.2rem;
+}
+
+.reading-en {
+  font-size: 1rem;
+  color: #486581;
+  margin-top: 0.4rem;
+  font-style: italic;
+}
+
+.reading-questions h4 {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.reading-questions h4::before {
+  content: "❓";
+}
+
+.reading-question {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.question-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: var(--ink);
+}
+
+.question-en {
+  display: block;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #627d98;
+  margin-top: 0.25rem;
+}
+
+.question-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.option-btn {
+  padding: 0.6rem 1.2rem;
+  background: white;
+  border: 2px solid #e4e7eb;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #486581;
+}
+
+.option-btn:hover:not(:disabled) {
+  border-color: #bcccdc;
+  background: #f0f4f8;
+}
+
+.option-btn.correct {
+  background: #d1fae5;
+  border-color: #34d399;
+  color: #065f46;
+  font-weight: 700;
+}
+
+.option-btn.incorrect {
+  background: #fee2e2;
+  border-color: #f87171;
+  color: #991b1b;
+  opacity: 0.8;
+}
+
+.option-btn:disabled {
+  cursor: default;
+}
+
+/* Reading Objectives Tags */
+.reading-objectives {
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  background: #f0f4f8;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.objective-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.objective-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #486581;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 90px;
+}
+
+.objective-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.obj-tag {
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.obj-tag.vocab {
+  background: #fff;
+  color: var(--ink);
+  border: 2px solid #d9e2ec;
+  cursor: pointer;
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 700;
+}
+
+.obj-tag.vocab:hover {
+  border-color: var(--gold);
+  background: #fffdf5;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.obj-tag.grammar {
+  background: #d9e2ec;
+  color: #243b53;
+}
+
 /* ══════════════════════════════
    DICTIONARY PAGE
 ══════════════════════════════ */

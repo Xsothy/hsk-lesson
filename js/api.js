@@ -84,10 +84,16 @@
     });
   }
 
+  function getReadingsForLesson(lessonId) {
+    const readings = window.HSK_READINGS || [];
+    return readings.filter(r => r.lesson === lessonId);
+  }
+
   window.HSK_API = {
     getDictionary,
     getLesson,
     getLessons,
-    enrichVocabWord
+    enrichVocabWord,
+    getReadingsForLesson
   };
 })();

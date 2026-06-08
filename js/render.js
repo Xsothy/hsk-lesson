@@ -43,7 +43,7 @@ function renderLessonList(container, lessons) {
   });
 }
 
-function renderLessonDetail(lesson, totalLessons) {
+function renderLessonDetail(lesson, totalLessons, readings = []) {
   const previewFlag = lesson.isPreview
     ? '<span class="preview-badge">+ HSK 2 Preview</span>'
     : '<span class="core-badge">✓ HSK 1 Core</span>';
@@ -60,6 +60,10 @@ function renderLessonDetail(lesson, totalLessons) {
   body.appendChild(renderGrammarSection(lesson.grammar));
   body.appendChild(renderSentenceSection(lesson.sentences));
   body.appendChild(renderDialogueSection(lesson.dialogue));
+
+  if (readings && readings.length > 0) {
+    body.appendChild(renderReadingSection(readings, lesson));
+  }
 
   if (lesson.content) {
     const content = makeSection('📄', 'LESSON NOTES');
@@ -234,6 +238,139 @@ function renderDialogueSection(dialogue) {
   });
 
   section.appendChild(box);
+  return section;
+}
+
+function renderReadingSection(readings, lessonData = {}) {
+  const section = makeSection('📖', 'READING PRACTICE · 阅读');
+  const container = document.createElement('div');
+  container.className = 'readings-container';
+
+  readings.forEach(reading => {
+    const card = document.createElement('div');
+    card.className = 'reading-card';
+    
+    card.innerHTML = `
+      <div class="reading-card-header">
+        <div class="reading-type-badge">${reading.type}</div>
+        <h3 class="reading-title">${reading.emoji} ${reading.title}</h3>
+        <p class="reading-title-en">${reading.titleEn}</p>
+      </div>
+    `;
+
+    const passage = document.createElement('div');
+    passage.className = 'reading-passage';
+    reading.lines.forEach(line => {
+      const lineEl = document.createElement('div');
+      lineEl.className = 'reading-line';
+      lineEl.innerHTML = `
+        <div class="reading-zh">${line.zh}</div>
+        <div class="reading-py">${window.HSK_UTILS.colorizePinyin(line.py)}</div>
+        <div class="reading-en blur-reveal" title="Click to reveal translation">${line.en}</div>
+      `;
+      
+      lineEl.addEventListener('click', (e) => {
+        if (e.target.classList.contains('reading-en')) {
+          e.stopPropagation();
+          e.target.classList.toggle('revealed');
+        } else {
+          window.HSK_UTILS.speakChinese(line.zh);
+        }
+      });
+      passage.appendChild(lineEl);
+    });
+    card.appendChild(passage);
+
+    // Learning Objectives (Focus Words & Grammar)
+    const objectives = document.createElement('div');
+    objectives.className = 'reading-objectives';
+    
+    let objectivesHTML = '';
+    if (reading.focusWords && reading.focusWords.length > 0) {
+      objectivesHTML += `
+        <div class="objective-group">
+          <span class="objective-label">Vocabulary:</span>
+          <div class="objective-tags vocab-objective-list">
+            ${reading.focusWords.map(word => `<span class="obj-tag vocab" data-word="${word}">${word}</span>`).join('')}
+          </div>
+        </div>
+      `;
+    }
+    
+    if (reading.grammarFocus && reading.grammarFocus.length > 0) {
+      objectivesHTML += `
+        <div class="objective-group">
+          <span class="objective-label">Grammar:</span>
+          <div class="objective-tags">
+            ${reading.grammarFocus.map(point => `<span class="obj-tag grammar">${point}</span>`).join('')}
+          </div>
+        </div>
+      `;
+    }
+    
+    if (objectivesHTML) {
+      objectives.innerHTML = objectivesHTML;
+      
+      // Add click handlers for vocab tags
+      objectives.querySelectorAll('.obj-tag.vocab').forEach(tag => {
+        tag.addEventListener('click', () => {
+          const char = tag.getAttribute('data-word');
+          const vocabList = Array.isArray(lessonData) ? lessonData : (lessonData.vocab || []);
+          const wordObj = vocabList.find(v => v.c === char);
+          if (wordObj && window.HSK_MODAL) {
+            window.HSK_MODAL.open(wordObj, lessonData);
+          }
+        });
+      });
+      
+      card.appendChild(objectives);
+    }
+
+    if (reading.questions && reading.questions.length > 0) {
+      const questionsSection = document.createElement('div');
+      questionsSection.className = 'reading-questions';
+      questionsSection.innerHTML = `<h4>Comprehension Questions</h4>`;
+      
+      reading.questions.forEach((q, qIndex) => {
+        const qEl = document.createElement('div');
+        qEl.className = 'reading-question';
+        qEl.innerHTML = `<p class="question-text">${q.question} <span class="question-en">${q.questionEn}</span></p>`;
+        
+        const optionsContainer = document.createElement('div');
+        optionsContainer.className = 'question-options';
+        
+        const options = q.type === 'true_false' ? ['True', 'False'] : q.options;
+        
+        options.forEach((opt, optIndex) => {
+          const btn = document.createElement('button');
+          btn.className = 'option-btn';
+          btn.textContent = opt;
+          btn.onclick = () => {
+            const isCorrect = q.type === 'true_false' 
+              ? (opt === 'True' ? q.answer === true : q.answer === false)
+              : optIndex === q.answer;
+            
+            if (isCorrect) {
+              btn.classList.add('correct');
+              window.HSK_UTILS.triggerConfetti();
+            } else {
+              btn.classList.add('incorrect');
+            }
+            optionsContainer.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+          };
+          optionsContainer.appendChild(btn);
+        });
+        
+        qEl.appendChild(optionsContainer);
+        questionsSection.appendChild(qEl);
+      });
+      card.appendChild(questionsSection);
+    }
+
+    container.appendChild(card);
+  });
+
+  section.appendChild(container);
   return section;
 }
 

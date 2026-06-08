@@ -15,6 +15,7 @@
   <script defer src="data/lessons.js"></script>
   <script defer src="data/dictionary.js"></script>
   <script defer src="data/vocabulary.js"></script>
+  <script defer src="data/readings.js"></script>
   <script defer src="js/utils.js"></script>
   <script defer src="js/modal.js"></script>
   <script defer src="js/render.js"></script>
@@ -65,5 +66,88 @@
       <div id="dict-no-results">No words match your search.</div>
     </section>
   </main>
+
+  <!-- Vocabulary Modal Templates (Embedded to support file:// protocol) -->
+  <template id="vocab-modal-template">
+    <div class="vocab-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-backdrop"></div>
+      <div class="modal-container">
+        <div class="modal-header">
+          <div class="modal-header-content">
+            <div class="modal-word" id="modal-title" data-slot="word"></div>
+            <div class="modal-pinyin" data-slot="pinyin"></div>
+            <div class="modal-english" data-slot="english"></div>
+          </div>
+          <div class="modal-header-actions">
+            <button class="modal-audio-btn" type="button" aria-label="Pronounce word">🔊</button>
+            <a class="modal-dict-link" href="#" target="_blank" rel="noopener noreferrer" 
+               title="View in external dictionary" aria-label="Open external dictionary" 
+               data-slot="dict-link">📖</a>
+            <button class="modal-close" type="button" aria-label="Close modal">✕</button>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="modal-section modal-breakdown" data-slot="breakdown"></div>
+          <div class="modal-section modal-stroke" data-slot="stroke"></div>
+          <div class="modal-section modal-examples" data-slot="examples"></div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <template id="breakdown-section-template">
+    <div class="modal-section-title">CHARACTER FUSION · 汉字组合</div>
+    <div class="breakdown-grid" data-slot="breakdown-items"></div>
+    <div class="breakdown-literal" data-slot="literal"></div>
+  </template>
+
+  <template id="breakdown-item-template">
+    <button class="breakdown-item" data-char="" data-index="" type="button">
+      <div class="breakdown-char" data-slot="char"></div>
+      <div class="breakdown-pinyin" data-slot="pinyin"></div>
+      <div class="breakdown-meaning" data-slot="meaning"></div>
+    </button>
+  </template>
+
+  <template id="stroke-section-template">
+    <div class="modal-section-title">STROKE ORDER · 笔画顺序</div>
+    <div class="stroke-info">
+      <div class="stroke-char-display" data-slot="char"></div>
+      <div class="stroke-char-meta">
+        <div class="stroke-char-pinyin" data-slot="pinyin"></div>
+        <div class="stroke-char-meaning" data-slot="meaning"></div>
+      </div>
+    </div>
+    <div class="stroke-writer-container">
+      <svg class="stroke-grid" xmlns="http://www.w3.org/2000/svg" 
+           width="200" height="200" viewBox="0 0 200 200">
+        <line x1="0" y1="0" x2="200" y2="200" stroke="#E5E0D8" stroke-width="1"/>
+        <line x1="200" y1="0" x2="0" y2="200" stroke="#E5E0D8" stroke-width="1"/>
+        <line x1="100" y1="0" x2="100" y2="200" stroke="#E5E0D8" stroke-width="1"/>
+        <line x1="0" y1="100" x2="200" y2="100" stroke="#E5E0D8" stroke-width="1"/>
+      </svg>
+      <div id="hanzi-writer-target"></div>
+      <div class="stroke-loading">Loading stroke data...</div>
+      <div class="stroke-error" style="display: none;">Stroke data not available</div>
+    </div>
+    <div class="stroke-controls">
+      <button class="stroke-btn" id="stroke-replay" type="button">↻ Replay</button>
+      <button class="stroke-btn" id="stroke-slow" type="button">🐢 Slow</button>
+    </div>
+  </template>
+
+  <template id="example-item-template">
+    <div class="example-item">
+      <div class="example-header">
+        <span class="example-type" data-slot="type"></span>
+        <button class="audio-btn audio-btn-sm" data-text="" type="button" 
+                aria-label="Pronounce sentence">🔊</button>
+      </div>
+      <div class="example-zh" data-slot="zh"></div>
+      <div class="example-pinyin" data-slot="pinyin"></div>
+      <div class="example-en" data-slot="en"></div>
+    </div>
+  </template>
+
 </body>
 </html>

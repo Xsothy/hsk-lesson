@@ -8,7 +8,8 @@
 
     window.HSK_API.getLesson(slug)
       .then((lesson) => {
-        window.HSK_RENDER.renderLessonDetail(lesson, window.HSK_API.getLessons().length);
+        const readings = window.HSK_API.getReadingsForLesson(lesson.id);
+        window.HSK_RENDER.renderLessonDetail(lesson, window.HSK_API.getLessons().length, readings);
         setupVocabModalHandlers(lesson);
       })
       .catch((error) => showLoadError(error, slug));

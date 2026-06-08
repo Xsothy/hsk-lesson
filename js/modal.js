@@ -389,6 +389,7 @@
 
   window.HSK_MODAL = {
     open: openVocabModal,
+    show: openVocabModal, // Alias for backward compatibility
     close: closeModal,
     setWriter: (writer) => { currentWriter = writer; }
   };

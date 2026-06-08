@@ -9,7 +9,15 @@
    * Load templates from external file
    */
   async function loadTemplates() {
+    // Check if templates are already embedded in the DOM
+    if (document.getElementById('vocab-modal-template')) {
+      console.log('✓ Using embedded modal templates');
+      document.dispatchEvent(new CustomEvent('templatesLoaded'));
+      return true;
+    }
+
     try {
+      // Fallback: try to fetch if not embedded (works only on http/https)
       const response = await fetch('includes/modal-templates.html');
       
       if (!response.ok) {
