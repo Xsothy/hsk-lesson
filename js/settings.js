@@ -193,7 +193,8 @@
   function init() {
     loadSettings();
     applySettings();
-    
+    syncModalWithSettings();
+
     // Note: Old pinyin toggle button removed from nav, now in settings modal
   }
 

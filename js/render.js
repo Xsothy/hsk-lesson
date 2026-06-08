@@ -45,14 +45,15 @@ function renderLine(line, lessonData = null) {
     } else {
       // Non-empty pinyin - create ruby element with colorized pinyin
       const ruby = document.createElement('ruby');
-      const wordText = document.createTextNode(word);
+      const rb = document.createElement('rb');
       const rt = document.createElement('rt');
-      
+      rb.textContent = word;
+
       // Use colorizePinyin to get colored pinyin HTML
       const colorizedPinyin = window.HSK_UTILS.colorizePinyin(pinyin);
       rt.innerHTML = colorizedPinyin;
-      
-      ruby.appendChild(wordText);
+
+      ruby.appendChild(rb);
       ruby.appendChild(rt);
       
       // Check if this word is in vocab or dictionary - make it clickable
@@ -401,10 +402,11 @@ function renderReadingSection(readings, lessonData = {}) {
     });
     card.appendChild(passage);
 
-    // Learning Objectives (Focus Words & Grammar)
+    // Temporarily hidden — restore when reading-objectives UI is ready
+    /*
     const objectives = document.createElement('div');
     objectives.className = 'reading-objectives';
-    
+
     let objectivesHTML = '';
     if (reading.focusWords && reading.focusWords.length > 0) {
       objectivesHTML += `
@@ -416,7 +418,7 @@ function renderReadingSection(readings, lessonData = {}) {
         </div>
       `;
     }
-    
+
     if (reading.grammarFocus && reading.grammarFocus.length > 0) {
       objectivesHTML += `
         <div class="objective-group">
@@ -427,11 +429,10 @@ function renderReadingSection(readings, lessonData = {}) {
         </div>
       `;
     }
-    
+
     if (objectivesHTML) {
       objectives.innerHTML = objectivesHTML;
-      
-      // Add click handlers for vocab tags
+
       objectives.querySelectorAll('.obj-tag.vocab').forEach(tag => {
         tag.addEventListener('click', () => {
           const char = tag.getAttribute('data-word');
@@ -442,50 +443,13 @@ function renderReadingSection(readings, lessonData = {}) {
           }
         });
       });
-      
+
       card.appendChild(objectives);
     }
+    */
 
-    if (reading.questions && reading.questions.length > 0) {
-      const questionsSection = document.createElement('div');
-      questionsSection.className = 'reading-questions';
-      questionsSection.innerHTML = `<h4>Comprehension Questions</h4>`;
-      
-      reading.questions.forEach((q, qIndex) => {
-        const qEl = document.createElement('div');
-        qEl.className = 'reading-question';
-        qEl.innerHTML = `<p class="question-text">${q.question} <span class="question-en">${q.questionEn}</span></p>`;
-        
-        const optionsContainer = document.createElement('div');
-        optionsContainer.className = 'question-options';
-        
-        const options = q.type === 'true_false' ? ['True', 'False'] : q.options;
-        
-        options.forEach((opt, optIndex) => {
-          const btn = document.createElement('button');
-          btn.className = 'option-btn';
-          btn.textContent = opt;
-          btn.onclick = () => {
-            const isCorrect = q.type === 'true_false' 
-              ? (opt === 'True' ? q.answer === true : q.answer === false)
-              : optIndex === q.answer;
-            
-            if (isCorrect) {
-              btn.classList.add('correct');
-              window.HSK_UTILS.triggerConfetti();
-            } else {
-              btn.classList.add('incorrect');
-            }
-            optionsContainer.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
-          };
-          optionsContainer.appendChild(btn);
-        });
-        
-        qEl.appendChild(optionsContainer);
-        questionsSection.appendChild(qEl);
-      });
-      card.appendChild(questionsSection);
-    }
+    // Temporarily hidden — restore when question/answer UI is ready
+    // if (reading.questions && reading.questions.length > 0) { ... }
 
     container.appendChild(card);
   });

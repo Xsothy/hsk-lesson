@@ -411,7 +411,7 @@ nav {
 }
 .grammar-rule:last-child { margin-bottom: 0; }
 .grammar-rule-title {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--ink);
   margin-bottom: 0.3rem;
@@ -422,12 +422,12 @@ nav {
   border-radius: 0 6px 6px 0;
   padding: 0.5rem 0.9rem;
   font-family: 'Noto Serif SC', serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: var(--ink);
   margin-bottom: 0.5rem;
 }
 .grammar-note {
-  font-size: 0.77rem;
+  font-size: 1rem;
   color: #7a6d5e;
   line-height: 1.5;
 }
@@ -1454,15 +1454,29 @@ body.hide-pinyin .dialogue-pinyin,
 body.hide-pinyin .card-pinyin,
 body.hide-pinyin rt { display: none; }
 
-/* pinyin-bottom state - show pinyin below characters */
-body.pinyin-bottom ruby {
+/* Pinyin position — default: above characters (ruby elements) */
+ruby {
   display: inline-flex;
   flex-direction: column-reverse;
+  align-items: center;
+  vertical-align: bottom;
+  line-height: 1.2;
+  ruby-position: over;
+  ruby-align: center;
 }
 
-body.pinyin-bottom rt {
-  margin-top: 0;
-  margin-bottom: 0.2em;
+body.pinyin-bottom ruby {
+  flex-direction: column !important;
+  ruby-position: under;
+}
+
+rb {
+  display: block;
+}
+
+rt {
+  display: block;
+  line-height: 1;
 }
 
 /* HSK Preview badge */
@@ -1919,8 +1933,22 @@ body.hide-pinyin .example-pinyin {
 .sentence-zh,
 .dialogue-zh,
 .reading-zh,
+.reading-title,
 .modal-word,
-ruby {
+.breakdown-char,
+.stroke-char-display,
+.example-zh,
+.question-text,
+.option-btn,
+.obj-tag.vocab,
+.obj-tag.grammar,
+.breakdown-literal,
+.dict-title,
+.lesson-title-zh,
+.detail-title,
+.hero-title,
+ruby,
+rb {
   font-size: calc(1.5rem * var(--char-size));
 }
 
@@ -1934,7 +1962,75 @@ ruby {
 .stroke-char-pinyin,
 .example-pinyin,
 rt {
-  font-size: calc(0.45 * 1.5rem * var(--char-size)) !important;
+  font-size: calc(0.75rem * var(--char-size)) !important;
+}
+
+/* Pinyin position — stacked layouts (vocab, dict, modal, breakdown, etc.) */
+.modal-header-content,
+.breakdown-item,
+.example-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stroke-info {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stroke-char-meta {
+  display: contents;
+}
+
+.vocab-char,
+.dict-char,
+.modal-word,
+.breakdown-char,
+.example-zh,
+.stroke-char-display {
+  order: 2;
+}
+
+.vocab-pinyin,
+.dict-pinyin,
+.modal-pinyin,
+.breakdown-pinyin,
+.example-pinyin,
+.stroke-char-pinyin {
+  order: 1;
+}
+
+.stroke-char-meaning,
+.modal-english,
+.vocab-en,
+.dict-en,
+.example-en,
+.breakdown-meaning {
+  order: 3;
+}
+
+body.pinyin-bottom .vocab-char,
+body.pinyin-bottom .dict-char,
+body.pinyin-bottom .modal-word,
+body.pinyin-bottom .breakdown-char,
+body.pinyin-bottom .example-zh,
+body.pinyin-bottom .stroke-char-display {
+  order: 1;
+}
+
+body.pinyin-bottom .vocab-pinyin,
+body.pinyin-bottom .dict-pinyin,
+body.pinyin-bottom .modal-pinyin,
+body.pinyin-bottom .breakdown-pinyin,
+body.pinyin-bottom .example-pinyin,
+body.pinyin-bottom .stroke-char-pinyin {
+  order: 2;
+}
+
+/* Reinforce ruby pinyin position (must override component styles) */
+body.pinyin-bottom ruby {
+  flex-direction: column !important;
 }
 
 

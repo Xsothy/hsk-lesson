@@ -240,14 +240,14 @@ This implementation plan migrates the HSK 1 Learning App from v2 to v3 architect
   - Ensure all tests pass, ask the user if questions arise
 
 - [ ] 12. Phase 9: Documentation and Deployment
-  - [ ] 12.1 Update project documentation
+  - [~] 12.1 Update project documentation
     - Update `README.md` to reflect v3 architecture
     - Document WORD_MAP generation process (`npm run build:word-map`)
     - Document migration scripts usage
     - Add troubleshooting section for common issues (missing words, tokenization errors)
     - _Requirements: All_
   
-  - [ ] 12.2 Clean up temporary files and create deployment checklist
+  - [~] 12.2 Clean up temporary files and create deployment checklist
     - Remove backup files from `data/backups/` (keep in git history via tag)
     - Verify all migration scripts in `scripts/` directory
     - Create deployment checklist: run coverage verification, run tests, manual browser check
