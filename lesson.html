@@ -11,11 +11,13 @@
   <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script defer src="js/template-loader.js"></script>
+  <script defer src="js/settings.js"></script>
   <script defer src="js/audio-service.js"></script>
   <script defer src="data/lessons.js"></script>
   <script defer src="data/dictionary.js"></script>
   <script defer src="data/vocabulary.js"></script>
   <script defer src="data/readings.js"></script>
+  <script defer src="js/word-map.js"></script>
   <script defer src="js/utils.js"></script>
   <script defer src="js/modal.js"></script>
   <script defer src="js/render.js"></script>
@@ -34,13 +36,86 @@
       </a>
     </div>
     <div class="nav-right">
-      <button class="pinyin-toggle active" type="button" id="pinyin-toggle" title="Hide pinyin" aria-pressed="true">
-        <span class="toggle-dot" aria-hidden="true"></span>
-        拼音
-      </button>
+      <button class="nav-btn" id="settings-btn" type="button" title="Settings" aria-label="Open settings">⚙️</button>
       <div class="progress-pill">HSK 1 · <span>150</span> words</div>
     </div>
   </nav>
+
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="settings-modal">
+    <div class="settings-backdrop"></div>
+    <div class="settings-content">
+      <div class="settings-header">
+        <span>⚙️ Settings</span>
+        <button class="settings-close" type="button" aria-label="Close settings">✕</button>
+      </div>
+
+      <!-- Pinyin Display -->
+      <div class="setting-group">
+        <label class="setting-label">Pinyin Display</label>
+        <div class="toggle-switch">
+          <div class="switch" id="settings-pinyin-toggle" role="switch" aria-checked="true"></div>
+          <span>Show pinyin above characters</span>
+        </div>
+      </div>
+
+      <!-- Character Size -->
+      <div class="setting-group">
+        <label class="setting-label">Character Size</label>
+        <div class="slider-group">
+          <input type="range" id="char-size-slider" min="0.8" max="1.5" step="0.1" value="1.0">
+          <span class="slider-value" id="char-size-value">1.0x</span>
+        </div>
+      </div>
+
+      <!-- Pinyin Position -->
+      <div class="setting-group">
+        <label class="setting-label">Pinyin Position</label>
+        <div class="toggle-switch">
+          <div class="switch" id="settings-pinyin-position" role="switch" aria-checked="true"></div>
+          <span id="pinyin-position-label">Above characters (default)</span>
+        </div>
+        <div class="setting-note">Toggle to show pinyin below characters instead</div>
+      </div>
+
+      <!-- TTS Rate -->
+      <div class="setting-group">
+        <label class="setting-label">Speech Rate</label>
+        <div class="slider-group">
+          <input type="range" id="tts-rate-slider" min="0.5" max="2.0" step="0.1" value="0.7">
+          <span class="slider-value" id="tts-rate-value">0.7x</span>
+        </div>
+        <div class="setting-note">Text-to-speech playback speed</div>
+      </div>
+
+      <!-- TTS Voice Selection -->
+      <div class="setting-group">
+        <label class="setting-label">Voice</label>
+        <select id="tts-voice-select" class="voice-select">
+          <option value="">Loading voices...</option>
+        </select>
+        <button class="settings-btn settings-btn-secondary" id="test-voice-btn" type="button" style="margin-top: 0.5rem;">
+          🔊 Test Voice
+        </button>
+        <div class="setting-note">Select text-to-speech voice and test it</div>
+      </div>
+
+      <!-- Dark Mode - Hidden for now -->
+      <!-- <div class="setting-group" style="display: none;">
+        <label class="setting-label">Dark Mode</label>
+        <div class="toggle-switch">
+          <div class="switch" id="settings-dark-toggle" role="switch" aria-checked="false"></div>
+          <span>Enable dark theme</span>
+        </div>
+      </div> -->
+
+      <!-- Action Buttons -->
+      <div class="settings-actions">
+        <button class="settings-btn settings-btn-primary" id="settings-save" type="button">Save & Close</button>
+        <button class="settings-btn settings-btn-danger" id="settings-reset" type="button">Reset to Defaults</button>
+      </div>
+    </div>
+  </div>
 
   <main id="lesson-detail" class="active">
     <a class="detail-back" href="index.html">← Back to Lessons</a>

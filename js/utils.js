@@ -16,16 +16,9 @@
   }
 
   function setupPinyinToggle(buttonId = 'pinyin-toggle') {
-    const button = document.getElementById(buttonId);
-
-    if (!button) return;
-
-    button.addEventListener('click', () => {
-      const nextVisible = document.body.classList.toggle('hide-pinyin') === false;
-      button.classList.toggle('active', nextVisible);
-      button.setAttribute('aria-pressed', String(nextVisible));
-      button.title = nextVisible ? 'Hide pinyin' : 'Show pinyin';
-    });
+    // Note: Pinyin toggle is now managed by settings.js
+    // This function is kept for backward compatibility but does nothing
+    console.log('[utils] setupPinyinToggle called - now managed by settings.js');
   }
 
   function speakChinese(text, options = {}) {

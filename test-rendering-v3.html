@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Rendering v3</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .test-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .test-section h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .status {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+        .status.pass {
+            background: #d4edda;
+            color: #155724;
+        }
+        .status.fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Rendering v3 Migration</h1>
+    <p>This page tests that sentence and dialogue rendering uses renderLine() with WORD_MAP</p>
+
+    <div class="test-section">
+        <h2>Test 1: Sentence Section Rendering</h2>
+        <div id="sentence-test"></div>
+        <div id="sentence-status" class="status"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Dialogue Section Rendering</h2>
+        <div id="dialogue-test"></div>
+        <div id="dialogue-status" class="status"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Reading Section Rendering</h2>
+        <div id="reading-test"></div>
+        <div id="reading-status" class="status"></div>
+    </div>
+
+    <!-- Load scripts -->
+    <script src="js/word-map.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/audio-service.js"></script>
+    <script src="js/render.js"></script>
+    <script src="data/lessons/lesson-1.js"></script>
+    <script src="data/readings.js"></script>
+
+    <script>
+        // Test data
+        const testSentence = {
+            zh: "你好！我叫李华。",
+            words: ["你好", "！", "我", "叫", "李华", "。"],
+            en: "Hello! My name is Li Hua."
+        };
+
+        const testDialogue = [
+            {
+                speaker: "A",
+                zh: "你好！",
+                words: ["你好", "！"],
+                en: "Hello!"
+            },
+            {
+                speaker: "B",
+                zh: "你好！我叫王芳。",
+                words: ["你好", "！", "我", "叫", "王芳", "。"],
+                en: "Hello! My name is Wang Fang."
+            }
+        ];
+
+        const testReading = {
+            id: 1,
+            lesson: 1,
+            type: "story",
+            title: "测试",
+            titleEn: "Test",
+            emoji: "📝",
+            lines: [
+                {
+                    zh: "他是老师。",
+                    words: ["他", "是", "老师", "。"],
+                    en: "He is a teacher."
+                }
+            ],
+            focusWords: ["老师"],
+            grammarFocus: []
+        };
+
+        // Test functions
+        function testSentenceRendering() {
+            try {
+                const container = document.getElementById('sentence-test');
+                const statusEl = document.getElementById('sentence-status');
+                
+                // Render sentence section
+                const section = window.HSK_RENDER.renderSentenceSection([testSentence]);
+                container.appendChild(section);
+                
+                // Check for ruby elements
+                const rubyElements = container.querySelectorAll('ruby');
+                const hasRuby = rubyElements.length > 0;
+                
+                // Check for rt elements
+                const rtElements = container.querySelectorAll('rt');
+                const hasRt = rtElements.length > 0;
+                
+                // Check blur-reveal for English
+                const blurReveal = container.querySelector('.blur-reveal');
+                const hasBlurReveal = blurReveal !== null;
+                
+                if (hasRuby && hasRt && hasBlurReveal) {
+                    statusEl.textContent = `✓ PASS: Found ${rubyElements.length} ruby elements with pinyin. Blur-reveal working.`;
+                    statusEl.className = 'status pass';
+                    console.log('✓ Sentence rendering test passed');
+                    return true;
+                } else {
+                    statusEl.textContent = `✗ FAIL: Ruby elements: ${hasRuby}, RT elements: ${hasRt}, Blur-reveal: ${hasBlurReveal}`;
+                    statusEl.className = 'status fail';
+                    console.error('✗ Sentence rendering test failed');
+                    return false;
+                }
+            } catch (error) {
+                const statusEl = document.getElementById('sentence-status');
+                statusEl.textContent = `✗ ERROR: ${error.message}`;
+                statusEl.className = 'status fail';
+                console.error('Error in sentence test:', error);
+                return false;
+            }
+        }
+
+        function testDialogueRendering() {
+            try {
+                const container = document.getElementById('dialogue-test');
+                const statusEl = document.getElementById('dialogue-status');
+                
+                // Render dialogue section
+                const section = window.HSK_RENDER.renderDialogueSection(testDialogue);
+                container.appendChild(section);
+                
+                // Check for ruby elements
+                const rubyElements = container.querySelectorAll('ruby');
+                const hasRuby = rubyElements.length > 0;
+                
+                // Check for speaker labels
+                const speakerA = container.querySelector('.speaker-a');
+                const speakerB = container.querySelector('.speaker-b');
+                const hasSpeakers = speakerA !== null && speakerB !== null;
+                
+                // Check blur-reveal
+                const blurReveal = container.querySelectorAll('.blur-reveal');
+                const hasBlurReveal = blurReveal.length > 0;
+                
+                if (hasRuby && hasSpeakers && hasBlurReveal) {
+                    statusEl.textContent = `✓ PASS: Found ${rubyElements.length} ruby elements. Speakers A & B present. Blur-reveal working.`;
+                    statusEl.className = 'status pass';
+                    console.log('✓ Dialogue rendering test passed');
+                    return true;
+                } else {
+                    statusEl.textContent = `✗ FAIL: Ruby: ${hasRuby}, Speakers: ${hasSpeakers}, Blur-reveal: ${hasBlurReveal}`;
+                    statusEl.className = 'status fail';
+                    console.error('✗ Dialogue rendering test failed');
+                    return false;
+                }
+            } catch (error) {
+                const statusEl = document.getElementById('dialogue-status');
+                statusEl.textContent = `✗ ERROR: ${error.message}`;
+                statusEl.className = 'status fail';
+                console.error('Error in dialogue test:', error);
+                return false;
+            }
+        }
+
+        function testReadingRendering() {
+            try {
+                const container = document.getElementById('reading-test');
+                const statusEl = document.getElementById('reading-status');
+                
+                // Render reading section
+                const section = window.HSK_RENDER.renderReadingSection([testReading]);
+                container.appendChild(section);
+                
+                // Check for ruby elements
+                const rubyElements = container.querySelectorAll('ruby');
+                const hasRuby = rubyElements.length > 0;
+                
+                // Check for blur-reveal
+                const blurReveal = container.querySelectorAll('.blur-reveal');
+                const hasBlurReveal = blurReveal.length > 0;
+                
+                // Check for reading-zh class
+                const readingZh = container.querySelector('.reading-zh');
+                const hasReadingZh = readingZh !== null;
+                
+                if (hasRuby && hasBlurReveal && hasReadingZh) {
+                    statusEl.textContent = `✓ PASS: Found ${rubyElements.length} ruby elements. Reading structure correct.`;
+                    statusEl.className = 'status pass';
+                    console.log('✓ Reading rendering test passed');
+                    return true;
+                } else {
+                    statusEl.textContent = `✗ FAIL: Ruby: ${hasRuby}, Blur-reveal: ${hasBlurReveal}, Reading-zh: ${hasReadingZh}`;
+                    statusEl.className = 'status fail';
+                    console.error('✗ Reading rendering test failed');
+                    return false;
+                }
+            } catch (error) {
+                const statusEl = document.getElementById('reading-status');
+                statusEl.textContent = `✗ ERROR: ${error.message}`;
+                statusEl.className = 'status fail';
+                console.error('Error in reading test:', error);
+                return false;
+            }
+        }
+
+        // Run tests after page loads
+        window.addEventListener('load', () => {
+            console.log('=== Running v3 Rendering Tests ===');
+            
+            const results = [];
+            results.push(testSentenceRendering());
+            results.push(testDialogueRendering());
+            results.push(testReadingRendering());
+            
+            const allPassed = results.every(r => r === true);
+            console.log('=================================');
+            console.log(`Results: ${results.filter(r => r).length}/${results.length} tests passed`);
+            
+            if (allPassed) {
+                console.log('✓ All tests PASSED');
+            } else {
+                console.error('✗ Some tests FAILED');
+            }
+        });
+    </script>
+</body>
+</html>

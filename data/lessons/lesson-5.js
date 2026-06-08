@@ -13,19 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-5"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-      "老师",
-      "学生",
-      "同学",
-      "学校",
-      "学习",
-      "工作",
-      "会",
-      "能",
-      "说",
-      "写",
-      "汉语",
-      "忙"
-      ],
+    "老师",
+    "学生",
+    "同学",
+    "学校",
+    "学习",
+    "工作",
+    "会",
+    "能",
+    "说",
+    "写",
+    "汉语",
+    "忙"
+  ],
   "grammar": [
     {
       "title": "Ability: 会 + verb",
@@ -46,54 +46,130 @@ window.HSK_LESSONS_BY_SLUG["lesson-5"] = {
   "sentences": [
     {
       "zh": "我是学生，我在学校学习。",
-      "py": "Wǒ shì xuésheng, wǒ zài xuéxiào xuéxí.",
-      "en": "I am a student; I study at school."
+      "en": "I am a student; I study at school.",
+      "words": [
+        "我",
+        "是",
+        "学生",
+        "，",
+        "我",
+        "在",
+        "学校",
+        "学习",
+        "。"
+      ]
     },
     {
       "zh": "你会说汉语吗？",
-      "py": "Nǐ huì shuō Hànyǔ ma?",
-      "en": "Can you speak Chinese?"
+      "en": "Can you speak Chinese?",
+      "words": [
+        "你",
+        "会",
+        "说",
+        "汉语",
+        "吗",
+        "？"
+      ]
     },
     {
       "zh": "我会说一点儿汉语。",
-      "py": "Wǒ huì shuō yīdiǎnr Hànyǔ.",
-      "en": "I can speak a little Chinese."
+      "en": "I can speak a little Chinese.",
+      "words": [
+        "我",
+        "会",
+        "说",
+        "一",
+        "点",
+        "儿",
+        "汉语",
+        "。"
+      ]
     },
     {
       "zh": "老师很忙。",
-      "py": "Lǎoshī hěn máng.",
-      "en": "The teacher is very busy."
+      "en": "The teacher is very busy.",
+      "words": [
+        "老师",
+        "很",
+        "忙",
+        "。"
+      ]
     },
     {
       "zh": "我不会写这个字。",
-      "py": "Wǒ bù huì xiě zhège zì.",
-      "en": "I don't know how to write this character."
+      "en": "I don't know how to write this character.",
+      "words": [
+        "我",
+        "不",
+        "会",
+        "写",
+        "这",
+        "个",
+        "字",
+        "。"
+      ]
     }
   ],
   "dialogue": [
     {
       "speaker": "A",
       "zh": "你是老师还是学生？",
-      "py": "Nǐ shì lǎoshī háishi xuésheng?",
-      "en": "Are you a teacher or a student?"
+      "en": "Are you a teacher or a student?",
+      "words": [
+        "你",
+        "是",
+        "老师",
+        "还",
+        "是",
+        "学生",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "我是学生。我在学习汉语。",
-      "py": "Wǒ shì xuésheng. Wǒ zài xuéxí Hànyǔ.",
-      "en": "I am a student. I am studying Chinese."
+      "en": "I am a student. I am studying Chinese.",
+      "words": [
+        "我",
+        "是",
+        "学生",
+        "。",
+        "我",
+        "在",
+        "学习",
+        "汉语",
+        "。"
+      ]
     },
     {
       "speaker": "A",
       "zh": "你会说汉语吗？",
-      "py": "Nǐ huì shuō Hànyǔ ma?",
-      "en": "Can you speak Chinese?"
+      "en": "Can you speak Chinese?",
+      "words": [
+        "你",
+        "会",
+        "说",
+        "汉语",
+        "吗",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "会，但是我说得不太好。",
-      "py": "Huì, dànshì wǒ shuō de bú tài hǎo.",
-      "en": "Yes, but I don't speak it very well."
+      "en": "Yes, but I don't speak it very well.",
+      "words": [
+        "会",
+        "，",
+        "但是",
+        "我",
+        "说",
+        "得",
+        "不",
+        "太",
+        "好",
+        "。"
+      ]
     }
   ]
 };

@@ -13,19 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-3"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-      "今天",
-      "明天",
-      "昨天",
-      "现在",
-      "点",
-      "分钟",
-      "星期",
-      "上午",
-      "下午",
-      "中午",
-      "月",
-      "号"
-      ],
+    "今天",
+    "明天",
+    "昨天",
+    "现在",
+    "点",
+    "分钟",
+    "星期",
+    "上午",
+    "下午",
+    "中午",
+    "月",
+    "号"
+  ],
   "grammar": [
     {
       "title": "Asking the time: 现在几点？",
@@ -46,54 +46,113 @@ window.HSK_LESSONS_BY_SLUG["lesson-3"] = {
   "sentences": [
     {
       "zh": "现在几点？",
-      "py": "Xiànzài jǐ diǎn?",
-      "en": "What time is it now?"
+      "en": "What time is it now?",
+      "words": [
+        "现在",
+        "几",
+        "点",
+        "？"
+      ]
     },
     {
       "zh": "现在上午九点半。",
-      "py": "Xiànzài shàngwǔ jiǔ diǎn bàn.",
-      "en": "It is now 9:30 AM."
+      "en": "It is now 9:30 AM.",
+      "words": [
+        "现在",
+        "上午",
+        "九",
+        "点",
+        "半",
+        "。"
+      ]
     },
     {
       "zh": "今天星期几？",
-      "py": "Jīntiān xīngqī jǐ?",
-      "en": "What day is today?"
+      "en": "What day is today?",
+      "words": [
+        "今天",
+        "星期",
+        "几",
+        "？"
+      ]
     },
     {
       "zh": "今天是星期三。",
-      "py": "Jīntiān shì xīngqī sān.",
-      "en": "Today is Wednesday."
+      "en": "Today is Wednesday.",
+      "words": [
+        "今天",
+        "是",
+        "星期",
+        "三",
+        "。"
+      ]
     },
     {
       "zh": "明天是几月几号？",
-      "py": "Míngtiān shì jǐ yuè jǐ hào?",
-      "en": "What is tomorrow's date?"
+      "en": "What is tomorrow's date?",
+      "words": [
+        "明天",
+        "是",
+        "几",
+        "月",
+        "几",
+        "号",
+        "？"
+      ]
     }
   ],
   "dialogue": [
     {
       "speaker": "A",
       "zh": "你好！现在几点？",
-      "py": "Nǐ hǎo! Xiànzài jǐ diǎn?",
-      "en": "Hi! What time is it?"
+      "en": "Hi! What time is it?",
+      "words": [
+        "你好",
+        "！",
+        "现在",
+        "几",
+        "点",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "现在下午两点。",
-      "py": "Xiànzài xiàwǔ liǎng diǎn.",
-      "en": "It is 2 PM now."
+      "en": "It is 2 PM now.",
+      "words": [
+        "现在",
+        "下午",
+        "两",
+        "点",
+        "。"
+      ]
     },
     {
       "speaker": "A",
       "zh": "今天星期几？",
-      "py": "Jīntiān xīngqī jǐ?",
-      "en": "What day is today?"
+      "en": "What day is today?",
+      "words": [
+        "今天",
+        "星期",
+        "几",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "今天星期四，明天是星期五。",
-      "py": "Jīntiān xīngqī sì, míngtiān shì xīngqī wǔ.",
-      "en": "Today is Thursday, tomorrow is Friday."
+      "en": "Today is Thursday, tomorrow is Friday.",
+      "words": [
+        "今天",
+        "星期",
+        "四",
+        "，",
+        "明天",
+        "是",
+        "星期",
+        "五",
+        "。"
+      ]
     }
   ]
 };

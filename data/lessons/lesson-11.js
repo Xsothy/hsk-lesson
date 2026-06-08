@@ -13,19 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-11"] = {
   "isPreview": true,
   "content": "",
   "vocab": [
-      "医生",
-      "医院",
-      "好",
-      "不",
-      "很",
-      "去",
-      "头",
-      "手",
-      "眼睛",
-      "不舒服",
-      "发烧",
-      "有点儿"
-      ],
+    "医生",
+    "医院",
+    "好",
+    "不",
+    "很",
+    "去",
+    "头",
+    "手",
+    "眼睛",
+    "不舒服",
+    "发烧",
+    "有点儿"
+  ],
   "grammar": [
     {
       "title": "Feeling unwell: 有点儿 + adj",
@@ -46,60 +46,151 @@ window.HSK_LESSONS_BY_SLUG["lesson-11"] = {
   "sentences": [
     {
       "zh": "你好吗？你看起来不太好。",
-      "py": "Nǐ hǎo ma? Nǐ kàn qǐlái bú tài hǎo.",
-      "en": "Are you OK? You don't look very well."
+      "en": "Are you OK? You don't look very well.",
+      "words": [
+        "你好",
+        "吗",
+        "？",
+        "你",
+        "看",
+        "起",
+        "来",
+        "不",
+        "太",
+        "好",
+        "。"
+      ]
     },
     {
       "zh": "我有点儿不舒服。",
-      "py": "Wǒ yǒudiǎnr bù shūfu.",
-      "en": "I'm feeling a little unwell."
+      "en": "I'm feeling a little unwell.",
+      "words": [
+        "我",
+        "有点儿",
+        "不舒服",
+        "。"
+      ]
     },
     {
       "zh": "你哪里不舒服？",
-      "py": "Nǐ nǎlǐ bù shūfu?",
-      "en": "Where does it hurt / what's wrong?"
+      "en": "Where does it hurt / what's wrong?",
+      "words": [
+        "你",
+        "哪",
+        "里",
+        "不舒服",
+        "？"
+      ]
     },
     {
       "zh": "我头很疼，也有点儿发烧。",
-      "py": "Wǒ tóu hěn téng, yě yǒudiǎnr fāshāo.",
-      "en": "My head hurts a lot and I have a slight fever."
+      "en": "My head hurts a lot and I have a slight fever.",
+      "words": [
+        "我",
+        "头",
+        "很",
+        "疼",
+        "，",
+        "也",
+        "有点儿",
+        "发烧",
+        "。"
+      ]
     },
     {
       "zh": "你要去医院看医生。",
-      "py": "Nǐ yào qù yīyuàn kàn yīshēng.",
-      "en": "You should go to the hospital to see a doctor."
+      "en": "You should go to the hospital to see a doctor.",
+      "words": [
+        "你",
+        "要",
+        "去",
+        "医院",
+        "看",
+        "医生",
+        "。"
+      ]
     }
   ],
   "dialogue": [
     {
       "speaker": "A",
       "zh": "你怎么了？你看起来不舒服。",
-      "py": "Nǐ zěnme le? Nǐ kàn qǐlái bù shūfu.",
-      "en": "What's wrong? You look unwell."
+      "en": "What's wrong? You look unwell.",
+      "words": [
+        "你",
+        "怎么",
+        "了",
+        "？",
+        "你",
+        "看",
+        "起",
+        "来",
+        "不舒服",
+        "。"
+      ]
     },
     {
       "speaker": "B",
       "zh": "我有点儿发烧，头也很疼。",
-      "py": "Wǒ yǒudiǎnr fāshāo, tóu yě hěn téng.",
-      "en": "I have a slight fever and my head hurts a lot."
+      "en": "I have a slight fever and my head hurts a lot.",
+      "words": [
+        "我",
+        "有点儿",
+        "发烧",
+        "，",
+        "头",
+        "也",
+        "很",
+        "疼",
+        "。"
+      ]
     },
     {
       "speaker": "A",
       "zh": "你要去医院看医生！",
-      "py": "Nǐ yào qù yīyuàn kàn yīshēng!",
-      "en": "You need to go to the hospital to see a doctor!"
+      "en": "You need to go to the hospital to see a doctor!",
+      "words": [
+        "你",
+        "要",
+        "去",
+        "医院",
+        "看",
+        "医生",
+        "！"
+      ]
     },
     {
       "speaker": "B",
       "zh": "好，但是我不知道医院在哪儿。",
-      "py": "Hǎo, dànshì wǒ bù zhīdào yīyuàn zài nǎr.",
-      "en": "OK, but I don't know where the hospital is."
+      "en": "OK, but I don't know where the hospital is.",
+      "words": [
+        "好",
+        "，",
+        "但是",
+        "我",
+        "不",
+        "知道",
+        "医院",
+        "在",
+        "哪儿",
+        "。"
+      ]
     },
     {
       "speaker": "A",
       "zh": "我陪你去！医院不远。",
-      "py": "Wǒ péi nǐ qù! Yīyuàn bù yuǎn.",
-      "en": "I'll go with you! The hospital isn't far."
+      "en": "I'll go with you! The hospital isn't far.",
+      "words": [
+        "我",
+        "陪",
+        "你",
+        "去",
+        "！",
+        "医院",
+        "不",
+        "远",
+        "。"
+      ]
     }
   ]
 };

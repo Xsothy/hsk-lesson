@@ -13,19 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-1"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-      "你好",
-      "再见",
-      "谢谢",
-      "对不起",
-      "没关系",
-      "我",
-      "你",
-      "他",
-      "她",
-      "名字",
-      "叫",
-      "是"
-      ],
+    "你好",
+    "再见",
+    "谢谢",
+    "对不起",
+    "没关系",
+    "我",
+    "你",
+    "他",
+    "她",
+    "名字",
+    "叫",
+    "是"
+  ],
   "grammar": [
     {
       "title": "Introducing yourself: 我叫…",
@@ -46,54 +46,119 @@ window.HSK_LESSONS_BY_SLUG["lesson-1"] = {
   "sentences": [
     {
       "zh": "你好！我叫李华。",
-      "py": "Nǐ hǎo! Wǒ jiào Lǐ Huá.",
-      "en": "Hello! My name is Li Hua."
+      "en": "Hello! My name is Li Hua.",
+      "words": [
+        "你好",
+        "！",
+        "我",
+        "叫",
+        "李华",
+        "。"
+      ]
     },
     {
       "zh": "我是学生。你是老师吗？",
-      "py": "Wǒ shì xuésheng. Nǐ shì lǎoshī ma?",
-      "en": "I am a student. Are you a teacher?"
+      "en": "I am a student. Are you a teacher?",
+      "words": [
+        "我",
+        "是",
+        "学生",
+        "。",
+        "你",
+        "是",
+        "老师",
+        "吗",
+        "？"
+      ]
     },
     {
       "zh": "对不起！",
-      "py": "Duìbuqǐ!",
-      "en": "I'm sorry!"
+      "en": "I'm sorry!",
+      "words": [
+        "对不起",
+        "！"
+      ]
     },
     {
       "zh": "没关系，谢谢你。",
-      "py": "Méiguānxi, xièxie nǐ.",
-      "en": "It's OK, thank you."
+      "en": "It's OK, thank you.",
+      "words": [
+        "没关系",
+        "，",
+        "谢谢",
+        "你",
+        "。"
+      ]
     },
     {
       "zh": "再见！",
-      "py": "Zàijiàn!",
-      "en": "Goodbye!"
+      "en": "Goodbye!",
+      "words": [
+        "再见",
+        "！"
+      ]
     }
   ],
   "dialogue": [
     {
       "speaker": "A",
       "zh": "你好！你叫什么名字？",
-      "py": "Nǐ hǎo! Nǐ jiào shénme míngzi?",
-      "en": "Hello! What is your name?"
+      "en": "Hello! What is your name?",
+      "words": [
+        "你好",
+        "！",
+        "你",
+        "叫",
+        "什么",
+        "名字",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "你好！我叫王芳。你呢？",
-      "py": "Nǐ hǎo! Wǒ jiào Wáng Fāng. Nǐ ne?",
-      "en": "Hello! My name is Wang Fang. And you?"
+      "en": "Hello! My name is Wang Fang. And you?",
+      "words": [
+        "你好",
+        "！",
+        "我",
+        "叫",
+        "王芳",
+        "。",
+        "你",
+        "呢",
+        "？"
+      ]
     },
     {
       "speaker": "A",
       "zh": "我叫李明。很高兴认识你！",
-      "py": "Wǒ jiào Lǐ Míng. Hěn gāoxìng rènshi nǐ!",
-      "en": "My name is Li Ming. Nice to meet you!"
+      "en": "My name is Li Ming. Nice to meet you!",
+      "words": [
+        "我",
+        "叫",
+        "李明",
+        "。",
+        "很",
+        "高兴",
+        "认识",
+        "你",
+        "！"
+      ]
     },
     {
       "speaker": "B",
       "zh": "我也很高兴认识你！",
-      "py": "Wǒ yě hěn gāoxìng rènshi nǐ!",
-      "en": "Nice to meet you too!"
+      "en": "Nice to meet you too!",
+      "words": [
+        "我",
+        "也",
+        "很",
+        "高兴",
+        "认识",
+        "你",
+        "！"
+      ]
     }
   ]
 };

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>renderLine Function Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-case {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #666;
+            margin-top: 0;
+        }
+        .chinese {
+            font-size: 24px;
+            margin: 10px 0;
+            line-height: 2;
+        }
+        ruby {
+            ruby-align: center;
+        }
+        rt {
+            font-size: 0.6em;
+            color: #4CAF50;
+        }
+        .info {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+        .success {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>renderLine Function Test</h1>
+    <p class="info">This page tests the <code>renderLine()</code> function from Task 6.1</p>
+
+    <div id="test-container"></div>
+
+    <script src="js/word-map.js"></script>
+    <script src="js/render.js"></script>
+    <script>
+        // Test cases
+        const testCases = [
+            {
+                title: "Simple Greeting",
+                line: {
+                    zh: "你好！",
+                    words: ["你好", "！"],
+                    en: "Hello!"
+                }
+            },
+            {
+                title: "Complete Sentence",
+                line: {
+                    zh: "我是学生。",
+                    words: ["我", "是", "学生", "。"],
+                    en: "I am a student."
+                }
+            },
+            {
+                title: "Proper Noun",
+                line: {
+                    zh: "我叫李华。",
+                    words: ["我", "叫", "李华", "。"],
+                    en: "My name is Li Hua."
+                }
+            },
+            {
+                title: "Complex Sentence",
+                line: {
+                    zh: "你好！我是学生。我叫李华。",
+                    words: ["你好", "！", "我", "是", "学生", "。", "我", "叫", "李华", "。"],
+                    en: "Hello! I am a student. My name is Li Hua."
+                }
+            },
+            {
+                title: "Missing Word Test",
+                line: {
+                    zh: "这是一个测试。",
+                    words: ["这", "是", "一个", "测试", "。"],
+                    en: "This is a test."
+                }
+            }
+        ];
+
+        // Render test cases
+        const container = document.getElementById('test-container');
+        
+        testCases.forEach((testCase, index) => {
+            const testDiv = document.createElement('div');
+            testDiv.className = 'test-case';
+            
+            const title = document.createElement('h3');
+            title.textContent = `Test ${index + 1}: ${testCase.title}`;
+            testDiv.appendChild(title);
+            
+            const chineseDiv = document.createElement('div');
+            chineseDiv.className = 'chinese';
+            
+            // Call renderLine
+            const fragment = window.HSK_RENDER.renderLine(testCase.line);
+            chineseDiv.appendChild(fragment);
+            
+            testDiv.appendChild(chineseDiv);
+            
+            const englishDiv = document.createElement('div');
+            englishDiv.className = 'info';
+            englishDiv.textContent = `English: ${testCase.line.en}`;
+            testDiv.appendChild(englishDiv);
+            
+            const wordsDiv = document.createElement('div');
+            wordsDiv.className = 'info';
+            wordsDiv.textContent = `Words array: [${testCase.line.words.join(', ')}]`;
+            testDiv.appendChild(wordsDiv);
+            
+            container.appendChild(testDiv);
+        });
+
+        // Add success message
+        const successDiv = document.createElement('div');
+        successDiv.className = 'test-case';
+        successDiv.innerHTML = '<p class="success">✓ All tests rendered successfully!</p><p class="info">Check the browser console for any warnings about missing words.</p>';
+        container.appendChild(successDiv);
+    </script>
+</body>
+</html>

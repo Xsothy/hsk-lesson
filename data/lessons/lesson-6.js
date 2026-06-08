@@ -13,19 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-6"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-      "去",
-      "来",
-      "在",
-      "哪儿",
-      "飞机",
-      "出租车",
-      "火车站",
-      "医院",
-      "商店",
-      "坐",
-      "从",
-      "到"
-      ],
+    "去",
+    "来",
+    "在",
+    "哪儿",
+    "飞机",
+    "出租车",
+    "火车站",
+    "医院",
+    "商店",
+    "坐",
+    "从",
+    "到"
+  ],
   "grammar": [
     {
       "title": "Going somewhere: 去 + place",
@@ -46,64 +46,144 @@ window.HSK_LESSONS_BY_SLUG["lesson-6"] = {
   "sentences": [
     {
       "zh": "你去哪儿？",
-      "py": "Nǐ qù nǎr?",
-      "en": "Where are you going?"
+      "en": "Where are you going?",
+      "words": [
+        "你",
+        "去",
+        "哪儿",
+        "？"
+      ]
     },
     {
       "zh": "我去火车站。",
-      "py": "Wǒ qù huǒchēzhàn.",
-      "en": "I'm going to the train station."
+      "en": "I'm going to the train station.",
+      "words": [
+        "我",
+        "去",
+        "火车站",
+        "。"
+      ]
     },
     {
       "zh": "医院在哪儿？",
-      "py": "Yīyuàn zài nǎr?",
-      "en": "Where is the hospital?"
+      "en": "Where is the hospital?",
+      "words": [
+        "医院",
+        "在",
+        "哪儿",
+        "？"
+      ]
     },
     {
       "zh": "我坐出租车去。",
-      "py": "Wǒ zuò chūzūchē qù.",
-      "en": "I'll go by taxi."
+      "en": "I'll go by taxi.",
+      "words": [
+        "我",
+        "坐",
+        "出租车",
+        "去",
+        "。"
+      ]
     },
     {
       "zh": "从这里到学校远吗？",
-      "py": "Cóng zhèlǐ dào xuéxiào yuǎn ma?",
-      "en": "Is it far from here to school?"
+      "en": "Is it far from here to school?",
+      "words": [
+        "从",
+        "这",
+        "里",
+        "到",
+        "学校",
+        "远",
+        "吗",
+        "？"
+      ]
     },
     {
       "zh": "从北京到上海坐飞机。",
-      "py": "Cóng Běijīng dào Shànghǎi zuò fēijī.",
-      "en": "Go from Beijing to Shanghai by airplane."
+      "en": "Go from Beijing to Shanghai by airplane.",
+      "words": [
+        "从",
+        "北京",
+        "到",
+        "上",
+        "海",
+        "坐",
+        "飞机",
+        "。"
+      ]
     },
     {
       "zh": "商店在哪儿？",
-      "py": "Shāngdiàn zài nǎr?",
-      "en": "Where is the shop?"
+      "en": "Where is the shop?",
+      "words": [
+        "商店",
+        "在",
+        "哪儿",
+        "？"
+      ]
     }
   ],
   "dialogue": [
     {
       "speaker": "A",
       "zh": "你去哪儿？",
-      "py": "Nǐ qù nǎr?",
-      "en": "Where are you going?"
+      "en": "Where are you going?",
+      "words": [
+        "你",
+        "去",
+        "哪儿",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "我去医院。你知道医院在哪儿吗？",
-      "py": "Wǒ qù yīyuàn. Nǐ zhīdào yīyuàn zài nǎr ma?",
-      "en": "I'm going to the hospital. Do you know where it is?"
+      "en": "I'm going to the hospital. Do you know where it is?",
+      "words": [
+        "我",
+        "去",
+        "医院",
+        "。",
+        "你",
+        "知道",
+        "医院",
+        "在",
+        "哪儿",
+        "吗",
+        "？"
+      ]
     },
     {
       "speaker": "A",
       "zh": "知道。你可以坐出租车去，很快。",
-      "py": "Zhīdào. Nǐ kěyǐ zuò chūzūchē qù, hěn kuài.",
-      "en": "Yes. You can take a taxi, it's very fast."
+      "en": "Yes. You can take a taxi, it's very fast.",
+      "words": [
+        "知道",
+        "。",
+        "你",
+        "可",
+        "以",
+        "坐",
+        "出租车",
+        "去",
+        "，",
+        "很",
+        "快",
+        "。"
+      ]
     },
     {
       "speaker": "B",
       "zh": "好，谢谢你！",
-      "py": "Hǎo, xièxie nǐ!",
-      "en": "OK, thank you!"
+      "en": "OK, thank you!",
+      "words": [
+        "好",
+        "，",
+        "谢谢",
+        "你",
+        "！"
+      ]
     }
   ]
 };

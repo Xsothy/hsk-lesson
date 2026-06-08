@@ -13,19 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-9"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-      "起床",
-      "睡觉",
-      "吃饭",
-      "上课",
-      "下课",
-      "回家",
-      "看电视",
-      "打电话",
-      "每天",
-      "早上",
-      "晚上",
-      "然后"
-      ],
+    "起床",
+    "睡觉",
+    "吃饭",
+    "上课",
+    "下课",
+    "回家",
+    "看电视",
+    "打电话",
+    "每天",
+    "早上",
+    "晚上",
+    "然后"
+  ],
   "grammar": [
     {
       "title": "Sequence: 先…然后…",
@@ -46,66 +46,162 @@ window.HSK_LESSONS_BY_SLUG["lesson-9"] = {
   "sentences": [
     {
       "zh": "我每天七点起床。",
-      "py": "Wǒ měitiān qī diǎn qǐchuáng.",
-      "en": "I get up at 7 o'clock every day."
+      "en": "I get up at 7 o'clock every day.",
+      "words": [
+        "我",
+        "每天",
+        "七",
+        "点",
+        "起床",
+        "。"
+      ]
     },
     {
       "zh": "我先吃饭，然后去学校。",
-      "py": "Wǒ xiān chīfàn, ránhòu qù xuéxiào.",
-      "en": "I eat first, then go to school."
+      "en": "I eat first, then go to school.",
+      "words": [
+        "我",
+        "先",
+        "吃饭",
+        "，",
+        "然后",
+        "去",
+        "学校",
+        "。"
+      ]
     },
     {
       "zh": "下课以后，我回家。",
-      "py": "Xià kè yǐhòu, wǒ huí jiā.",
-      "en": "After class, I go home."
+      "en": "After class, I go home.",
+      "words": [
+        "下课",
+        "以",
+        "后",
+        "，",
+        "我",
+        "回家",
+        "。"
+      ]
     },
     {
       "zh": "晚上我看电视或者打电话。",
-      "py": "Wǎnshang wǒ kàn diànshì huòzhě dǎ diànhuà.",
-      "en": "In the evening I watch TV or make calls."
+      "en": "In the evening I watch TV or make calls.",
+      "words": [
+        "晚上",
+        "我",
+        "看电视",
+        "或",
+        "者",
+        "打电话",
+        "。"
+      ]
     },
     {
       "zh": "我晚上十一点睡觉。",
-      "py": "Wǒ wǎnshang shíyī diǎn shuìjiào.",
-      "en": "I go to sleep at 11 PM."
+      "en": "I go to sleep at 11 PM.",
+      "words": [
+        "我",
+        "晚上",
+        "十",
+        "一",
+        "点",
+        "睡觉",
+        "。"
+      ]
     }
   ],
   "dialogue": [
     {
       "speaker": "A",
       "zh": "你每天几点起床？",
-      "py": "Nǐ měitiān jǐ diǎn qǐchuáng?",
-      "en": "What time do you get up every day?"
+      "en": "What time do you get up every day?",
+      "words": [
+        "你",
+        "每天",
+        "几",
+        "点",
+        "起床",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "我每天早上六点半起床。",
-      "py": "Wǒ měitiān zǎoshang liù diǎn bàn qǐchuáng.",
-      "en": "I get up at 6:30 AM every day."
+      "en": "I get up at 6:30 AM every day.",
+      "words": [
+        "我",
+        "每天",
+        "早上",
+        "六",
+        "点",
+        "半",
+        "起床",
+        "。"
+      ]
     },
     {
       "speaker": "A",
       "zh": "那么早！你几点上课？",
-      "py": "Nàme zǎo! Nǐ jǐ diǎn shàngkè?",
-      "en": "That early! What time does class start?"
+      "en": "That early! What time does class start?",
+      "words": [
+        "那",
+        "么",
+        "早",
+        "！",
+        "你",
+        "几",
+        "点",
+        "上课",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "八点上课。我先吃早饭，然后去学校。",
-      "py": "Bā diǎn shàngkè. Wǒ xiān chī zǎofàn, ránhòu qù xuéxiào.",
-      "en": "Class starts at 8. I eat breakfast first, then go to school."
+      "en": "Class starts at 8. I eat breakfast first, then go to school.",
+      "words": [
+        "八",
+        "点",
+        "上课",
+        "。",
+        "我",
+        "先",
+        "吃",
+        "早",
+        "饭",
+        "，",
+        "然后",
+        "去",
+        "学校",
+        "。"
+      ]
     },
     {
       "speaker": "A",
       "zh": "晚上几点睡觉？",
-      "py": "Wǎnshang jǐ diǎn shuìjiào?",
-      "en": "What time do you sleep at night?"
+      "en": "What time do you sleep at night?",
+      "words": [
+        "晚上",
+        "几",
+        "点",
+        "睡觉",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "十点半，我很累！",
-      "py": "Shí diǎn bàn, wǒ hěn lèi!",
-      "en": "10:30, I'm very tired!"
+      "en": "10:30, I'm very tired!",
+      "words": [
+        "十",
+        "点",
+        "半",
+        "，",
+        "我",
+        "很",
+        "累",
+        "！"
+      ]
     }
   ]
 };

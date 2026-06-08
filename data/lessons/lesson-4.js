@@ -13,19 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-4"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-      "饭店",
-      "菜",
-      "米饭",
-      "茶",
-      "水",
-      "水果",
-      "苹果",
-      "吃",
-      "喝",
-      "要",
-      "请",
-      "钱"
-      ],
+    "饭店",
+    "菜",
+    "米饭",
+    "茶",
+    "水",
+    "水果",
+    "苹果",
+    "吃",
+    "喝",
+    "要",
+    "请",
+    "钱"
+  ],
   "grammar": [
     {
       "title": "Ordering / wanting: 想要 + noun",
@@ -46,60 +46,145 @@ window.HSK_LESSONS_BY_SLUG["lesson-4"] = {
   "sentences": [
     {
       "zh": "我想吃米饭。",
-      "py": "Wǒ xiǎng chī mǐfàn.",
-      "en": "I want to eat rice."
+      "en": "I want to eat rice.",
+      "words": [
+        "我",
+        "想",
+        "吃",
+        "米饭",
+        "。"
+      ]
     },
     {
       "zh": "请给我一杯水。",
-      "py": "Qǐng gěi wǒ yī bēi shuǐ.",
-      "en": "Please give me a glass of water."
+      "en": "Please give me a glass of water.",
+      "words": [
+        "请",
+        "给",
+        "我",
+        "一",
+        "杯",
+        "水",
+        "。"
+      ]
     },
     {
       "zh": "你喝茶吗？",
-      "py": "Nǐ hē chá ma?",
-      "en": "Do you drink tea?"
+      "en": "Do you drink tea?",
+      "words": [
+        "你",
+        "喝",
+        "茶",
+        "吗",
+        "？"
+      ]
     },
     {
       "zh": "这个苹果多少钱？",
-      "py": "Zhège píngguǒ duōshao qián?",
-      "en": "How much is this apple?"
+      "en": "How much is this apple?",
+      "words": [
+        "这",
+        "个",
+        "苹果",
+        "多少",
+        "钱",
+        "？"
+      ]
     },
     {
       "zh": "我不喝茶，我喝水。",
-      "py": "Wǒ bù hē chá, wǒ hē shuǐ.",
-      "en": "I don't drink tea, I drink water."
+      "en": "I don't drink tea, I drink water.",
+      "words": [
+        "我",
+        "不",
+        "喝",
+        "茶",
+        "，",
+        "我",
+        "喝",
+        "水",
+        "。"
+      ]
     }
   ],
   "dialogue": [
     {
       "speaker": "A",
       "zh": "你好！你要喝什么？",
-      "py": "Nǐ hǎo! Nǐ yào hē shénme?",
-      "en": "Hello! What would you like to drink?"
+      "en": "Hello! What would you like to drink?",
+      "words": [
+        "你好",
+        "！",
+        "你",
+        "要",
+        "喝",
+        "什么",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "我要一杯茶，谢谢。",
-      "py": "Wǒ yào yī bēi chá, xièxie.",
-      "en": "I'd like a cup of tea, thank you."
+      "en": "I'd like a cup of tea, thank you.",
+      "words": [
+        "我",
+        "要",
+        "一",
+        "杯",
+        "茶",
+        "，",
+        "谢谢",
+        "。"
+      ]
     },
     {
       "speaker": "A",
       "zh": "好的。你要吃什么菜？",
-      "py": "Hǎo de. Nǐ yào chī shénme cài?",
-      "en": "Sure. What dish would you like?"
+      "en": "Sure. What dish would you like?",
+      "words": [
+        "好",
+        "的",
+        "。",
+        "你",
+        "要",
+        "吃",
+        "什么",
+        "菜",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "请给我一碗米饭和一个菜。多少钱？",
-      "py": "Qǐng gěi wǒ yī wǎn mǐfàn hé yī gè cài. Duōshao qián?",
-      "en": "Please give me a bowl of rice and one dish. How much?"
+      "en": "Please give me a bowl of rice and one dish. How much?",
+      "words": [
+        "请",
+        "给",
+        "我",
+        "一",
+        "碗",
+        "米饭",
+        "和",
+        "一",
+        "个",
+        "菜",
+        "。",
+        "多少",
+        "钱",
+        "？"
+      ]
     },
     {
       "speaker": "A",
       "zh": "三十五块。",
-      "py": "Sānshíwǔ kuài.",
-      "en": "35 yuan."
+      "en": "35 yuan.",
+      "words": [
+        "三",
+        "十",
+        "五",
+        "块",
+        "。"
+      ]
     }
   ]
 };

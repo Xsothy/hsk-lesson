@@ -13,19 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-2"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-      "家",
-      "爸爸",
-      "妈妈",
-      "儿子",
-      "女儿",
-      "朋友",
-      "的",
-      "岁",
-      "几",
-      "多少",
-      "今年",
-      "两"
-      ],
+    "家",
+    "爸爸",
+    "妈妈",
+    "儿子",
+    "女儿",
+    "朋友",
+    "的",
+    "岁",
+    "几",
+    "多少",
+    "今年",
+    "两"
+  ],
   "grammar": [
     {
       "title": "Possession with 的",
@@ -46,54 +46,128 @@ window.HSK_LESSONS_BY_SLUG["lesson-2"] = {
   "sentences": [
     {
       "zh": "她是我的妈妈。",
-      "py": "Tā shì wǒ de māma.",
-      "en": "She is my mom."
+      "en": "She is my mom.",
+      "words": [
+        "她",
+        "是",
+        "我",
+        "的",
+        "妈妈",
+        "。"
+      ]
     },
     {
       "zh": "我爸爸今年四十五岁。",
-      "py": "Wǒ bàba jīnnián sìshíwǔ suì.",
-      "en": "My dad is 45 years old this year."
+      "en": "My dad is 45 years old this year.",
+      "words": [
+        "我",
+        "爸爸",
+        "今年",
+        "四",
+        "十",
+        "五",
+        "岁",
+        "。"
+      ]
     },
     {
       "zh": "你有几个朋友？",
-      "py": "Nǐ yǒu jǐ ge péngyou?",
-      "en": "How many friends do you have?"
+      "en": "How many friends do you have?",
+      "words": [
+        "你",
+        "有",
+        "几",
+        "个",
+        "朋友",
+        "？"
+      ]
     },
     {
       "zh": "我家有四个人。",
-      "py": "Wǒ jiā yǒu sì ge rén.",
-      "en": "My family has four people."
+      "en": "My family has four people.",
+      "words": [
+        "我",
+        "家",
+        "有",
+        "四",
+        "个",
+        "人",
+        "。"
+      ]
     },
     {
       "zh": "他今年多大？",
-      "py": "Tā jīnnián duō dà?",
-      "en": "How old is he this year?"
+      "en": "How old is he this year?",
+      "words": [
+        "他",
+        "今年",
+        "多",
+        "大",
+        "？"
+      ]
     }
   ],
   "dialogue": [
     {
       "speaker": "A",
       "zh": "这是你的家人吗？",
-      "py": "Zhè shì nǐ de jiārén ma?",
-      "en": "Is this your family?"
+      "en": "Is this your family?",
+      "words": [
+        "这",
+        "是",
+        "你",
+        "的",
+        "家",
+        "人",
+        "吗",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "是的！这是我爸爸，这是我妈妈。",
-      "py": "Shì de! Zhè shì wǒ bàba, zhè shì wǒ māma.",
-      "en": "Yes! This is my dad, this is my mom."
+      "en": "Yes! This is my dad, this is my mom.",
+      "words": [
+        "是",
+        "的",
+        "！",
+        "这",
+        "是",
+        "我",
+        "爸爸",
+        "，",
+        "这",
+        "是",
+        "我",
+        "妈妈",
+        "。"
+      ]
     },
     {
       "speaker": "A",
       "zh": "你爸爸今年多大？",
-      "py": "Nǐ bàba jīnnián duō dà?",
-      "en": "How old is your dad this year?"
+      "en": "How old is your dad this year?",
+      "words": [
+        "你",
+        "爸爸",
+        "今年",
+        "多",
+        "大",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "他今年五十岁。",
-      "py": "Tā jīnnián wǔshí suì.",
-      "en": "He is fifty years old this year."
+      "en": "He is fifty years old this year.",
+      "words": [
+        "他",
+        "今年",
+        "五",
+        "十",
+        "岁",
+        "。"
+      ]
     }
   ]
 };

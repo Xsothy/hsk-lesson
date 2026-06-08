@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HSK 1 · 汉字课堂 v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f0c08;
+  --paper: #f7f3ed;
+  --red: #b5302a;
+  --red2: #d4453d;
+  --gold: #b8892e;
+  --gold-lt: #e8c96a;
+  --sage: #3d6b4f;
+  --mist: #e2dbd0;
+  --warm-white: #fff9f2;
+  --card-bg: #ffffff;
+  --shadow-sm: 0 2px 8px rgba(15,12,8,.08);
+  --shadow-md: 0 6px 24px rgba(15,12,8,.12);
+  --shadow-lg: 0 16px 48px rgba(15,12,8,.16);
+  --radius: 14px;
+  --char-size: 24px;
+  --pinyin-size: 12px;
+  --pinyin-visible: 1;
+}
+
+body.dark-mode {
+  --ink: #f0ede8;
+  --paper: #1a1208;
+  --card-bg: #2a2218;
+  --mist: #3a3228;
+  --warm-white: #2a2218;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--ink);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  height: 58px;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  gap: 0;
+}
+
+.nav-brand {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  margin-right: auto;
+  letter-spacing: 0.02em;
+}
+
+.nav-brand span { color: var(--gold-lt); }
+
+.nav-buttons {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.nav-btn:hover { background: rgba(255,255,255,0.2); }
+
+/* ── SETTINGS MODAL ── */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s;
+}
+
+.modal.active { display: flex; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-content {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 480px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ink);
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.modal-close:hover { opacity: 1; }
+
+.setting-group {
+  margin-bottom: 1.5rem;
+}
+
+.setting-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: var(--ink);
+}
+
+.setting-note {
+  font-size: 0.7rem;
+  color: #9a8d7e;
+  margin-top: 0.3rem;
+}
+
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: #ccc;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.switch.active { background: var(--gold); }
+
+.switch::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+}
+
+.switch.active::after { transform: translateX(20px); }
+
+.slider-group {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+input[type="range"] {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--mist);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--gold);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--gold);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+
+.slider-value {
+  font-size: 0.75rem;
+  color: var(--ink);
+  min-width: 28px;
+  text-align: right;
+}
+
+select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--mist);
+  border-radius: 6px;
+  background: var(--card-bg);
+  color: var(--ink);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: white;
+}
+
+.btn-primary:hover { background: var(--red); }
+
+.btn-secondary {
+  background: var(--mist);
+  color: var(--ink);
+}
+
+.btn-secondary:hover { background: #d8cfc4; }
+
+.btn-danger {
+  background: #f0ebe2;
+  color: #c0392b;
+}
+
+.btn-danger:hover { background: #e8dfd4; }
+
+/* ── READING VIEW ── */
+.reading-header {
+  padding: 1.5rem 2rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.reading-controls {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn-icon {
+  background: var(--mist);
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: background 0.2s;
+}
+
+.btn-icon:hover { background: #d8cfc4; }
+
+.btn-icon.active { background: var(--gold); color: white; }
+
+/* ── WORD RENDERING ── */
+.sentence {
+  font-family: 'Noto Serif SC', serif;
+  font-size: var(--char-size);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  word-spacing: 0.2em;
+  padding: 0.5rem 0;
+}
+
+ruby {
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+}
+
+ruby rt {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--pinyin-size);
+  font-weight: 500;
+  color: var(--red);
+  opacity: var(--pinyin-visible);
+  transition: opacity 0.3s;
+  line-height: 1;
+  margin-top: 0.2em;
+}
+
+/* Alternative: CSS grid approach */
+.word-grid {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0;
+  font-family: 'Noto Serif SC', serif;
+  font-size: var(--char-size);
+  line-height: 2;
+}
+
+.word {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 0.1em;
+}
+
+.word .py {
+  font-family: 'Outfit', sans-serif;
+  font-size: var(--pinyin-size);
+  font-weight: 500;
+  color: var(--red);
+  opacity: var(--pinyin-visible);
+  line-height: 1;
+  height: calc(var(--pinyin-size) * 1.4);
+  transition: opacity 0.3s;
+}
+
+.word .char {
+  line-height: 1;
+}
+
+/* ── TRANSLATION ── */
+.translation {
+  font-size: 0.9rem;
+  color: #7a6d5e;
+  line-height: 1.6;
+  margin-top: 0.3rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0.8rem;
+  background: #faf6f0;
+  border-left: 2px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+}
+
+body.dark-mode .translation {
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── PAGE LAYOUT ── */
+.page { display: none; }
+.page.active { display: block; }
+
+.reading-body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+
+@media(max-width:640px) {
+  .modal-content { max-width: 95%; padding: 1.5rem; }
+  .reading-body { padding: 0 1rem 2rem; }
+  nav { padding: 0 1rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">HSK<span>1</span></div>
+  <div class="nav-buttons">
+    <button class="nav-btn" onclick="toggleSettings()" title="Settings">⚙️</button>
+    <button class="nav-btn" onclick="toggleDarkMode()" title="Dark mode">🌙</button>
+  </div>
+</nav>
+
+<!-- Settings Modal -->
+<div id="settings-modal" class="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      ⚙️ Settings
+      <button class="modal-close" onclick="toggleSettings()">✕</button>
+    </div>
+
+    <!-- Pinyin -->
+    <div class="setting-group">
+      <label class="setting-label">Pinyin Display</label>
+      <div class="toggle-switch">
+        <div class="switch" id="pinyin-toggle" onclick="togglePinyin()"></div>
+        <span>Show pinyin</span>
+      </div>
+      <div class="setting-note">Display Chinese pronunciation above characters</div>
+    </div>
+
+    <!-- Character Size -->
+    <div class="setting-group">
+      <label class="setting-label">Character Size</label>
+      <div class="slider-group">
+        <input type="range" id="char-size-slider" min="16" max="32" value="24" oninput="updateCharSize(this.value)">
+        <span class="slider-value" id="char-size-value">24px</span>
+      </div>
+    </div>
+
+    <!-- Pinyin Size -->
+    <div class="setting-group">
+      <label class="setting-label">Pinyin Size</label>
+      <div class="slider-group">
+        <input type="range" id="pinyin-size-slider" min="8" max="16" value="12" oninput="updatePinyinSize(this.value)">
+        <span class="slider-value" id="pinyin-size-value">12px</span>
+      </div>
+    </div>
+
+    <!-- TTS -->
+    <div class="setting-group">
+      <label class="setting-label">Text-to-Speech</label>
+      <div class="toggle-switch">
+        <div class="switch" id="tts-toggle" onclick="toggleTTS()"></div>
+        <span>Enable TTS</span>
+      </div>
+    </div>
+
+    <div class="setting-group" id="tts-options" style="display:none;">
+      <label class="setting-label">Voice</label>
+      <select id="tts-voice" onchange="changeTTSVoice(this.value)">
+        <option value="default">Default (System)</option>
+        <option value="google-zh">Google Mandarin</option>
+        <option value="apple-zh">Apple Mandarin (if available)</option>
+      </select>
+
+      <label class="setting-label" style="margin-top:0.8rem;">Speed</label>
+      <div class="slider-group">
+        <input type="range" id="tts-rate-slider" min="0.5" max="2" step="0.1" value="1" oninput="updateTTSRate(this.value)">
+        <span class="slider-value" id="tts-rate-value">1x</span>
+      </div>
+    </div>
+
+    <!-- Dark Mode -->
+    <div class="setting-group">
+      <label class="setting-label">Dark Mode</label>
+      <div class="toggle-switch">
+        <div class="switch" id="dark-toggle" onclick="toggleDarkMode()"></div>
+        <span>Enable dark theme</span>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button class="btn btn-primary" onclick="saveSettings()">Save</button>
+      <button class="btn btn-secondary" onclick="toggleSettings()">Close</button>
+      <button class="btn btn-danger" onclick="resetSettings()">Reset All</button>
+    </div>
+  </div>
+</div>
+
+<!-- Sample Reading View -->
+<div id="reading-page" class="page active">
+  <div class="reading-header">
+    <h1>📖 Reading Practice</h1>
+    <p style="color: #7a6d5e; font-size: 0.9rem;">Click buttons below to control TTS and pinyin</p>
+  </div>
+
+  <div class="reading-body">
+    <div class="reading-controls">
+      <button class="btn-icon" id="play-btn" onclick="speakSentence()" title="Play audio">🔊 Speak</button>
+      <button class="btn-icon" id="stop-btn" onclick="stopSpeak()" title="Stop audio">⏹ Stop</button>
+      <button class="btn-icon" id="pinyin-btn" onclick="toggleReadingPinyin()" title="Toggle pinyin">📝 Pinyin</button>
+    </div>
+
+    <!-- Sample text with ruby markup -->
+    <div class="sentence">
+      <ruby>你<rt>nǐ</rt></ruby><ruby>好<rt>hǎo</rt></ruby>
+    </div>
+    <div class="translation">Hello!</div>
+
+    <div class="sentence">
+      <ruby>我<rt>wǒ</rt></ruby><ruby>叫<rt>jiào</rt></ruby><ruby>李<rt>Lǐ</rt></ruby><ruby>华<rt>Huá</rt></ruby>
+    </div>
+    <div class="translation">My name is Li Hua.</div>
+
+    <div class="sentence">
+      <ruby>你<rt>nǐ</rt></ruby><ruby>呢<rt>ne</rt></ruby>
+    </div>
+    <div class="translation">And you?</div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// SETTINGS MANAGER
+// ═══════════════════════════════════════════════════════════════
+
+const DEFAULT_SETTINGS = {
+  pinyinVisible: true,
+  charSize: 24,
+  pinyinSize: 12,
+  ttsEnabled: true,
+  ttsRate: 1,
+  darkMode: false
+};
+
+const STORAGE_KEY = 'hsk1_settings';
+
+function loadSettings() {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  return stored ? JSON.parse(stored) : DEFAULT_SETTINGS;
+}
+
+function saveSettings() {
+  const settings = {
+    pinyinVisible: document.getElementById('pinyin-toggle').classList.contains('active'),
+    charSize: parseInt(document.getElementById('char-size-slider').value),
+    pinyinSize: parseInt(document.getElementById('pinyin-size-slider').value),
+    ttsEnabled: document.getElementById('tts-toggle').classList.contains('active'),
+    ttsRate: parseFloat(document.getElementById('tts-rate-slider').value),
+    darkMode: document.getElementById('dark-toggle').classList.contains('active')
+  };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+  applySettings();
+  toggleSettings();
+}
+
+function applySettings() {
+  const settings = loadSettings();
+  
+  // Apply to sliders
+  document.getElementById('char-size-slider').value = settings.charSize;
+  document.getElementById('pinyin-size-slider').value = settings.pinyinSize;
+  document.getElementById('tts-rate-slider').value = settings.ttsRate;
+  
+  // Apply CSS variables
+  document.documentElement.style.setProperty('--char-size', settings.charSize + 'px');
+  document.documentElement.style.setProperty('--pinyin-size', settings.pinyinSize + 'px');
+  document.documentElement.style.setProperty('--pinyin-visible', settings.pinyinVisible ? '1' : '0');
+  
+  // Update toggle switches
+  updateToggle('pinyin-toggle', settings.pinyinVisible);
+  updateToggle('tts-toggle', settings.ttsEnabled);
+  updateToggle('dark-toggle', settings.darkMode);
+  
+  // Update displays
+  document.getElementById('char-size-value').textContent = settings.charSize + 'px';
+  document.getElementById('pinyin-size-value').textContent = settings.pinyinSize + 'px';
+  document.getElementById('tts-rate-value').textContent = settings.ttsRate.toFixed(1) + 'x';
+  
+  // Apply dark mode
+  if (settings.darkMode) {
+    document.body.classList.add('dark-mode');
+  } else {
+    document.body.classList.remove('dark-mode');
+  }
+  
+  // Show/hide TTS options
+  document.getElementById('tts-options').style.display = settings.ttsEnabled ? 'block' : 'none';
+}
+
+function updateToggle(elementId, isActive) {
+  const el = document.getElementById(elementId);
+  if (isActive) {
+    el.classList.add('active');
+  } else {
+    el.classList.remove('active');
+  }
+}
+
+function resetSettings() {
+  if (confirm('Reset all settings to defaults?')) {
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// UI TOGGLES
+// ═══════════════════════════════════════════════════════════════
+
+function toggleSettings() {
+  const modal = document.getElementById('settings-modal');
+  modal.classList.toggle('active');
+  if (modal.classList.contains('active')) {
+    applySettings();
+  }
+}
+
+function togglePinyin() {
+  const el = document.getElementById('pinyin-toggle');
+  el.classList.toggle('active');
+  const newValue = el.classList.contains('active') ? '1' : '0';
+  document.documentElement.style.setProperty('--pinyin-visible', newValue);
+}
+
+function toggleTTS() {
+  const el = document.getElementById('tts-toggle');
+  el.classList.toggle('active');
+  document.getElementById('tts-options').style.display = el.classList.contains('active') ? 'block' : 'none';
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+  document.getElementById('dark-toggle').classList.toggle('active');
+}
+
+function toggleReadingPinyin() {
+  const btn = document.getElementById('pinyin-btn');
+  btn.classList.toggle('active');
+  togglePinyin();
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SLIDER UPDATES
+// ═══════════════════════════════════════════════════════════════
+
+function updateCharSize(value) {
+  document.documentElement.style.setProperty('--char-size', value + 'px');
+  document.getElementById('char-size-value').textContent = value + 'px';
+}
+
+function updatePinyinSize(value) {
+  document.documentElement.style.setProperty('--pinyin-size', value + 'px');
+  document.getElementById('pinyin-size-value').textContent = value + 'px';
+}
+
+function updateTTSRate(value) {
+  document.getElementById('tts-rate-value').textContent = parseFloat(value).toFixed(1) + 'x';
+}
+
+function changeTTSVoice(value) {
+  // Implementation for voice selection
+  console.log('TTS Voice changed to:', value);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TTS CONTROLS
+// ═══════════════════════════════════════════════════════════════
+
+const synth = window.speechSynthesis;
+let currentUtterance = null;
+
+function speakSentence() {
+  const settings = loadSettings();
+  if (!settings.ttsEnabled) return;
+
+  const text = '你好';
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'zh-CN';
+  utterance.rate = settings.ttsRate;
+  
+  currentUtterance = utterance;
+  synth.speak(utterance);
+  
+  document.getElementById('play-btn').classList.add('active');
+}
+
+function stopSpeak() {
+  synth.cancel();
+  document.getElementById('play-btn').classList.remove('active');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  applySettings();
+});
+</script>
+
+</body>
+</html>

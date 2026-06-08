@@ -13,19 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-8"] = {
   "isPreview": false,
   "content": "",
   "vocab": [
-      "买",
-      "卖",
-      "钱",
-      "块",
-      "多少",
-      "贵",
-      "衣服",
-      "大",
-      "小",
-      "个",
-      "有",
-      "没有"
-      ],
+    "买",
+    "卖",
+    "钱",
+    "块",
+    "多少",
+    "贵",
+    "衣服",
+    "大",
+    "小",
+    "个",
+    "有",
+    "没有"
+  ],
   "grammar": [
     {
       "title": "Have / Don't have: 有 / 没有",
@@ -46,60 +46,154 @@ window.HSK_LESSONS_BY_SLUG["lesson-8"] = {
   "sentences": [
     {
       "zh": "这件衣服多少钱？",
-      "py": "Zhè jiàn yīfu duōshao qián?",
-      "en": "How much is this piece of clothing?"
+      "en": "How much is this piece of clothing?",
+      "words": [
+        "这",
+        "件",
+        "衣服",
+        "多少",
+        "钱",
+        "？"
+      ]
     },
     {
       "zh": "一百五十块。",
-      "py": "Yībǎi wǔshí kuài.",
-      "en": "150 yuan."
+      "en": "150 yuan.",
+      "words": [
+        "一",
+        "百",
+        "五",
+        "十",
+        "块",
+        "。"
+      ]
     },
     {
       "zh": "太贵了！有便宜一点儿的吗？",
-      "py": "Tài guì le! Yǒu piányí yīdiǎnr de ma?",
-      "en": "Too expensive! Is there something cheaper?"
+      "en": "Too expensive! Is there something cheaper?",
+      "words": [
+        "太",
+        "贵",
+        "了",
+        "！",
+        "有",
+        "便",
+        "宜",
+        "一",
+        "点",
+        "儿",
+        "的",
+        "吗",
+        "？"
+      ]
     },
     {
       "zh": "我想买两个苹果。",
-      "py": "Wǒ xiǎng mǎi liǎng gè píngguǒ.",
-      "en": "I want to buy two apples."
+      "en": "I want to buy two apples.",
+      "words": [
+        "我",
+        "想",
+        "买",
+        "两",
+        "个",
+        "苹果",
+        "。"
+      ]
     },
     {
       "zh": "这个比那个好。",
-      "py": "Zhège bǐ nàge hǎo.",
-      "en": "This one is better than that one."
+      "en": "This one is better than that one.",
+      "words": [
+        "这",
+        "个",
+        "比",
+        "那",
+        "个",
+        "好",
+        "。"
+      ]
     }
   ],
   "dialogue": [
     {
       "speaker": "A",
       "zh": "你好！这件衣服多少钱？",
-      "py": "Nǐ hǎo! Zhè jiàn yīfu duōshao qián?",
-      "en": "Hello! How much is this piece of clothing?"
+      "en": "Hello! How much is this piece of clothing?",
+      "words": [
+        "你好",
+        "！",
+        "这",
+        "件",
+        "衣服",
+        "多少",
+        "钱",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "两百块。",
-      "py": "Liǎngbǎi kuài.",
-      "en": "200 yuan."
+      "en": "200 yuan.",
+      "words": [
+        "两",
+        "百",
+        "块",
+        "。"
+      ]
     },
     {
       "speaker": "A",
       "zh": "太贵了！便宜一点儿，好吗？",
-      "py": "Tài guì le! Piányí yīdiǎnr, hǎo ma?",
-      "en": "Too expensive! A little cheaper, OK?"
+      "en": "Too expensive! A little cheaper, OK?",
+      "words": [
+        "太",
+        "贵",
+        "了",
+        "！",
+        "便",
+        "宜",
+        "一",
+        "点",
+        "儿",
+        "，",
+        "好",
+        "吗",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "好，一百八十块，怎么样？",
-      "py": "Hǎo, yībǎi bāshí kuài, zěnmeyàng?",
-      "en": "OK, 180 yuan, how about that?"
+      "en": "OK, 180 yuan, how about that?",
+      "words": [
+        "好",
+        "，",
+        "一",
+        "百",
+        "八",
+        "十",
+        "块",
+        "，",
+        "怎么样",
+        "？"
+      ]
     },
     {
       "speaker": "A",
       "zh": "好的，我买这件。谢谢！",
-      "py": "Hǎo de, wǒ mǎi zhè jiàn. Xièxie!",
-      "en": "OK, I'll buy this one. Thank you!"
+      "en": "OK, I'll buy this one. Thank you!",
+      "words": [
+        "好",
+        "的",
+        "，",
+        "我",
+        "买",
+        "这",
+        "件",
+        "。",
+        "谢谢",
+        "！"
+      ]
     }
   ]
 };

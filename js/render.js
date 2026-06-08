@@ -1,4 +1,76 @@
 (function () {
+/**
+ * Render a line object using WORD_MAP for pinyin lookup
+ * @param {Object} line - Line object with {zh, words, en} structure
+ * @param {Object} lessonData - Optional lesson data containing vocab array for modal integration
+ * @returns {DocumentFragment} Fragment containing rendered elements
+ */
+function renderLine(line, lessonData = null) {
+  const fragment = document.createDocumentFragment();
+  
+  if (!line.words || !Array.isArray(line.words)) {
+    console.warn('[renderer] Invalid line structure - missing words array', line);
+    return fragment;
+  }
+  
+  // Build a lookup map from vocab if lesson data is provided
+  const vocabMap = new Map();
+  if (lessonData && lessonData.vocab && Array.isArray(lessonData.vocab)) {
+    lessonData.vocab.forEach(word => {
+      vocabMap.set(word.c, word);
+    });
+  }
+  
+  // Also check global dictionary if available
+  const dictionaryWords = window.HSK_DICTIONARY?.words || [];
+  const dictionaryMap = new Map();
+  dictionaryWords.forEach(word => {
+    if (!vocabMap.has(word.c)) {
+      dictionaryMap.set(word.c, word);
+    }
+  });
+  
+  line.words.forEach(word => {
+    const pinyin = window.WORD_MAP[word];
+    
+    if (pinyin === undefined) {
+      // Word not found in WORD_MAP - render as plain text and log warning
+      console.warn(`[renderer] "${word}" not found in WORD_MAP`);
+      const textNode = document.createTextNode(word);
+      fragment.appendChild(textNode);
+    } else if (pinyin === '') {
+      // Punctuation - render as plain text without ruby wrapper
+      const textNode = document.createTextNode(word);
+      fragment.appendChild(textNode);
+    } else {
+      // Non-empty pinyin - create ruby element with colorized pinyin
+      const ruby = document.createElement('ruby');
+      const wordText = document.createTextNode(word);
+      const rt = document.createElement('rt');
+      
+      // Use colorizePinyin to get colored pinyin HTML
+      const colorizedPinyin = window.HSK_UTILS.colorizePinyin(pinyin);
+      rt.innerHTML = colorizedPinyin;
+      
+      ruby.appendChild(wordText);
+      ruby.appendChild(rt);
+      
+      // Check if this word is in vocab or dictionary - make it clickable
+      const vocabWord = vocabMap.get(word) || dictionaryMap.get(word);
+      if (vocabWord) {
+        ruby.classList.add('clickable-word');
+        ruby.style.cursor = 'pointer';
+        ruby.dataset.vocabWord = JSON.stringify(vocabWord);
+        ruby.title = 'Click to see details';
+      }
+      
+      fragment.appendChild(ruby);
+    }
+  });
+  
+  return fragment;
+}
+
 function renderLessonList(container, lessons) {
   container.innerHTML = '';
 
@@ -58,8 +130,8 @@ function renderLessonDetail(lesson, totalLessons, readings = []) {
 
   body.appendChild(renderVocabularySection(lesson));
   body.appendChild(renderGrammarSection(lesson.grammar));
-  body.appendChild(renderSentenceSection(lesson.sentences));
-  body.appendChild(renderDialogueSection(lesson.dialogue));
+  body.appendChild(renderSentenceSection(lesson.sentences, lesson));
+  body.appendChild(renderDialogueSection(lesson.dialogue, lesson));
 
   if (readings && readings.length > 0) {
     body.appendChild(renderReadingSection(readings, lesson));
@@ -175,7 +247,7 @@ function renderGrammarSection(grammar) {
   return section;
 }
 
-function renderSentenceSection(sentences) {
+function renderSentenceSection(sentences, lessonData = null) {
   const section = makeSection('✏️', 'EXAMPLE SENTENCES · 例句');
   const list = document.createElement('div');
   list.className = 'sentences-list';
@@ -187,13 +259,34 @@ function renderSentenceSection(sentences) {
     const audioBtn = window.HSK_UTILS.createAudioButton(sentence.zh, 'sm');
     audioBtn.className = 'sentence-audio-btn';
     
-    item.innerHTML = `
-      <div>
-        <div class="sentence-zh">${sentence.zh}</div>
-        <div class="sentence-pinyin">${window.HSK_UTILS.colorizePinyin(sentence.py)}</div>
-      </div>
-      <div class="sentence-en">${sentence.en}</div>`;
+    // Create container div for Chinese and pinyin
+    const textContainer = document.createElement('div');
     
+    // Create Chinese text container with click-to-speak
+    const zhDiv = document.createElement('div');
+    zhDiv.className = 'sentence-zh';
+    zhDiv.style.cursor = 'pointer';
+    zhDiv.title = 'Click to hear pronunciation';
+    // Use renderLine() with words array from v3 data structure
+    const lineFragment = renderLine(sentence, lessonData);
+    zhDiv.appendChild(lineFragment);
+    zhDiv.addEventListener('click', () => {
+      window.HSK_UTILS.speakChinese(sentence.zh);
+    });
+    
+    // Create English translation container with blur-reveal
+    const enDiv = document.createElement('div');
+    enDiv.className = 'sentence-en blur-reveal';
+    enDiv.title = 'Click to reveal translation';
+    enDiv.textContent = sentence.en;
+    enDiv.addEventListener('click', (e) => {
+      e.stopPropagation();
+      enDiv.classList.toggle('revealed');
+    });
+    
+    textContainer.appendChild(zhDiv);
+    item.appendChild(textContainer);
+    item.appendChild(enDiv);
     item.appendChild(audioBtn);
     list.appendChild(item);
   });
@@ -202,7 +295,7 @@ function renderSentenceSection(sentences) {
   return section;
 }
 
-function renderDialogueSection(dialogue) {
+function renderDialogueSection(dialogue, lessonData = null) {
   const section = makeSection('💬', 'DIALOGUE PRACTICE · 对话');
   const box = document.createElement('div');
   box.className = 'dialogue-box';
@@ -211,29 +304,45 @@ function renderDialogueSection(dialogue) {
     const item = document.createElement('div');
     item.className = `dialogue-line speaker-${line.speaker.toLowerCase()}-row`;
     
-    item.innerHTML = `
-      <div class="dialogue-speaker ${line.speaker === 'A' ? 'speaker-a' : 'speaker-b'}">${line.speaker}</div>
-      <div class="dialogue-content" title="Click to hear pronunciation">
-        <div class="dialogue-zh">${line.zh}</div>
-        <div class="dialogue-pinyin">${window.HSK_UTILS.colorizePinyin(line.py)}</div>
-        <div class="dialogue-en blur-reveal" title="Click to reveal translation">${line.en}</div>
-      </div>`;
+    // Create speaker label
+    const speakerDiv = document.createElement('div');
+    speakerDiv.className = `dialogue-speaker ${line.speaker === 'A' ? 'speaker-a' : 'speaker-b'}`;
+    speakerDiv.textContent = line.speaker;
     
-    const content = item.querySelector('.dialogue-content');
-    const english = item.querySelector('.dialogue-en');
-
+    // Create dialogue content container
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'dialogue-content';
+    contentDiv.title = 'Click to hear pronunciation';
+    
+    // Create Chinese text with pinyin using renderLine with words array
+    const zhDiv = document.createElement('div');
+    zhDiv.className = 'dialogue-zh';
+    const lineFragment = renderLine(line, lessonData);
+    zhDiv.appendChild(lineFragment);
+    
+    // Create English translation with blur-reveal
+    const enDiv = document.createElement('div');
+    enDiv.className = 'dialogue-en blur-reveal';
+    enDiv.title = 'Click to reveal translation';
+    enDiv.textContent = line.en;
+    
+    contentDiv.appendChild(zhDiv);
+    contentDiv.appendChild(enDiv);
+    
     // Click bubble to speak
-    content.addEventListener('click', (e) => {
-      if (e.target === english) return; // Don't speak when clicking translation
+    contentDiv.addEventListener('click', (e) => {
+      if (e.target === enDiv || enDiv.contains(e.target)) return; // Don't speak when clicking translation
       window.HSK_UTILS.speakChinese(line.zh);
     });
 
     // Click translation to reveal
-    english.addEventListener('click', (e) => {
+    enDiv.addEventListener('click', (e) => {
       e.stopPropagation();
-      english.classList.toggle('revealed');
+      enDiv.classList.toggle('revealed');
     });
 
+    item.appendChild(speakerDiv);
+    item.appendChild(contentDiv);
     box.appendChild(item);
   });
 
@@ -263,11 +372,22 @@ function renderReadingSection(readings, lessonData = {}) {
     reading.lines.forEach(line => {
       const lineEl = document.createElement('div');
       lineEl.className = 'reading-line';
-      lineEl.innerHTML = `
-        <div class="reading-zh">${line.zh}</div>
-        <div class="reading-py">${window.HSK_UTILS.colorizePinyin(line.py)}</div>
-        <div class="reading-en blur-reveal" title="Click to reveal translation">${line.en}</div>
-      `;
+      
+      // Create Chinese text div using renderLine with lessonData for vocab modal integration
+      const zhDiv = document.createElement('div');
+      zhDiv.className = 'reading-zh';
+      zhDiv.style.cursor = 'pointer';
+      const lineFragment = renderLine(line, lessonData);
+      zhDiv.appendChild(lineFragment);
+      
+      // Create English translation div with blur-reveal
+      const enDiv = document.createElement('div');
+      enDiv.className = 'reading-en blur-reveal';
+      enDiv.title = 'Click to reveal translation';
+      enDiv.textContent = line.en;
+      
+      lineEl.appendChild(zhDiv);
+      lineEl.appendChild(enDiv);
       
       lineEl.addEventListener('click', (e) => {
         if (e.target.classList.contains('reading-en')) {
@@ -415,7 +535,8 @@ function renderDictionary(filtersContainer, grid, dictionary) {
 window.HSK_RENDER = {
   renderDictionary,
   renderLessonDetail,
-  renderLessonList
+  renderLessonList,
+  renderLine
 };
 
 function makeSection(icon, titleHTML) {

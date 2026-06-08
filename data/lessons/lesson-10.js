@@ -13,19 +13,19 @@ window.HSK_LESSONS_BY_SLUG["lesson-10"] = {
   "isPreview": true,
   "content": "",
   "vocab": [
-      "喜欢",
-      "爱",
-      "看",
-      "听",
-      "书",
-      "电视",
-      "电影",
-      "音乐",
-      "运动",
-      "唱歌",
-      "跑步",
-      "游泳"
-      ],
+    "喜欢",
+    "爱",
+    "看",
+    "听",
+    "书",
+    "电视",
+    "电影",
+    "音乐",
+    "运动",
+    "唱歌",
+    "跑步",
+    "游泳"
+  ],
   "grammar": [
     {
       "title": "Expressing likes: 喜欢 + verb/noun",
@@ -46,54 +46,133 @@ window.HSK_LESSONS_BY_SLUG["lesson-10"] = {
   "sentences": [
     {
       "zh": "你有什么爱好？",
-      "py": "Nǐ yǒu shénme àihào?",
-      "en": "What hobbies do you have?"
+      "en": "What hobbies do you have?",
+      "words": [
+        "你",
+        "有",
+        "什么",
+        "爱",
+        "好",
+        "？"
+      ]
     },
     {
       "zh": "我喜欢听音乐和看电影。",
-      "py": "Wǒ xǐhuan tīng yīnyuè hé kàn diànyǐng.",
-      "en": "I like listening to music and watching movies."
+      "en": "I like listening to music and watching movies.",
+      "words": [
+        "我",
+        "喜欢",
+        "听",
+        "音乐",
+        "和",
+        "看",
+        "电影",
+        "。"
+      ]
     },
     {
       "zh": "我不太喜欢运动。",
-      "py": "Wǒ bú tài xǐhuan yùndòng.",
-      "en": "I don't really like sports."
+      "en": "I don't really like sports.",
+      "words": [
+        "我",
+        "不",
+        "太",
+        "喜欢",
+        "运动",
+        "。"
+      ]
     },
     {
       "zh": "他也喜欢唱歌。",
-      "py": "Tā yě xǐhuan chànggē.",
-      "en": "He also likes singing."
+      "en": "He also likes singing.",
+      "words": [
+        "他",
+        "也",
+        "喜欢",
+        "唱歌",
+        "。"
+      ]
     },
     {
       "zh": "我们都喜欢看书。",
-      "py": "Wǒmen dōu xǐhuan kànshū.",
-      "en": "We all like reading books."
+      "en": "We all like reading books.",
+      "words": [
+        "我们",
+        "都",
+        "喜欢",
+        "看",
+        "书",
+        "。"
+      ]
     }
   ],
   "dialogue": [
     {
       "speaker": "A",
       "zh": "你喜欢什么运动？",
-      "py": "Nǐ xǐhuan shénme yùndòng?",
-      "en": "What sports do you like?"
+      "en": "What sports do you like?",
+      "words": [
+        "你",
+        "喜欢",
+        "什么",
+        "运动",
+        "？"
+      ]
     },
     {
       "speaker": "B",
       "zh": "我喜欢游泳，也喜欢跑步。你呢？",
-      "py": "Wǒ xǐhuan yóuyǒng, yě xǐhuan pǎobù. Nǐ ne?",
-      "en": "I like swimming and also running. And you?"
+      "en": "I like swimming and also running. And you?",
+      "words": [
+        "我",
+        "喜欢",
+        "游泳",
+        "，",
+        "也",
+        "喜欢",
+        "跑步",
+        "。",
+        "你",
+        "呢",
+        "？"
+      ]
     },
     {
       "speaker": "A",
       "zh": "我不太喜欢运动。我喜欢看电影。",
-      "py": "Wǒ bú tài xǐhuan yùndòng. Wǒ xǐhuan kàn diànyǐng.",
-      "en": "I don't really like sports. I like watching movies."
+      "en": "I don't really like sports. I like watching movies.",
+      "words": [
+        "我",
+        "不",
+        "太",
+        "喜欢",
+        "运动",
+        "。",
+        "我",
+        "喜欢",
+        "看",
+        "电影",
+        "。"
+      ]
     },
     {
       "speaker": "B",
       "zh": "我也喜欢看电影！我们一起去吧！",
-      "py": "Wǒ yě xǐhuan kàn diànyǐng! Wǒmen yīqǐ qù ba!",
-      "en": "I like watching movies too! Let's go together!"
+      "en": "I like watching movies too! Let's go together!",
+      "words": [
+        "我",
+        "也",
+        "喜欢",
+        "看",
+        "电影",
+        "！",
+        "我们",
+        "一",
+        "起",
+        "去",
+        "吧",
+        "！"
+      ]
     }
   ]
 };
