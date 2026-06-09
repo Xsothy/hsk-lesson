@@ -182,10 +182,16 @@
   /**
    * Set TTS voice
    */
-  function setTTSVoice(voiceName) {
-    currentSettings.tts.voice = voiceName;
+  function setTTSVoice(voiceURI) {
+    currentSettings.tts.voice = voiceURI;
     saveSettings();
     applySettings();
+    
+    // Sync with audio service
+    if (window.HSK_AUDIO && window.HSK_AUDIO.saveSelectedVoice) {
+      window.HSK_AUDIO.saveSelectedVoice(voiceURI);
+    }
+    
     return currentSettings.tts.voice;
   }
 
@@ -193,9 +199,13 @@
   function init() {
     loadSettings();
     applySettings();
-    syncModalWithSettings();
+    
+    // Sync initially with audio service
+    if (window.HSK_AUDIO && currentSettings.tts.voice) {
+      window.HSK_AUDIO.saveSelectedVoice(currentSettings.tts.voice);
+    }
 
-    // Note: Old pinyin toggle button removed from nav, now in settings modal
+    syncModalWithSettings();
   }
 
   // Auto-initialize when DOM is ready
@@ -222,6 +232,8 @@
     // Open modal
     settingsBtn.addEventListener('click', () => {
       settingsModal.classList.add('active');
+      const ttsVoiceSelect = document.getElementById('tts-voice-select');
+      if (ttsVoiceSelect) populateVoices(ttsVoiceSelect);
       syncModalWithSettings();
     });
 
@@ -254,15 +266,6 @@
       charSizeValue.textContent = value.toFixed(1) + 'x';
     });
 
-    // Pinyin size slider
-    const pinyinSizeSlider = document.getElementById('pinyin-size-slider');
-    const pinyinSizeValue = document.getElementById('pinyin-size-value');
-    pinyinSizeSlider?.addEventListener('input', (e) => {
-      const value = parseFloat(e.target.value);
-      setPinyinSize(value);
-      pinyinSizeValue.textContent = value.toFixed(1) + 'x';
-    });
-
     // TTS rate slider
     const ttsRateSlider = document.getElementById('tts-rate-slider');
     const ttsRateValue = document.getElementById('tts-rate-value');
@@ -275,9 +278,6 @@
     // TTS voice selection
     const ttsVoiceSelect = document.getElementById('tts-voice-select');
     if (ttsVoiceSelect) {
-      // Populate voices when modal opens
-      populateVoices(ttsVoiceSelect);
-      
       ttsVoiceSelect.addEventListener('change', (e) => {
         setTTSVoice(e.target.value);
       });
@@ -303,17 +303,14 @@
       }
     });
 
-    // Dark mode toggle - disabled for now
-    // const settingsDarkToggle = document.getElementById('settings-dark-toggle');
-    // (code removed)
-
-    // Save button (just closes modal, settings auto-save on change)
+    // Save button (just closes modal)
     settingsSave?.addEventListener('click', closeModal);
 
     // Reset button
     settingsReset?.addEventListener('click', () => {
       if (confirm('Reset all settings to defaults? This will reload the page.')) {
         resetSettings();
+        window.location.reload();
       }
     });
   }
@@ -368,45 +365,21 @@
    * Test the selected voice with a sample sentence
    */
   function testVoice() {
-    if (typeof speechSynthesis === 'undefined') {
-      console.warn('[settings] Speech synthesis not supported');
-      return;
+    if (window.HSK_AUDIO && window.HSK_AUDIO.speak) {
+      const testSentences = [
+        '你好！我叫李华。',
+        '今天天气很好。',
+        '我喜欢学习中文。',
+        '谢谢你的帮助。'
+      ];
+      const randomSentence = testSentences[Math.floor(Math.random() * testSentences.length)];
+      window.HSK_AUDIO.speak(randomSentence);
     }
-
-    // Stop any ongoing speech
-    speechSynthesis.cancel();
-
-    // Test sentences - cycle through different ones
-    const testSentences = [
-      '你好！我叫李华。',
-      '今天天气很好。',
-      '我喜欢学习中文。',
-      '谢谢你的帮助。'
-    ];
-    
-    const randomSentence = testSentences[Math.floor(Math.random() * testSentences.length)];
-    
-    const utterance = new SpeechSynthesisUtterance(randomSentence);
-    utterance.lang = 'zh-CN';
-    utterance.rate = currentSettings.tts.rate;
-    utterance.volume = currentSettings.tts.volume;
-    
-    // Apply selected voice if available
-    if (currentSettings.tts.voice) {
-      const voices = speechSynthesis.getVoices();
-      const selectedVoice = voices.find(v => v.name === currentSettings.tts.voice);
-      if (selectedVoice) {
-        utterance.voice = selectedVoice;
-      }
-    }
-    
-    speechSynthesis.speak(utterance);
-    console.log(`[settings] Testing voice: "${randomSentence}"`);
   }
+
   function populateVoices(selectElement) {
-    if (!selectElement) return;
+    if (!selectElement || !window.speechSynthesis) return;
     
-    // Trigger voice loading
     const voices = window.speechSynthesis.getVoices();
     
     selectElement.innerHTML = '';
@@ -418,7 +391,6 @@
     selectElement.appendChild(defaultOption);
     
     if (voices.length === 0) {
-      // Voices not loaded yet
       const loadingOption = document.createElement('option');
       loadingOption.value = '';
       loadingOption.textContent = 'Loading voices...';
@@ -427,51 +399,40 @@
       return;
     }
     
-    // Filter Chinese voices
-    const chineseVoices = voices.filter(voice => 
-      voice.lang.startsWith('zh') || 
-      voice.lang.includes('CN') ||
-      voice.lang.includes('TW') ||
-      voice.lang.includes('HK')
-    );
+    // Use HSK_AUDIO filter if available
+    let chineseVoices = [];
+    if (window.HSK_AUDIO && window.HSK_AUDIO.getVoices) {
+      chineseVoices = window.HSK_AUDIO.getVoices();
+    } else {
+      chineseVoices = voices.filter(voice => 
+        voice.lang.startsWith('zh') || 
+        voice.lang.includes('CN') ||
+        voice.lang.includes('TW') ||
+        voice.lang.includes('HK')
+      );
+    }
     
-    // Use Chinese voices if available, otherwise show all
-    const voicesToShow = chineseVoices.length > 0 ? chineseVoices : voices;
-    
-    voicesToShow.forEach(voice => {
+    chineseVoices.forEach(voice => {
       const option = document.createElement('option');
-      option.value = voice.name;
+      option.value = voice.voiceURI;
       option.textContent = `${voice.name} (${voice.lang})`;
       selectElement.appendChild(option);
     });
     
     // Select current voice if set
-    const currentVoice = currentSettings.tts.voice;
-    if (currentVoice) {
-      selectElement.value = currentVoice;
+    if (currentSettings.tts.voice) {
+      selectElement.value = currentSettings.tts.voice;
     }
   }
 
-  // Handle voice list changes (some browsers load voices asynchronously)
+  // Handle voice list changes
   if (typeof speechSynthesis !== 'undefined') {
-    // Trigger initial load
-    window.speechSynthesis.getVoices();
-    
-    // Listen for voice changes
     speechSynthesis.onvoiceschanged = () => {
       const ttsVoiceSelect = document.getElementById('tts-voice-select');
       if (ttsVoiceSelect) {
         populateVoices(ttsVoiceSelect);
       }
     };
-    
-    // Also try after a delay (Firefox sometimes needs this)
-    setTimeout(() => {
-      const ttsVoiceSelect = document.getElementById('tts-voice-select');
-      if (ttsVoiceSelect && window.speechSynthesis.getVoices().length > 0) {
-        populateVoices(ttsVoiceSelect);
-      }
-    }, 1000);
   }
 
   // Initialize modal UI when DOM ready
