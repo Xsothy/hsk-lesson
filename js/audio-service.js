@@ -22,22 +22,41 @@
   // Load available voices
   function loadVoices() {
     const voices = synth.getVoices();
-    // Try to find a Chinese voice
+    
+    // Explicit list matching the exact variants present in your custom voice result list
     const CHINESE_SIMPLIFIED_LANGS = [
         'cmn',
         'zh',
         'zh-CN',
-        'zh-SG'
+        'zh-SG',
+        'hak', // Hakka Chinese variant fallback
+        'yue'  // Cantonese variant fallback
     ];
     
-    chineseVoice = voices.find(v =>
-        CHINESE_SIMPLIFIED_LANGS.some(lang =>
-            v.lang === lang || v.lang.startsWith(lang + '-')
-        )
-    );
+    // Check voice objects against explicit string parameters present in your option elements
+    chineseVoice = voices.find(v => {
+        const lowerLang = v.lang.toLowerCase();
+        const lowerName = v.name.toLowerCase();
+        
+        // Match standard language tags
+        const matchLang = CHINESE_SIMPLIFIED_LANGS.some(lang =>
+            lowerLang === lang || lowerLang.startsWith(lang + '-')
+        );
+        
+        // Match custom eSpeak format strings present in your select list items
+        const matchStringName = lowerName.includes('chinese') || lowerName.includes('mandarin') || lowerLang.includes('cmn');
+
+        return matchLang || matchStringName;
+    });
     
     if (chineseVoice) {
       console.log('✓ Chinese voice loaded:', chineseVoice.name, chineseVoice.lang);
+      
+      // Auto-sync select element if it exists in the DOM
+      const selectEl = document.getElementById('tts-voice-select');
+      if (selectEl) {
+         selectEl.value = chineseVoice.name;
+      }
     }
   }
   
@@ -53,18 +72,14 @@
    * Configuration
    */
   const config = {
-    // Playback speed: 0.7 = slower (70% speed for learning)
-    playbackRate: 0.7,
-    // Web Speech API settings
+    playbackRate: 0.7, // Playback speed: 0.7 = slower for learning
     webSpeech: {
       enabled: true,
       lang: 'zh-CN',
       pitch: 1.0
     },
-    // Fallback TTS URL when no Chinese voice available
     fallbackTTS: {
       enabled: true,
-      // Using a more reliable alternative endpoint
       url: (text) => `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=zh-CN&client=gtx`
     }
   };
@@ -73,16 +88,13 @@
    * Stop any currently playing audio
    */
   function stopCurrentAudio() {
-    // Clear speech queue
     speechQueue = [];
     isSpeaking = false;
     
-    // Stop Web Speech API
     if (synth && synth.speaking) {
       synth.cancel();
     }
     
-    // Stop HTML5 audio
     if (currentAudio) {
       currentAudio.pause();
       currentAudio.currentTime = 0;
@@ -97,7 +109,6 @@
     if (isSpeaking || speechQueue.length === 0) {
       return;
     }
-    
     const nextItem = speechQueue.shift();
     speakImmediately(nextItem.text, nextItem.resolve, nextItem.reject);
   }
@@ -116,7 +127,7 @@
     isSpeaking = true;
     
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = config.webSpeech.lang;
+    utterance.lang = chineseVoice ? chineseVoice.lang : config.webSpeech.lang;
     utterance.rate = config.playbackRate;
     utterance.pitch = config.webSpeech.pitch;
     
@@ -127,44 +138,40 @@
     utterance.onend = () => {
       isSpeaking = false;
       resolve();
-      processQueue(); // Process next item in queue
+      processQueue();
     };
     
     utterance.onerror = (event) => {
-      // Ignore 'interrupted' errors as they're expected when we cancel
       if (event.error !== 'interrupted') {
         console.error('Web Speech error:', event.error);
         reject(new Error(`Web Speech error: ${event.error}`));
       } else {
-        resolve(); // Treat interrupted as success (user cancelled)
+        resolve();
       }
       isSpeaking = false;
-      processQueue(); // Process next item in queue
+      processQueue();
     };
     
     synth.speak(utterance);
   }
 
   /**
-   * Speak using Web Speech API (browser built-in) with queue
+   * Speak using Web Speech API with queue
    */
   async function speakWithWebSpeech(text) {
     return new Promise((resolve, reject) => {
-      // If already speaking, cancel current and clear queue for immediate playback
       if (isSpeaking || synth.speaking) {
         synth.cancel();
         speechQueue = [];
         isSpeaking = false;
       }
-      
-      // Add to queue
       speechQueue.push({ text, resolve, reject });
       processQueue();
     });
   }
 
   /**
-   * Speak using fallback online TTS (when no Chinese voice available)
+   * Speak using fallback online TTS
    */
   async function speakWithFallbackTTS(text) {
     return new Promise((resolve, reject) => {
@@ -195,7 +202,7 @@
   }
 
   /**
-   * Main speak function - uses Web Speech API (browser built-in)
+   * Main speak function
    */
   async function speak(text, options = {}) {
     if (!text) {
@@ -204,15 +211,12 @@
     }
     
     try {
-      // Check if Chinese voice is available
       const hasChineseVoice = !!chineseVoice;
       
       if (config.webSpeech.enabled && hasChineseVoice) {
-        // Use Web Speech API if Chinese voice is available
         await speakWithWebSpeech(text);
         console.log(`✓ Audio played via Web Speech API (${config.playbackRate}x speed)`);
       } else {
-        // Fall back to online TTS if no Chinese voice
         console.warn('No Chinese voice available, using fallback TTS');
         await speakWithFallbackTTS(text);
         console.log(`✓ Audio played via Fallback TTS (${config.playbackRate}x speed)`);
@@ -227,46 +231,25 @@
     }
   }
 
-  /**
-   * Preload audio - not applicable for Web Speech API
-   */
-  async function preloadAudio(text) {
-    // Web Speech API doesn't need preloading
+  function preloadAudio(text) {
     console.log('Preload not needed for Web Speech API');
   }
 
-  /**
-   * Clear audio cache - not applicable for Web Speech API
-   */
   function clearCache() {
     audioCache.clear();
     console.log('Audio cache cleared');
   }
 
-  /**
-   * Check if audio is currently playing
-   */
   function isPlaying() {
     return isSpeaking || (synth && synth.speaking) || currentAudio !== null;
   }
 
-  /**
-   * Get cache statistics
-   */
   function getCacheStats() {
-    return {
-      size: 0,
-      items: [],
-      provider: 'Web Speech API (no caching needed)'
-    };
+    return { size: 0, items: [], provider: 'Web Speech API' };
   }
 
-  /**
-   * Get available TTS providers
-   */
   function getAvailableProviders() {
     const providers = [];
-    
     const hasChineseVoice = !!chineseVoice;
     
     if (synth && hasChineseVoice) {
@@ -274,7 +257,7 @@
         name: 'Web Speech API', 
         type: 'built-in', 
         quality: 'good', 
-        speed: `${config.playbackRate}x (slower for learning)`,
+        speed: `${config.playbackRate}x`,
         voice: chineseVoice.name,
         status: 'active'
       });
@@ -285,16 +268,15 @@
         name: 'Fallback Online TTS', 
         type: 'online', 
         quality: 'good', 
-        speed: `${config.playbackRate}x (slower for learning)`,
+        speed: `${config.playbackRate}x`,
         voice: 'Google TTS',
         status: 'active (no local Chinese voice found)'
       });
     }
-    
     return providers;
   }
 
-  // Public API
+  // Public API Window Binding
   window.HSK_AUDIO = {
     speak,
     stop: stopCurrentAudio,
@@ -304,24 +286,25 @@
     getCacheStats,
     getAvailableProviders,
     config,
-    // New methods
     getVoices: () => synth ? synth.getVoices() : [],
     setVoice: (voice) => { chineseVoice = voice; }
   };
 
-  console.log('✓ Audio Service initialized');
-  
-  const hasChineseVoice = !!chineseVoice;
-  
-  if (hasChineseVoice) {
-    console.log(`  Provider: Web Speech API (browser built-in)`);
-    console.log(`  Voice: ${chineseVoice.name}`);
-  } else {
-    console.log(`  Provider: Fallback Online TTS (no local Chinese voice found)`);
-    console.log(`  Voice: Google TTS (requires internet)`);
-    console.log(`  💡 Tip: Install Chinese language pack for offline audio`);
-  }
-  
-  console.log(`  Speed: ${config.playbackRate}x (slower for pronunciation learning)`);
+  // Setup Event Listener interface connection for your specific DOM element structure
+  document.addEventListener('DOMContentLoaded', () => {
+    const selectEl = document.getElementById('tts-voice-select');
+    if (selectEl) {
+      selectEl.addEventListener('change', (e) => {
+        const selectedValue = e.target.value;
+        const voices = window.HSK_AUDIO.getVoices();
+        const foundVoice = voices.find(v => v.name === selectedValue);
+        if (foundVoice) {
+          window.HSK_AUDIO.setVoice(foundVoice);
+          console.log(`Voice updated manually to: ${foundVoice.name}`);
+        }
+      });
+    }
+  });
 
+  console.log('✓ Audio Service initialized');
 })();
