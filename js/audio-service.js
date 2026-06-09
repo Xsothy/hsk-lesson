@@ -23,9 +23,15 @@
   function loadVoices() {
     const voices = synth.getVoices();
     // Try to find a Chinese voice
-    chineseVoice = voices.find(v => v.lang.startsWith('zh')) || 
-                   voices.find(v => v.lang.includes('CN')) ||
-                   voices[0]; // Fallback to first available
+    chineseVoice = voices.find(v =>
+                    v.lang === 'cmn' ||
+                    v.lang.startsWith('cmn-') ||
+                    v.lang.startsWith('zh') ||
+                    v.lang.includes('CN')
+                ) ||
+                voices.find(v => v.lang === 'yue') ||
+                voices.find(v => v.lang === 'hak') ||
+                voices[0];
     
     if (chineseVoice) {
       console.log('✓ Chinese voice loaded:', chineseVoice.name, chineseVoice.lang);
