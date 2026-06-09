@@ -22,6 +22,18 @@
 
   let currentSettings = { ...DEFAULT_SETTINGS };
 
+  function debugLog(msg) {
+    console.log(`[settings] ${msg}`);
+    const consoleEl = document.getElementById('debug-console');
+    if (consoleEl) {
+      const entry = document.createElement('div');
+      entry.textContent = `> ${msg}`;
+      consoleEl.prepend(entry);
+      // Keep only last 20 entries
+      while (consoleEl.children.length > 20) consoleEl.lastChild.remove();
+    }
+  }
+
   /**
    * Load settings from localStorage
    */
@@ -192,11 +204,13 @@
       window.HSK_AUDIO.saveSelectedVoice(voiceURI);
     }
     
+    debugLog(`Voice set to: ${voiceURI}`);
     return currentSettings.tts.voice;
   }
 
   // Initialize on page load
   function init() {
+    debugLog('Init settings...');
     loadSettings();
     applySettings();
     
@@ -206,6 +220,7 @@
     }
 
     syncModalWithSettings();
+    debugLog('Init complete');
   }
 
   // Auto-initialize when DOM is ready
@@ -235,6 +250,7 @@
       const ttsVoiceSelect = document.getElementById('tts-voice-select');
       if (ttsVoiceSelect) populateVoices(ttsVoiceSelect);
       syncModalWithSettings();
+      debugLog('Modal opened');
     });
 
     // Close modal handlers
@@ -282,6 +298,14 @@
         setTTSVoice(e.target.value);
       });
     }
+
+    // Refresh voices button
+    const refreshBtn = document.getElementById('refresh-voices-btn');
+    refreshBtn?.addEventListener('click', () => {
+      debugLog('Manual refresh...');
+      if (window.speechSynthesis) window.speechSynthesis.getVoices();
+      populateVoices(ttsVoiceSelect);
+    });
 
     // Test voice button
     const testVoiceBtn = document.getElementById('test-voice-btn');
@@ -379,9 +403,15 @@
   }
 
   function populateVoices(selectElement) {
-    if (!selectElement || !window.speechSynthesis) return;
+    if (!selectElement) return;
+    
+    if (!window.speechSynthesis) {
+      debugLog('Error: speechSynthesis missing');
+      return;
+    }
     
     const voices = window.speechSynthesis.getVoices();
+    debugLog(`Found ${voices.length} total voices`);
     
     selectElement.innerHTML = '';
     
@@ -394,7 +424,7 @@
     if (voices.length === 0) {
       const loadingOption = document.createElement('option');
       loadingOption.value = '';
-      loadingOption.textContent = 'Loading voices...';
+      loadingOption.textContent = 'Still loading... tap 🔄';
       loadingOption.disabled = true;
       selectElement.appendChild(loadingOption);
       return;
@@ -459,6 +489,7 @@
   // Handle voice list changes
   if (typeof speechSynthesis !== 'undefined') {
     speechSynthesis.onvoiceschanged = () => {
+      debugLog('onvoiceschanged fired');
       const ttsVoiceSelect = document.getElementById('tts-voice-select');
       if (ttsVoiceSelect) {
         populateVoices(ttsVoiceSelect);

@@ -45,7 +45,7 @@
     <div class="settings-backdrop"></div>
     <div class="settings-content">
       <div class="settings-header">
-        <span>⚙️ Settings</span>
+        <span>⚙️ Settings <small style="font-size: 0.6rem; opacity: 0.5;">v2.1.2</small></span>
         <button class="settings-close" type="button" aria-label="Close settings">✕</button>
       </div>
 
@@ -90,13 +90,16 @@
       <!-- TTS Voice Selection -->
       <div class="setting-group">
         <label class="setting-label">Voice</label>
-        <select id="tts-voice-select" class="voice-select">
-          <option value="">Loading voices...</option>
-        </select>
-        <button class="settings-btn settings-btn-secondary" id="test-voice-btn" type="button" style="margin-top: 0.5rem;">
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+          <select id="tts-voice-select" class="voice-select" style="flex: 1;">
+            <option value="">Loading voices...</option>
+          </select>
+          <button id="refresh-voices-btn" class="settings-btn" style="width: auto; padding: 0.6rem;" title="Refresh voices">🔄</button>
+        </div>
+        <button class="settings-btn settings-btn-secondary" id="test-voice-btn" type="button">
           🔊 Test Voice
         </button>
-        <div class="setting-note">Select text-to-speech voice and test it</div>
+        <div class="setting-note">Select voice and test it. If list is empty, try clicking 🔄.</div>
       </div>
 
       <!-- Dark Mode - Hidden for now -->
@@ -112,6 +115,12 @@
       <div class="settings-actions">
         <button class="settings-btn settings-btn-primary" id="settings-save" type="button">Save & Close</button>
         <button class="settings-btn settings-btn-danger" id="settings-reset" type="button">Reset to Defaults</button>
+      </div>
+
+      <!-- Debug Section -->
+      <div id="settings-debug" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--mist); font-family: monospace; font-size: 0.6rem; color: #9a8d7e;">
+        <div>Debug Logs:</div>
+        <div id="debug-console" style="max-height: 80px; overflow-y: auto; background: rgba(0,0,0,0.03); padding: 0.4rem; border-radius: 4px;"></div>
       </div>
     </div>
   </div>
