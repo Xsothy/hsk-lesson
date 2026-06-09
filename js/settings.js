@@ -308,8 +308,9 @@
 
     // Reset button
     settingsReset?.addEventListener('click', () => {
-      if (confirm('Reset all settings to defaults? This will reload the page.')) {
-        resetSettings();
+      if (confirm('This will reset all your preferences (character size, voice, pinyin toggle) to defaults. Continue?')) {
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem('hsk1_tts_voice');
         window.location.reload();
       }
     });
@@ -411,11 +412,41 @@
         voice.lang.includes('HK')
       );
     }
-    
-    chineseVoices.forEach(voice => {
+
+    // Filter for "Popular/High Quality" voices
+    const popularVoices = chineseVoices.filter(v => {
+      const name = v.name.toLowerCase();
+      const isGoogle = name.includes('google');
+      const isMicrosoftHighQual = name.includes('microsoft') && (name.includes('natural') || name.includes('neural'));
+      const isApplePremium = name.includes('premium') || name.includes('siri');
+      return isGoogle || isMicrosoftHighQual || isApplePremium;
+    });
+
+    // If we have popular voices, use only those. Otherwise use all Chinese voices.
+    const voicesToDisplay = popularVoices.length > 0 ? popularVoices : chineseVoices;
+
+    voicesToDisplay.forEach(voice => {
+      const name = voice.name.toLowerCase();
+      const isPopular = name.includes('google') || 
+                       (name.includes('microsoft') && (name.includes('natural') || name.includes('neural'))) ||
+                       (name.includes('premium') || name.includes('siri'));
+      
+      const isLocal = voice.localService;
+      
       const option = document.createElement('option');
       option.value = voice.voiceURI;
-      option.textContent = `${voice.name} (${voice.lang})`;
+      
+      // Build label with icons
+      // ⭐ = Popular/Recommended
+      // 📵 = Local (No internet needed)
+      // ☁️ = Online (Requires internet)
+      let prefix = '';
+      if (isPopular) prefix += '⭐ ';
+      prefix += isLocal ? '📵 ' : '☁️ ';
+      
+      const connectivity = isLocal ? '[Offline]' : '[Online]';
+      option.textContent = `${prefix}${voice.name} ${connectivity}`;
+      
       selectElement.appendChild(option);
     });
     
@@ -433,6 +464,16 @@
         populateVoices(ttsVoiceSelect);
       }
     };
+    
+    // Fallback: try populating several times for mobile browsers
+    [100, 500, 1000, 2000, 5000].forEach(delay => {
+      setTimeout(() => {
+        const ttsVoiceSelect = document.getElementById('tts-voice-select');
+        if (ttsVoiceSelect && window.speechSynthesis.getVoices().length > 0) {
+          populateVoices(ttsVoiceSelect);
+        }
+      }, delay);
+    });
   }
 
   // Initialize modal UI when DOM ready

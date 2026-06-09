@@ -51,7 +51,8 @@
       return Promise.resolve(window.HSK_LESSONS_BY_SLUG[slug]);
     }
 
-    return loadScript(`data/lessons/${slug}.js`).then(() => {
+    const version = '2.1';
+    return loadScript(`data/lessons/${slug}.js?v=${version}`).then(() => {
       const lesson = window.HSK_LESSONS_BY_SLUG[slug];
 
       if (!lesson) {

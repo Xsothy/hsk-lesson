@@ -15,6 +15,9 @@
   // ─────────────────────────────────────────────────────────────
   const ZH_LANGS = ['zh-CN', 'zh-TW', 'zh-HK', 'zh-SG', 'zh', 'cmn', 'chi', 'zho'];
 
+  /**
+   * Identifies if a voice is Chinese
+   */
   function isChineseVoice(voice) {
     const lang = voice.lang.toLowerCase();
     const name = voice.name.toLowerCase();
@@ -22,6 +25,46 @@
            name.includes('chinese') || 
            name.includes('mandarin') || 
            name.includes('cantonese');
+  }
+
+  /**
+   * Scores a voice based on "popularity" and quality
+   * Higher score = better voice
+   */
+  function getVoiceScore(voice) {
+    const name = voice.name.toLowerCase();
+    const lang = voice.lang.toLowerCase();
+    let score = 0;
+
+    // Preferred Region: Mainland China (Mandarin)
+    if (lang === 'zh-cn' || lang === 'zh_cn') score += 10;
+
+    // High Quality Engines (Popular)
+    const isGoogle = name.includes('google');
+    const isMicrosoftHighQual = name.includes('microsoft') && (name.includes('natural') || name.includes('neural'));
+    const isApplePremium = name.includes('premium') || name.includes('siri');
+
+    if (isGoogle) score += 50;
+    if (isMicrosoftHighQual) score += 40;
+    if (isApplePremium) score += 30;
+
+    // Bonus for local service (more reliable, no internet needed)
+    if (voice.localService) score += 20;
+    
+    // Bonus for explicitly neural/natural if not already caught
+    if (name.includes('neural') || name.includes('natural')) score += 10;
+
+    // Penalize low quality/generic system voices
+    if (name.includes('desktop')) score -= 20;
+    
+    return score;
+  }
+
+  function getSortedChineseVoices() {
+    if (!synth) return [];
+    return synth.getVoices()
+      .filter(isChineseVoice)
+      .sort((a, b) => getVoiceScore(b) - getVoiceScore(a));
   }
 
   // ─────────────────────────────────────────────────────────────
@@ -50,12 +93,9 @@
       if (saved) return saved;
     }
 
-    // 2. Try preferred Chinese voices (zh-CN)
-    const zhCN = voices.find(v => v.lang === 'zh-CN' || v.lang === 'zh_CN');
-    if (zhCN) return zhCN;
-
-    // 3. Any Chinese voice
-    return voices.find(isChineseVoice) || null;
+    // 2. Use the highest-scored Chinese voice
+    const sorted = getSortedChineseVoices();
+    return sorted[0] || null;
   }
 
   // ─────────────────────────────────────────────────────────────
@@ -205,7 +245,7 @@
     stop:     stopCurrentAudio,
     isPlaying: () => isSpeaking || !!synth?.speaking || !!currentAudio,
     saveSelectedVoice,
-    getVoices: () => synth?.getVoices().filter(isChineseVoice) ?? [],
+    getVoices: getSortedChineseVoices,
     config
   };
 
