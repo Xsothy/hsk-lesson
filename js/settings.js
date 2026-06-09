@@ -21,6 +21,7 @@
   };
 
   let currentSettings = { ...DEFAULT_SETTINGS };
+  let cachedVoices = [];
 
   function debugLog(msg) {
     console.log(`[settings] ${msg}`);
@@ -35,177 +36,29 @@
   }
 
   /**
-   * Load settings from localStorage
+   * Proactively load and cache voices
    */
-  function loadSettings() {
-    try {
-      const stored = localStorage.getItem(STORAGE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        currentSettings = { 
-          ...DEFAULT_SETTINGS, 
-          ...parsed,
-          tts: { ...DEFAULT_SETTINGS.tts, ...parsed.tts }
-        };
-        console.log('✓ Settings loaded from localStorage');
-      }
-    } catch (e) {
-      console.warn('[settings] Failed to load settings, using defaults:', e);
-      currentSettings = { ...DEFAULT_SETTINGS };
-    }
-    return currentSettings;
-  }
-
-  /**
-   * Save settings to localStorage
-   */
-  function saveSettings() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(currentSettings));
-      console.log('✓ Settings saved to localStorage');
-    } catch (e) {
-      console.error('[settings] Failed to save settings:', e);
-    }
-  }
-
-  /**
-   * Apply settings to the DOM
-   */
-  function applySettings() {
-    const root = document.documentElement;
-    const body = document.body;
-
-    // Pinyin visibility
-    if (currentSettings.pinyinVisible) {
-      body.classList.remove('hide-pinyin');
-    } else {
-      body.classList.add('hide-pinyin');
-    }
-
-    // Pinyin position
-    if (currentSettings.pinyinPosition === 'bottom') {
-      body.classList.add('pinyin-bottom');
-    } else {
-      body.classList.remove('pinyin-bottom');
-    }
-
-    // Character size (CSS variable)
-    root.style.setProperty('--char-size', currentSettings.charSize.toFixed(2));
-
-    // Update audio service TTS settings if available
-    if (window.HSK_AUDIO && window.HSK_AUDIO.config) {
-      window.HSK_AUDIO.config.playbackRate = currentSettings.tts.rate;
-      // Apply selected voice if set
-      if (currentSettings.tts.voice) {
-        window.HSK_AUDIO.config.selectedVoice = currentSettings.tts.voice;
-      }
-    }
-
-    console.log('✓ Settings applied to DOM');
-  }
-
-  /**
-   * Get current settings
-   */
-  function getSettings() {
-    return { ...currentSettings };
-  }
-
-  /**
-   * Update a setting
-   */
-  function updateSetting(key, value) {
-    if (key === 'tts.rate' || key === 'tts.volume') {
-      const [parent, child] = key.split('.');
-      currentSettings[parent][child] = value;
-    } else {
-      currentSettings[key] = value;
-    }
-    saveSettings();
-    applySettings();
-  }
-
-  /**
-   * Reset to default settings
-   */
-  function resetSettings() {
-    currentSettings = { ...DEFAULT_SETTINGS };
-    saveSettings();
-    applySettings();
-    console.log('✓ Settings reset to defaults');
-  }
-
-  /**
-   * Toggle pinyin visibility
-   */
-  function togglePinyin() {
-    currentSettings.pinyinVisible = !currentSettings.pinyinVisible;
-    saveSettings();
-    applySettings();
-    return currentSettings.pinyinVisible;
-  }
-
-  /**
-   * Toggle dark mode
-   */
-  function toggleDarkMode() {
-    // Dark mode temporarily disabled
-    return false;
-  }
-
-  /**
-   * Set character size
-   */
-  function setCharSize(size) {
-    currentSettings.charSize = Math.max(0.8, Math.min(1.5, size));
-    saveSettings();
-    applySettings();
-    return currentSettings.charSize;
-  }
-
-  /**
-   * Set pinyin size
-   */
-  function setPinyinSize(size) {
-    // Deprecated - pinyin size now scales with char size
-    return 1.0;
-  }
-
-  /**
-   * Toggle pinyin position (top/bottom)
-   */
-  function togglePinyinPosition() {
-    currentSettings.pinyinPosition = currentSettings.pinyinPosition === 'top' ? 'bottom' : 'top';
-    saveSettings();
-    applySettings();
-    return currentSettings.pinyinPosition;
-  }
-
-  /**
-   * Set TTS rate
-   */
-  function setTTSRate(rate) {
-    currentSettings.tts.rate = Math.max(0.5, Math.min(2.0, rate));
-    saveSettings();
-    applySettings();
-    return currentSettings.tts.rate;
-  }
-
-  /**
-   * Set TTS voice
-   */
-  function setTTSVoice(voiceURI) {
-    currentSettings.tts.voice = voiceURI;
-    saveSettings();
-    applySettings();
+  function refreshVoices() {
+    if (!window.speechSynthesis) return;
     
-    // Sync with audio service
-    if (window.HSK_AUDIO && window.HSK_AUDIO.saveSelectedVoice) {
-      window.HSK_AUDIO.saveSelectedVoice(voiceURI);
+    // Get voices from service if available, otherwise filter manually
+    if (window.HSK_AUDIO && window.HSK_AUDIO.getVoices) {
+      cachedVoices = window.HSK_AUDIO.getVoices();
+    } else {
+      const allVoices = window.speechSynthesis.getVoices();
+      cachedVoices = allVoices.filter(voice => 
+        voice.lang.startsWith('zh') || 
+        voice.lang.includes('CN') ||
+        voice.lang.includes('TW') ||
+        voice.lang.includes('HK')
+      );
     }
-    
-    debugLog(`Voice set to: ${voiceURI}`);
-    return currentSettings.tts.voice;
+
+    if (cachedVoices.length > 0) {
+      debugLog(`Cached ${cachedVoices.length} Chinese voices`);
+      const ttsVoiceSelect = document.getElementById('tts-voice-select');
+      if (ttsVoiceSelect) populateVoices(ttsVoiceSelect);
+    }
   }
 
   // Initialize on page load
@@ -220,6 +73,14 @@
     }
 
     syncModalWithSettings();
+
+    // Proactively "poke" the speech engine to wake it up (common mobile fix)
+    if (window.speechSynthesis) {
+      window.speechSynthesis.getVoices();
+      debugLog('Speech engine poked');
+    }
+
+    refreshVoices();
     debugLog('Init complete');
   }
 
@@ -248,6 +109,7 @@
     settingsBtn.addEventListener('click', () => {
       settingsModal.classList.add('active');
       const ttsVoiceSelect = document.getElementById('tts-voice-select');
+      // Always try to populate from cache when opening
       if (ttsVoiceSelect) populateVoices(ttsVoiceSelect);
       syncModalWithSettings();
       debugLog('Modal opened');
@@ -410,41 +272,23 @@
       return;
     }
     
-    const voices = window.speechSynthesis.getVoices();
-    debugLog(`Found ${voices.length} total voices`);
+    debugLog(`Populating UI with ${cachedVoices.length} cached voices`);
     
     selectElement.innerHTML = '';
     
-    // Add default option
+    // Add default option (Always available)
     const defaultOption = document.createElement('option');
     defaultOption.value = '';
-    defaultOption.textContent = 'System Default';
+    defaultOption.textContent = '🌐 System Default / Browser Auto';
     selectElement.appendChild(defaultOption);
     
-    if (voices.length === 0) {
-      const loadingOption = document.createElement('option');
-      loadingOption.value = '';
-      loadingOption.textContent = 'Still loading... tap 🔄';
-      loadingOption.disabled = true;
-      selectElement.appendChild(loadingOption);
+    if (cachedVoices.length === 0) {
+      debugLog('No cached voices - only System Default available');
       return;
-    }
-    
-    // Use HSK_AUDIO filter if available
-    let chineseVoices = [];
-    if (window.HSK_AUDIO && window.HSK_AUDIO.getVoices) {
-      chineseVoices = window.HSK_AUDIO.getVoices();
-    } else {
-      chineseVoices = voices.filter(voice => 
-        voice.lang.startsWith('zh') || 
-        voice.lang.includes('CN') ||
-        voice.lang.includes('TW') ||
-        voice.lang.includes('HK')
-      );
     }
 
     // Filter for "Popular/High Quality" voices
-    const popularVoices = chineseVoices.filter(v => {
+    const popularVoices = cachedVoices.filter(v => {
       const name = v.name.toLowerCase();
       const isGoogle = name.includes('google');
       const isMicrosoftHighQual = name.includes('microsoft') && (name.includes('natural') || name.includes('neural'));
@@ -453,7 +297,7 @@
     });
 
     // If we have popular voices, use only those. Otherwise use all Chinese voices.
-    const voicesToDisplay = popularVoices.length > 0 ? popularVoices : chineseVoices;
+    const voicesToDisplay = popularVoices.length > 0 ? popularVoices : cachedVoices;
 
     voicesToDisplay.forEach(voice => {
       const name = voice.name.toLowerCase();
@@ -489,19 +333,16 @@
   // Handle voice list changes
   if (typeof speechSynthesis !== 'undefined') {
     speechSynthesis.onvoiceschanged = () => {
-      debugLog('onvoiceschanged fired');
-      const ttsVoiceSelect = document.getElementById('tts-voice-select');
-      if (ttsVoiceSelect) {
-        populateVoices(ttsVoiceSelect);
-      }
+      debugLog('onvoiceschanged event');
+      refreshVoices();
     };
     
     // Fallback: try populating several times for mobile browsers
     [100, 500, 1000, 2000, 5000].forEach(delay => {
       setTimeout(() => {
-        const ttsVoiceSelect = document.getElementById('tts-voice-select');
-        if (ttsVoiceSelect && window.speechSynthesis.getVoices().length > 0) {
-          populateVoices(ttsVoiceSelect);
+        if (cachedVoices.length === 0) {
+          debugLog(`Retry loading (${delay}ms)...`);
+          refreshVoices();
         }
       }, delay);
     });

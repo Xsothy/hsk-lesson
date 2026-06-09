@@ -205,7 +205,7 @@
   async function speak(text, options = {}) {
     if (!text?.trim()) { console.warn('[audio] No text to speak'); return; }
     
-    // Make sure voices are loaded
+    // Attempt to load voices if list is empty
     if (synth && synth.getVoices().length === 0) {
       await new Promise(resolve => {
         const handler = () => {
@@ -213,17 +213,18 @@
           resolve();
         };
         synth.addEventListener('voiceschanged', handler);
-        // Timeout just in case
         setTimeout(resolve, 1000);
       });
     }
 
     try {
       const voice = getChineseVoice();
-      if (voice) {
+      
+      // If we have a specific voice, or if the user wants 'System Default', or if no voices found but we want to try native
+      if (voice || !config.selectedVoiceURI || (synth && synth.getVoices().length === 0)) {
         await speakWithWebSpeech(text);
       } else {
-        console.warn('[audio] No Chinese voice — using fallback TTS');
+        console.warn('[audio] No Chinese voice match — using fallback TTS');
         await speakWithFallbackTTS(text);
       }
     } catch (err) {
