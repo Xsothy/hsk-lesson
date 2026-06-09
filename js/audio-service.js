@@ -205,10 +205,7 @@
     
     try {
       // Check if Chinese voice is available
-      const hasChineseVoice = chineseVoice && (
-        chineseVoice.lang.startsWith('zh') || 
-        chineseVoice.lang.includes('CN')
-      );
+      const hasChineseVoice = !!chineseVoice;
       
       if (config.webSpeech.enabled && hasChineseVoice) {
         // Use Web Speech API if Chinese voice is available
@@ -270,10 +267,7 @@
   function getAvailableProviders() {
     const providers = [];
     
-    const hasChineseVoice = chineseVoice && (
-      chineseVoice.lang.startsWith('zh') || 
-      chineseVoice.lang.includes('CN')
-    );
+    const hasChineseVoice = !!chineseVoice;
     
     if (synth && hasChineseVoice) {
       providers.push({ 
@@ -317,10 +311,7 @@
 
   console.log('✓ Audio Service initialized');
   
-  const hasChineseVoice = chineseVoice && (
-    chineseVoice.lang.startsWith('zh') || 
-    chineseVoice.lang.includes('CN')
-  );
+  const hasChineseVoice = !!chineseVoice;
   
   if (hasChineseVoice) {
     console.log(`  Provider: Web Speech API (browser built-in)`);
