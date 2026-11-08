@@ -1,0 +1,49 @@
+/* D1 · Practice session. Mobile first. */
+.pr{display:flex;flex-direction:column;gap:20px;max-width:640px;margin:0 auto;overflow-x:clip}
+.pr-kicker{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.pr-title{margin:0;font-size:26px;font-weight:700}
+.pr-h2{margin:0;font-size:17px;font-weight:700}
+.pr-picker,.pr-group,.pr-summary{display:flex;flex-direction:column;gap:12px}
+.pr-picker{gap:28px}
+.pr-picker[hidden],.pr-session[hidden],.pr-summary[hidden],.pr-msg[hidden],.pr-note[hidden]{display:none}
+.pr-chips{display:flex;flex-wrap:wrap;gap:8px}
+.pr-note,.pr-msg{margin:0;font-size:14px;color:var(--muted)}
+.pr-note a{color:var(--red);display:inline-flex;align-items:center;min-height:44px}
+.pr-msg{padding:14px 16px;border-radius:var(--r-m);background:var(--soft);color:var(--text-2)}
+.pr-session{display:flex;flex-direction:column;gap:14px}
+.pr-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pr-pill{display:flex;gap:2px;padding:4px;background:var(--soft);border-radius:999px}
+.pr-pill button{min-height:44px;padding:0 18px;border:0;border-radius:999px;background:transparent;font:inherit;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer}
+.pr-pill button[aria-pressed=true]{background:var(--card);box-shadow:0 1px 3px rgba(15,12,8,.12)}
+.pr-count{font-size:14px;font-weight:600;color:var(--muted)}
+.pr-bar{height:8px;border-radius:999px;background:var(--soft);overflow:hidden}
+.pr-bar i{display:block;height:100%;width:0;background:var(--green);border-radius:inherit;transition:width .25s}
+.pr-done{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.pr-chip{min-width:36px;height:36px;padding:0 8px;display:inline-flex;align-items:center;justify-content:center;border-radius:10px;border:1px solid var(--line);background:var(--card);font-size:18px;color:var(--muted)}
+.pr-chip.is-current{border-color:var(--ink);color:var(--ink);font-weight:700}
+.pr-chip.is-done{background:var(--green-t);border-color:transparent;color:var(--green-d)}
+.pr-chip.is-skipped{background:var(--gold-t);border-color:transparent;color:var(--gold)}
+.pr-card{background:var(--card);border-radius:var(--r-xl);padding:20px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 0 var(--line),0 12px 32px rgba(15,12,8,.04)}
+.pr-prompt{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px}
+.pr-prompt-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pr-py{font-size:22px;font-weight:500;min-height:30px}
+.pr-en{font-size:16px;color:var(--text-2);overflow-wrap:anywhere}
+.pr-audio{flex:none;width:56px;height:56px;border-radius:999px;border:0;background:var(--red);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.pr-audio:hover{background:var(--red-d)}
+.pr-stage{display:flex;justify-content:center}
+.pr .writing-grid{max-width:340px;margin:0 auto;touch-action:none}
+.pr .wg-writer svg{display:block;width:100%;height:100%}
+.pr .wg-count{display:none}
+.pr-feedback{margin:0;min-height:22px;text-align:center;font-size:15px;font-weight:600;color:var(--muted)}
+.pr-feedback.ok{color:var(--green-d)}.pr-feedback.bad{color:var(--red-d)}
+.pr-controls{display:flex;justify-content:center;gap:14px}
+.pr-ctl{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:56px;padding:0;border:0;background:transparent;font:inherit;font-size:12px;font-weight:500;color:var(--text-2);cursor:pointer}
+.pr-ctl-i{width:56px;height:56px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);display:flex;align-items:center;justify-content:center}
+.pr-ctl:hover .pr-ctl-i{border-color:var(--ink)}
+.pr-ctl.is-primary .pr-ctl-i{background:var(--red);border-color:var(--red);color:#fff}
+.pr-ctl[aria-pressed=false] .pr-ctl-i{background:var(--soft)}
+.pr-ctl:focus-visible,.pr-audio:focus-visible,.pr-pill button:focus-visible,.pr-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.pr-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pr-btn{min-height:44px;padding:0 16px;border-radius:var(--r-s);border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:500;cursor:pointer}
+.pr-btn:hover{border-color:var(--ink)}
+@media (max-width:420px){.pr-stats{grid-template-columns:1fr}.pr-controls{gap:8px}}
