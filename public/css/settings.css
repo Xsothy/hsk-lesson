@@ -30,3 +30,5 @@
 #st-confirm{max-width:min(420px,calc(100vw - 32px));border:1px solid var(--line);border-radius:var(--r-l);background:var(--card);color:var(--ink);padding:20px}
 #st-confirm::backdrop{background:rgba(0,0,0,.5)}
 #st-confirm h2{margin:0 0 8px;font-size:20px}
+.st-btn{text-decoration:none}
+.st-sync{flex-wrap:wrap}

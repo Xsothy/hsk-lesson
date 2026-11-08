@@ -34,6 +34,20 @@ Route::get('/review', [\App\Http\Controllers\ReviewController::class, 'index'])-
 Route::get('/words', fn () => view('pages.words'))->name('words');
 Route::view('/settings', 'pages.settings')->name('settings');
 
+// S1 accounts: email + password, web session guard only. No email reset: owner runs `hsk:reset-password`.
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'show'])->name('login');
+    Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->middleware('throttle:30,1');
+    Route::get('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'show'])->name('register');
+    Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'store'])->middleware('throttle:10,1');
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/account', [\App\Http\Controllers\Auth\AccountController::class, 'show'])->name('account');
+    Route::post('/logout', [\App\Http\Controllers\Auth\AccountController::class, 'logout'])->name('logout');
+    Route::put('/account/password', [\App\Http\Controllers\Auth\AccountController::class, 'updatePassword'])->middleware('throttle:10,1')->name('account.password');
+    Route::delete('/account', [\App\Http\Controllers\Auth\AccountController::class, 'destroy'])->middleware('throttle:10,1')->name('account.destroy');
+});
+
 if (app()->environment('local', 'testing')) {
     Route::view('/dev/components', 'pages.dev-components')->name('dev.components');
 }

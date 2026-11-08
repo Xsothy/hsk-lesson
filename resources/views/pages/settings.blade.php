@@ -92,7 +92,11 @@ $segment = function (string $n) use ($segs) {
     </div>
     <p class="st-status" id="st-status" role="status" aria-live="polite"></p>
     <div class="st-sync">
-      <button type="button" class="st-btn" disabled>Sign in to sync</button>
+      @auth
+        <span class="st-note" id="st-account">Signed in as <a href="{{ route('account') }}">{{ auth()->user()->email }}</a> · Sync coming soon</span>
+      @else
+        <a class="st-btn" href="{{ route('login') }}" id="st-signin">Sign in to sync</a>
+      @endauth
       <span class="chip chip-gold">beta</span>
     </div>
   </div>
