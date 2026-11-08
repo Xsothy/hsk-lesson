@@ -14,3 +14,10 @@
   });
   document.addEventListener('click', function (e) { menus.forEach(function (m) { if (!m.contains(e.target)) close(m); }); });
 })();
+// Shared components: [data-say] buttons play audio via HSK_AUDIO.
+document.addEventListener('click', function (e) {
+  var b = e.target.closest && e.target.closest('[data-say]');
+  if (!b) return;
+  e.preventDefault();
+  try { if (window.HSK_AUDIO) window.HSK_AUDIO.speak(b.getAttribute('data-say')); } catch (err) {}
+});

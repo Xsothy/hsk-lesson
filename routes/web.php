@@ -29,6 +29,10 @@ Route::get('/review', $page('Review'))->name('review');
 Route::get('/words', $page('My words'))->name('words');
 Route::get('/settings', $page('Settings'))->name('settings');
 
+if (app()->environment('local', 'testing')) {
+    Route::view('/dev/components', 'pages.dev-components')->name('dev.components');
+}
+
 // Public read-only JSON for the character page (no token needed).
 Route::get('/data/char/{char}.json', [\App\Http\Controllers\Api\ReferenceController::class, 'character'])
     ->middleware('throttle:120,1');
