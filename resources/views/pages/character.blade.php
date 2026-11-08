@@ -186,6 +186,40 @@
         @if ($note)<p class="cp-note">{{ $note }}</p>@endif
       </section>
 
+      @if (count($d['parts']['components']) > 1 || $d['parts']['shared'])
+        <section class="cp-card cp-parts" aria-labelledby="sec-parts" data-parts>
+          <h3 id="sec-parts" class="cp-h3">Parts <span class="zh" lang="zh-Hans">部件</span></h3>
+          @if (count($d['parts']['components']) > 1)
+            <p class="cp-parts-layout">
+              @if ($d['parts']['layout'])<span class="zh" lang="zh-Hans">{{ $d['parts']['layout_char'] }}</span> {{ $d['parts']['layout'] }}@endif
+            </p>
+            <div class="cp-parts-grid">
+              @foreach ($d['parts']['components'] as $p)
+                @php $label = ($p['is_radical'] ? 'Radical' : 'Part').($p['meaning'] ? ': '.$p['meaning'] : ''); @endphp
+                <div class="cp-part @if($p['is_radical']) is-radical @endif" data-part="{{ $p['char'] }}" @if($p['is_radical']) data-radical @endif>
+                  @if ($p['exists'])
+                    <x-char-tile :c="$p['char']" :p="$p['pinyin']" variant="compact" :href="route('char', $p['char'])" title="{{ $label }}" />
+                  @else
+                    <span class="cp-part-plain zh" lang="zh-Hans" title="{{ $label }}">{{ $p['char'] }}</span>
+                  @endif
+                  @if ($p['is_radical'])<span class="cp-tag">radical</span>@endif
+                </div>
+              @endforeach
+            </div>
+          @endif
+          @foreach ($d['parts']['shared'] as $g)
+            <div class="cp-rel" data-shared="{{ $g['part'] }}">
+              <span class="cp-rel-t">Characters sharing <span class="zh" lang="zh-Hans">{{ $g['part'] }}</span></span>
+              <div class="cp-rel-grid">
+                @foreach ($g['items'] as $r)
+                  <x-char-tile :c="$r['char']" :p="$r['pinyin']" variant="compact" :href="route('char', $r['char'])" title="{{ $r['meaning'] }}" />
+                @endforeach
+              </div>
+            </div>
+          @endforeach
+        </section>
+      @endif
+
       @if ($related)
         <section class="cp-card" aria-labelledby="sec-related">
           <h3 id="sec-related" class="cp-h3">Related characters</h3>

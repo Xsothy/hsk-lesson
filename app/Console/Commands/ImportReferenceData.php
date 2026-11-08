@@ -41,8 +41,9 @@ class ImportReferenceData extends Command
         $chars = $this->importCharacters("$dir/makemeahanzi-dictionary.txt", $hsk);
 
         $strokes = $this->importStrokes("$dir/makemeahanzi-graphics.txt");
+        $parts = $this->importParts();
 
-        $this->info("Imported $chars characters, $strokes stroke outlines and ".count($hsk['rows']).' HSK words.');
+        $this->info("Imported $chars characters, $strokes stroke outlines, $parts part links and ".count($hsk['rows']).' HSK words.');
 
         return self::SUCCESS;
     }
@@ -132,6 +133,28 @@ class ImportReferenceData extends Command
             DB::table('characters')->delete();
             foreach (array_chunk($rows, 500) as $chunk) {
                 DB::table('characters')->insert($chunk);
+            }
+        });
+
+        return count($rows);
+    }
+
+    /** F5: (char, component) pairs from the stored decompositions, indexed by component. */
+    private function importParts(): int
+    {
+        $rows = [];
+        foreach (DB::table('characters')->whereNotNull('decomposition')->get(['char', 'decomposition']) as $c) {
+            foreach (\App\Services\CharacterService::partsOf($c->decomposition) as $part) {
+                if ($part !== $c->char) {
+                    $rows[] = ['char' => $c->char, 'part' => $part];
+                }
+            }
+        }
+
+        DB::transaction(function () use ($rows) {
+            DB::table('character_parts')->delete();
+            foreach (array_chunk($rows, 500) as $chunk) {
+                DB::table('character_parts')->insert($chunk);
             }
         });
 
