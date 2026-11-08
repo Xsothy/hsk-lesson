@@ -25,6 +25,6 @@ module.exports = defineConfig({
     url: `http://127.0.0.1:${port}/home`,
     reuseExistingServer: !process.env.CI,
     timeout: 60_000,
-    env: { PHP_CLI_SERVER_WORKERS: '4', MAGIC_LINK_PER_IP: '1000' },
+    env: { PHP_CLI_SERVER_WORKERS: '4' },
   },
 });

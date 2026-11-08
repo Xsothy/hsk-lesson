@@ -1,79 +1,72 @@
 // @ts-check
-// S1 accounts: magic link sign-in → sign-out → sign-in again → delete, reading the link from the `log` mailer.
+// S1 accounts: register → sign out → sign in (remember me) → change password → delete, at phone and desktop widths.
 const { test, expect } = require('@playwright/test');
-const fs = require('fs');
-const path = require('path');
 
-const LOG = path.join(__dirname, '..', '..', 'storage', 'logs', 'laravel.log');
-const readLog = () => (fs.existsSync(LOG) ? fs.readFileSync(LOG, 'utf8') : '');
-
-async function requestLink(page, email) {
-  const before = readLog().length;
-  await page.goto('/login');
-  await page.getByLabel('Email').fill(email);
-  await page.getByRole('button', { name: 'Email me a sign-in link' }).click();
-  await expect(page.getByRole('heading', { name: 'Check your email' })).toBeVisible();
-  await expect(page.getByText(email)).toBeVisible();
-  let link = null;
-  await expect.poll(() => {
-    const chunk = readLog().slice(before);
-    const m = chunk.match(/https?:\/\/\S+\/login\/verify\/[^\s"<]+/);
-    link = m && m[0].replace(/=\r?\n/g, '').replace(/=3D/g, '=');
-    return !!link;
-  }).toBe(true);
-  return /** @type {string} */ (link);
+async function noHScroll(page) {
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 }
 
-async function openLink(page, link) {
-  const u = new URL(link);
-  await page.goto(u.pathname + u.search);
+async function signIn(page, email, password) {
+  await page.goto('/login');
+  await page.getByLabel('Email').fill(email);
+  await page.getByLabel('Password', { exact: true }).fill(password);
   await page.getByRole('button', { name: 'Sign in' }).click();
-  await expect(page).toHaveURL(/\/account$/);
 }
 
 for (const width of [390, 1200]) {
-  test(`magic link sign-in, sign-out, sign-in again, delete @${width}px`, async ({ page }) => {
+  test(`register, sign out, sign in, change password, delete @${width}px`, async ({ page, context }) => {
     await page.setViewportSize({ width, height: 900 });
     const email = `e2e-${width}-${Date.now()}@example.com`;
 
     await page.goto('/settings');
     await page.getByRole('link', { name: 'Sign in to sync' }).click();
     await expect(page).toHaveURL(/\/login$/);
+    const tg = page.locator('#au-forgot a');
+    await expect(tg).toHaveAttribute('href', 'https://t.me/sothy_l');
+    await expect(tg).toHaveAttribute('target', '_blank');
+    await noHScroll(page);
 
-    await openLink(page, await requestLink(page, email));
+    await page.getByRole('link', { name: 'Create one' }).click();
+    await page.getByLabel('Name').fill('E2E Learner');
+    await page.getByLabel('Email').fill(email);
+    await page.getByLabel('Password', { exact: true }).fill('first-password');
+    await page.getByLabel('Confirm password').fill('first-password');
+    await page.getByRole('button', { name: 'Create account' }).click();
+    await expect(page).toHaveURL(/\/account$/);
     await expect(page.locator('#au-user-email')).toHaveText(email);
     await expect(page.getByText('Sync coming soon')).toBeVisible();
     await expect(page.getByRole('link', { name: 'Account (signed in)' })).toBeVisible();
-    const noHScroll = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
-    expect(noHScroll).toBe(true);
+    await noHScroll(page);
 
     await page.goto('/settings');
     await expect(page.locator('#st-account')).toContainText('Sync coming soon');
 
     await page.goto('/account');
     await page.getByRole('button', { name: 'Sign out' }).click();
-    await expect(page).toHaveURL(/\/login$/);
     await expect(page.getByText('You are signed out')).toBeVisible();
 
-    const link = await requestLink(page, email);
-    await openLink(page, link);
-    await expect(page.locator('#au-user-email')).toHaveText(email);
+    await signIn(page, email, 'wrong-password');
+    await expect(page.getByText('don’t match an account')).toBeVisible();
+    await signIn(page, email, 'first-password');
+    await expect(page).toHaveURL(/\/account$/);
+    const cookies = await context.cookies();
+    expect(cookies.some((c) => c.name.startsWith('remember_web_'))).toBe(true);
 
-    // The used link can't be replayed.
+    await page.getByLabel('Current password').fill('first-password');
+    await page.getByLabel('New password', { exact: true }).fill('second-password');
+    await page.getByLabel('Confirm new password').fill('second-password');
+    await page.getByRole('button', { name: 'Change password' }).click();
+    await expect(page.getByText('Password changed')).toBeVisible();
+
     await page.getByRole('button', { name: 'Sign out' }).click();
-    const u = new URL(link);
-    await page.goto(u.pathname + u.search);
-    await page.getByRole('button', { name: 'Sign in' }).click();
-    await expect(page.getByText('invalid, expired or already used')).toBeVisible();
+    await signIn(page, email, 'second-password');
+    await expect(page).toHaveURL(/\/account$/);
 
-    // Delete account.
-    await openLink(page, await requestLink(page, email));
     await page.getByRole('button', { name: 'Delete account…' }).click();
-    await page.locator('#au-confirm-email').fill(email);
+    await page.locator('#au-del-pw').fill('second-password');
     await page.locator('#au-del-dlg').getByRole('button', { name: 'Delete account' }).click();
-    await expect(page).toHaveURL(/\/login$/);
     await expect(page.getByText('Your account has been deleted')).toBeVisible();
-    await page.goto('/account');
-    await expect(page).toHaveURL(/\/login$/);
+    await signIn(page, email, 'second-password');
+    await expect(page.getByText('don’t match an account')).toBeVisible();
   });
 }

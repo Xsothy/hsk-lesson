@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -9,15 +10,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 
 #[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token', 'google_id'])]
+#[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasApiTokens, HasFactory, Notifiable;
 
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
     protected function casts(): array
     {
         return [
@@ -26,15 +33,16 @@ class User extends Authenticatable
         ];
     }
 
-    /** Find or create the account for an email address that was just proven (magic link / Google). */
-    public static function forVerifiedEmail(string $email): self
+    /**
+     * Set a new password and sign out every web session (remember-me tokens included),
+     * optionally keeping one session id (the one that made the change).
+     */
+    public function resetPasswordAndSessions(string $plain, ?string $keepSessionId = null): void
     {
-        $user = self::firstOrCreate(['email' => strtolower(trim($email))]);
-        if (! $user->email_verified_at) {
-            $user->forceFill(['email_verified_at' => now()])->save();
-        }
-
-        return $user;
+        $this->forceFill(['password' => $plain, 'remember_token' => Str::random(60)])->save();
+        DB::table('sessions')->where('user_id', $this->id)
+            ->when($keepSessionId, fn ($q) => $q->where('id', '!=', $keepSessionId))
+            ->delete();
     }
 
     /** Remove the account and everything tied to it. S2: delete the user's sync rows here too (or FK cascade). */
@@ -43,7 +51,6 @@ class User extends Authenticatable
         DB::transaction(function () {
             DB::table('sessions')->where('user_id', $this->id)->delete();
             $this->tokens()->delete();
-            LoginToken::where('email', $this->email)->delete();
             $this->delete();
         });
     }

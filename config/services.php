@@ -35,12 +35,4 @@ return [
         ],
     ],
 
-    // S1: Google sign-in (Socialite). Off unless AUTH_GOOGLE_ENABLED=true and the client is configured.
-    'google' => [
-        'enabled' => (bool) env('AUTH_GOOGLE_ENABLED', false),
-        'client_id' => env('GOOGLE_CLIENT_ID'),
-        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => env('GOOGLE_REDIRECT_URI', '/auth/google/callback'),
-    ],
-
 ];

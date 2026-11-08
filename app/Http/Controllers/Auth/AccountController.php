@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Password;
 
 class AccountController extends Controller
 {
@@ -22,13 +23,25 @@ class AccountController extends Controller
         return redirect()->route('login')->with('status', 'You are signed out. Your progress stays on this device.');
     }
 
+    public function updatePassword(Request $request)
+    {
+        $data = $request->validateWithBag('password', [
+            'current_password' => ['required', 'current_password:web'],
+            'password' => ['required', 'confirmed', Password::min(8)],
+        ]);
+
+        $request->user()->resetPasswordAndSessions($data['password'], $request->session()->getId());
+        Auth::guard('web')->login($request->user(), $request->hasCookie(Auth::guard('web')->getRecallerName()));
+        $request->session()->regenerate();
+
+        return redirect()->route('account')->with('status', 'Password changed. Other devices have been signed out.');
+    }
+
     public function destroy(Request $request)
     {
-        $user = $request->user();
-        if (strtolower(trim((string) $request->input('confirm_email'))) !== $user->email) {
-            return back()->withErrors(['confirm_email' => 'Type your email address exactly to confirm.']);
-        }
+        $request->validateWithBag('delete', ['password' => ['required', 'current_password:web']]);
 
+        $user = $request->user();
         Auth::guard('web')->logout();
         $user->deleteAccount();
         $request->session()->invalidate();

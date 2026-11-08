@@ -2,227 +2,166 @@
 
 namespace Tests\Feature;
 
-use App\Mail\MagicLinkMail;
-use App\Models\LoginToken;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\URL;
-use Laravel\Socialite\Facades\Socialite;
-use Laravel\Socialite\Two\User as SocialiteUser;
-use Mockery;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class AccountsTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** Request a link and return the URL that was emailed. */
-    private function requestLink(string $email = 'learner@example.com'): string
+    private function user(string $email = 'learner@example.com', string $password = 'secret-pass'): User
     {
-        Mail::fake();
-        $this->post('/login', ['email' => $email])->assertRedirect('/login/sent');
-        $url = null;
-        Mail::assertSent(MagicLinkMail::class, function ($m) use (&$url) {
-            $url = $m->url;
-
-            return true;
-        });
-
-        return $url;
+        return User::create(['name' => 'Learner', 'email' => $email, 'password' => $password]);
     }
 
-    private function signIn(string $url)
+    public function test_auth_pages_render_with_csrf_and_telegram_help(): void
     {
-        $this->get($url)->assertOk()->assertSee('Finish signing in');
-
-        return $this->post($url);
-    }
-
-    public function test_login_pages_render_with_csrf_and_no_google_by_default(): void
-    {
-        $this->get('/login')->assertOk()->assertSee('Email me a sign-in link')
-            ->assertSee('name="_token"', false)->assertDontSee('Continue with Google');
-        $this->get('/auth/google')->assertNotFound();
+        config(['hsk.support_telegram' => 'sothy_l']);
+        $this->get('/login')->assertOk()->assertSee('name="_token"', false)
+            ->assertSee('name="remember"', false)
+            ->assertSee('Forgot your password? Message us on Telegram')
+            ->assertSee('href="https://t.me/sothy_l" target="_blank" rel="noopener"', false)
+            ->assertSee('@sothy_l');
+        $this->get('/register')->assertOk()->assertSee('name="password_confirmation"', false)->assertSee('name="_token"', false);
         $this->get('/account')->assertRedirect('/login');
+        $this->get('/forgot-password')->assertNotFound();
+        $this->get('/reset-password/abc')->assertNotFound();
     }
 
-    public function test_magic_link_signs_in_creates_user_and_signs_out(): void
+    public function test_register_hashes_password_and_signs_in(): void
     {
-        $url = $this->requestLink('Learner@Example.com ');
-        $this->assertDatabaseMissing('users', ['email' => 'learner@example.com']);
-        $this->assertStringNotContainsString(parse_url($url, PHP_URL_PATH), json_encode(LoginToken::all()));
-
-        $this->get('/login/sent')->assertOk();
-        $this->signIn($url)->assertRedirect('/account');
-        $this->assertAuthenticated();
-        $user = User::where('email', 'learner@example.com')->firstOrFail();
-        $this->assertNotNull($user->email_verified_at);
-        $this->get('/account')->assertOk()->assertSee('learner@example.com')->assertSee('Sync coming soon');
+        $this->post('/register', [
+            'name' => 'Ann', 'email' => 'Ann@Example.com ', 'password' => 'longenough', 'password_confirmation' => 'longenough',
+        ])->assertRedirect('/account');
+        $user = User::where('email', 'ann@example.com')->firstOrFail();
+        $this->assertAuthenticatedAs($user);
+        $this->assertNotSame('longenough', $user->password);
+        $this->assertTrue(Hash::check('longenough', $user->password));
+        $this->get('/account')->assertSee('ann@example.com')->assertSee('Sync coming soon');
         $this->get('/settings')->assertSee('Signed in as')->assertDontSee('id="st-signin"', false);
         $this->get('/login')->assertRedirect('/account');
+    }
+
+    public function test_register_validation(): void
+    {
+        $this->user('taken@example.com');
+        $this->post('/register', ['name' => 'X', 'email' => 'taken@example.com', 'password' => 'longenough', 'password_confirmation' => 'longenough'])
+            ->assertSessionHasErrors('email');
+        $this->post('/register', ['name' => 'X', 'email' => 'x@example.com', 'password' => 'short', 'password_confirmation' => 'short'])
+            ->assertSessionHasErrors('password');
+        $this->post('/register', ['name' => 'X', 'email' => 'x@example.com', 'password' => 'longenough', 'password_confirmation' => 'different'])
+            ->assertSessionHasErrors('password');
+        $this->post('/register', ['name' => '', 'email' => 'x@example.com', 'password' => 'longenough', 'password_confirmation' => 'longenough'])
+            ->assertSessionHasErrors('name');
+        $this->assertGuest();
+        $this->assertSame(1, User::count());
+    }
+
+    public function test_login_remember_me_logout_and_login_again(): void
+    {
+        $user = $this->user();
+        $this->post('/login', ['email' => 'learner@example.com', 'password' => 'wrong'])->assertSessionHasErrors('email');
+        $this->assertGuest();
+
+        $resp = $this->post('/login', ['email' => 'Learner@example.com', 'password' => 'secret-pass', 'remember' => '1']);
+        $resp->assertRedirect('/account');
+        $this->assertAuthenticatedAs($user);
+        $resp->assertCookie(auth()->guard('web')->getRecallerName());
+        $this->assertNotNull($user->fresh()->remember_token);
 
         $this->post('/logout')->assertRedirect('/login');
         $this->assertGuest();
 
-        $this->signIn($this->requestLink('learner@example.com'))->assertRedirect('/account');
+        $this->post('/login', ['email' => 'learner@example.com', 'password' => 'secret-pass'])
+            ->assertRedirect('/account')->assertCookieMissing(auth()->guard('web')->getRecallerName());
         $this->assertAuthenticatedAs($user);
-        $this->assertSame(1, User::count());
     }
 
-    public function test_get_on_link_does_not_consume_token(): void
+    public function test_login_locks_out_after_five_failures(): void
     {
-        $url = $this->requestLink();
-        $this->get($url)->assertOk();
-        $this->get($url)->assertOk();
-        $this->assertGuest();
-        $this->post($url)->assertRedirect('/account');
-    }
-
-    public function test_token_cannot_be_reused(): void
-    {
-        $url = $this->requestLink();
-        $this->post($url)->assertRedirect('/account');
-        $this->post('/logout');
-        $this->post($url)->assertStatus(410)->assertSee('invalid, expired or already used');
-        $this->assertGuest();
-    }
-
-    public function test_token_expires_after_15_minutes(): void
-    {
-        $url = $this->requestLink();
-        $this->travel(16)->minutes();
-        $this->post($url)->assertStatus(410);
-        $this->assertGuest();
-    }
-
-    public function test_expired_db_row_rejected_even_with_valid_signature(): void
-    {
-        $url = $this->requestLink();
-        LoginToken::query()->update(['expires_at' => now()->subMinute()]);
-        $this->post($url)->assertStatus(410);
-        $this->assertGuest();
-    }
-
-    public function test_tampered_links_are_rejected(): void
-    {
-        $url = $this->requestLink();
-        // Changed token, same signature.
-        $this->post(preg_replace('#/verify/[^?]+#', '/verify/'.str_repeat('a', 64), $url))->assertStatus(410);
-        // Changed signature.
-        $this->post(preg_replace('/signature=[0-9a-f]+/', 'signature='.str_repeat('0', 64), $url))->assertStatus(410);
-        // Extended expiry.
-        $this->post(preg_replace('/expires=\d+/', 'expires='.(time() + 86400), $url))->assertStatus(410);
-        // Unsigned but known token.
-        [, $plain] = LoginToken::issue('x@example.com');
-        $this->post('/login/verify/'.$plain)->assertStatus(410);
-        // Signed link for a token that was never issued.
-        $this->post(URL::temporarySignedRoute('login.verify', now()->addMinutes(5), ['token' => 'nope']))->assertStatus(410);
-        $this->assertGuest();
-        // The original still works.
-        $this->post($url)->assertRedirect('/account');
-    }
-
-    public function test_requests_are_throttled_per_email(): void
-    {
-        Mail::fake();
-        for ($i = 0; $i < 3; $i++) {
-            $this->post('/login', ['email' => 'a@example.com'])->assertRedirect('/login/sent');
+        $this->user();
+        for ($i = 0; $i < 5; $i++) {
+            $this->post('/login', ['email' => 'learner@example.com', 'password' => 'nope'])->assertSessionHasErrors('email');
         }
-        $this->post('/login', ['email' => 'a@example.com'])->assertStatus(429)->assertSee('Too many sign-in links');
-        Mail::assertSentCount(3);
-        // A different address from the same IP still works.
-        $this->post('/login', ['email' => 'b@example.com'])->assertRedirect('/login/sent');
+        $this->post('/login', ['email' => 'learner@example.com', 'password' => 'secret-pass'])
+            ->assertSessionHasErrors(['email' => 'Too many sign-in attempts. Try again in 1 min.']);
+        $this->assertGuest();
+
+        $this->travel(61)->seconds();
+        $this->post('/login', ['email' => 'learner@example.com', 'password' => 'secret-pass'])->assertRedirect('/account');
     }
 
-    public function test_requests_are_throttled_per_ip(): void
+    public function test_change_password_requires_current_and_signs_out_other_sessions(): void
     {
-        Mail::fake();
-        for ($i = 0; $i < 10; $i++) {
-            $this->post('/login', ['email' => "u{$i}@example.com"])->assertRedirect('/login/sent');
-        }
-        $this->post('/login', ['email' => 'u99@example.com'])->assertStatus(429);
-        Mail::assertSentCount(10);
+        $user = $this->user();
+        DB::table('sessions')->insert(['id' => 'other-device', 'user_id' => $user->id, 'payload' => '', 'last_activity' => time()]);
+        $oldRemember = $user->remember_token;
+        $this->actingAs($user);
+
+        $this->put('/account/password', ['current_password' => 'wrong', 'password' => 'new-password', 'password_confirmation' => 'new-password'])
+            ->assertSessionHasErrorsIn('password', 'current_password');
+        $this->assertTrue(Hash::check('secret-pass', $user->fresh()->password));
+
+        $this->put('/account/password', ['current_password' => 'secret-pass', 'password' => 'new-password', 'password_confirmation' => 'new-password'])
+            ->assertRedirect('/account');
+        $fresh = $user->fresh();
+        $this->assertTrue(Hash::check('new-password', $fresh->password));
+        $this->assertNotSame($oldRemember, $fresh->remember_token);
+        $this->assertDatabaseMissing('sessions', ['id' => 'other-device']);
+        $this->assertAuthenticatedAs($user);
     }
 
-    public function test_invalid_email_is_rejected(): void
+    public function test_delete_account_requires_password_and_removes_user_sessions_and_tokens(): void
     {
-        Mail::fake();
-        $this->post('/login', ['email' => 'not-an-email'])->assertSessionHasErrors('email');
-        Mail::assertNothingSent();
-    }
-
-    public function test_delete_account_requires_confirmation_and_removes_user_and_sessions(): void
-    {
-        $this->signIn($this->requestLink('del@example.com'));
-        $user = User::where('email', 'del@example.com')->firstOrFail();
+        $user = $this->user('del@example.com');
         $user->createToken('agent');
         DB::table('sessions')->insert(['id' => 'other-device', 'user_id' => $user->id, 'payload' => '', 'last_activity' => time()]);
+        $this->actingAs($user);
 
-        $this->delete('/account', ['confirm_email' => 'wrong@example.com'])->assertSessionHasErrors('confirm_email');
+        $this->delete('/account', ['password' => 'wrong'])->assertSessionHasErrorsIn('delete', 'password');
         $this->assertDatabaseHas('users', ['id' => $user->id]);
 
-        $this->delete('/account', ['confirm_email' => 'DEL@example.com'])->assertRedirect('/login');
+        $this->delete('/account', ['password' => 'secret-pass'])->assertRedirect('/login');
         $this->assertGuest();
         $this->assertDatabaseMissing('users', ['id' => $user->id]);
         $this->assertDatabaseMissing('sessions', ['user_id' => $user->id]);
         $this->assertDatabaseMissing('personal_access_tokens', ['tokenable_id' => $user->id]);
-        $this->assertDatabaseMissing('login_tokens', ['email' => 'del@example.com']);
     }
 
     public function test_account_forms_carry_csrf_tokens(): void
     {
-        $this->actingAs(User::forVerifiedEmail('c@example.com'));
+        $this->actingAs($this->user());
         $html = $this->get('/account')->assertOk()->getContent();
-        $this->assertSame(2, substr_count($html, 'name="_token"'));
+        $this->assertSame(3, substr_count($html, 'name="_token"'));
+        $this->assertStringContainsString('name="_method" value="PUT"', $html);
         $this->assertStringContainsString('name="_method" value="DELETE"', $html);
     }
 
-    private function mockGoogle(string $id, ?string $email, bool $verified = true): void
+    public function test_reset_password_command(): void
     {
-        $g = (new SocialiteUser)->map(['id' => $id, 'email' => $email, 'name' => 'G User']);
-        $g->setRaw(['email_verified' => $verified]);
-        $provider = Mockery::mock(\Laravel\Socialite\Contracts\Provider::class);
-        $provider->shouldReceive('user')->andReturn($g);
-        $provider->shouldReceive('redirect')->andReturn(redirect('https://accounts.google.test/o/oauth2/auth'));
-        Socialite::shouldReceive('driver')->with('google')->andReturn($provider);
+        $user = $this->user();
+        $user->forceFill(['remember_token' => 'old-token'])->save();
+        DB::table('sessions')->insert(['id' => 's1', 'user_id' => $user->id, 'payload' => '', 'last_activity' => time()]);
+
+        $this->assertSame(0, Artisan::call('hsk:reset-password', ['email' => 'Learner@example.com']));
+        $this->assertSame(1, preg_match('/Temporary password for learner@example\.com: (\S{16})\s/', Artisan::output(), $m));
+
+        $fresh = $user->fresh();
+        $this->assertTrue(Hash::check($m[1], $fresh->password));
+        $this->assertFalse(Hash::check('secret-pass', $fresh->password));
+        $this->assertNotSame('old-token', $fresh->remember_token);
+        $this->assertDatabaseMissing('sessions', ['user_id' => $user->id]);
+
+        $this->post('/login', ['email' => 'learner@example.com', 'password' => $m[1]])->assertRedirect('/account');
     }
 
-    public function test_google_flow_with_mocked_provider(): void
+    public function test_reset_password_command_unknown_email(): void
     {
-        config(['services.google.enabled' => true]);
-        $this->get('/login')->assertSee('Continue with Google');
-        $this->mockGoogle('g-123', 'Gee@Example.com');
-
-        $this->get('/auth/google')->assertRedirect('https://accounts.google.test/o/oauth2/auth');
-        $this->get('/auth/google/callback')->assertRedirect('/account');
-        $user = User::where('email', 'gee@example.com')->firstOrFail();
-        $this->assertSame('g-123', $user->google_id);
-        $this->assertAuthenticatedAs($user);
-
-        // Second sign-in finds the same user by google_id.
-        $this->post('/logout');
-        $this->get('/auth/google/callback')->assertRedirect('/account');
-        $this->assertSame(1, User::count());
-    }
-
-    public function test_google_links_to_existing_magic_link_account(): void
-    {
-        config(['services.google.enabled' => true]);
-        $existing = User::forVerifiedEmail('same@example.com');
-        $this->mockGoogle('g-9', 'same@example.com');
-        $this->get('/auth/google/callback')->assertRedirect('/account');
-        $this->assertAuthenticatedAs($existing);
-        $this->assertSame('g-9', $existing->fresh()->google_id);
-    }
-
-    public function test_google_unverified_email_is_refused(): void
-    {
-        config(['services.google.enabled' => true]);
-        $this->mockGoogle('g-1', 'u@example.com', verified: false);
-        $this->get('/auth/google/callback')->assertRedirect('/login');
-        $this->assertGuest();
-        $this->assertSame(0, User::count());
+        $this->artisan('hsk:reset-password', ['email' => 'nobody@example.com'])
+            ->expectsOutput('No user with that email.')->assertExitCode(1);
     }
 }

@@ -114,12 +114,4 @@ return [
 
     'password_timeout' => env('AUTH_PASSWORD_TIMEOUT', 10800),
 
-    /*
-    | S1 magic-link limits: links per email address and per IP per 15 minutes.
-    */
-    'magic_link' => [
-        'per_email' => (int) env('MAGIC_LINK_PER_EMAIL', 3),
-        'per_ip' => (int) env('MAGIC_LINK_PER_IP', 10),
-    ],
-
 ];
