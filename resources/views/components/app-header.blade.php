@@ -3,7 +3,7 @@ $groups = [
   'Learn' => [['Home','home'],['Courses','courses']],
   'Characters' => [['Browse','browse'],['Search','search']],
   'Practice' => [['Practice','practice'],['Review','review']],
-  'More' => [['My words','words'],['Settings','settings']],
+  'More' => [['My words','words'],['Tools','tools'],['Settings','settings']],
 ];
 @endphp
 <header class="hdr">
