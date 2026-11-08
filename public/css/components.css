@@ -29,6 +29,8 @@ a.char-tile:hover{border-color:var(--red)}
 .wr-body{display:flex;flex-direction:column;flex:1;min-width:0}
 .wr-py{font-size:14px}.wr-en{font-size:13px;color:var(--muted)}
 .wr-audio{margin-left:auto;background:none;border:0;cursor:pointer}
+.wr-tag{flex:none;font-size:11px;font-weight:600;color:var(--muted);background:var(--soft);border-radius:999px;padding:3px 8px}
+.wr-tag+.wr-audio{margin-left:0}
 
 .quiz-option{display:flex;align-items:center;gap:12px;width:100%;min-height:52px;padding:10px 16px;background:var(--card);border:1.5px solid var(--line);border-radius:var(--r-m);font:inherit;color:var(--ink);text-align:left;cursor:pointer}
 .quiz-option:hover:not(:disabled){border-color:var(--ink)}

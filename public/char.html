@@ -9,10 +9,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/char.css">
-  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+  <script>
+    // Legacy page: /char.html?c=学 now lives at /char/学 (C1). Add &legacy=1 to keep this page.
+    (function () { var q = new URLSearchParams(location.search), c = (q.get('c') || '').trim();
+      if (c && !q.has('legacy')) location.replace('/char/' + encodeURIComponent(Array.from(c)[0])); })();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
   <script defer src="js/settings.js"></script>
   <script defer src="js/audio-service.js"></script>
   <script defer src="js/utils.js"></script>
+  <script defer src="js/character.js"></script>
   <script defer src="js/char-page.js"></script>
 </head>
 <body class="char-body">

@@ -2,12 +2,17 @@
 
 namespace Tests\Feature;
 
+use App\Models\Character;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class AlphaChromeTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_every_alpha_route_renders_header_and_tab_bar(): void
     {
+        Character::create(['char' => '学', 'pinyin' => ['xué'], 'definition' => 'to study', 'radical' => '子']); // /char/学 is a real page (C1)
         $urls = ['/home', '/courses', '/lessons/lesson-1', '/lessons/lesson-1/reading/1', '/char/学', '/browse', '/search', '/practice', '/review', '/words', '/settings'];
         foreach ($urls as $url) {
             $this->get($url)->assertOk()
