@@ -17,7 +17,7 @@
 .rv-audio{display:inline-flex;align-items:center;justify-content:center;min-width:56px;min-height:56px;border-radius:50%;border:1px solid var(--line);background:var(--card);font-size:24px;cursor:pointer}
 .rv-audio:hover{border-color:var(--ink)}
 .rv-actions{margin-top:16px}
-.rv-reveal{width:100%;min-height:56px;border:0;border-radius:var(--r-l);background:var(--ink);color:#fff;font:inherit;font-size:17px;font-weight:600;cursor:pointer}
+.rv-reveal{width:100%;min-height:56px;border:0;border-radius:var(--r-l);background:var(--ink);color:var(--on-ink);font:inherit;font-size:17px;font-weight:600;cursor:pointer}
 .rv-rate{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .rv-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:64px;padding:8px 4px;border:1px solid var(--line);border-radius:var(--r-m);background:var(--card);font:inherit;color:var(--ink);cursor:pointer}
 .rv-btn-l{font-weight:600}.rv-btn-n{font-size:13px;color:var(--text-2)}
@@ -25,7 +25,7 @@
 .rv-btn:hover,.rv-reveal:hover{filter:brightness(.97)}
 .rv-btn:focus-visible,.rv-reveal:focus-visible,.rv-audio:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 kbd{display:none;font:inherit;font-size:11px;color:var(--muted)}
-@media (hover:hover) and (min-width:761px){kbd{display:inline}.rv-btn kbd{display:block}.rv-reveal kbd{margin-left:8px;color:#d8d2c8}}
+@media (hover:hover) and (min-width:761px){kbd{display:inline}.rv-btn kbd{display:block}.rv-reveal kbd{margin-left:8px;color:color-mix(in srgb,var(--on-ink) 80%,var(--ink))}}
 .rv-empty{padding:28px 20px;text-align:center;color:var(--text-2);background:var(--card);border:1px solid var(--line);border-radius:var(--r-l)}
 #rv-done .stat-grid{margin:16px 0}
 @media (min-width:761px){.rv-hanzi{font-size:104px}.rv-card{min-height:340px}}

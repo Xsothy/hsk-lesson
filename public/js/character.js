@@ -29,8 +29,8 @@
   }
   function colors() {
     return {
-      strokeColor: cssVar('--ink', '#0f0c08'), radicalColor: '#b8892e', highlightColor: cssVar('--red', '#b5302a'),
-      outlineColor: '#ddd5c8', drawingColor: cssVar('--red', '#b5302a'),
+      strokeColor: cssVar('--ink', '#0f0c08'), radicalColor: cssVar('--stroke-rad', '#b8892e'), highlightColor: cssVar('--red', '#b5302a'),
+      outlineColor: cssVar('--stroke-out', '#ddd5c8'), drawingColor: cssVar('--red', '#b5302a'),
     };
   }
 
@@ -81,7 +81,7 @@
       if (mode === 'cumulative' && j > current) return;
       var p = document.createElementNS(NS, 'path');
       p.setAttribute('d', d);
-      p.setAttribute('fill', j === current ? red : j < current ? ink : '#e4dccf');
+      p.setAttribute('fill', j === current ? red : j < current ? ink : cssVar('--stroke-ghost', '#e4dccf'));
       if (mode === 'cumulative' && j !== current) p.setAttribute('opacity', '.55');
       g.appendChild(p);
     });

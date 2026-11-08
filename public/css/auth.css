@@ -11,13 +11,13 @@
 .au-form input:focus-visible,.au-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .au-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border:1.5px solid var(--line);border-radius:var(--r-s);background:var(--card);color:var(--ink);font:inherit;font-weight:600;text-decoration:none;cursor:pointer;width:100%;box-sizing:border-box;margin-top:8px}
 .au-btn:hover{border-color:var(--ink)}
-.au-primary{background:var(--red);border-color:var(--red);color:#fff}.au-primary:hover{background:var(--red-d);border-color:var(--red-d)}
+.au-primary{background:var(--red);border-color:var(--red);color:var(--on-red)}.au-primary:hover{background:var(--red-d);border-color:var(--red-d)}
 .au-danger{color:var(--red);border-color:var(--red)}
-.au-danger[type=submit]{background:var(--red);color:#fff}
+.au-danger[type=submit]{background:var(--red);color:var(--on-red)}
 .au-dl{margin:0 0 8px}.au-dl dt{font-weight:600;margin-top:12px}.au-dl dd{margin:4px 0 0;overflow-wrap:anywhere}
 .au-row{display:flex;gap:8px}.au-row .au-btn{flex:1}
 #au-del-dlg{border:0;border-radius:var(--r-l);padding:20px;max-width:min(420px,calc(100vw - 32px));background:var(--card);color:var(--ink)}
-#au-del-dlg::backdrop{background:rgba(0,0,0,.4)}
+#au-del-dlg::backdrop{background:rgba(var(--scrim),.4)}
 #au-del-dlg p{overflow-wrap:anywhere}
 .au-check{display:flex;align-items:center;gap:8px;font-weight:500!important;min-height:44px}.au-check input{width:20px;height:20px;min-height:0}
 .au-hint{margin:0;color:var(--muted);font-size:14px}

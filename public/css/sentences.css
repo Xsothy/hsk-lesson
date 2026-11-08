@@ -25,6 +25,6 @@
 .sp-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 .sp-actions .pr-btn{display:inline-flex;align-items:center;gap:6px}
 .sp-actions .pr-btn[hidden]{display:none}
-.pr-btn.is-primary{background:var(--red);border-color:var(--red);color:#fff}
+.pr-btn.is-primary{background:var(--red);border-color:var(--red);color:var(--on-red)}
 .sp-tile:focus-visible,.sp-choice:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 @media (min-width:900px){.sp .pr-card{max-width:720px}}

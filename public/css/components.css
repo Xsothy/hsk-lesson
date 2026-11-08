@@ -52,7 +52,7 @@ a.char-tile:hover{border-color:var(--red)}
 .action-row{display:flex;align-items:center;gap:14px;min-height:64px;padding:12px 18px;border-radius:var(--r-l);border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none}
 .action-dark{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}
 .ar-icon{font-size:22px}.ar-body{display:flex;flex-direction:column;flex:1}
-.ar-title{font-weight:600}.ar-sub{font-size:13px;color:var(--muted)}.action-dark .ar-sub{color:#d8d2c8}
+.ar-title{font-weight:600}.ar-sub{font-size:13px;color:var(--muted)}.action-dark .ar-sub{color:color-mix(in srgb,var(--on-ink) 80%,var(--ink))}
 .ar-go{font-size:24px}
 
 .lesson-card{display:flex;flex-direction:column;gap:4px;padding:16px;min-height:44px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);text-decoration:none;color:var(--ink)}
@@ -86,13 +86,13 @@ a.lesson-card:hover{border-color:var(--red)}
 .rl-word:focus-visible{outline:2px solid var(--red,currentColor);outline-offset:2px}
 .b-body .ruby-line .rl-text{font-size:calc(20px*var(--cs,1))}
 .word-sheet{border:1px solid var(--line,#ddd);border-radius:var(--r-m,12px);padding:16px 20px;min-width:min(320px,90vw);background:var(--card);color:var(--ink)}
-.word-sheet::backdrop{background:rgba(0,0,0,.35)}
+.word-sheet::backdrop{background:rgba(var(--scrim),.35)}
 .ws-head{display:flex;align-items:center;gap:8px}.ws-zh{font-size:calc(36px*var(--cs,1));flex:1}
 .ws-py{font-size:18px;margin-top:4px}.ws-en{color:var(--text-2);margin:4px 0 12px}.ws-chars{display:flex;flex-wrap:wrap;gap:8px}
 /* R4 polish: icons, tile sizing, one hanzi+pinyin rule */
 .icon{display:inline-block;flex:none;vertical-align:middle}
 .ar-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:var(--soft);color:var(--red);font-size:22px}
-.action-dark .ar-icon{background:rgba(255,255,255,.12);color:inherit}
+.action-dark .ar-icon{background:color-mix(in srgb,var(--on-ink) 14%,transparent);color:inherit}
 .ar-go{display:inline-flex;color:var(--muted)}.action-dark .ar-go{color:inherit}
 .menu-btn{display:inline-flex;align-items:center;gap:4px}
 .ct-c{white-space:nowrap}
