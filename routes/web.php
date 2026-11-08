@@ -30,7 +30,7 @@ Route::get('/browse', [BrowseController::class, 'index'])->name('browse');
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
 Route::get('/practice', $page('Practice'))->name('practice');
 Route::get('/review', $page('Review'))->name('review');
-Route::get('/words', $page('My words'))->name('words');
+Route::get('/words', fn () => view('pages.words'))->name('words');
 Route::get('/settings', $page('Settings'))->name('settings');
 
 if (app()->environment('local', 'testing')) {
