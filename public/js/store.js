@@ -6,6 +6,8 @@
   var P = 'hsk.v1.';
   var DAY = 86400000;
   var mem = {}; // fallback when storage is unavailable
+  var SYNCED = { progress: 1, srs: 1, saved: 1, streak: 1, settings: 1, activity: 1, quiz: 1, last: 1 };
+  var applying = false;
 
   function read(name, fallback) {
     try {
@@ -15,7 +17,13 @@
       return v == null || typeof v !== typeof fallback ? fallback : v;
     } catch (e) { return fallback; }
   }
+  // S2: a write of a synced domain stamps the items that changed (for last-write-wins) and tells sync.js.
   function write(name, value) {
+    if (SYNCED[name] && !applying) { try { track(name, value); } catch (e) {} }
+    rawWrite(name, value);
+    if (SYNCED[name] && !applying) changed(name);
+  }
+  function rawWrite(name, value) {
     var s = JSON.stringify(value);
     try { if (storage) storage.setItem(P + name, s); else mem[name] = s; }
     catch (e) { mem[name] = s; }
@@ -192,9 +200,134 @@
       return true;
     } catch (e) { return false; }
   }
-  function reset() { ['progress', 'srs', 'saved', 'streak', 'settings', 'activity', 'quiz', 'last'].forEach(function (k) { try { if (storage) storage.removeItem(P + k); } catch (e) {} delete mem[k]; }); announceSettings(getSettings()); }
+  function reset() { ['progress', 'srs', 'saved', 'streak', 'settings', 'activity', 'quiz', 'last', 'stamps'].forEach(function (k) { try { if (storage) storage.removeItem(P + k); } catch (e) {} delete mem[k]; }); announceSettings(getSettings()); }
 
-  return { getProgress: getProgress, markWritten: markWritten, markKnown: markKnown, isKnown: isKnown,
+  /* ---- S2 sync (additive). Snapshot: { v: 1, data: {progress, srs, saved, streak, settings, activity, quiz, last},
+     stamps: { 'known|w' | 'saved|w' | 'settings|k': ms } }. Stamps record when an item last changed, deletions included.
+     Merge is pure and symmetric: per-item last-write-wins; SRS keeps the later review (`last`); chars/quiz/last use `at`;
+     activity keeps the max per day; streak keeps the later day. `voice` stays on the device. */
+  var LOCAL_ONLY_SETTINGS = { voice: 1 };
+  function isObj(v) { return !!v && typeof v === 'object' && !Array.isArray(v); }
+  function num(v) { return typeof v === 'number' && isFinite(v) ? v : 0; }
+  function stamps() { var s = read('stamps', {}); return isObj(s) ? s : {}; }
+  function track(name, next) {
+    var st = stamps(), now = Date.now(), dirty = false, k;
+    function mark(key, t) { st[key] = Math.max(t, num(st[key]) + 1); dirty = true; }
+    if (name === 'progress') {
+      var a = getProgress().known, b = isObj(next) && isObj(next.known) ? next.known : {};
+      for (k in b) if (a[k] !== b[k]) mark('known|' + k, typeof b[k] === 'number' ? b[k] : now);
+      for (k in a) if (!(k in b)) mark('known|' + k, now);
+    } else if (name === 'saved') {
+      var was = {}, is = {};
+      getSaved().forEach(function (w) { was[w] = 1; });
+      (Array.isArray(next) ? next : []).forEach(function (w) { is[w] = 1; });
+      for (k in is) if (!was[k]) mark('saved|' + k, now);
+      for (k in was) if (!is[k]) mark('saved|' + k, now);
+    } else if (name === 'settings') {
+      // Compare against the cleaned settings so filling in defaults never counts as a user change.
+      var prev = cleanSettings(read('settings', {})); next = isObj(next) ? next : {};
+      for (k in next) if (JSON.stringify(prev[k]) !== JSON.stringify(next[k])) mark('settings|' + k, now);
+      for (k in prev) if (!(k in next)) mark('settings|' + k, now);
+    }
+    if (dirty) rawWrite('stamps', st);
+  }
+  function changed(name) {
+    try { if (typeof window !== 'undefined' && window.dispatchEvent && typeof CustomEvent === 'function') window.dispatchEvent(new CustomEvent('hsk:change', { detail: { key: name } })); } catch (e) {}
+  }
+  // Deterministic tie-break so both sides of a merge pick the same value.
+  function pick(a, b) { return JSON.stringify(a) >= JSON.stringify(b) ? a : b; }
+  function newer(x, y, f) { return !x ? y : !y ? x : num(x[f]) > num(y[f]) ? x : num(y[f]) > num(x[f]) ? y : pick(x, y); }
+  // Normalise any payload (old, partial or corrupt) to a valid snapshot. Never throws.
+  function syncClean(st) {
+    var out = { v: 1, data: {}, stamps: {} }, k;
+    try {
+      var d = isObj(st) && st.v === 1 && isObj(st.data) ? st.data : {};
+      var p = isObj(d.progress) ? d.progress : {}, chars = {}, known = {};
+      if (isObj(p.chars)) for (k in p.chars) if (isObj(p.chars[k])) chars[k] = p.chars[k];
+      if (isObj(p.known)) for (k in p.known) if (typeof p.known[k] === 'number') known[k] = p.known[k];
+      out.data.progress = { chars: chars, known: known };
+      out.data.srs = {};
+      if (isObj(d.srs)) for (k in d.srs) if (isObj(d.srs[k]) && typeof d.srs[k].due === 'number') out.data.srs[k] = d.srs[k];
+      out.data.saved = Array.isArray(d.saved) ? d.saved.filter(function (w, i, a) { return typeof w === 'string' && a.indexOf(w) === i; }) : [];
+      out.data.streak = isObj(d.streak) && typeof d.streak.count === 'number' ? { count: d.streak.count, last: typeof d.streak.last === 'string' ? d.streak.last : null } : { count: 0, last: null };
+      out.data.settings = isObj(d.settings) ? JSON.parse(JSON.stringify(d.settings)) : {};
+      out.data.activity = {};
+      if (isObj(d.activity)) for (k in d.activity) if (typeof d.activity[k] === 'number') out.data.activity[k] = d.activity[k];
+      out.data.quiz = {};
+      if (isObj(d.quiz)) for (k in d.quiz) if (isObj(d.quiz[k])) out.data.quiz[k] = d.quiz[k];
+      out.data.last = isObj(d.last) && typeof d.last.slug === 'string' ? d.last : {};
+      if (isObj(st) && isObj(st.stamps)) for (k in st.stamps) if (typeof st.stamps[k] === 'number' && isFinite(st.stamps[k])) out.stamps[k] = st.stamps[k];
+      return out;
+    } catch (e) { return syncClean(null); }
+  }
+  function syncSnapshot() {
+    var settings = read('settings', {}), s = {}, k;
+    if (isObj(settings)) for (k in settings) if (!LOCAL_ONLY_SETTINGS[k]) s[k] = settings[k];
+    return syncClean({ v: 1, stamps: stamps(), data: { progress: getProgress(), srs: read('srs', {}), saved: getSaved(),
+      streak: read('streak', { count: 0, last: null }), settings: s, activity: getActivity(), quiz: getQuiz(), last: read('last', {}) } });
+  }
+  function union() { var o = {}; for (var i = 0; i < arguments.length; i++) for (var k in arguments[i]) o[k] = 1; return Object.keys(o); }
+  function stampKeys(st, pre) { var o = {}; for (var k in st) if (k.indexOf(pre) === 0) o[k.slice(pre.length)] = 1; return o; }
+  // Per-item last-write-wins. Each side: { t(key) -> ms, has(key), val(key) }. Ties: presence wins, then a deterministic pick.
+  function lww(keys, A, B, set) {
+    keys.forEach(function (k) {
+      var ta = A.t(k), tb = B.t(k), ha = A.has(k), hb = B.has(k), win;
+      if (ta !== tb) win = ta > tb ? A : B;
+      else if (ha !== hb) win = ha ? A : B;
+      else win = ha && pick(A.val(k), B.val(k)) !== A.val(k) ? B : A;
+      if (win.has(k)) set(k, win.val(k));
+    });
+  }
+  function syncMerge(a, b) {
+    a = syncClean(a); b = syncClean(b);
+    var A = a.data, B = b.data, out = { v: 1, data: {}, stamps: {} }, k;
+    for (k in a.stamps) out.stamps[k] = a.stamps[k];
+    for (k in b.stamps) out.stamps[k] = Math.max(out.stamps[k] || 0, b.stamps[k]);
+    var chars = {}, known = {}, keep = {}, settings = {};
+    union(A.progress.chars, B.progress.chars).forEach(function (c) { chars[c] = newer(A.progress.chars[c], B.progress.chars[c], 'at'); });
+    function knownSide(x, S) { return { t: function (w) { return Math.max(num(x.stamps['known|' + w]), num(S.progress.known[w])); },
+      has: function (w) { return w in S.progress.known; }, val: function (w) { return S.progress.known[w]; } }; }
+    lww(union(A.progress.known, B.progress.known, stampKeys(a.stamps, 'known|'), stampKeys(b.stamps, 'known|')),
+      knownSide(a, A), knownSide(b, B), function (w, v) { known[w] = v; });
+    out.data.progress = { chars: chars, known: known };
+    function savedSide(x, S) { var m = {}; S.saved.forEach(function (w) { m[w] = 1; });
+      return { m: m, t: function (w) { return num(x.stamps['saved|' + w]); }, has: function (w) { return !!m[w]; }, val: function () { return true; } }; }
+    var sA = savedSide(a, A), sB = savedSide(b, B);
+    lww(union(sA.m, sB.m, stampKeys(a.stamps, 'saved|'), stampKeys(b.stamps, 'saved|')), sA, sB, function (w) { keep[w] = 1; });
+    out.data.saved = A.saved.concat(B.saved).filter(function (w, i, arr) { return keep[w] && arr.indexOf(w) === i; });
+    function setSide(x, S) { return { t: function (key) { return num(x.stamps['settings|' + key]); },
+      has: function (key) { return key in S.settings; }, val: function (key) { return S.settings[key]; } }; }
+    lww(union(A.settings, B.settings, stampKeys(a.stamps, 'settings|'), stampKeys(b.stamps, 'settings|')),
+      setSide(a, A), setSide(b, B), function (key, v) { settings[key] = v; });
+    out.data.settings = settings;
+    out.data.srs = {};
+    union(A.srs, B.srs).forEach(function (id) { out.data.srs[id] = newer(A.srs[id], B.srs[id], 'last'); });
+    out.data.quiz = {};
+    union(A.quiz, B.quiz).forEach(function (q) { out.data.quiz[q] = newer(A.quiz[q], B.quiz[q], 'at'); });
+    out.data.activity = {};
+    union(A.activity, B.activity).forEach(function (d) { out.data.activity[d] = Math.max(num(A.activity[d]), num(B.activity[d])); });
+    var la = A.streak.last || '', lb = B.streak.last || '';
+    out.data.streak = la !== lb ? (la > lb ? A.streak : B.streak) : A.streak.count >= B.streak.count ? A.streak : B.streak;
+    out.data.last = !A.last.slug ? B.last : !B.last.slug ? A.last : newer(A.last, B.last, 'at');
+    return out;
+  }
+  // Replace local synced data with a (merged) snapshot. Keeps device-only settings; no stamps or change events.
+  function syncApply(state) {
+    var c = syncClean(state), d = c.data, local = read('settings', {}), s = {}, k;
+    for (k in d.settings) s[k] = d.settings[k];
+    if (isObj(local)) for (k in LOCAL_ONLY_SETTINGS) if (k in local) s[k] = local[k];
+    applying = true;
+    try {
+      rawWrite('progress', d.progress); rawWrite('srs', d.srs); rawWrite('saved', d.saved); rawWrite('streak', d.streak);
+      rawWrite('settings', cleanSettings(s)); rawWrite('activity', d.activity); rawWrite('quiz', d.quiz); rawWrite('last', d.last);
+      rawWrite('stamps', c.stamps);
+    } finally { applying = false; }
+    announceSettings(getSettings());
+    return true;
+  }
+
+  return { syncSnapshot: syncSnapshot, syncMerge: syncMerge, syncApply: syncApply, syncClean: syncClean,
+    getProgress: getProgress, markWritten: markWritten, markKnown: markKnown, isKnown: isKnown,
     getSaved: getSaved, saveWord: saveWord, unsaveWord: unsaveWord, isSaved: isSaved,
     srsGet: srsGet, srsRate: srsRate, srsNext: srsNext, srsPreview: srsPreview, srsLabel: srsLabel, srsDue: srsDue, srsDueCount: srsDueCount, srsNewToday: srsNewToday, srsQueue: srsQueue, streakTouch: streakTouch, getStreak: getStreak,
     getSettings: getSettings, setSettings: setSettings, settingDefaults: SETTING_DEFAULTS, getActivity: getActivity, recordQuiz: recordQuiz, getQuiz: getQuiz, setLast: setLast, getLast: getLast,

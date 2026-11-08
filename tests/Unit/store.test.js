@@ -125,4 +125,76 @@ assert.strictEqual(s.importAll('[]'), false); assert.strictEqual(s.getSettings()
 assert.ok(s.importAll('{"version":1,"settings":{"theme":"dark","dailyGoal":"x"}}'));
 assert.strictEqual(s.getSettings().theme, 'dark'); assert.strictEqual(s.getSettings().dailyGoal, 10);
 
+// S2 sync: stamps, merge, apply
+{
+  const realNow = Date.now;
+  let clock = 1_000_000;
+  Date.now = () => clock;
+  const A = factory(fakeStorage()), B = factory(fakeStorage());
+  const sync = (x, y) => { const m = x.syncMerge(x.syncSnapshot(), y.syncSnapshot()); x.syncApply(m); y.syncApply(m); return m; };
+
+  // fresh device: defaults never get stamps; user changes do
+  A.getSettings(); A.setSettings({});
+  assert.deepStrictEqual(Object.keys(A.syncSnapshot().stamps), []);
+  A.setSettings({ theme: 'dark', voice: 'device-voice' });
+  clock += 10; B.setSettings({ theme: 'light' });            // B changed theme later → B wins
+  clock += 10; A.saveWord('学习'); A.markKnown('你好');
+  clock += 10; B.saveWord('朋友');
+  B.markWritten('我');
+  let m = sync(A, B);
+  assert.strictEqual(A.getSettings().theme, 'light'); assert.strictEqual(B.getSettings().theme, 'light');
+  assert.strictEqual(A.getSettings().voice, 'device-voice');   // device-only
+  assert.strictEqual(B.getSettings().voice, '');
+  assert.ok(!('voice' in m.data.settings));
+  assert.deepStrictEqual(A.getSaved().slice().sort(), ['学习', '朋友'].sort());
+  assert.deepStrictEqual(B.getSaved().slice().sort(), ['学习', '朋友'].sort());
+  assert.ok(B.isKnown('你好')); assert.strictEqual(A.getProgress().chars['我'].written, 1);
+
+  // deletions propagate (tombstones), and a later re-add beats an older delete
+  clock += 10; A.unsaveWord('朋友'); A.markKnown('你好', false);
+  clock += 10; B.saveWord('学习');                              // no-op (already saved), no new stamp
+  sync(B, A);
+  assert.deepStrictEqual(B.getSaved(), ['学习']); assert.ok(!B.isKnown('你好'));
+  clock += 10; B.saveWord('朋友'); sync(A, B);
+  assert.ok(A.isSaved('朋友'));
+
+  // SRS keeps the later review even if the other side has more reps
+  A.srsRate('学', 3, 5000); A.srsRate('学', 3, 6000); A.srsRate('学', 3, 7000);
+  B.srsRate('学', 1, 8000);
+  sync(A, B);
+  assert.strictEqual(A.srsGet('学').last, 8000); assert.strictEqual(A.srsGet('学').reps, 0);
+  assert.deepStrictEqual(A.srsGet('学'), B.srsGet('学'));
+
+  // merge is symmetric (same result either way) and idempotent
+  clock += 10; A.setSettings({ dailyGoal: 30 }); B.recordQuiz('lesson-1/1', 3, 5);
+  const ab = A.syncMerge(A.syncSnapshot(), B.syncSnapshot()), ba = A.syncMerge(B.syncSnapshot(), A.syncSnapshot());
+  const norm = (x) => JSON.stringify(Object.assign({}, x, { data: Object.assign({}, x.data, { saved: x.data.saved.slice().sort() }) }));
+  assert.strictEqual(norm(ab), norm(ba));
+  assert.strictEqual(JSON.stringify(A.syncMerge(ab, ab)), JSON.stringify(ab));
+
+  // streak keeps the later day; activity keeps the max per day
+  const s1 = { v: 1, data: { streak: { count: 5, last: '2026-01-02' }, activity: { '2026-01-01': 3 } } };
+  const s2 = { v: 1, data: { streak: { count: 9, last: '2026-01-01' }, activity: { '2026-01-01': 7, '2026-01-02': 1 } } };
+  m = A.syncMerge(s1, s2);
+  assert.deepStrictEqual(m.data.streak, { count: 5, last: '2026-01-02' });
+  assert.deepStrictEqual(m.data.activity, { '2026-01-01': 7, '2026-01-02': 1 });
+
+  // corrupt / old payloads never break the store
+  for (const bad of [null, undefined, 42, 'x', [], { v: 2, data: {} }, { v: 1, data: 'x' },
+    { v: 1, data: { progress: 'x', srs: [1], saved: [1, null, 'ok', 'ok'], settings: [], streak: 'x', quiz: 7, last: 3 }, stamps: { 'saved|ok': 'x' } }]) {
+    const st = factory(fakeStorage()); st.saveWord('mine');
+    st.syncApply(st.syncMerge(st.syncSnapshot(), bad));
+    assert.ok(st.isSaved('mine'));
+    assert.deepStrictEqual(st.syncClean(bad).v, 1);
+  }
+  assert.deepStrictEqual(factory(fakeStorage()).syncClean({ v: 1, data: { saved: [1, null, 'ok', 'ok'] } }).data.saved, ['ok']);
+
+  // apply does not emit stamps; reset clears them
+  const ls2 = fakeStorage(), C = factory(ls2);
+  C.syncApply({ v: 1, data: { saved: ['x'] }, stamps: { 'saved|x': 5 } });
+  assert.deepStrictEqual(C.syncSnapshot().stamps, { 'saved|x': 5 });
+  C.reset(); assert.deepStrictEqual(C.syncSnapshot().stamps, {});
+  Date.now = realNow;
+}
+
 console.log('store.test.js: all passed');

@@ -37,15 +37,18 @@ Route::view('/settings', 'pages.settings')->name('settings');
 // S1 accounts: email + password, web session guard only. No email reset: owner runs `hsk:reset-password`.
 Route::middleware('guest')->group(function () {
     Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'show'])->name('login');
-    Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->middleware('throttle:30,1');
+    Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->middleware('throttle:login');
     Route::get('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'show'])->name('register');
-    Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'store'])->middleware('throttle:10,1');
+    Route::post('/register', [\App\Http\Controllers\Auth\RegisterController::class, 'store'])->middleware('throttle:register');
 });
 Route::middleware('auth')->group(function () {
     Route::get('/account', [\App\Http\Controllers\Auth\AccountController::class, 'show'])->name('account');
     Route::post('/logout', [\App\Http\Controllers\Auth\AccountController::class, 'logout'])->name('logout');
     Route::put('/account/password', [\App\Http\Controllers\Auth\AccountController::class, 'updatePassword'])->middleware('throttle:10,1')->name('account.password');
     Route::delete('/account', [\App\Http\Controllers\Auth\AccountController::class, 'destroy'])->middleware('throttle:10,1')->name('account.destroy');
+    // S2 sync: session guard + CSRF (web group); client merges, server stores one snapshot per user.
+    Route::get('/sync', [\App\Http\Controllers\SyncController::class, 'pull'])->middleware('throttle:sync')->name('sync.pull');
+    Route::post('/sync', [\App\Http\Controllers\SyncController::class, 'push'])->middleware('throttle:sync')->name('sync.push');
 });
 
 if (app()->environment('local', 'testing')) {

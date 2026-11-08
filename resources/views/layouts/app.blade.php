@@ -20,5 +20,6 @@
 <script src="/js/audio-service.js"></script>
 <script src="/js/chrome.js"></script>
 @stack('scripts')
+@auth<script src="/js/sync.js" data-csrf="{{ csrf_token() }}"></script>@endauth
 </body>
 </html>

@@ -34,12 +34,12 @@ for (const width of [390, 1200]) {
     await page.getByRole('button', { name: 'Create account' }).click();
     await expect(page).toHaveURL(/\/account$/);
     await expect(page.locator('#au-user-email')).toHaveText(email);
-    await expect(page.getByText('Sync coming soon')).toBeVisible();
+    await expect(page.locator('.au-dl')).toContainText('Sync on');
     await expect(page.getByRole('link', { name: 'Account (signed in)' })).toBeVisible();
     await noHScroll(page);
 
     await page.goto('/settings');
-    await expect(page.locator('#st-account')).toContainText('Sync coming soon');
+    await expect(page.locator('#st-sync-status')).toHaveText(/Synced/);
 
     await page.goto('/account');
     await page.getByRole('button', { name: 'Sign out' }).click();
