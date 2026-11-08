@@ -47,3 +47,18 @@ Route::get('/data/review-deck', [\App\Http\Controllers\ReviewController::class, 
 
 // Public read-only HSK word search for Browse (same logic as /api/v1/hsk-words, no token).
 Route::get('/data/hsk-words', [BrowseController::class, 'words'])->middleware('throttle:120,1');
+
+// F3 · Tools
+Route::prefix('tools')->group(function () {
+    $c = \App\Http\Controllers\ToolsController::class;
+    Route::get('/', [$c, 'index'])->name('tools');
+    Route::get('/pinyin', [$c, 'pinyin'])->name('tools.pinyin');
+    Route::post('/pinyin', [$c, 'convertPinyin'])->middleware('throttle:60,1');
+    Route::get('/hsk-check', [$c, 'hsk'])->name('tools.hsk');
+    Route::post('/hsk-check', [$c, 'checkHsk'])->middleware('throttle:30,1');
+    Route::get('/name', [$c, 'name'])->name('tools.name');
+    Route::get('/name/suggest', [$c, 'suggestName'])->middleware('throttle:60,1');
+    Route::get('/name/meanings', [$c, 'meanings'])->middleware('throttle:60,1');
+    Route::get('/zodiac', [$c, 'zodiac'])->name('tools.zodiac');
+    Route::post('/zodiac', [$c, 'zodiacLookup'])->middleware('throttle:60,1');
+});

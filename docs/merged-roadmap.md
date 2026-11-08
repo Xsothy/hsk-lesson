@@ -19,3 +19,4 @@ Open data used:
 - Make Me a Hanzi `dictionary.txt` (LGPL-3.0 / Arphic) — character facts
 - complete-hsk-vocabulary (MIT) — HSK 2.0 & 3.0 word lists
 - Hanzi Writer + hanzi-writer-data (MIT / Arphic) — strokes, animation, quiz (loaded from CDN)
+- Chinese New Year table 1900–2100 (`app/Support/data/lny.php`, used by the Zodiac tool): generated with ICU's Chinese calendar (PHP intl), which implements the astronomical algorithm of Reingold & Dershowitz, *Calendrical Calculations*; spot-checked 1900-01-31, 2024-02-10, 2025-01-29, 2100-02-09

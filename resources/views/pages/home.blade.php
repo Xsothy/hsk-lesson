@@ -40,6 +40,7 @@
   <div class="chips">
     <x-chip :href="route('search')">Search</x-chip>
     <x-chip :href="route('words')">My words</x-chip>
+    <x-chip :href="route('tools')">Tools</x-chip>
     <x-chip :href="route('settings')">Settings</x-chip>
   </div>
 </section>
