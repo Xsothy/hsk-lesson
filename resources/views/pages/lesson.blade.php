@@ -49,7 +49,7 @@
   <h2>Dialogue</h2>
   <div class="stack">
     @foreach ($dialogue as $d)
-      <x-dialogue-bubble :speaker="$d['speaker'] ?? null" :zh="$d['zh']" :pinyin="$d['pinyin']" :en="$d['en'] ?? null" :side="($d['speaker'] ?? 'A') === 'A' ? 'left' : 'right'" />
+      <x-dialogue-bubble :speaker="$d['speaker'] ?? null" :zh="$d['zh']" :pinyin="$d['pinyin']" :tokens="$d['tokens']" :en="$d['en'] ?? null" :side="($d['speaker'] ?? 'A') === 'A' ? 'left' : 'right'" />
     @endforeach
   </div>
 </section>
@@ -60,7 +60,7 @@
   <h2>Sentences</h2>
   <div class="stack">
     @foreach ($sentences as $s)
-      <x-dialogue-bubble :zh="$s['zh']" :pinyin="$s['pinyin']" :en="$s['en'] ?? null" />
+      <x-dialogue-bubble :zh="$s['zh']" :pinyin="$s['pinyin']" :tokens="$s['tokens']" :en="$s['en'] ?? null" />
     @endforeach
   </div>
 </section>

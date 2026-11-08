@@ -40,6 +40,8 @@ function smallTargets() {
     if (r.right < 0 || r.bottom < 0) continue;
     // Inline link inside running text: exempt (WCAG 2.5.8 inline exception).
     if (el.tagName === 'A' && cs.display === 'inline' && el.closest('p, li, dd, td')) continue;
+    // Clickable words inside an interlinear ruby sentence: same inline exception.
+    if (el.classList.contains('rl-word')) continue;
     if (r.width < 43.5 || r.height < 43.5) {
       out.push(`${el.tagName.toLowerCase()}${el.id ? '#' + el.id : ''}.${(el.className || '').toString().split(' ')[0]} "${(el.textContent || el.getAttribute('aria-label') || '').trim().slice(0, 24)}" ${Math.round(r.width)}x${Math.round(r.height)}`);
     }

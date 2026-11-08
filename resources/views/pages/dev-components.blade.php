@@ -37,6 +37,19 @@
   <x-dialogue-bubble speaker="B" side="right" zh="我叫李明。" pinyin="Wǒ jiào Lǐ Míng." en="My name is Li Ming."/>
 </div>
 
+<h2>ruby-line</h2>
+@php
+  $tk = fn ($zh, $py = null, $tones = [], $en = null) => ['zh' => $zh, 'pinyin' => $py, 'vocab' => $en ? ['e' => $en] : null,
+      'syllables' => $py ? array_map(fn ($s, $t) => ['s' => $s, 't' => $t], \App\Services\RubyTokens::syllables($py, mb_strlen($zh)), $tones) : []];
+  $demo = [$tk('你好', 'nǐ hǎo', [3, 3], 'hello'), $tk('！'), $tk('你', 'nǐ', [3], 'you'), $tk('叫', 'jiào', [4], 'to be called'),
+      $tk('什么', 'shénme', [2, 5], 'what'), $tk('名字', 'míngzi', [2, 5], 'name'), $tk('？')];
+@endphp
+<div class="stack">
+  <x-ruby-line :tokens="$demo" audio="你好！你叫什么名字？"/>
+  <x-ruby-line :tokens="[$tk('妈', 'mā', [1]), $tk('麻', 'má', [2]), $tk('马', 'mǎ', [3]), $tk('骂', 'mà', [4]), $tk('吗', 'ma', [5]), $tk('。')]"/>
+  <x-dialogue-bubble speaker="A" zh="你好！你叫什么名字？" :tokens="$demo" en="Hello! What is your name?"/>
+</div>
+
 <h2>action-row</h2>
 <div class="stack">
   <x-action-row icon="✍️" title="Practice writing" sub="12 characters" variant="dark"/>

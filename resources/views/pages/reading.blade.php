@@ -19,7 +19,7 @@
 <section class="sec" id="reading-lines">
   <div class="stack">
     @foreach ($lines as $l)
-      <x-dialogue-bubble :zh="$l['zh']" :pinyin="$l['pinyin']" :en="$l['en'] ?? null" />
+      <x-dialogue-bubble :zh="$l['zh']" :pinyin="$l['pinyin']" :tokens="$l['tokens']" :en="$l['en'] ?? null" />
     @endforeach
   </div>
 </section>
