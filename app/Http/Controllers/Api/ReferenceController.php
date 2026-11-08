@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Character;
-use App\Models\HskWord;
 use App\Services\CharacterService;
+use App\Services\HskWordSearch;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -32,24 +32,14 @@ class ReferenceController extends Controller
         return response()->json($q->paginate(min((int) $request->query('per_page', 100), 500)));
     }
 
-    /** ?q= matches hanzi, toneless pinyin ("xuexi", "lv"→"lü") or English; ?hsk2_level= / ?hsk3_level= filter. */
-    public function hskWords(Request $request): JsonResponse
+    /**
+     * ?q= matches hanzi, pinyin ("xue", "xué", "xue2") or English, ranked best first;
+     * ?version=2|3&level= or ?hsk2_level= / ?hsk3_level= filter. See HskWordSearch.
+     */
+    public function hskWords(Request $request, HskWordSearch $search): JsonResponse
     {
-        $q = HskWord::query();
-        if ($s = trim((string) $request->query('q'))) {
-            $plain = HskWord::plain(str_replace(['lv', 'nv'], ['lü', 'nü'], $s));
-            $q->where(fn ($w) => $w->where('simplified', 'like', "%$s%")
-                ->orWhere('pinyin_plain', 'like', $plain.'%')
-                ->orWhere('meanings', 'like', "%$s%"));
-        }
-        foreach (['hsk2_level', 'hsk3_level'] as $f) {
-            if ($request->filled($f)) {
-                $q->where($f, (int) $request->query($f));
-            }
-        }
+        $q = $search->query($request->only(['q', 'version', 'level', 'hsk2_level', 'hsk3_level']));
 
-        return response()->json(
-            $q->orderByRaw('COALESCE(frequency, 999999)')->paginate(min((int) $request->query('per_page', 100), 500)),
-        );
+        return response()->json($q->paginate(min(max((int) $request->query('per_page', 100), 1), 500)));
     }
 }

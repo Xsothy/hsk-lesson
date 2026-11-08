@@ -50,7 +50,7 @@ class ToolsController extends Controller
                 ['DELETE', '/api/v1/readings/{id}', 'Delete reading'],
                 ['GET', '/api/v1/characters?radical=&hsk2_level=&hsk3_level=', 'Reference characters (9.5k, Make Me a Hanzi)'],
                 ['GET', '/api/v1/characters/{char}', 'Character details: facts, words containing it, lessons that teach it, examples, related'],
-                ['GET', '/api/v1/hsk-words?q=&hsk2_level=&hsk3_level=', 'Official HSK 2.0/3.0 word list search (hanzi, toneless pinyin, English)'],
+                ['GET', '/api/v1/hsk-words?q=&version=&level=&hsk2_level=&hsk3_level=', 'Official HSK 2.0/3.0 word list search (hanzi, pinyin with/without tones, English), best match first'],
                 ['POST', '/api/v1/tokenize', 'Segment Chinese text {text} into dictionary words'],
                 ['GET', '/api/v1/validate', 'Content integrity report'],
                 ['GET', '/api/v1/export', 'Whole content set as JSON'],

@@ -1,0 +1,64 @@
+/* C2 · Browse / HSK & Dictionary */
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:var(--r-s);border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:500;text-decoration:none;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--ink)}
+.btn-primary{background:var(--red);border-color:var(--red);color:#fff}
+.btn-primary:hover{background:var(--red-d);border-color:var(--red-d)}
+.btn.is-disabled{color:var(--muted);cursor:default}.btn.is-disabled:hover{border-color:var(--line)}
+
+.browse-search{display:flex;gap:8px;margin:12px 0 4px}
+.browse-search input{flex:1;min-width:0;min-height:48px;padding:0 14px;border:1px solid var(--line);border-radius:var(--r-s);background:var(--card);font:inherit;font-size:16px;color:var(--ink)}
+.browse-search input:focus{outline:2px solid var(--ink);outline-offset:1px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.browse-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:calc(-1 * var(--pad));padding-right:var(--pad)}
+.browse-tabs .chip{white-space:nowrap;flex:none}
+.sub-chips{margin-top:0}
+.sub-chips .chip.is-active{color:#fff}
+.set-note{margin:0 0 12px;color:var(--text-2)}
+.set-note a{display:inline-flex;align-items:center;min-height:44px}
+
+.picker{background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);margin:0 0 12px}
+.picker summary{display:flex;align-items:center;min-height:52px;padding:0 18px;font-weight:600;cursor:pointer}
+.picker-group{padding:0 14px 12px}
+.picker-h{margin:4px 0 8px;font-size:13px;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.picker-items{display:flex;flex-wrap:wrap;gap:6px}
+.pick{display:inline-flex;align-items:center;gap:4px;min-width:44px;min-height:44px;padding:0 10px;justify-content:center;border:1px solid var(--line);border-radius:var(--r-s);background:var(--card-2);text-decoration:none;color:var(--ink);font-size:15px}
+.pick small{font-size:11px;color:var(--muted)}
+.pick-zh .zh{font-size:20px}
+.pick:hover{border-color:var(--red)}
+.pick.is-active{background:var(--ink);border-color:var(--ink);color:#fff}.pick.is-active small{color:#d9d2c6}
+.browse-hint{margin-top:16px}
+
+.browse-results{margin-top:8px}
+.browse-bar{display:flex;flex-direction:column;gap:10px;margin:8px 0 14px}
+.results-title{margin:0;font-size:18px}
+.browse-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.seg{display:inline-flex;background:var(--soft);border-radius:var(--r-s);padding:3px}
+.seg-btn{min-height:44px;min-width:44px;padding:0 12px;border:0;border-radius:calc(var(--r-s) - 3px);background:none;font:inherit;font-size:14px;color:var(--text-2);cursor:pointer}
+.seg-btn[aria-pressed=true]{background:var(--card);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(15,12,8,.08)}
+.practise{margin-left:auto}
+
+.browse-list{display:flex;flex-direction:column;gap:8px}
+.browse-list .word-row{min-width:0}
+.browse-list .wr-en{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.browse-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px}
+.browse-grid .char-tile{min-width:0}
+.browse-grid .ct-m{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.browse-grid .char-tile[data-len="3"] .ct-c{font-size:26px}
+.browse-grid .char-tile[data-len="4"] .ct-c{font-size:20px}
+[data-pane][hidden],.is-filtered{display:none!important}
+.empty{padding:24px;background:var(--card);border:1px dashed var(--line);border-radius:var(--r-l);color:var(--muted)}
+
+.pager{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px}
+.pager-n{color:var(--muted);font-size:14px}
+
+@media (min-width:761px){
+  .browse-tabs{margin-right:0;padding-right:0}
+  .browse-bar{flex-direction:row;align-items:center;justify-content:space-between}
+  .browse-controls{flex-wrap:nowrap}
+  .browse-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .browse-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+  .practise{margin-left:8px}
+}
+@media (min-width:1100px){.browse-list{grid-template-columns:repeat(3,minmax(0,1fr))}}

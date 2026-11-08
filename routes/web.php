@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrowseController;
 use App\Http\Controllers\LearnController;
 use App\Http\Controllers\LegacyDataController;
 use Illuminate\Support\Facades\Route;
@@ -24,7 +25,7 @@ Route::get('/data/hsk/{version}/{level}/sets', [LearnController::class, 'sets'])
 Route::get('/lessons/{slug}', [LearnController::class, 'lesson'])->name('lesson');
 Route::get('/lessons/{slug}/reading/{n}', [LearnController::class, 'reading'])->whereNumber('n')->name('reading');
 Route::get('/char/{c}', fn (string $c) => view('pages.placeholder', ['title' => $c]))->name('char');
-Route::get('/browse', $page('Browse'))->name('browse');
+Route::get('/browse', [BrowseController::class, 'index'])->name('browse');
 Route::get('/search', $page('Search'))->name('search');
 Route::get('/practice', $page('Practice'))->name('practice');
 Route::get('/review', $page('Review'))->name('review');
@@ -38,3 +39,6 @@ if (app()->environment('local', 'testing')) {
 // Public read-only JSON for the character page (no token needed).
 Route::get('/data/char/{char}.json', [\App\Http\Controllers\Api\ReferenceController::class, 'character'])
     ->middleware('throttle:120,1');
+
+// Public read-only HSK word search for Browse (same logic as /api/v1/hsk-words, no token).
+Route::get('/data/hsk-words', [BrowseController::class, 'words'])->middleware('throttle:120,1');
