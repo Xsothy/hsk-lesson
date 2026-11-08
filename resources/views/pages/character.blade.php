@@ -21,6 +21,7 @@
     <a href="{{ route('browse') }}">HSK &amp; Dictionary</a>
     @if ($d['hsk3_level'])<span aria-hidden="true">/</span><span>HSK {{ $lvl($d['hsk3_level']) }}</span>@endif
     <span aria-hidden="true">/</span><span class="zh" lang="zh-Hans" aria-current="page">{{ $c }}</span>
+    <span aria-hidden="true">·</span><a href="https://www.mdbg.net/chinese/dictionary?page=worddict&amp;wdrst=0&amp;wdqb={{ urlencode($c) }}" target="_blank" rel="noopener noreferrer" data-ext-dict>MDBG dictionary ↗</a>
   </nav>
 
   <div class="cp-cols">

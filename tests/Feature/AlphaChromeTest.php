@@ -34,8 +34,8 @@ class AlphaChromeTest extends TestCase
         $this->get('/review')->assertSee('aria-current="page"', false);
     }
 
-    public function test_root_still_serves_legacy_home(): void
+    public function test_root_serves_home(): void
     {
-        $this->get('/')->assertOk();
+        $this->get('/')->assertOk()->assertSee('Four hubs');
     }
 }

@@ -36,6 +36,11 @@ class CharacterPageTest extends TestCase
             ->assertSee('tone-2', false);
     }
 
+    public function test_character_page_links_external_dictionary(): void
+    {
+        $this->get('/char/'.rawurlencode('学'))->assertOk()->assertSee('mdbg.net/chinese/dictionary', false);
+    }
+
     public function test_character_page_shows_lessons_words_examples_facts_and_related(): void
     {
         $res = $this->get('/char/'.rawurlencode('学'))->assertOk();

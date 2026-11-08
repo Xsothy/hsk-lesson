@@ -2,23 +2,14 @@
 
 use App\Http\Controllers\BrowseController;
 use App\Http\Controllers\LearnController;
-use App\Http\Controllers\LegacyDataController;
 use Illuminate\Support\Facades\Route;
 
-// Static frontend lives in public/. These routes generate its data scripts from the database.
-Route::get('/', fn () => response()->file(public_path('index.html')));
+// `/` is Home. Old static-site URLs 301 to their Blade equivalents (R2).
+Route::get('/', [LearnController::class, 'home']);
+Route::get('/index.html', fn () => redirect('/', 301));
+Route::get('/lesson.html', [LearnController::class, 'legacyLesson']);
+Route::get('/export-lessons.html', fn () => redirect()->route('courses', [], 301));
 
-Route::controller(LegacyDataController::class)->group(function () {
-    Route::get('/data/lessons.js', 'lessons');
-    Route::get('/data/lessons/{slug}.js', 'lesson')->where('slug', '[A-Za-z0-9\-_]+');
-    Route::get('/data/dictionary.js', 'dictionary');
-    Route::get('/data/vocabulary.js', 'vocabulary');
-    Route::get('/data/readings.js', 'readings');
-    Route::get('/js/word-map.js', 'wordMap');
-});
-
-// Alpha pages (A2 skeleton). `/` still serves the legacy home until parity.
-$page = fn (string $title) => fn () => view('pages.placeholder', ['title' => $title]);
 Route::get('/home', [LearnController::class, 'home'])->name('home');
 Route::get('/courses', [LearnController::class, 'courses'])->name('courses');
 Route::get('/data/hsk/{version}/{level}/sets', [LearnController::class, 'sets'])->whereNumber(['version', 'level']);

@@ -7,7 +7,7 @@
   <span class="lesson-emoji" aria-hidden="true">{{ $lesson->emoji }}</span>
   <div>
     <div class="eyebrow">Lesson {{ $lesson->number }}</div>
-    <h1>{{ $lesson->en_title ?: $lesson->title }} <span class="zh">{{ $lesson->zh_title }}</span></h1>
+    <h1>{{ $lesson->en_title ?: $lesson->title }} <span class="zh">{{ $lesson->zh_title }}</span>@if ($lesson->is_preview) <span class="chip" data-preview-badge>+ HSK 2 preview</span>@endif</h1>
     @if ($lesson->description)<p class="muted">{{ $lesson->description }}</p>@endif
   </div>
 </header>
@@ -74,6 +74,13 @@
       <x-action-row :icon="$r->emoji ?: '📖'" :title="$r->title" :sub="$r->title_en" :href="route('reading', [$lesson->slug, $i + 1])" />
     @endforeach
   </div>
+</section>
+@endif
+
+@if (trim((string) $lesson->content) !== '')
+<section id="notes" class="sec lesson-notes">
+  <h2>Lesson notes</h2>
+  <div class="lesson-content">{!! $lesson->content !!}</div>
 </section>
 @endif
 
