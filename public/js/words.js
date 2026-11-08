@@ -113,6 +113,7 @@
     $('[data-empty]').hidden = saved.length > 0;
     $('[data-main]').hidden = saved.length === 0;
     if (!saved.length) return;
+    sheetLink();
     renderChips(saved);
     var shown = saved.filter(matches), list = $('[data-list]');
     list.textContent = '';
@@ -134,12 +135,27 @@
   }
 
   root.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-filter],[data-unsave],[data-act=csv]');
+    var t = e.target.closest('[data-filter],[data-unsave],[data-act=csv],[data-act=pdf]');
     if (!t) return;
     if (t.hasAttribute('data-filter')) { filter = t.getAttribute('data-filter'); render(); }
     else if (t.hasAttribute('data-unsave')) { S.unsaveWord(t.getAttribute('data-key')); render(); }
+    else if (t.getAttribute('data-act') === 'pdf') exportPdf();
     else download();
   });
+
+  // F9: the form lives outside [data-words-page] (it is a sibling), so look it up on document.
+  function savedHan() { return S.getSaved().filter(function (k) { return /^\p{Script=Han}+$/u.test(k); }).slice(0, 200); }
+  function exportPdf() {
+    var form = document.querySelector('[data-pdf-form]'), words = savedHan();
+    if (!form || !words.length) return;
+    Array.prototype.slice.call(form.querySelectorAll('input[name="words[]"]')).forEach(function (i) { i.remove(); });
+    words.forEach(function (w) { var i = document.createElement('input'); i.type = 'hidden'; i.name = 'words[]'; i.value = w; form.appendChild(i); });
+    form.submit();
+  }
+  function sheetLink() {
+    var a = $('[data-act=sheet]'); if (!a) return;
+    a.href = '/worksheet?source=text&chars=' + encodeURIComponent(savedHan().join('').slice(0, 500));
+  }
 
   render();
   resolveMissing(S.getSaved());
