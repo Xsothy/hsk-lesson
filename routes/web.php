@@ -28,7 +28,8 @@ Route::get('/char/{c}', [\App\Http\Controllers\CharacterController::class, 'show
 Route::get('/char.html', [\App\Http\Controllers\CharacterController::class, 'legacy'])->name('char.legacy');
 Route::get('/browse', [BrowseController::class, 'index'])->name('browse');
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
-Route::get('/practice', $page('Practice'))->name('practice');
+Route::get('/practice', [\App\Http\Controllers\PracticeController::class, 'index'])->name('practice');
+Route::get('/data/practice-queue', [\App\Http\Controllers\PracticeController::class, 'queue'])->middleware('throttle:60,1');
 Route::get('/review', [\App\Http\Controllers\ReviewController::class, 'index'])->name('review');
 Route::get('/words', fn () => view('pages.words'))->name('words');
 Route::view('/settings', 'pages.settings')->name('settings');
