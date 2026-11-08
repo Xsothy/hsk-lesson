@@ -96,10 +96,18 @@ Max 4 sessions at once. Only R1 changes shared components (`x-dialogue-bubble`, 
 
 ## 6. Beta exit checklist
 
-- [ ] Interlinear tone-coloured pinyin on every lesson, dialogue and reading line; settings apply live.
-- [ ] R4 polish list done: consistent cards, headers, icons and Chinese display on every page at both widths.
-- [ ] Old static pages retired; old URLs redirect.
-- [ ] Sign-in + sync works across two devices.
-- [ ] All Track F features shipped with tests.
-- [ ] CI green; one-command deploy; HTTPS on a domain.
-- [ ] Manual pass on a physical phone (carried over from alpha).
+B-QA run 2026-11-09 (branch `claude/beta-qa-a2eddd`). The new `tests/e2e/alpha-beta-qa.spec.js` covers:
+- all 24 beta routes at 390 and 1200 px: status 200, no JS errors, no horizontal scroll
+- worksheet PDF response
+- textbook paste → practice → match on the list
+- old-URL redirects
+
+The live read-only smoke ran against gsap: 34 GETs returned the expected status and type, and a throwaway account went register → sign out → sign in → delete with no page errors. Tester checklist: `docs/beta-testers.md`.
+
+- [x] Interlinear tone-coloured pinyin on every lesson, dialogue and reading line; settings apply live (`alpha-ruby`).
+- [x] R4 polish list done: consistent cards, headers, icons and Chinese display on every page at both widths. Automated checks cover no h-scroll, 44 px targets and dark contrast; a visual sign-off still needs the phone pass.
+- [x] Old static pages retired; old URLs redirect with 301, locally and live.
+- [x] Sign-in + sync works across two devices (`alpha-sync` uses two contexts at 390 and 1200; live account flow verified).
+- [x] All Track F features shipped with tests (F1–F9 specs, plus `alpha-beta-qa`).
+- [ ] CI green; one-command deploy; HTTPS on a domain. CI and deploy are done. **HTTPS stays open:** the owner deferred a domain for beta (§5.2).
+- [ ] Manual pass on a physical phone (carried over from alpha). **Open.**
