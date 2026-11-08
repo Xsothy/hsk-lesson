@@ -93,6 +93,19 @@ class LearnController extends Controller
         ]);
     }
 
+    /** Old `lesson.html?slug=lesson-1` / `?lesson=1` URLs. */
+    public function legacyLesson(\Illuminate\Http\Request $request)
+    {
+        $slug = (string) $request->query('slug', '');
+        if ($slug === '' && ($n = (int) $request->query('lesson', $request->query('id', 0))) > 0) {
+            $slug = Lesson::where('number', $n)->value('slug') ?? '';
+        }
+
+        return $slug !== '' && preg_match('/^[A-Za-z0-9\-_]+$/', $slug)
+            ? redirect()->route('lesson', $slug, 301)
+            : redirect()->route('courses', [], 301);
+    }
+
     public function lesson(string $slug)
     {
         $lesson = Lesson::where('slug', $slug)->where('is_published', true)->firstOrFail();

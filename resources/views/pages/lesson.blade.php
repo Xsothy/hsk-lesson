@@ -4,7 +4,9 @@
 @section('content')
 <a class="back" href="{{ route('courses') }}">← Courses</a>
 <x-page-head class="lesson-head" :lead="$lesson->emoji" :eyebrow="'Lesson '.$lesson->number" :title="$lesson->en_title ?: $lesson->title"
-  :zh="$lesson->zh_title" :sub="$lesson->description" />
+  :zh="$lesson->zh_title" :sub="$lesson->description">
+  @if ($lesson->is_preview)<span class="chip" data-preview-badge>+ HSK 2 preview</span>@endif
+</x-page-head>
 
 <nav class="section-nav" aria-label="Lesson sections">
   <x-chip href="#vocab">Vocabulary</x-chip>
@@ -68,6 +70,13 @@
       <x-action-row icon="book" :title="$r->title" :sub="$r->title_en" :href="route('reading', [$lesson->slug, $i + 1])" />
     @endforeach
   </div>
+</section>
+@endif
+
+@if (trim((string) $lesson->content) !== '')
+<section id="notes" class="sec lesson-notes">
+  <h2>Lesson notes</h2>
+  <div class="lesson-content">{!! $lesson->content !!}</div>
 </section>
 @endif
 

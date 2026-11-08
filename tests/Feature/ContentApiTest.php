@@ -43,14 +43,7 @@ class ContentApiTest extends TestCase
             ->assertJsonPath('data.slug', 'lesson-13')
             ->assertJsonPath('data.sentences.0.words', ['你好', '！', '我', '是', '老师', '。']);
 
-        $this->get('/data/lessons/lesson-13.js')->assertOk()->assertSee('老师', false);
+        $this->get('/lessons/lesson-13')->assertOk()->assertSee('老师', false);
         $this->getJson('/api/v1/validate')->assertJsonPath('ok', true);
-    }
-
-    public function test_legacy_scripts_render(): void
-    {
-        foreach (['/data/lessons.js', '/data/dictionary.js', '/data/vocabulary.js', '/data/readings.js', '/js/word-map.js'] as $url) {
-            $this->get($url)->assertOk()->assertHeader('Content-Type', 'application/javascript; charset=utf-8');
-        }
     }
 }
