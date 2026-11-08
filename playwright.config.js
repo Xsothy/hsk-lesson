@@ -1,5 +1,6 @@
 // @ts-check
 // Alpha QA config. Starts `php artisan serve` on a free port (override PHP_BIN / E2E_PORT if needed).
+// PHP lookup: PHP_BIN, else Herd's php84 (Windows dev), else `php` on PATH (Linux CI).
 const { defineConfig } = require('@playwright/test');
 const fs = require('fs');
 const os = require('os');
@@ -15,7 +16,7 @@ module.exports = defineConfig({
   testMatch: /alpha-.*\.spec\.js/,
   timeout: 90_000,
   workers: 1,
-  reporter: [['list']],
+  reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : [['list']],
   use: {
     baseURL: `http://127.0.0.1:${port}`,
     trace: 'retain-on-failure',

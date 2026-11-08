@@ -39,6 +39,16 @@ php artisan serve                  # http://127.0.0.1:8000  (open /home)
 
 With Laravel Herd, just link the folder; the web root is `public/`.
 
+## Deploy
+
+```bash
+scripts/deploy.sh --dry-run   # show the plan
+scripts/deploy.sh             # deploy origin/main to the `gsap` server
+scripts/deploy.sh --ref <ref> # deploy/rollback to a specific ref
+```
+
+Backs up the SQLite DB, migrates, rebuilds caches, fixes permissions, reloads PHP-FPM and smoke-checks the site. Server layout, rollback and HTTPS (certbot) steps: [docs/deploy.md](docs/deploy.md). CI runs on every push/PR to `main`.
+
 ## API for AI agents
 
 Create a token:
