@@ -31,7 +31,7 @@ Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])-
 Route::get('/practice', $page('Practice'))->name('practice');
 Route::get('/review', $page('Review'))->name('review');
 Route::get('/words', $page('My words'))->name('words');
-Route::get('/settings', $page('Settings'))->name('settings');
+Route::view('/settings', 'pages.settings')->name('settings');
 
 if (app()->environment('local', 'testing')) {
     Route::view('/dev/components', 'pages.dev-components')->name('dev.components');

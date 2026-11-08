@@ -58,4 +58,18 @@ s = factory(fakeStorage());
 s.recordQuiz('lesson-1/1', 2, 3); assert.strictEqual(s.getQuiz('lesson-1/1').score, 2);
 assert.strictEqual(s.getLast(), null); s.setLast('lesson-2', 'dialogue'); assert.strictEqual(s.getLast().slug, 'lesson-2');
 
+// settings: defaults, validation, unknown keys kept, import validation
+s = factory(fakeStorage());
+assert.strictEqual(s.getSettings().theme, 'system'); assert.strictEqual(s.getSettings().dailyGoal, 10);
+s.setSettings({ theme: 'dark', dailyGoal: 999, pinyin: 'nope', browseView: 'grid' });
+assert.strictEqual(s.getSettings().theme, 'dark'); assert.strictEqual(s.getSettings().dailyGoal, 10);
+assert.strictEqual(s.getSettings().pinyin, 'show'); assert.strictEqual(s.getSettings().browseView, 'grid');
+s = factory(fakeStorage({ 'hsk.v1.settings': '{"theme":5,"audioRate":9,"hintAfterMisses":0}' }));
+assert.strictEqual(s.getSettings().theme, 'system'); assert.strictEqual(s.getSettings().audioRate, 0.7); assert.strictEqual(s.getSettings().hintAfterMisses, 0);
+s = factory(fakeStorage()); s.setSettings({ theme: 'light' });
+assert.strictEqual(s.importAll('{"version":1,"saved":"oops"}'), false);
+assert.strictEqual(s.importAll('[]'), false); assert.strictEqual(s.getSettings().theme, 'light');
+assert.ok(s.importAll('{"version":1,"settings":{"theme":"dark","dailyGoal":"x"}}'));
+assert.strictEqual(s.getSettings().theme, 'dark'); assert.strictEqual(s.getSettings().dailyGoal, 10);
+
 console.log('store.test.js: all passed');

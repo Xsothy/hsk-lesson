@@ -79,8 +79,40 @@
     return s.last === dayKey(t) || s.last === dayKey(t - DAY) ? s.count : 0;
   }
 
-  function getSettings() { return read('settings', {}); }
-  function setSettings(patch) { var s = getSettings(); for (var k in patch) s[k] = patch[k]; write('settings', s); return s; }
+  /* Settings (key hsk.v1.settings). Final key names — other pages read these via getSettings():
+     pinyin 'show'|'hide' · pinyinPos 'above'|'below' · toneColors bool · charSize 'sm'|'md'|'lg'
+     theme 'light'|'dark'|'system' · audioRate 0.5-1.5 · voice voiceURI string ('' = auto)
+     hskVersion '2.0'|'3.0' · dailyGoal int 1-100 · hintAfterMisses int 0-10 (0 = never hint)
+     Unknown keys (e.g. browseView) are kept untouched. Invalid values fall back to defaults. */
+  var SETTING_DEFAULTS = { pinyin: 'show', pinyinPos: 'above', toneColors: true, charSize: 'md', theme: 'system',
+    audioRate: 0.7, voice: '', hskVersion: '2.0', dailyGoal: 10, hintAfterMisses: 2 };
+  var SETTING_OK = {
+    pinyin: function (v) { return v === 'show' || v === 'hide'; },
+    pinyinPos: function (v) { return v === 'above' || v === 'below'; },
+    toneColors: function (v) { return typeof v === 'boolean'; },
+    charSize: function (v) { return v === 'sm' || v === 'md' || v === 'lg'; },
+    theme: function (v) { return v === 'light' || v === 'dark' || v === 'system'; },
+    audioRate: function (v) { return typeof v === 'number' && v >= 0.5 && v <= 1.5; },
+    voice: function (v) { return typeof v === 'string' && v.length < 300; },
+    hskVersion: function (v) { return v === '2.0' || v === '3.0'; },
+    dailyGoal: function (v) { return typeof v === 'number' && v % 1 === 0 && v >= 1 && v <= 100; },
+    hintAfterMisses: function (v) { return typeof v === 'number' && v % 1 === 0 && v >= 0 && v <= 10; }
+  };
+  function cleanSettings(raw) {
+    var out = {}, k;
+    if (raw && typeof raw === 'object' && !Array.isArray(raw)) for (k in raw) out[k] = raw[k];
+    for (k in SETTING_DEFAULTS) if (!SETTING_OK[k](out[k])) out[k] = SETTING_DEFAULTS[k];
+    return out;
+  }
+  function getSettings() { return cleanSettings(read('settings', {})); }
+  function setSettings(patch) {
+    var s = getSettings(), k;
+    if (patch && typeof patch === 'object') for (k in patch) if (!SETTING_OK[k] || SETTING_OK[k](patch[k])) s[k] = patch[k];
+    write('settings', s); announceSettings(s); return s;
+  }
+  function announceSettings(s) {
+    try { if (typeof window !== 'undefined' && window.dispatchEvent && typeof CustomEvent === 'function') window.dispatchEvent(new CustomEvent('hsk:settings', { detail: s })); } catch (e) {}
+  }
   // quiz scores: { "<key>": {score, total, at} }, key like "lesson-1/1"
   function recordQuiz(key, score, total) { var q = read('quiz', {}); q[key] = { score: score, total: total, at: Date.now() }; write('quiz', q); bump(); streakTouch(); return q[key]; }
   function getQuiz(key) { var q = read('quiz', {}); return key ? q[key] || null : q; }
@@ -93,19 +125,24 @@
   function exportAll() {
     return JSON.stringify({ version: 1, progress: getProgress(), srs: read('srs', {}), saved: getSaved(), streak: read('streak', {}), settings: getSettings(), activity: getActivity(), quiz: getQuiz(), last: read('last', {}) });
   }
+  var IMPORT_SHAPE = { progress: 'object', srs: 'object', saved: 'array', streak: 'object', settings: 'object', activity: 'object', quiz: 'object', last: 'object' };
+  function shapeOk(v, t) { return t === 'array' ? Array.isArray(v) : !!v && typeof v === 'object' && !Array.isArray(v); }
   function importAll(json) {
     try {
       var d = JSON.parse(json);
-      if (!d || d.version !== 1) return false;
-      ['progress', 'srs', 'saved', 'streak', 'settings', 'activity', 'quiz', 'last'].forEach(function (k) { if (d[k] != null) write(k, d[k]); });
+      if (!d || typeof d !== 'object' || d.version !== 1) return false;
+      var keys = Object.keys(IMPORT_SHAPE).filter(function (k) { return d[k] != null; });
+      for (var i = 0; i < keys.length; i++) if (!shapeOk(d[keys[i]], IMPORT_SHAPE[keys[i]])) return false;
+      keys.forEach(function (k) { write(k, k === 'settings' ? cleanSettings(d[k]) : d[k]); });
+      announceSettings(getSettings());
       return true;
     } catch (e) { return false; }
   }
-  function reset() { ['progress', 'srs', 'saved', 'streak', 'settings', 'activity', 'quiz', 'last'].forEach(function (k) { try { if (storage) storage.removeItem(P + k); } catch (e) {} delete mem[k]; }); }
+  function reset() { ['progress', 'srs', 'saved', 'streak', 'settings', 'activity', 'quiz', 'last'].forEach(function (k) { try { if (storage) storage.removeItem(P + k); } catch (e) {} delete mem[k]; }); announceSettings(getSettings()); }
 
   return { getProgress: getProgress, markWritten: markWritten, markKnown: markKnown, isKnown: isKnown,
     getSaved: getSaved, saveWord: saveWord, unsaveWord: unsaveWord, isSaved: isSaved,
     srsGet: srsGet, srsRate: srsRate, srsDue: srsDue, streakTouch: streakTouch, getStreak: getStreak,
-    getSettings: getSettings, setSettings: setSettings, getActivity: getActivity, recordQuiz: recordQuiz, getQuiz: getQuiz, setLast: setLast, getLast: getLast,
+    getSettings: getSettings, setSettings: setSettings, settingDefaults: SETTING_DEFAULTS, getActivity: getActivity, recordQuiz: recordQuiz, getQuiz: getQuiz, setLast: setLast, getLast: getLast,
     exportAll: exportAll, importAll: importAll, reset: reset };
 });
