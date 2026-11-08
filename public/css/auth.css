@@ -1,0 +1,24 @@
+.au-card{max-width:480px;margin:var(--gap) auto 0;background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);padding:24px 20px}
+.au-card h1{margin:0 0 8px}.au-card h2{margin:0 0 8px;font-size:20px}
+.au-icon{font-size:40px;line-height:1;margin-bottom:8px}
+.au-lead{margin:0 0 16px;color:var(--text-2)}
+.au-note{margin:12px 0 0;color:var(--muted);font-size:14px}
+.au-ok{padding:10px 12px;border-radius:var(--r-s);background:var(--soft);margin:0 0 12px}
+.au-err{color:var(--red);margin:4px 0 8px;font-weight:500}
+.au-form{display:flex;flex-direction:column;gap:8px}
+.au-form label{font-weight:600}
+.au-form input{min-height:48px;padding:0 12px;border:1.5px solid var(--line);border-radius:var(--r-s);background:var(--card);color:var(--ink);font:inherit;font-size:16px;width:100%;box-sizing:border-box}
+.au-form input:focus-visible,.au-btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.au-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border:1.5px solid var(--line);border-radius:var(--r-s);background:var(--card);color:var(--ink);font:inherit;font-weight:600;text-decoration:none;cursor:pointer;width:100%;box-sizing:border-box;margin-top:8px}
+.au-btn:hover{border-color:var(--ink)}
+.au-primary{background:var(--red);border-color:var(--red);color:#fff}.au-primary:hover{background:var(--red-d);border-color:var(--red-d)}
+.au-danger{color:var(--red);border-color:var(--red)}
+.au-danger[type=submit]{background:var(--red);color:#fff}
+.au-or{display:flex;align-items:center;gap:12px;margin:16px 0 4px;color:var(--muted)}
+.au-or::before,.au-or::after{content:"";flex:1;border-top:1px solid var(--line)}
+.au-dl{margin:0 0 8px}.au-dl dt{font-weight:600;margin-top:12px}.au-dl dd{margin:4px 0 0;overflow-wrap:anywhere}
+.au-row{display:flex;gap:8px}.au-row .au-btn{flex:1}
+.au-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+#au-del-dlg{border:0;border-radius:var(--r-l);padding:20px;max-width:min(420px,calc(100vw - 32px));background:var(--card);color:var(--ink)}
+#au-del-dlg::backdrop{background:rgba(0,0,0,.4)}
+#au-del-dlg p{overflow-wrap:anywhere}

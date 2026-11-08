@@ -34,6 +34,22 @@ Route::get('/review', [\App\Http\Controllers\ReviewController::class, 'index'])-
 Route::get('/words', fn () => view('pages.words'))->name('words');
 Route::view('/settings', 'pages.settings')->name('settings');
 
+// S1 accounts: email magic link (default) + optional Google; web session guard only.
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [\App\Http\Controllers\Auth\MagicLinkController::class, 'show'])->name('login');
+    Route::post('/login', [\App\Http\Controllers\Auth\MagicLinkController::class, 'send'])->middleware('throttle:30,1')->name('login.send');
+    Route::get('/login/sent', [\App\Http\Controllers\Auth\MagicLinkController::class, 'sent'])->name('login.sent');
+    Route::get('/login/verify/{token}', [\App\Http\Controllers\Auth\MagicLinkController::class, 'confirm'])->middleware('throttle:30,1')->name('login.verify');
+    Route::post('/login/verify/{token}', [\App\Http\Controllers\Auth\MagicLinkController::class, 'verify'])->middleware('throttle:30,1');
+    Route::get('/auth/google', [\App\Http\Controllers\Auth\GoogleController::class, 'redirect'])->name('auth.google');
+    Route::get('/auth/google/callback', [\App\Http\Controllers\Auth\GoogleController::class, 'callback'])->middleware('throttle:30,1');
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/account', [\App\Http\Controllers\Auth\AccountController::class, 'show'])->name('account');
+    Route::post('/logout', [\App\Http\Controllers\Auth\AccountController::class, 'logout'])->name('logout');
+    Route::delete('/account', [\App\Http\Controllers\Auth\AccountController::class, 'destroy'])->middleware('throttle:10,1')->name('account.destroy');
+});
+
 if (app()->environment('local', 'testing')) {
     Route::view('/dev/components', 'pages.dev-components')->name('dev.components');
 }

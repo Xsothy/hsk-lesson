@@ -23,5 +23,10 @@ $groups = [
   <div class="hdr-actions">
     <a class="icon-btn" href="{{ route('search') }}" aria-label="Search">🔍</a>
     <a class="icon-btn settings" href="{{ route('settings') }}" aria-label="Settings">⚙️</a>
+    @auth
+      <a class="icon-btn account is-signed-in" href="{{ route('account') }}" aria-label="Account (signed in)" @if(request()->routeIs('account')) aria-current="page" @endif>👤</a>
+    @else
+      <a class="icon-btn account" href="{{ route('login') }}" aria-label="Sign in" @if(request()->routeIs('login')) aria-current="page" @endif>👤</a>
+    @endauth
   </div>
 </header>
