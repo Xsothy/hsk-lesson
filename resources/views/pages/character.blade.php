@@ -35,6 +35,7 @@
             @if ($d['hsk2_level'])<x-chip tone="green">HSK 2.0 · {{ $d['hsk2_level'] }}</x-chip>@endif
             @if ($d['hsk3_level'])<x-chip tone="gold">HSK 3.0 · {{ $lvl($d['hsk3_level']) }}</x-chip>@endif
             <x-chip data-stroke-count hidden></x-chip>
+            <x-chip :href="route('worksheet', ['chars' => $c])" data-worksheet-link>Worksheet PDF</x-chip>
           </div>
         </div>
         <div class="cp-hero-actions">

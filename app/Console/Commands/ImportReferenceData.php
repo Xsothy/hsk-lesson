@@ -19,6 +19,7 @@ class ImportReferenceData extends Command
 
     private const SOURCES = [
         'makemeahanzi-dictionary.txt' => 'https://raw.githubusercontent.com/skishore/makemeahanzi/master/dictionary.txt',
+        'makemeahanzi-graphics.txt' => 'https://raw.githubusercontent.com/skishore/makemeahanzi/master/graphics.txt',
         'complete-hsk.json' => 'https://raw.githubusercontent.com/drkameleon/complete-hsk-vocabulary/main/complete.json',
     ];
 
@@ -39,7 +40,9 @@ class ImportReferenceData extends Command
         $hsk = $this->importHskWords("$dir/complete-hsk.json");
         $chars = $this->importCharacters("$dir/makemeahanzi-dictionary.txt", $hsk);
 
-        $this->info("Imported $chars characters and ".count($hsk['rows']).' HSK words.');
+        $strokes = $this->importStrokes("$dir/makemeahanzi-graphics.txt");
+
+        $this->info("Imported $chars characters, $strokes stroke outlines and ".count($hsk['rows']).' HSK words.');
 
         return self::SUCCESS;
     }
@@ -129,6 +132,28 @@ class ImportReferenceData extends Command
             DB::table('characters')->delete();
             foreach (array_chunk($rows, 500) as $chunk) {
                 DB::table('characters')->insert($chunk);
+            }
+        });
+
+        return count($rows);
+    }
+
+    /** Stroke outlines for worksheets (F2). Medians are not needed server-side. */
+    private function importStrokes(string $path): int
+    {
+        $rows = [];
+        foreach (new \SplFileObject($path) as $line) {
+            $c = trim($line) === '' ? null : json_decode($line, true);
+            if (! $c || empty($c['strokes'])) {
+                continue;
+            }
+            $rows[] = ['char' => $c['character'], 'strokes' => json_encode($c['strokes'])];
+        }
+
+        DB::transaction(function () use ($rows) {
+            DB::table('character_strokes')->delete();
+            foreach (array_chunk($rows, 500) as $chunk) {
+                DB::table('character_strokes')->insert($chunk);
             }
         });
 

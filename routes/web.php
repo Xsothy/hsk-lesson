@@ -76,3 +76,7 @@ Route::prefix('tools')->group(function () {
     Route::get('/zodiac', [$c, 'zodiac'])->name('tools.zodiac');
     Route::post('/zodiac', [$c, 'zodiacLookup'])->middleware('throttle:60,1');
 });
+
+// F2 · Worksheet PDF (builder page + GET PDF so links are shareable)
+Route::get('/worksheet', [\App\Http\Controllers\WorksheetController::class, 'index'])->name('worksheet');
+Route::get('/worksheet.pdf', [\App\Http\Controllers\WorksheetController::class, 'pdf'])->middleware('throttle:worksheet')->name('worksheet.pdf');
