@@ -29,7 +29,7 @@ Route::get('/char.html', [\App\Http\Controllers\CharacterController::class, 'leg
 Route::get('/browse', [BrowseController::class, 'index'])->name('browse');
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
 Route::get('/practice', $page('Practice'))->name('practice');
-Route::get('/review', $page('Review'))->name('review');
+Route::get('/review', [\App\Http\Controllers\ReviewController::class, 'index'])->name('review');
 Route::get('/words', $page('My words'))->name('words');
 Route::get('/settings', $page('Settings'))->name('settings');
 
@@ -40,6 +40,9 @@ if (app()->environment('local', 'testing')) {
 // Public read-only JSON for the character page (no token needed).
 Route::get('/data/char/{char}.json', [\App\Http\Controllers\Api\ReferenceController::class, 'character'])
     ->middleware('throttle:120,1');
+
+// Public read-only flashcard deck for Review (lesson | HSK level/set | explicit words).
+Route::get('/data/review-deck', [\App\Http\Controllers\ReviewController::class, 'deck'])->middleware('throttle:120,1');
 
 // Public read-only HSK word search for Browse (same logic as /api/v1/hsk-words, no token).
 Route::get('/data/hsk-words', [BrowseController::class, 'words'])->middleware('throttle:120,1');

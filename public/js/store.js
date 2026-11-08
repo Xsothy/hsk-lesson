@@ -48,23 +48,77 @@
   function isSaved(w) { return getSaved().indexOf(w) >= 0; }
 
   // SRS (SM-2 style). rating: 1 Again, 2 Hard, 3 Good, 4 Easy.
+  // Card: { ease [1.3..3.0], interval (days, may be 0.25), reps, lapses, due, last, first (ms of first rating; used for the new-cards-per-day cap) }.
+  // Settings keys read by Review (D2; E1 edits them): reviewFirst 'zh'|'en'|'audio' (default 'zh'), reviewPinyinFront bool (false),
+  // reviewAudioReveal bool (true), newPerDay number (20). They live in `hsk.v1.settings` next to the E1 keys.
+  var EASE_MIN = 1.3, EASE_MAX = 3.0;
   function srsGet(id) { var all = read('srs', {}); return all[id] || null; }
-  function srsRate(id, rating, now) {
+  // Pure scheduler: returns the card after `rating` at `now` (the input is not mutated).
+  function srsNext(card, rating, now) {
     now = now || Date.now();
-    var all = read('srs', {}), c = all[id] || { ease: 2.5, interval: 0, reps: 0, lapses: 0 };
-    if (rating <= 1) { c.reps = 0; c.lapses++; c.interval = 0; c.ease = Math.max(1.3, c.ease - 0.2); c.due = now + 10 * 60000; }
+    var c = { ease: 2.5, interval: 0, reps: 0, lapses: 0 };
+    if (card) for (var k in card) c[k] = card[k];
+    var prev = c.interval || 0;
+    if (rating <= 1) { c.reps = 0; c.lapses++; c.interval = 0; c.ease = Math.max(EASE_MIN, c.ease - 0.2); c.due = now + 10 * 60000; }
     else {
       c.reps++;
-      c.interval = c.reps === 1 ? (rating === 4 ? 4 : 1) : Math.max(1, Math.round(c.interval * c.ease * (rating === 2 ? 0.8 : rating === 4 ? 1.3 : 1)));
-      if (rating === 2) c.ease = Math.max(1.3, c.ease - 0.15);
-      if (rating === 4) c.ease += 0.15;
+      if (c.reps === 1) c.interval = rating === 4 ? 4 : rating === 3 ? 1 : 0.25;
+      else {
+        var hard = Math.max(prev + 1, Math.round(prev * 1.2));
+        var good = Math.max(hard + 1, Math.round(prev * c.ease));
+        var easy = Math.max(good + 1, Math.round(prev * c.ease * 1.3));
+        c.interval = rating === 2 ? hard : rating === 4 ? easy : good;
+      }
+      if (rating === 2) c.ease = Math.max(EASE_MIN, c.ease - 0.15);
+      if (rating === 4) c.ease = Math.min(EASE_MAX, c.ease + 0.15);
       c.due = now + c.interval * DAY;
     }
-    c.last = now; all[id] = c; write('srs', all); bump(); streakTouch(now); return c;
+    c.last = now; c.first = c.first || now;
+    return c;
+  }
+  function srsRate(id, rating, now) {
+    now = now || Date.now();
+    var all = read('srs', {}), c = srsNext(all[id], rating, now);
+    all[id] = c; write('srs', all); bump(); streakTouch(now); return c;
+  }
+  // Human label for a delay: "10 min", "6 h", "1 d", "2 mo".
+  function srsLabel(ms) {
+    var m = Math.round(ms / 60000);
+    if (m < 60) return Math.max(1, m) + ' min';
+    var h = Math.round(m / 60); if (h < 24) return h + ' h';
+    var d = Math.round(h / 24); if (d < 30) return d + ' d';
+    return Math.round(d / 30) + ' mo';
+  }
+  // Next-due preview for each rating without saving: { 1: {due, interval, label}, ... 4: ... }.
+  function srsPreview(id, now) {
+    now = now || Date.now(); var card = srsGet(id), out = {};
+    for (var r = 1; r <= 4; r++) { var n = srsNext(card, r, now); out[r] = { due: n.due, interval: n.interval, label: srsLabel(n.due - now) }; }
+    return out;
   }
   function srsDue(now) {
     now = now || Date.now(); var all = read('srs', {});
     return Object.keys(all).filter(function (k) { return all[k].due <= now; });
+  }
+  // The "cards due" number. Home and Review both call this.
+  function srsDueCount(now) { return srsDue(now).length; }
+  function srsNewToday(now) {
+    var all = read('srs', {}), t = dayKey(now || Date.now());
+    return Object.keys(all).filter(function (k) { return all[k].first && dayKey(all[k].first) === t; }).length;
+  }
+  // Session queue for a deck (array of ids): due cards (oldest due first) + unseen cards, capped at newPerDay minus new cards already started today.
+  function srsQueue(ids, now) {
+    now = now || Date.now();
+    var all = read('srs', {}), cap = Number(getSettings().newPerDay);
+    if (!isFinite(cap) || cap < 0) cap = 20;
+    var left = Math.max(0, cap - srsNewToday(now)), seen = {}, due = [], fresh = [];
+    ids.forEach(function (id) {
+      if (seen[id]) return; seen[id] = 1;
+      var c = all[id];
+      if (c) { if (c.due <= now) due.push(id); }
+      else fresh.push(id);
+    });
+    due.sort(function (a, b) { return all[a].due - all[b].due; });
+    return { due: due, fresh: fresh.slice(0, left), newTotal: fresh.length, newLeft: left };
   }
 
   function streakTouch(now) {
@@ -105,7 +159,7 @@
 
   return { getProgress: getProgress, markWritten: markWritten, markKnown: markKnown, isKnown: isKnown,
     getSaved: getSaved, saveWord: saveWord, unsaveWord: unsaveWord, isSaved: isSaved,
-    srsGet: srsGet, srsRate: srsRate, srsDue: srsDue, streakTouch: streakTouch, getStreak: getStreak,
+    srsGet: srsGet, srsRate: srsRate, srsNext: srsNext, srsPreview: srsPreview, srsLabel: srsLabel, srsDue: srsDue, srsDueCount: srsDueCount, srsNewToday: srsNewToday, srsQueue: srsQueue, streakTouch: streakTouch, getStreak: getStreak,
     getSettings: getSettings, setSettings: setSettings, getActivity: getActivity, recordQuiz: recordQuiz, getQuiz: getQuiz, setLast: setLast, getLast: getLast,
     exportAll: exportAll, importAll: importAll, reset: reset };
 });

@@ -48,7 +48,7 @@
   // Home
   var due = document.querySelector('[data-today=due] .stat-value');
   if (due) {
-    due.textContent = S.srsDue().length;
+    due.textContent = S.srsDueCount();
     var goal = S.getSettings().dailyGoal || 10, today = new Date().toDateString(), chars = S.getProgress().chars, n = 0;
     Object.keys(chars).forEach(function (c) { if (chars[c].at && new Date(chars[c].at).toDateString() === today) n++; });
     document.querySelector('[data-today=chars] .stat-value').textContent = n + '/' + goal;

@@ -41,6 +41,59 @@ assert.deepStrictEqual(s.srsDue(t0 + 86400000), ['学']);
 c = s.srsRate('学', 3, t0 + 86400000); assert.ok(c.interval >= 2);
 c = s.srsRate('学', 1, t0 + 3 * 86400000); assert.strictEqual(c.reps, 0);
 
+// SRS scheduler (D2)
+{
+  const D = 86400000, st = factory(fakeStorage());
+  const fresh = st.srsNext(null, 3, t0);
+  assert.strictEqual(st.srsNext(null, 1, t0).due, t0 + 600000);          // Again = 10 min
+  assert.strictEqual(st.srsNext(null, 2, t0).interval, 0.25);            // Hard first = 6 h
+  assert.strictEqual(fresh.interval, 1); assert.strictEqual(st.srsNext(null, 4, t0).interval, 4);
+  assert.strictEqual(fresh.first, t0); assert.strictEqual(fresh.ease, 2.5);
+  // mature card: Hard < Good < Easy and due dates
+  const mature = { ease: 2.5, interval: 10, reps: 3, lapses: 0, due: t0 };
+  const [h, g, e] = [2, 3, 4].map(r => st.srsNext(mature, r, t0));
+  assert.deepStrictEqual([h.interval, g.interval, e.interval], [12, 25, 33]);
+  assert.strictEqual(g.due, t0 + 25 * D);
+  const tiny = { ease: 2.5, interval: 1, reps: 1, lapses: 0 };
+  const ti = [2, 3, 4].map(r => st.srsNext(tiny, r, t0).interval);
+  assert.ok(ti[0] < ti[1] && ti[1] < ti[2], ti.join());
+  // lapse: reps reset, lapses counted, ease drops and is floored
+  let lc = st.srsNext(mature, 1, t0);
+  assert.deepStrictEqual([lc.reps, lc.lapses, lc.interval], [0, 1, 0]); assert.ok(Math.abs(lc.ease - 2.3) < 1e-9);
+  for (let i = 0; i < 20; i++) lc = st.srsNext(lc, 1, t0);
+  assert.strictEqual(lc.ease, 1.3);
+  // ease bounds
+  let ec = mature; for (let i = 0; i < 20; i++) ec = st.srsNext(ec, 4, t0);
+  assert.strictEqual(ec.ease, 3);
+  let hc = mature; for (let i = 0; i < 20; i++) hc = st.srsNext(hc, 2, t0);
+  assert.strictEqual(hc.ease, 1.3);
+  assert.strictEqual(mature.interval, 10); // pure
+  // labels + preview (does not write)
+  assert.deepStrictEqual([600000, 6 * 3600000, D, 4 * D, 45 * D].map(st.srsLabel), ['10 min', '6 h', '1 d', '4 d', '2 mo']);
+  const pv = st.srsPreview('x', t0);
+  assert.deepStrictEqual([1, 2, 3, 4].map(r => pv[r].label), ['10 min', '6 h', '1 d', '4 d']);
+  assert.strictEqual(st.srsGet('x'), null);
+  const r = st.srsRate('x', 3, t0); assert.deepStrictEqual(st.srsGet('x'), r); assert.strictEqual(r.first, t0);
+}
+
+// Due count (Home and Review both use srsDueCount) and queue with the new-per-day cap
+{
+  const D = 86400000, st = factory(fakeStorage());
+  st.srsRate('a', 3, t0); st.srsRate('b', 3, t0 + 1000); st.srsRate('c', 1, t0);
+  assert.strictEqual(st.srsDueCount(t0 + 700000), 1);
+  assert.strictEqual(st.srsDueCount(t0 + D + 5000), 3);
+  const q = st.srsQueue(['a', 'b', 'c', 'n1', 'n2', 'n3', 'a'], t0 + D + 5000);
+  assert.deepStrictEqual(q.due, ['c', 'a', 'b']); assert.deepStrictEqual(q.fresh, ['n1', 'n2', 'n3']);
+  st.setSettings({ newPerDay: 2 });
+  assert.deepStrictEqual(st.srsQueue(['n1', 'n2', 'n3'], t0 + D + 5000).fresh, ['n1', 'n2']);
+  const st2 = factory(fakeStorage()); st2.setSettings({ newPerDay: 2 });
+  st2.srsRate('n1', 3, t0);
+  assert.strictEqual(st2.srsNewToday(t0), 1);
+  const q2 = st2.srsQueue(['n1', 'n2', 'n3'], t0); assert.deepStrictEqual(q2.fresh, ['n2']); assert.strictEqual(q2.newLeft, 1);
+  assert.strictEqual(st2.srsQueue(['n3'], t0 + D).newLeft, 2); // next day resets
+  st2.setSettings({ newPerDay: 0 }); assert.deepStrictEqual(st2.srsQueue(['z'], t0).fresh, []);
+}
+
 // streak
 s = factory(fakeStorage());
 s.streakTouch(t0); s.streakTouch(t0 + 3600000); assert.strictEqual(s.getStreak(t0), 1);
