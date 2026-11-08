@@ -40,6 +40,17 @@ class PracticeController extends Controller
         ]);
     }
 
+    /** F4 · Pinyin match game: source picker + rounds of ~6 pairs. Decks come from /data/review-deck or the browser store. */
+    public function match(Request $request)
+    {
+        return view('pages.practice-match', [
+            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'zh_title']),
+            'levels2' => LearnController::levels(2),
+            'levels3' => LearnController::levels(3),
+            'params' => $request->only(['lesson', 'version', 'level', 'set', 'source', 'id']),
+        ]);
+    }
+
     /**
      * GET /data/practice-queue  (?kind=sentences[&lesson=slug] → sentence items, see SentencePool) — unique characters of a source, each with the word it came from.
      *   ?lesson=slug | ?version=2|3&level=&set= | ?words=学习,你好 (saved / due cards, sent by the client)

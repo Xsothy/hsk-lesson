@@ -6,7 +6,7 @@
   var P = 'hsk.v1.';
   var DAY = 86400000;
   var mem = {}; // fallback when storage is unavailable
-  var SYNCED = { progress: 1, srs: 1, saved: 1, streak: 1, settings: 1, activity: 1, quiz: 1, last: 1, lists: 1 };
+  var SYNCED = { progress: 1, srs: 1, saved: 1, streak: 1, settings: 1, activity: 1, quiz: 1, last: 1, lists: 1, match: 1 };
   var applying = false;
 
   function read(name, fallback) {
@@ -213,10 +213,22 @@
   }
   function deleteList(id) { var l = getLists(); if (!l[id]) return false; delete l[id]; write('lists', l); return true; }
 
-  function exportAll() {
-    return JSON.stringify({ version: 1, progress: getProgress(), srs: read('srs', {}), saved: getSaved(), streak: read('streak', {}), settings: getSettings(), activity: getActivity(), quiz: getQuiz(), last: read('last', {}), lists: getLists() });
+  /* F4 pinyin match: best result per source, { "<key>": {score, pairs, misses, ms, at} }, key like "lesson-1", "hsk2-1", "saved", "list-<id>". */
+  function getMatch(key) { var m = read('match', {}); return key ? (isObj(m[key]) ? m[key] : null) : m; }
+  // Higher score wins; at equal score the faster time wins.
+  function matchBetter(a, b) { return !b || a.score > b.score || (a.score === b.score && a.ms < b.ms); }
+  function recordMatch(key, score, pairs, misses, ms) {
+    var m = read('match', {}), rec = { score: score, pairs: pairs, misses: misses, ms: ms, at: Date.now() };
+    var isBest = !isObj(m[key]) || matchBetter(rec, m[key]);
+    if (isBest) { m[key] = rec; write('match', m); }
+    bump(); streakTouch();
+    return { best: m[key], isBest: isBest };
   }
-  var IMPORT_SHAPE = { progress: 'object', srs: 'object', saved: 'array', streak: 'object', settings: 'object', activity: 'object', quiz: 'object', last: 'object', lists: 'object' };
+
+  function exportAll() {
+    return JSON.stringify({ version: 1, progress: getProgress(), srs: read('srs', {}), saved: getSaved(), streak: read('streak', {}), settings: getSettings(), activity: getActivity(), quiz: getQuiz(), last: read('last', {}), lists: getLists(), match: getMatch() });
+  }
+  var IMPORT_SHAPE = { progress: 'object', srs: 'object', saved: 'array', streak: 'object', settings: 'object', activity: 'object', quiz: 'object', last: 'object', lists: 'object', match: 'object' };
   function shapeOk(v, t) { return t === 'array' ? Array.isArray(v) : !!v && typeof v === 'object' && !Array.isArray(v); }
   function importAll(json) {
     try {
@@ -229,7 +241,7 @@
       return true;
     } catch (e) { return false; }
   }
-  function reset() { ['progress', 'srs', 'saved', 'streak', 'settings', 'activity', 'quiz', 'last', 'lists', 'stamps'].forEach(function (k) { try { if (storage) storage.removeItem(P + k); } catch (e) {} delete mem[k]; }); announceSettings(getSettings()); }
+  function reset() { ['progress', 'srs', 'saved', 'streak', 'settings', 'activity', 'quiz', 'last', 'lists', 'match', 'stamps'].forEach(function (k) { try { if (storage) storage.removeItem(P + k); } catch (e) {} delete mem[k]; }); announceSettings(getSettings()); }
 
   /* ---- S2 sync (additive). Snapshot: { v: 1, data: {progress, srs, saved, streak, settings, activity, quiz, last},
      stamps: { 'known|w' | 'saved|w' | 'settings|k': ms } }. Stamps record when an item last changed, deletions included.
@@ -288,6 +300,8 @@
       if (isObj(d.activity)) for (k in d.activity) if (typeof d.activity[k] === 'number') out.data.activity[k] = d.activity[k];
       out.data.quiz = {};
       if (isObj(d.quiz)) for (k in d.quiz) if (isObj(d.quiz[k])) out.data.quiz[k] = d.quiz[k];
+      out.data.match = {};
+      if (isObj(d.match)) for (k in d.match) if (isObj(d.match[k]) && typeof d.match[k].score === 'number') out.data.match[k] = { score: d.match[k].score, pairs: num(d.match[k].pairs), misses: num(d.match[k].misses), ms: num(d.match[k].ms), at: num(d.match[k].at) };
       out.data.last = isObj(d.last) && typeof d.last.slug === 'string' ? d.last : {};
       out.data.lists = {};
       if (isObj(d.lists)) for (k in d.lists) if (isObj(d.lists[k]) && typeof d.lists[k].name === 'string' && Array.isArray(d.lists[k].words)) out.data.lists[k] = { name: d.lists[k].name, words: cleanWords(d.lists[k].words), at: num(d.lists[k].at) };
@@ -299,7 +313,7 @@
     var settings = read('settings', {}), s = {}, k;
     if (isObj(settings)) for (k in settings) if (!LOCAL_ONLY_SETTINGS[k]) s[k] = settings[k];
     return syncClean({ v: 1, stamps: stamps(), data: { progress: getProgress(), srs: read('srs', {}), saved: getSaved(),
-      streak: read('streak', { count: 0, last: null }), settings: s, activity: getActivity(), quiz: getQuiz(), last: read('last', {}), lists: getLists() } });
+      streak: read('streak', { count: 0, last: null }), settings: s, activity: getActivity(), quiz: getQuiz(), last: read('last', {}), lists: getLists(), match: getMatch() } });
   }
   function union() { var o = {}; for (var i = 0; i < arguments.length; i++) for (var k in arguments[i]) o[k] = 1; return Object.keys(o); }
   function stampKeys(st, pre) { var o = {}; for (var k in st) if (k.indexOf(pre) === 0) o[k.slice(pre.length)] = 1; return o; }
@@ -345,6 +359,11 @@
       has: function (id) { return id in S.lists; }, val: function (id) { return S.lists[id]; } }; }
     out.data.lists = {};
     lww(union(A.lists, B.lists, stampKeys(a.stamps, 'lists|'), stampKeys(b.stamps, 'lists|')), listSide(a, A), listSide(b, B), function (id, v) { out.data.lists[id] = v; });
+    out.data.match = {};
+    union(A.match, B.match).forEach(function (m) { // best score survives on both sides; ties go to the faster time, then a deterministic pick
+      var x = A.match[m], y = B.match[m];
+      out.data.match[m] = !x ? y : !y ? x : matchBetter(x, y) ? x : matchBetter(y, x) ? y : pick(x, y);
+    });
     var la = A.streak.last || '', lb = B.streak.last || '';
     out.data.streak = la !== lb ? (la > lb ? A.streak : B.streak) : A.streak.count >= B.streak.count ? A.streak : B.streak;
     out.data.last = !A.last.slug ? B.last : !B.last.slug ? A.last : newer(A.last, B.last, 'at');
@@ -358,7 +377,7 @@
     applying = true;
     try {
       rawWrite('progress', d.progress); rawWrite('srs', d.srs); rawWrite('saved', d.saved); rawWrite('streak', d.streak);
-      rawWrite('settings', cleanSettings(s)); rawWrite('activity', d.activity); rawWrite('quiz', d.quiz); rawWrite('last', d.last); rawWrite('lists', d.lists);
+      rawWrite('settings', cleanSettings(s)); rawWrite('activity', d.activity); rawWrite('quiz', d.quiz); rawWrite('last', d.last); rawWrite('lists', d.lists); rawWrite('match', d.match);
       rawWrite('stamps', c.stamps);
     } finally { applying = false; }
     announceSettings(getSettings());
@@ -369,6 +388,6 @@
     getProgress: getProgress, markWritten: markWritten, markKnown: markKnown, isKnown: isKnown,
     getSaved: getSaved, saveWord: saveWord, unsaveWord: unsaveWord, isSaved: isSaved,
     srsGet: srsGet, srsRate: srsRate, srsNext: srsNext, srsPreview: srsPreview, srsLabel: srsLabel, srsDue: srsDue, srsDueCount: srsDueCount, srsNewToday: srsNewToday, srsQueue: srsQueue, streakTouch: streakTouch, getStreak: getStreak,
-    getSettings: getSettings, setSettings: setSettings, settingDefaults: SETTING_DEFAULTS, getActivity: getActivity, getLists: getLists, getList: getList, saveList: saveList, renameList: renameList, deleteList: deleteList, recordQuiz: recordQuiz, getQuiz: getQuiz, setLast: setLast, getLast: getLast,
+    getSettings: getSettings, setSettings: setSettings, settingDefaults: SETTING_DEFAULTS, getActivity: getActivity, getLists: getLists, getList: getList, saveList: saveList, renameList: renameList, deleteList: deleteList, recordQuiz: recordQuiz, recordMatch: recordMatch, getMatch: getMatch, getQuiz: getQuiz, setLast: setLast, getLast: getLast,
     exportAll: exportAll, importAll: importAll, reset: reset };
 });

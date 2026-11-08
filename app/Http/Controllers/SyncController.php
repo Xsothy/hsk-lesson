@@ -16,7 +16,7 @@ class SyncController extends Controller
 
     /** Domain => expected JSON shape. */
     public const DOMAINS = ['progress' => 'object', 'srs' => 'object', 'saved' => 'array', 'streak' => 'object',
-        'settings' => 'object', 'activity' => 'object', 'quiz' => 'object', 'last' => 'object', 'lists' => 'object'];
+        'settings' => 'object', 'activity' => 'object', 'quiz' => 'object', 'last' => 'object', 'lists' => 'object', 'match' => 'object'];
 
     public function pull(Request $request): JsonResponse
     {
