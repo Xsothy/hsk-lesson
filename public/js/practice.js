@@ -47,6 +47,13 @@
       ['version', 'level', 'set'].forEach(function (k) { if (q.get(k)) p.set(k, q.get(k)); });
       return Promise.resolve('/data/practice-queue?' + p);
     }
+    if (src === 'list') { // F1 textbook list: words come from the browser store, hints filled by the queue endpoint
+      var lst = null;
+      try { lst = store.getList(q.get('id')); } catch (e) {}
+      var lw = lst ? lst.words.map(function (w) { return String(w.h).replace(/[^㐀-鿿]/g, ''); }).filter(Boolean).slice(0, 100) : [];
+      if (!lw.length) return Promise.reject(new Error('That list was not found or has no Chinese words.'));
+      return Promise.resolve('/data/practice-queue?words=' + encodeURIComponent(lw.join(',')));
+    }
     if (src === 'saved' || src === 'due') {
       var words = [];
       try { words = src === 'saved' ? store.getSaved() : store.srsDue(); } catch (e) {}

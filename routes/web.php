@@ -74,3 +74,6 @@ Route::prefix('tools')->group(function () {
 // F2 · Worksheet PDF (builder page + GET PDF so links are shareable)
 Route::get('/worksheet', [\App\Http\Controllers\WorksheetController::class, 'index'])->name('worksheet');
 Route::get('/worksheet.pdf', [\App\Http\Controllers\WorksheetController::class, 'pdf'])->middleware('throttle:worksheet')->name('worksheet.pdf');
+
+// F1 · Textbooks: pinyin/meaning lookup for the user's own imported lists (lists stay in the browser store).
+Route::post('/textbooks/lookup', [\App\Http\Controllers\TextbookController::class, 'lookup'])->middleware('throttle:30,1');
