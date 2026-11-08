@@ -39,6 +39,18 @@ The old site (`public/lesson.html`, `public/js/render.js`, hsk-lesson.vercel.app
 - HTTPS on a domain via certbot once a subdomain points at the server (**needs a domain from the owner**).
 - ✅ CI green on `main`; one command deploys.
 
+**R4 · UI polish & consistency pass** 🔴 OPUS NEEDED — Deps: R1 merged (it edits the same lesson/reading pages)
+Found in a screenshot audit of the deployed alpha at 390 px and 1200 px (2026-11-08). Fix every item, then re-audit every page at both widths with screenshots in the PR.
+- **Chinese display everywhere (not only sentences):** tone-coloured pinyin is missing on lesson vocab tiles (`x-char-tile`), `x-word-row` (Character page "Words with 学", My words), Character of the day and the Character page hero; Browse colours it but uses tiny text. Grammar examples (`我叫 [name]。`) show no pinyin at all; render them with `x-ruby-line`. One rule for every hanzi + pinyin pair: same component, same tone colours, settings (pinyin show/position, tone colours, char size) apply everywhere.
+- **Card alignment:** Home "Today" stat cards have unequal heights (Day streak stretches to match Character of the day while Cards due / Characters written don't); give the grid equal rows or let Character of the day span two rows. Lesson vocab tiles break multi-character words across lines (对不/起, 没关/系) at both widths; tiles must size to the word (`white-space: nowrap`, font scales down for 3+ characters) and keep a consistent grid. Practice lesson chips are ragged; use an even grid. Courses tabs wrap ("Textbooks" alone on a second line) and so do Browse level chips; use one horizontally scrolling row on phones.
+- **Page headers:** one header pattern on every page (eyebrow + h1 + optional subtitle); Practice uses an eyebrow, the others don't; Home shows "Today" twice (h1 and section title). Lesson and reading titles wrap awkwardly ("Teacher and / Student", English + Chinese title on one line); put the Chinese title on its own line.
+- **Home consistency:** the Continue card says "Greetings & Introductions · Start here" on phone but "Lesson 1 · Next: vocab" on desktop; use one source. HSK path mixes HSK 2.0 and 3.0 tiles in one unlabelled grid with an orphan "Level 7–9" tile; split them into two labelled rows.
+- **Lists:** Browse meanings truncate to one line with "…", too aggressive on phones; allow 2 lines. Character page word rows wrap the meaning into a narrow column next to the HSK badge on phones; stack the badge.
+- **Icons:** tab bar and action rows mix emoji (📖 ✍️ 🔁 🔤 ⏰ ⭐) that render differently per OS; replace them with one inline SVG icon set (stroke icons, `currentColor`).
+- **Loading states:** the Character page writing grid is empty for 1–2 s while Hanzi Writer loads stroke data; show the static character (ghost) or a skeleton until ready. Check the long Character page on phones for blank areas while scrolling.
+- **Console noise:** `audio-service.js` logs "[audio] Service ready" on every page; remove the production logs.
+- ✅ Every page at 390 px and 1200 px matches the rules above; screenshots attached; Playwright suite green.
+
 ### Track S — Accounts & sync
 
 **S1 · Accounts** 🔴 OPUS NEEDED — Deps: none
@@ -69,7 +81,8 @@ The old site (`public/lesson.html`, `public/js/render.js`, hsk-lesson.vercel.app
 
 ```
 Wave 1:  R1 (Opus) · S1 (Opus) · R3 (Sonnet) · F3 (Sonnet)
-Wave 2:  R2 (after R1) · S2 (after S1) · F2 (Opus) · F5
+Wave 2:  R4 UI polish (after R1, first) · R2 (after R1) · S2 (after S1) · F2 (Opus)
+         F5 moves to wave 3 to keep 4 sessions max
 Wave 3:  F4, F7, F8 (after R1) · F1 · F6 · F9 (after F2)
 Final:   B-QA: extend the Playwright suite to the new pages, deploy to gsap, tester checklist
 ```
@@ -77,13 +90,14 @@ Max 4 sessions at once. Only R1 changes shared components (`x-dialogue-bubble`, 
 
 ## 5. Decisions needed from the owner
 
-1. **Sign-in method** for S1: email magic link, Google, or both.
-2. **Domain** for HTTPS (R3), e.g. a subdomain pointed at 43.156.63.70.
+1. ~~Sign-in method~~ **Decided:** standard Laravel email + password (register, login, change password, delete account). No email password reset: the login page points users to Telegram @sothy_l, and the owner resets with `php artisan hsk:reset-password {email}`.
+2. ~~Domain~~ **Decided:** no HTTPS or domain for beta; stays on http://43.156.63.70:8169.
 3. **Textbooks import format** (F1): CSV only, or also paste or Anki export.
 
 ## 6. Beta exit checklist
 
 - [ ] Interlinear tone-coloured pinyin on every lesson, dialogue and reading line; settings apply live.
+- [ ] R4 polish list done: consistent cards, headers, icons and Chinese display on every page at both widths.
 - [ ] Old static pages retired; old URLs redirect.
 - [ ] Sign-in + sync works across two devices.
 - [ ] All Track F features shipped with tests.
