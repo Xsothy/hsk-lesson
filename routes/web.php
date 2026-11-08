@@ -24,6 +24,7 @@ Route::get('/practice/sentences', [\App\Http\Controllers\PracticeController::cla
 Route::get('/data/practice-queue', [\App\Http\Controllers\PracticeController::class, 'queue'])->middleware('throttle:60,1');
 Route::get('/review', [\App\Http\Controllers\ReviewController::class, 'index'])->name('review');
 Route::get('/words', fn () => view('pages.words'))->name('words');
+Route::post('/words/pdf', \App\Http\Controllers\WordsPdfController::class)->middleware('throttle:worksheet')->name('words.pdf'); // F9
 Route::view('/settings', 'pages.settings')->name('settings');
 
 // S1 accounts: email + password, web session guard only. No email reset: owner runs `hsk:reset-password`.

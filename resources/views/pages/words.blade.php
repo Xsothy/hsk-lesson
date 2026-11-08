@@ -29,12 +29,15 @@
       <a class="btn btn-primary" href="/practice?source=saved" data-act="write">Write</a>
       <a class="btn" href="/review?source=saved" data-act="cards">Flashcards</a>
       <button type="button" class="btn" data-act="csv">Export CSV</button>
+      <button type="button" class="btn" data-act="pdf">Export PDF</button>
+      <a class="btn" href="/worksheet?source=text" data-act="sheet">Worksheet from my words</a>
     </div>
     <div class="words-chips" role="group" aria-label="Filter saved words" data-chips></div>
     <p class="words-count" data-count aria-live="polite"></p>
     <div class="words-list" data-list></div>
   </div>
 </div>
+<form method="POST" action="{{ route('words.pdf') }}" target="_blank" data-pdf-form hidden>@csrf</form>
 <template id="tpl-chip"><x-chip :button="true">x</x-chip></template>
 <template id="tpl-row">
   <div class="words-item">
