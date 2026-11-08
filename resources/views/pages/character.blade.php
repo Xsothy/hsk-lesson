@@ -36,7 +36,6 @@
             @if ($d['hsk2_level'])<x-chip tone="green">HSK 2.0 · {{ $d['hsk2_level'] }}</x-chip>@endif
             @if ($d['hsk3_level'])<x-chip tone="gold">HSK 3.0 · {{ $lvl($d['hsk3_level']) }}</x-chip>@endif
             <x-chip data-stroke-count hidden></x-chip>
-            <x-chip :href="route('worksheet', ['chars' => $c])" data-worksheet-link>Worksheet PDF</x-chip>
           </div>
         </div>
         <div class="cp-hero-actions">
@@ -84,6 +83,7 @@
           <button type="button" class="cp-ctl" data-action="outline" aria-pressed="true"><span class="cp-ctl-i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{!! $icon['outline'] !!}</svg></span>Outline</button>
           <button type="button" class="cp-ctl is-primary" data-action="retry"><span class="cp-ctl-i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{!! $icon['replay'] !!}</svg></span>Retry</button>
         </div>
+        <p class="cp-worksheet"><x-chip :href="route('worksheet', ['chars' => $c])" data-worksheet-link>Print a worksheet PDF</x-chip></p>
       </section>
 
       {{-- 02 STROKE ORDER: step through --}}

@@ -20,10 +20,10 @@ for (const vp of VIEWPORTS) {
   test.describe(`tools @ ${vp.width}`, () => {
     test.use({ viewport: vp });
 
-    test('index lists four tools', async ({ page }) => {
+    test('index lists five tools (incl. worksheet)', async ({ page }) => {
       const errors = [];
       await open(page, '/tools', errors);
-      await expect(page.locator('.tools-grid a')).toHaveCount(4);
+      await expect(page.locator('.tools-grid a')).toHaveCount(5);
       expect(await smallTargets(page)).toEqual([]);
       expect(errors).toEqual([]);
     });
