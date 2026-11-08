@@ -11,7 +11,7 @@
     <dt>Email</dt>
     <dd id="au-user-email">{{ $user->email }}</dd>
     <dt>Sync</dt>
-    <dd>Sync coming soon <span class="chip chip-gold">beta</span><br><span class="au-note">For now, progress stays in this browser.</span></dd>
+    <dd>Sync on <span class="chip chip-gold">beta</span><br><span class="au-note">Progress, saved words, reviews and settings sync to every device you sign in on. Signing out keeps this browser’s copy.</span></dd>
   </dl>
   <form method="POST" action="{{ route('logout') }}">
     @csrf

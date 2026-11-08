@@ -82,7 +82,7 @@ $segment = function (string $n) use ($segs) {
 <section class="st-sec" aria-labelledby="st-data">
   <h2 id="st-data">Data</h2>
   <div class="st-card">
-    <p class="st-note">Progress and settings live in this browser only. Export a backup to move them to another device.</p>
+    <p class="st-note">Progress and settings live in this browser. Sign in to sync them across devices, or export a backup.</p>
     <div class="st-actions">
       <button type="button" class="st-btn" id="st-export">Export JSON</button>
       <button type="button" class="st-btn" id="st-import">Import JSON…</button>
@@ -92,7 +92,7 @@ $segment = function (string $n) use ($segs) {
     <p class="st-status" id="st-status" role="status" aria-live="polite"></p>
     <div class="st-sync">
       @auth
-        <span class="st-note" id="st-account">Signed in as <a href="{{ route('account') }}">{{ auth()->user()->email }}</a> · Sync coming soon</span>
+        <span class="st-note" id="st-account">Signed in as <a href="{{ route('account') }}">{{ auth()->user()->email }}</a> · <span id="st-sync-status" role="status" aria-live="polite">Sync on</span></span>
       @else
         <a class="st-btn" href="{{ route('login') }}" id="st-signin">Sign in to sync</a>
       @endauth

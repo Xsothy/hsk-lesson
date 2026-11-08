@@ -41,7 +41,7 @@ class AccountsTest extends TestCase
         $this->assertAuthenticatedAs($user);
         $this->assertNotSame('longenough', $user->password);
         $this->assertTrue(Hash::check('longenough', $user->password));
-        $this->get('/account')->assertSee('ann@example.com')->assertSee('Sync coming soon');
+        $this->get('/account')->assertSee('ann@example.com')->assertSee('Sync on');
         $this->get('/settings')->assertSee('Signed in as')->assertDontSee('id="st-signin"', false);
         $this->get('/login')->assertRedirect('/account');
     }

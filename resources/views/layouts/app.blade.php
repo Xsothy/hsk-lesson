@@ -21,5 +21,6 @@
 <script src="/js/pinyin-tones.js"></script>
 <script src="/js/chrome.js"></script>
 @stack('scripts')
+@auth<script src="/js/sync.js" data-csrf="{{ csrf_token() }}"></script>@endauth
 </body>
 </html>

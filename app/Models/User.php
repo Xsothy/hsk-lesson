@@ -45,12 +45,13 @@ class User extends Authenticatable
             ->delete();
     }
 
-    /** Remove the account and everything tied to it. S2: delete the user's sync rows here too (or FK cascade). */
+    /** Remove the account and everything tied to it. Includes the S2 sync snapshot. */
     public function deleteAccount(): void
     {
         DB::transaction(function () {
             DB::table('sessions')->where('user_id', $this->id)->delete();
             $this->tokens()->delete();
+            DB::table('sync_states')->where('user_id', $this->id)->delete();
             $this->delete();
         });
     }
