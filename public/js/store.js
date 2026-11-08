@@ -6,7 +6,7 @@
   var P = 'hsk.v1.';
   var DAY = 86400000;
   var mem = {}; // fallback when storage is unavailable
-  var SYNCED = { progress: 1, srs: 1, saved: 1, streak: 1, settings: 1, activity: 1, quiz: 1, last: 1 };
+  var SYNCED = { progress: 1, srs: 1, saved: 1, streak: 1, settings: 1, activity: 1, quiz: 1, last: 1, lists: 1 };
   var applying = false;
 
   function read(name, fallback) {
@@ -184,10 +184,39 @@
 
   function getActivity() { return read('activity', {}); }
 
-  function exportAll() {
-    return JSON.stringify({ version: 1, progress: getProgress(), srs: read('srs', {}), saved: getSaved(), streak: read('streak', {}), settings: getSettings(), activity: getActivity(), quiz: getQuiz(), last: read('last', {}) });
+  /* F1 textbook lists (key hsk.v1.lists): { "<id>": { name, words: [{h, p, e}], at } }. The user's own words only; nothing is bundled. */
+  function getLists() {
+    var l = read('lists', {}), out = {};
+    for (var id in l) if (l[id] && typeof l[id] === 'object' && Array.isArray(l[id].words)) out[id] = l[id];
+    return out;
   }
-  var IMPORT_SHAPE = { progress: 'object', srs: 'object', saved: 'array', streak: 'object', settings: 'object', activity: 'object', quiz: 'object', last: 'object' };
+  function getList(id) { return getLists()[id] || null; }
+  function cleanWords(ws) {
+    var seen = {}, out = [];
+    (Array.isArray(ws) ? ws : []).forEach(function (w) {
+      var h = w && typeof w.h === 'string' ? w.h.trim() : '';
+      if (!h || h.length > 24 || seen[h]) return; seen[h] = 1;
+      out.push({ h: h, p: typeof w.p === 'string' ? w.p.trim() : '', e: typeof w.e === 'string' ? w.e.trim() : '' });
+    });
+    return out;
+  }
+  function saveList(name, words, id) {
+    var l = getLists();
+    id = id || 'l' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    l[id] = { name: String(name || 'My list').trim().slice(0, 60) || 'My list', words: cleanWords(words), at: Date.now() };
+    write('lists', l); return id;
+  }
+  function renameList(id, name) {
+    var l = getLists(); if (!l[id]) return false;
+    l[id] = { name: String(name || '').trim().slice(0, 60) || l[id].name, words: l[id].words, at: Date.now() };
+    write('lists', l); return true;
+  }
+  function deleteList(id) { var l = getLists(); if (!l[id]) return false; delete l[id]; write('lists', l); return true; }
+
+  function exportAll() {
+    return JSON.stringify({ version: 1, progress: getProgress(), srs: read('srs', {}), saved: getSaved(), streak: read('streak', {}), settings: getSettings(), activity: getActivity(), quiz: getQuiz(), last: read('last', {}), lists: getLists() });
+  }
+  var IMPORT_SHAPE = { progress: 'object', srs: 'object', saved: 'array', streak: 'object', settings: 'object', activity: 'object', quiz: 'object', last: 'object', lists: 'object' };
   function shapeOk(v, t) { return t === 'array' ? Array.isArray(v) : !!v && typeof v === 'object' && !Array.isArray(v); }
   function importAll(json) {
     try {
@@ -200,7 +229,7 @@
       return true;
     } catch (e) { return false; }
   }
-  function reset() { ['progress', 'srs', 'saved', 'streak', 'settings', 'activity', 'quiz', 'last', 'stamps'].forEach(function (k) { try { if (storage) storage.removeItem(P + k); } catch (e) {} delete mem[k]; }); announceSettings(getSettings()); }
+  function reset() { ['progress', 'srs', 'saved', 'streak', 'settings', 'activity', 'quiz', 'last', 'lists', 'stamps'].forEach(function (k) { try { if (storage) storage.removeItem(P + k); } catch (e) {} delete mem[k]; }); announceSettings(getSettings()); }
 
   /* ---- S2 sync (additive). Snapshot: { v: 1, data: {progress, srs, saved, streak, settings, activity, quiz, last},
      stamps: { 'known|w' | 'saved|w' | 'settings|k': ms } }. Stamps record when an item last changed, deletions included.
@@ -223,6 +252,10 @@
       (Array.isArray(next) ? next : []).forEach(function (w) { is[w] = 1; });
       for (k in is) if (!was[k]) mark('saved|' + k, now);
       for (k in was) if (!is[k]) mark('saved|' + k, now);
+    } else if (name === 'lists') {
+      var la = getLists(), lb = isObj(next) ? next : {};
+      for (k in lb) if (JSON.stringify(la[k]) !== JSON.stringify(lb[k])) mark('lists|' + k, num(lb[k] && lb[k].at) || now);
+      for (k in la) if (!(k in lb)) mark('lists|' + k, now);
     } else if (name === 'settings') {
       // Compare against the cleaned settings so filling in defaults never counts as a user change.
       var prev = cleanSettings(read('settings', {})); next = isObj(next) ? next : {};
@@ -256,6 +289,8 @@
       out.data.quiz = {};
       if (isObj(d.quiz)) for (k in d.quiz) if (isObj(d.quiz[k])) out.data.quiz[k] = d.quiz[k];
       out.data.last = isObj(d.last) && typeof d.last.slug === 'string' ? d.last : {};
+      out.data.lists = {};
+      if (isObj(d.lists)) for (k in d.lists) if (isObj(d.lists[k]) && typeof d.lists[k].name === 'string' && Array.isArray(d.lists[k].words)) out.data.lists[k] = { name: d.lists[k].name, words: cleanWords(d.lists[k].words), at: num(d.lists[k].at) };
       if (isObj(st) && isObj(st.stamps)) for (k in st.stamps) if (typeof st.stamps[k] === 'number' && isFinite(st.stamps[k])) out.stamps[k] = st.stamps[k];
       return out;
     } catch (e) { return syncClean(null); }
@@ -264,7 +299,7 @@
     var settings = read('settings', {}), s = {}, k;
     if (isObj(settings)) for (k in settings) if (!LOCAL_ONLY_SETTINGS[k]) s[k] = settings[k];
     return syncClean({ v: 1, stamps: stamps(), data: { progress: getProgress(), srs: read('srs', {}), saved: getSaved(),
-      streak: read('streak', { count: 0, last: null }), settings: s, activity: getActivity(), quiz: getQuiz(), last: read('last', {}) } });
+      streak: read('streak', { count: 0, last: null }), settings: s, activity: getActivity(), quiz: getQuiz(), last: read('last', {}), lists: getLists() } });
   }
   function union() { var o = {}; for (var i = 0; i < arguments.length; i++) for (var k in arguments[i]) o[k] = 1; return Object.keys(o); }
   function stampKeys(st, pre) { var o = {}; for (var k in st) if (k.indexOf(pre) === 0) o[k.slice(pre.length)] = 1; return o; }
@@ -306,6 +341,10 @@
     union(A.quiz, B.quiz).forEach(function (q) { out.data.quiz[q] = newer(A.quiz[q], B.quiz[q], 'at'); });
     out.data.activity = {};
     union(A.activity, B.activity).forEach(function (d) { out.data.activity[d] = Math.max(num(A.activity[d]), num(B.activity[d])); });
+    function listSide(x, S) { return { t: function (id) { return Math.max(num(x.stamps['lists|' + id]), id in S.lists ? num(S.lists[id].at) : 0); },
+      has: function (id) { return id in S.lists; }, val: function (id) { return S.lists[id]; } }; }
+    out.data.lists = {};
+    lww(union(A.lists, B.lists, stampKeys(a.stamps, 'lists|'), stampKeys(b.stamps, 'lists|')), listSide(a, A), listSide(b, B), function (id, v) { out.data.lists[id] = v; });
     var la = A.streak.last || '', lb = B.streak.last || '';
     out.data.streak = la !== lb ? (la > lb ? A.streak : B.streak) : A.streak.count >= B.streak.count ? A.streak : B.streak;
     out.data.last = !A.last.slug ? B.last : !B.last.slug ? A.last : newer(A.last, B.last, 'at');
@@ -319,7 +358,7 @@
     applying = true;
     try {
       rawWrite('progress', d.progress); rawWrite('srs', d.srs); rawWrite('saved', d.saved); rawWrite('streak', d.streak);
-      rawWrite('settings', cleanSettings(s)); rawWrite('activity', d.activity); rawWrite('quiz', d.quiz); rawWrite('last', d.last);
+      rawWrite('settings', cleanSettings(s)); rawWrite('activity', d.activity); rawWrite('quiz', d.quiz); rawWrite('last', d.last); rawWrite('lists', d.lists);
       rawWrite('stamps', c.stamps);
     } finally { applying = false; }
     announceSettings(getSettings());
@@ -330,6 +369,6 @@
     getProgress: getProgress, markWritten: markWritten, markKnown: markKnown, isKnown: isKnown,
     getSaved: getSaved, saveWord: saveWord, unsaveWord: unsaveWord, isSaved: isSaved,
     srsGet: srsGet, srsRate: srsRate, srsNext: srsNext, srsPreview: srsPreview, srsLabel: srsLabel, srsDue: srsDue, srsDueCount: srsDueCount, srsNewToday: srsNewToday, srsQueue: srsQueue, streakTouch: streakTouch, getStreak: getStreak,
-    getSettings: getSettings, setSettings: setSettings, settingDefaults: SETTING_DEFAULTS, getActivity: getActivity, recordQuiz: recordQuiz, getQuiz: getQuiz, setLast: setLast, getLast: getLast,
+    getSettings: getSettings, setSettings: setSettings, settingDefaults: SETTING_DEFAULTS, getActivity: getActivity, getLists: getLists, getList: getList, saveList: saveList, renameList: renameList, deleteList: deleteList, recordQuiz: recordQuiz, getQuiz: getQuiz, setLast: setLast, getLast: getLast,
     exportAll: exportAll, importAll: importAll, reset: reset };
 });

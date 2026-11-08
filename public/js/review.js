@@ -42,6 +42,7 @@
     if (qs.get('version') || qs.get('level')) {
       return u + '?version=' + encodeURIComponent(qs.get('version') || 2) + '&level=' + encodeURIComponent(qs.get('level') || 1) + (qs.get('set') ? '&set=' + encodeURIComponent(qs.get('set')) : '');
     }
+    if (source === 'list') return 'list';
     if (source === 'due' || source === 'saved') {
       var ids = (source === 'due' ? S.srsDue() : S.getSaved()).slice(0, MAX_IDS);
       return ids.length ? u + '?source=' + source + '&words=' + encodeURIComponent(ids.join(',')) : null;
@@ -145,6 +146,11 @@
   var url = deckUrl();
   if (url === undefined) return chooser();
   if (url === null) return emptyMsg(qs.get('source') === 'due' ? 'No cards due right now.' : 'You have no saved words yet. Save words from a character page.');
+  if (url === 'list') { // F1: the deck is the user's own textbook list, read from the store (no server round trip)
+    var lst = S.getList(qs.get('id'));
+    if (!lst || !lst.words.length) return emptyMsg('That list was not found.');
+    return start({ title: lst.name, cards: lst.words.slice(0, 300).map(function (w) { return { id: w.h, hanzi: w.h, pinyin: w.p, english: w.e }; }) });
+  }
   fetch(url).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
     if (!d.cards || !d.cards.length) return emptyMsg('This deck has no cards.');
     start(d);

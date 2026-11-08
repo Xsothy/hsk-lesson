@@ -28,7 +28,7 @@ class LearnPagesTest extends TestCase
         $this->get('/courses')->assertOk()->assertSee('lesson-card', false);
         $this->get('/courses?tab=hsk2')->assertOk()->assertSee('Level 6');
         $this->get('/courses?tab=hsk3')->assertOk()->assertSee('Level 7–9');
-        $this->get('/courses?tab=textbooks')->assertOk()->assertSee('coming in beta');
+        $this->get('/courses?tab=textbooks')->assertOk()->assertSee('Upload CSV');
     }
 
     public function test_sets_endpoint_chunks_by_fifteen(): void
