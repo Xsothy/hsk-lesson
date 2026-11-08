@@ -1,0 +1,8846 @@
+{
+ "categories": {
+  "pronoun": "Pronouns",
+  "number": "Numbers",
+  "noun": "Nouns",
+  "verb": "Verbs",
+  "adj": "Adjectives",
+  "time": "Time",
+  "question": "Questions",
+  "adverb": "Adverbs",
+  "prep": "Prepositions",
+  "particle": "Particles",
+  "measure": "Measure Words",
+  "conj": "Conjunctions"
+ },
+ "words": [
+  {
+   "c": "我",
+   "p": "wǒ",
+   "e": "I / me",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "你",
+   "p": "nǐ",
+   "e": "you (singular)",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "他",
+   "p": "tā",
+   "e": "he / him",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "她",
+   "p": "tā",
+   "e": "she / her",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "它",
+   "p": "tā",
+   "e": "it",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "我们",
+   "p": "wǒmen",
+   "e": "we / us",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "你们",
+   "p": "nǐmen",
+   "e": "you (plural)",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "他们",
+   "p": "tāmen",
+   "e": "they (masc.)",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "这",
+   "p": "zhè",
+   "e": "this",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "那",
+   "p": "nà",
+   "e": "that",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "哪",
+   "p": "nǎ",
+   "e": "which",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "零",
+   "p": "líng",
+   "e": "zero",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "一",
+   "p": "yī",
+   "e": "one",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "二",
+   "p": "èr",
+   "e": "two",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "三",
+   "p": "sān",
+   "e": "three",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "四",
+   "p": "sì",
+   "e": "four",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "五",
+   "p": "wǔ",
+   "e": "five",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "六",
+   "p": "liù",
+   "e": "six",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "七",
+   "p": "qī",
+   "e": "seven",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "八",
+   "p": "bā",
+   "e": "eight",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "九",
+   "p": "jiǔ",
+   "e": "nine",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "十",
+   "p": "shí",
+   "e": "ten",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "百",
+   "p": "bǎi",
+   "e": "hundred",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "千",
+   "p": "qiān",
+   "e": "thousand",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "两",
+   "p": "liǎng",
+   "e": "two (of)",
+   "cat": "number",
+   "hsk_level": 1
+  },
+  {
+   "c": "今天",
+   "p": "jīntiān",
+   "e": "today",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "明天",
+   "p": "míngtiān",
+   "e": "tomorrow",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "昨天",
+   "p": "zuótiān",
+   "e": "yesterday",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "年",
+   "p": "nián",
+   "e": "year",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "月",
+   "p": "yuè",
+   "e": "month",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "日",
+   "p": "rì",
+   "e": "day / date",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "号",
+   "p": "hào",
+   "e": "date number",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "星期",
+   "p": "xīngqī",
+   "e": "week",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "上午",
+   "p": "shàngwǔ",
+   "e": "morning (AM)",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "中午",
+   "p": "zhōngwǔ",
+   "e": "noon",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "下午",
+   "p": "xiàwǔ",
+   "e": "afternoon",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "现在",
+   "p": "xiànzài",
+   "e": "now",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "时候",
+   "p": "shíhou",
+   "e": "time / moment",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "点",
+   "p": "diǎn",
+   "e": "o'clock",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "分钟",
+   "p": "fēnzhōng",
+   "e": "minute",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "今",
+   "p": "jīn",
+   "e": "now / this",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "天",
+   "p": "tiān",
+   "e": "day / sky",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "明",
+   "p": "míng",
+   "e": "bright / next",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "昨",
+   "p": "zuó",
+   "e": "past / yesterday",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "现",
+   "p": "xiàn",
+   "e": "current / appear",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "在",
+   "p": "zài",
+   "e": "at / in / exist",
+   "cat": "prep",
+   "hsk_level": 1
+  },
+  {
+   "c": "分",
+   "p": "fēn",
+   "e": "divide / minute",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "钟",
+   "p": "zhōng",
+   "e": "clock / bell",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "星",
+   "p": "xīng",
+   "e": "star",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "期",
+   "p": "qī",
+   "e": "period",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "上",
+   "p": "shàng",
+   "e": "up / above",
+   "cat": "prep",
+   "hsk_level": 1
+  },
+  {
+   "c": "下",
+   "p": "xià",
+   "e": "down / below",
+   "cat": "prep",
+   "hsk_level": 1
+  },
+  {
+   "c": "中",
+   "p": "zhōng",
+   "e": "middle / center",
+   "cat": "prep",
+   "hsk_level": 1
+  },
+  {
+   "c": "午",
+   "p": "wǔ",
+   "e": "noon",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "人",
+   "p": "rén",
+   "e": "person",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "名字",
+   "p": "míngzi",
+   "e": "name",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "家",
+   "p": "jiā",
+   "e": "home / family",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "爸爸",
+   "p": "bàba",
+   "e": "dad",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "妈妈",
+   "p": "māma",
+   "e": "mom",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "儿子",
+   "p": "érzi",
+   "e": "son",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "女儿",
+   "p": "nǚ'ér",
+   "e": "daughter",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "老师",
+   "p": "lǎoshī",
+   "e": "teacher",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "学生",
+   "p": "xuésheng",
+   "e": "student",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "朋友",
+   "p": "péngyou",
+   "e": "friend",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "爸",
+   "p": "bà",
+   "e": "dad / father",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "妈",
+   "p": "mā",
+   "e": "mom / mother",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "儿",
+   "p": "ér",
+   "e": "child / son",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "子",
+   "p": "zi",
+   "e": "child (suffix)",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "女",
+   "p": "nǚ",
+   "e": "female / daughter",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "朋",
+   "p": "péng",
+   "e": "companion",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "友",
+   "p": "yǒu",
+   "e": "friend",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "医生",
+   "p": "yīshēng",
+   "e": "doctor",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "同学",
+   "p": "tóngxué",
+   "e": "classmate",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "中国",
+   "p": "Zhōngguó",
+   "e": "China",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "北京",
+   "p": "Běijīng",
+   "e": "Beijing",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "学校",
+   "p": "xuéxiào",
+   "e": "school",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "医院",
+   "p": "yīyuàn",
+   "e": "hospital",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "饭店",
+   "p": "fàndiàn",
+   "e": "restaurant",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "商店",
+   "p": "shāngdiàn",
+   "e": "shop",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "火车站",
+   "p": "huǒchēzhàn",
+   "e": "train station",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "电话",
+   "p": "diànhuà",
+   "e": "telephone",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "电脑",
+   "p": "diànnǎo",
+   "e": "computer",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "手机",
+   "p": "shǒujī",
+   "e": "mobile phone",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "电视",
+   "p": "diànshì",
+   "e": "television",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "书",
+   "p": "shū",
+   "e": "book",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "水",
+   "p": "shuǐ",
+   "e": "water",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "饭",
+   "p": "fàn",
+   "e": "meal / rice",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "菜",
+   "p": "cài",
+   "e": "dish / vegetable",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "茶",
+   "p": "chá",
+   "e": "tea",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "米饭",
+   "p": "mǐfàn",
+   "e": "cooked rice",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "水果",
+   "p": "shuǐguǒ",
+   "e": "fruit",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "苹果",
+   "p": "píngguǒ",
+   "e": "apple",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "钱",
+   "p": "qián",
+   "e": "money",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "块",
+   "p": "kuài",
+   "e": "yuan (informal)",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "衣服",
+   "p": "yīfu",
+   "e": "clothes",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "猫",
+   "p": "māo",
+   "e": "cat",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "狗",
+   "p": "gǒu",
+   "e": "dog",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "飞机",
+   "p": "fēijī",
+   "e": "airplane",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "出租车",
+   "p": "chūzūchē",
+   "e": "taxi",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "天气",
+   "p": "tiānqì",
+   "e": "weather",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "岁",
+   "p": "suì",
+   "e": "years old",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "课",
+   "p": "kè",
+   "e": "lesson / class",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "汉语",
+   "p": "Hànyǔ",
+   "e": "Chinese language",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "字",
+   "p": "zì",
+   "e": "character / word",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "桌子",
+   "p": "zhuōzi",
+   "e": "table / desk",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "椅子",
+   "p": "yǐzi",
+   "e": "chair",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "杯子",
+   "p": "bēizi",
+   "e": "cup / glass",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "是",
+   "p": "shì",
+   "e": "to be",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "有",
+   "p": "yǒu",
+   "e": "to have",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "叫",
+   "p": "jiào",
+   "e": "to be called",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "说",
+   "p": "shuō",
+   "e": "to speak / say",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "看",
+   "p": "kàn",
+   "e": "to look / watch",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "听",
+   "p": "tīng",
+   "e": "to listen",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "写",
+   "p": "xiě",
+   "e": "to write",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "读",
+   "p": "dú",
+   "e": "to read aloud",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "学习",
+   "p": "xuéxí",
+   "e": "to study",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "工作",
+   "p": "gōngzuò",
+   "e": "to work",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "喜欢",
+   "p": "xǐhuan",
+   "e": "to like",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "爱",
+   "p": "ài",
+   "e": "to love",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "想",
+   "p": "xiǎng",
+   "e": "to want / think",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "要",
+   "p": "yào",
+   "e": "to want / will",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "会",
+   "p": "huì",
+   "e": "can / know how to",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "能",
+   "p": "néng",
+   "e": "can / be able to",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "去",
+   "p": "qù",
+   "e": "to go",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "来",
+   "p": "lái",
+   "e": "to come",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "回",
+   "p": "huí",
+   "e": "to return",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "住",
+   "p": "zhù",
+   "e": "to live / stay",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "坐",
+   "p": "zuò",
+   "e": "to sit / travel by",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "走",
+   "p": "zǒu",
+   "e": "to walk / leave",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "开",
+   "p": "kāi",
+   "e": "to open / drive",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "买",
+   "p": "mǎi",
+   "e": "to buy",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "卖",
+   "p": "mài",
+   "e": "to sell",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "吃",
+   "p": "chī",
+   "e": "to eat",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "喝",
+   "p": "hē",
+   "e": "to drink",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "睡觉",
+   "p": "shuìjiào",
+   "e": "to sleep",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "起床",
+   "p": "qǐchuáng",
+   "e": "to get up",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "打电话",
+   "p": "dǎ diànhuà",
+   "e": "to phone",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "认识",
+   "p": "rènshi",
+   "e": "to know (person)",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "知道",
+   "p": "zhīdào",
+   "e": "to know (fact)",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "谢谢",
+   "p": "xièxie",
+   "e": "thank you",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "请",
+   "p": "qǐng",
+   "e": "please / invite",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "再见",
+   "p": "zàijiàn",
+   "e": "goodbye",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "你好",
+   "p": "nǐ hǎo",
+   "e": "hello",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "对不起",
+   "p": "duìbuqǐ",
+   "e": "sorry",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "你",
+   "p": "nǐ",
+   "e": "you",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "好",
+   "p": "hǎo",
+   "e": "good",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "再",
+   "p": "zài",
+   "e": "again",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "见",
+   "p": "jiàn",
+   "e": "see / meet",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "谢",
+   "p": "xiè",
+   "e": "thank",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "对",
+   "p": "duì",
+   "e": "correct / face",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "不",
+   "p": "bù",
+   "e": "not",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "起",
+   "p": "qǐ",
+   "e": "rise / start",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "没",
+   "p": "méi",
+   "e": "not / none",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "关",
+   "p": "guān",
+   "e": "relate / close",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "系",
+   "p": "xì",
+   "e": "connection",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "名",
+   "p": "míng",
+   "e": "name",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "字",
+   "p": "zì",
+   "e": "character / word",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "没关系",
+   "p": "méiguānxi",
+   "e": "it's OK",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "好",
+   "p": "hǎo",
+   "e": "good",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "大",
+   "p": "dà",
+   "e": "big / large",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "小",
+   "p": "xiǎo",
+   "e": "small",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "多",
+   "p": "duō",
+   "e": "many / much",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "少",
+   "p": "shǎo",
+   "e": "few / little",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "高",
+   "p": "gāo",
+   "e": "tall / high",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "冷",
+   "p": "lěng",
+   "e": "cold",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "热",
+   "p": "rè",
+   "e": "hot",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "漂亮",
+   "p": "piàoliang",
+   "e": "beautiful",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "快",
+   "p": "kuài",
+   "e": "fast",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "慢",
+   "p": "màn",
+   "e": "slow",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "贵",
+   "p": "guì",
+   "e": "expensive",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "忙",
+   "p": "máng",
+   "e": "busy",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "累",
+   "p": "lèi",
+   "e": "tired",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "高兴",
+   "p": "gāoxìng",
+   "e": "happy",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "吗",
+   "p": "ma",
+   "e": "yes/no particle",
+   "cat": "question",
+   "hsk_level": 1
+  },
+  {
+   "c": "呢",
+   "p": "ne",
+   "e": "and you? (particle)",
+   "cat": "question",
+   "hsk_level": 1
+  },
+  {
+   "c": "什么",
+   "p": "shénme",
+   "e": "what",
+   "cat": "question",
+   "hsk_level": 1
+  },
+  {
+   "c": "谁",
+   "p": "shéi",
+   "e": "who",
+   "cat": "question",
+   "hsk_level": 1
+  },
+  {
+   "c": "哪儿",
+   "p": "nǎr",
+   "e": "where",
+   "cat": "question",
+   "hsk_level": 1
+  },
+  {
+   "c": "怎么",
+   "p": "zěnme",
+   "e": "how / why",
+   "cat": "question",
+   "hsk_level": 1
+  },
+  {
+   "c": "怎么样",
+   "p": "zěnmeyàng",
+   "e": "how is it?",
+   "cat": "question",
+   "hsk_level": 1
+  },
+  {
+   "c": "多少",
+   "p": "duōshao",
+   "e": "how many / much",
+   "cat": "question",
+   "hsk_level": 1
+  },
+  {
+   "c": "几",
+   "p": "jǐ",
+   "e": "how many (small)",
+   "cat": "question",
+   "hsk_level": 1
+  },
+  {
+   "c": "为什么",
+   "p": "wèishénme",
+   "e": "why",
+   "cat": "question",
+   "hsk_level": 1
+  },
+  {
+   "c": "不",
+   "p": "bù",
+   "e": "not / no",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "没",
+   "p": "méi",
+   "e": "have not / did not",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "很",
+   "p": "hěn",
+   "e": "very",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "太",
+   "p": "tài",
+   "e": "too / extremely",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "也",
+   "p": "yě",
+   "e": "also / too",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "都",
+   "p": "dōu",
+   "e": "all / both",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "真",
+   "p": "zhēn",
+   "e": "really / truly",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "还",
+   "p": "hái",
+   "e": "still / also",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "再",
+   "p": "zài",
+   "e": "again",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "在",
+   "p": "zài",
+   "e": "at / in / on",
+   "cat": "prep",
+   "hsk_level": 1
+  },
+  {
+   "c": "从",
+   "p": "cóng",
+   "e": "from",
+   "cat": "prep",
+   "hsk_level": 1
+  },
+  {
+   "c": "到",
+   "p": "dào",
+   "e": "to / arrive",
+   "cat": "prep",
+   "hsk_level": 1
+  },
+  {
+   "c": "对",
+   "p": "duì",
+   "e": "toward / to",
+   "cat": "prep",
+   "hsk_level": 1
+  },
+  {
+   "c": "比",
+   "p": "bǐ",
+   "e": "than (comparison)",
+   "cat": "prep",
+   "hsk_level": 1
+  },
+  {
+   "c": "给",
+   "p": "gěi",
+   "e": "to give / for",
+   "cat": "prep",
+   "hsk_level": 1
+  },
+  {
+   "c": "的",
+   "p": "de",
+   "e": "structural particle",
+   "cat": "particle",
+   "hsk_level": 1
+  },
+  {
+   "c": "了",
+   "p": "le",
+   "e": "completed action",
+   "cat": "particle",
+   "hsk_level": 1
+  },
+  {
+   "c": "过",
+   "p": "guò",
+   "e": "experience particle",
+   "cat": "particle",
+   "hsk_level": 1
+  },
+  {
+   "c": "着",
+   "p": "zhe",
+   "e": "ongoing state",
+   "cat": "particle",
+   "hsk_level": 1
+  },
+  {
+   "c": "个",
+   "p": "gè",
+   "e": "general measure word",
+   "cat": "measure",
+   "hsk_level": 1
+  },
+  {
+   "c": "本",
+   "p": "běn",
+   "e": "for books",
+   "cat": "measure",
+   "hsk_level": 1
+  },
+  {
+   "c": "些",
+   "p": "xiē",
+   "e": "some / a few",
+   "cat": "measure",
+   "hsk_level": 1
+  },
+  {
+   "c": "张",
+   "p": "zhāng",
+   "e": "for flat things",
+   "cat": "measure",
+   "hsk_level": 1
+  },
+  {
+   "c": "件",
+   "p": "jiàn",
+   "e": "for clothes",
+   "cat": "measure",
+   "hsk_level": 1
+  },
+  {
+   "c": "和",
+   "p": "hé",
+   "e": "and",
+   "cat": "conj",
+   "hsk_level": 1
+  },
+  {
+   "c": "但是",
+   "p": "dànshì",
+   "e": "but / however",
+   "cat": "conj",
+   "hsk_level": 1
+  },
+  {
+   "c": "因为",
+   "p": "yīnwèi",
+   "e": "because",
+   "cat": "conj",
+   "hsk_level": 1
+  },
+  {
+   "c": "所以",
+   "p": "suǒyǐ",
+   "e": "therefore / so",
+   "cat": "conj",
+   "hsk_level": 1
+  },
+  {
+   "c": "如果",
+   "p": "rúguǒ",
+   "e": "if",
+   "cat": "conj",
+   "hsk_level": 1
+  },
+  {
+   "c": "今年",
+   "p": "jīnnián",
+   "e": "this year",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "没有",
+   "p": "méiyǒu",
+   "e": "not have / there is not",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "吃饭",
+   "p": "chīfàn",
+   "e": "to eat a meal",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "上课",
+   "p": "shàngkè",
+   "e": "to attend class",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "下课",
+   "p": "xiàkè",
+   "e": "class ends",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "回家",
+   "p": "huíjiā",
+   "e": "to go home",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "看电视",
+   "p": "kàn diànshì",
+   "e": "to watch TV",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "一样",
+   "p": "yīyàng",
+   "e": "the same / alike",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "不舒服",
+   "p": "bù shūfu",
+   "e": "unwell / uncomfortable",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "发烧",
+   "p": "fāshāo",
+   "e": "to have a fever",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "唱歌",
+   "p": "chànggē",
+   "e": "to sing",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "头",
+   "p": "tóu",
+   "e": "head",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "手",
+   "p": "shǒu",
+   "e": "hand",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "新",
+   "p": "xīn",
+   "e": "new",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "旧",
+   "p": "jiù",
+   "e": "old (things)",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "早上",
+   "p": "zǎoshang",
+   "e": "morning",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "晚上",
+   "p": "wǎnshang",
+   "e": "evening / night",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "最",
+   "p": "zuì",
+   "e": "most / -est",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "有点儿",
+   "p": "yǒudiǎnr",
+   "e": "a little / somewhat",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "每天",
+   "p": "měitiān",
+   "e": "every day",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "游泳",
+   "p": "yóuyǒng",
+   "e": "to swim",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "然后",
+   "p": "ránhòu",
+   "e": "then / after that",
+   "cat": "conj",
+   "hsk_level": 1
+  },
+  {
+   "c": "电影",
+   "p": "diànyǐng",
+   "e": "movie",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "白色",
+   "p": "báisè",
+   "e": "white color",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "眼睛",
+   "p": "yǎnjing",
+   "e": "eyes",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "红色",
+   "p": "hóngsè",
+   "e": "red color",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "跑步",
+   "p": "pǎobù",
+   "e": "to run / jogging",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "运动",
+   "p": "yùndòng",
+   "e": "sport / exercise",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "音乐",
+   "p": "yīnyuè",
+   "e": "music",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "黑色",
+   "p": "hēisè",
+   "e": "black color",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "喜",
+   "p": "xǐ",
+   "e": "to like / happy",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "欢",
+   "p": "huān",
+   "e": "joyous / happy",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "电",
+   "p": "diàn",
+   "e": "electric / electricity",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "视",
+   "p": "shì",
+   "e": "vision / to look at",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "医",
+   "p": "yī",
+   "e": "medical / to cure",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "生",
+   "p": "shēng",
+   "e": "to be born / life",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "院",
+   "p": "yuàn",
+   "e": "courtyard / institution",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "漂",
+   "p": "piào",
+   "e": "elegant / polished",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "亮",
+   "p": "liàng",
+   "e": "bright / light",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "店",
+   "p": "diàn",
+   "e": "shop / store",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "米",
+   "p": "mǐ",
+   "e": "rice / meter",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "果",
+   "p": "guǒ",
+   "e": "fruit / result",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "苹",
+   "p": "píng",
+   "e": "apple",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "老",
+   "p": "lǎo",
+   "e": "old / venerable",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "师",
+   "p": "shī",
+   "e": "teacher / master",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "学",
+   "p": "xué",
+   "e": "to study / learn",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "同",
+   "p": "tóng",
+   "e": "same / together",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "校",
+   "p": "xiào",
+   "e": "school",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "习",
+   "p": "xí",
+   "e": "to practice / habit",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "工",
+   "p": "gōng",
+   "e": "work / worker",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "作",
+   "p": "zuò",
+   "e": "to do / to make",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "汉",
+   "p": "hàn",
+   "e": "Han / Chinese",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "语",
+   "p": "yǔ",
+   "e": "language / speech",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "飞",
+   "p": "fēi",
+   "e": "to fly",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "机",
+   "p": "jī",
+   "e": "machine / plane",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "出",
+   "p": "chū",
+   "e": "to go out / exit",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "租",
+   "p": "zū",
+   "e": "to rent",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "车",
+   "p": "chē",
+   "e": "vehicle / car",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "火",
+   "p": "huǒ",
+   "e": "fire",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "站",
+   "p": "zhàn",
+   "e": "station / to stand",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "商",
+   "p": "shāng",
+   "e": "commerce / merchant",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "气",
+   "p": "qì",
+   "e": "air / gas / spirit",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "兴",
+   "p": "xìng",
+   "e": "interest / excitement",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "怎",
+   "p": "zěn",
+   "e": "how",
+   "cat": "question",
+   "hsk_level": 2
+  },
+  {
+   "c": "么",
+   "p": "me",
+   "e": "interrogative particle",
+   "cat": "question",
+   "hsk_level": 2
+  },
+  {
+   "c": "样",
+   "p": "yàng",
+   "e": "manner / appearance",
+   "cat": "question",
+   "hsk_level": 2
+  },
+  {
+   "c": "衣",
+   "p": "yī",
+   "e": "clothes",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "服",
+   "p": "fú",
+   "e": "clothes / to serve",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "床",
+   "p": "chuáng",
+   "e": "bed",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "睡",
+   "p": "shuì",
+   "e": "to sleep",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "觉",
+   "p": "jiào",
+   "e": "sleep",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "打",
+   "p": "dǎ",
+   "e": "to hit / to play",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "话",
+   "p": "huà",
+   "e": "word / speech",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "舒",
+   "p": "shū",
+   "e": "comfortable / easy",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "发",
+   "p": "fā",
+   "e": "to send out / issue",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "烧",
+   "p": "shāo",
+   "e": "to burn / fever",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "唱",
+   "p": "chàng",
+   "e": "to sing",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "歌",
+   "p": "gē",
+   "e": "song",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "早",
+   "p": "zǎo",
+   "e": "early / morning",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "晚",
+   "p": "wǎn",
+   "e": "late / evening",
+   "cat": "time",
+   "hsk_level": 1
+  },
+  {
+   "c": "每",
+   "p": "měi",
+   "e": "every / each",
+   "cat": "pronoun",
+   "hsk_level": 1
+  },
+  {
+   "c": "游",
+   "p": "yóu",
+   "e": "to swim / travel",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "泳",
+   "p": "yǒng",
+   "e": "to swim",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "然",
+   "p": "rán",
+   "e": "so / thus / correct",
+   "cat": "conj",
+   "hsk_level": 1
+  },
+  {
+   "c": "后",
+   "p": "hòu",
+   "e": "behind / after",
+   "cat": "prep",
+   "hsk_level": 1
+  },
+  {
+   "c": "影",
+   "p": "yǐng",
+   "e": "shadow / movie",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "白",
+   "p": "bái",
+   "e": "white",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "色",
+   "p": "sè",
+   "e": "color",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "眼",
+   "p": "yǎn",
+   "e": "eye",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "睛",
+   "p": "jīng",
+   "e": "eye / eyeball",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "红",
+   "p": "hóng",
+   "e": "red",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "跑",
+   "p": "pǎo",
+   "e": "to run",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "步",
+   "p": "bù",
+   "e": "step / pace",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "运",
+   "p": "yùn",
+   "e": "to move / transport",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "动",
+   "p": "dòng",
+   "e": "to move / action",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "音",
+   "p": "yīn",
+   "e": "sound / tone",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "乐",
+   "p": "yuè",
+   "e": "music",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "黑",
+   "p": "hēi",
+   "e": "black",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "与",
+   "p": "yǔ",
+   "e": "and / with",
+   "cat": "conj",
+   "hsk_level": 2
+  },
+  {
+   "c": "为",
+   "p": "wèi",
+   "e": "for / because of",
+   "cat": "prep",
+   "hsk_level": 2
+  },
+  {
+   "c": "京",
+   "p": "jīng",
+   "e": "capital city",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "什",
+   "p": "shén",
+   "e": "what",
+   "cat": "question",
+   "hsk_level": 2
+  },
+  {
+   "c": "介",
+   "p": "jiè",
+   "e": "to introduce",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "以",
+   "p": "yǐ",
+   "e": "by / with / according to",
+   "cat": "prep",
+   "hsk_level": 2
+  },
+  {
+   "c": "们",
+   "p": "men",
+   "e": "plural marker",
+   "cat": "particle",
+   "hsk_level": 2
+  },
+  {
+   "c": "但",
+   "p": "dàn",
+   "e": "but / yet",
+   "cat": "conj",
+   "hsk_level": 2
+  },
+  {
+   "c": "位",
+   "p": "wèi",
+   "e": "polite measure word for people",
+   "cat": "measure",
+   "hsk_level": 2
+  },
+  {
+   "c": "体",
+   "p": "tǐ",
+   "e": "body / form",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "便",
+   "p": "biàn",
+   "e": "convenient",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "候",
+   "p": "hòu",
+   "e": "time / wait",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "健",
+   "p": "jiàn",
+   "e": "healthy",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "先",
+   "p": "xiān",
+   "e": "first / early",
+   "cat": "adverb",
+   "hsk_level": 2
+  },
+  {
+   "c": "刻",
+   "p": "kè",
+   "e": "quarter (hour)",
+   "cat": "measure",
+   "hsk_level": 2
+  },
+  {
+   "c": "北",
+   "p": "běi",
+   "e": "north",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "半",
+   "p": "bàn",
+   "e": "half",
+   "cat": "number",
+   "hsk_level": 2
+  },
+  {
+   "c": "华",
+   "p": "huá",
+   "e": "magnificent / China",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "受",
+   "p": "shòu",
+   "e": "to receive / to suffer",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "可",
+   "p": "kě",
+   "e": "can / may",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "右",
+   "p": "yòu",
+   "e": "right (side)",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "吧",
+   "p": "ba",
+   "e": "suggestion particle",
+   "cat": "particle",
+   "hsk_level": 2
+  },
+  {
+   "c": "因",
+   "p": "yīn",
+   "e": "cause / reason",
+   "cat": "conj",
+   "hsk_level": 2
+  },
+  {
+   "c": "国",
+   "p": "guó",
+   "e": "country / nation",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "如",
+   "p": "rú",
+   "e": "as / if",
+   "cat": "conj",
+   "hsk_level": 2
+  },
+  {
+   "c": "宜",
+   "p": "yí",
+   "e": "suitable",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "常",
+   "p": "cháng",
+   "e": "often / frequent",
+   "cat": "adverb",
+   "hsk_level": 2
+  },
+  {
+   "c": "康",
+   "p": "kāng",
+   "e": "healthy",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "得",
+   "p": "de",
+   "e": "structural particle",
+   "cat": "particle",
+   "hsk_level": 2
+  },
+  {
+   "c": "感",
+   "p": "gǎn",
+   "e": "to feel",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "或",
+   "p": "huò",
+   "e": "or",
+   "cat": "conj",
+   "hsk_level": 2
+  },
+  {
+   "c": "所",
+   "p": "suǒ",
+   "e": "place / that which",
+   "cat": "particle",
+   "hsk_level": 2
+  },
+  {
+   "c": "描",
+   "p": "miáo",
+   "e": "to trace / describe",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "数",
+   "p": "shù",
+   "e": "number / figure",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "方",
+   "p": "fāng",
+   "e": "square / direction",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "时",
+   "p": "shí",
+   "e": "time / hour",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "李",
+   "p": "lǐ",
+   "e": "plum / surname",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "杯",
+   "p": "bēi",
+   "e": "cup / glass",
+   "cat": "measure",
+   "hsk_level": 2
+  },
+  {
+   "c": "桌",
+   "p": "zhuō",
+   "e": "table / desk",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "椅",
+   "p": "yǐ",
+   "e": "chair",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "法",
+   "p": "fǎ",
+   "e": "law / method",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "活",
+   "p": "huó",
+   "e": "to live / alive",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "海",
+   "p": "hǎi",
+   "e": "sea / ocean",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "物",
+   "p": "wù",
+   "e": "thing / object",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "王",
+   "p": "wáng",
+   "e": "king / surname",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "疼",
+   "p": "téng",
+   "e": "ache / pain",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "知",
+   "p": "zhī",
+   "e": "to know",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "碗",
+   "p": "wǎn",
+   "e": "bowl",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "绍",
+   "p": "shào",
+   "e": "to introduce",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "者",
+   "p": "zhě",
+   "e": "person who / -er",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "脑",
+   "p": "nǎo",
+   "e": "brain",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "芳",
+   "p": "fāng",
+   "e": "fragrant",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "行",
+   "p": "xíng",
+   "e": "to walk / OK",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "认",
+   "p": "rèn",
+   "e": "to recognize",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "识",
+   "p": "shí",
+   "e": "to know",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "购",
+   "p": "gòu",
+   "e": "to purchase",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "趣",
+   "p": "qù",
+   "e": "interest / fun",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "身",
+   "p": "shēn",
+   "e": "body",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "边",
+   "p": "biān",
+   "e": "side / edge",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "远",
+   "p": "yuǎn",
+   "e": "far / distant",
+   "cat": "adj",
+   "hsk_level": 2
+  },
+  {
+   "c": "述",
+   "p": "shù",
+   "e": "to state / narrate",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "道",
+   "p": "dào",
+   "e": "road / path / to say",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "里",
+   "p": "lǐ",
+   "e": "inside",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "问",
+   "p": "wèn",
+   "e": "to ask",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "间",
+   "p": "jiān",
+   "e": "between / room",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "陪",
+   "p": "péi",
+   "e": "to accompany",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "颜",
+   "p": "yán",
+   "e": "color / face",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "食",
+   "p": "shí",
+   "e": "food / to eat",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "饮",
+   "p": "yǐn",
+   "e": "to drink",
+   "cat": "verb",
+   "hsk_level": 2
+  },
+  {
+   "c": "龄",
+   "p": "líng",
+   "e": "age",
+   "cat": "noun",
+   "hsk_level": 2
+  },
+  {
+   "c": "东",
+   "p": "dōng",
+   "e": "east",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "西",
+   "p": "xī",
+   "e": "west",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "东西",
+   "p": "dōngxi",
+   "e": "thing / stuff",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "共",
+   "p": "gòng",
+   "e": "together / total",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "一共",
+   "p": "yígòng",
+   "e": "altogether / in total",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "姐",
+   "p": "jiě",
+   "e": "older sister",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "姐姐",
+   "p": "jiějiě",
+   "e": "older sister",
+   "cat": "noun",
+   "hsk_level": 1
+  },
+  {
+   "c": "休",
+   "p": "xiū",
+   "e": "to rest",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "息",
+   "p": "xī",
+   "e": "to rest / breath",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "休息",
+   "p": "xiūxi",
+   "e": "to rest",
+   "cat": "verb",
+   "hsk_level": 1
+  },
+  {
+   "c": "更",
+   "p": "gèng",
+   "e": "even more",
+   "cat": "adverb",
+   "hsk_level": 1
+  },
+  {
+   "c": "概",
+   "p": "gài",
+   "e": "approximate",
+   "cat": "adj",
+   "hsk_level": 1
+  },
+  {
+   "c": "大概",
+   "p": "dàgài",
+   "e": "approximately / probably",
+   "cat": "adverb",
+   "hsk_level": 1
+  }
+ ],
+ "vocabulary": {
+  "你好": {
+   "parts": [
+    "你",
+    "好"
+   ],
+   "literal": "you + good = hello"
+  },
+  "再见": {
+   "parts": [
+    "再",
+    "见"
+   ],
+   "literal": "again + see = goodbye (see you again)"
+  },
+  "谢谢": {
+   "parts": [
+    "谢",
+    "谢"
+   ],
+   "literal": "thank + thank = thank you (doubled for emphasis)"
+  },
+  "对不起": {
+   "parts": [
+    "对",
+    "不",
+    "起"
+   ],
+   "literal": "face + not + able = sorry (unable to face you)"
+  },
+  "没关系": {
+   "parts": [
+    "没",
+    "关",
+    "系"
+   ],
+   "literal": "not + relate + connection = it's OK (no connection/problem)"
+  },
+  "名字": {
+   "parts": [
+    "名",
+    "字"
+   ],
+   "literal": "name + character = name"
+  },
+  "爸爸": {
+   "parts": [
+    "爸",
+    "爸"
+   ],
+   "literal": "father + father = dad (doubled for familiarity)"
+  },
+  "妈妈": {
+   "parts": [
+    "妈",
+    "妈"
+   ],
+   "literal": "mother + mother = mom (doubled for familiarity)"
+  },
+  "儿子": {
+   "parts": [
+    "儿",
+    "子"
+   ],
+   "literal": "child + child = son"
+  },
+  "女儿": {
+   "parts": [
+    "女",
+    "儿"
+   ],
+   "literal": "female + child = daughter"
+  },
+  "朋友": {
+   "parts": [
+    "朋",
+    "友"
+   ],
+   "literal": "companion + friend = friend"
+  },
+  "今天": {
+   "parts": [
+    "今",
+    "天"
+   ],
+   "literal": "this + day = today"
+  },
+  "明天": {
+   "parts": [
+    "明",
+    "天"
+   ],
+   "literal": "bright + day = tomorrow"
+  },
+  "昨天": {
+   "parts": [
+    "昨",
+    "天"
+   ],
+   "literal": "past + day = yesterday"
+  },
+  "现在": {
+   "parts": [
+    "现",
+    "在"
+   ],
+   "literal": "appear + exist = now"
+  },
+  "分钟": {
+   "parts": [
+    "分",
+    "钟"
+   ],
+   "literal": "divide + clock = minute"
+  },
+  "星期": {
+   "parts": [
+    "星",
+    "期"
+   ],
+   "literal": "star + period = week"
+  },
+  "上午": {
+   "parts": [
+    "上",
+    "午"
+   ],
+   "literal": "upper + noon = morning"
+  },
+  "下午": {
+   "parts": [
+    "下",
+    "午"
+   ],
+   "literal": "lower + noon = afternoon"
+  },
+  "中午": {
+   "parts": [
+    "中",
+    "午"
+   ],
+   "literal": "middle + noon = noon"
+  },
+  "喜欢": {
+   "parts": [
+    "喜",
+    "欢"
+   ],
+   "literal": "喜 + 欢 = to like"
+  },
+  "电视": {
+   "parts": [
+    "电",
+    "视"
+   ],
+   "literal": "电 + 视 = television"
+  },
+  "医生": {
+   "parts": [
+    "医",
+    "生"
+   ],
+   "literal": "医 + 生 = doctor"
+  },
+  "医院": {
+   "parts": [
+    "医",
+    "院"
+   ],
+   "literal": "医 + 院 = hospital"
+  },
+  "漂亮": {
+   "parts": [
+    "漂",
+    "亮"
+   ],
+   "literal": "漂 + 亮 = beautiful"
+  },
+  "多少": {
+   "parts": [
+    "多",
+    "少"
+   ],
+   "literal": "多 + 少 = how much/many"
+  },
+  "今年": {
+   "parts": [
+    "今",
+    "年"
+   ],
+   "literal": "今 + 年 = this year"
+  },
+  "饭店": {
+   "parts": [
+    "饭",
+    "店"
+   ],
+   "literal": "饭 + 店 = restaurant"
+  },
+  "米饭": {
+   "parts": [
+    "米",
+    "饭"
+   ],
+   "literal": "米 + 饭 = cooked rice"
+  },
+  "水果": {
+   "parts": [
+    "水",
+    "果"
+   ],
+   "literal": "水 + 果 = fruit"
+  },
+  "苹果": {
+   "parts": [
+    "苹",
+    "果"
+   ],
+   "literal": "苹 + 果 = apple"
+  },
+  "老师": {
+   "parts": [
+    "老",
+    "师"
+   ],
+   "literal": "老 + 师 = teacher"
+  },
+  "学生": {
+   "parts": [
+    "学",
+    "生"
+   ],
+   "literal": "学 + 生 = student"
+  },
+  "同学": {
+   "parts": [
+    "同",
+    "学"
+   ],
+   "literal": "同 + 学 = classmate"
+  },
+  "学校": {
+   "parts": [
+    "学",
+    "校"
+   ],
+   "literal": "学 + 校 = school"
+  },
+  "学习": {
+   "parts": [
+    "学",
+    "习"
+   ],
+   "literal": "学 + 习 = to study"
+  },
+  "工作": {
+   "parts": [
+    "工",
+    "作"
+   ],
+   "literal": "工 + 作 = to work"
+  },
+  "汉语": {
+   "parts": [
+    "汉",
+    "语"
+   ],
+   "literal": "汉 + 语 = Chinese language"
+  },
+  "哪儿": {
+   "parts": [
+    "哪",
+    "儿"
+   ],
+   "literal": "哪 + 儿 = where"
+  },
+  "飞机": {
+   "parts": [
+    "飞",
+    "机"
+   ],
+   "literal": "飞 + 机 = airplane"
+  },
+  "出租车": {
+   "parts": [
+    "出",
+    "租",
+    "车"
+   ],
+   "literal": "出 + 租 + 车 = taxi"
+  },
+  "火车站": {
+   "parts": [
+    "火",
+    "车",
+    "站"
+   ],
+   "literal": "火 + 车 + 站 = train station"
+  },
+  "商店": {
+   "parts": [
+    "商",
+    "店"
+   ],
+   "literal": "商 + 店 = shop"
+  },
+  "天气": {
+   "parts": [
+    "天",
+    "气"
+   ],
+   "literal": "天 + 气 = weather"
+  },
+  "高兴": {
+   "parts": [
+    "高",
+    "兴"
+   ],
+   "literal": "高 + 兴 = happy"
+  },
+  "怎么样": {
+   "parts": [
+    "怎",
+    "么",
+    "样"
+   ],
+   "literal": "怎 + 么 + 样 = how is it?"
+  },
+  "衣服": {
+   "parts": [
+    "衣",
+    "服"
+   ],
+   "literal": "衣 + 服 = clothes"
+  },
+  "没有": {
+   "parts": [
+    "没",
+    "有"
+   ],
+   "literal": "没 + 有 = not have"
+  },
+  "起床": {
+   "parts": [
+    "起",
+    "床"
+   ],
+   "literal": "起 + 床 = to get up"
+  },
+  "睡觉": {
+   "parts": [
+    "睡",
+    "觉"
+   ],
+   "literal": "睡 + 觉 = to sleep"
+  },
+  "吃饭": {
+   "parts": [
+    "吃",
+    "饭"
+   ],
+   "literal": "吃 + 饭 = to eat a meal"
+  },
+  "上课": {
+   "parts": [
+    "上",
+    "课"
+   ],
+   "literal": "上 + 课 = to attend class"
+  },
+  "下课": {
+   "parts": [
+    "下",
+    "课"
+   ],
+   "literal": "下 + 课 = class ends"
+  },
+  "回家": {
+   "parts": [
+    "回",
+    "家"
+   ],
+   "literal": "回 + 家 = to go home"
+  },
+  "看电视": {
+   "parts": [
+    "看",
+    "电",
+    "视"
+   ],
+   "literal": "看 + 电 + 视 = to watch TV"
+  },
+  "打电话": {
+   "parts": [
+    "打",
+    "电",
+    "话"
+   ],
+   "literal": "打 + 电 + 话 = to phone"
+  },
+  "一样": {
+   "parts": [
+    "一",
+    "样"
+   ],
+   "literal": "one + appearance = the same"
+  },
+  "不舒服": {
+   "parts": [
+    "不",
+    "舒",
+    "服"
+   ],
+   "literal": "not + comfortable = unwell"
+  },
+  "发烧": {
+   "parts": [
+    "发",
+    "烧"
+   ],
+   "literal": "emit + heat = fever"
+  },
+  "唱歌": {
+   "parts": [
+    "唱",
+    "歌"
+   ],
+   "literal": "sing + song = to sing"
+  },
+  "早上": {
+   "parts": [
+    "早",
+    "上"
+   ],
+   "literal": "early + top = morning"
+  },
+  "晚上": {
+   "parts": [
+    "晚",
+    "上"
+   ],
+   "literal": "late + top = evening"
+  },
+  "有点儿": {
+   "parts": [
+    "有",
+    "点",
+    "儿"
+   ],
+   "literal": "have + point + child = a little bit"
+  },
+  "每天": {
+   "parts": [
+    "每",
+    "天"
+   ],
+   "literal": "every + day = every day"
+  },
+  "游泳": {
+   "parts": [
+    "游",
+    "泳"
+   ],
+   "literal": "swim + swim = to swim"
+  },
+  "然后": {
+   "parts": [
+    "然",
+    "后"
+   ],
+   "literal": "so + after = then"
+  },
+  "电影": {
+   "parts": [
+    "电",
+    "影"
+   ],
+   "literal": "electric + shadow = movie"
+  },
+  "白色": {
+   "parts": [
+    "白",
+    "色"
+   ],
+   "literal": "white + color = white color"
+  },
+  "眼睛": {
+   "parts": [
+    "眼",
+    "睛"
+   ],
+   "literal": "eye + eyeball = eyes"
+  },
+  "红色": {
+   "parts": [
+    "红",
+    "色"
+   ],
+   "literal": "red + color = red color"
+  },
+  "跑步": {
+   "parts": [
+    "跑",
+    "步"
+   ],
+   "literal": "run + step = to run"
+  },
+  "运动": {
+   "parts": [
+    "运",
+    "动"
+   ],
+   "literal": "move + move = sport/exercise"
+  },
+  "音乐": {
+   "parts": [
+    "音",
+    "乐"
+   ],
+   "literal": "sound + music = music"
+  },
+  "黑色": {
+   "parts": [
+    "黑",
+    "色"
+   ],
+   "literal": "black + color = black color"
+  },
+  "我们": {
+   "parts": [
+    "我",
+    "们"
+   ],
+   "literal": "I + (plural marker) = we"
+  },
+  "你们": {
+   "parts": [
+    "你",
+    "们"
+   ],
+   "literal": "you + (plural marker) = you (plural)"
+  },
+  "他们": {
+   "parts": [
+    "他",
+    "们"
+   ],
+   "literal": "he + (plural marker) = they"
+  },
+  "中国": {
+   "parts": [
+    "中",
+    "国"
+   ],
+   "literal": "middle + country = China"
+  },
+  "北京": {
+   "parts": [
+    "北",
+    "京"
+   ],
+   "literal": "north + capital = Beijing"
+  },
+  "什么": {
+   "parts": [
+    "什",
+    "么"
+   ],
+   "literal": "what + (particle) = what"
+  },
+  "为什么": {
+   "parts": [
+    "为",
+    "什",
+    "么"
+   ],
+   "literal": "for + what = why"
+  },
+  "因为": {
+   "parts": [
+    "因",
+    "为"
+   ],
+   "literal": "cause + for = because"
+  },
+  "所以": {
+   "parts": [
+    "所",
+    "以"
+   ],
+   "literal": "that which + by = so / therefore"
+  },
+  "但是": {
+   "parts": [
+    "但",
+    "是"
+   ],
+   "literal": "but + is = but"
+  },
+  "如果": {
+   "parts": [
+    "如",
+    "果"
+   ],
+   "literal": "as + result = if"
+  },
+  "怎么": {
+   "parts": [
+    "怎",
+    "么"
+   ],
+   "literal": "how + (particle) = how"
+  },
+  "时候": {
+   "parts": [
+    "时",
+    "候"
+   ],
+   "literal": "time + wait = time / moment"
+  },
+  "什么时候": {
+   "parts": [
+    "什",
+    "么",
+    "时",
+    "候"
+   ],
+   "literal": "what + time = when"
+  },
+  "电脑": {
+   "parts": [
+    "电",
+    "脑"
+   ],
+   "literal": "electric + brain = computer"
+  },
+  "电话": {
+   "parts": [
+    "电",
+    "话"
+   ],
+   "literal": "electric + speech = telephone"
+  },
+  "手机": {
+   "parts": [
+    "手",
+    "机"
+   ],
+   "literal": "hand + machine = mobile phone"
+  },
+  "认识": {
+   "parts": [
+    "认",
+    "识"
+   ],
+   "literal": "recognize + know = to know (people)"
+  },
+  "知道": {
+   "parts": [
+    "知",
+    "道"
+   ],
+   "literal": "know + path = to know (information)"
+  },
+  "介绍": {
+   "parts": [
+    "介",
+    "绍"
+   ],
+   "literal": "between + carry on = to introduce"
+  },
+  "身体": {
+   "parts": [
+    "身",
+    "体"
+   ],
+   "literal": "body + body = body / health"
+  },
+  "健康": {
+   "parts": [
+    "健",
+    "康"
+   ],
+   "literal": "healthy + healthy = health"
+  },
+  "桌子": {
+   "parts": [
+    "桌",
+    "子"
+   ],
+   "literal": "table + (noun suffix) = table"
+  },
+  "椅子": {
+   "parts": [
+    "椅",
+    "子"
+   ],
+   "literal": "chair + (noun suffix) = chair"
+  },
+  "杯子": {
+   "parts": [
+    "杯",
+    "子"
+   ],
+   "literal": "cup + (noun suffix) = cup"
+  },
+  "问候": {
+   "parts": [
+    "问",
+    "候"
+   ],
+   "literal": "ask + wait = to greet"
+  }
+ },
+ "lessons": [
+  {
+   "slug": "lesson-1",
+   "id": 1,
+   "title": "Lesson 1",
+   "zhTitle": "问候与介绍",
+   "enTitle": "Greetings & Introductions",
+   "description": "Say hello, introduce yourself, learn basic pronouns",
+   "emoji": "👋",
+   "color": "#fde9d4",
+   "emojiColor": "#f9c08a",
+   "grammarLabel": "Pattern: 我是… / 你好!",
+   "isPreview": false,
+   "content": "",
+   "vocab": [
+    "你好",
+    "再见",
+    "谢谢",
+    "对不起",
+    "没关系",
+    "我",
+    "你",
+    "他",
+    "她",
+    "名字",
+    "叫",
+    "是"
+   ],
+   "grammar": [
+    {
+     "title": "Introducing yourself: 我叫…",
+     "pattern": "我叫 [name]。",
+     "note": "叫 (jiào) means 'to be called'. Use it to give your name. Literally: 'I am called [name].'"
+    },
+    {
+     "title": "Saying who you are: 我是…",
+     "pattern": "我是 [noun / nationality]。",
+     "note": "是 (shì) means 'to be'. Use 是 with nouns: 我是学生 (I am a student), 我是老师 (I am a teacher)."
+    },
+    {
+     "title": "Yes/No question: …吗?",
+     "pattern": "你是学生吗？",
+     "note": "Add 吗 (ma) to the end of any statement to turn it into a yes/no question. No word order changes needed!"
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "你好！我叫李华。",
+     "en": "Hello! My name is Li Hua.",
+     "words": [
+      "你好",
+      "！",
+      "我",
+      "叫",
+      "李华",
+      "。"
+     ]
+    },
+    {
+     "zh": "我是学生。你是老师吗？",
+     "en": "I am a student. Are you a teacher?",
+     "words": [
+      "我",
+      "是",
+      "学生",
+      "。",
+      "你",
+      "是",
+      "老师",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "对不起！",
+     "en": "I'm sorry!",
+     "words": [
+      "对不起",
+      "！"
+     ]
+    },
+    {
+     "zh": "没关系，谢谢你。",
+     "en": "It's OK, thank you.",
+     "words": [
+      "没关系",
+      "，",
+      "谢谢",
+      "你",
+      "。"
+     ]
+    },
+    {
+     "zh": "再见！",
+     "en": "Goodbye!",
+     "words": [
+      "再见",
+      "！"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "你好！你叫什么名字？",
+     "en": "Hello! What is your name?",
+     "words": [
+      "你好",
+      "！",
+      "你",
+      "叫",
+      "什么",
+      "名字",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "你好！我叫王芳。你呢？",
+     "en": "Hello! My name is Wang Fang. And you?",
+     "words": [
+      "你好",
+      "！",
+      "我",
+      "叫",
+      "王芳",
+      "。",
+      "你",
+      "呢",
+      "？"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "我叫李明。很高兴认识你！",
+     "en": "My name is Li Ming. Nice to meet you!",
+     "words": [
+      "我",
+      "叫",
+      "李明",
+      "。",
+      "很",
+      "高兴",
+      "认识",
+      "你",
+      "！"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "我也很高兴认识你！",
+     "en": "Nice to meet you too!",
+     "words": [
+      "我",
+      "也",
+      "很",
+      "高兴",
+      "认识",
+      "你",
+      "！"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lesson-2",
+   "id": 2,
+   "title": "Lesson 2",
+   "zhTitle": "家人与年龄",
+   "enTitle": "Family & Ages",
+   "description": "Talk about your family members and ask about ages",
+   "emoji": "👨‍👩‍👧",
+   "color": "#fce8e8",
+   "emojiColor": "#f4b8b8",
+   "grammarLabel": "Pattern: 她是我的… / …岁",
+   "isPreview": false,
+   "content": "",
+   "vocab": [
+    "家",
+    "爸爸",
+    "妈妈",
+    "儿子",
+    "女儿",
+    "朋友",
+    "的",
+    "岁",
+    "几",
+    "多少",
+    "今年",
+    "两"
+   ],
+   "grammar": [
+    {
+     "title": "Possession with 的",
+     "pattern": "她是我的妈妈。",
+     "note": "的 (de) shows possession, like 's in English. 我的 = my, 你的 = your, 他的 = his. Between close family/friends 的 is often dropped: 我妈妈."
+    },
+    {
+     "title": "Asking ages: 几岁 / 多大",
+     "pattern": "你今年几岁？ / 你多大？",
+     "note": "几岁 is used for children. For adults use 多大. The answer: Subject + 今年 + number + 岁."
+    },
+    {
+     "title": "Stating age",
+     "pattern": "我今年二十岁。",
+     "note": "No verb needed! Just: [person] + 今年 (this year) + [number] + 岁."
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "她是我的妈妈。",
+     "en": "She is my mom.",
+     "words": [
+      "她",
+      "是",
+      "我",
+      "的",
+      "妈妈",
+      "。"
+     ]
+    },
+    {
+     "zh": "我爸爸今年四十五岁。",
+     "en": "My dad is 45 years old this year.",
+     "words": [
+      "我",
+      "爸爸",
+      "今年",
+      "四",
+      "十",
+      "五",
+      "岁",
+      "。"
+     ]
+    },
+    {
+     "zh": "你有几个朋友？",
+     "en": "How many friends do you have?",
+     "words": [
+      "你",
+      "有",
+      "几",
+      "个",
+      "朋友",
+      "？"
+     ]
+    },
+    {
+     "zh": "我家有四个人。",
+     "en": "My family has four people.",
+     "words": [
+      "我",
+      "家",
+      "有",
+      "四",
+      "个",
+      "人",
+      "。"
+     ]
+    },
+    {
+     "zh": "他今年多大？",
+     "en": "How old is he this year?",
+     "words": [
+      "他",
+      "今年",
+      "多",
+      "大",
+      "？"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "这是你的家人吗？",
+     "en": "Is this your family?",
+     "words": [
+      "这",
+      "是",
+      "你",
+      "的",
+      "家",
+      "人",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "是的！这是我爸爸，这是我妈妈。",
+     "en": "Yes! This is my dad, this is my mom.",
+     "words": [
+      "是",
+      "的",
+      "！",
+      "这",
+      "是",
+      "我",
+      "爸爸",
+      "，",
+      "这",
+      "是",
+      "我",
+      "妈妈",
+      "。"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "你爸爸今年多大？",
+     "en": "How old is your dad this year?",
+     "words": [
+      "你",
+      "爸爸",
+      "今年",
+      "多",
+      "大",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "他今年五十岁。",
+     "en": "He is fifty years old this year.",
+     "words": [
+      "他",
+      "今年",
+      "五",
+      "十",
+      "岁",
+      "。"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lesson-3",
+   "id": 3,
+   "title": "Lesson 3",
+   "zhTitle": "时间与日期",
+   "enTitle": "Time & Dates",
+   "description": "Tell the time, say dates and days of the week",
+   "emoji": "🕐",
+   "color": "#e8f0fe",
+   "emojiColor": "#a8c4f8",
+   "grammarLabel": "Pattern: 现在几点？/ 今天几号？",
+   "isPreview": false,
+   "content": "",
+   "vocab": [
+    "今天",
+    "明天",
+    "昨天",
+    "现在",
+    "点",
+    "分钟",
+    "星期",
+    "上午",
+    "下午",
+    "中午",
+    "月",
+    "号"
+   ],
+   "grammar": [
+    {
+     "title": "Asking the time: 现在几点？",
+     "pattern": "现在几点？— 现在三点半。",
+     "note": "几点 = what time. 半 (bàn) = half past. 三点一刻 = quarter past three. Time comes BEFORE the verb in Chinese sentences."
+    },
+    {
+     "title": "Asking the date: 今天几号？",
+     "pattern": "今天几号？— 今天三月二十号。",
+     "note": "月 = month, 号 = day of month. Dates go from big to small: year → month → day."
+    },
+    {
+     "title": "Days of the week",
+     "pattern": "星期一，星期二，… 星期日",
+     "note": "星期 + 1–6 for Mon–Sat. Sunday is 星期日 or 星期天. 今天星期几？= What day is today?"
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "现在几点？",
+     "en": "What time is it now?",
+     "words": [
+      "现在",
+      "几",
+      "点",
+      "？"
+     ]
+    },
+    {
+     "zh": "现在上午九点半。",
+     "en": "It is now 9:30 AM.",
+     "words": [
+      "现在",
+      "上午",
+      "九",
+      "点",
+      "半",
+      "。"
+     ]
+    },
+    {
+     "zh": "今天星期几？",
+     "en": "What day is today?",
+     "words": [
+      "今天",
+      "星期",
+      "几",
+      "？"
+     ]
+    },
+    {
+     "zh": "今天是星期三。",
+     "en": "Today is Wednesday.",
+     "words": [
+      "今天",
+      "是",
+      "星期",
+      "三",
+      "。"
+     ]
+    },
+    {
+     "zh": "明天是几月几号？",
+     "en": "What is tomorrow's date?",
+     "words": [
+      "明天",
+      "是",
+      "几",
+      "月",
+      "几",
+      "号",
+      "？"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "你好！现在几点？",
+     "en": "Hi! What time is it?",
+     "words": [
+      "你好",
+      "！",
+      "现在",
+      "几",
+      "点",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "现在下午两点。",
+     "en": "It is 2 PM now.",
+     "words": [
+      "现在",
+      "下午",
+      "两",
+      "点",
+      "。"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "今天星期几？",
+     "en": "What day is today?",
+     "words": [
+      "今天",
+      "星期",
+      "几",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "今天星期四，明天是星期五。",
+     "en": "Today is Thursday, tomorrow is Friday.",
+     "words": [
+      "今天",
+      "星期",
+      "四",
+      "，",
+      "明天",
+      "是",
+      "星期",
+      "五",
+      "。"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lesson-4",
+   "id": 4,
+   "title": "Lesson 4",
+   "zhTitle": "饮食与点菜",
+   "enTitle": "Food & Ordering",
+   "description": "Order food, ask for things politely, count dishes",
+   "emoji": "🍜",
+   "color": "#fef3e2",
+   "emojiColor": "#f8d080",
+   "grammarLabel": "Pattern: 我想要… / 请给我…",
+   "isPreview": false,
+   "content": "",
+   "vocab": [
+    "饭店",
+    "菜",
+    "米饭",
+    "茶",
+    "水",
+    "水果",
+    "苹果",
+    "吃",
+    "喝",
+    "要",
+    "请",
+    "钱"
+   ],
+   "grammar": [
+    {
+     "title": "Ordering / wanting: 想要 + noun",
+     "pattern": "我想要一碗米饭。",
+     "note": "想 (xiǎng) = would like, 要 (yào) = want/will have. Use 想要 together for polite requests. 碗 (wǎn) = bowl (measure word)."
+    },
+    {
+     "title": "Polite requests: 请 + verb",
+     "pattern": "请给我一杯茶。",
+     "note": "请 at the start makes any request polite. 给 (gěi) = give. 杯 (bēi) = cup/glass. 一杯茶 = a cup of tea."
+    },
+    {
+     "title": "Asking the price: 多少钱？",
+     "pattern": "这个多少钱？— 二十块。",
+     "note": "多少 = how much/many. 钱 = money. 块 (kuài) is the informal unit (= yuan). 二十块 = 20 yuan."
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "我想吃米饭。",
+     "en": "I want to eat rice.",
+     "words": [
+      "我",
+      "想",
+      "吃",
+      "米饭",
+      "。"
+     ]
+    },
+    {
+     "zh": "请给我一杯水。",
+     "en": "Please give me a glass of water.",
+     "words": [
+      "请",
+      "给",
+      "我",
+      "一",
+      "杯",
+      "水",
+      "。"
+     ]
+    },
+    {
+     "zh": "你喝茶吗？",
+     "en": "Do you drink tea?",
+     "words": [
+      "你",
+      "喝",
+      "茶",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "这个苹果多少钱？",
+     "en": "How much is this apple?",
+     "words": [
+      "这",
+      "个",
+      "苹果",
+      "多少",
+      "钱",
+      "？"
+     ]
+    },
+    {
+     "zh": "我不喝茶，我喝水。",
+     "en": "I don't drink tea, I drink water.",
+     "words": [
+      "我",
+      "不",
+      "喝",
+      "茶",
+      "，",
+      "我",
+      "喝",
+      "水",
+      "。"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "你好！你要喝什么？",
+     "en": "Hello! What would you like to drink?",
+     "words": [
+      "你好",
+      "！",
+      "你",
+      "要",
+      "喝",
+      "什么",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "我要一杯茶，谢谢。",
+     "en": "I'd like a cup of tea, thank you.",
+     "words": [
+      "我",
+      "要",
+      "一",
+      "杯",
+      "茶",
+      "，",
+      "谢谢",
+      "。"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "好的。你要吃什么菜？",
+     "en": "Sure. What dish would you like?",
+     "words": [
+      "好",
+      "的",
+      "。",
+      "你",
+      "要",
+      "吃",
+      "什么",
+      "菜",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "请给我一碗米饭和一个菜。多少钱？",
+     "en": "Please give me a bowl of rice and one dish. How much?",
+     "words": [
+      "请",
+      "给",
+      "我",
+      "一",
+      "碗",
+      "米饭",
+      "和",
+      "一",
+      "个",
+      "菜",
+      "。",
+      "多少",
+      "钱",
+      "？"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "三十五块。",
+     "en": "35 yuan.",
+     "words": [
+      "三",
+      "十",
+      "五",
+      "块",
+      "。"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lesson-5",
+   "id": 5,
+   "title": "Lesson 5",
+   "zhTitle": "学校与工作",
+   "enTitle": "School & Work",
+   "description": "Talk about jobs, school life and abilities",
+   "emoji": "🏫",
+   "color": "#e8f5e9",
+   "emojiColor": "#a8d8aa",
+   "grammarLabel": "Pattern: 我在…工作 / …会…",
+   "isPreview": false,
+   "content": "",
+   "vocab": [
+    "老师",
+    "学生",
+    "同学",
+    "学校",
+    "学习",
+    "工作",
+    "会",
+    "能",
+    "说",
+    "写",
+    "汉语",
+    "忙"
+   ],
+   "grammar": [
+    {
+     "title": "Ability: 会 + verb",
+     "pattern": "我会说汉语。",
+     "note": "会 (huì) = know how to (learned skill). 能 (néng) = able to (physical ability or permission). 我会游泳 = I can swim (I know how). 我不能游泳 = I can't swim (e.g. injured)."
+    },
+    {
+     "title": "Negation: 不 + verb",
+     "pattern": "我不会说法语。",
+     "note": "不 negates present/future actions and states. Place 不 directly before the verb or adjective. 没 negates 有 and past completed actions."
+    },
+    {
+     "title": "Location: 在 + place",
+     "pattern": "我在学校学习。",
+     "note": "在 (zài) = at/in/on a place. It comes before the location. 我在家 = I am at home. 他在工作 = He is working."
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "我是学生，我在学校学习。",
+     "en": "I am a student; I study at school.",
+     "words": [
+      "我",
+      "是",
+      "学生",
+      "，",
+      "我",
+      "在",
+      "学校",
+      "学习",
+      "。"
+     ]
+    },
+    {
+     "zh": "你会说汉语吗？",
+     "en": "Can you speak Chinese?",
+     "words": [
+      "你",
+      "会",
+      "说",
+      "汉语",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "我会说一点儿汉语。",
+     "en": "I can speak a little Chinese.",
+     "words": [
+      "我",
+      "会",
+      "说",
+      "一",
+      "点",
+      "儿",
+      "汉语",
+      "。"
+     ]
+    },
+    {
+     "zh": "老师很忙。",
+     "en": "The teacher is very busy.",
+     "words": [
+      "老师",
+      "很",
+      "忙",
+      "。"
+     ]
+    },
+    {
+     "zh": "我不会写这个字。",
+     "en": "I don't know how to write this character.",
+     "words": [
+      "我",
+      "不",
+      "会",
+      "写",
+      "这",
+      "个",
+      "字",
+      "。"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "你是老师还是学生？",
+     "en": "Are you a teacher or a student?",
+     "words": [
+      "你",
+      "是",
+      "老师",
+      "还",
+      "是",
+      "学生",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "我是学生。我在学习汉语。",
+     "en": "I am a student. I am studying Chinese.",
+     "words": [
+      "我",
+      "是",
+      "学生",
+      "。",
+      "我",
+      "在",
+      "学习",
+      "汉语",
+      "。"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "你会说汉语吗？",
+     "en": "Can you speak Chinese?",
+     "words": [
+      "你",
+      "会",
+      "说",
+      "汉语",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "会，但是我说得不太好。",
+     "en": "Yes, but I don't speak it very well.",
+     "words": [
+      "会",
+      "，",
+      "但是",
+      "我",
+      "说",
+      "得",
+      "不",
+      "太",
+      "好",
+      "。"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lesson-6",
+   "id": 6,
+   "title": "Lesson 6",
+   "zhTitle": "出行与方位",
+   "enTitle": "Transport & Places",
+   "description": "Ask for directions, talk about going places and transport",
+   "emoji": "🚕",
+   "color": "#f3e5f5",
+   "emojiColor": "#d8a8f8",
+   "grammarLabel": "Pattern: 我去… / 在哪儿？",
+   "isPreview": false,
+   "content": "",
+   "vocab": [
+    "去",
+    "来",
+    "在",
+    "哪儿",
+    "飞机",
+    "出租车",
+    "火车站",
+    "医院",
+    "商店",
+    "坐",
+    "从",
+    "到"
+   ],
+   "grammar": [
+    {
+     "title": "Going somewhere: 去 + place",
+     "pattern": "我去医院。",
+     "note": "去 (qù) = to go. Put the destination right after 去. To say how you get there, add the transport before: 我坐出租车去医院。"
+    },
+    {
+     "title": "Asking where: 在哪儿？",
+     "pattern": "医院在哪儿？",
+     "note": "哪儿 (nǎr) = where. 在 + 哪儿 asks for location. Answer: [place] 在 [location]. 医院在右边 = The hospital is on the right."
+    },
+    {
+     "title": "From … to …: 从…到…",
+     "pattern": "从北京到上海坐飞机。",
+     "note": "从 (cóng) = from, 到 (dào) = to. This pattern shows the starting and ending point of travel."
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "你去哪儿？",
+     "en": "Where are you going?",
+     "words": [
+      "你",
+      "去",
+      "哪儿",
+      "？"
+     ]
+    },
+    {
+     "zh": "我去火车站。",
+     "en": "I'm going to the train station.",
+     "words": [
+      "我",
+      "去",
+      "火车站",
+      "。"
+     ]
+    },
+    {
+     "zh": "医院在哪儿？",
+     "en": "Where is the hospital?",
+     "words": [
+      "医院",
+      "在",
+      "哪儿",
+      "？"
+     ]
+    },
+    {
+     "zh": "我坐出租车去。",
+     "en": "I'll go by taxi.",
+     "words": [
+      "我",
+      "坐",
+      "出租车",
+      "去",
+      "。"
+     ]
+    },
+    {
+     "zh": "从这里到学校远吗？",
+     "en": "Is it far from here to school?",
+     "words": [
+      "从",
+      "这",
+      "里",
+      "到",
+      "学校",
+      "远",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "从北京到上海坐飞机。",
+     "en": "Go from Beijing to Shanghai by airplane.",
+     "words": [
+      "从",
+      "北京",
+      "到",
+      "上",
+      "海",
+      "坐",
+      "飞机",
+      "。"
+     ]
+    },
+    {
+     "zh": "商店在哪儿？",
+     "en": "Where is the shop?",
+     "words": [
+      "商店",
+      "在",
+      "哪儿",
+      "？"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "你去哪儿？",
+     "en": "Where are you going?",
+     "words": [
+      "你",
+      "去",
+      "哪儿",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "我去医院。你知道医院在哪儿吗？",
+     "en": "I'm going to the hospital. Do you know where it is?",
+     "words": [
+      "我",
+      "去",
+      "医院",
+      "。",
+      "你",
+      "知道",
+      "医院",
+      "在",
+      "哪儿",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "知道。你可以坐出租车去，很快。",
+     "en": "Yes. You can take a taxi, it's very fast.",
+     "words": [
+      "知道",
+      "。",
+      "你",
+      "可",
+      "以",
+      "坐",
+      "出租车",
+      "去",
+      "，",
+      "很",
+      "快",
+      "。"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "好，谢谢你！",
+     "en": "OK, thank you!",
+     "words": [
+      "好",
+      "，",
+      "谢谢",
+      "你",
+      "！"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lesson-7",
+   "id": 7,
+   "title": "Lesson 7",
+   "zhTitle": "天气与感受",
+   "enTitle": "Weather & Feelings",
+   "description": "Describe weather and express how you feel",
+   "emoji": "☀️",
+   "color": "#fffde7",
+   "emojiColor": "#f8e87a",
+   "grammarLabel": "Pattern: 天气怎么样？/ 很+adj",
+   "isPreview": false,
+   "content": "",
+   "vocab": [
+    "天气",
+    "热",
+    "冷",
+    "好",
+    "高兴",
+    "累",
+    "忙",
+    "很",
+    "太",
+    "不",
+    "怎么样",
+    "也"
+   ],
+   "grammar": [
+    {
+     "title": "Describing with 很 + adjective",
+     "pattern": "天气很热。/ 我很高兴。",
+     "note": "很 (hěn) = very. In Chinese, adjectives need a degree word. Without one, the sentence implies comparison. 很好 = very good / good (neutral)."
+    },
+    {
+     "title": "Too much: 太 + adj + 了",
+     "pattern": "太热了！/ 太贵了！",
+     "note": "太…了 = too … (excessively). 了 at the end adds emphasis. Common: 太好了！(That's great!) 太忙了！(Way too busy!)"
+    },
+    {
+     "title": "How is it?: 怎么样",
+     "pattern": "天气怎么样？— 很好，不冷不热。",
+     "note": "怎么样 (zěnmeyàng) = how is it? / what's it like? A versatile question word for opinions and descriptions."
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "今天天气怎么样？",
+     "en": "How is the weather today?",
+     "words": [
+      "今天",
+      "天气",
+      "怎么样",
+      "？"
+     ]
+    },
+    {
+     "zh": "今天很热，太热了！",
+     "en": "Today is very hot, too hot!",
+     "words": [
+      "今天",
+      "很",
+      "热",
+      "，",
+      "太",
+      "热",
+      "了",
+      "！"
+     ]
+    },
+    {
+     "zh": "我很累，也很忙。",
+     "en": "I am very tired and also very busy.",
+     "words": [
+      "我",
+      "很",
+      "累",
+      "，",
+      "也",
+      "很",
+      "忙",
+      "。"
+     ]
+    },
+    {
+     "zh": "明天天气好吗？",
+     "en": "Will the weather be good tomorrow?",
+     "words": [
+      "明天",
+      "天气",
+      "好",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "他不高兴，因为天气不好。",
+     "en": "He is not happy because the weather is bad.",
+     "words": [
+      "他",
+      "不",
+      "高兴",
+      "，",
+      "因为",
+      "天气",
+      "不",
+      "好",
+      "。"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "今天天气怎么样？",
+     "en": "How is the weather today?",
+     "words": [
+      "今天",
+      "天气",
+      "怎么样",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "太热了！你不觉得热吗？",
+     "en": "It's too hot! Don't you feel hot?",
+     "words": [
+      "太",
+      "热",
+      "了",
+      "！",
+      "你",
+      "不",
+      "觉",
+      "得",
+      "热",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "是的，很热。你今天忙吗？",
+     "en": "Yes, very hot. Are you busy today?",
+     "words": [
+      "是",
+      "的",
+      "，",
+      "很",
+      "热",
+      "。",
+      "你",
+      "今天",
+      "忙",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "很忙，也很累。",
+     "en": "Very busy, and also very tired.",
+     "words": [
+      "很",
+      "忙",
+      "，",
+      "也",
+      "很",
+      "累",
+      "。"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lesson-8",
+   "id": 8,
+   "title": "Lesson 8",
+   "zhTitle": "购物与数字",
+   "enTitle": "Shopping & Numbers",
+   "description": "Count, shop and talk about prices in Chinese",
+   "emoji": "🛒",
+   "color": "#fce4ec",
+   "emojiColor": "#f4a8c0",
+   "grammarLabel": "Pattern: 多少钱？/ 我要买…",
+   "isPreview": false,
+   "content": "",
+   "vocab": [
+    "买",
+    "卖",
+    "钱",
+    "块",
+    "多少",
+    "贵",
+    "衣服",
+    "大",
+    "小",
+    "个",
+    "有",
+    "没有"
+   ],
+   "grammar": [
+    {
+     "title": "Have / Don't have: 有 / 没有",
+     "pattern": "我有钱。/ 我没有钱。",
+     "note": "有 (yǒu) = to have. Its negative is 没有 (méiyǒu) — NOT 不有. This is the only verb negated with 没 in its regular form."
+    },
+    {
+     "title": "Measure words: 个, 件, 本",
+     "pattern": "一个苹果 / 两件衣服 / 三本书",
+     "note": "Chinese uses measure words between numbers and nouns. 个 is general. 件 (jiàn) for clothes/matters. 本 (běn) for books. Never just '一书'!"
+    },
+    {
+     "title": "Comparison: A 比 B + adj",
+     "pattern": "这件衣服比那件贵。",
+     "note": "比 (bǐ) = than. Structure: A 比 B + adjective. To say 'not as … as': A 没有 B + adj. No 很 with 比!"
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "这件衣服多少钱？",
+     "en": "How much is this piece of clothing?",
+     "words": [
+      "这",
+      "件",
+      "衣服",
+      "多少",
+      "钱",
+      "？"
+     ]
+    },
+    {
+     "zh": "一百五十块。",
+     "en": "150 yuan.",
+     "words": [
+      "一",
+      "百",
+      "五",
+      "十",
+      "块",
+      "。"
+     ]
+    },
+    {
+     "zh": "太贵了！有便宜一点儿的吗？",
+     "en": "Too expensive! Is there something cheaper?",
+     "words": [
+      "太",
+      "贵",
+      "了",
+      "！",
+      "有",
+      "便",
+      "宜",
+      "一",
+      "点",
+      "儿",
+      "的",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "我想买两个苹果。",
+     "en": "I want to buy two apples.",
+     "words": [
+      "我",
+      "想",
+      "买",
+      "两",
+      "个",
+      "苹果",
+      "。"
+     ]
+    },
+    {
+     "zh": "这个比那个好。",
+     "en": "This one is better than that one.",
+     "words": [
+      "这",
+      "个",
+      "比",
+      "那",
+      "个",
+      "好",
+      "。"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "你好！这件衣服多少钱？",
+     "en": "Hello! How much is this piece of clothing?",
+     "words": [
+      "你好",
+      "！",
+      "这",
+      "件",
+      "衣服",
+      "多少",
+      "钱",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "两百块。",
+     "en": "200 yuan.",
+     "words": [
+      "两",
+      "百",
+      "块",
+      "。"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "太贵了！便宜一点儿，好吗？",
+     "en": "Too expensive! A little cheaper, OK?",
+     "words": [
+      "太",
+      "贵",
+      "了",
+      "！",
+      "便",
+      "宜",
+      "一",
+      "点",
+      "儿",
+      "，",
+      "好",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "好，一百八十块，怎么样？",
+     "en": "OK, 180 yuan, how about that?",
+     "words": [
+      "好",
+      "，",
+      "一",
+      "百",
+      "八",
+      "十",
+      "块",
+      "，",
+      "怎么样",
+      "？"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "好的，我买这件。谢谢！",
+     "en": "OK, I'll buy this one. Thank you!",
+     "words": [
+      "好",
+      "的",
+      "，",
+      "我",
+      "买",
+      "这",
+      "件",
+      "。",
+      "谢谢",
+      "！"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lesson-9",
+   "id": 9,
+   "title": "Lesson 9",
+   "zhTitle": "日常生活",
+   "enTitle": "Daily Routines",
+   "description": "Describe your daily schedule from morning to night",
+   "emoji": "🌅",
+   "color": "#e3f2fd",
+   "emojiColor": "#90caf9",
+   "grammarLabel": "Pattern: 先…然后… / 每天",
+   "isPreview": false,
+   "content": "",
+   "vocab": [
+    "起床",
+    "睡觉",
+    "吃饭",
+    "上课",
+    "下课",
+    "回家",
+    "看电视",
+    "打电话",
+    "每天",
+    "早上",
+    "晚上",
+    "然后"
+   ],
+   "grammar": [
+    {
+     "title": "Sequence: 先…然后…",
+     "pattern": "我先吃饭，然后看电视。",
+     "note": "先 (xiān) = first, 然后 (ránhòu) = then/after that. Use this structure to describe actions in order. 然后 is an HSK 2 preview word but very useful here."
+    },
+    {
+     "title": "Frequency: 每天 + verb",
+     "pattern": "我每天七点起床。",
+     "note": "每天 (měitiān) = every day. Place time expressions BEFORE the verb. 每天早上 = every morning. Pattern: Subject + 每天 + time + verb."
+    },
+    {
+     "title": "Time + verb word order",
+     "pattern": "我早上八点上课。",
+     "note": "Chinese time expressions come before the verb (opposite to English). 早上 (morning) → 八点 (8 o'clock) → 上课 (attend class). Always big-to-small: day → time → verb."
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "我每天七点起床。",
+     "en": "I get up at 7 o'clock every day.",
+     "words": [
+      "我",
+      "每天",
+      "七",
+      "点",
+      "起床",
+      "。"
+     ]
+    },
+    {
+     "zh": "我先吃饭，然后去学校。",
+     "en": "I eat first, then go to school.",
+     "words": [
+      "我",
+      "先",
+      "吃饭",
+      "，",
+      "然后",
+      "去",
+      "学校",
+      "。"
+     ]
+    },
+    {
+     "zh": "下课以后，我回家。",
+     "en": "After class, I go home.",
+     "words": [
+      "下课",
+      "以",
+      "后",
+      "，",
+      "我",
+      "回家",
+      "。"
+     ]
+    },
+    {
+     "zh": "晚上我看电视或者打电话。",
+     "en": "In the evening I watch TV or make calls.",
+     "words": [
+      "晚上",
+      "我",
+      "看电视",
+      "或",
+      "者",
+      "打电话",
+      "。"
+     ]
+    },
+    {
+     "zh": "我晚上十一点睡觉。",
+     "en": "I go to sleep at 11 PM.",
+     "words": [
+      "我",
+      "晚上",
+      "十",
+      "一",
+      "点",
+      "睡觉",
+      "。"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "你每天几点起床？",
+     "en": "What time do you get up every day?",
+     "words": [
+      "你",
+      "每天",
+      "几",
+      "点",
+      "起床",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "我每天早上六点半起床。",
+     "en": "I get up at 6:30 AM every day.",
+     "words": [
+      "我",
+      "每天",
+      "早上",
+      "六",
+      "点",
+      "半",
+      "起床",
+      "。"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "那么早！你几点上课？",
+     "en": "That early! What time does class start?",
+     "words": [
+      "那",
+      "么",
+      "早",
+      "！",
+      "你",
+      "几",
+      "点",
+      "上课",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "八点上课。我先吃早饭，然后去学校。",
+     "en": "Class starts at 8. I eat breakfast first, then go to school.",
+     "words": [
+      "八",
+      "点",
+      "上课",
+      "。",
+      "我",
+      "先",
+      "吃",
+      "早",
+      "饭",
+      "，",
+      "然后",
+      "去",
+      "学校",
+      "。"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "晚上几点睡觉？",
+     "en": "What time do you sleep at night?",
+     "words": [
+      "晚上",
+      "几",
+      "点",
+      "睡觉",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "十点半，我很累！",
+     "en": "10:30, I'm very tired!",
+     "words": [
+      "十",
+      "点",
+      "半",
+      "，",
+      "我",
+      "很",
+      "累",
+      "！"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lesson-10",
+   "id": 10,
+   "title": "Lesson 10",
+   "zhTitle": "爱好与兴趣",
+   "enTitle": "Hobbies & Interests",
+   "description": "Talk about what you love, like and don't enjoy",
+   "emoji": "🎵",
+   "color": "#f3e5f5",
+   "emojiColor": "#ce93d8",
+   "grammarLabel": "Pattern: 喜欢+verb / 不太…",
+   "isPreview": true,
+   "content": "",
+   "vocab": [
+    "喜欢",
+    "爱",
+    "看",
+    "听",
+    "书",
+    "电视",
+    "电影",
+    "音乐",
+    "运动",
+    "唱歌",
+    "跑步",
+    "游泳"
+   ],
+   "grammar": [
+    {
+     "title": "Expressing likes: 喜欢 + verb/noun",
+     "pattern": "我喜欢看电影。/ 我喜欢音乐。",
+     "note": "喜欢 (xǐhuan) = to like. Follow with a verb or noun. 爱 (ài) = to love (stronger). 我爱唱歌 = I love singing. No extra particle needed between 喜欢 and the verb."
+    },
+    {
+     "title": "Mild negation: 不太 + adj/verb",
+     "pattern": "我不太喜欢运动。",
+     "note": "不太 (bú tài) = not very / not really. Softer than 不. 不太好 = not very good. 不太喜欢 = don't really like. Much more natural than a blunt 不喜欢 in conversation."
+    },
+    {
+     "title": "也 and 都 with multiple subjects",
+     "pattern": "我喜欢音乐，他也喜欢。/ 我们都喜欢。",
+     "note": "也 (yě) = also (for one additional subject). 都 (dōu) = all/both (for multiple subjects together). 也 and 都 always come BEFORE the verb."
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "你有什么爱好？",
+     "en": "What hobbies do you have?",
+     "words": [
+      "你",
+      "有",
+      "什么",
+      "爱",
+      "好",
+      "？"
+     ]
+    },
+    {
+     "zh": "我喜欢听音乐和看电影。",
+     "en": "I like listening to music and watching movies.",
+     "words": [
+      "我",
+      "喜欢",
+      "听",
+      "音乐",
+      "和",
+      "看",
+      "电影",
+      "。"
+     ]
+    },
+    {
+     "zh": "我不太喜欢运动。",
+     "en": "I don't really like sports.",
+     "words": [
+      "我",
+      "不",
+      "太",
+      "喜欢",
+      "运动",
+      "。"
+     ]
+    },
+    {
+     "zh": "他也喜欢唱歌。",
+     "en": "He also likes singing.",
+     "words": [
+      "他",
+      "也",
+      "喜欢",
+      "唱歌",
+      "。"
+     ]
+    },
+    {
+     "zh": "我们都喜欢看书。",
+     "en": "We all like reading books.",
+     "words": [
+      "我们",
+      "都",
+      "喜欢",
+      "看",
+      "书",
+      "。"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "你喜欢什么运动？",
+     "en": "What sports do you like?",
+     "words": [
+      "你",
+      "喜欢",
+      "什么",
+      "运动",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "我喜欢游泳，也喜欢跑步。你呢？",
+     "en": "I like swimming and also running. And you?",
+     "words": [
+      "我",
+      "喜欢",
+      "游泳",
+      "，",
+      "也",
+      "喜欢",
+      "跑步",
+      "。",
+      "你",
+      "呢",
+      "？"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "我不太喜欢运动。我喜欢看电影。",
+     "en": "I don't really like sports. I like watching movies.",
+     "words": [
+      "我",
+      "不",
+      "太",
+      "喜欢",
+      "运动",
+      "。",
+      "我",
+      "喜欢",
+      "看",
+      "电影",
+      "。"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "我也喜欢看电影！我们一起去吧！",
+     "en": "I like watching movies too! Let's go together!",
+     "words": [
+      "我",
+      "也",
+      "喜欢",
+      "看",
+      "电影",
+      "！",
+      "我们",
+      "一",
+      "起",
+      "去",
+      "吧",
+      "！"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lesson-11",
+   "id": 11,
+   "title": "Lesson 11",
+   "zhTitle": "身体与健康",
+   "enTitle": "Body & Health",
+   "description": "Describe how you feel and talk to a doctor",
+   "emoji": "🏥",
+   "color": "#e8f5e9",
+   "emojiColor": "#a5d6a7",
+   "grammarLabel": "Pattern: 有点儿… / 哪里不舒服？",
+   "isPreview": true,
+   "content": "",
+   "vocab": [
+    "医生",
+    "医院",
+    "好",
+    "不",
+    "很",
+    "去",
+    "头",
+    "手",
+    "眼睛",
+    "不舒服",
+    "发烧",
+    "有点儿"
+   ],
+   "grammar": [
+    {
+     "title": "Feeling unwell: 有点儿 + adj",
+     "pattern": "我有点儿不舒服。/ 我有点儿累。",
+     "note": "有点儿 (yǒudiǎnr) = a little / somewhat (used before negative or undesirable adjectives). 有点儿冷 = a little cold. Unlike 一点儿, 有点儿always comes BEFORE the adjective."
+    },
+    {
+     "title": "Asking what's wrong: 哪里不舒服？",
+     "pattern": "你哪里不舒服？— 我头很疼。",
+     "note": "哪里 (nǎlǐ) = where. 不舒服 = not comfortable / unwell. 疼 (téng) = to hurt/ache (HSK 2 preview). Doctors use this question; the answer names the body part."
+    },
+    {
+     "title": "Should / need to: 要 + verb",
+     "pattern": "你要去看医生。",
+     "note": "要 (yào) here = should / need to (advice). 你要多喝水 = You should drink more water. 我要去医院 = I need to go to the hospital. Context makes 要 mean 'want', 'will' or 'should'."
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "你好吗？你看起来不太好。",
+     "en": "Are you OK? You don't look very well.",
+     "words": [
+      "你好",
+      "吗",
+      "？",
+      "你",
+      "看",
+      "起",
+      "来",
+      "不",
+      "太",
+      "好",
+      "。"
+     ]
+    },
+    {
+     "zh": "我有点儿不舒服。",
+     "en": "I'm feeling a little unwell.",
+     "words": [
+      "我",
+      "有点儿",
+      "不舒服",
+      "。"
+     ]
+    },
+    {
+     "zh": "你哪里不舒服？",
+     "en": "Where does it hurt / what's wrong?",
+     "words": [
+      "你",
+      "哪",
+      "里",
+      "不舒服",
+      "？"
+     ]
+    },
+    {
+     "zh": "我头很疼，也有点儿发烧。",
+     "en": "My head hurts a lot and I have a slight fever.",
+     "words": [
+      "我",
+      "头",
+      "很",
+      "疼",
+      "，",
+      "也",
+      "有点儿",
+      "发烧",
+      "。"
+     ]
+    },
+    {
+     "zh": "你要去医院看医生。",
+     "en": "You should go to the hospital to see a doctor.",
+     "words": [
+      "你",
+      "要",
+      "去",
+      "医院",
+      "看",
+      "医生",
+      "。"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "你怎么了？你看起来不舒服。",
+     "en": "What's wrong? You look unwell.",
+     "words": [
+      "你",
+      "怎么",
+      "了",
+      "？",
+      "你",
+      "看",
+      "起",
+      "来",
+      "不舒服",
+      "。"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "我有点儿发烧，头也很疼。",
+     "en": "I have a slight fever and my head hurts a lot.",
+     "words": [
+      "我",
+      "有点儿",
+      "发烧",
+      "，",
+      "头",
+      "也",
+      "很",
+      "疼",
+      "。"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "你要去医院看医生！",
+     "en": "You need to go to the hospital to see a doctor!",
+     "words": [
+      "你",
+      "要",
+      "去",
+      "医院",
+      "看",
+      "医生",
+      "！"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "好，但是我不知道医院在哪儿。",
+     "en": "OK, but I don't know where the hospital is.",
+     "words": [
+      "好",
+      "，",
+      "但是",
+      "我",
+      "不",
+      "知道",
+      "医院",
+      "在",
+      "哪儿",
+      "。"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "我陪你去！医院不远。",
+     "en": "I'll go with you! The hospital isn't far.",
+     "words": [
+      "我",
+      "陪",
+      "你",
+      "去",
+      "！",
+      "医院",
+      "不",
+      "远",
+      "。"
+     ]
+    }
+   ]
+  },
+  {
+   "slug": "lesson-12",
+   "id": 12,
+   "title": "Lesson 12",
+   "zhTitle": "颜色与描述",
+   "enTitle": "Colors & Descriptions",
+   "description": "Describe people and things using colors and adjectives",
+   "emoji": "🎨",
+   "color": "#fff3e0",
+   "emojiColor": "#ffcc80",
+   "grammarLabel": "Pattern: adj+的+noun / 最+adj",
+   "isPreview": true,
+   "content": "",
+   "vocab": [
+    "漂亮",
+    "大",
+    "小",
+    "高",
+    "好",
+    "红色",
+    "白色",
+    "黑色",
+    "新",
+    "旧",
+    "最",
+    "一样"
+   ],
+   "grammar": [
+    {
+     "title": "Adjective + 的 + noun",
+     "pattern": "红色的衣服 / 漂亮的老师",
+     "note": "To use an adjective before a noun, add 的 between them. 红色的 = red (one). 漂亮的学生 = a beautiful student. Single-syllable adj usually drop 的: 大书 (big book), 好人 (good person)."
+    },
+    {
+     "title": "Superlative: 最 + adjective",
+     "pattern": "这件衣服最漂亮。/ 他最高。",
+     "note": "最 (zuì) = most / -est. Place 最 directly before any adjective. 最好 = best. 最大 = biggest. 最贵 = most expensive. Much simpler than English superlatives!"
+    },
+    {
+     "title": "Same as: 一样",
+     "pattern": "这个和那个一样大。",
+     "note": "一样 (yīyàng) = the same / alike. Pattern: A 和 B 一样 + adj = A is as [adj] as B. 这个和那个一样贵 = This is as expensive as that. Opposite: 不一样 = different."
+    }
+   ],
+   "sentences": [
+    {
+     "zh": "你喜欢什么颜色？",
+     "en": "What color do you like?",
+     "words": [
+      "你",
+      "喜欢",
+      "什么",
+      "颜",
+      "色",
+      "？"
+     ]
+    },
+    {
+     "zh": "我喜欢红色。",
+     "en": "I like red.",
+     "words": [
+      "我",
+      "喜欢",
+      "红色",
+      "。"
+     ]
+    },
+    {
+     "zh": "这件红色的衣服很漂亮。",
+     "en": "This red piece of clothing is very beautiful.",
+     "words": [
+      "这",
+      "件",
+      "红色",
+      "的",
+      "衣服",
+      "很",
+      "漂亮",
+      "。"
+     ]
+    },
+    {
+     "zh": "哪件衣服最贵？",
+     "en": "Which piece of clothing is the most expensive?",
+     "words": [
+      "哪",
+      "件",
+      "衣服",
+      "最",
+      "贵",
+      "？"
+     ]
+    },
+    {
+     "zh": "这两个一样大，但是颜色不一样。",
+     "en": "These two are the same size, but different colors.",
+     "words": [
+      "这",
+      "两",
+      "个",
+      "一样",
+      "大",
+      "，",
+      "但是",
+      "颜",
+      "色",
+      "不",
+      "一样",
+      "。"
+     ]
+    }
+   ],
+   "dialogue": [
+    {
+     "speaker": "A",
+     "zh": "你觉得哪件衣服最漂亮？",
+     "en": "Which piece of clothing do you think is the most beautiful?",
+     "words": [
+      "你",
+      "觉",
+      "得",
+      "哪",
+      "件",
+      "衣服",
+      "最",
+      "漂亮",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "我觉得红色的最漂亮！",
+     "en": "I think the red one is the most beautiful!",
+     "words": [
+      "我",
+      "觉",
+      "得",
+      "红色",
+      "的",
+      "最",
+      "漂亮",
+      "！"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "我喜欢白色的。这两件一样贵吗？",
+     "en": "I like the white one. Are these two the same price?",
+     "words": [
+      "我",
+      "喜欢",
+      "白色",
+      "的",
+      "。",
+      "这",
+      "两",
+      "件",
+      "一样",
+      "贵",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "speaker": "B",
+     "zh": "不一样。红色的比白色的便宜。",
+     "en": "No. The red one is cheaper than the white one.",
+     "words": [
+      "不",
+      "一样",
+      "。",
+      "红色",
+      "的",
+      "比",
+      "白色",
+      "的",
+      "便",
+      "宜",
+      "。"
+     ]
+    },
+    {
+     "speaker": "A",
+     "zh": "好，那我买红色的！",
+     "en": "OK, then I'll buy the red one!",
+     "words": [
+      "好",
+      "，",
+      "那",
+      "我",
+      "买",
+      "红色",
+      "的",
+      "！"
+     ]
+    }
+   ]
+  }
+ ],
+ "readings": [
+  {
+   "id": 1,
+   "lesson": 1,
+   "type": "story",
+   "difficulty": 1,
+   "title": "老师和学生",
+   "titleEn": "Teacher and Student",
+   "emoji": "👨‍🏫",
+   "lines": [
+    {
+     "zh": "他是老师。",
+     "en": "He is a teacher.",
+     "words": [
+      "他",
+      "是",
+      "老师",
+      "。"
+     ]
+    },
+    {
+     "zh": "老师叫王方。",
+     "en": "The teacher is called Wang Fang.",
+     "words": [
+      "老师",
+      "叫",
+      "王",
+      "方",
+      "。"
+     ]
+    },
+    {
+     "zh": "她是学生，她叫李华。",
+     "en": "She is a student, she is called Li Hua.",
+     "words": [
+      "她",
+      "是",
+      "学生",
+      "，",
+      "她",
+      "叫",
+      "李华",
+      "。"
+     ]
+    },
+    {
+     "zh": "谢谢老师！",
+     "en": "Thank you, teacher!",
+     "words": [
+      "谢谢",
+      "老师",
+      "！"
+     ]
+    },
+    {
+     "zh": "老师说：没关系，再见。",
+     "en": "The teacher says: You're welcome, goodbye.",
+     "words": [
+      "老师",
+      "说",
+      "：",
+      "没关系",
+      "，",
+      "再见",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "谁是老师？",
+     "questionEn": "Who is the teacher?",
+     "options": [
+      "李华",
+      "王方",
+      "学生",
+      "我"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "李华是学生。",
+     "questionEn": "Li Hua is a student.",
+     "answer": true
+    }
+   ],
+   "focusWords": [
+    "老师",
+    "学生",
+    "叫",
+    "谢谢",
+    "没关系",
+    "再见"
+   ],
+   "grammarFocus": [
+    "是 / 不是",
+    "Subject + 叫 + Name"
+   ]
+  },
+  {
+   "id": 2,
+   "lesson": 1,
+   "type": "story",
+   "difficulty": 1,
+   "title": "我的名字",
+   "titleEn": "My Name",
+   "emoji": "📛",
+   "lines": [
+    {
+     "zh": "我叫陈明。",
+     "en": "My name is Chen Ming.",
+     "words": [
+      "我",
+      "叫",
+      "陈明",
+      "。"
+     ]
+    },
+    {
+     "zh": "我是学生。",
+     "en": "I am a student.",
+     "words": [
+      "我",
+      "是",
+      "学生",
+      "。"
+     ]
+    },
+    {
+     "zh": "我的老师叫李老师。",
+     "en": "My teacher is called Teacher Li.",
+     "words": [
+      "我",
+      "的",
+      "老师",
+      "叫",
+      "李",
+      "老师",
+      "。"
+     ]
+    },
+    {
+     "zh": "她很好。",
+     "en": "She is very good.",
+     "words": [
+      "她",
+      "很",
+      "好",
+      "。"
+     ]
+    },
+    {
+     "zh": "我也很高兴认识她。",
+     "en": "I am also very happy to know her.",
+     "words": [
+      "我",
+      "也",
+      "很",
+      "高兴",
+      "认识",
+      "她",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "true_false",
+     "question": "陈明是老师。",
+     "questionEn": "Chen Ming is a teacher.",
+     "answer": false
+    },
+    {
+     "id": "q2",
+     "type": "multiple_choice",
+     "question": "陈明的老师叫什么？",
+     "questionEn": "What is Chen Ming's teacher called?",
+     "options": [
+      "陈老师",
+      "王老师",
+      "李老师",
+      "张老师"
+     ],
+     "answer": 2
+    }
+   ],
+   "focusWords": [
+    "叫",
+    "是",
+    "老师",
+    "学生",
+    "她",
+    "好"
+   ],
+   "grammarFocus": [
+    "我叫…",
+    "是 + noun",
+    "很 + adj"
+   ]
+  },
+  {
+   "id": 3,
+   "lesson": 2,
+   "type": "story",
+   "difficulty": 1,
+   "title": "我的家",
+   "titleEn": "My Family",
+   "emoji": "🏠",
+   "lines": [
+    {
+     "zh": "我家有三个人。",
+     "en": "There are three people in my family.",
+     "words": [
+      "我",
+      "家",
+      "有",
+      "三",
+      "个",
+      "人",
+      "。"
+     ]
+    },
+    {
+     "zh": "爸爸，妈妈和我。",
+     "en": "Dad, mom and me.",
+     "words": [
+      "爸爸",
+      "，",
+      "妈妈",
+      "和",
+      "我",
+      "。"
+     ]
+    },
+    {
+     "zh": "我爸爸今年四十五岁。",
+     "en": "My dad is 45 years old this year.",
+     "words": [
+      "我",
+      "爸爸",
+      "今年",
+      "四",
+      "十",
+      "五",
+      "岁",
+      "。"
+     ]
+    },
+    {
+     "zh": "我妈妈今年四十岁。",
+     "en": "My mom is 40 years old this year.",
+     "words": [
+      "我",
+      "妈妈",
+      "今年",
+      "四",
+      "十",
+      "岁",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "true_false",
+     "question": "他家有四个人。",
+     "questionEn": "His family has four people.",
+     "answer": false
+    },
+    {
+     "id": "q2",
+     "type": "multiple_choice",
+     "question": "妈妈今年多大？",
+     "questionEn": "How old is mom this year?",
+     "options": [
+      "三十岁",
+      "四十岁",
+      "四十五岁",
+      "五十岁"
+     ],
+     "answer": 1
+    }
+   ],
+   "focusWords": [
+    "家",
+    "爸爸",
+    "妈妈",
+    "岁",
+    "有",
+    "人"
+   ],
+   "grammarFocus": [
+    "Number + 岁",
+    "家有…个人"
+   ]
+  },
+  {
+   "id": 4,
+   "lesson": 2,
+   "type": "dialogue",
+   "difficulty": 1,
+   "title": "你家有几个人？",
+   "titleEn": "How Many People in Your Family?",
+   "emoji": "👨‍👩‍👧",
+   "lines": [
+    {
+     "zh": "你家有几个人？",
+     "en": "How many people are in your family?",
+     "words": [
+      "你",
+      "家",
+      "有",
+      "几",
+      "个",
+      "人",
+      "？"
+     ]
+    },
+    {
+     "zh": "我家有四个人。爸爸、妈妈、姐姐和我。",
+     "en": "My family has four people. Dad, mom, older sister and me.",
+     "words": [
+      "我",
+      "家",
+      "有",
+      "四",
+      "个",
+      "人",
+      "。",
+      "爸爸",
+      "、",
+      "妈妈",
+      "、",
+      "姐",
+      "姐",
+      "和",
+      "我",
+      "。"
+     ]
+    },
+    {
+     "zh": "你爸爸今年多大？",
+     "en": "How old is your dad this year?",
+     "words": [
+      "你",
+      "爸爸",
+      "今年",
+      "多",
+      "大",
+      "？"
+     ]
+    },
+    {
+     "zh": "他今年五十岁。我妈妈四十八岁。",
+     "en": "He is fifty this year. My mom is 48.",
+     "words": [
+      "他",
+      "今年",
+      "五",
+      "十",
+      "岁",
+      "。",
+      "我",
+      "妈妈",
+      "四",
+      "十",
+      "八",
+      "岁",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "他家有几个人？",
+     "questionEn": "How many people are in his family?",
+     "options": [
+      "三个",
+      "四个",
+      "五个",
+      "两个"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "他爸爸今年五十岁。",
+     "questionEn": "His dad is fifty years old this year.",
+     "answer": true
+    }
+   ],
+   "focusWords": [
+    "几",
+    "家",
+    "爸爸",
+    "妈妈",
+    "岁",
+    "多大"
+   ],
+   "grammarFocus": [
+    "几个人",
+    "今年…岁",
+    "多大"
+   ]
+  },
+  {
+   "id": 5,
+   "lesson": 3,
+   "type": "dialogue",
+   "difficulty": 1,
+   "title": "今天星期几？",
+   "titleEn": "What Day Is Today?",
+   "emoji": "📅",
+   "lines": [
+    {
+     "zh": "现在几点？",
+     "en": "What time is it now?",
+     "words": [
+      "现在",
+      "几",
+      "点",
+      "？"
+     ]
+    },
+    {
+     "zh": "现在上午九点半。",
+     "en": "It is 9:30 AM now.",
+     "words": [
+      "现在",
+      "上午",
+      "九",
+      "点",
+      "半",
+      "。"
+     ]
+    },
+    {
+     "zh": "今天星期几？",
+     "en": "What day is today?",
+     "words": [
+      "今天",
+      "星期",
+      "几",
+      "？"
+     ]
+    },
+    {
+     "zh": "今天星期三。明天是星期四。",
+     "en": "Today is Wednesday. Tomorrow is Thursday.",
+     "words": [
+      "今天",
+      "星期",
+      "三",
+      "。",
+      "明天",
+      "是",
+      "星期",
+      "四",
+      "。"
+     ]
+    },
+    {
+     "zh": "明天几月几号？",
+     "en": "What is tomorrow's date?",
+     "words": [
+      "明天",
+      "几",
+      "月",
+      "几",
+      "号",
+      "？"
+     ]
+    },
+    {
+     "zh": "明天三月二十号。",
+     "en": "Tomorrow is March 20th.",
+     "words": [
+      "明天",
+      "三",
+      "月",
+      "二",
+      "十",
+      "号",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "现在几点？",
+     "questionEn": "Wbat time is it now?",
+     "options": [
+      "上午八点",
+      "上午九点半",
+      "下午九点",
+      "中午十二点"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "今天是星期四。",
+     "questionEn": "Today is Thursday.",
+     "answer": false
+    },
+    {
+     "id": "q3",
+     "type": "multiple_choice",
+     "question": "明天是几月几号？",
+     "questionEn": "What is tomorrow's date?",
+     "options": [
+      "二月二十号",
+      "三月二十号",
+      "三月二十一号",
+      "四月二十号"
+     ],
+     "answer": 1
+    }
+   ],
+   "focusWords": [
+    "现在",
+    "点",
+    "星期",
+    "今天",
+    "明天",
+    "月",
+    "号"
+   ],
+   "grammarFocus": [
+    "现在几点？",
+    "今天星期几？",
+    "几月几号？"
+   ]
+  },
+  {
+   "id": 6,
+   "lesson": 3,
+   "type": "story",
+   "difficulty": 1,
+   "title": "我的一天",
+   "titleEn": "My Day",
+   "emoji": "🕐",
+   "lines": [
+    {
+     "zh": "今天是星期一。",
+     "en": "Today is Monday.",
+     "words": [
+      "今天",
+      "是",
+      "星期",
+      "一",
+      "。"
+     ]
+    },
+    {
+     "zh": "上午八点我去学校。",
+     "en": "At 8 AM I go to school.",
+     "words": [
+      "上午",
+      "八",
+      "点",
+      "我",
+      "去",
+      "学校",
+      "。"
+     ]
+    },
+    {
+     "zh": "中午十二点我吃饭。",
+     "en": "At noon I eat lunch.",
+     "words": [
+      "中午",
+      "十",
+      "二",
+      "点",
+      "我",
+      "吃饭",
+      "。"
+     ]
+    },
+    {
+     "zh": "下午我回家。",
+     "en": "In the afternoon I go home.",
+     "words": [
+      "下午",
+      "我",
+      "回家",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "true_false",
+     "question": "今天是星期二。",
+     "questionEn": "Today is Tuesday.",
+     "answer": false
+    },
+    {
+     "id": "q2",
+     "type": "multiple_choice",
+     "question": "他几点去学校？",
+     "questionEn": "What time does he go to school?",
+     "options": [
+      "七点",
+      "八点",
+      "九点",
+      "十点"
+     ],
+     "answer": 1
+    }
+   ],
+   "focusWords": [
+    "星期",
+    "上午",
+    "中午",
+    "下午",
+    "点",
+    "今天"
+   ],
+   "grammarFocus": [
+    "Time + 我 + verb",
+    "上午/中午/下午"
+   ]
+  },
+  {
+   "id": 7,
+   "lesson": 4,
+   "type": "dialogue",
+   "difficulty": 1,
+   "title": "在饭店",
+   "titleEn": "At the Restaurant",
+   "emoji": "🥢",
+   "lines": [
+    {
+     "zh": "我想吃米饭。",
+     "en": "I want to eat rice.",
+     "words": [
+      "我",
+      "想",
+      "吃",
+      "米饭",
+      "。"
+     ]
+    },
+    {
+     "zh": "你要喝茶吗？",
+     "en": "Do you want to drink tea?",
+     "words": [
+      "你",
+      "要",
+      "喝",
+      "茶",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "我不喝茶，我要水。",
+     "en": "I don't drink tea, I want water.",
+     "words": [
+      "我",
+      "不",
+      "喝",
+      "茶",
+      "，",
+      "我",
+      "要",
+      "水",
+      "。"
+     ]
+    },
+    {
+     "zh": "这些菜多少钱？",
+     "en": "How much are these dishes?",
+     "words": [
+      "这",
+      "些",
+      "菜",
+      "多少",
+      "钱",
+      "？"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "他想喝什么？",
+     "questionEn": "What does he want to drink?",
+     "options": [
+      "茶",
+      "咖啡",
+      "水",
+      "不喝"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "他想吃米饭。",
+     "questionEn": "He wants to eat rice.",
+     "answer": true
+    }
+   ],
+   "focusWords": [
+    "饭店",
+    "米饭",
+    "钱",
+    "喝",
+    "茶",
+    "水",
+    "菜"
+   ],
+   "grammarFocus": [
+    "多少钱？",
+    "不 + verb",
+    "想要 + noun"
+   ]
+  },
+  {
+   "id": 8,
+   "lesson": 4,
+   "type": "story",
+   "difficulty": 1,
+   "title": "我喜欢吃什么",
+   "titleEn": "What I Like to Eat",
+   "emoji": "🍜",
+   "lines": [
+    {
+     "zh": "我很喜欢吃中国菜。",
+     "en": "I really like eating Chinese food.",
+     "words": [
+      "我",
+      "很",
+      "喜欢",
+      "吃",
+      "中国",
+      "菜",
+      "。"
+     ]
+    },
+    {
+     "zh": "我每天吃米饭。",
+     "en": "I eat rice every day.",
+     "words": [
+      "我",
+      "每天",
+      "吃",
+      "米饭",
+      "。"
+     ]
+    },
+    {
+     "zh": "我也喜欢喝茶。",
+     "en": "I also like drinking tea.",
+     "words": [
+      "我",
+      "也",
+      "喜欢",
+      "喝",
+      "茶",
+      "。"
+     ]
+    },
+    {
+     "zh": "但是我不喜欢喝水。",
+     "en": "But I don't like drinking water.",
+     "words": [
+      "但是",
+      "我",
+      "不",
+      "喜欢",
+      "喝",
+      "水",
+      "。"
+     ]
+    },
+    {
+     "zh": "我最喜欢吃苹果。",
+     "en": "I like eating apples the most.",
+     "words": [
+      "我",
+      "最",
+      "喜欢",
+      "吃",
+      "苹果",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "true_false",
+     "question": "他喜欢喝水。",
+     "questionEn": "He likes drinking water.",
+     "answer": false
+    },
+    {
+     "id": "q2",
+     "type": "multiple_choice",
+     "question": "他最喜欢吃什么？",
+     "questionEn": "What does he like eating the most?",
+     "options": [
+      "米饭",
+      "苹果",
+      "茶",
+      "中国菜"
+     ],
+     "answer": 1
+    }
+   ],
+   "focusWords": [
+    "菜",
+    "米饭",
+    "茶",
+    "水",
+    "苹果",
+    "喜欢",
+    "吃"
+   ],
+   "grammarFocus": [
+    "喜欢 + verb",
+    "不 + verb",
+    "也 + verb"
+   ]
+  },
+  {
+   "id": 9,
+   "lesson": 5,
+   "type": "story",
+   "difficulty": 1,
+   "title": "我的学校",
+   "titleEn": "My School",
+   "emoji": "🏫",
+   "lines": [
+    {
+     "zh": "我是学生，我在学校学习。",
+     "en": "I am a student, I study at school.",
+     "words": [
+      "我",
+      "是",
+      "学生",
+      "，",
+      "我",
+      "在",
+      "学校",
+      "学习",
+      "。"
+     ]
+    },
+    {
+     "zh": "我会说汉语。",
+     "en": "I can speak Chinese.",
+     "words": [
+      "我",
+      "会",
+      "说",
+      "汉语",
+      "。"
+     ]
+    },
+    {
+     "zh": "我的老师叫李明。",
+     "en": "My teacher is called Li Ming.",
+     "words": [
+      "我",
+      "的",
+      "老师",
+      "叫",
+      "李明",
+      "。"
+     ]
+    },
+    {
+     "zh": "他会写很多汉字。",
+     "en": "He can write many Chinese characters.",
+     "words": [
+      "他",
+      "会",
+      "写",
+      "很",
+      "多",
+      "汉",
+      "字",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "李明是谁？",
+     "questionEn": "Who is Li Ming?",
+     "options": [
+      "老师",
+      "学生",
+      "同学",
+      "朋友"
+     ],
+     "answer": 0
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "李明不会写汉字。",
+     "questionEn": "Li Ming cannot write characters.",
+     "answer": false
+    }
+   ],
+   "focusWords": [
+    "学生",
+    "学校",
+    "汉语",
+    "老师",
+    "会",
+    "写"
+   ],
+   "grammarFocus": [
+    "会 + verb",
+    "在 + place"
+   ]
+  },
+  {
+   "id": 10,
+   "lesson": 5,
+   "type": "dialogue",
+   "difficulty": 1,
+   "title": "你会说汉语吗？",
+   "titleEn": "Can You Speak Chinese?",
+   "emoji": "💬",
+   "lines": [
+    {
+     "zh": "你会说汉语吗？",
+     "en": "Can you speak Chinese?",
+     "words": [
+      "你",
+      "会",
+      "说",
+      "汉语",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "会，但是我说得不太好。我在学习。",
+     "en": "Yes, but I don't speak it very well. I am studying.",
+     "words": [
+      "会",
+      "，",
+      "但是",
+      "我",
+      "说",
+      "得",
+      "不",
+      "太",
+      "好",
+      "。",
+      "我",
+      "在",
+      "学习",
+      "。"
+     ]
+    },
+    {
+     "zh": "你在哪里学习汉语？",
+     "en": "Where do you study Chinese?",
+     "words": [
+      "你",
+      "在",
+      "哪",
+      "里",
+      "学习",
+      "汉语",
+      "？"
+     ]
+    },
+    {
+     "zh": "我在学校学习。我的老师很好。",
+     "en": "I study at school. My teacher is very good.",
+     "words": [
+      "我",
+      "在",
+      "学校",
+      "学习",
+      "。",
+      "我",
+      "的",
+      "老师",
+      "很",
+      "好",
+      "。"
+     ]
+    },
+    {
+     "zh": "你会写汉字吗？",
+     "en": "Can you write Chinese characters?",
+     "words": [
+      "你",
+      "会",
+      "写",
+      "汉",
+      "字",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "会写一点儿，不太多。",
+     "en": "I can write a little, not too many.",
+     "words": [
+      "会",
+      "写",
+      "一",
+      "点",
+      "儿",
+      "，",
+      "不",
+      "太",
+      "多",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "true_false",
+     "question": "他的汉语说得很好。",
+     "questionEn": "He speaks Chinese very well.",
+     "answer": false
+    },
+    {
+     "id": "q2",
+     "type": "multiple_choice",
+     "question": "他在哪里学习汉语？",
+     "questionEn": "Where does he study Chinese?",
+     "options": [
+      "在家",
+      "在学校",
+      "在医院",
+      "在饭店"
+     ],
+     "answer": 1
+    }
+   ],
+   "focusWords": [
+    "会",
+    "说",
+    "汉语",
+    "学习",
+    "学校",
+    "写",
+    "老师"
+   ],
+   "grammarFocus": [
+    "会 + verb + 吗？",
+    "在 + place + 学习",
+    "不太 + adj"
+   ]
+  },
+  {
+   "id": 11,
+   "lesson": 6,
+   "type": "dialogue",
+   "difficulty": 1,
+   "title": "去医院",
+   "titleEn": "Going to the Hospital",
+   "emoji": "🚕",
+   "lines": [
+    {
+     "zh": "你好！我要去医院。",
+     "en": "Hello! I need to go to the hospital.",
+     "words": [
+      "你好",
+      "！",
+      "我",
+      "要",
+      "去",
+      "医院",
+      "。"
+     ]
+    },
+    {
+     "zh": "医院在哪儿？",
+     "en": "Where is the hospital?",
+     "words": [
+      "医院",
+      "在",
+      "哪儿",
+      "？"
+     ]
+    },
+    {
+     "zh": "医院不远，你可以坐出租车去。",
+     "en": "The hospital is not far, you can take a taxi.",
+     "words": [
+      "医院",
+      "不",
+      "远",
+      "，",
+      "你",
+      "可",
+      "以",
+      "坐",
+      "出租车",
+      "去",
+      "。"
+     ]
+    },
+    {
+     "zh": "好的。出租车多少钱？",
+     "en": "OK. How much is the taxi?",
+     "words": [
+      "好",
+      "的",
+      "。",
+      "出租车",
+      "多少",
+      "钱",
+      "？"
+     ]
+    },
+    {
+     "zh": "大概二十块。",
+     "en": "About 20 yuan.",
+     "words": [
+      "大",
+      "概",
+      "二",
+      "十",
+      "块",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "他要去哪儿？",
+     "questionEn": "Where does he want to go?",
+     "options": [
+      "学校",
+      "商店",
+      "医院",
+      "饭店"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "医院很远。",
+     "questionEn": "The hospital is very far.",
+     "answer": false
+    },
+    {
+     "id": "q3",
+     "type": "multiple_choice",
+     "question": "他怎么去医院？",
+     "questionEn": "How does he go to the hospital?",
+     "options": [
+      "坐飞机",
+      "走路",
+      "坐出租车",
+      "骑车"
+     ],
+     "answer": 2
+    }
+   ],
+   "focusWords": [
+    "去",
+    "医院",
+    "在哪儿",
+    "出租车",
+    "坐",
+    "钱"
+   ],
+   "grammarFocus": [
+    "去 + place",
+    "在哪儿？",
+    "坐 + transport"
+   ]
+  },
+  {
+   "id": 12,
+   "lesson": 6,
+   "type": "story",
+   "difficulty": 1,
+   "title": "从家到学校",
+   "titleEn": "From Home to School",
+   "emoji": "🚌",
+   "lines": [
+    {
+     "zh": "我家在北京。",
+     "en": "My home is in Beijing.",
+     "words": [
+      "我",
+      "家",
+      "在",
+      "北京",
+      "。"
+     ]
+    },
+    {
+     "zh": "我的学校也在北京。",
+     "en": "My school is also in Beijing.",
+     "words": [
+      "我",
+      "的",
+      "学校",
+      "也",
+      "在",
+      "北京",
+      "。"
+     ]
+    },
+    {
+     "zh": "从家到学校不远。",
+     "en": "From home to school is not far.",
+     "words": [
+      "从",
+      "家",
+      "到",
+      "学校",
+      "不",
+      "远",
+      "。"
+     ]
+    },
+    {
+     "zh": "我每天坐出租车去学校。",
+     "en": "I take a taxi to school every day.",
+     "words": [
+      "我",
+      "每天",
+      "坐",
+      "出租车",
+      "去",
+      "学校",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "true_false",
+     "question": "他家不在北京。",
+     "questionEn": "His home is not in Beijing.",
+     "answer": false
+    },
+    {
+     "id": "q2",
+     "type": "multiple_choice",
+     "question": "他怎么去学校？",
+     "questionEn": "How does he go to school?",
+     "options": [
+      "坐飞机",
+      "坐出租车",
+      "走路",
+      "骑车"
+     ],
+     "answer": 1
+    }
+   ],
+   "focusWords": [
+    "在",
+    "北京",
+    "从",
+    "到",
+    "坐",
+    "出租车",
+    "学校"
+   ],
+   "grammarFocus": [
+    "从…到…",
+    "在 + place",
+    "坐 + transport + 去"
+   ]
+  },
+  {
+   "id": 13,
+   "lesson": 7,
+   "type": "dialogue",
+   "difficulty": 1,
+   "title": "今天天气怎么样？",
+   "titleEn": "How Is the Weather Today?",
+   "emoji": "☀️",
+   "lines": [
+    {
+     "zh": "今天天气怎么样？",
+     "en": "How is the weather today?",
+     "words": [
+      "今天",
+      "天气",
+      "怎么样",
+      "？"
+     ]
+    },
+    {
+     "zh": "今天很热，太热了！",
+     "en": "Today is very hot, too hot!",
+     "words": [
+      "今天",
+      "很",
+      "热",
+      "，",
+      "太",
+      "热",
+      "了",
+      "！"
+     ]
+    },
+    {
+     "zh": "你高兴吗？",
+     "en": "Are you happy?",
+     "words": [
+      "你",
+      "高兴",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "不太高兴，因为天气太热了，我很累。",
+     "en": "Not very happy, because the weather is too hot and I am very tired.",
+     "words": [
+      "不",
+      "太",
+      "高兴",
+      "，",
+      "因为",
+      "天气",
+      "太",
+      "热",
+      "了",
+      "，",
+      "我",
+      "很",
+      "累",
+      "。"
+     ]
+    },
+    {
+     "zh": "明天会冷一点儿。",
+     "en": "Tomorrow will be a little cooler.",
+     "words": [
+      "明天",
+      "会",
+      "冷",
+      "一",
+      "点",
+      "儿",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "今天天气怎么样？",
+     "questionEn": "How is the weather today?",
+     "options": [
+      "很冷",
+      "很热",
+      "很好",
+      "下雨"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "他今天很高兴。",
+     "questionEn": "He is very happy today.",
+     "answer": false
+    },
+    {
+     "id": "q3",
+     "type": "multiple_choice",
+     "question": "他为什么不高兴？",
+     "questionEn": "Why is he not happy?",
+     "options": [
+      "因为很忙",
+      "因为天气太热",
+      "因为很累",
+      "因为没有钱"
+     ],
+     "answer": 1
+    }
+   ],
+   "focusWords": [
+    "天气",
+    "热",
+    "冷",
+    "高兴",
+    "累",
+    "太…了",
+    "怎么样"
+   ],
+   "grammarFocus": [
+    "太 + adj + 了",
+    "很 + adj",
+    "因为…"
+   ]
+  },
+  {
+   "id": 14,
+   "lesson": 7,
+   "type": "story",
+   "difficulty": 1,
+   "title": "我今天很忙",
+   "titleEn": "I Am Very Busy Today",
+   "emoji": "😓",
+   "lines": [
+    {
+     "zh": "今天我很忙，也很累。",
+     "en": "Today I am very busy and also very tired.",
+     "words": [
+      "今天",
+      "我",
+      "很",
+      "忙",
+      "，",
+      "也",
+      "很",
+      "累",
+      "。"
+     ]
+    },
+    {
+     "zh": "天气也不好，太冷了。",
+     "en": "The weather is also not good, too cold.",
+     "words": [
+      "天气",
+      "也",
+      "不",
+      "好",
+      "，",
+      "太",
+      "冷",
+      "了",
+      "。"
+     ]
+    },
+    {
+     "zh": "我不高兴。",
+     "en": "I am not happy.",
+     "words": [
+      "我",
+      "不",
+      "高兴",
+      "。"
+     ]
+    },
+    {
+     "zh": "但是明天天气很好，我很高兴！",
+     "en": "But tomorrow the weather will be very good, I am happy!",
+     "words": [
+      "但是",
+      "明天",
+      "天气",
+      "很",
+      "好",
+      "，",
+      "我",
+      "很",
+      "高兴",
+      "！"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "true_false",
+     "question": "今天天气很好。",
+     "questionEn": "The weather is very good today.",
+     "answer": false
+    },
+    {
+     "id": "q2",
+     "type": "multiple_choice",
+     "question": "明天天气怎么样？",
+     "questionEn": "How is the weather tomorrow?",
+     "options": [
+      "太冷了",
+      "太热了",
+      "很好",
+      "不好"
+     ],
+     "answer": 2
+    }
+   ],
+   "focusWords": [
+    "忙",
+    "累",
+    "天气",
+    "冷",
+    "高兴",
+    "今天",
+    "明天"
+   ],
+   "grammarFocus": [
+    "很 + adj",
+    "太 + adj + 了",
+    "但是…"
+   ]
+  },
+  {
+   "id": 15,
+   "lesson": 8,
+   "type": "dialogue",
+   "difficulty": 1,
+   "title": "买衣服",
+   "titleEn": "Buying Clothes",
+   "emoji": "🛒",
+   "lines": [
+    {
+     "zh": "这件衣服多少钱？",
+     "en": "How much is this piece of clothing?",
+     "words": [
+      "这",
+      "件",
+      "衣服",
+      "多少",
+      "钱",
+      "？"
+     ]
+    },
+    {
+     "zh": "两百块。",
+     "en": "200 yuan.",
+     "words": [
+      "两",
+      "百",
+      "块",
+      "。"
+     ]
+    },
+    {
+     "zh": "太贵了！便宜一点儿，好吗？",
+     "en": "Too expensive! A little cheaper, OK?",
+     "words": [
+      "太",
+      "贵",
+      "了",
+      "！",
+      "便",
+      "宜",
+      "一",
+      "点",
+      "儿",
+      "，",
+      "好",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "好，一百五十块，怎么样？",
+     "en": "OK, 150 yuan, how about that?",
+     "words": [
+      "好",
+      "，",
+      "一",
+      "百",
+      "五",
+      "十",
+      "块",
+      "，",
+      "怎么样",
+      "？"
+     ]
+    },
+    {
+     "zh": "好的，我买这件。谢谢！",
+     "en": "OK, I'll buy this one. Thank you!",
+     "words": [
+      "好",
+      "的",
+      "，",
+      "我",
+      "买",
+      "这",
+      "件",
+      "。",
+      "谢谢",
+      "！"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "衣服最后多少钱？",
+     "questionEn": "What was the final price of the clothes?",
+     "options": [
+      "一百块",
+      "一百五十块",
+      "两百块",
+      "两百五十块"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "他觉得两百块不贵。",
+     "questionEn": "He thinks 200 yuan is not expensive.",
+     "answer": false
+    }
+   ],
+   "focusWords": [
+    "衣服",
+    "钱",
+    "块",
+    "贵",
+    "买",
+    "多少"
+   ],
+   "grammarFocus": [
+    "多少钱？",
+    "太 + adj + 了",
+    "Number + 块"
+   ]
+  },
+  {
+   "id": 16,
+   "lesson": 8,
+   "type": "story",
+   "difficulty": 1,
+   "title": "我去商店",
+   "titleEn": "I Go to the Shop",
+   "emoji": "🏪",
+   "lines": [
+    {
+     "zh": "今天我去商店买东西。",
+     "en": "Today I go to the shop to buy things.",
+     "words": [
+      "今天",
+      "我",
+      "去",
+      "商店",
+      "买",
+      "东",
+      "西",
+      "。"
+     ]
+    },
+    {
+     "zh": "我买了两件衣服和三个苹果。",
+     "en": "I bought two pieces of clothing and three apples.",
+     "words": [
+      "我",
+      "买",
+      "了",
+      "两",
+      "件",
+      "衣服",
+      "和",
+      "三",
+      "个",
+      "苹果",
+      "。"
+     ]
+    },
+    {
+     "zh": "衣服一共一百块。",
+     "en": "The clothes cost 100 yuan in total.",
+     "words": [
+      "衣服",
+      "一",
+      "共",
+      "一",
+      "百",
+      "块",
+      "。"
+     ]
+    },
+    {
+     "zh": "苹果很便宜，一共五块。",
+     "en": "The apples are very cheap, 5 yuan in total.",
+     "words": [
+      "苹果",
+      "很",
+      "便",
+      "宜",
+      "，",
+      "一",
+      "共",
+      "五",
+      "块",
+      "。"
+     ]
+    },
+    {
+     "zh": "我没有很多钱，但是我很高兴！",
+     "en": "I don't have much money, but I am very happy!",
+     "words": [
+      "我",
+      "没有",
+      "很",
+      "多",
+      "钱",
+      "，",
+      "但是",
+      "我",
+      "很",
+      "高兴",
+      "！"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "他买了几件衣服？",
+     "questionEn": "How many pieces of clothing did he buy?",
+     "options": [
+      "一件",
+      "两件",
+      "三件",
+      "四件"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "苹果很贵。",
+     "questionEn": "The apples are very expensive.",
+     "answer": false
+    }
+   ],
+   "focusWords": [
+    "商店",
+    "买",
+    "衣服",
+    "苹果",
+    "块",
+    "钱",
+    "贵"
+   ],
+   "grammarFocus": [
+    "Number + 件/个",
+    "没有 + noun",
+    "一共 + price"
+   ]
+  },
+  {
+   "id": 17,
+   "lesson": 9,
+   "type": "story",
+   "difficulty": 1,
+   "title": "我的每天",
+   "titleEn": "My Every Day",
+   "emoji": "🌅",
+   "lines": [
+    {
+     "zh": "我每天早上六点半起床。",
+     "en": "I get up at 6:30 AM every day.",
+     "words": [
+      "我",
+      "每天",
+      "早上",
+      "六",
+      "点",
+      "半",
+      "起床",
+      "。"
+     ]
+    },
+    {
+     "zh": "我先吃早饭，然后去学校。",
+     "en": "I eat breakfast first, then go to school.",
+     "words": [
+      "我",
+      "先",
+      "吃",
+      "早",
+      "饭",
+      "，",
+      "然后",
+      "去",
+      "学校",
+      "。"
+     ]
+    },
+    {
+     "zh": "下午三点下课，我回家。",
+     "en": "Class ends at 3 PM, I go home.",
+     "words": [
+      "下午",
+      "三",
+      "点",
+      "下课",
+      "，",
+      "我",
+      "回家",
+      "。"
+     ]
+    },
+    {
+     "zh": "晚上我看电视或者打电话。",
+     "en": "In the evening I watch TV or make phone calls.",
+     "words": [
+      "晚上",
+      "我",
+      "看电视",
+      "或",
+      "者",
+      "打电话",
+      "。"
+     ]
+    },
+    {
+     "zh": "我晚上十点睡觉。",
+     "en": "I go to sleep at 10 PM.",
+     "words": [
+      "我",
+      "晚上",
+      "十",
+      "点",
+      "睡觉",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "他几点起床？",
+     "questionEn": "What time does he get up?",
+     "options": [
+      "六点",
+      "六点半",
+      "七点",
+      "七点半"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "他先去学校，然后吃早饭。",
+     "questionEn": "He goes to school first, then eats breakfast.",
+     "answer": false
+    },
+    {
+     "id": "q3",
+     "type": "multiple_choice",
+     "question": "他几点睡觉？",
+     "questionEn": "What time does he go to sleep?",
+     "options": [
+      "九点",
+      "九点半",
+      "十点",
+      "十一点"
+     ],
+     "answer": 2
+    }
+   ],
+   "focusWords": [
+    "起床",
+    "睡觉",
+    "先",
+    "然后",
+    "早上",
+    "晚上",
+    "每天"
+   ],
+   "grammarFocus": [
+    "先…然后…",
+    "每天 + time + verb",
+    "晚上/早上 + time"
+   ]
+  },
+  {
+   "id": 18,
+   "lesson": 9,
+   "type": "dialogue",
+   "difficulty": 1,
+   "title": "你每天几点睡觉？",
+   "titleEn": "What Time Do You Sleep Every Day?",
+   "emoji": "🌙",
+   "lines": [
+    {
+     "zh": "你每天几点起床？",
+     "en": "What time do you get up every day?",
+     "words": [
+      "你",
+      "每天",
+      "几",
+      "点",
+      "起床",
+      "？"
+     ]
+    },
+    {
+     "zh": "我每天七点起床。你呢？",
+     "en": "I get up at 7 every day. And you?",
+     "words": [
+      "我",
+      "每天",
+      "七",
+      "点",
+      "起床",
+      "。",
+      "你",
+      "呢",
+      "？"
+     ]
+    },
+    {
+     "zh": "我六点半起床。我先吃饭，然后上课。",
+     "en": "I get up at 6:30. I eat first, then attend class.",
+     "words": [
+      "我",
+      "六",
+      "点",
+      "半",
+      "起床",
+      "。",
+      "我",
+      "先",
+      "吃饭",
+      "，",
+      "然后",
+      "上课",
+      "。"
+     ]
+    },
+    {
+     "zh": "你几点睡觉？",
+     "en": "What time do you go to sleep?",
+     "words": [
+      "你",
+      "几",
+      "点",
+      "睡觉",
+      "？"
+     ]
+    },
+    {
+     "zh": "晚上十一点。我每天很累！",
+     "en": "11 PM. I am very tired every day!",
+     "words": [
+      "晚上",
+      "十",
+      "一",
+      "点",
+      "。",
+      "我",
+      "每天",
+      "很",
+      "累",
+      "！"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "A 每天几点起床？",
+     "questionEn": "What time does A get up every day?",
+     "options": [
+      "六点",
+      "六点半",
+      "七点",
+      "七点半"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "B 先上课，然后吃饭。",
+     "questionEn": "B attends class first, then eats.",
+     "answer": false
+    }
+   ],
+   "focusWords": [
+    "起床",
+    "睡觉",
+    "上课",
+    "先",
+    "然后",
+    "晚上",
+    "累"
+   ],
+   "grammarFocus": [
+    "先…然后…",
+    "每天 + verb",
+    "你呢？"
+   ]
+  },
+  {
+   "id": 19,
+   "lesson": 10,
+   "type": "story",
+   "difficulty": 2,
+   "title": "我的爱好",
+   "titleEn": "My Hobbies",
+   "emoji": "🎵",
+   "lines": [
+    {
+     "zh": "我有很多爱好。",
+     "en": "I have many hobbies.",
+     "words": [
+      "我",
+      "有",
+      "很",
+      "多",
+      "爱",
+      "好",
+      "。"
+     ]
+    },
+    {
+     "zh": "我喜欢听音乐和看电影。",
+     "en": "I like listening to music and watching movies.",
+     "words": [
+      "我",
+      "喜欢",
+      "听",
+      "音乐",
+      "和",
+      "看",
+      "电影",
+      "。"
+     ]
+    },
+    {
+     "zh": "我也喜欢运动。",
+     "en": "I also like sports.",
+     "words": [
+      "我",
+      "也",
+      "喜欢",
+      "运动",
+      "。"
+     ]
+    },
+    {
+     "zh": "我每天跑步三十分钟。",
+     "en": "I run for 30 minutes every day.",
+     "words": [
+      "我",
+      "每天",
+      "跑步",
+      "三",
+      "十",
+      "分钟",
+      "。"
+     ]
+    },
+    {
+     "zh": "但是我不太喜欢唱歌。",
+     "en": "But I don't really like singing.",
+     "words": [
+      "但是",
+      "我",
+      "不",
+      "太",
+      "喜欢",
+      "唱歌",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "他喜欢什么运动？",
+     "questionEn": "What sport does he like?",
+     "options": [
+      "游泳",
+      "跑步",
+      "踢足球",
+      "打篮球"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "他很喜欢唱歌。",
+     "questionEn": "He really likes singing.",
+     "answer": false
+    },
+    {
+     "id": "q3",
+     "type": "multiple_choice",
+     "question": "他每天跑步多久？",
+     "questionEn": "How long does he run every day?",
+     "options": [
+      "二十分钟",
+      "三十分钟",
+      "一个小时",
+      "四十分钟"
+     ],
+     "answer": 1
+    }
+   ],
+   "focusWords": [
+    "喜欢",
+    "听",
+    "看",
+    "运动",
+    "跑步",
+    "唱歌",
+    "不太"
+   ],
+   "grammarFocus": [
+    "喜欢 + verb",
+    "不太 + verb",
+    "也 + verb"
+   ]
+  },
+  {
+   "id": 20,
+   "lesson": 10,
+   "type": "dialogue",
+   "difficulty": 2,
+   "title": "你喜欢什么？",
+   "titleEn": "What Do You Like?",
+   "emoji": "🎬",
+   "lines": [
+    {
+     "zh": "你有什么爱好？",
+     "en": "What hobbies do you have?",
+     "words": [
+      "你",
+      "有",
+      "什么",
+      "爱",
+      "好",
+      "？"
+     ]
+    },
+    {
+     "zh": "我喜欢看电影和听音乐。你呢？",
+     "en": "I like watching movies and listening to music. And you?",
+     "words": [
+      "我",
+      "喜欢",
+      "看",
+      "电影",
+      "和",
+      "听",
+      "音乐",
+      "。",
+      "你",
+      "呢",
+      "？"
+     ]
+    },
+    {
+     "zh": "我喜欢运动。我们都喜欢看书吗？",
+     "en": "I like sports. Do we both like reading books?",
+     "words": [
+      "我",
+      "喜欢",
+      "运动",
+      "。",
+      "我们",
+      "都",
+      "喜欢",
+      "看",
+      "书",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "我喜欢看书，你呢？",
+     "en": "I like reading books, and you?",
+     "words": [
+      "我",
+      "喜欢",
+      "看",
+      "书",
+      "，",
+      "你",
+      "呢",
+      "？"
+     ]
+    },
+    {
+     "zh": "我不太喜欢看书。我更喜欢运动。",
+     "en": "I don't really like reading. I prefer sports.",
+     "words": [
+      "我",
+      "不",
+      "太",
+      "喜欢",
+      "看",
+      "书",
+      "。",
+      "我",
+      "更",
+      "喜欢",
+      "运动",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "true_false",
+     "question": "A 喜欢运动。",
+     "questionEn": "A likes sports.",
+     "answer": false
+    },
+    {
+     "id": "q2",
+     "type": "multiple_choice",
+     "question": "B 最喜欢什么？",
+     "questionEn": "What does B like the most?",
+     "options": [
+      "看书",
+      "看电影",
+      "运动",
+      "听音乐"
+     ],
+     "answer": 2
+    }
+   ],
+   "focusWords": [
+    "喜欢",
+    "爱好",
+    "看",
+    "听",
+    "运动",
+    "都",
+    "不太"
+   ],
+   "grammarFocus": [
+    "都 + verb",
+    "不太 + verb",
+    "你呢？"
+   ]
+  },
+  {
+   "id": 21,
+   "lesson": 11,
+   "type": "dialogue",
+   "difficulty": 2,
+   "title": "你哪里不舒服？",
+   "titleEn": "Where Does It Hurt?",
+   "emoji": "🏥",
+   "lines": [
+    {
+     "zh": "你怎么了？你看起来不好。",
+     "en": "What's wrong? You don't look well.",
+     "words": [
+      "你",
+      "怎么",
+      "了",
+      "？",
+      "你",
+      "看",
+      "起",
+      "来",
+      "不",
+      "好",
+      "。"
+     ]
+    },
+    {
+     "zh": "我有点儿不舒服。头很疼。",
+     "en": "I feel a little unwell. My head hurts a lot.",
+     "words": [
+      "我",
+      "有点儿",
+      "不舒服",
+      "。",
+      "头",
+      "很",
+      "疼",
+      "。"
+     ]
+    },
+    {
+     "zh": "你发烧了吗？",
+     "en": "Do you have a fever?",
+     "words": [
+      "你",
+      "发烧",
+      "了",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "有点儿发烧。",
+     "en": "A slight fever.",
+     "words": [
+      "有点儿",
+      "发烧",
+      "。"
+     ]
+    },
+    {
+     "zh": "你要去医院看医生！",
+     "en": "You need to go to the hospital to see a doctor!",
+     "words": [
+      "你",
+      "要",
+      "去",
+      "医院",
+      "看",
+      "医生",
+      "！"
+     ]
+    },
+    {
+     "zh": "好，谢谢你。",
+     "en": "OK, thank you.",
+     "words": [
+      "好",
+      "，",
+      "谢谢",
+      "你",
+      "。"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "他哪里不舒服？",
+     "questionEn": "Where does he feel unwell?",
+     "options": [
+      "手",
+      "眼睛",
+      "头",
+      "脚"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "他没有发烧。",
+     "questionEn": "He does not have a fever.",
+     "answer": false
+    },
+    {
+     "id": "q3",
+     "type": "multiple_choice",
+     "question": "他应该去哪里？",
+     "questionEn": "Where should he go?",
+     "options": [
+      "学校",
+      "商店",
+      "医院",
+      "饭店"
+     ],
+     "answer": 2
+    }
+   ],
+   "focusWords": [
+    "医生",
+    "医院",
+    "不舒服",
+    "发烧",
+    "有点儿",
+    "头",
+    "去"
+   ],
+   "grammarFocus": [
+    "有点儿 + adj",
+    "要 + verb (should)",
+    "哪里不舒服？"
+   ]
+  },
+  {
+   "id": 22,
+   "lesson": 11,
+   "type": "story",
+   "difficulty": 2,
+   "title": "我去看医生",
+   "titleEn": "I Go to See the Doctor",
+   "emoji": "👨‍⚕️",
+   "lines": [
+    {
+     "zh": "昨天我有点儿不舒服。",
+     "en": "Yesterday I felt a little unwell.",
+     "words": [
+      "昨天",
+      "我",
+      "有点儿",
+      "不舒服",
+      "。"
+     ]
+    },
+    {
+     "zh": "我头很疼，也有点儿发烧。",
+     "en": "My head hurt a lot and I had a slight fever.",
+     "words": [
+      "我",
+      "头",
+      "很",
+      "疼",
+      "，",
+      "也",
+      "有点儿",
+      "发烧",
+      "。"
+     ]
+    },
+    {
+     "zh": "我去医院看医生。",
+     "en": "I went to the hospital to see a doctor.",
+     "words": [
+      "我",
+      "去",
+      "医院",
+      "看",
+      "医生",
+      "。"
+     ]
+    },
+    {
+     "zh": "医生说我要多喝水，多休息。",
+     "en": "The doctor said I should drink more water and rest more.",
+     "words": [
+      "医生",
+      "说",
+      "我",
+      "要",
+      "多",
+      "喝",
+      "水",
+      "，",
+      "多",
+      "休",
+      "息",
+      "。"
+     ]
+    },
+    {
+     "zh": "今天我好多了！",
+     "en": "Today I am much better!",
+     "words": [
+      "今天",
+      "我",
+      "好",
+      "多",
+      "了",
+      "！"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "true_false",
+     "question": "他昨天很好。",
+     "questionEn": "He was very well yesterday.",
+     "answer": false
+    },
+    {
+     "id": "q2",
+     "type": "multiple_choice",
+     "question": "医生说他要做什么？",
+     "questionEn": "What did the doctor say he should do?",
+     "options": [
+      "多吃饭",
+      "多运动",
+      "多喝水",
+      "去学校"
+     ],
+     "answer": 2
+    }
+   ],
+   "focusWords": [
+    "不舒服",
+    "发烧",
+    "头",
+    "医院",
+    "医生",
+    "昨天",
+    "今天"
+   ],
+   "grammarFocus": [
+    "有点儿 + adj",
+    "要 + verb",
+    "多 + verb"
+   ]
+  },
+  {
+   "id": 23,
+   "lesson": 12,
+   "type": "dialogue",
+   "difficulty": 2,
+   "title": "哪件最漂亮？",
+   "titleEn": "Which One Is the Most Beautiful?",
+   "emoji": "🎨",
+   "lines": [
+    {
+     "zh": "你觉得哪件衣服最漂亮？",
+     "en": "Which piece of clothing do you think is the most beautiful?",
+     "words": [
+      "你",
+      "觉",
+      "得",
+      "哪",
+      "件",
+      "衣服",
+      "最",
+      "漂亮",
+      "？"
+     ]
+    },
+    {
+     "zh": "我觉得红色的最漂亮！",
+     "en": "I think the red one is the most beautiful!",
+     "words": [
+      "我",
+      "觉",
+      "得",
+      "红色",
+      "的",
+      "最",
+      "漂亮",
+      "！"
+     ]
+    },
+    {
+     "zh": "我喜欢白色的。这两件一样贵吗？",
+     "en": "I like the white one. Are these two the same price?",
+     "words": [
+      "我",
+      "喜欢",
+      "白色",
+      "的",
+      "。",
+      "这",
+      "两",
+      "件",
+      "一样",
+      "贵",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "不一样。红色的比白色的便宜。",
+     "en": "No. The red one is cheaper than the white one.",
+     "words": [
+      "不",
+      "一样",
+      "。",
+      "红色",
+      "的",
+      "比",
+      "白色",
+      "的",
+      "便",
+      "宜",
+      "。"
+     ]
+    },
+    {
+     "zh": "好，那我买红色的！",
+     "en": "OK, then I'll buy the red one!",
+     "words": [
+      "好",
+      "，",
+      "那",
+      "我",
+      "买",
+      "红色",
+      "的",
+      "！"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "A 觉得哪件衣服最漂亮？",
+     "questionEn": "Which clothing does A think is the most beautiful?",
+     "options": [
+      "白色的",
+      "黑色的",
+      "红色的",
+      "蓝色的"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "红色的衣服比白色的贵。",
+     "questionEn": "The red clothing is more expensive than the white one.",
+     "answer": false
+    },
+    {
+     "id": "q3",
+     "type": "multiple_choice",
+     "question": "A 最后买了什么？",
+     "questionEn": "What did A buy in the end?",
+     "options": [
+      "白色的",
+      "黑色的",
+      "红色的",
+      "没有买"
+     ],
+     "answer": 2
+    }
+   ],
+   "focusWords": [
+    "漂亮",
+    "红色",
+    "白色",
+    "贵",
+    "比",
+    "最",
+    "一样"
+   ],
+   "grammarFocus": [
+    "最 + adj",
+    "A 比 B + adj",
+    "一样 / 不一样"
+   ]
+  },
+  {
+   "id": 24,
+   "lesson": 12,
+   "type": "story",
+   "difficulty": 2,
+   "title": "我的新衣服",
+   "titleEn": "My New Clothes",
+   "emoji": "👗",
+   "lines": [
+    {
+     "zh": "今天我买了一件新衣服。",
+     "en": "Today I bought a new piece of clothing.",
+     "words": [
+      "今天",
+      "我",
+      "买",
+      "了",
+      "一",
+      "件",
+      "新",
+      "衣服",
+      "。"
+     ]
+    },
+    {
+     "zh": "是红色的，很漂亮。",
+     "en": "It is red and very beautiful.",
+     "words": [
+      "是",
+      "红色",
+      "的",
+      "，",
+      "很",
+      "漂亮",
+      "。"
+     ]
+    },
+    {
+     "zh": "这件衣服比我的旧衣服漂亮多了。",
+     "en": "This clothing is much more beautiful than my old clothes.",
+     "words": [
+      "这",
+      "件",
+      "衣服",
+      "比",
+      "我",
+      "的",
+      "旧",
+      "衣服",
+      "漂亮",
+      "多",
+      "了",
+      "。"
+     ]
+    },
+    {
+     "zh": "我妈妈说这件是我们家最漂亮的衣服！",
+     "en": "My mom says this is the most beautiful piece of clothing in our home!",
+     "words": [
+      "我",
+      "妈妈",
+      "说",
+      "这",
+      "件",
+      "是",
+      "我们",
+      "家",
+      "最",
+      "漂亮",
+      "的",
+      "衣服",
+      "！"
+     ]
+    }
+   ],
+   "questions": [
+    {
+     "id": "q1",
+     "type": "multiple_choice",
+     "question": "新衣服是什么颜色？",
+     "questionEn": "What color is the new clothing?",
+     "options": [
+      "白色",
+      "黑色",
+      "红色",
+      "蓝色"
+     ],
+     "answer": 2
+    },
+    {
+     "id": "q2",
+     "type": "true_false",
+     "question": "新衣服没有旧衣服漂亮。",
+     "questionEn": "The new clothing is not as beautiful as the old one.",
+     "answer": false
+    }
+   ],
+   "focusWords": [
+    "新",
+    "旧",
+    "红色",
+    "漂亮",
+    "比",
+    "最",
+    "衣服"
+   ],
+   "grammarFocus": [
+    "A 比 B + adj",
+    "最 + adj + 的 + noun",
+    "adj + 的 + noun"
+   ]
+  }
+ ],
+ "word_map": {
+  "…": "",
+  "、": "",
+  "。": "",
+  "一": "yī",
+  "一共": "yígòng",
+  "一样": "yīyàng",
+  "七": "qī",
+  "三": "sān",
+  "上": "shàng",
+  "上午": "shàngwǔ",
+  "上课": "shàngkè",
+  "下": "xià",
+  "下午": "xiàwǔ",
+  "下课": "xiàkè",
+  "不": "bù",
+  "不舒服": "bù shūfu",
+  "与": "yǔ",
+  "东": "dōng",
+  "东西": "dōngxi",
+  "两": "liǎng",
+  "个": "gè",
+  "中": "zhōng",
+  "中午": "zhōngwǔ",
+  "中国": "Zhōngguó",
+  "为": "wèi",
+  "为什么": "wèishénme",
+  "么": "me",
+  "乐": "yuè",
+  "九": "jiǔ",
+  "也": "yě",
+  "习": "xí",
+  "书": "shū",
+  "买": "mǎi",
+  "了": "le",
+  "二": "èr",
+  "五": "wǔ",
+  "些": "xiē",
+  "京": "jīng",
+  "亮": "liàng",
+  "人": "rén",
+  "什": "shén",
+  "什么": "shénme",
+  "今": "jīn",
+  "今天": "jīntiān",
+  "今年": "jīnnián",
+  "介": "jiè",
+  "从": "cóng",
+  "他": "tā",
+  "他们": "tāmen",
+  "以": "yǐ",
+  "们": "men",
+  "件": "jiàn",
+  "休": "xiū",
+  "休息": "xiūxi",
+  "会": "huì",
+  "但": "dàn",
+  "但是": "dànshì",
+  "位": "wèi",
+  "住": "zhù",
+  "体": "tǐ",
+  "作": "zuò",
+  "你": "nǐ",
+  "你们": "nǐmen",
+  "你好": "nǐ hǎo",
+  "便": "biàn",
+  "候": "hòu",
+  "健": "jiàn",
+  "儿": "ér",
+  "儿子": "érzi",
+  "先": "xiān",
+  "八": "bā",
+  "六": "liù",
+  "共": "gòng",
+  "关": "guān",
+  "兴": "xìng",
+  "再": "zài",
+  "再见": "zàijiàn",
+  "写": "xiě",
+  "冷": "lěng",
+  "几": "jǐ",
+  "出": "chū",
+  "出租车": "chūzūchē",
+  "分": "fēn",
+  "分钟": "fēnzhōng",
+  "到": "dào",
+  "刻": "kè",
+  "动": "dòng",
+  "北": "běi",
+  "北京": "Běijīng",
+  "医": "yī",
+  "医生": "yīshēng",
+  "医院": "yīyuàn",
+  "十": "shí",
+  "千": "qiān",
+  "午": "wǔ",
+  "半": "bàn",
+  "华": "huá",
+  "卖": "mài",
+  "去": "qù",
+  "友": "yǒu",
+  "发": "fā",
+  "发烧": "fāshāo",
+  "受": "shòu",
+  "叫": "jiào",
+  "可": "kě",
+  "右": "yòu",
+  "号": "hào",
+  "吃": "chī",
+  "吃饭": "chīfàn",
+  "同": "tóng",
+  "同学": "tóngxué",
+  "名": "míng",
+  "名字": "míngzi",
+  "后": "hòu",
+  "吗": "ma",
+  "吧": "ba",
+  "听": "tīng",
+  "呢": "ne",
+  "和": "hé",
+  "哪": "nǎ",
+  "哪儿": "nǎr",
+  "唱": "chàng",
+  "唱歌": "chànggē",
+  "商": "shāng",
+  "商店": "shāngdiàn",
+  "喜": "xǐ",
+  "喜欢": "xǐhuan",
+  "喝": "hē",
+  "四": "sì",
+  "回": "huí",
+  "回家": "huíjiā",
+  "因": "yīn",
+  "因为": "yīnwèi",
+  "国": "guó",
+  "在": "zài",
+  "坐": "zuò",
+  "块": "kuài",
+  "多": "duō",
+  "多少": "duōshao",
+  "大": "dà",
+  "大概": "dàgài",
+  "天": "tiān",
+  "天气": "tiānqì",
+  "太": "tài",
+  "头": "tóu",
+  "女": "nǚ",
+  "女儿": "nǚ'ér",
+  "她": "tā",
+  "好": "hǎo",
+  "如": "rú",
+  "如果": "rúguǒ",
+  "妈": "mā",
+  "妈妈": "māma",
+  "姐": "jiě",
+  "姐姐": "jiějiě",
+  "子": "zi",
+  "字": "zì",
+  "学": "xué",
+  "学习": "xuéxí",
+  "学校": "xuéxiào",
+  "学生": "xuésheng",
+  "它": "tā",
+  "宜": "yí",
+  "家": "jiā",
+  "对": "duì",
+  "对不起": "duìbuqǐ",
+  "小": "xiǎo",
+  "少": "shǎo",
+  "岁": "suì",
+  "工": "gōng",
+  "工作": "gōngzuò",
+  "师": "shī",
+  "常": "cháng",
+  "年": "nián",
+  "床": "chuáng",
+  "店": "diàn",
+  "康": "kāng",
+  "开": "kāi",
+  "张": "zhāng",
+  "影": "yǐng",
+  "很": "hěn",
+  "得": "de",
+  "忙": "máng",
+  "快": "kuài",
+  "怎": "zěn",
+  "怎么": "zěnme",
+  "怎么样": "zěnmeyàng",
+  "息": "xī",
+  "想": "xiǎng",
+  "感": "gǎn",
+  "慢": "màn",
+  "我": "wǒ",
+  "我们": "wǒmen",
+  "或": "huò",
+  "所": "suǒ",
+  "所以": "suǒyǐ",
+  "手": "shǒu",
+  "手机": "shǒujī",
+  "打": "dǎ",
+  "打电话": "dǎ diànhuà",
+  "描": "miáo",
+  "数": "shù",
+  "新": "xīn",
+  "方": "fāng",
+  "日": "rì",
+  "旧": "jiù",
+  "早": "zǎo",
+  "早上": "zǎoshang",
+  "时": "shí",
+  "时候": "shíhou",
+  "明": "míng",
+  "明天": "míngtiān",
+  "星": "xīng",
+  "星期": "xīngqī",
+  "昨": "zuó",
+  "昨天": "zuótiān",
+  "是": "shì",
+  "晚": "wǎn",
+  "晚上": "wǎnshang",
+  "更": "gèng",
+  "最": "zuì",
+  "月": "yuè",
+  "有": "yǒu",
+  "有点儿": "yǒudiǎnr",
+  "朋": "péng",
+  "朋友": "péngyou",
+  "服": "fú",
+  "期": "qī",
+  "本": "běn",
+  "机": "jī",
+  "李": "lǐ",
+  "李华": "Lǐ Huá",
+  "李明": "Lǐ Míng",
+  "来": "lái",
+  "杯": "bēi",
+  "杯子": "bēizi",
+  "果": "guǒ",
+  "校": "xiào",
+  "样": "yàng",
+  "桌": "zhuō",
+  "桌子": "zhuōzi",
+  "椅": "yǐ",
+  "椅子": "yǐzi",
+  "概": "gài",
+  "欢": "huān",
+  "歌": "gē",
+  "步": "bù",
+  "每": "měi",
+  "每天": "měitiān",
+  "比": "bǐ",
+  "气": "qì",
+  "水": "shuǐ",
+  "水果": "shuǐguǒ",
+  "汉": "hàn",
+  "汉语": "Hànyǔ",
+  "没": "méi",
+  "没关系": "méiguānxi",
+  "没有": "méiyǒu",
+  "法": "fǎ",
+  "泳": "yǒng",
+  "活": "huó",
+  "海": "hǎi",
+  "游": "yóu",
+  "游泳": "yóuyǒng",
+  "漂": "piào",
+  "漂亮": "piàoliang",
+  "火": "huǒ",
+  "火车站": "huǒchēzhàn",
+  "点": "diǎn",
+  "烧": "shāo",
+  "热": "rè",
+  "然": "rán",
+  "然后": "ránhòu",
+  "爱": "ài",
+  "爸": "bà",
+  "爸爸": "bàba",
+  "物": "wù",
+  "狗": "gǒu",
+  "猫": "māo",
+  "王": "wáng",
+  "王芳": "Wáng Fāng",
+  "现": "xiàn",
+  "现在": "xiànzài",
+  "生": "shēng",
+  "电": "diàn",
+  "电影": "diànyǐng",
+  "电脑": "diànnǎo",
+  "电视": "diànshì",
+  "电话": "diànhuà",
+  "疼": "téng",
+  "白": "bái",
+  "白色": "báisè",
+  "百": "bǎi",
+  "的": "de",
+  "看": "kàn",
+  "看电视": "kàn diànshì",
+  "真": "zhēn",
+  "眼": "yǎn",
+  "眼睛": "yǎnjing",
+  "着": "zhe",
+  "睛": "jīng",
+  "睡": "shuì",
+  "睡觉": "shuìjiào",
+  "知": "zhī",
+  "知道": "zhīdào",
+  "碗": "wǎn",
+  "租": "zū",
+  "站": "zhàn",
+  "米": "mǐ",
+  "米饭": "mǐfàn",
+  "系": "xì",
+  "累": "lèi",
+  "红": "hóng",
+  "红色": "hóngsè",
+  "绍": "shào",
+  "给": "gěi",
+  "老": "lǎo",
+  "老师": "lǎoshī",
+  "者": "zhě",
+  "能": "néng",
+  "脑": "nǎo",
+  "舒": "shū",
+  "色": "sè",
+  "芳": "fāng",
+  "苹": "píng",
+  "苹果": "píngguǒ",
+  "茶": "chá",
+  "菜": "cài",
+  "行": "xíng",
+  "衣": "yī",
+  "衣服": "yīfu",
+  "西": "xī",
+  "要": "yào",
+  "见": "jiàn",
+  "视": "shì",
+  "觉": "jiào",
+  "认": "rèn",
+  "认识": "rènshi",
+  "识": "shí",
+  "话": "huà",
+  "语": "yǔ",
+  "说": "shuō",
+  "请": "qǐng",
+  "读": "dú",
+  "课": "kè",
+  "谁": "shéi",
+  "谢": "xiè",
+  "谢谢": "xièxie",
+  "购": "gòu",
+  "贵": "guì",
+  "走": "zǒu",
+  "起": "qǐ",
+  "起床": "qǐchuáng",
+  "趣": "qù",
+  "跑": "pǎo",
+  "跑步": "pǎobù",
+  "身": "shēn",
+  "车": "chē",
+  "边": "biān",
+  "过": "guò",
+  "运": "yùn",
+  "运动": "yùndòng",
+  "还": "hái",
+  "这": "zhè",
+  "远": "yuǎn",
+  "述": "shù",
+  "道": "dào",
+  "那": "nà",
+  "都": "dōu",
+  "里": "lǐ",
+  "钟": "zhōng",
+  "钱": "qián",
+  "问": "wèn",
+  "间": "jiān",
+  "陈明": "Chén Míng",
+  "院": "yuàn",
+  "陪": "péi",
+  "零": "líng",
+  "音": "yīn",
+  "音乐": "yīnyuè",
+  "颜": "yán",
+  "飞": "fēi",
+  "飞机": "fēijī",
+  "食": "shí",
+  "饭": "fàn",
+  "饭店": "fàndiàn",
+  "饮": "yǐn",
+  "高": "gāo",
+  "高兴": "gāoxìng",
+  "黑": "hēi",
+  "黑色": "hēisè",
+  "龄": "líng",
+  "！": "",
+  "，": "",
+  "：": "",
+  "；": "",
+  "？": ""
+ }
+}

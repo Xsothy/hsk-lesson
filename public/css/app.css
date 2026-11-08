@@ -1,0 +1,25 @@
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-ui);line-height:1.5}
+a{color:inherit}
+.zh{font-family:var(--font-zh)}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:var(--card);padding:8px 12px;z-index:100}
+.hdr{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:10px var(--pad)}
+.logo{font-family:var(--font-zh);font-weight:700;font-size:20px;text-decoration:none;color:var(--red)}
+.logo{display:inline-flex;align-items:center;min-height:44px}
+.hdr-actions{margin-left:auto;display:flex;gap:4px}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-radius:var(--r-s);text-decoration:none;font-size:20px}
+.icon-btn:hover,.menu-btn:hover{background:var(--soft)}
+.menus{display:none;gap:4px}
+.menu{position:relative}
+.menu-btn{min-height:44px;padding:0 14px;border:0;background:none;font:inherit;font-weight:500;color:var(--text-2);border-radius:var(--r-s);cursor:pointer}
+.menu-list{display:none;position:absolute;top:100%;left:0;min-width:180px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);padding:6px;box-shadow:0 8px 24px rgba(15,12,8,.08)}
+.menu.open .menu-list{display:block}
+.menu-list a{display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--r-s);text-decoration:none;color:var(--text-2)}
+.menu-list a:hover,.menu-list a[aria-current=page]{background:var(--red-t);color:var(--red-d)}
+.page{padding:24px var(--pad) 96px;max-width:1200px;margin:0 auto}
+.page h1{margin:0 0 8px;font-size:28px}
+.placeholder{background:var(--card);border:1px dashed var(--line);border-radius:var(--r-l);padding:32px;color:var(--muted)}
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom))}
+.tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;gap:2px;font-size:12px;text-decoration:none;color:var(--muted);border-radius:var(--r-s)}
+.tabbar a[aria-current=page]{background:var(--red-t);color:var(--red-d);font-weight:600}
+@media (min-width:761px){.menus{display:flex}.tabbar{display:none}.page{padding-bottom:48px}.icon-btn.settings{display:none}}

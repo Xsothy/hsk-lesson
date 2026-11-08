@@ -1,0 +1,13 @@
+{
+  "name": "hsk-lesson-dev-tools",
+  "private": true,
+  "description": "Dev-only tooling (Playwright). Not part of the Laravel runtime.",
+  "scripts": {
+    "test:unit": "node tests/Unit/store.test.js",
+    "test:e2e": "playwright test",
+    "test:alpha": "playwright test --config=playwright.config.js tests/e2e/alpha-smoke.spec.js tests/e2e/alpha-core-loop.spec.js tests/e2e/alpha-practice.spec.js tests/e2e/alpha-coverage.spec.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.60.0"
+  }
+}

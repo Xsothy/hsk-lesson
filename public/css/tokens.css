@@ -1,0 +1,41 @@
+:root{
+  --paper:#fbf9f5;--card:#fff;--card-2:#fffefb;--ink:#0f0c08;--text-2:#3d362e;--muted:#5c5348;--line:#ece7df;--soft:#f3efe8;
+  --red:#b5302a;--red-d:#8f241f;--red-t:#fdf0ee;
+  --green:#2f6b47;--green-d:#1f4a31;--green-t:#ebf4ee;
+  --gold:#6e5112;--gold-t:#faf2df;
+  --blue:#1d3f8a;--blue-t:#eef4fe;
+  --tone1:#c2281f;--tone2:#15803d;--tone3:#1d4ed8;--tone4:#7e22ce;
+  --r-s:12px;--r-m:16px;--r-l:22px;--r-xl:24px;
+  --on-ink:#fff;--cs:1;--pad:20px;--gap:44px;
+  --font-ui:'Outfit',system-ui,sans-serif;--font-zh:'Noto Serif SC',serif;
+}
+@media (min-width:761px){:root{--pad:40px}}
+
+/* Dark theme (E1). Basic palette only; full polish deferred to beta. Contrast of text on --paper/--card >= 4.5:1. */
+:root[data-theme=dark]{
+  --paper:#14110d;--card:#1d1914;--card-2:#221d17;--ink:#f4efe7;--text-2:#d6cdc0;--muted:#aca295;--line:#37312a;--soft:#2a251e;--on-ink:#14110d;
+  --red:#e8736c;--red-d:#ffb4ae;--red-t:#3b1f1d;
+  --green:#6fcf97;--green-d:#a4e3bc;--green-t:#1c3025;
+  --gold:#e6bd5c;--gold-t:#352b10;
+  --blue:#93b4ff;--blue-t:#1b2639;
+  --tone1:#ff7a70;--tone2:#4ade80;--tone3:#86a8ff;--tone4:#c995ff;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:dark){
+  :root[data-theme=system]{
+    --paper:#14110d;--card:#1d1914;--card-2:#221d17;--ink:#f4efe7;--text-2:#d6cdc0;--muted:#aca295;--line:#37312a;--soft:#2a251e;--on-ink:#14110d;
+    --red:#e8736c;--red-d:#ffb4ae;--red-t:#3b1f1d;
+    --green:#6fcf97;--green-d:#a4e3bc;--green-t:#1c3025;
+    --gold:#e6bd5c;--gold-t:#352b10;
+    --blue:#93b4ff;--blue-t:#1b2639;
+    --tone1:#ff7a70;--tone2:#4ade80;--tone3:#86a8ff;--tone4:#c995ff;
+    color-scheme:dark;
+  }
+}
+
+/* Display settings applied by apply-settings.js */
+:root[data-char-size=sm]{--cs:.85}:root[data-char-size=lg]{--cs:1.25}
+:root[data-pinyin=hide] :is(.ct-p,.wr-py,.vocab-pinyin,ruby rt){display:none}
+:root[data-pinyin-pos=below] ruby{ruby-position:under}
+:root[data-tone-colors=off] :is(.tone-1,.tone-2,.tone-3,.tone-4,[class*=tone-]){color:inherit}
+:root[data-tone-colors=off] ruby rt *{color:inherit!important}

@@ -1,0 +1,52 @@
+/* Learn pages (B1–B4) */
+.muted{color:var(--muted)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.back{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:10px}
+.chips,.section-nav,.toggles{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.section-nav{position:sticky;top:64px;z-index:20;background:var(--paper);padding:8px 0;margin:0;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+.section-nav .chip{white-space:nowrap}
+.sec{margin-top:var(--gap);scroll-margin-top:120px}
+.sec h2{margin:0 0 14px;font-size:22px}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sec-head a{display:inline-flex;align-items:center;justify-content:flex-end;min-height:44px;min-width:44px}
+.btn{min-height:44px;padding:0 16px;border-radius:var(--r-s);border:1px solid var(--line);background:var(--card);font:inherit;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.lesson-head{display:flex;gap:16px;align-items:center;margin:8px 0 20px}
+.lesson-head h1{margin:2px 0}.lesson-head h1 small{font-size:16px;font-weight:400;color:var(--muted)}
+.lesson-emoji{font-size:44px}
+.tile-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:16px}
+.gram{background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);padding:16px 18px;margin-bottom:10px}
+.gram h3{margin:0 0 6px;font-size:17px}.gram p{margin:6px 0 0;color:var(--text-2)}
+.pattern{display:inline-block;padding:6px 12px;background:var(--gold-t);color:var(--gold);border-radius:var(--r-s);font-size:18px}
+.practice .action-row{margin:0}
+.hide-py .b-py{display:none}.hide-en .b-en{display:none}
+.question{background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);padding:18px;margin-bottom:14px}
+.q-text{margin:0 0 12px;font-size:18px}.q-text small{display:block;color:var(--muted);font-size:14px}
+.feedback{min-height:1.4em;margin:10px 0 0;color:var(--text-2)}
+.score{margin-top:12px;padding:14px 18px;background:var(--green-t);color:var(--green-d);border-radius:var(--r-m);font-weight:600}
+.continue{display:flex;flex-direction:column;gap:2px;padding:20px 22px;background:var(--ink);color:#fff;border-radius:var(--r-xl);text-decoration:none;min-height:44px}
+.continue .eyebrow{color:#d9d2c6}.continue-title{font-size:22px;font-weight:600}.continue-sub{color:#d9d2c6}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.plain{text-decoration:none;color:inherit;display:block}
+.cotd{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.hub-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.path-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.path-card{display:flex;flex-direction:column;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);text-decoration:none;min-height:44px}
+.path-v{font-size:12px;color:var(--muted)}.path-l{font-weight:600}
+.levels{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.level{background:var(--card);border:1px solid var(--line);border-radius:var(--r-m)}
+.level summary{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:56px;padding:0 18px;cursor:pointer;list-style:none}
+.level-n{font-weight:600}.level-meta{color:var(--muted);font-size:14px}
+.sets{padding:0 12px 12px;display:flex;flex-direction:column;gap:8px}
+.set-row{display:grid;grid-template-columns:64px 1fr 80px;align-items:center;gap:10px;min-height:48px;padding:6px 12px;border:1px solid var(--line);border-radius:var(--r-s);text-decoration:none}
+.set-n{font-size:14px;color:var(--muted)}.set-words{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.set-bar,.lc-bar{display:block;height:6px;border-radius:3px;background:var(--soft);overflow:hidden}
+.set-bar i,.lc-bar i{display:block;height:100%;background:var(--green)}
+@media (min-width:761px){
+  .stat-grid{grid-template-columns:repeat(4,1fr)}
+  .hub-grid{grid-template-columns:repeat(2,1fr)}
+  .path-grid{grid-template-columns:repeat(4,1fr)}
+  .section-nav{top:68px}
+}
