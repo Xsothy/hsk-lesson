@@ -85,6 +85,7 @@
   <div class="stack">
     <x-action-row variant="dark" icon="pen" title="Write the characters" sub="Stroke-order practice" :href="route('practice', ['lesson' => $lesson->slug])" />
     <x-action-row variant="dark" icon="repeat" title="Review as flashcards" sub="{{ count($lesson->vocab ?? []) }} words" :href="route('review', ['lesson' => $lesson->slug])" />
+    <x-action-row variant="dark" icon="pen" title="Print a worksheet" sub="Stroke-order practice PDF" :href="route('worksheet', ['lesson' => $lesson->slug])" />
   </div>
 </section>
 @endsection

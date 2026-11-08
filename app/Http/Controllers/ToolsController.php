@@ -22,6 +22,7 @@ class ToolsController extends Controller
         ['chart', 'HSK checker', 'Paste Chinese text and see each word’s HSK level', 'tools.hsk'],
         ['tag', 'Chinese name helper', 'A fun sound-alike name from your English name', 'tools.name'],
         ['calendar', 'Zodiac', 'Your Chinese zodiac animal and element', 'tools.zodiac'],
+        ['pen', 'Worksheet PDF', 'Printable stroke-order practice sheets', 'worksheet'],
     ];
 
     public function __construct(private HskSegmenter $seg) {}

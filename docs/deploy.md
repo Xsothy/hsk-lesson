@@ -30,6 +30,8 @@ Push to `main` first; the server resets to `origin/main`, so unpushed work is no
 
 It prints the previous and new commit, so note the previous one before a risky deploy.
 
+**F2 worksheets (one-off on the server):** after the deploy that adds `character_strokes`, run `php artisan hsk:import-reference` once so stroke outlines are loaded (it downloads Make Me a Hanzi `graphics.txt`, ~30 MB, into `database/sources`). Until then `/worksheet.pdf` answers 422 "No characters with stroke data".
+
 ## Rollback
 
 ```bash

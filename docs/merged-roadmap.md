@@ -19,4 +19,6 @@ Open data used:
 - Make Me a Hanzi `dictionary.txt` (LGPL-3.0 / Arphic) — character facts
 - complete-hsk-vocabulary (MIT) — HSK 2.0 & 3.0 word lists
 - Hanzi Writer + hanzi-writer-data (MIT / Arphic) — strokes, animation, quiz (loaded from CDN)
+- Make Me a Hanzi `graphics.txt` (Arphic Public License; outlines derived from AR PL KaitiM GB and UKai) — stroke outlines for the F2 worksheet PDF, imported into `character_strokes` by `hsk:import-reference`. Worksheets credit it in the page footer.
+- TCPDF (LGPL-3.0, Composer `tecnickcom/tcpdf`) — server-side PDF. No CJK font is embedded: hanzi are drawn as vector paths from the stroke outlines, and Latin text (titles, pinyin with tone marks, English) uses the bundled DejaVu Sans (Bitstream Vera licence, free to embed and redistribute). Pipeline for reuse (F9): `WorksheetSource::items($chars)` → `WorksheetPdf::render($title, $items, new WorksheetOptions(...))` in `app/Services/Worksheet/`.
 - Chinese New Year table 1900–2100 (`app/Support/data/lny.php`, used by the Zodiac tool): generated with ICU's Chinese calendar (PHP intl), which implements the astronomical algorithm of Reingold & Dershowitz, *Calendrical Calculations*; spot-checked 1900-01-31, 2024-02-10, 2025-01-29, 2100-02-09
