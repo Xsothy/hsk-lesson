@@ -12,7 +12,7 @@ a{color:inherit}
 .menus{display:none;gap:4px}
 .menu{position:relative}
 .menu-btn{min-height:44px;padding:0 14px;border:0;background:none;font:inherit;font-weight:500;color:var(--text-2);border-radius:var(--r-s);cursor:pointer}
-.menu-list{display:none;position:absolute;top:100%;left:0;min-width:180px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);padding:6px;box-shadow:0 8px 24px rgba(15,12,8,.08)}
+.menu-list{display:none;position:absolute;top:100%;left:0;min-width:180px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);padding:6px;box-shadow:0 8px 24px rgba(var(--shadow),.08)}
 .menu.open .menu-list{display:block}
 .menu-list a{display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--r-s);text-decoration:none;color:var(--text-2)}
 .menu-list a:hover,.menu-list a[aria-current=page]{background:var(--red-t);color:var(--red-d)}

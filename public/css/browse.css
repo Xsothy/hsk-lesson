@@ -3,7 +3,7 @@
 .muted{color:var(--muted)}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:var(--r-s);border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:500;text-decoration:none;cursor:pointer;white-space:nowrap}
 .btn:hover{border-color:var(--ink)}
-.btn-primary{background:var(--red);border-color:var(--red);color:#fff}
+.btn-primary{background:var(--red);border-color:var(--red);color:var(--on-red)}
 .btn-primary:hover{background:var(--red-d);border-color:var(--red-d)}
 .btn.is-disabled{color:var(--muted);cursor:default}.btn.is-disabled:hover{border-color:var(--line)}
 
@@ -14,7 +14,7 @@
 .browse-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:calc(-1 * var(--pad));padding-right:var(--pad)}
 .browse-tabs .chip{white-space:nowrap;flex:none}
 .sub-chips{margin-top:0}
-.sub-chips .chip.is-active{color:#fff}
+.sub-chips .chip.is-active{color:var(--on-ink)}
 .set-note{margin:0 0 12px;color:var(--text-2)}
 .set-note a{display:inline-flex;align-items:center;min-height:44px}
 
@@ -27,7 +27,7 @@
 .pick small{font-size:11px;color:var(--muted)}
 .pick-zh .zh{font-size:20px}
 .pick:hover{border-color:var(--red)}
-.pick.is-active{background:var(--ink);border-color:var(--ink);color:#fff}.pick.is-active small{color:#d9d2c6}
+.pick.is-active{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}.pick.is-active small{color:color-mix(in srgb,var(--on-ink) 80%,var(--ink))}
 .browse-hint{margin-top:16px}
 
 .browse-results{margin-top:8px}
@@ -36,7 +36,7 @@
 .browse-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .seg{display:inline-flex;background:var(--soft);border-radius:var(--r-s);padding:3px}
 .seg-btn{min-height:44px;min-width:44px;padding:0 12px;border:0;border-radius:calc(var(--r-s) - 3px);background:none;font:inherit;font-size:14px;color:var(--text-2);cursor:pointer}
-.seg-btn[aria-pressed=true]{background:var(--card);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(15,12,8,.08)}
+.seg-btn[aria-pressed=true]{background:var(--card);color:var(--ink);font-weight:600;box-shadow:0 1px 2px rgba(var(--shadow),.08)}
 .practise{margin-left:auto}
 
 .browse-list{display:flex;flex-direction:column;gap:8px}
