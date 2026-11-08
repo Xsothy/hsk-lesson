@@ -6,6 +6,7 @@ use App\Models\HskWord;
 use App\Models\Lesson;
 use App\Models\Reading;
 use App\Services\ContentService;
+use App\Services\RubyTokens;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class LearnController extends Controller
 {
     public const SET_SIZE = 15;
 
-    public function __construct(private ContentService $content) {}
+    public function __construct(private ContentService $content, private RubyTokens $ruby) {}
 
     /** HSK 3.0 stores levels 7–9 as a single band (level 7). */
     public static function levels(int $version): array
@@ -103,8 +104,8 @@ class LearnController extends Controller
 
             return (object) ['hanzi' => $h, 'pinyin' => $e['p'], 'english' => $e['e']];
         });
-        $dialogue = collect($lesson->dialogue ?? [])->map(fn ($d) => $d + ['pinyin' => $pinyinOf($d['words'] ?? [])]);
-        $sentences = collect($lesson->sentences ?? [])->map(fn ($s) => $s + ['pinyin' => $pinyinOf($s['words'] ?? [])]);
+        $dialogue = collect($lesson->dialogue ?? [])->map(fn ($d) => $d + ['pinyin' => $pinyinOf($d['words'] ?? []), 'tokens' => $this->ruby->forLine($d)]);
+        $sentences = collect($lesson->sentences ?? [])->map(fn ($s) => $s + ['pinyin' => $pinyinOf($s['words'] ?? []), 'tokens' => $this->ruby->forLine($s)]);
         $readings = Reading::where('lesson_number', $lesson->number)->where('is_published', true)->orderBy('id')->get();
 
         return view('pages.lesson', compact('lesson', 'vocab', 'dialogue', 'sentences', 'readings'));
@@ -120,6 +121,7 @@ class LearnController extends Controller
         $map = $this->content->wordMap();
         $lines = collect($reading->lines ?? [])->map(fn ($l) => $l + [
             'pinyin' => trim(implode(' ', array_filter(array_map(fn ($w) => $map[$w] ?? '', $l['words'] ?? [])))),
+            'tokens' => $this->ruby->forLine($l),
         ]);
 
         return view('pages.reading', [

@@ -21,7 +21,7 @@
 .gram h3{margin:0 0 6px;font-size:17px}.gram p{margin:6px 0 0;color:var(--text-2)}
 .pattern{display:inline-block;padding:6px 12px;background:var(--gold-t);color:var(--gold);border-radius:var(--r-s);font-size:18px}
 .practice .action-row{margin:0}
-.hide-py .b-py{display:none}.hide-en .b-en{display:none}
+.hide-py .b-py,.hide-py .ruby-line rt{display:none}.hide-en .b-en{display:none}
 .question{background:var(--card);border:1px solid var(--line);border-radius:var(--r-l);padding:18px;margin-bottom:14px}
 .q-text{margin:0 0 12px;font-size:18px}.q-text small{display:block;color:var(--muted);font-size:14px}
 .feedback{min-height:1.4em;margin:10px 0 0;color:var(--text-2)}

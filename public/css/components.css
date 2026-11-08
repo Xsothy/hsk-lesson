@@ -75,3 +75,17 @@ a.lesson-card:hover{border-color:var(--red)}
 .dev h2{margin:var(--gap) 0 12px;font-size:18px}.dev .row{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start}.dev .stack{display:grid;gap:10px;max-width:640px}
 .dev .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
 @media (max-width:760px){button.chip,a.chip{min-height:44px}}
+/* ruby-line: interlinear pinyin (R1). Settings in tokens.css: data-pinyin, data-pinyin-pos, data-tone-colors, data-char-size */
+.tone-5{color:var(--muted)}
+.ruby-line{display:flex;align-items:flex-start;gap:8px}
+.rl-text{flex:1;font-size:calc(22px*var(--cs,1));line-height:2.1;word-break:keep-all;overflow-wrap:anywhere}
+.ruby-line ruby{ruby-align:center;margin:0 1px}
+.ruby-line rt{font-family:var(--font-ui,inherit);font-size:max(12px,.6em);line-height:1.1;letter-spacing:0;font-weight:500}
+.rl-word{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;border-radius:4px;line-height:inherit}
+.rl-word:hover rb,.rl-word:focus-visible rb{text-decoration:underline dotted;text-underline-offset:4px}
+.rl-word:focus-visible{outline:2px solid var(--red,currentColor);outline-offset:2px}
+.b-body .ruby-line .rl-text{font-size:calc(20px*var(--cs,1))}
+.word-sheet{border:1px solid var(--line,#ddd);border-radius:var(--r-m,12px);padding:16px 20px;min-width:min(320px,90vw);background:var(--card);color:var(--ink)}
+.word-sheet::backdrop{background:rgba(0,0,0,.35)}
+.ws-head{display:flex;align-items:center;gap:8px}.ws-zh{font-size:calc(36px*var(--cs,1));flex:1}
+.ws-py{font-size:18px;margin-top:4px}.ws-en{color:var(--text-2);margin:4px 0 12px}.ws-chars{display:flex;flex-wrap:wrap;gap:8px}
