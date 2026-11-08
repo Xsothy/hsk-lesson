@@ -1,0 +1,11 @@
+.guide-filters{margin:12px 0}
+.guide-list{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.guide-card{display:flex;flex-direction:column;gap:4px;padding:16px;border:1px solid var(--border,#e5e7eb);border-radius:12px;text-decoration:none;color:inherit;min-height:44px}
+.guide-body{max-width:720px;line-height:1.7;overflow-wrap:anywhere}
+.guide-body h2{margin-top:1.6em}
+.guide-body table{display:block;overflow-x:auto;border-collapse:collapse}
+.guide-body th,.guide-body td{padding:6px 10px;border:1px solid var(--border,#e5e7eb)}
+.guide-examples{display:grid;gap:10px;margin:14px 0}
+.guide-ex{padding:10px 12px;border-left:3px solid var(--border,#d1d5db);border-radius:6px}
+.guide-gloss{margin:2px 0 0;color:var(--muted,#6b7280);font-size:.95em}
+.guide-back{margin-top:2rem}

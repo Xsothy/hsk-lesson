@@ -58,6 +58,10 @@ Route::get('/data/review-deck', [\App\Http\Controllers\ReviewController::class, 
 // Public read-only HSK word search for Browse (same logic as /api/v1/hsk-words, no token).
 Route::get('/data/hsk-words', [BrowseController::class, 'words'])->middleware('throttle:120,1');
 
+// F6 · Guides
+Route::get('/guides', [\App\Http\Controllers\GuideController::class, 'index'])->name('guides');
+Route::get('/guides/{slug}', [\App\Http\Controllers\GuideController::class, 'show'])->name('guide');
+
 // F3 · Tools
 Route::prefix('tools')->group(function () {
     $c = \App\Http\Controllers\ToolsController::class;
