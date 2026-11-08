@@ -27,7 +27,7 @@ Route::get('/lessons/{slug}/reading/{n}', [LearnController::class, 'reading'])->
 Route::get('/char/{c}', [\App\Http\Controllers\CharacterController::class, 'show'])->name('char');
 Route::get('/char.html', [\App\Http\Controllers\CharacterController::class, 'legacy'])->name('char.legacy');
 Route::get('/browse', [BrowseController::class, 'index'])->name('browse');
-Route::get('/search', $page('Search'))->name('search');
+Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
 Route::get('/practice', $page('Practice'))->name('practice');
 Route::get('/review', $page('Review'))->name('review');
 Route::get('/words', $page('My words'))->name('words');
