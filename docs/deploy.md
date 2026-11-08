@@ -48,19 +48,9 @@ sudo chgrp www-data database/database.sqlite && sudo chmod g+rw database/databas
 
 then deploy the previous ref. (Backup restores lose data written after the backup.)
 
-## HTTPS (when a domain exists)
+## HTTPS
 
-Not set up yet: it needs a domain or subdomain whose A record points at `43.156.63.70`. Then, on the server:
-
-```bash
-sudo apt install -y certbot python3-certbot-nginx
-# Create a NEW site for the domain (copy hsk-8169, set server_name <domain>, listen 80, same root/fastcgi) - do not edit other apps' sites.
-sudo nginx -t && sudo systemctl reload nginx
-sudo certbot --nginx -d <domain> --redirect --agree-tos -m <owner-email>
-sudo certbot renew --dry-run         # renewal runs from the certbot systemd timer
-```
-
-Afterwards set `APP_URL=https://<domain>` in the server `.env`, run `php artisan config:cache`, and open ports 80/443 in the cloud firewall.
+HTTPS: not configured, served on IP:8169 (http://43.156.63.70:8169).
 
 ## CI
 
