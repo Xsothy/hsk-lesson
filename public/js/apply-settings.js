@@ -20,9 +20,13 @@
     if (!A) return;
     try {
       if (typeof s.audioRate === 'number' && s.audioRate >= 0.5 && s.audioRate <= 1.5) A.config.playbackRate = s.audioRate;
-      if (typeof s.voice === 'string' && s.voice && A.getVoices) {
-        var v = A.getVoices().filter(function (x) { return x.voiceURI === s.voice; })[0];
-        if (v) A.setVoice(v);
+      if (typeof s.voice === 'string' && s.voice) {
+        // audio-service on main exposes saveSelectedVoice(voiceURI); older builds had setVoice(voice).
+        if (A.saveSelectedVoice) A.saveSelectedVoice(s.voice);
+        else if (A.setVoice && A.getVoices) {
+          var v = A.getVoices().filter(function (x) { return x.voiceURI === s.voice; })[0];
+          if (v) A.setVoice(v);
+        }
       }
     } catch (e) {}
   }
