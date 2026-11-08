@@ -7,6 +7,7 @@ use App\Models\HskWord;
 use App\Models\Lesson;
 use App\Services\ContentService;
 use App\Services\HskWordSearch;
+use App\Services\SentencePool;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -29,12 +30,28 @@ class PracticeController extends Controller
         ]);
     }
 
+    /** F7 · Sentence practice page: build the sentence / pick the meaning. */
+    public function sentences(Request $request)
+    {
+        return view('pages.practice-sentences', [
+            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'zh_title']),
+            'lesson' => (string) $request->query('lesson', ''),
+            'mode' => in_array($request->query('mode'), ['build', 'meaning'], true) ? $request->query('mode') : 'mix',
+        ]);
+    }
+
     /**
-     * GET /data/practice-queue — unique characters of a source, each with the word it came from.
+     * GET /data/practice-queue  (?kind=sentences[&lesson=slug] → sentence items, see SentencePool) — unique characters of a source, each with the word it came from.
      *   ?lesson=slug | ?version=2|3&level=&set= | ?words=学习,你好 (saved / due cards, sent by the client)
      */
     public function queue(Request $request): JsonResponse
     {
+        if ($request->query('kind') === 'sentences') { // F7 · Sentence practice
+            $d = app(SentencePool::class)->queue($request->filled('lesson') ? (string) $request->query('lesson') : null);
+
+            return $d ? response()->json($d, 200, [], JSON_UNESCAPED_UNICODE) : response()->json(['message' => 'Unknown lesson'], 404);
+        }
+
         $words = []; // [hanzi, pinyin, english]
         $label = 'Practice';
 

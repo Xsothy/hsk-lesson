@@ -26,6 +26,7 @@
       <h2 class="pr-h2">Saved &amp; due</h2>
       <x-action-row icon="bookmark" title="My saved words" sub="Characters from words you saved" :href="route('practice', ['source' => 'saved'])" />
       <x-action-row icon="clock" title="Due cards" sub="Characters from cards due for review" :href="route('practice', ['source' => 'due'])" />
+      <x-action-row icon="speech" title="Sentences" sub="Build sentences and pick their meaning" :href="route('practice.sentences')" />
     </div>
     <div class="pr-group">
       <h2 class="pr-h2">A lesson</h2>

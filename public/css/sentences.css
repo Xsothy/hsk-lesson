@@ -1,0 +1,30 @@
+/* F7 · Sentence practice (extends practice.css) */
+.sp-sources{margin:0 -16px 4px;overflow-x:auto;scrollbar-width:none}
+.sp-sources .pr-chips{display:flex;gap:8px;padding:2px 16px;width:max-content}
+@media (min-width:900px){.sp-sources{margin:0;overflow:visible}.sp-sources .pr-chips{flex-wrap:wrap;width:auto;padding:2px 0}}
+.sp-ask{margin:0;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.sp-build[hidden],.sp-meaning[hidden],.sp-reveal[hidden],.sp-actions [hidden]{display:none}
+.sp-build,.sp-meaning{display:flex;flex-direction:column;gap:14px}
+.sp-en{margin:0;font-size:20px;font-weight:600;line-height:1.35;color:var(--ink)}
+.sp-answer{min-height:60px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;padding:8px;border:2px dashed var(--line);border-radius:var(--r-m)}
+.sp-answer.is-ok{border-style:solid;border-color:var(--green,#2f8f5b)}
+.sp-answer.is-bad{border-style:solid;border-color:var(--red)}
+.sp-tiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.sp-tile{min-width:44px;min-height:44px;padding:0 14px;border:1px solid var(--line);border-radius:var(--r-s);background:var(--card);color:var(--ink);font-size:22px;line-height:1;cursor:pointer;box-shadow:0 2px 0 var(--line)}
+.sp-tile:hover{border-color:var(--ink)}
+.sp-tile:disabled{opacity:.3;cursor:default;box-shadow:none}
+.sp-line .ruby-line{font-size:22px}
+.sp-choices{display:flex;flex-direction:column;gap:8px}
+.sp-choice{min-height:44px;padding:10px 14px;text-align:left;border:1px solid var(--line);border-radius:var(--r-s);background:var(--card);color:var(--ink);font:inherit;font-size:16px;cursor:pointer}
+.sp-choice:hover:not(:disabled){border-color:var(--ink)}
+.sp-choice.is-ok{border-color:var(--green,#2f8f5b);background:color-mix(in srgb,var(--green,#2f8f5b) 12%,var(--card))}
+.sp-choice.is-bad{border-color:var(--red);background:color-mix(in srgb,var(--red) 10%,var(--card))}
+.sp-reveal{padding:12px;border-radius:var(--r-m);background:var(--soft)}
+.sp-reveal .ruby-line{font-size:22px}
+.sp-reveal-en{margin:6px 0 0;color:var(--text-2)}
+.sp-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.sp-actions .pr-btn{display:inline-flex;align-items:center;gap:6px}
+.sp-actions .pr-btn[hidden]{display:none}
+.pr-btn.is-primary{background:var(--red);border-color:var(--red);color:#fff}
+.sp-tile:focus-visible,.sp-choice:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media (min-width:900px){.sp .pr-card{max-width:720px}}
