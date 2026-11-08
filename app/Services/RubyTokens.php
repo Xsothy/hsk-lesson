@@ -16,7 +16,7 @@ use App\Support\Pinyin;
  */
 class RubyTokens
 {
-    private const SYLLABLE = '/^(zh|ch|sh|[bpmfdtnlgkhjqxrzcsyw])?(iang|iong|uang|ueng|ang|eng|ing|ong|ian|iao|uai|uan|van|ai|ao|an|ei|en|er|ia|ie|in|iu|ou|ua|uo|ui|un|ve|vn|a|o|e|i|u|v|ng|n|m|r)$/';
+    private const SYLLABLE = '/^(zh|ch|sh|[bpmfdtnlgkhjqxrzcsyw])?(iang|iong|uang|ueng|ang|eng|ing|ong|ian|iao|uai|uan|van|ai|ao|an|ei|en|er|ia|ie|in|iu|ou|ua|uo|ui|un|ve|ue|vn|a|o|e|i|u|v|ng|n|m|r)$/';
 
     private ?array $english = null;
 
@@ -33,6 +33,43 @@ class RubyTokens
         }
 
         return $this->fallback((string) ($line['zh'] ?? ''));
+    }
+
+    /**
+     * Tokens for free text with no word list (e.g. grammar patterns "我叫 [name]。"):
+     * greedy longest match against the word map, per-character fallback, other text kept plain.
+     */
+    public function forText(string $text): array
+    {
+        $map = $this->content->wordMap();
+        $chars = mb_str_split($text);
+        $tokens = [];
+        $plain = '';
+        $flush = function () use (&$plain, &$tokens) {
+            if ($plain !== '') {
+                $tokens[] = ['zh' => $plain, 'pinyin' => null, 'syllables' => [], 'vocab' => null];
+                $plain = '';
+            }
+        };
+        for ($i = 0, $n = count($chars); $i < $n;) {
+            if (! preg_match('/\p{Han}/u', $chars[$i]) || in_array($chars[$i], ContentService::PUNCTUATION, true)) {
+                $plain .= $chars[$i++];
+                continue;
+            }
+            $flush();
+            for ($len = min(4, $n - $i); $len > 1; $len--) {
+                $w = implode('', array_slice($chars, $i, $len));
+                if (! empty($map[$w])) {
+                    break;
+                }
+            }
+            $w = implode('', array_slice($chars, $i, $len));
+            $tokens[] = ! empty($map[$w]) ? $this->token($w) : ($this->fallback($w)[0]);
+            $i += $len;
+        }
+        $flush();
+
+        return $tokens;
     }
 
     /** Adds `tokens` to every line. */

@@ -107,8 +107,11 @@ class LearnController extends Controller
         $dialogue = collect($lesson->dialogue ?? [])->map(fn ($d) => $d + ['pinyin' => $pinyinOf($d['words'] ?? []), 'tokens' => $this->ruby->forLine($d)]);
         $sentences = collect($lesson->sentences ?? [])->map(fn ($s) => $s + ['pinyin' => $pinyinOf($s['words'] ?? []), 'tokens' => $this->ruby->forLine($s)]);
         $readings = Reading::where('lesson_number', $lesson->number)->where('is_published', true)->orderBy('id')->get();
+        $grammar = collect($lesson->grammar ?? [])->map(fn ($g) => $g + [
+            'tokens' => ! empty($g['pattern']) ? $this->ruby->forText((string) $g['pattern']) : [],
+        ]);
 
-        return view('pages.lesson', compact('lesson', 'vocab', 'dialogue', 'sentences', 'readings'));
+        return view('pages.lesson', compact('lesson', 'vocab', 'grammar', 'dialogue', 'sentences', 'readings'));
     }
 
     public function reading(string $slug, int $n)

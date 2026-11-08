@@ -18,6 +18,7 @@
 <main id="main" class="page">@yield('content')</main>
 <x-tab-bar />
 <script src="/js/audio-service.js"></script>
+<script src="/js/pinyin-tones.js"></script>
 <script src="/js/chrome.js"></script>
 @stack('scripts')
 </body>

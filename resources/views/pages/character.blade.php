@@ -28,7 +28,7 @@
     <div class="cp-left">
       <section class="cp-hero">
         <div class="cp-hero-text">
-          <span class="cp-py @if($tone) tone-{{ $tone }} @endif">{{ implode(' · ', $d['pinyin'] ?? []) }}</span>
+          <span class="cp-py @if($tone) tone-{{ $tone }} @endif">{!! collect($d['pinyin'] ?? [])->map(fn ($p) => \App\Support\Pinyin::toneHtml($p, $c))->implode(' · ') !!}</span>
           <h1 class="cp-char zh" lang="zh-Hans">{{ $c }}</h1>
           @if ($meaning)<p class="cp-def">{{ $meaning }}</p>@endif
           <div class="cp-badges">

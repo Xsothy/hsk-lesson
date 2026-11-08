@@ -2,8 +2,8 @@
 @section('title', 'Courses')
 @push('head')<link rel="stylesheet" href="/css/learn.css">@endpush
 @section('content')
-<h1>Courses</h1>
-<nav class="chips" aria-label="Course">
+<x-page-head eyebrow="Learn" title="Courses" />
+<nav class="chips chip-scroll" aria-label="Course">
   <x-chip :href="route('courses', ['tab' => 'ours'])" :active="$tab === 'ours'">Our course</x-chip>
   <x-chip :href="route('courses', ['tab' => 'hsk2'])" :active="$tab === 'hsk2'">HSK 2.0</x-chip>
   <x-chip :href="route('courses', ['tab' => 'hsk3'])" :active="$tab === 'hsk3'">HSK 3.0</x-chip>

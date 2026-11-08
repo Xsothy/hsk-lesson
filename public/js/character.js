@@ -40,6 +40,17 @@
     var col = colors();
     for (var k in col) o[k] = col[k];
     for (var j in opts || {}) o[j] = opts[j];
+    // Placeholder until stroke data arrives: the static character (ghost) or, with ghost:false, a skeleton.
+    var ph = document.createElement('span');
+    ph.setAttribute('aria-hidden', 'true');
+    if (o.ghost === false) ph.className = 'wg-skeleton';
+    else { ph.className = 'wg-ghost wg-loading zh'; ph.textContent = c; }
+    delete o.ghost;
+    target.appendChild(ph);
+    var done = function () { if (ph.parentNode) ph.parentNode.removeChild(ph); };
+    var ok = o.onLoadCharDataSuccess, bad = o.onLoadCharDataError;
+    o.onLoadCharDataSuccess = function (d) { done(); if (ok) ok(d); };
+    o.onLoadCharDataError = function (e) { done(); if (bad) bad(e); };
     return window.HanziWriter.create(target, c, o);
   }
 

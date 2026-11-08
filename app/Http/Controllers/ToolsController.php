@@ -18,10 +18,10 @@ class ToolsController extends Controller
     public const MAX_HSK = 5000;
 
     public const TOOLS = [
-        ['🔤', 'Pinyin converter', 'Tone numbers, tone marks, no tones, and hanzi → pinyin', 'tools.pinyin'],
-        ['📊', 'HSK checker', 'Paste Chinese text and see each word’s HSK level', 'tools.hsk'],
-        ['📛', 'Chinese name helper', 'A fun sound-alike name from your English name', 'tools.name'],
-        ['🐲', 'Zodiac', 'Your Chinese zodiac animal and element', 'tools.zodiac'],
+        ['pinyin', 'Pinyin converter', 'Tone numbers, tone marks, no tones, and hanzi → pinyin', 'tools.pinyin'],
+        ['chart', 'HSK checker', 'Paste Chinese text and see each word’s HSK level', 'tools.hsk'],
+        ['tag', 'Chinese name helper', 'A fun sound-alike name from your English name', 'tools.name'],
+        ['calendar', 'Zodiac', 'Your Chinese zodiac animal and element', 'tools.zodiac'],
     ];
 
     public function __construct(private HskSegmenter $seg) {}

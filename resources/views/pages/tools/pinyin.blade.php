@@ -4,7 +4,7 @@
 @section('content')
 <div class="tool" data-tool="pinyin" data-url="{{ url('/tools/pinyin') }}">
   <a class="back" href="{{ route('tools') }}">‹ Tools</a>
-  <h1>Pinyin converter</h1>
+  <x-page-head eyebrow="Tools" title="Pinyin converter" />
   <p class="muted">Type tone numbers (<code>xue2xi2</code>), tone marks (<code>xuéxí</code>) or Chinese characters.</p>
   <label class="tool-label" for="pin-in">Input</label>
   <textarea id="pin-in" class="tool-field" rows="4" maxlength="{{ $max }}" lang="zh" placeholder="xue2xi2 · nǐ hǎo · 你好"></textarea>

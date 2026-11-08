@@ -150,7 +150,7 @@
     const voice = getChineseVoice();
     if (voice) {
       u.voice = voice;
-      console.log(`[audio] Speaking with: ${voice.name}`);
+      if (window.HSK_DEBUG) console.log(`[audio] Speaking with: ${voice.name}`);
     } else {
       console.warn('[audio] No Chinese voice found for utterance');
     }
@@ -250,5 +250,5 @@
     config
   };
 
-  console.log('[audio] Service ready');
+  if (window.HSK_DEBUG) console.log('[audio] Service ready');
 })();

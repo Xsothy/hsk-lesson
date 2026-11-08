@@ -98,7 +98,8 @@
     var zh = el.querySelector('.wr-zh');
     var a = document.createElement('a'); a.href = '/char/' + encodeURIComponent(Array.from(k)[0]); a.className = 'wr-zh-link'; a.textContent = k;
     a.setAttribute('aria-label', 'Open ' + k); zh.textContent = ''; zh.appendChild(a);
-    el.querySelector('.wr-py').textContent = i.py || ' ';
+    var py = el.querySelector('.wr-py');
+    if (i.py && window.HSK_PINYIN) py.innerHTML = window.HSK_PINYIN.html(i.py); else py.textContent = i.py || ' ';
     el.querySelector('.wr-en').textContent = i.en || (cache[k] || failed[k] ? '' : '…');
     var au = el.querySelector('.wr-audio'); au.setAttribute('data-say', k); au.setAttribute('aria-label', 'Play ' + k);
     var u = el.querySelector('[data-unsave]'); u.setAttribute('data-key', k); u.setAttribute('aria-label', 'Remove ' + k + ' from saved words');

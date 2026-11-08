@@ -6,17 +6,16 @@
 
   {{-- Deck chooser: shown when no deck is named in the URL --}}
   <section id="rv-choose" hidden>
-    <h1>Review</h1>
-    <p class="muted" id="rv-summary">Flashcards with spaced repetition.</p>
+    <x-page-head eyebrow="Practice" title="Review"><p class="ph-sub" id="rv-summary">Flashcards with spaced repetition.</p></x-page-head>
     <div class="stack">
-      <x-action-row id="rv-due-link" icon="⏰" title="Cards due" sub="Loading…" :href="route('review', ['source' => 'due'])" />
-      <x-action-row id="rv-saved-link" icon="⭐" title="Saved words" sub="Loading…" :href="route('review', ['source' => 'saved'])" />
+      <x-action-row id="rv-due-link" icon="clock" title="Cards due" sub="Loading…" :href="route('review', ['source' => 'due'])" />
+      <x-action-row id="rv-saved-link" icon="star" title="Saved words" sub="Loading…" :href="route('review', ['source' => 'saved'])" />
     </div>
     <section class="sec">
       <h2>Lessons</h2>
       <div class="stack">
         @foreach ($lessons as $l)
-          <x-action-row :icon="'📖'" :title="'Lesson '.$l->number.' · '.($l->en_title ?: $l->title)" :sub="count($l->vocab ?? []).' words'" :href="route('review', ['lesson' => $l->slug])" />
+          <x-action-row icon="book" :title="'Lesson '.$l->number.' · '.($l->en_title ?: $l->title)" :sub="count($l->vocab ?? []).' words'" :href="route('review', ['lesson' => $l->slug])" />
         @endforeach
       </div>
     </section>
@@ -61,13 +60,13 @@
 
   {{-- Done --}}
   <section id="rv-done" hidden>
-    <h1>Session complete</h1>
+    <x-page-head eyebrow="Review" title="Session complete" />
     <div class="stat-grid" id="rv-stats"></div>
     <p class="muted" id="rv-done-note"></p>
     <div class="stack">
-      <x-action-row id="rv-again-link" variant="dark" icon="🔁" title="Review again" sub="Cards that are due" :href="route('review', ['source' => 'due'])" />
-      <x-action-row icon="📚" title="Choose another deck" :href="route('review')" />
-      <x-action-row icon="🏠" title="Back to Today" :href="route('home')" />
+      <x-action-row id="rv-again-link" variant="dark" icon="repeat" title="Review again" sub="Cards that are due" :href="route('review', ['source' => 'due'])" />
+      <x-action-row icon="layers" title="Choose another deck" :href="route('review')" />
+      <x-action-row icon="home" title="Back to Today" :href="route('home')" />
     </div>
   </section>
 

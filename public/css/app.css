@@ -24,3 +24,18 @@ a{color:inherit}
 .tabbar a[aria-current=page]{background:var(--red-t);color:var(--red-d);font-weight:600}
 @media (min-width:761px){.menus{display:flex}.tabbar{display:none}.page{padding-bottom:48px}.icon-btn.settings{display:none}}
 .icon-btn.account.is-signed-in{position:relative}.icon-btn.account.is-signed-in::after{content:"";position:absolute;right:8px;bottom:8px;width:8px;height:8px;border-radius:50%;background:var(--green,#2e9d5b);border:2px solid var(--card)}
+.tabbar a .icon{width:22px;height:22px}
+.icon-btn .icon{width:22px;height:22px}
+/* One page-header pattern: eyebrow + h1 + optional subtitle (R4) */
+.page-head{margin:0 0 18px}
+.page-head .eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
+.page-head h1{margin:2px 0 0;font-size:28px;line-height:1.2}
+.page-head .ph-zh{display:block;font-family:var(--font-zh);font-size:20px;font-weight:500;color:var(--text-2);margin-top:2px}
+.page-head .ph-sub{margin:6px 0 0;color:var(--muted)}
+/* Horizontally scrolling chip row on phones */
+.chip-scroll,.chips.chip-scroll{display:flex;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin-right:calc(-1 * var(--pad));padding-right:var(--pad)}
+.chip-scroll::-webkit-scrollbar{display:none}
+.chip-scroll>.chip{flex:none;white-space:nowrap}
+@media (min-width:761px){.chips.chip-scroll{flex-wrap:wrap;margin-right:0;padding-right:0}}
+.page-head.has-lead{display:flex;gap:16px;align-items:center}
+.ph-lead{flex:none;display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;background:var(--soft);font-size:30px}

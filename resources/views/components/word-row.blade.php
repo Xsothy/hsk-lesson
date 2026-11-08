@@ -7,11 +7,11 @@ $el = $href ? 'a' : 'div';
 <{{ $el }} @if($href) href="{{ $href }}" @endif {{ $attributes->merge(['class' => 'word-row']) }}>
   <span class="wr-zh zh">{{ $w->hanzi }}</span>
   <span class="wr-body">
-    <span class="wr-py @if(!empty($w->tone)) tone-{{ (int) $w->tone }} @endif">{{ $w->pinyin }}</span>
+    <span class="wr-py @if(!empty($w->tone)) tone-{{ (int) $w->tone }} @endif">{!! \App\Support\Pinyin::toneHtml($w->pinyin, $w->hanzi) !!}</span>
     <span class="wr-en">{{ $w->english }}</span>
   </span>
   @if ($tag)<span class="wr-tag">{{ $tag }}</span>@endif
   @if ($audio)
-    <button type="button" class="icon-btn wr-audio" data-say="{{ $w->hanzi }}" aria-label="Play {{ $w->hanzi }}">🔊</button>
+    <button type="button" class="icon-btn wr-audio" data-say="{{ $w->hanzi }}" aria-label="Play {{ $w->hanzi }}"><x-icon name="audio" :size="20" /></button>
   @endif
 </{{ $el }}>

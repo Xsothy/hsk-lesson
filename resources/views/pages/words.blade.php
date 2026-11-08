@@ -3,7 +3,7 @@
 @push('head')<link rel="stylesheet" href="/css/words.css">@endpush
 @section('content')
 <div class="words-page" data-words-page>
-  <h1>My words</h1>
+  <x-page-head eyebrow="More" title="My words" />
 
   <div class="words-stats" aria-label="Your progress">
     <x-stat-card value="0" label="Saved" tone="red" data-stat="saved" />

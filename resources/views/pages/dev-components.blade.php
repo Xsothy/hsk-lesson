@@ -52,8 +52,8 @@
 
 <h2>action-row</h2>
 <div class="stack">
-  <x-action-row icon="✍️" title="Practice writing" sub="12 characters" variant="dark"/>
-  <x-action-row icon="🔁" title="Review flashcards" sub="8 due"/>
+  <x-action-row icon="pen" title="Practice writing" sub="12 characters" variant="dark"/>
+  <x-action-row icon="repeat" title="Review flashcards" sub="8 due"/>
 </div>
 
 <h2>lesson-card</h2>

@@ -2,21 +2,21 @@
 @section('title', $q !== '' ? "Search: $q" : 'Browse')
 @push('head')<link rel="stylesheet" href="/css/browse.css">@endpush
 @section('content')
-<h1>Browse</h1>
+<x-page-head eyebrow="Characters" title="Browse" />
 <form class="browse-search" role="search" action="{{ route('browse') }}" method="get">
   <label class="sr-only" for="browse-q">Search HSK words</label>
   <input id="browse-q" type="search" name="q" value="{{ $q }}" placeholder="Hanzi, pinyin or English" autocomplete="off" autocapitalize="off" spellcheck="false">
   <button type="submit" class="btn">Search</button>
 </form>
 
-<nav class="chips browse-tabs" aria-label="Browse by">
+<nav class="chips chip-scroll browse-tabs" aria-label="Browse by">
   @foreach (\App\Http\Controllers\BrowseController::TABS as $key => $label)
     <x-chip :href="route('browse', ['tab' => $key])" :active="$tab === $key">{{ $label }}</x-chip>
   @endforeach
 </nav>
 
 @if ($tab === 'hsk2' || $tab === 'hsk3')
-  <nav class="chips sub-chips" aria-label="Level">
+  <nav class="chips chip-scroll sub-chips" aria-label="Level">
     @foreach ($levels as $lv)
       <x-chip :href="route('browse', ['tab' => $tab, 'level' => $lv])" :active="$lv === $level && !$set">Level {{ \App\Http\Controllers\LearnController::levelLabel($version, $lv) }}</x-chip>
     @endforeach
@@ -40,7 +40,7 @@
     @endforeach
   </details>
   @if ($syl)
-    <nav class="chips sub-chips" aria-label="Tone">
+    <nav class="chips chip-scroll sub-chips" aria-label="Tone">
       <x-chip :href="route('browse', ['tab' => 'pinyin', 'syl' => $syl])" :active="!$tone">All tones</x-chip>
       @foreach ($toneCounts as $t => $n)
         <x-chip :href="route('browse', ['tab' => 'pinyin', 'syl' => $syl, 'tone' => $t])" :active="$tone === $t" class="tone-{{ $t }}">{{ $t === 5 ? 'Neutral' : 'Tone '.$t }} · {{ $n }}</x-chip>

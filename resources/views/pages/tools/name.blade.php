@@ -4,7 +4,7 @@
 @section('content')
 <div class="tool" data-tool="name" data-url="{{ url('/tools/name') }}">
   <a class="back" href="{{ route('tools') }}">‹ Tools</a>
-  <h1>Chinese name helper</h1>
+  <x-page-head eyebrow="Tools" title="Chinese name helper" />
   <p class="tool-note">For fun only: a sound-alike name, not an official or traditional one. Real Chinese names are chosen with care for meaning, family and tone.</p>
   <label class="tool-label" for="nm-in">Your English name</label>
   <div class="tool-row">

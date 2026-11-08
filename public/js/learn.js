@@ -57,8 +57,11 @@
     if (last && cont) {
       var link = cont.getAttribute('data-default').replace(/[^/]+$/, encodeURIComponent(last.slug));
       cont.href = link + (last.section ? '#' + last.section : '');
-      document.getElementById('continue-title').textContent = 'Lesson ' + last.slug.replace(/\D+/g, '');
-      document.getElementById('continue-sub').textContent = last.section ? 'Next: ' + last.section : 'Pick up where you left off';
+      // Same wording as the server-rendered card: "Lesson N · Title" + where to pick up.
+      var titles = {}; try { titles = JSON.parse(cont.getAttribute('data-lessons') || '{}') || {}; } catch (e) {}
+      var names = { vocab: 'Vocabulary', grammar: 'Grammar', dialogue: 'Dialogue', sentences: 'Sentences', reading: 'Reading', practice: 'Practice' };
+      document.getElementById('continue-title').textContent = titles[last.slug] || ('Lesson ' + last.slug.replace(/\D+/g, ''));
+      document.getElementById('continue-sub').textContent = last.section ? 'Pick up at ' + (names[last.section] || last.section) : 'Pick up where you left off';
     }
   }
 

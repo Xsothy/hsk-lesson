@@ -19,7 +19,7 @@
 @endphp
 <div {{ $attributes->merge(['class' => 'ruby-line']) }}>
   <span class="rl-text zh" lang="zh-CN">{!! $html !!}</span>
-  @if ($audio)<button type="button" class="icon-btn rl-audio" data-say="{{ $audio }}" aria-label="Play line">🔊</button>@endif
+  @if ($audio)<button type="button" class="icon-btn rl-audio" data-say="{{ $audio }}" aria-label="Play line"><x-icon name="audio" :size="20" /></button>@endif
 </div>
 @once
 @push('scripts')<script src="/js/ruby.js"></script>@endpush

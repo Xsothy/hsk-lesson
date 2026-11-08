@@ -11,5 +11,5 @@
     @endif
     @if ($en)<div class="b-en">{{ $en }}</div>@endif
   </div>
-  <button type="button" class="icon-btn b-audio" data-say="{{ $zh }}" aria-label="Play line">🔊</button>
+  <button type="button" class="icon-btn b-audio" data-say="{{ $zh }}" aria-label="Play line"><x-icon name="audio" :size="20" /></button>
 </div>

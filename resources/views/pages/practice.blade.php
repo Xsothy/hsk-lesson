@@ -15,8 +15,8 @@
 
 @section('content')
 <div class="pr" data-practice @if($hasSource) data-has-source @endif data-mode="{{ ($params['mode'] ?? '') === 'dictation' ? 'dictation' : 'write' }}">
-  <header class="pr-head">
-    <span class="pr-kicker">Practice</span>
+  <header class="page-head pr-head">
+    <span class="eyebrow">Practice</span>
     <h1 class="pr-title" data-title>Write the characters</h1>
   </header>
 
@@ -24,14 +24,14 @@
   <section class="pr-picker" data-picker @if($hasSource) hidden @endif aria-label="Choose what to practise">
     <div class="pr-group">
       <h2 class="pr-h2">Saved &amp; due</h2>
-      <x-action-row icon="🔖" title="My saved words" sub="Characters from words you saved" :href="route('practice', ['source' => 'saved'])" />
-      <x-action-row icon="⏰" title="Due cards" sub="Characters from cards due for review" :href="route('practice', ['source' => 'due'])" />
+      <x-action-row icon="bookmark" title="My saved words" sub="Characters from words you saved" :href="route('practice', ['source' => 'saved'])" />
+      <x-action-row icon="clock" title="Due cards" sub="Characters from cards due for review" :href="route('practice', ['source' => 'due'])" />
     </div>
     <div class="pr-group">
       <h2 class="pr-h2">A lesson</h2>
-      <div class="pr-chips">
+      <div class="pr-chips pr-lessons">
         @foreach ($lessons as $l)
-          <x-chip :href="route('practice', ['lesson' => $l->slug])">Lesson {{ $l->number }} <span class="zh" lang="zh-Hans">{{ $l->zh_title }}</span></x-chip>
+          <x-chip class="pr-lesson" :href="route('practice', ['lesson' => $l->slug])"><span class="pr-lesson-n">Lesson {{ $l->number }}</span> <span class="zh" lang="zh-Hans">{{ $l->zh_title }}</span></x-chip>
         @endforeach
       </div>
     </div>
@@ -90,8 +90,8 @@
       <x-stat-card value="0%" label="Stroke accuracy" tone="gold" data-stat="accuracy" />
     </div>
     <p class="pr-note" data-skipped hidden></p>
-    <x-action-row variant="dark" icon="🧠" title="Review flashcards" sub="Keep it fresh with spaced repetition" :href="route('review')" />
-    <x-action-row icon="✍️" title="Back to Practice" sub="Pick another source" :href="route('practice')" />
+    <x-action-row variant="dark" icon="cards" title="Review flashcards" sub="Keep it fresh with spaced repetition" :href="route('review')" />
+    <x-action-row icon="pen" title="Back to Practice" sub="Pick another source" :href="route('practice')" />
     <button type="button" class="pr-btn" data-action="again">Practise this set again</button>
   </section>
 </div>

@@ -41,7 +41,7 @@
 
 .browse-list{display:flex;flex-direction:column;gap:8px}
 .browse-list .word-row{min-width:0}
-.browse-list .wr-en{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.browse-list .wr-en{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2}
 .browse-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px}
 .browse-grid .char-tile{min-width:0}
 .browse-grid .ct-m{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}

@@ -89,3 +89,31 @@ a.lesson-card:hover{border-color:var(--red)}
 .word-sheet::backdrop{background:rgba(0,0,0,.35)}
 .ws-head{display:flex;align-items:center;gap:8px}.ws-zh{font-size:calc(36px*var(--cs,1));flex:1}
 .ws-py{font-size:18px;margin-top:4px}.ws-en{color:var(--text-2);margin:4px 0 12px}.ws-chars{display:flex;flex-wrap:wrap;gap:8px}
+/* R4 polish: icons, tile sizing, one hanzi+pinyin rule */
+.icon{display:inline-block;flex:none;vertical-align:middle}
+.ar-icon{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:var(--soft);color:var(--red);font-size:22px}
+.action-dark .ar-icon{background:rgba(255,255,255,.12);color:inherit}
+.ar-go{display:inline-flex;color:var(--muted)}.action-dark .ar-go{color:inherit}
+.menu-btn{display:inline-flex;align-items:center;gap:4px}
+.ct-c{white-space:nowrap}
+.ct-len-3 .ct-c{font-size:calc(26px*var(--cs,1))}
+.ct-len-4 .ct-c{font-size:calc(21px*var(--cs,1))}
+.ct-p{font-size:14px;white-space:nowrap}
+.ct-m{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wr-py{font-size:15px;font-weight:500}
+.wr-zh{white-space:nowrap}
+.char-tile .ct-p .tone-5,.wr-py .tone-5{color:var(--muted)}
+@media (max-width:560px){
+  .word-row:has(.wr-tag){display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"zh body audio" "zh tag audio";column-gap:14px;row-gap:4px}
+  .word-row:has(.wr-tag) .wr-zh{grid-area:zh}.word-row:has(.wr-tag) .wr-body{grid-area:body}
+  .word-row:has(.wr-tag) .wr-tag{grid-area:tag;justify-self:start}.word-row:has(.wr-tag) .wr-audio{grid-area:audio}
+}
+/* Hanzi Writer loading placeholder (ghost character or skeleton) */
+.wg-writer{overflow:hidden;border-radius:inherit}
+.wg-writer>.wg-loading,.wg-writer>.wg-skeleton{position:absolute;inset:0;margin:auto;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.wg-ghost.wg-loading{opacity:.18;animation:wg-pulse 1.2s ease-in-out infinite alternate}
+.wg-skeleton{width:62%;height:62%;border-radius:var(--r-m);background:var(--soft);animation:wg-sk 1.2s ease-in-out infinite alternate}
+@keyframes wg-sk{from{opacity:1}to{opacity:.45}}
+.wg-writer>svg{position:relative}
+@keyframes wg-pulse{from{opacity:.12}to{opacity:.3}}
+@media (prefers-reduced-motion:reduce){.wg-ghost.wg-loading,.wg-skeleton{animation:none}}

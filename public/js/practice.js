@@ -100,7 +100,8 @@
 
   function paintPrompt(reveal) {
     var it = cur(), dict = S.mode === 'dictation';
-    el.py.textContent = dict && !reveal ? '' : (it.pinyin || '');
+    var py = dict && !reveal ? '' : (it.pinyin || '');
+    if (py && window.HSK_PINYIN) el.py.innerHTML = window.HSK_PINYIN.html(py); else el.py.textContent = py;
     el.en.textContent = it.english || '';
     el.grid.dataset.mode = dict ? 'blank' : 'write';
     el.grid.classList.toggle('wg-blank', dict);
@@ -128,7 +129,7 @@
     el.mount.replaceChildren();
     if (!window.HanziWriter) { say('Could not load the writing tool. Check your connection and reload.', 'bad'); return; }
     S.writer = HC.createWriter(el.mount, it.char, {
-      width: size, height: size, showCharacter: false, showOutline: S.outline,
+      width: size, height: size, showCharacter: false, showOutline: S.outline, ghost: false,
       onLoadCharDataError: function () { say('Stroke data is not available for ' + it.char + ' — use Next to skip.', 'bad'); },
     });
     quiz();

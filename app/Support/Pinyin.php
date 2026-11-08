@@ -215,4 +215,31 @@ class Pinyin
             return $out.($buf !== '' ? $buf.'5' : '');
         }, $s);
     }
+
+    /**
+     * Tone-coloured HTML for a reading: one <span class="tone-N"> per syllable, escaped.
+     * "xuéxí" + zh "学习" → two spans; " · "/","-separated alternatives are kept as text.
+     */
+    public static function toneHtml(?string $pinyin, ?string $zh = null): string
+    {
+        $pinyin = trim((string) $pinyin);
+        if ($pinyin === '') {
+            return '';
+        }
+        $parts = preg_split('/(\s*[·,;\/]\s*)/u', $pinyin, -1, PREG_SPLIT_DELIM_CAPTURE);
+        $alternatives = count($parts) > 1;
+        $out = '';
+        foreach ($parts as $i => $part) {
+            if ($i % 2 === 1) {
+                $out .= e($part);
+                continue;
+            }
+            $count = ($zh !== null && ! $alternatives) ? mb_strlen($zh) : 0;
+            $syl = \App\Services\RubyTokens::syllables($part, $count);
+            $sep = str_contains($part, ' ') ? ' ' : '';
+            $out .= implode($sep, array_map(fn ($x) => '<span class="tone-'.self::tone($x).'">'.e($x).'</span>', $syl));
+        }
+
+        return $out;
+    }
 }

@@ -29,10 +29,14 @@
 .continue{display:flex;flex-direction:column;gap:2px;padding:20px 22px;background:var(--ink);color:#fff;border-radius:var(--r-xl);text-decoration:none;min-height:44px}
 .continue .eyebrow{color:#d9d2c6}.continue-title{font-size:22px;font-weight:600}.continue-sub{color:#d9d2c6}
 .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.stat-grid>*{min-width:0}
 .plain{text-decoration:none;color:inherit;display:block}
 .cotd{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .hub-grid{display:grid;grid-template-columns:1fr;gap:10px}
-.path-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.path-row+.path-row{margin-top:18px}
+.path-h{margin:0 0 10px;font-size:15px;font-weight:600}.path-h .muted{font-weight:400;font-size:13px;margin-left:6px}
+.path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.path-grid-3 .path-card:last-child{grid-column:1/-1}
 .path-card{display:flex;flex-direction:column;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);text-decoration:none;min-height:44px}
 .path-v{font-size:12px;color:var(--muted)}.path-l{font-weight:600}
 .levels{display:flex;flex-direction:column;gap:10px;margin-top:12px}
@@ -47,6 +51,26 @@
 @media (min-width:761px){
   .stat-grid{grid-template-columns:repeat(4,1fr)}
   .hub-grid{grid-template-columns:repeat(2,1fr)}
-  .path-grid{grid-template-columns:repeat(4,1fr)}
+  .path-grid-2{grid-template-columns:repeat(6,1fr)}.path-grid-3{grid-template-columns:repeat(7,1fr)}
+  .path-grid-3 .path-card:last-child{grid-column:auto}
   .section-nav{top:68px}
 }
+/* Home stats (R4): equal-height cards; three stats in a row, Character of the day full width on phones, fourth column on desktop */
+.home-stats{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+.home-stats>.plain,.home-stats>.stat-card{height:100%}
+.home-stats .plain>.stat-card{height:100%}
+.home-stats .stat-card{display:flex;flex-direction:column;justify-content:center;padding:14px}
+.home-stats .cotd{grid-column:1/-1}
+.home-stats .cotd .char-tile{width:100%;flex:1;justify-content:center}
+@media (min-width:761px){
+  .home-stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .home-stats .cotd{grid-column:auto}
+}
+/* Lesson & reading header: Chinese title on its own line */
+.lesson-head{margin:8px 0 20px}
+.gram .ruby-line{margin-top:4px}
+.pattern-line{display:inline-flex;padding:2px 12px;background:var(--gold-t);border-radius:var(--r-s)}
+.pattern-line .rl-text{font-size:calc(20px*var(--cs,1))}
+.pattern-line .ph{font-family:var(--font-ui);font-size:15px;color:var(--gold);padding:0 2px}
+@media (max-width:760px){.home-stats .stat-value{font-size:24px}.home-stats .stat-label{font-size:12px}}
+.path-card .muted{white-space:nowrap}

@@ -4,7 +4,7 @@
 @section('content')
 <div class="tool" data-tool="zodiac" data-url="{{ url('/tools/zodiac') }}">
   <a class="back" href="{{ route('tools') }}">‹ Tools</a>
-  <h1>Chinese zodiac</h1>
+  <x-page-head eyebrow="Tools" title="Chinese zodiac" />
   <p class="muted">The zodiac year starts at Chinese New Year, not on 1 January. Dates 1900–2100.</p>
   <label class="tool-label" for="zd-in">Birth date</label>
   <div class="tool-row">

@@ -2,7 +2,7 @@
 @section('title', $q !== '' ? "Search: $q" : 'Search')
 @push('head')<link rel="stylesheet" href="/css/browse.css"><link rel="stylesheet" href="/css/search.css">@endpush
 @section('content')
-<h1>Search</h1>
+<x-page-head eyebrow="Characters" title="Search" />
 <form class="browse-search" role="search" action="{{ route('search') }}" method="get">
   <label class="sr-only" for="search-q">Search</label>
   <input id="search-q" type="search" name="q" value="{{ $q }}" placeholder="Hanzi, pinyin or English" autocomplete="off" autocapitalize="off" spellcheck="false" @if($q === '') autofocus @endif>

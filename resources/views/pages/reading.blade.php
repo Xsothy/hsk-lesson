@@ -3,13 +3,8 @@
 @push('head')<link rel="stylesheet" href="/css/learn.css">@endpush
 @section('content')
 <a class="back" href="{{ route('lesson', $lesson->slug) }}#reading">← Lesson {{ $lesson->number }}</a>
-<header class="lesson-head">
-  <span class="lesson-emoji" aria-hidden="true">{{ $reading->emoji }}</span>
-  <div>
-    <div class="eyebrow">Reading {{ $n }} of {{ $total }}</div>
-    <h1><span class="zh">{{ $reading->title }}</span> <small>{{ $reading->title_en }}</small></h1>
-  </div>
-</header>
+<x-page-head class="lesson-head" :lead="$reading->emoji" :eyebrow="'Reading '.$n.' of '.$total" :title="$reading->title_en ?: $reading->title"
+  :zh="$reading->title_en ? $reading->title : null" />
 
 <div class="toggles" role="group" aria-label="Display">
   <button type="button" class="chip is-active" id="tg-pinyin" aria-pressed="true">Pinyin</button>
@@ -49,7 +44,7 @@
 @endif
 
 @if ($n < $total)
-  <x-action-row icon="➡️" title="Next reading" :href="route('reading', [$lesson->slug, $n + 1])" />
+  <x-action-row icon="arrow-right" title="Next reading" :href="route('reading', [$lesson->slug, $n + 1])" />
 @endif
 @endsection
 @push('scripts')<script src="/js/store.js"></script><script src="/js/learn.js"></script><script src="/js/reading.js"></script>@endpush

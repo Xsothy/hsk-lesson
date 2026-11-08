@@ -12,8 +12,7 @@ $segs = [
 ];
 @endphp
 @section('content')
-<h1>Settings</h1>
-<p class="st-lead">Saved on this device and applied everywhere straight away.</p>
+<x-page-head eyebrow="More" title="Settings" sub="Saved on this device and applied everywhere straight away." />
 
 @php
 $segment = function (string $n) use ($segs) {
