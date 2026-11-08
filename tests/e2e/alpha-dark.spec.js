@@ -16,7 +16,7 @@ async function lessonSlug(request) {
 function routes(slug) {
   return ['/home', '/courses', `/lessons/${slug}`, `/lessons/${slug}/reading/1`, '/char/' + encodeURIComponent('学'),
     '/browse', '/search?q=' + encodeURIComponent('学'), '/practice', '/practice/sentences', '/review', '/words',
-    '/settings', '/tools', '/tools/pinyin', '/tools/hsk-check', '/tools/name', '/tools/zodiac', '/worksheet', '/login', '/register'];
+    '/settings', '/tools', '/tools/pinyin', '/tools/hsk-check', '/tools/name', '/tools/zodiac', '/worksheet', '/login', '/register', '/practice/match', '/guides', '/guides/de-particles'];
 }
 
 /** Lowest contrast among visible text-bearing elements (runs in the page). */
