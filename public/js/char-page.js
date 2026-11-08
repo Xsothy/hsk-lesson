@@ -120,15 +120,14 @@
 
     const create = () => {
       target.replaceChildren();
-      writer = HanziWriter.create(target, c, {
-        width: size, height: size, padding: 16,
-        strokeColor: getComputedStyle(document.body).getPropertyValue('--ink').trim() || '#0f0c08',
-        radicalColor: '#b8892e', highlightColor: '#b5302a', outlineColor: '#d6cdbf', drawingColor: '#b5302a',
+      // Shared helpers live in character.js (HSKCharacter); this legacy page keeps its own UI.
+      writer = window.HSKCharacter.createWriter(target, c, {
+        width: size, height: size,
         showOutline: true, showCharacter: mode === 'watch',
-        strokeAnimationSpeed: SPEEDS[speedIdx], delayBetweenStrokes: 250,
+        strokeAnimationSpeed: SPEEDS[speedIdx],
         onLoadCharDataSuccess: (data) => {
           main.querySelector('[data-slot="stroke-count"]').textContent = `${data.strokes.length} strokes`;
-          renderDiagrams(data.strokes);
+          window.HSKCharacter.renderDiagrams($('#cp-diagrams'), data.strokes);
         },
         onLoadCharDataError: () => { feedback.textContent = 'Stroke data not available for this character.'; },
       });
@@ -141,8 +140,7 @@
       outlineOn ? writer.showOutline() : writer.hideOutline();
       feedback.className = 'cp-feedback';
       feedback.textContent = 'Write the first stroke.';
-      writer.quiz({
-        showHintAfterMisses: 3,
+      window.HSKCharacter.runQuiz(writer, {
         onMistake: () => { feedback.className = 'cp-feedback bad'; feedback.textContent = 'Not quite — try that stroke again.'; },
         onCorrectStroke: (s) => {
           nextStroke = s.strokeNum + 1;
@@ -151,6 +149,7 @@
         },
         onComplete: (s) => {
           feedback.className = 'cp-feedback ok';
+          window.HSKCharacter.markWritten(c);
           feedback.textContent = s.totalMistakes ? `Done with ${s.totalMistakes} mistake${s.totalMistakes > 1 ? 's' : ''}. Retry to improve.` : 'Perfect! No mistakes.';
         },
       });
@@ -189,30 +188,6 @@
     });
 
     create();
-  }
-
-  function renderDiagrams(strokes) {
-    const box = $('#cp-diagrams');
-    const NS = 'http://www.w3.org/2000/svg';
-    const { transform } = HanziWriter.getScalingTransform(100, 100, 6);
-    const ink = getComputedStyle(document.body).getPropertyValue('--ink').trim() || '#0f0c08';
-    box.replaceChildren(...strokes.map((_, i) => {
-      const svg = document.createElementNS(NS, 'svg');
-      svg.setAttribute('viewBox', '0 0 100 100');
-      svg.setAttribute('role', 'img');
-      svg.setAttribute('aria-label', `Stroke ${i + 1} of ${strokes.length}`);
-      const g = document.createElementNS(NS, 'g');
-      g.setAttribute('transform', transform);
-      strokes.slice(0, i + 1).forEach((d, j) => {
-        const p = document.createElementNS(NS, 'path');
-        p.setAttribute('d', d);
-        p.setAttribute('fill', j === i ? '#b5302a' : ink);
-        if (j !== i) p.setAttribute('opacity', '.55');
-        g.appendChild(p);
-      });
-      svg.appendChild(g);
-      return svg;
-    }));
   }
 
   function highlight(text, c) {
