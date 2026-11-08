@@ -150,40 +150,11 @@
   }
   function cap(s) { return s ? s[0].toUpperCase() + s.slice(1) : s; }
 
-  // ---------- progress (A4 store, with a minimal fallback) ----------
-  function store() { return window.HSK_STORE || window.HSKStore || null; }
-  function lsRead(key, fallback) {
-    try { var v = JSON.parse(localStorage.getItem(key)); return v && typeof v === typeof fallback ? v : fallback; } catch (e) { return fallback; }
-  }
-  function lsWrite(key, v) { try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) { /* storage unavailable */ } }
-
-  function markWritten(c) {
-    var s = store();
-    try { if (s && s.markWritten) return s.markWritten(c); } catch (e) { /* fall through */ }
-    // Fallback until public/js/store.js (A4) is merged; same shape as store.js: {chars:{c:{written,at}}, known:{}}.
-    var p = lsRead('hsk.v1.progress', {});
-    if (!p.chars || typeof p.chars !== 'object') p.chars = {};
-    if (!p.known || typeof p.known !== 'object') p.known = {};
-    var e = p.chars[c] || { written: 0 };
-    e.written = (e.written || 0) + 1; e.at = Date.now(); p.chars[c] = e;
-    lsWrite('hsk.v1.progress', p);
-    return e;
-  }
-  function isSaved(w) {
-    var s = store();
-    try { if (s && s.isSaved) return s.isSaved(w); } catch (e) { /* fall through */ }
-    var a = lsRead('hsk.v1.saved', []);
-    return Array.isArray(a) && a.indexOf(w) >= 0;
-  }
-  function setSaved(w, on) {
-    var s = store();
-    try { if (s && s.saveWord) { on ? s.saveWord(w) : s.unsaveWord(w); return; } } catch (e) { /* fall through */ }
-    var a = lsRead('hsk.v1.saved', []);
-    if (!Array.isArray(a)) a = [];
-    a = a.filter(function (x) { return x !== w; });
-    if (on) a.push(w);
-    lsWrite('hsk.v1.saved', a);
-  }
+  // ---------- progress (A4 client store, public/js/store.js) ----------
+  function store() { return window.HSK_STORE || null; }
+  function markWritten(c) { var s = store(); return s ? s.markWritten(c) : null; }
+  function isSaved(w) { var s = store(); return !!(s && s.isSaved(w)); }
+  function setSaved(w, on) { var s = store(); if (s) { if (on) s.saveWord(w); else s.unsaveWord(w); } }
 
   window.HSKCharacter = {
     loadCharData: loadCharData, charDataLoader: charDataLoader, createWriter: createWriter, runQuiz: runQuiz,

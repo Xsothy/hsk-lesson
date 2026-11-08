@@ -52,7 +52,7 @@ class CharacterPageTest extends TestCase
             ->assertSee('class="char-tile', false)
             ->assertSee('href="'.route('char', '字').'"', false)
             ->assertSee('/css/character.css', false)
-            ->assertSee('/js/character.js', false)
+            ->assertSeeInOrder(['/js/store.js', '/js/character.js'], false)
             ->assertSee('hanzi-writer@3.7.2', false);
     }
 

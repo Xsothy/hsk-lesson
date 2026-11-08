@@ -205,7 +205,7 @@
 @endsection
 
 @push('scripts')
-@if (file_exists(public_path('js/store.js')))<script src="/js/store.js"></script>@endif
+<script src="/js/store.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
 <script src="/js/character.js"></script>
 @endpush
