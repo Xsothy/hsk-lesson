@@ -43,6 +43,17 @@ Progress (known words, SRS state, saved words, streak) lives in **`localStorage`
 
 Tickets are sized for one agent each. **Deps** must be merged first. Every ticket: feature test(s) in `tests/Feature`, works at 390 px and 1200 px, touch targets ≥ 44 px, text contrast ≥ 4.5:1, no console errors.
 
+**Model tags.** 🔴 **OPUS NEEDED** = design-heavy, cross-cutting or tricky logic; give it to the strongest agent. 🟢 Sonnet-OK = well-specified, mostly mechanical. Ticket headings below carry the tag.
+
+| Tag | Tickets | Why |
+|---|---|---|
+| 🔴 OPUS NEEDED | **A3** Shared components | Sets the contract every page depends on; needs faithful visual parity with the canvas |
+| 🔴 OPUS NEEDED | **C1** Character page | Hanzi Writer integration, Watch/Write state machine, stroke diagrams, store sync |
+| 🔴 OPUS NEEDED | **C2** Browse / search | Matching `xue`/`xué`/`xue2`/`学`/`study` to one result; pinyin normalisation, ranking, pagination |
+| 🔴 OPUS NEEDED | **D1** Practice session | Queue building from multiple sources, quiz lifecycle, result recording |
+| 🔴 OPUS NEEDED | **D2** Review (SRS) | Scheduling correctness (SM-2/FSRS), due-count consistency with Home |
+| 🟢 Sonnet-OK | A1, A2, A4, B1, B2, B3, B4, C3, D3, E1, E2 | Clear specs and mechanical porting; A2 and A4 should still be reviewed by Opus before merge since everything depends on them |
+
 ### Track A — Foundation (do first, serial)
 
 **A1 · Commit baseline + tooling** — Deps: none
@@ -56,7 +67,7 @@ Tickets are sized for one agent each. **Deps** must be merged first. Every ticke
 - Route skeleton for every alpha page returning the layout with a placeholder.
 - ✅ Every alpha route renders header + tab bar; dropdowns work by mouse and keyboard; tab bar hidden ≥ 761 px.
 
-**A3 · Shared components** — Deps: A2
+**A3 · Shared components** 🔴 OPUS NEEDED — Deps: A2
 - Remaining Blade components from §3.2 with props matching the canvas (e.g. `<x-char-tile c p m tone dot variant large href/>`, `<x-word-row :word audio/>`, `<x-quiz-option label state/>`, `<x-writing-grid char mode grid stroke max/>`).
 - A `/dev/components` page (local only) rendering each in all states, like canvas page 5.
 - ✅ Visual parity with canvas page 5 at both widths.
@@ -88,13 +99,13 @@ Tickets are sized for one agent each. **Deps** must be merged first. Every ticke
 
 ### Track C — Characters (parallel after A3)
 
-**C1 · Character page (redesign)** — Deps: A3, A4
+**C1 · Character page (redesign)** 🔴 OPUS NEEDED — Deps: A3, A4
 - Replace `public/char.html` with Blade page at `/char/{c}` (keep `/char.html?c=` redirect).
 - Sections: **01 Write** (Watch/Write pill toggle, `writing-grid` with Hanzi Writer mounted inside, round icon controls: Replay · Play/Pause · Speed | Hint · Outline · Retry), **02 Stroke order** (prev/next, progress bar, 4×2 cells, per-stroke tip), **03 Details** (taught in lessons, words with audio, examples from our lessons, facts, related).
 - Reuse logic from `public/js/char-page.js` (quiz, diagrams) — move to `public/js/character.js`.
 - ✅ 学 shows 8 strokes; writing all strokes completes the quiz; `markWritten` updates store.
 
-**C2 · Browse / HSK & Dictionary** — Deps: A3
+**C2 · Browse / HSK & Dictionary** 🔴 OPUS NEEDED — Deps: A3
 - Tabs HSK 2.0 · HSK 3.0 · By pinyin · By radical (pinyin = toneless syllable groups + tone filter; radical = by stroke count from `characters.radical`).
 - List/Grid toggle, filters All / To learn / Known (store), Practise button.
 - Uses `GET /api/v1/hsk-words` logic via a new public `/data/hsk-words?q&level&version&page`.
@@ -106,12 +117,12 @@ Tickets are sized for one agent each. **Deps** must be merged first. Every ticke
 
 ### Track D — Practice & Review (parallel after A4 + C1)
 
-**D1 · Practice session (Write + Dictation)** — Deps: C1
+**D1 · Practice session (Write + Dictation)** 🔴 OPUS NEEDED — Deps: C1
 - Sources: a lesson (`?lesson=`), an HSK level/set, saved words, due cards. Queue = unique characters.
 - Write mode: outline shown; Dictation: audio + English hint, `mode=blank`. Hanzi Writer `quiz({showHintAfterMisses:3})`. Icon controls Hint · Outline · Retry · Next; session progress; done chips.
 - ✅ Completing a 5-character queue records results and returns a summary.
 
-**D2 · Review (flashcards)** — Deps: A4
+**D2 · Review (flashcards)** 🔴 OPUS NEEDED — Deps: A4
 - Deck = lesson words + saved words + HSK level (choose). SRS: SM-2 or `ts-fsrs` (MIT) via CDN; ratings Again/Hard/Good/Easy with next-due label. Settings: show first Chinese/English/Audio, pinyin on front, audio on reveal, new/day.
 - ✅ Rating updates due date; due count on Home matches.
 

@@ -15,6 +15,20 @@ Route::controller(LegacyDataController::class)->group(function () {
     Route::get('/js/word-map.js', 'wordMap');
 });
 
+// Alpha pages (A2 skeleton). `/` still serves the legacy home until parity.
+$page = fn (string $title) => fn () => view('pages.placeholder', ['title' => $title]);
+Route::get('/home', $page('Today'))->name('home');
+Route::get('/courses', $page('Courses'))->name('courses');
+Route::get('/lessons/{slug}', fn (string $slug) => view('pages.placeholder', ['title' => 'Lesson '.$slug]))->name('lesson');
+Route::get('/lessons/{slug}/reading/{n}', fn (string $slug, string $n) => view('pages.placeholder', ['title' => 'Reading']))->name('reading');
+Route::get('/char/{c}', fn (string $c) => view('pages.placeholder', ['title' => $c]))->name('char');
+Route::get('/browse', $page('Browse'))->name('browse');
+Route::get('/search', $page('Search'))->name('search');
+Route::get('/practice', $page('Practice'))->name('practice');
+Route::get('/review', $page('Review'))->name('review');
+Route::get('/words', $page('My words'))->name('words');
+Route::get('/settings', $page('Settings'))->name('settings');
+
 // Public read-only JSON for the character page (no token needed).
 Route::get('/data/char/{char}.json', [\App\Http\Controllers\Api\ReferenceController::class, 'character'])
     ->middleware('throttle:120,1');
