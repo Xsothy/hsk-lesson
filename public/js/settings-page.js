@@ -20,6 +20,9 @@
     $('st-goal').value = String(s.dailyGoal);
     if (!$('st-goal').value) { var o = document.createElement('option'); o.value = o.textContent = String(s.dailyGoal); $('st-goal').appendChild(o); $('st-goal').value = String(s.dailyGoal); }
     $('st-hint').value = String(s.hintAfterMisses);
+    $('st-rv-first').value = ['zh', 'en', 'audio'].indexOf(s.reviewFirst) >= 0 ? s.reviewFirst : 'zh';
+    $('st-rv-pinyin').value = s.reviewPinyinFront === true ? 'on' : 'off';
+    $('st-rv-audio').value = s.reviewAudioReveal === false ? 'off' : 'on';
     if ($('st-voice').querySelector('option[value="' + s.voice.replace(/"/g, '\\"') + '"]')) $('st-voice').value = s.voice;
     else $('st-voice').value = '';
   }
@@ -34,6 +37,9 @@
   });
   $('st-goal').addEventListener('change', function () { S.setSettings({ dailyGoal: parseInt(this.value, 10) }); });
   $('st-hint').addEventListener('change', function () { S.setSettings({ hintAfterMisses: parseInt(this.value, 10) }); });
+  $('st-rv-first').addEventListener('change', function () { S.setSettings({ reviewFirst: this.value }); });
+  $('st-rv-pinyin').addEventListener('change', function () { S.setSettings({ reviewPinyinFront: this.value === 'on' }); });
+  $('st-rv-audio').addEventListener('change', function () { S.setSettings({ reviewAudioReveal: this.value === 'on' }); });
   $('st-voice').addEventListener('change', function () { S.setSettings({ voice: this.value }); });
 
   // Voices load asynchronously in most browsers.

@@ -38,6 +38,10 @@
   function queueUrl() {
     var src = q.get('source');
     if (q.get('lesson')) return Promise.resolve('/data/practice-queue?lesson=' + encodeURIComponent(q.get('lesson')));
+    if (q.get('words')) { // from Browse "Practise" (search / pinyin / radical views)
+      var ws = q.get('words').split(',').map(function (w) { return w.replace(/[^㐀-鿿]/g, ''); }).filter(Boolean).slice(0, 100);
+      if (ws.length) return Promise.resolve('/data/practice-queue?words=' + encodeURIComponent(ws.join(',')));
+    }
     if (q.get('version')) {
       var p = new URLSearchParams();
       ['version', 'level', 'set'].forEach(function (k) { if (q.get(k)) p.set(k, q.get(k)); });
@@ -60,6 +64,10 @@
       if (!r.ok) throw new Error(r.status === 404 ? 'That lesson was not found.' : 'Could not build a queue for that source.');
       return r.json();
     }).then(function (d) {
+      var f = q.get('filter');
+      if (f === 'learn' || f === 'known') { // Browse filter: To learn / Known (store-based)
+        d.items = d.items.filter(function (it) { var k = false; try { k = !!(store && (store.isKnown(it.word) || store.isKnown(it.char))); } catch (e) {} return f === 'known' ? k : !k; });
+      }
       if (!d.items.length) throw new Error('No characters to practise in that source.');
       S.queue = d.items; S.i = 0; S.results = []; S.finished = false;
       el.title.textContent = d.label;

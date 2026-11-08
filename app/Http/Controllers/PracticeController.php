@@ -23,7 +23,7 @@ class PracticeController extends Controller
 
         return view('pages.practice', [
             'lessons' => $lessons,
-            'params' => $request->only(['lesson', 'version', 'level', 'set', 'source', 'mode']),
+            'params' => $request->only(['lesson', 'version', 'level', 'set', 'source', 'mode', 'words', 'filter']),
             'levels2' => LearnController::levels(2),
             'levels3' => LearnController::levels(3),
         ]);

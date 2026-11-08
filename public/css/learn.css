@@ -9,6 +9,7 @@
 .sec{margin-top:var(--gap);scroll-margin-top:120px}
 .sec h2{margin:0 0 14px;font-size:22px}
 .sec-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sec-head a{display:inline-flex;align-items:center;justify-content:flex-end;min-height:44px;min-width:44px}
 .btn{min-height:44px;padding:0 16px;border-radius:var(--r-s);border:1px solid var(--line);background:var(--card);font:inherit;cursor:pointer}
 .btn:hover{border-color:var(--ink)}
 .lesson-head{display:flex;gap:16px;align-items:center;margin:8px 0 20px}

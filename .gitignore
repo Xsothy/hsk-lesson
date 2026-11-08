@@ -28,3 +28,5 @@ Thumbs.db
 _ide_helper.php
 node_modules/
 /database/sources
+/test-results
+/playwright-report

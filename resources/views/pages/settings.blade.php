@@ -65,6 +65,18 @@ $segment = function (string $n) use ($segs) {
       <label for="st-hint">Show a hint after</label>
       <select id="st-hint"><option value="0">Never</option>@foreach ([1, 2, 3, 4, 5] as $n)<option value="{{ $n }}">{{ $n }} {{ $n === 1 ? 'miss' : 'misses' }}</option>@endforeach</select>
     </div>
+    <div class="st-row">
+      <label for="st-rv-first">Flashcards show first</label>
+      <select id="st-rv-first"><option value="zh">Chinese</option><option value="en">English</option><option value="audio">Audio</option></select>
+    </div>
+    <div class="st-row">
+      <label for="st-rv-pinyin">Pinyin on the card front</label>
+      <select id="st-rv-pinyin"><option value="off">Hidden</option><option value="on">Shown</option></select>
+    </div>
+    <div class="st-row">
+      <label for="st-rv-audio">Play audio when a card is revealed</label>
+      <select id="st-rv-audio"><option value="on">Yes</option><option value="off">No</option></select>
+    </div>
   </div>
 </section>
 

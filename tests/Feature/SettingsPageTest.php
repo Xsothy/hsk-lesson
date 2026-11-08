@@ -11,7 +11,7 @@ class SettingsPageTest extends TestCase
         $this->get('/settings')->assertOk()
             ->assertSee('<h1>Settings</h1>', false)
             ->assertSee('Display')->assertSee('Audio')->assertSee('Study')->assertSee('Data')
-            ->assertSee('name="pinyinPos"', false)->assertSee('id="st-voice"', false)
+            ->assertSee('name="pinyinPos"', false)->assertSee('id="st-voice"', false)->assertSee('id="st-rv-first"', false)
             ->assertSee('Export JSON')->assertSee('Import JSON')
             ->assertSee('Sign in to sync')->assertSee('beta')
             ->assertSee('/js/settings-page.js', false)->assertSee('/css/settings.css', false);

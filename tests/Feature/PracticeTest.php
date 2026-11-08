@@ -36,6 +36,12 @@ class PracticeTest extends TestCase
         $this->get('/practice')->assertOk()->assertDontSee('data-has-source', false);
     }
 
+    public function test_browse_words_link_starts_a_session(): void
+    {
+        // Browse "Practise" emits /practice?words=学,学习 — must skip the picker.
+        $this->get('/practice?words='.urlencode('学,学习').'&filter=learn')->assertOk()->assertSee('data-has-source', false);
+    }
+
     public function test_lesson_queue_is_unique_characters(): void
     {
         $slug = \App\Models\Lesson::where('is_published', true)->orderBy('number')->value('slug');

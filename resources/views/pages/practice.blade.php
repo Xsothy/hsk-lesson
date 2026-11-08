@@ -8,7 +8,7 @@
     'audio' => '<path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>',
   ];
   $svg = fn ($k) => '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'.$icon[$k].'</svg>';
-  $hasSource = ! empty($params['lesson']) || ! empty($params['version']) || in_array($params['source'] ?? null, ['saved', 'due'], true);
+  $hasSource = ! empty($params['lesson']) || ! empty($params['version']) || ! empty($params['words']) || in_array($params['source'] ?? null, ['saved', 'due'], true);
 @endphp
 @section('title', 'Practice')
 @push('head')<link rel="stylesheet" href="/css/practice.css">@endpush

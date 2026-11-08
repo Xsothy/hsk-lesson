@@ -153,13 +153,13 @@ Max 3–4 agents at once; avoid two agents editing the same Blade component — 
 
 ## 6. Alpha exit checklist
 
-- [ ] Every alpha page reachable from header (desktop) and tab bar/links (phone); no dead links.
-- [ ] Learn → Write → Review loop completes for Lesson 1 on a real phone.
-- [ ] Progress, saved words, SRS persist across reloads.
-- [ ] All 12 lessons, 24 readings, HSK 2.0 levels 1–6, HSK 3.0 levels 1–9 load.
-- [ ] `php artisan test` + Playwright smoke green.
-- [ ] No hanzistroke.com or publisher content in the repo (`grep` check in CI).
-- [ ] README updated with run steps and the alpha scope.
+- [x] Every alpha page reachable from header (desktop) and tab bar/links (phone); no dead links.
+- [ ] Learn → Write → Review loop completes for Lesson 1 on a real phone. *(Automated at 390×844 in Chromium by `alpha-core-loop.spec.js`; still needs a manual pass on a physical phone — touch, speech voices, soft keyboard.)*
+- [x] Progress, saved words, SRS persist across reloads.
+- [x] All 12 lessons, 24 readings, HSK 2.0 levels 1–6, HSK 3.0 levels 1–9 load. *(HSK 3.0 levels 7–9 are one grouped level "7–9" in the open data; `level=8|9` alone returns an empty list.)*
+- [x] `php artisan test` + Playwright smoke green. *(`npx playwright test`, see README.)*
+- [x] No hanzistroke.com or publisher content in the repo (`grep` check in CI). *(`tests/Feature/ContentRulesTest.php`, runs with `php artisan test`; no CI pipeline exists yet.)*
+- [x] README updated with run steps and the alpha scope.
 
 ## 7. Conventions for agents
 
