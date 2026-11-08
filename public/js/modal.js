@@ -131,6 +131,11 @@
     }
 
     if (!parts || parts.length === 0) {
+      if (vocabItem.c && Array.from(vocabItem.c).length === 1) {
+        container.style.display = 'block';
+        container.innerHTML = `<div class="breakdown-char-links"><a class="breakdown-char-link" href="char.html?c=${encodeURIComponent(vocabItem.c)}">Open ${vocabItem.c} — strokes, practice &amp; more →</a></div>`;
+        return;
+      }
       container.style.display = 'none';
       return;
     }
@@ -156,6 +161,11 @@
     });
 
     html += '</div>';
+
+    // Link each character to its full character page (stroke quiz, facts, related words)
+    html += '<div class="breakdown-char-links">' + [...new Set(parts)].map((char) =>
+      `<a class="breakdown-char-link" href="char.html?c=${encodeURIComponent(char)}">Open ${char} — strokes, practice &amp; more →</a>`
+    ).join('') + '</div>';
 
     if (vocabItem.literal) {
       html += `<div class="breakdown-literal"><strong>Fusion:</strong> ${vocabItem.literal} </div>`;

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character · 汉字课堂</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/char.css">
+  <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+  <script defer src="js/settings.js"></script>
+  <script defer src="js/audio-service.js"></script>
+  <script defer src="js/utils.js"></script>
+  <script defer src="js/char-page.js"></script>
+</head>
+<body class="char-body">
+  <header class="cp-bar">
+    <a class="cp-icon-btn" href="index.html" aria-label="Back to lessons" id="cp-back">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </a>
+    <form class="cp-search" id="cp-search" role="search">
+      <label class="sr-only" for="cp-q">Look up a character</label>
+      <input id="cp-q" name="c" maxlength="1" placeholder="Look up a character…" autocomplete="off">
+      <button type="submit" class="cp-icon-btn" aria-label="Search">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      </button>
+    </form>
+  </header>
+
+  <main class="cp-main" id="cp-main" aria-live="polite">
+    <p class="cp-status" id="cp-status">Loading…</p>
+  </main>
+
+  <template id="cp-template">
+    <section class="cp-hero">
+      <div class="cp-hero-text">
+        <div class="cp-pinyin" data-slot="pinyin"></div>
+        <h1 class="cp-char" data-slot="char"></h1>
+        <p class="cp-def" data-slot="definition"></p>
+        <div class="cp-badges" data-slot="badges"></div>
+      </div>
+      <button class="cp-audio" type="button" data-action="speak" aria-label="Play pronunciation">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+      </button>
+    </section>
+
+    <section class="cp-card" data-slot="lessons-card">
+      <h2 class="cp-h2">Taught in your lessons <span lang="zh-Hans">课程</span></h2>
+      <div class="cp-lessons" data-slot="lessons"></div>
+    </section>
+
+    <section class="cp-card">
+      <div class="cp-h2-row"><h2 class="cp-h2">Stroke order <span lang="zh-Hans">笔顺</span></h2><span class="cp-muted" data-slot="stroke-count"></span></div>
+      <div class="cp-tabs" role="tablist">
+        <button type="button" role="tab" class="cp-tab is-on" data-mode="watch" aria-selected="true">Watch</button>
+        <button type="button" role="tab" class="cp-tab" data-mode="write" aria-selected="false">Write it</button>
+      </div>
+      <div class="cp-stage">
+        <div class="cp-grid" id="cp-writer"></div>
+        <p class="cp-feedback" id="cp-feedback" role="status"></p>
+      </div>
+      <div class="cp-controls" data-group="watch">
+        <button type="button" class="cp-btn" data-action="play">Play</button>
+        <button type="button" class="cp-btn" data-action="pause">Pause</button>
+        <button type="button" class="cp-btn" data-action="speed">Speed 1×</button>
+      </div>
+      <div class="cp-controls" data-group="write" hidden>
+        <button type="button" class="cp-btn" data-action="hint">Hint</button>
+        <button type="button" class="cp-btn" data-action="outline">Outline: on</button>
+        <button type="button" class="cp-btn cp-btn-primary" data-action="retry">Retry</button>
+      </div>
+      <h3 class="cp-h3">Stroke by stroke</h3>
+      <div class="cp-diagrams" id="cp-diagrams"></div>
+    </section>
+
+    <section class="cp-card">
+      <h2 class="cp-h2">Character facts</h2>
+      <dl class="cp-facts" data-slot="facts"></dl>
+      <p class="cp-ety" data-slot="etymology"></p>
+    </section>
+
+    <section class="cp-card" data-slot="words-card">
+      <h2 class="cp-h2">Words with this character</h2>
+      <ul class="cp-list" data-slot="words"></ul>
+    </section>
+
+    <section class="cp-card" data-slot="examples-card">
+      <h2 class="cp-h2">Examples from your lessons</h2>
+      <ul class="cp-list" data-slot="examples"></ul>
+    </section>
+
+    <section class="cp-card">
+      <h2 class="cp-h2">Related characters</h2>
+      <div data-slot="related"></div>
+    </section>
+  </template>
+
+  <nav class="cp-nav" aria-label="Main">
+    <a href="index.html">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/></svg>Lessons
+    </a>
+    <a href="char.html" aria-current="page">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M12 4v16M5 12h14"/></svg>Characters
+    </a>
+    <a href="index.html#dictionary">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>Dictionary
+    </a>
+  </nav>
+</body>
+</html>

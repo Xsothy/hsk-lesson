@@ -2312,3 +2312,11 @@ input[type="range"]::-moz-range-thumb:hover {
     font-size: 0.9rem;
   }
 }
+
+/* Links from the word modal to the character page (char.html) */
+.breakdown-char-links { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.breakdown-char-link {
+  display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: var(--radius-sm);
+  background: var(--paper); color: var(--red); font-weight: 600; font-size: .9rem; text-decoration: none;
+}
+.breakdown-char-link:hover { background: var(--mist); }
