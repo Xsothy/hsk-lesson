@@ -2,10 +2,20 @@
 
 namespace Tests\Feature;
 
+use Database\Seeders\LegacyContentSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class AlphaChromeTest extends TestCase
 {
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(LegacyContentSeeder::class);
+    }
+
     public function test_every_alpha_route_renders_header_and_tab_bar(): void
     {
         $urls = ['/home', '/courses', '/lessons/lesson-1', '/lessons/lesson-1/reading/1', '/char/学', '/browse', '/search', '/practice', '/review', '/words', '/settings'];

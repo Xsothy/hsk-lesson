@@ -81,24 +81,31 @@
 
   function getSettings() { return read('settings', {}); }
   function setSettings(patch) { var s = getSettings(); for (var k in patch) s[k] = patch[k]; write('settings', s); return s; }
+  // quiz scores: { "<key>": {score, total, at} }, key like "lesson-1/1"
+  function recordQuiz(key, score, total) { var q = read('quiz', {}); q[key] = { score: score, total: total, at: Date.now() }; write('quiz', q); bump(); streakTouch(); return q[key]; }
+  function getQuiz(key) { var q = read('quiz', {}); return key ? q[key] || null : q; }
+  // last place visited: { slug, section, at }
+  function setLast(slug, section) { write('last', { slug: slug, section: section || null, at: Date.now() }); }
+  function getLast() { var l = read('last', {}); return l.slug ? l : null; }
+
   function getActivity() { return read('activity', {}); }
 
   function exportAll() {
-    return JSON.stringify({ version: 1, progress: getProgress(), srs: read('srs', {}), saved: getSaved(), streak: read('streak', {}), settings: getSettings(), activity: getActivity() });
+    return JSON.stringify({ version: 1, progress: getProgress(), srs: read('srs', {}), saved: getSaved(), streak: read('streak', {}), settings: getSettings(), activity: getActivity(), quiz: getQuiz(), last: read('last', {}) });
   }
   function importAll(json) {
     try {
       var d = JSON.parse(json);
       if (!d || d.version !== 1) return false;
-      ['progress', 'srs', 'saved', 'streak', 'settings', 'activity'].forEach(function (k) { if (d[k] != null) write(k, d[k]); });
+      ['progress', 'srs', 'saved', 'streak', 'settings', 'activity', 'quiz', 'last'].forEach(function (k) { if (d[k] != null) write(k, d[k]); });
       return true;
     } catch (e) { return false; }
   }
-  function reset() { ['progress', 'srs', 'saved', 'streak', 'settings', 'activity'].forEach(function (k) { try { if (storage) storage.removeItem(P + k); } catch (e) {} delete mem[k]; }); }
+  function reset() { ['progress', 'srs', 'saved', 'streak', 'settings', 'activity', 'quiz', 'last'].forEach(function (k) { try { if (storage) storage.removeItem(P + k); } catch (e) {} delete mem[k]; }); }
 
   return { getProgress: getProgress, markWritten: markWritten, markKnown: markKnown, isKnown: isKnown,
     getSaved: getSaved, saveWord: saveWord, unsaveWord: unsaveWord, isSaved: isSaved,
     srsGet: srsGet, srsRate: srsRate, srsDue: srsDue, streakTouch: streakTouch, getStreak: getStreak,
-    getSettings: getSettings, setSettings: setSettings, getActivity: getActivity,
+    getSettings: getSettings, setSettings: setSettings, getActivity: getActivity, recordQuiz: recordQuiz, getQuiz: getQuiz, setLast: setLast, getLast: getLast,
     exportAll: exportAll, importAll: importAll, reset: reset };
 });

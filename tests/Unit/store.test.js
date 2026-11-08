@@ -53,4 +53,9 @@ const s3 = factory(fakeStorage()); assert.ok(s3.importAll(dump)); assert.deepStr
 assert.strictEqual(s3.importAll('nope'), false);
 s3.reset(); assert.deepStrictEqual(s3.getSaved(), []);
 
+// quiz + last
+s = factory(fakeStorage());
+s.recordQuiz('lesson-1/1', 2, 3); assert.strictEqual(s.getQuiz('lesson-1/1').score, 2);
+assert.strictEqual(s.getLast(), null); s.setLast('lesson-2', 'dialogue'); assert.strictEqual(s.getLast().slug, 'lesson-2');
+
 console.log('store.test.js: all passed');

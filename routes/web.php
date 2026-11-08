@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LearnController;
 use App\Http\Controllers\LegacyDataController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +18,11 @@ Route::controller(LegacyDataController::class)->group(function () {
 
 // Alpha pages (A2 skeleton). `/` still serves the legacy home until parity.
 $page = fn (string $title) => fn () => view('pages.placeholder', ['title' => $title]);
-Route::get('/home', $page('Today'))->name('home');
-Route::get('/courses', $page('Courses'))->name('courses');
-Route::get('/lessons/{slug}', fn (string $slug) => view('pages.placeholder', ['title' => 'Lesson '.$slug]))->name('lesson');
-Route::get('/lessons/{slug}/reading/{n}', fn (string $slug, string $n) => view('pages.placeholder', ['title' => 'Reading']))->name('reading');
+Route::get('/home', [LearnController::class, 'home'])->name('home');
+Route::get('/courses', [LearnController::class, 'courses'])->name('courses');
+Route::get('/data/hsk/{version}/{level}/sets', [LearnController::class, 'sets'])->whereNumber(['version', 'level']);
+Route::get('/lessons/{slug}', [LearnController::class, 'lesson'])->name('lesson');
+Route::get('/lessons/{slug}/reading/{n}', [LearnController::class, 'reading'])->whereNumber('n')->name('reading');
 Route::get('/char/{c}', fn (string $c) => view('pages.placeholder', ['title' => $c]))->name('char');
 Route::get('/browse', $page('Browse'))->name('browse');
 Route::get('/search', $page('Search'))->name('search');
