@@ -13,6 +13,12 @@ class Hsk3ContentSeeder extends Hsk2ContentSeeder
 
     protected const COURSE = '3.0';
 
+    /** hsk3-lesson-1 … hsk3-lesson-20 (stored numbers are 101+). */
+    protected function slug(int $id): string
+    {
+        return 'hsk3-lesson-'.($id - \App\Models\Lesson::COURSE3_OFFSET);
+    }
+
     protected function files(): array
     {
         $files = glob(database_path('content/hsk3/*.json'));

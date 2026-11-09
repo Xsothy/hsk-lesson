@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', 'Lesson '.$lesson->number)
+@section('title', $lesson->label)
 @push('head')<link rel="stylesheet" href="/css/learn.css">@endpush
 @section('content')
 <a class="back" href="{{ route('courses') }}">← Courses</a>
-<x-page-head class="lesson-head" :lead="$lesson->emoji" :eyebrow="'Lesson '.$lesson->number" :title="$lesson->en_title ?: $lesson->title"
+<x-page-head class="lesson-head" :lead="$lesson->emoji" :eyebrow="$lesson->label" :title="$lesson->en_title ?: $lesson->title"
   :zh="$lesson->zh_title" :sub="$lesson->description">
   @if ($lesson->is_preview)<span class="chip" data-preview-badge>+ HSK 2 preview</span>@endif
 </x-page-head>

@@ -12,7 +12,7 @@
     <div class="pr-chips">
       <x-chip :href="route('practice.sentences', ['mode' => $mode])" :active="$lesson === ''">All lessons</x-chip>
       @foreach ($lessons as $l)
-        <x-chip :href="route('practice.sentences', ['lesson' => $l->slug, 'mode' => $mode])" :active="$lesson === $l->slug">Lesson {{ $l->number }}</x-chip>
+        <x-chip :href="route('practice.sentences', ['lesson' => $l->slug, 'mode' => $mode])" :active="$lesson === $l->slug">{{ $l->full_label }}</x-chip>
       @endforeach
     </div>
   </nav>

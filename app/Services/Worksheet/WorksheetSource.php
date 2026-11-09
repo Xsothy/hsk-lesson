@@ -21,7 +21,7 @@ class WorksheetSource
         $lesson = Lesson::where('slug', $slug)->where('is_published', true)->firstOrFail();
 
         return [
-            'title' => 'Lesson '.$lesson->number.' · '.($lesson->en_title ?: $lesson->title),
+            'title' => $lesson->full_label.' · '.($lesson->en_title ?: $lesson->title),
             'chars' => self::hanzi(implode('', array_filter((array) $lesson->vocab, 'is_string'))),
         ];
     }

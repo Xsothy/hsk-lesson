@@ -22,7 +22,7 @@
       <p class="muted hsk-v3">Our HSK 3.0 course is coming next. Switch to HSK 2.0 in <a href="{{ route('settings') }}#st-study">Settings</a> for our current lessons.</p>
       <div class="pr-chips pr-lessons">
         @foreach ($lessons as $l)
-          <x-chip class="pr-lesson hsk-v{{ ($l->course ?? '2.0') === '3.0' ? 3 : 2 }}" :href="route('practice.match', ['lesson' => $l->slug])"><span class="pr-lesson-n">Lesson {{ $l->number }}</span> <span class="zh" lang="zh-Hans">{{ $l->zh_title }}</span></x-chip>
+          <x-chip class="pr-lesson hsk-v{{ ($l->course ?? '2.0') === '3.0' ? 3 : 2 }}" :href="route('practice.match', ['lesson' => $l->slug])"><span class="pr-lesson-n">{{ $l->label }}</span> <span class="zh" lang="zh-Hans">{{ $l->zh_title }}</span></x-chip>
         @endforeach
       </div>
     </div>

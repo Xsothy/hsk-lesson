@@ -20,7 +20,7 @@ class PracticeController extends Controller
 
     public function index(Request $request)
     {
-        $lessons = Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'title', 'zh_title', 'en_title']);
+        $lessons = Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'course', 'title', 'zh_title', 'en_title']);
 
         return view('pages.practice', [
             'lessons' => $lessons,
@@ -34,7 +34,7 @@ class PracticeController extends Controller
     public function sentences(Request $request)
     {
         return view('pages.practice-sentences', [
-            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'zh_title']),
+            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'course', 'zh_title']),
             'lesson' => (string) $request->query('lesson', ''),
             'mode' => in_array($request->query('mode'), ['build', 'meaning'], true) ? $request->query('mode') : 'mix',
         ]);
@@ -44,7 +44,7 @@ class PracticeController extends Controller
     public function match(Request $request)
     {
         return view('pages.practice-match', [
-            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'zh_title']),
+            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'course', 'zh_title']),
             'levels2' => LearnController::levels(2),
             'levels3' => LearnController::levels(3),
             'params' => $request->only(['lesson', 'version', 'level', 'set', 'source', 'id']),
@@ -71,7 +71,7 @@ class PracticeController extends Controller
             if (! $lesson) {
                 return response()->json(['message' => 'Unknown lesson'], 404);
             }
-            $label = 'Lesson '.$lesson->number;
+            $label = $lesson->full_label;
             foreach ($lesson->vocab ?? [] as $h) {
                 $e = $this->content->enrich((string) $h);
                 $words[] = [(string) $h, $e['p'], $e['e']];

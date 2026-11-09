@@ -15,7 +15,7 @@
       <h2>Lessons</h2>
       <div class="stack">
         @foreach ($lessons as $l)
-          <x-action-row icon="book" :title="'Lesson '.$l->number.' · '.($l->en_title ?: $l->title)" :sub="count($l->vocab ?? []).' words'" :href="route('review', ['lesson' => $l->slug])" />
+          <x-action-row icon="book" :title="$l->full_label.' · '.($l->en_title ?: $l->title)" :sub="count($l->vocab ?? []).' words'" :href="route('review', ['lesson' => $l->slug])" />
         @endforeach
       </div>
     </section>

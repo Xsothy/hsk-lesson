@@ -26,7 +26,7 @@ class SentencePool
                 return null;
             }
             $lessons = collect([$lesson]);
-            $label = 'Lesson '.$lesson->number.' sentences';
+            $label = $lesson->full_label.' sentences';
         } else {
             $lessons = $q->get();
             $label = 'Sentences from all lessons';

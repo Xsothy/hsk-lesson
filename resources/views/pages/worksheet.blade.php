@@ -35,7 +35,7 @@
       <label class="tool-label" for="ws-lesson">Lesson</label>
       <select id="ws-lesson" name="lesson" class="tool-field">
         @foreach ($lessons as $l)
-          <option value="{{ $l->slug }}" @selected(old('lesson', $pre['lesson'] ?? null) === $l->slug)>Lesson {{ $l->number }} · {{ $l->en_title ?: $l->title }}</option>
+          <option value="{{ $l->slug }}" @selected(old('lesson', $pre['lesson'] ?? null) === $l->slug)>{{ $l->full_label }} · {{ $l->en_title ?: $l->title }}</option>
         @endforeach
       </select>
     </div>

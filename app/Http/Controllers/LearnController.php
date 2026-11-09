@@ -39,7 +39,7 @@ class LearnController extends Controller
     {
         return Lesson::where('is_published', true)->orderBy('number')->get()
             ->map(fn (Lesson $l) => (object) [
-                'slug' => $l->slug, 'n' => $l->number, 'course' => $l->course ?? '2.0', 'title' => $l->en_title ?: $l->title,
+                'slug' => $l->slug, 'n' => $l->display_number, 'course' => $l->course ?? '2.0', 'title' => $l->en_title ?: $l->title,
                 'zh' => $l->zh_title, 'emoji' => $l->emoji, 'vocab' => $l->vocab ?? [],
             ]);
     }

@@ -33,7 +33,7 @@ class WorksheetController extends Controller
         };
 
         return view('pages.worksheet', [
-            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'title', 'en_title']),
+            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'course', 'title', 'en_title']),
             'levels' => $levels,
             'pre' => $pre,
             'source' => $source,

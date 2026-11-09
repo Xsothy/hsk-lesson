@@ -79,18 +79,18 @@ class SearchController extends Controller
         $hitLessons = $lessons
             ->filter(fn ($l) => $has([$l->title, $l->zh_title, $l->en_title, $l->description, $l->content, $l->vocab, $l->grammar, $l->sentences, $l->dialogue]))
             ->map(fn ($l) => (object) [
-                'n' => 'Lesson '.$l->number, 'title' => $l->en_title ?: $l->title, 'sub' => $l->zh_title,
+                'n' => $l->full_label, 'title' => $l->en_title ?: $l->title, 'sub' => $l->zh_title,
                 'href' => route('lesson', $l->slug),
             ])->values();
 
         $position = [];
         $hitReadings = Reading::where('is_published', true)->orderBy('id')->get()
-            ->map(function ($r) use (&$position, $slugs, $has) {
+            ->map(function ($r) use (&$position, $slugs, $has, $lessons) {
                 $position[$r->lesson_number] = ($position[$r->lesson_number] ?? 0) + 1;
                 $slug = $slugs[$r->lesson_number] ?? null;
 
                 return $slug && $has([$r->title, $r->title_en, $r->lines, $r->focus_words, $r->grammar_focus]) ? (object) [
-                    'n' => 'Lesson '.$r->lesson_number.' · Reading '.$position[$r->lesson_number],
+                    'n' => ($lessons->firstWhere('number', $r->lesson_number)?->full_label ?? 'Lesson '.$r->lesson_number).' · Reading '.$position[$r->lesson_number],
                     'title' => $r->title_en ?: $r->title, 'sub' => $r->title,
                     'href' => route('reading', [$slug, $position[$r->lesson_number]]),
                 ] : null;

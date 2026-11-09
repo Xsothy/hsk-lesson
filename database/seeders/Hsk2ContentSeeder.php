@@ -25,6 +25,11 @@ class Hsk2ContentSeeder extends Seeder
         return [database_path('content/hsk2.json')];
     }
 
+    protected function slug(int $id): string
+    {
+        return 'lesson-'.$id;
+    }
+
     public function run(): void
     {
         $data = ['words' => [], 'lessons' => []];
@@ -68,10 +73,11 @@ class Hsk2ContentSeeder extends Seeder
 
             $readingId = static::FIRST_READING_ID;
             foreach ($data['lessons'] as $l) {
-                Lesson::updateOrCreate(['slug' => 'lesson-'.$l['id']], [
+                Lesson::updateOrCreate(['number' => $l['id']], [
+                    'slug' => $this->slug($l['id']),
                     'number' => $l['id'],
                     'course' => static::COURSE,
-                    'title' => 'Lesson '.$l['id'],
+                    'title' => 'Lesson '.($l['id'] - (static::COURSE === '3.0' ? Lesson::COURSE3_OFFSET : 0)),
                     'zh_title' => $l['zhTitle'],
                     'en_title' => $l['enTitle'],
                     'description' => $l['description'],

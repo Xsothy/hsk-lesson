@@ -2,7 +2,7 @@
 @section('title', $reading->title)
 @push('head')<link rel="stylesheet" href="/css/learn.css">@endpush
 @section('content')
-<a class="back" href="{{ route('lesson', $lesson->slug) }}#reading">← Lesson {{ $lesson->number }}</a>
+<a class="back" href="{{ route('lesson', $lesson->slug) }}#reading">← {{ $lesson->label }}</a>
 <x-page-head class="lesson-head" :lead="$reading->emoji" :eyebrow="'Reading '.$n.' of '.$total" :title="$reading->title_en ?: $reading->title"
   :zh="$reading->title_en ? $reading->title : null" />
 

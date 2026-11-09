@@ -22,6 +22,28 @@ class Lesson extends Model
         'dialogue' => 'array',
     ];
 
+    /** OC 3.0 lessons are stored as 101+ (number is unique) but numbered from 1 in the course. */
+    public const COURSE3_OFFSET = 100;
+
+    /** Number shown to learners: 1, 2, … within its own course. */
+    public function getDisplayNumberAttribute(): int
+    {
+        return $this->course === '3.0' && $this->number > self::COURSE3_OFFSET
+            ? $this->number - self::COURSE3_OFFSET : (int) $this->number;
+    }
+
+    /** "Lesson 3" — for pages that only show one HSK version. */
+    public function getLabelAttribute(): string
+    {
+        return 'Lesson '.$this->display_number;
+    }
+
+    /** "HSK 3.0 · Lesson 3" — for lists that mix both versions. */
+    public function getFullLabelAttribute(): string
+    {
+        return ($this->course === '3.0' ? 'HSK 3.0 · ' : '').$this->label;
+    }
+
     public function getRouteKeyName(): string
     {
         return 'slug';

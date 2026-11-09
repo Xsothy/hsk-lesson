@@ -33,7 +33,7 @@ class ReviewController extends Controller
         }
 
         return view('pages.review', [
-            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'title', 'en_title', 'vocab']),
+            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'course', 'title', 'en_title', 'vocab']),
             'levels' => $versions,
         ]);
     }
@@ -51,7 +51,7 @@ class ReviewController extends Controller
         if ($slug = $request->query('lesson')) {
             $lesson = Lesson::where('slug', (string) $slug)->where('is_published', true)->first();
             abort_unless($lesson, 404);
-            $title = 'Lesson '.$lesson->number.' · '.($lesson->en_title ?: $lesson->title);
+            $title = $lesson->full_label.' · '.($lesson->en_title ?: $lesson->title);
             $words = array_values(array_filter((array) $lesson->vocab, 'is_string'));
             $preferLesson = true;
         } elseif ($request->filled('version') || $request->filled('level')) {

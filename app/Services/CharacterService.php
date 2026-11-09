@@ -114,7 +114,7 @@ class CharacterService
                 || collect(array_merge($l->sentences ?? [], $l->dialogue ?? []))->contains(fn ($s) => str_contains($s['zh'] ?? '', $char)))
             ->map(fn (Lesson $l) => [
                 'slug' => $l->slug,
-                'number' => $l->number,
+                'number' => $l->number, 'label' => $l->full_label,
                 'zh_title' => $l->zh_title,
                 'en_title' => $l->en_title,
                 'in_vocab' => collect($l->vocab ?? [])->contains(fn ($v) => str_contains($v, $char)),

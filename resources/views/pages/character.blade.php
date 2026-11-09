@@ -123,7 +123,7 @@
           <div class="cp-lessons">
             @foreach ($lessons as $l)
               <a class="cp-lesson" href="{{ $l['href'] }}">
-                <span class="cp-lesson-t"><b class="zh" lang="zh-Hans">{{ $l['zh_title'] }}</b><small>Lesson {{ $l['number'] }} · {{ $l['en_title'] }}</small></span>
+                <span class="cp-lesson-t"><b class="zh" lang="zh-Hans">{{ $l['zh_title'] }}</b><small>{{ $l['label'] }} · {{ $l['en_title'] }}</small></span>
                 @if ($l['in_vocab'])<span class="cp-tag">vocab</span>@endif
               </a>
             @endforeach
