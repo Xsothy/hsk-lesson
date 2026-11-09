@@ -27,7 +27,7 @@ for (const vp of [{ width: 390, height: 844 }, { width: 1200, height: 900 }]) {
 
     test('worksheet form returns a PDF', async ({ page }) => {
       await page.goto('/worksheet');
-      await page.locator('input[name=source][value=text]').check({ force: true });
+      await page.selectOption('#ws-src', 'text');
       await page.fill('#ws-chars', '你好');
       const popup = page.context().waitForEvent('response', { predicate: (r) => r.url().includes('/worksheet.pdf') });
       await page.click('[data-worksheet-form] button[type=submit]');
@@ -55,7 +55,7 @@ for (const vp of [{ width: 390, height: 844 }, { width: 1200, height: 900 }]) {
       const id = new URL(page.url()).searchParams.get('id');
       await page.goto('/practice/match?source=list&id=' + encodeURIComponent(id || ''));
       await expect(page.locator('[data-session]')).toBeVisible();
-      await expect(page.locator('[data-left] .mt-tile').first()).toBeVisible();
+      await expect(page.locator('.mt-sticker').first()).toBeVisible();
       expect(errors).toEqual([]);
     });
   });

@@ -1,75 +1,67 @@
 @extends('layouts.app')
-{{-- F4 · Pinyin match: rounds of ~6 pairs, tap a character then its pinyin (or meaning). Deck: /data/review-deck, or a textbook list from the store. --}}
+{{-- F4 · Pinyin match (canvas board "Match"): a board of pinyin slots and a tray of character stickers.
+     Tap a sticker, then the slot with its pinyin. Deck: /data/review-deck, or a textbook list from the store. --}}
 @section('title', 'Pinyin match')
 @push('head')<link rel="stylesheet" href="/css/practice.css"><link rel="stylesheet" href="/css/match.css">@endpush
 
 @php
   $src = $params['source'] ?? null;
-  $hasSource = ! empty($params['lesson']) || ! empty($params['version']) || in_array($src, ['saved', 'list'], true);
+  $first = $lessons->first();
+  $cur = $lessons->firstWhere('slug', $params['lesson'] ?? null) ?? $first;
+  // Without a source the board comes from the first lesson, like the canvas.
+  if (empty($params['lesson']) && empty($params['version']) && ! in_array($src, ['saved', 'list'], true) && $first) {
+    $params['lesson'] = $first->slug;
+  }
+  $isLesson = ! empty($params['lesson']);
+  $isHsk = ! empty($params['version']);
 @endphp
 @section('content')
-<div class="pr mt" data-match data-deck-url="/data/review-deck" @if($hasSource) data-has-source @endif>
-  <x-page-head eyebrow="Practice" title="Pinyin match" sub="Tap a character, then its pinyin or meaning. Clear every round against the clock." />
-
-  <section class="pr-picker" data-picker @if($hasSource) hidden @endif aria-label="Choose what to match">
-    <div class="pr-group">
-      <h2 class="pr-h2">My words</h2>
-      <x-action-row icon="bookmark" title="My saved words" sub="Words you saved" :href="route('practice.match', ['source' => 'saved'])" />
-      <div class="pr-chips" data-lists></div>
+<div class="mt" data-match data-deck-url="/data/review-deck" data-has-source
+  @foreach (['lesson', 'version', 'level', 'set', 'source', 'id'] as $k) @if(! empty($params[$k])) data-q-{{ $k }}="{{ $params[$k] }}" @endif @endforeach>
+  <div class="mt-head">
+    <div class="mt-titles">
+      <h1>Pinyin match <span lang="zh-Hans">配对</span></h1>
+      <p>Tap a character, then tap its pinyin. Board from <span data-source-label>{{ $isLesson && $cur ? 'Lesson '.$cur->number : ($isHsk ? 'HSK '.($params['level'] ?? 1) : ($src === 'saved' ? 'my words' : 'your list')) }}</span>.</p>
     </div>
-    <div class="pr-group">
-      <h2 class="pr-h2">A lesson</h2>
-      <p class="muted hsk-v3">Our HSK 3.0 course is coming next. Switch to HSK 2.0 in <a href="{{ route('settings') }}#st-study">Settings</a> for our current lessons.</p>
-      <div class="pr-chips pr-lessons">
-        @foreach ($lessons as $l)
-          <x-chip class="pr-lesson hsk-v{{ ($l->course ?? '2.0') === '3.0' ? 3 : 2 }}" :href="route('practice.match', ['lesson' => $l->slug])"><span class="pr-lesson-n">Lesson {{ $l->number }}</span> <span class="zh" lang="zh-Hans">{{ $l->zh_title }}</span></x-chip>
-        @endforeach
-      </div>
+    <div class="mt-score">
+      <span data-score aria-live="polite">0 / 0</span>
+      <button type="button" class="pr-btn" data-action="new">New board</button>
     </div>
-    <div class="pr-group">
-      <div class="hsk-v2">
-      <h2 class="pr-h2">HSK 2.0 level</h2>
-      <div class="pr-chips">@foreach ($levels2 as $lv)<x-chip :href="route('practice.match', ['version' => 2, 'level' => $lv])">Level {{ $lv }}</x-chip>@endforeach</div>
-      </div>
-      <div class="hsk-v3">
-      <h2 class="pr-h2">HSK 3.0 level</h2>
-      <div class="pr-chips">@foreach ($levels3 as $lv)<x-chip :href="route('practice.match', ['version' => 3, 'level' => $lv])">Level {{ $lv === 7 ? '7–9' : $lv }}</x-chip>@endforeach</div>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <p class="pr-msg" data-msg role="status" hidden></p>
 
-  <section class="pr-session" data-session hidden aria-label="Pinyin match game">
-    <div class="pr-top">
-      <div class="pr-pill" role="group" aria-label="Match with">
-        <button type="button" data-set-mode="pinyin" aria-pressed="true">Pinyin</button>
-        <button type="button" data-set-mode="meaning" aria-pressed="false">Meaning</button>
-      </div>
-      <span class="pr-count" data-count aria-live="polite"></span>
-    </div>
-    <div class="mt-stats">
-      <span class="mt-stat"><x-icon name="clock" :size="18" /> <b data-timer>0:00</b></span>
-      <span class="mt-stat">Misses <b data-misses>0</b></span>
-      <span class="mt-stat">Best <b data-best>–</b></span>
-    </div>
-    <div class="mt-board" data-board>
-      <div class="mt-col" data-left role="group" aria-label="Characters"></div>
-      <div class="mt-col" data-right role="group" aria-label="Answers"></div>
-    </div>
-    <p class="pr-feedback" role="status" data-feedback></p>
+  <section class="mt-slots" data-board aria-label="Pinyin slots" hidden></section>
+
+  <section class="mt-tray-wrap" data-session hidden aria-labelledby="mt-tray-l">
+    <span class="mt-l" id="mt-tray-l">Stickers</span>
+    <div class="mt-tray" data-tray></div>
+    <p class="mt-status" role="status" data-feedback>Pick a sticker.</p>
   </section>
 
-  <section class="pr-summary" data-summary hidden aria-labelledby="mt-sum-h">
-    <h2 id="mt-sum-h" class="pr-h2">All matched!</h2>
-    <div class="pr-stats">
-      <x-stat-card value="0" label="Score" tone="gold" data-stat="score" />
-      <x-stat-card value="0:00" label="Time" tone="green" data-stat="time" />
-      <x-stat-card value="0" label="Misses" tone="red" data-stat="misses" />
-    </div>
-    <p class="mt-best" data-best-note role="status"></p>
-    <button type="button" class="pr-btn is-primary" data-action="again">Play again</button>
-    <x-action-row icon="pen" title="Back to Practice" sub="Pick another source" :href="route('practice')" />
+  <section class="mt-from" aria-labelledby="mt-from-l">
+    <span class="mt-from-l" id="mt-from-l">New board from:</span>
+    @if ($cur)
+      <a class="mt-src" href="{{ route('practice.match', ['lesson' => $cur->slug]) }}" aria-pressed="{{ $isLesson ? 'true' : 'false' }}" role="button">Lesson {{ $cur->number }}</a>
+    @endif
+    @foreach ([2, 3] as $v)
+      <a class="mt-src hsk-v{{ $v }}" href="{{ route('practice.match', ['version' => $v, 'level' => 1]) }}" aria-pressed="{{ $isHsk && (int) $params['version'] === $v && (int) ($params['level'] ?? 1) === 1 ? 'true' : 'false' }}" role="button">Random HSK 1</a>
+    @endforeach
+    <a class="mt-src" href="{{ route('practice.match', ['source' => 'saved']) }}" aria-pressed="{{ $src === 'saved' ? 'true' : 'false' }}" role="button">My words</a>
+    <span data-lists class="mt-lists"></span>
+    <label class="mt-more">
+      <span class="pr-sr">Another lesson or level</span>
+      <select class="pr-select" data-more>
+        <option value="">Another lesson or level…</option>
+        <optgroup label="Lessons">
+          @foreach ($lessons as $l)
+            <option class="hsk-v{{ ($l->course ?? '2.0') === '3.0' ? 3 : 2 }}" value="{{ route('practice.match', ['lesson' => $l->slug]) }}">Lesson {{ $l->number }} · {{ $l->zh_title }}</option>
+          @endforeach
+        </optgroup>
+        <optgroup label="HSK 2.0">@foreach ($levels2 as $lv)<option value="{{ route('practice.match', ['version' => 2, 'level' => $lv]) }}">HSK 2.0 · Level {{ $lv }}</option>@endforeach</optgroup>
+        <optgroup label="HSK 3.0">@foreach ($levels3 as $lv)<option value="{{ route('practice.match', ['version' => 3, 'level' => $lv]) }}">HSK 3.0 · Level {{ $lv === 7 ? '7–9' : $lv }}</option>@endforeach</optgroup>
+      </select>
+    </label>
   </section>
 </div>
 @endsection

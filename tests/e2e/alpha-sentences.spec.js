@@ -15,10 +15,10 @@ for (const vp of [{ width: 390, height: 844 }, { width: 1200, height: 900 }]) {
 
       await page.goto('/practice/sentences?lesson=lesson-1&mode=build');
       await expect(page.locator('[data-session]')).toBeVisible();
-      await expect(page.locator('.page-head h1')).toHaveText('Sentences');
+      await expect(page.locator('[data-title]')).toHaveText('Sentences');
 
       for (let n = 0; n < q.items.length; n++) {
-        await expect(page.locator('[data-count]')).toHaveText(`${n + 1} of ${q.items.length}`);
+        await expect(page.locator('[data-count]')).toHaveText(`${n + 1} / ${q.items.length}`);
         const it = byEn[(await page.locator('[data-en]').textContent()) || ''];
         expect(it).toBeTruthy();
         if (n === 0) {

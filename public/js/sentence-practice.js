@@ -10,7 +10,7 @@
   var $ = function (s) { return root.querySelector(s); };
   var store = window.HSK_STORE;
   var el = {
-    msg: $('[data-msg]'), session: $('[data-session]'), summary: $('[data-summary]'), title: $('.page-head h1'),
+    msg: $('[data-msg]'), session: $('[data-session]'), summary: $('[data-summary]'), title: $('[data-title]'),
     bar: $('[data-bar]'), progress: $('.pr-bar'), count: $('[data-count]'), ask: $('[data-ask]'),
     build: $('[data-build]'), en: $('[data-en]'), answer: $('[data-answer]'), tiles: $('[data-tiles]'),
     meaning: $('[data-meaning]'), line: $('[data-line]'), choices: $('[data-choices]'),
@@ -43,7 +43,7 @@
     var n = S.items.length, done = S.results.filter(Boolean).length;
     el.bar.style.width = Math.round(done / n * 100) + '%';
     el.progress.setAttribute('aria-valuemax', n); el.progress.setAttribute('aria-valuenow', done);
-    el.count.textContent = (S.i + 1) + ' of ' + n;
+    el.count.textContent = (S.i + 1) + ' / ' + n;
   }
 
   function show(i) {

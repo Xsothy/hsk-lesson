@@ -70,7 +70,7 @@ class WorksheetPdf
         $pitch = self::STEP + 0.4;
 
         // Stroke-order strip, right-aligned: step k shows strokes 1..k with the newest one in black.
-        $steps = min($n, (int) floor(($width * 0.65) / $pitch));
+        $steps = $o->strip ? min($n, (int) floor(($width * 0.65) / $pitch)) : 0; // the strip can be switched off
         $sx = $left + $width - $steps * $pitch;
         for ($k = 1; $k <= $steps; $k++) {
             $gx = $sx + ($k - 1) * $pitch;

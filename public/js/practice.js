@@ -13,7 +13,7 @@
 
   var el = {
     picker: $('[data-picker]'), session: $('[data-session]'), summary: $('[data-summary]'), msg: $('[data-msg]'), title: $('[data-title]'),
-    bar: $('[data-bar]'), progress: $('.pr-bar'), done: $('[data-done]'), count: $('[data-count]'),
+    bar: $('[data-bar]'), progress: $('.pr-bar'), done: $('[data-done]'), doneRow: $('[data-done-row]'), count: $('[data-count]'), label: $('[data-label]'), dictHint: $('[data-dict-hint]'),
     py: $('[data-py]'), en: $('[data-en]'), feedback: $('[data-feedback]'), grid: $('.writing-grid'), mount: $('[data-writer]'),
     next: $('[data-action=next]'), nextLabel: $('[data-next-label]'), outlineBtn: $('[data-action=outline]'),
     modeBtns: [].slice.call(root.querySelectorAll('[data-set-mode]')),
@@ -76,8 +76,12 @@
         d.items = d.items.filter(function (it) { var k = false; try { k = !!(store && (store.isKnown(it.word) || store.isKnown(it.char))); } catch (e) {} return f === 'known' ? k : !k; });
       }
       if (!d.items.length) throw new Error('No characters to practise in that source.');
+      if (q.get('order') === 'random') { // "Which items · Random"
+        for (var k = d.items.length - 1; k > 0; k--) { var j = Math.floor(Math.random() * (k + 1)), t = d.items[k]; d.items[k] = d.items[j]; d.items[j] = t; }
+      }
       S.queue = d.items; S.i = 0; S.results = []; S.finished = false;
-      el.title.textContent = d.label;
+      el.title.textContent = 'Practice · ' + d.label;
+      el.label.textContent = d.label;
       msg('');
       el.session.hidden = false; el.summary.hidden = true;
       show(0);
@@ -90,26 +94,31 @@
   // ---------- progress UI ----------
   function renderDone() {
     var n = S.queue.length;
-    el.done.replaceChildren.apply(el.done, S.queue.map(function (it, k) {
-      var li = document.createElement('li'), r = S.results[k];
-      li.className = 'pr-chip zh' + (k === S.i ? ' is-current' : '') + (r ? (r.done ? ' is-done' : ' is-skipped') : '');
-      // Dictation must not reveal the answer: unfinished characters show their number instead.
-      var hide = S.mode === 'dictation' && !r;
-      li.lang = hide ? 'en' : 'zh-Hans'; li.textContent = hide ? String(k + 1) : it.char;
-      if (k === S.i) li.setAttribute('aria-current', 'step');
-      return li;
-    }));
+    // Only finished characters are listed ("Done:"), so Dictation never reveals what is coming.
+    var items = [];
+    S.queue.forEach(function (it, k) {
+      var r = S.results[k];
+      if (!r) return;
+      var li = document.createElement('li'), a = document.createElement('a');
+      a.className = 'pr-chip zh' + (r.done ? ' is-done' : ' is-skipped');
+      a.lang = 'zh-Hans'; a.textContent = it.char; a.href = '/char/' + encodeURIComponent(it.char);
+      a.setAttribute('aria-label', it.char + (r.done ? ', written' : ', skipped') + ' — open character page');
+      li.appendChild(a); items.push(li);
+    });
+    el.done.replaceChildren.apply(el.done, items);
+    el.doneRow.hidden = !items.length;
     var finished = S.results.filter(Boolean).length;
     el.bar.style.width = Math.round(finished / n * 100) + '%';
     el.progress.setAttribute('aria-valuemax', n); el.progress.setAttribute('aria-valuenow', finished);
-    el.count.textContent = Math.min(S.i + 1, n) + ' of ' + n;
+    el.count.textContent = Math.min(S.i + 1, n) + ' / ' + n;
   }
 
   function paintPrompt(reveal) {
     var it = cur(), dict = S.mode === 'dictation';
     var py = dict && !reveal ? '' : (it.pinyin || '');
     if (py && window.HSK_PINYIN) el.py.innerHTML = window.HSK_PINYIN.html(py); else el.py.textContent = py;
-    el.en.textContent = it.english || '';
+    el.en.textContent = (it.english || '') + (it.word && it.word !== it.char && !dict ? ' · from ' + it.word : '');
+    el.dictHint.textContent = it.english ? 'Hint: “' + it.english + '” — no outline shown' : 'No outline shown';
     el.grid.dataset.mode = dict ? 'blank' : 'write';
     el.grid.classList.toggle('wg-blank', dict);
     el.grid.classList.toggle('wg-write', !dict);
@@ -208,6 +217,18 @@
     else if (act === 'next') advance();
     else if (act === 'again') { S.results = []; el.summary.hidden = true; el.session.hidden = false; show(0); }
   });
+
+  // Setup aside: radio sources navigate; saved / due counts come from the store.
+  root.addEventListener('change', function (e) {
+    var t = e.target;
+    if (t.name === 'pr-src' && t.dataset.href) location.href = t.dataset.href;
+    else if (t.matches('[data-more]') && t.value) location.href = t.value;
+  });
+  try {
+    var ns = store.getSaved().length, nd = store.srsDueCount();
+    root.querySelector('[data-src-sub=saved]').textContent = ns + (ns === 1 ? ' word' : ' words');
+    root.querySelector('[data-src-sub=due]').textContent = nd + (nd === 1 ? ' card' : ' cards');
+  } catch (e) {}
 
   if (root.hasAttribute('data-has-source')) start();
 })();

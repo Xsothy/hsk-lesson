@@ -20,14 +20,14 @@ class SentencePracticeTest extends TestCase
     public function test_page_renders_with_shared_components(): void
     {
         $this->get('/practice/sentences')->assertOk()
-            ->assertSee('data-sentences', false)->assertSee('class="page-head', false)
+            ->assertSee('data-sentences', false)->assertSee('data-title', false)
             ->assertSee('Build')->assertSee('Meaning')->assertSee('/js/sentence-practice.js', false)
             ->assertSee('?lesson=lesson-1', false)->assertDontSee('📝');
     }
 
     public function test_practice_picker_links_to_sentences(): void
     {
-        $this->get('/practice')->assertOk()->assertSee(route('practice.sentences'), false)->assertSee('Sentences');
+        $this->get('/practice')->assertOk()->assertSee(route('practice.sentences'), false)->assertSee('Sentence');
     }
 
     public function test_mode_is_whitelisted(): void

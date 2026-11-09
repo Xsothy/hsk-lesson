@@ -3,17 +3,20 @@
 @push('head')<link rel="stylesheet" href="/css/words.css">@endpush
 @section('content')
 <div class="words-page" data-words-page>
-  <x-page-head eyebrow="More" title="My words" />
+  <div class="mw-head">
+    <h1>My words <span lang="zh-Hans">生词本</span></h1>
+    <a href="{{ route('settings') }}">Saved on this device · sync in Settings</a>
+  </div>
 
   <div class="words-stats" aria-label="Your progress">
-    <x-stat-card value="0" label="Saved" tone="red" data-stat="saved" />
-    <x-stat-card value="0" label="Known" tone="green" data-stat="known" />
-    <x-stat-card value="0" label="Characters written" tone="blue" data-stat="written" />
-    <x-stat-card value="0" label="Day streak" tone="gold" data-stat="streak" />
+    <x-stat-card value="0" label="words known" data-stat="known" />
+    <x-stat-card value="0" label="characters written" data-stat="written" />
+    <x-stat-card value="0" label="due today" tone="red" data-stat="due" />
+    <x-stat-card value="0" label="day streak" tone="gold" data-stat="streak" />
   </div>
 
   <section class="words-week" aria-labelledby="week-h">
-    <h2 id="week-h">This week</h2>
+    <div class="mw-week-top"><h2 id="week-h">This week</h2><span>items practised per day</span></div>
     <div data-week></div>
   </section>
 
@@ -24,25 +27,25 @@
     <a class="btn" href="{{ route('browse') }}">Browse characters</a>
   </div>
 
-  <div data-main hidden>
+  <section class="mw-list" data-main hidden aria-label="Saved words">
+    <div class="words-chips" role="group" aria-label="Filter saved words" data-chips></div>
     <div class="words-actions">
-      <a class="btn btn-primary" href="/practice?source=saved" data-act="write">Write</a>
+      <a class="btn btn-primary" href="/practice?source=saved" data-act="write">Write these</a>
       <a class="btn" href="/review?source=saved" data-act="cards">Flashcards</a>
+      <a class="btn" href="/worksheet?source=text" data-act="sheet">Worksheet</a>
       <button type="button" class="btn" data-act="csv">Export CSV</button>
       <button type="button" class="btn" data-act="pdf">Export PDF</button>
-      <a class="btn" href="/worksheet?source=text" data-act="sheet">Worksheet from my words</a>
     </div>
-    <div class="words-chips" role="group" aria-label="Filter saved words" data-chips></div>
     <p class="words-count" data-count aria-live="polite"></p>
     <div class="words-list" data-list></div>
-  </div>
+  </section>
 </div>
 <form method="POST" action="{{ route('words.pdf') }}" target="_blank" data-pdf-form hidden>@csrf</form>
 <template id="tpl-chip"><x-chip :button="true">x</x-chip></template>
 <template id="tpl-row">
   <div class="words-item">
     <x-word-row :word="['hanzi' => '', 'pinyin' => '', 'english' => '']" />
-    <button type="button" class="words-unsave" data-unsave>×</button>
+    <button type="button" class="words-unsave" data-unsave><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
 </template>
 @endsection

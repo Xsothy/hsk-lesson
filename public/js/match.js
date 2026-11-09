@@ -1,7 +1,9 @@
 /**
- * F4 · Pinyin match. Rounds of ~6 pairs: tap a character tile, then its pinyin (or meaning) tile, in either order.
+ * F4 · Pinyin match (canvas board "Match"). A board of up to 8 pinyin slots and a tray of character stickers:
+ * tap a sticker, then the slot with its pinyin. A wrong slot counts as a miss. "New board" deals the next words.
  * Deck: /data/review-deck (lesson | HSK level/set | saved words) or a textbook list from the store (F1, hsk.v1.lists).
- * Score = pairs*10 - misses*2 (min 0); a timer runs across the session. Best per source is kept by HSK_STORE.recordMatch (synced by S2).
+ * When every word of the source has been placed, the session is scored (pairs*10 - misses*2, min 0) and the best per source
+ * is kept by HSK_STORE.recordMatch (synced by S2).
  */
 (function () {
   'use strict';
@@ -9,24 +11,19 @@
   if (!root) return;
   var $ = function (s) { return root.querySelector(s); };
   var store = window.HSK_STORE, PY = window.HSK_PINYIN;
-  var qs = new URLSearchParams(location.search);
-  var ROUND = 6, MAX_WORDS = 30, MIN_PAIRS = 3;
+  var qs = { get: function (k) { return root.getAttribute('data-q-' + k); } }; // the server fills in the default source
+  var BOARD = 8, MAX_WORDS = 40, MIN_PAIRS = 3;
   var el = {
-    picker: $('[data-picker]'), lists: $('[data-lists]'), msg: $('[data-msg]'), session: $('[data-session]'), summary: $('[data-summary]'),
-    count: $('[data-count]'), timer: $('[data-timer]'), misses: $('[data-misses]'), best: $('[data-best]'),
-    left: $('[data-left]'), right: $('[data-right]'), feedback: $('[data-feedback]'), bestNote: $('[data-best-note]'),
-    modeBtns: [].slice.call(root.querySelectorAll('[data-set-mode]')),
+    msg: $('[data-msg]'), board: $('[data-board]'), session: $('[data-session]'), tray: $('[data-tray]'),
+    score: $('[data-score]'), status: $('[data-feedback]'), lists: $('[data-lists]'),
   };
-  var S = { key: '', cards: [], rounds: [], r: 0, mode: 'pinyin', matched: {}, sel: null, misses: 0, pairs: 0, t0: 0, ms: 0, timer: null, done: false };
+  var S = { key: '', cards: [], b: 0, boards: [], placed: {}, sel: null, wrong: null, misses: 0, pairs: 0, t0: 0, done: false };
 
   function shuffle(a) { a = a.slice(); for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
-  function say(t, cls) { el.feedback.textContent = t || ''; el.feedback.className = 'pr-feedback' + (cls ? ' ' + cls : ''); }
   function fmt(ms) { var s = Math.floor(ms / 1000); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
   function msg(t) { el.msg.textContent = t; el.msg.hidden = false; }
-  function answer(c) { return S.mode === 'pinyin' ? c.pinyin : c.english; }
+  function say(t, bad) { el.status.textContent = t; el.status.classList.toggle('is-bad', !!bad); }
   function score() { return Math.max(0, S.pairs * 10 - S.misses * 2); }
-  function bestOf(key) { try { return store && store.getMatch ? store.getMatch(key) : null; } catch (e) { return null; } }
-  function paintBest() { var b = bestOf(S.key); el.best.textContent = b ? b.score + ' · ' + fmt(b.ms) : '–'; }
 
   // ---- source ----
   function sourceKey() {
@@ -61,135 +58,128 @@
       .then(function (d) { return d.cards || []; });
   }
 
-  // ---- rounds ----
+  // ---- boards ----
   function build(cards) {
-    var seen = {};
-    // Every card needs a character, pinyin and meaning, and each hanzi shows once.
+    var seen = {}, py = {};
+    // Every card needs a character and pinyin; each hanzi shows once, and one board never holds two words with the same pinyin.
     S.cards = shuffle(cards.filter(function (c) {
-      if (!c || !c.hanzi || !c.pinyin || !c.english || seen[c.hanzi]) return false;
+      if (!c || !c.hanzi || !c.pinyin || seen[c.hanzi]) return false;
       seen[c.hanzi] = 1; return true;
     })).slice(0, MAX_WORDS);
     if (S.cards.length < MIN_PAIRS) return false;
-    S.rounds = [];
-    for (var i = 0; i < S.cards.length; i += ROUND) S.rounds.push(S.cards.slice(i, i + ROUND));
-    if (S.rounds.length > 1 && S.rounds[S.rounds.length - 1].length < MIN_PAIRS) { // fold a tiny last round into the one before
-      var tail = S.rounds.pop(); S.rounds[S.rounds.length - 1] = S.rounds[S.rounds.length - 1].concat(tail);
+    S.boards = [];
+    S.cards.forEach(function (c) {
+      var k = c.pinyin.toLowerCase(), b = S.boards.filter(function (x) { return x.length < BOARD && !x.some(function (y) { return y.pinyin.toLowerCase() === k; }); })[0];
+      if (!b) { b = []; S.boards.push(b); }
+      b.push(c); void py;
+    });
+    if (S.boards.length > 1 && S.boards[S.boards.length - 1].length < MIN_PAIRS) { // fold a tiny last board into the others
+      var tail = S.boards.pop();
+      tail.forEach(function (c) { var b = S.boards.filter(function (x) { return !x.some(function (y) { return y.pinyin.toLowerCase() === c.pinyin.toLowerCase(); }); })[0]; if (b) b.push(c); });
     }
     return true;
   }
 
-  function newGame() {
-    S.cards = shuffle(S.cards); S.rounds = [];
-    for (var i = 0; i < S.cards.length; i += ROUND) S.rounds.push(S.cards.slice(i, i + ROUND));
-    if (S.rounds.length > 1 && S.rounds[S.rounds.length - 1].length < MIN_PAIRS) { var tail = S.rounds.pop(); S.rounds[S.rounds.length - 1] = S.rounds[S.rounds.length - 1].concat(tail); }
-    S.r = 0; S.misses = 0; S.pairs = 0; S.done = false; S.t0 = Date.now(); S.ms = 0;
-    el.misses.textContent = '0'; el.summary.hidden = true; el.session.hidden = false;
-    paintBest(); startTimer(); round(0);
+  function startSession() {
+    S.b = 0; S.misses = 0; S.pairs = 0; S.done = false; S.t0 = Date.now();
+    deal(0);
   }
 
-  function startTimer() {
-    clearInterval(S.timer);
-    S.timer = setInterval(function () { S.ms = Date.now() - S.t0; el.timer.textContent = fmt(S.ms); }, 250);
-    el.timer.textContent = '0:00';
+  function deal(n) {
+    S.b = n; S.placed = {}; S.sel = null; S.wrong = null;
+    S.slots = shuffle(S.boards[n]); S.trayOrder = shuffle(S.boards[n]);
+    el.board.hidden = false; el.session.hidden = false;
+    say('Pick a sticker.');
+    paint();
   }
 
-  function tile(cls, c, html) {
-    var b = document.createElement('button');
-    b.type = 'button'; b.className = 'mt-tile ' + cls; b.dataset.id = c.id;
-    if (html) b.innerHTML = html; else b.textContent = '';
-    return b;
-  }
-
-  function round(n) {
-    S.r = n; S.matched = {}; S.sel = null; say('');
-    el.modeBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.setMode === S.mode)); });
-    el.count.textContent = 'Round ' + (n + 1) + ' of ' + S.rounds.length;
-    paintBoard();
-  }
-
-  function paintBoard() {
-    var cards = S.rounds[S.r];
-    var L = cards.map(function (c) { var b = tile('zh', c); b.textContent = c.hanzi; b.lang = 'zh-Hans'; b.dataset.side = 'l'; return b; });
-    var R = shuffle(cards).map(function (c) {
-      var b = tile('', c); b.dataset.side = 'r';
-      if (S.mode === 'pinyin' && PY && PY.html) b.innerHTML = PY.html(c.pinyin); else b.textContent = answer(c);
-      b.dataset.ans = answer(c);
+  function paint() {
+    var cards = S.slots, total = cards.length, placedN = Object.keys(S.placed).length;
+    el.score.textContent = placedN + ' / ' + total;
+    el.board.replaceChildren.apply(el.board, cards.map(function (c, i) {
+      var b = document.createElement('button'), got = S.placed[i];
+      b.type = 'button'; b.className = 'mt-slot' + (got ? ' is-done' : '') + (S.wrong === i ? ' is-bad' : '');
+      b.dataset.slot = i;
+      var zh = document.createElement('span'); zh.className = 'mt-slot-c'; zh.lang = 'zh-Hans'; zh.textContent = got || '';
+      var p = document.createElement('span'); p.className = 'mt-slot-p';
+      if (PY && PY.html) p.innerHTML = PY.html(c.pinyin); else p.textContent = c.pinyin;
+      b.appendChild(zh); b.appendChild(p);
+      b.setAttribute('aria-label', (got ? got + ' placed on ' : 'Slot ') + c.pinyin);
+      if (got) b.setAttribute('aria-disabled', 'true');
       return b;
-    });
-    L.forEach(function (b) { b.dataset.ans = answer(cards.filter(function (c) { return c.id === b.dataset.id; })[0]); });
-    el.left.replaceChildren.apply(el.left, L); el.right.replaceChildren.apply(el.right, R);
-    S.sel = null;
+    }));
+    var used = {}; Object.keys(S.placed).forEach(function (k) { used[S.placed[k]] = 1; });
+    el.tray.replaceChildren.apply(el.tray, S.trayOrder.filter(function (c) { return !used[c.hanzi]; }).map(function (c) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'mt-sticker' + (S.sel === c.hanzi ? ' is-sel' : '');
+      b.lang = 'zh-Hans'; b.textContent = c.hanzi; b.dataset.hanzi = c.hanzi;
+      b.setAttribute('aria-label', 'Pick ' + c.hanzi); b.setAttribute('aria-pressed', String(S.sel === c.hanzi));
+      return b;
+    }));
   }
 
-  function pick(b) {
-    if (S.done || b.classList.contains('is-done')) return;
-    if (!S.sel) { S.sel = b; b.classList.add('is-sel'); return; }
-    if (S.sel === b) { b.classList.remove('is-sel'); S.sel = null; return; }
-    if (S.sel.dataset.side === b.dataset.side) { S.sel.classList.remove('is-sel'); S.sel = b; b.classList.add('is-sel'); return; } // same column: switch pick
-    var a = S.sel; S.sel = null; a.classList.remove('is-sel');
-    if (a.dataset.ans === b.dataset.ans) { // equal answer text counts, so homophones never trap the player
-      [a, b].forEach(function (t) { t.classList.add('is-done'); t.disabled = true; });
-      S.pairs++; say('');
-      if (el.board().querySelectorAll('.mt-tile:not(.is-done)').length === 0) roundDone();
+  function pickSticker(h) {
+    if (S.done) return;
+    S.sel = S.sel === h ? null : h; S.wrong = null;
+    paint();
+    say(S.sel ? 'Now tap the pinyin for ' + S.sel + '.' : 'Pick a sticker.');
+    var s = S.sel && el.tray.querySelector('[data-hanzi="' + S.sel + '"]'); if (s) s.focus();
+  }
+
+  function drop(i) {
+    if (!S.sel || S.placed[i] || S.done) return;
+    var c = S.slots[i], selCard = S.slots.filter(function (x) { return x.hanzi === S.sel; })[0];
+    if (c.hanzi === S.sel || (selCard && selCard.pinyin.toLowerCase() === c.pinyin.toLowerCase())) {
+      S.placed[i] = S.sel; S.sel = null; S.wrong = null; S.pairs++;
+      paint();
+      if (Object.keys(S.placed).length === S.slots.length) boardDone(); else say('Pick a sticker.');
+      var nx = el.tray.querySelector('.mt-sticker'); if (nx) nx.focus();
     } else {
-      S.misses++; el.misses.textContent = S.misses; say('Not a match — try again.', 'bad');
-      [a, b].forEach(function (t) { t.classList.add('is-bad'); });
-      setTimeout(function () { [a, b].forEach(function (t) { t.classList.remove('is-bad'); }); }, 350);
+      S.misses++; S.wrong = i;
+      paint(); say('Not that one — try another slot.', true);
+      el.board.querySelector('[data-slot="' + i + '"]').focus();
     }
   }
-  el.board = function () { return root.querySelector('[data-board]'); };
 
-  function roundDone() {
-    if (S.r + 1 < S.rounds.length) { say('Round clear!', 'ok'); setTimeout(function () { if (!S.done) round(S.r + 1); }, 450); }
-    else finish();
-  }
-
-  function finish() {
-    S.done = true; clearInterval(S.timer); S.ms = Date.now() - S.t0;
-    var sc = score(), res = null;
-    try { if (store && store.recordMatch && S.key) res = store.recordMatch(S.key, sc, S.pairs, S.misses, S.ms); } catch (e) {}
-    $('[data-stat=score] .stat-value').textContent = sc;
-    $('[data-stat=time] .stat-value').textContent = fmt(S.ms);
-    $('[data-stat=misses] .stat-value').textContent = S.misses;
-    el.bestNote.textContent = res && res.isBest ? 'New best!' : res && res.best ? 'Best: ' + res.best.score + ' in ' + fmt(res.best.ms) : '';
-    el.session.hidden = true; el.summary.hidden = false;
-    var h = $('[data-summary] h2'); h.setAttribute('tabindex', '-1'); h.focus();
+  function boardDone() {
+    if (S.b + 1 < S.boards.length) { say('Board complete! Tap New board for the next ' + S.boards[S.b + 1].length + ' words.'); return; }
+    S.done = true;
+    var ms = Date.now() - S.t0, sc = score(), res = null;
+    try { if (store && store.recordMatch && S.key) res = store.recordMatch(S.key, sc, S.pairs, S.misses, ms); } catch (e) {}
+    var best = res && res.isBest ? ' New best!' : res && res.best ? ' Best: ' + res.best.score + ' in ' + fmt(res.best.ms) + '.' : '';
+    say('Board complete! All ' + S.pairs + ' words in ' + fmt(ms) + ' with ' + S.misses + (S.misses === 1 ? ' miss' : ' misses') + ' · score ' + sc + '.' + best);
     try { window.dispatchEvent(new CustomEvent('hsk:practice-done', { detail: { kind: 'match', done: S.pairs, total: S.pairs, score: sc } })); } catch (e) {}
   }
 
   root.addEventListener('click', function (e) {
-    var m = e.target.closest('[data-set-mode]');
-    if (m) {
-      if (m.dataset.setMode !== S.mode && !S.done) {
-        S.mode = m.dataset.setMode;
-        S.pairs -= el.board().querySelectorAll('.mt-tile.is-done').length / 2; // the round restarts, so its pairs are replayed
-        round(S.r);
-      }
-      return;
+    var t = e.target.closest('.mt-sticker');
+    if (t) { pickSticker(t.dataset.hanzi); return; }
+    var s = e.target.closest('.mt-slot');
+    if (s) { drop(+s.dataset.slot); return; }
+    if (e.target.closest('[data-action=new]') && S.boards.length) {
+      if (S.done) { S.cards = shuffle(S.cards); build(S.cards); startSession(); }
+      else deal(Object.keys(S.placed).length === S.slots.length ? (S.b + 1) % S.boards.length : S.b); // a half-done board is re-dealt
     }
-    var t = e.target.closest('.mt-tile');
-    if (t) { pick(t); return; }
-    if (e.target.closest('[data-action=again]')) newGame();
   });
+  root.addEventListener('change', function (e) { if (e.target.matches('[data-more]') && e.target.value) location.href = e.target.value; });
 
   // ---- boot ----
-  if (!root.hasAttribute('data-has-source')) {
-    try {
-      var ls = store.getLists();
-      Object.keys(ls).forEach(function (id) {
-        var a = document.createElement('a');
-        a.className = 'chip'; a.href = '/practice/match?source=list&id=' + encodeURIComponent(id); a.textContent = ls[id].name;
-        el.lists.appendChild(a);
-      });
-    } catch (e) {}
-    return;
-  }
+  try { // the user's own lists (F1) as extra sources
+    var ls = store.getLists();
+    Object.keys(ls).forEach(function (id) {
+      var a = document.createElement('a');
+      a.className = 'mt-src'; a.href = '/practice/match?source=list&id=' + encodeURIComponent(id); a.textContent = ls[id].name;
+      a.setAttribute('role', 'button'); a.setAttribute('aria-pressed', String(qs.get('source') === 'list' && qs.get('id') === id));
+      el.lists.appendChild(a);
+    });
+    if (qs.get('source') === 'list' && ls[qs.get('id')]) $('[data-source-label]').textContent = ls[qs.get('id')].name;
+  } catch (e) {}
   S.key = sourceKey();
   var p = deck();
   if (!p) return;
   msg('Loading words…');
   p.then(function (cards) {
-    if (!build(cards)) throw new Error('This source needs at least ' + MIN_PAIRS + ' words with pinyin and a meaning.');
-    el.msg.hidden = true; newGame();
+    if (!build(cards)) throw new Error('This source needs at least ' + MIN_PAIRS + ' words with pinyin.');
+    el.msg.hidden = true; startSession();
   }).catch(function (e) { msg(e.message || 'Something went wrong.'); });
 })();

@@ -33,8 +33,9 @@ class ReviewController extends Controller
         }
 
         return view('pages.review', [
-            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'title', 'en_title', 'vocab']),
+            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'title', 'en_title', 'vocab', 'course']),
             'levels' => $versions,
+            'hskSize' => [2 => $this->search->query(['version' => 2, 'level' => 1])->count(), 3 => $this->search->query(['version' => 3, 'level' => 1])->count()],
         ]);
     }
 

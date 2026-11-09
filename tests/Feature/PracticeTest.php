@@ -26,7 +26,7 @@ class PracticeTest extends TestCase
     public function test_page_shows_source_picker(): void
     {
         $this->get('/practice')->assertOk()
-            ->assertSee('My saved words')->assertSee('Due cards')->assertSee('?lesson=', false)
+            ->assertSee('My saved words')->assertSee('Due for review')->assertSee('?lesson=', false)
             ->assertSee('version=2&amp;level=1', false)->assertSee('data-practice', false)->assertSee('/js/practice.js', false);
     }
 

@@ -14,6 +14,7 @@ final readonly class WorksheetOptions
         public int $trace = 3,
         public bool $pinyin = true,
         public bool $english = true,
+        public bool $strip = true,
     ) {}
 
     public static function fromArray(array $in): self
@@ -23,6 +24,7 @@ final readonly class WorksheetOptions
             trace: max(0, min(self::CELLS - 1, (int) ($in['trace'] ?? 3))),
             pinyin: filter_var($in['pinyin'] ?? true, FILTER_VALIDATE_BOOL),
             english: filter_var($in['english'] ?? true, FILTER_VALIDATE_BOOL),
+            strip: filter_var($in['strip'] ?? true, FILTER_VALIDATE_BOOL),
         );
     }
 }
