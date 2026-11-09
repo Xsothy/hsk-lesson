@@ -1,7 +1,4 @@
 /* F7 · Sentence practice (extends practice.css) */
-.sp-sources{margin:0 -16px 4px;overflow-x:auto;scrollbar-width:none}
-.sp-sources .pr-chips{display:flex;gap:8px;padding:2px 16px;width:max-content}
-@media (min-width:900px){.sp-sources{margin:0;overflow:visible}.sp-sources .pr-chips{flex-wrap:wrap;width:auto;padding:2px 0}}
 .sp-ask{margin:0;font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
 .sp-build[hidden],.sp-meaning[hidden],.sp-reveal[hidden],.sp-actions [hidden]{display:none}
 .sp-build,.sp-meaning{display:flex;flex-direction:column;gap:14px}
@@ -25,6 +22,7 @@
 .sp-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
 .sp-actions .pr-btn{display:inline-flex;align-items:center;gap:6px}
 .sp-actions .pr-btn[hidden]{display:none}
-.pr-btn.is-primary{background:var(--red);border-color:var(--red);color:var(--on-red)}
 .sp-tile:focus-visible,.sp-choice:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-@media (min-width:900px){.sp .pr-card{max-width:720px}}
+
+.sp-card{align-items:stretch}
+.sp-actions .pr-btn[hidden]{display:none}

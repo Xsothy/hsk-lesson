@@ -24,16 +24,66 @@
 
   // ---- chooser ----
   function chooser() {
-    var due = S.srsDueCount(), saved = S.getSaved().length;
-    function fill(id, n, one) {
-      var a = $(id); a.querySelector('.ar-sub').textContent = n ? plural(n, one) : 'None yet';
-      if (!n) { a.setAttribute('aria-disabled', 'true'); a.addEventListener('click', function (e) { e.preventDefault(); }); }
-    }
-    fill('rv-due-link', due, 'card due');
-    fill('rv-saved-link', saved, 'saved word');
-    $('rv-summary').textContent = plural(due, 'card') + ' due now.';
+    var due = S.srsDueCount();
+    $('rv-summary').textContent = (due ? plural(due, 'card') + ' due now. ' : 'Nothing due right now. ') + 'Pick a deck to start.';
+    $('rv-start').hidden = !due;
+    $('rv-start').textContent = 'Review ' + plural(due, 'card') + ' due';
     show('rv-choose');
   }
+
+  // ---- aside: decks + settings ----
+  function decks() {
+    var dueIds = S.srsDue(), dueSet = {}, saved = S.getSaved();
+    dueIds.forEach(function (id) { dueSet[id] = 1; });
+    function dueBadge(node, n) { node.textContent = String(n); node.classList.toggle('is-zero', !n); }
+    dueBadge(document.querySelector('[data-due=due]'), dueIds.length);
+    dueBadge(document.querySelector('[data-due=saved]'), saved.filter(function (w) { return dueSet[w]; }).length);
+    document.querySelector('[data-size=saved]').textContent = plural(saved.length, 'word');
+    [].forEach.call(document.querySelectorAll('[data-due-lesson]'), function (b) {
+      var ws = (b.parentNode.getAttribute('data-words') || '').split(',').filter(Boolean);
+      dueBadge(b, ws.filter(function (w) { return dueSet[w]; }).length);
+    });
+    // The user's own lists (F1) are decks too.
+    var more = document.querySelector('.rv-more'), ls = {};
+    try { ls = S.getLists(); } catch (e) {}
+    Object.keys(ls).forEach(function (id) {
+      var a = el('a', 'rv-deck'); a.href = '/review?source=list&id=' + encodeURIComponent(id); a.setAttribute('data-deck', 'list-' + id);
+      var t = el('span', 'rv-deck-t'); t.appendChild(el('b', null, ls[id].name)); t.appendChild(el('span', null, plural(ls[id].words.length, 'word')));
+      a.appendChild(t); a.appendChild(el('span', 'rv-due', ''));
+      more.insertBefore(a, more.querySelector('summary').nextSibling);
+    });
+    // Highlight the open deck.
+    var key = qs.get('lesson') || (qs.get('version') ? 'hsk' + qs.get('version') + '-' + (qs.get('level') || 1) : qs.get('source') === 'list' ? 'list-' + qs.get('id') : qs.get('source'));
+    var cur = key && document.querySelector('[data-deck="' + key + '"]');
+    if (cur) { cur.setAttribute('aria-current', 'page'); var d = cur.closest('details'); if (d) d.open = true; }
+  }
+  function settingsPanel() {
+    var o = opts(), s = S.getSettings();
+    [].forEach.call(document.querySelectorAll('[data-first]'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-first') === o.first)); });
+    $('rv-pyfront').checked = o.pinyinFront; $('rv-audio-reveal').checked = o.audioReveal;
+    var n = Number(s.newPerDay) || 20, sel = $('rv-newday');
+    if (![].some.call(sel.options, function (op) { return +op.value === n; })) sel.appendChild(new Option(String(n), String(n)));
+    sel.value = String(n);
+  }
+  function changed(patch) {
+    S.setSettings(patch); settingsPanel();
+    if (!$('rv-study').hidden && !revealed) card(); // re-draw the front with the new setting
+  }
+  document.querySelector('.rv-side').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-first]');
+    if (b) changed({ reviewFirst: b.getAttribute('data-first') });
+  });
+  $('rv-pyfront').addEventListener('change', function () { changed({ reviewPinyinFront: this.checked }); });
+  $('rv-audio-reveal').addEventListener('change', function () { changed({ reviewAudioReveal: this.checked }); });
+  $('rv-newday').addEventListener('change', function () { changed({ newPerDay: +this.value }); });
+  $('rv-new-deck').addEventListener('click', function () {
+    var saved = S.getSaved();
+    if (!saved.length) { $('rv-new-msg').textContent = 'Save some words first: open a character and tap Save word.'; return; }
+    var name = 'Saved words · ' + new Date().toLocaleDateString('en', { month: 'short', day: 'numeric' });
+    var id = S.saveList(name, saved.map(function (w) { return { h: w }; }));
+    location.href = '/review?source=list&id=' + encodeURIComponent(id);
+  });
+  decks(); settingsPanel();
 
   // ---- deck ----
   function deckUrl() {
@@ -50,7 +100,7 @@
     return undefined;
   }
 
-  var queue, cards, idx, revealed, stats, total;
+  var queue, cards, idx, revealed, stats, total, deckTitle = '';
 
   function start(d) {
     cards = {}; d.cards.forEach(function (c) { cards[c.id] = c; });
@@ -59,7 +109,7 @@
     if (!queue.length) {
       return emptyMsg('Nothing due in “' + d.title + '”. ' + (q.newTotal ? plural(q.newTotal, 'new card') + ' held back by your daily limit.' : 'Come back later.'));
     }
-    $('rv-title').textContent = d.title;
+    $('rv-title').textContent = d.title; deckTitle = d.title;
     idx = 0; total = queue.length; stats = { 1: 0, 2: 0, 3: 0, 4: 0 };
     show('rv-study'); card();
   }
@@ -74,8 +124,21 @@
   function card() {
     var c = cards[queue[idx]], o = opts(), f = $('rv-front'), b = $('rv-back');
     revealed = false; f.textContent = ''; b.textContent = '';
+    $('rv-tag').textContent = (S.srsGet(c.id) ? 'REVIEW' : 'NEW CARD') + ' · ' + deckTitle.toUpperCase();
+    $('rv-hint').hidden = false;
+    var han = Array.from(c.hanzi).filter(function (ch) { return /\p{Script=Han}/u.test(ch); });
+    $('rv-strokes').hidden = !han.length; $('rv-write').hidden = !han.length;
+    if (han.length) {
+      $('rv-strokes').href = '/char/' + encodeURIComponent(han[0]); $('rv-strokes').textContent = 'Strokes for ' + c.hanzi;
+      $('rv-write').href = '/practice?words=' + encodeURIComponent(han.join(''));
+    }
     var hanzi = function () { return el('div', 'rv-hanzi zh', c.hanzi); };
-    var pinyin = function () { return c.pinyin ? el('div', 'rv-pinyin', c.pinyin) : null; };
+    var pinyin = function () {
+      if (!c.pinyin) return null;
+      var n = el('div', 'rv-pinyin');
+      if (window.HSK_PINYIN && window.HSK_PINYIN.html) n.innerHTML = window.HSK_PINYIN.html(c.pinyin); else n.textContent = c.pinyin;
+      return n;
+    };
     var english = function () { return el('div', 'rv-en', c.english || '—'); };
     function add(parent, n) { if (n) parent.appendChild(n); }
 
@@ -95,7 +158,7 @@
 
   function progress() {
     var p = Math.round(Math.min(idx, total) * 100 / total);
-    $('rv-count').textContent = Math.min(idx + 1, total) + ' / ' + total;
+    $('rv-count').textContent = Math.min(idx + 1, total) + ' of ' + total + (qs.get('source') === 'due' ? ' due' : '');
     document.querySelector('.rv-bar').setAttribute('aria-valuenow', p);
     $('rv-bar-fill').style.width = p + '%';
   }
@@ -105,7 +168,7 @@
     revealed = true;
     var id = queue[idx], pv = S.srsPreview(id), o = opts();
     for (var r = 1; r <= 4; r++) document.querySelector('[data-next="' + r + '"]').textContent = pv[r].label;
-    $('rv-back').hidden = false; $('rv-rate').hidden = false; $('rv-reveal').hidden = true;
+    $('rv-back').hidden = false; $('rv-rate').hidden = false; $('rv-reveal').hidden = true; $('rv-hint').hidden = true;
     if (o.audioReveal && o.first !== 'audio') speak(cards[id].hanzi);
     document.querySelector('.rv-good').focus({ preventScroll: true });
   }

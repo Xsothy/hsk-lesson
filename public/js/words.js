@@ -45,6 +45,13 @@
 
   function info(k) { return cache[k] || { py: '', en: '', lv: null }; }
   function status(k) { return S.isKnown(k) ? 'known' : 'learn'; }
+  // Card state for the row tag: Due (SRS due now) · Known · Learning (has an SRS card) · New.
+  function state(k) {
+    var c = S.srsGet(k);
+    if (c && c.due <= Date.now()) return ['Due', 'due'];
+    if (S.isKnown(k)) return ['Known', 'known'];
+    return c ? ['Learning', 'learning'] : ['New', 'new'];
+  }
   function matches(k) {
     if (filter === 'all') return true;
     if (filter === 'known' || filter === 'learn') return status(k) === filter;
@@ -53,7 +60,7 @@
 
   function renderStats(saved) {
     var p = S.getProgress();
-    var vals = { saved: saved.length, known: Object.keys(p.known).length, written: Object.keys(p.chars).length, streak: S.getStreak() };
+    var vals = { known: Object.keys(p.known).length, written: Object.keys(p.chars).length, due: S.srsDueCount(), streak: S.getStreak() };
     Object.keys(vals).forEach(function (k) { var el = $('[data-stat=' + k + '] .stat-value'); if (el) el.textContent = vals[k]; });
   }
 
@@ -65,16 +72,13 @@
       days.push({ label: new Date(t).toLocaleDateString('en', { weekday: 'short' }), n: n });
       max = Math.max(max, n); total += n;
     }
-    var W = 350, H = 150, bw = 30, gap = (W - 7 * bw) / 8, svg = '';
-    days.forEach(function (d, j) {
-      var h = d.n ? Math.max(6, Math.round(d.n / max * 90)) : 4, x = gap + j * (bw + gap);
-      svg += '<rect class="bar' + (d.n ? '' : ' zero') + '" x="' + x + '" y="' + (115 - h) + '" width="' + bw + '" height="' + h + '" rx="6"/>' +
-        (d.n ? '<text class="val" x="' + (x + bw / 2) + '" y="' + (109 - h) + '">' + d.n + '</text>' : '') +
-        '<text x="' + (x + bw / 2) + '" y="138">' + d.label + '</text>';
-    });
     var desc = 'Activity in the last 7 days: ' + days.map(function (d) { return d.label + ' ' + d.n; }).join(', ') + '. Total ' + total + '.';
-    $('[data-week]').innerHTML = '<div class="week-chart"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + desc + '">' + svg + '</svg>' +
-      '<p class="sr-only-t">' + desc + '</p></div>' +
+    var html = '<div class="week-chart" role="img" aria-label="' + desc + '">';
+    days.forEach(function (d, j) {
+      var h = Math.round(d.n / max * 80);
+      html += '<div class="wk-day"><span class="wk-n">' + d.n + '</span><div class="wk-bar' + (j === 6 ? ' is-today' : '') + '" style="height:' + h + 'px"></div><span class="wk-d">' + d.label + '</span></div>';
+    });
+    $('[data-week]').innerHTML = html + '</div>' +
       (total ? '' : '<p class="words-count">No activity yet this week — write a character or review a card to get started.</p>');
   }
 
@@ -89,8 +93,9 @@
     saved.forEach(function (k) { var l = info(k).lv; if (l) levels[l] = 1; });
     if (filter.indexOf('hsk') === 0 && !levels[filter.slice(3)]) filter = 'all';
     box.textContent = '';
-    box.appendChild(chipEl('All', 'all')); box.appendChild(chipEl('Known', 'known')); box.appendChild(chipEl('To learn', 'learn'));
-    Object.keys(levels).sort(function (a, b) { return a - b; }).forEach(function (l) { box.appendChild(chipEl('HSK ' + l, 'hsk' + l)); });
+    function n(f) { var keep = filter; filter = f; var c = saved.filter(matches).length; filter = keep; return c; }
+    box.appendChild(chipEl('All ' + saved.length, 'all')); box.appendChild(chipEl('Known ' + n('known'), 'known')); box.appendChild(chipEl('To learn ' + n('learn'), 'learn'));
+    Object.keys(levels).sort(function (a, b) { return a - b; }).forEach(function (l) { box.appendChild(chipEl('HSK ' + l + ' · ' + n('hsk' + l), 'hsk' + l)); });
   }
 
   function rowEl(k) {
@@ -103,7 +108,7 @@
     el.querySelector('.wr-en').textContent = i.en || (cache[k] || failed[k] ? '' : '…');
     var au = el.querySelector('.wr-audio'); au.setAttribute('data-say', k); au.setAttribute('aria-label', 'Play ' + k);
     var u = el.querySelector('[data-unsave]'); u.setAttribute('data-key', k); u.setAttribute('aria-label', 'Remove ' + k + ' from saved words');
-    if (status(k) === 'known') { var t = document.createElement('span'); t.className = 'wr-tag'; t.textContent = 'Known'; au.parentNode.insertBefore(t, au); }
+    var st = state(k), t = document.createElement('span'); t.className = 'wr-tag mw-tag-' + st[1]; t.textContent = st[0]; au.parentNode.insertBefore(t, au);
     return el;
   }
 

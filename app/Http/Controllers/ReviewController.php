@@ -33,8 +33,9 @@ class ReviewController extends Controller
         }
 
         return view('pages.review', [
-            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'course', 'title', 'en_title', 'vocab']),
+            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'title', 'en_title', 'vocab', 'course']),
             'levels' => $versions,
+            'hskSize' => [2 => $this->search->query(['version' => 2, 'level' => 1])->count(), 3 => $this->search->query(['version' => 3, 'level' => 1])->count()],
         ]);
     }
 
@@ -51,7 +52,7 @@ class ReviewController extends Controller
         if ($slug = $request->query('lesson')) {
             $lesson = Lesson::where('slug', (string) $slug)->where('is_published', true)->first();
             abort_unless($lesson, 404);
-            $title = $lesson->full_label.' · '.($lesson->en_title ?: $lesson->title);
+            $title = 'Lesson '.$lesson->number.' · '.($lesson->en_title ?: $lesson->title);
             $words = array_values(array_filter((array) $lesson->vocab, 'is_string'));
             $preferLesson = true;
         } elseif ($request->filled('version') || $request->filled('level')) {

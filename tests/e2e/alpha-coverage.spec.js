@@ -2,7 +2,7 @@
 // Alpha exit checklist: content coverage + dead-link crawl.
 const { test, expect } = require('@playwright/test');
 
-test('24 lessons and 48 readings load', async ({ request }) => {
+test('24 lessons and 48 readings load (HSK 2 course)', async ({ request }) => {
   const html = await (await request.get('/courses')).text();
   const slugs = [...new Set([...html.matchAll(/\/lessons\/([A-Za-z0-9_-]+)"/g)].map((m) => m[1]))];
   expect(slugs).toHaveLength(24);

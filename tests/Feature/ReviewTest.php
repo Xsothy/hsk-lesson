@@ -24,8 +24,8 @@ class ReviewTest extends TestCase
     public function test_review_page_renders_chooser_with_lessons_and_levels(): void
     {
         $this->get('/review')->assertOk()
-            ->assertSee('Cards due')->assertSee('Saved words')->assertSee('Lessons')->assertSee('HSK levels')
-            ->assertSee('Level 7–9')->assertSee('rv-reveal', false)->assertSee('/js/review.js', false)
+            ->assertSee('Cards due')->assertSee('Saved words')->assertSee('Lessons')->assertSee('More decks')
+            ->assertSee('HSK 7–9')->assertSee('rv-reveal', false)->assertSee('/js/review.js', false)
             ->assertSee('review?lesson=lesson-1', false);
     }
 

@@ -20,8 +20,8 @@ class PinyinMatchTest extends TestCase
     public function test_page_renders_with_shared_components_and_sources(): void
     {
         $this->get('/practice/match')->assertOk()
-            ->assertSee('data-match', false)->assertSee('class="page-head', false)
-            ->assertSee('Pinyin match')->assertSee('My saved words')->assertSee('data-lists', false)
+            ->assertSee('data-match', false)
+            ->assertSee('Pinyin match')->assertSee('My words')->assertSee('data-lists', false)
             ->assertSee('?lesson=lesson-1', false)->assertSee('version=2', false)->assertSee('version=3', false)
             ->assertSee('/js/match.js', false)->assertSee('/js/pinyin-tones.js', false)->assertSee('<svg', false);
     }

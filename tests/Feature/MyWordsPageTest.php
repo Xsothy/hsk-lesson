@@ -11,7 +11,7 @@ class MyWordsPageTest extends TestCase
         $this->get('/words')->assertOk()
             ->assertSee('My words')
             ->assertSee('data-words-page', false)
-            ->assertSee('data-stat="saved"', false)
+            ->assertSee('data-stat="due"', false)
             ->assertSee('/css/words.css', false)
             ->assertSee('/js/words.js', false)
             ->assertSee('No saved words yet')

@@ -66,8 +66,8 @@ test('Learn -> Write -> My words -> Review persists across reloads', async ({ pa
   const homeDue = (await page.locator('[data-today=due] .ar-icon').textContent()).trim();
   await page.goto('/review');
   await expect(page.locator('#rv-choose')).toBeVisible();
-  const reviewDue = (await page.locator('#rv-due-link').textContent()).match(/\d+/)?.[0];
-  console.log('home due', homeDue, 'review due text:', (await page.locator('#rv-due-link').textContent()).replace(/\s+/g, ' '));
+  const reviewDue = (await page.locator('[data-due=due]').textContent()).match(/\d+/)?.[0];
+  console.log('home due', homeDue, 'review due text:', (await page.locator('[data-due=due]').textContent()).replace(/\s+/g, ' '));
   expect(reviewDue).toBe(homeDue);
 
   expect(errors).toEqual([]);

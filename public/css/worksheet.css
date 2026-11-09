@@ -1,0 +1,49 @@
+/* Worksheet builder (canvas board "Worksheet"). Loads after practice.css. */
+.ws{display:flex;flex-direction:column;gap:28px}
+.ws [hidden]{display:none!important}
+.wk-head{display:flex;flex-direction:column;gap:4px}
+.wk-head h1{margin:0;font-size:26px;font-weight:700}
+.wk-head h1 span{font-family:var(--font-zh);font-weight:500;color:var(--muted)}
+.wk-head p{margin:0;font-size:15px;color:var(--text-2)}
+.ws-cols{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.ws-set{flex:1 1 min(320px,100%);min-width:0;background:var(--card);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:28px;box-sizing:content-box}
+.ws-field{display:flex;flex-direction:column;gap:8px}
+.ws-l{font-size:13px;font-weight:600;color:var(--text-2)}
+.ws-select{height:48px;border:1.5px solid var(--line);border-radius:12px;padding:0 12px;font:inherit;font-size:15px;background:var(--card);color:var(--ink);min-width:0}
+.wk-chars{min-height:72px;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-family:var(--font-zh);font-size:20px;resize:vertical;color:var(--ink);background:var(--card)}
+.ws-hint{margin:0;font-size:12px;color:var(--text-2)}
+.ws-hint a{color:var(--red)}
+.ws-opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.ws-opt{position:relative;min-height:48px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;font-size:13px}
+.ws-opt b{font-weight:600}
+.ws-mode{min-height:56px}
+.ws-opt span{font-size:11px;color:var(--text-2)}
+.ws-opt input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.ws-opt:has(input:checked){border-color:var(--red);background:var(--sel)}
+.ws-opt:has(input:focus-visible){outline:2px solid var(--blue);outline-offset:2px}
+.ws-checks{display:flex;flex-direction:column;gap:4px}
+.ws-check{min-height:44px;display:flex;align-items:center;justify-content:space-between;font-size:14px;cursor:pointer}
+.ws-check input{width:22px;height:22px;accent-color:var(--red);margin:0}
+.ws-go{height:52px;border:0;border-radius:12px;background:var(--red);color:var(--on-red);font:inherit;font-size:16px;font-weight:600;cursor:pointer}
+.ws-go:hover{background:var(--red-d)}
+.ws-prev{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.ws-prev-top{display:flex;justify-content:space-between;align-items:baseline}
+.ws-prev-top h2{margin:0;font-size:18px;font-weight:700}
+.ws-prev-top span{font-size:13px;color:var(--text-2)}
+.ws-paper{background:var(--card);border-radius:6px;box-shadow:0 6px 24px rgba(var(--shadow),.10);padding:24px 20px;display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.ws-paper-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.ws-paper-h b{font-family:var(--font-zh);font-size:16px}
+.ws-paper-h span{font-size:12px;color:var(--text-2);white-space:nowrap}
+.ws-rows{display:flex;flex-direction:column;gap:14px}
+.ws-row{display:flex;flex-direction:column;gap:4px}
+.ws-row-l{font-size:12px;color:var(--text-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ws-row-l b{color:var(--red);font-weight:600}
+.ws-cells{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));border:1px solid var(--wg-frame)}
+.ws-cell{aspect-ratio:1;border-right:1px solid var(--wg-frame);display:flex;align-items:center;justify-content:center;font-family:var(--font-zh);font-size:clamp(12px,2.6cqw,22px);color:var(--stroke-out);background-repeat:no-repeat}
+.ws-cell:last-child{border-right:0}
+.ws-cell.is-model{color:var(--ink)}
+.ws-paper{container-type:inline-size}
+.ws-g-tian .ws-cell,.ws-g-mi .ws-cell{background-image:linear-gradient(90deg,transparent calc(50% - .5px),var(--wg-cross) calc(50% - .5px),var(--wg-cross) calc(50% + .5px),transparent calc(50% + .5px)),linear-gradient(0deg,transparent calc(50% - .5px),var(--wg-cross) calc(50% - .5px),var(--wg-cross) calc(50% + .5px),transparent calc(50% + .5px))}
+.ws-g-mi .ws-cell{background-image:linear-gradient(90deg,transparent calc(50% - .5px),var(--wg-cross) calc(50% - .5px),var(--wg-cross) calc(50% + .5px),transparent calc(50% + .5px)),linear-gradient(0deg,transparent calc(50% - .5px),var(--wg-cross) calc(50% - .5px),var(--wg-cross) calc(50% + .5px),transparent calc(50% + .5px)),linear-gradient(45deg,transparent calc(50% - .5px),var(--wg-diag) calc(50% - .5px),var(--wg-diag) calc(50% + .5px),transparent calc(50% + .5px)),linear-gradient(-45deg,transparent calc(50% - .5px),var(--wg-diag) calc(50% - .5px),var(--wg-diag) calc(50% + .5px),transparent calc(50% + .5px))}
+.ws :is(button,a,select,textarea,input):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.ws-cell[data-g]::before{content:attr(data-g)}

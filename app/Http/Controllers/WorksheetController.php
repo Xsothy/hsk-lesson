@@ -33,7 +33,7 @@ class WorksheetController extends Controller
         };
 
         return view('pages.worksheet', [
-            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'course', 'title', 'en_title']),
+            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'title', 'zh_title', 'en_title', 'vocab', 'course']),
             'levels' => $levels,
             'pre' => $pre,
             'source' => $source,
@@ -55,6 +55,7 @@ class WorksheetController extends Controller
             'trace' => ['nullable', 'integer', 'min:0', 'max:'.(WorksheetOptions::CELLS - 1)],
             'pinyin' => ['nullable', 'boolean'],
             'english' => ['nullable', 'boolean'],
+            'strip' => ['nullable', 'boolean'],
         ]);
 
         $picked = match ($in['source']) {
@@ -75,6 +76,7 @@ class WorksheetController extends Controller
             'trace' => $in['trace'] ?? 3,
             'pinyin' => $request->has('form') ? $request->boolean('pinyin') : ($in['pinyin'] ?? true),
             'english' => $request->has('form') ? $request->boolean('english') : ($in['english'] ?? true),
+            'strip' => $request->has('form') ? $request->boolean('strip') : ($in['strip'] ?? true),
         ]);
         $pdf = $renderer->render($picked['title'], $items, $options);
 

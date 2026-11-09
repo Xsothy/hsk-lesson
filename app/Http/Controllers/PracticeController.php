@@ -20,11 +20,20 @@ class PracticeController extends Controller
 
     public function index(Request $request)
     {
-        $lessons = Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'course', 'title', 'zh_title', 'en_title']);
+        $lessons = Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'title', 'zh_title', 'en_title', 'vocab', 'course']);
+        // Unique characters per lesson, for the "Practise from" source list.
+        foreach ($lessons as $l) {
+            $l->char_count = count(array_unique(preg_split('//u', preg_replace('/[^\p{Han}]/u', '', implode('', array_filter((array) $l->vocab, 'is_string'))), -1, PREG_SPLIT_NO_EMPTY)));
+        }
+        $params = $request->only(['lesson', 'version', 'level', 'set', 'source', 'mode', 'words', 'filter', 'order']);
+        $current = $lessons->firstWhere('slug', $params['lesson'] ?? null) ?? $lessons->first();
+        $hskCount = fn (int $v) => $this->search->query(['version' => $v, 'level' => 1])->count();
 
         return view('pages.practice', [
             'lessons' => $lessons,
-            'params' => $request->only(['lesson', 'version', 'level', 'set', 'source', 'mode', 'words', 'filter']),
+            'current' => $current,
+            'hskCount' => [2 => $hskCount(2), 3 => $hskCount(3)],
+            'params' => $params,
             'levels2' => LearnController::levels(2),
             'levels3' => LearnController::levels(3),
         ]);
@@ -34,7 +43,7 @@ class PracticeController extends Controller
     public function sentences(Request $request)
     {
         return view('pages.practice-sentences', [
-            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'course', 'zh_title']),
+            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'zh_title', 'course']),
             'lesson' => (string) $request->query('lesson', ''),
             'mode' => in_array($request->query('mode'), ['build', 'meaning'], true) ? $request->query('mode') : 'mix',
         ]);
@@ -44,7 +53,7 @@ class PracticeController extends Controller
     public function match(Request $request)
     {
         return view('pages.practice-match', [
-            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'course', 'zh_title']),
+            'lessons' => Lesson::where('is_published', true)->orderBy('number')->get(['slug', 'number', 'zh_title', 'course']),
             'levels2' => LearnController::levels(2),
             'levels3' => LearnController::levels(3),
             'params' => $request->only(['lesson', 'version', 'level', 'set', 'source', 'id']),
@@ -71,7 +80,7 @@ class PracticeController extends Controller
             if (! $lesson) {
                 return response()->json(['message' => 'Unknown lesson'], 404);
             }
-            $label = $lesson->full_label;
+            $label = 'Lesson '.$lesson->number;
             foreach ($lesson->vocab ?? [] as $h) {
                 $e = $this->content->enrich((string) $h);
                 $words[] = [(string) $h, $e['p'], $e['e']];
