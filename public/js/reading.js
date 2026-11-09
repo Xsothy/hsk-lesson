@@ -34,8 +34,9 @@
           else o.classList.add('qo-disabled');
           if (k === answer || o === btn) {
             var m = document.createElement('span'); m.className = 'qo-mark'; m.setAttribute('role', 'img');
-            m.setAttribute('aria-label', k === answer ? 'Correct' : 'Wrong'); m.textContent = k === answer ? '✓' : '✗';
-            o.appendChild(m);
+            m.setAttribute('aria-label', k === answer ? 'Correct' : 'Wrong');
+            m.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="' + (k === answer ? 'M5 12.5l4.5 4.5L19 7.5' : 'M6 6l12 12M18 6L6 18') + '"/></svg>';
+            o.insertBefore(m, o.firstChild);
           }
         });
         q.querySelector('.feedback').textContent = ok ? 'Correct!' : 'Not quite — the answer is ' + opts[answer].querySelector('.qo-label').textContent + '.';

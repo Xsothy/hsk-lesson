@@ -4,29 +4,10 @@ h1,h2,h3{font-family:var(--font-head,var(--font-ui))}
 a{color:inherit}
 .zh{font-family:var(--font-zh)}
 .skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:var(--card);padding:8px 12px;z-index:100}
-.hdr{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;padding:10px var(--pad)}
-.logo{font-family:var(--font-zh);font-weight:700;font-size:20px;text-decoration:none;color:var(--red)}
-.logo{display:inline-flex;align-items:center;min-height:44px}
-.hdr-actions{margin-left:auto;display:flex;gap:4px}
-.icon-btn{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-radius:var(--r-s);text-decoration:none;font-size:20px}
-.icon-btn:hover,.menu-btn:hover{background:var(--soft)}
-.menus{display:none;gap:4px}
-.menu{position:relative}
-.menu-btn{min-height:44px;padding:0 14px;border:0;background:none;font:inherit;font-weight:500;color:var(--text-2);border-radius:var(--r-s);cursor:pointer}
-.menu-list{display:none;position:absolute;top:100%;left:0;min-width:180px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-m);padding:6px;box-shadow:0 8px 24px rgba(var(--shadow),.08)}
-.menu.open .menu-list{display:block}
-.menu-list a{display:flex;align-items:center;min-height:44px;padding:0 12px;border-radius:var(--r-s);text-decoration:none;color:var(--text-2)}
-.menu-list a:hover,.menu-list a[aria-current=page]{background:var(--red-t);color:var(--red-d)}
-.page{padding:24px var(--pad) 96px;max-width:1200px;margin:0 auto}
+.page{padding:24px var(--pad) 48px;max-width:1200px;margin:0 auto}
 .page h1{margin:0 0 8px;font-size:28px}
 .placeholder{background:var(--card);border:1px dashed var(--line);border-radius:var(--r-l);padding:32px;color:var(--muted)}
-.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:50;display:grid;grid-template-columns:repeat(4,1fr);background:var(--card);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom))}
-.tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:48px;gap:2px;font-size:12px;text-decoration:none;color:var(--muted);border-radius:var(--r-s)}
-.tabbar a[aria-current=page]{background:var(--red-t);color:var(--red-d);font-weight:600}
-@media (min-width:761px){.menus{display:flex}.tabbar{display:none}.page{padding-bottom:48px}.icon-btn.settings{display:none}}
 .icon-btn.account.is-signed-in{position:relative}.icon-btn.account.is-signed-in::after{content:"";position:absolute;right:8px;bottom:8px;width:8px;height:8px;border-radius:50%;background:var(--green,#2e9d5b);border:2px solid var(--card)}
-.tabbar a .icon{width:22px;height:22px}
-.icon-btn .icon{width:22px;height:22px}
 /* One page-header pattern: eyebrow + h1 + optional subtitle (R4) */
 .page-head{margin:0 0 18px}
 .page-head .eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
@@ -40,3 +21,58 @@ a{color:inherit}
 @media (min-width:761px){.chips.chip-scroll{flex-wrap:wrap;margin-right:0;padding-right:0}}
 .page-head.has-lead{display:flex;gap:16px;align-items:center}
 .ph-lead{flex:none;display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;background:var(--soft);font-size:30px}
+
+/* App header — design canvas board "AppHeader" (5 · Component library). Collapses below 761px: menus move to a full-width second row. */
+.hdr{position:sticky;top:0;z-index:50;background:var(--card-2);color:var(--ink);border-bottom:1px solid var(--line);overflow-x:clip;font-family:var(--font-ui);line-height:normal}
+.hdr-row{max-width:1200px;margin:0 auto;height:68px;padding:0 20px;display:flex;align-items:center;gap:24px}
+.logo{flex-shrink:0;display:inline-flex;align-items:center;min-height:44px;font-family:var(--font-zh);font-size:21px;font-weight:700;color:var(--ink);text-decoration:none}
+.logo span{color:var(--red)}
+.menus{display:flex;gap:4px;flex:1}
+.menu{position:relative}
+.menu-btn{height:44px;padding:0 12px 0 14px;border:0;border-radius:999px;display:flex;align-items:center;gap:6px;font-family:var(--font-ui);font-size:14px;font-weight:500;white-space:nowrap;cursor:pointer;color:var(--text-2);background:transparent}
+.menu.is-current .menu-btn{font-weight:600;color:var(--red-d);background:var(--red-t)}
+.menu-btn:hover,.menu.open .menu-btn{background:var(--soft)}
+.menu.open .menu-btn{color:var(--red-d)}
+.menu-chev{flex:none;transition:transform .15s}
+.menu.open .menu-chev{transform:rotate(180deg)}
+.menu-list{display:none;position:absolute;top:calc(100% + 8px);left:0;width:290px;padding:8px;border-radius:calc(var(--r-m) * 1.125);background:var(--card);border:1px solid var(--line);box-shadow:0 16px 40px rgba(var(--shadow),.12);flex-direction:column;gap:2px}
+.menu.open .menu-list{display:flex}
+.menu-list a{min-height:68px;padding:8px 10px;border-radius:var(--r-s);display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.menu-list a:hover{background:var(--paper)}
+.mi-glyph{width:36px;height:36px;flex-shrink:0;border-radius:calc(var(--r-s) * .8333);display:flex;align-items:center;justify-content:center;font-family:var(--font-zh);font-size:17px;font-weight:700}
+.menu-learn .mi-glyph{background:var(--orange-t);color:var(--orange)}
+.menu-chars .mi-glyph{background:var(--blue-t);color:var(--blue)}
+.menu-practice .mi-glyph{background:var(--red-t);color:var(--red-d)}
+.menu-more .mi-glyph{background:var(--green-t);color:var(--green-d)}
+.mi-text{display:flex;flex-direction:column;gap:1px}
+.mi-text b{font-size:14px;font-weight:600}
+.mi-text span{font-size:12px;color:var(--muted)}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-radius:var(--r-s);text-decoration:none;color:inherit}
+.icon-btn:hover{background:var(--soft)}
+.hdr .icon-btn{width:44px;height:44px;flex-shrink:0;border-radius:999px;color:var(--text-2)}
+.hdr .icon-btn[aria-current=page]{color:var(--red-d)}
+.hdr .ib-d,.hdr .ib-m{display:flex}.hdr .ib-m{display:none}
+.hdr-search-btn{display:none!important}
+.hdr-search{flex-shrink:0;width:288px;height:42px;margin:0;border-radius:999px;background:var(--soft);display:flex;align-items:center;gap:8px;padding:0 14px;color:var(--muted)}
+.hdr-search:focus-within{outline:2px solid var(--red);outline-offset:2px}
+.hdr-search svg{flex:none}
+.hdr-search input{flex:1;min-width:0;border:0;outline:none;background:transparent;color:var(--ink);font-family:var(--font-ui);font-size:14px;padding:0;-webkit-appearance:none;appearance:none}
+.hdr-search input::placeholder{color:var(--muted);opacity:1}
+.hdr-search input::-webkit-search-cancel-button{display:none}
+@media (min-width:761px) and (max-width:1020px){.hdr-search{display:none}.hdr-search-btn{display:inline-flex!important}}
+@media (max-width:760px){
+  .hdr-row{flex-wrap:wrap;height:auto;padding:10px 12px 8px;row-gap:6px}
+  .logo{margin-right:auto}
+  .menus{order:3;flex:1 0 100%;position:relative;justify-content:space-between}
+  .menu{position:static}
+  .menu-btn{padding:0 10px 0 12px}
+  .menu-list{left:0;right:0;width:auto;top:calc(100% + 6px)}
+  .hdr-search{display:none}
+  .hdr-search-btn{display:inline-flex!important}
+  .hdr .ib-d{display:none}.hdr .ib-m{display:flex}
+}
+/* Tab bar — canvas board "TabBar" hides it at every width (the header menus cover phones). Pill styles kept for parity. */
+.tabbar{display:none!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;height:72px;padding:6px 12px 12px;background:var(--card-2);border-top:1px solid var(--line)}
+.tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;font-weight:500;text-decoration:none;color:var(--muted)}
+.tabbar .tb-pill{width:56px;height:30px;border-radius:999px;display:flex;align-items:center;justify-content:center}
+.tabbar a[aria-current=page]{color:var(--red-d);font-weight:600}.tabbar a[aria-current=page] .tb-pill{background:var(--red-t)}

@@ -13,6 +13,8 @@
     if (!bar) return;
     bar.setAttribute('aria-valuenow', p);
     var i = bar.querySelector('i'); if (i) i.style.width = p + '%';
+    var lbl = card.querySelector('.lc-pct'); if (lbl) lbl.textContent = p === 100 ? 'Done' : (p ? p + '%' : 'Start');
+    card.classList.toggle('is-done', p === 100);
   }
 
   // Lesson cards
