@@ -1,4 +1,5 @@
-{{-- side: left|right ; speaker: A/B name ; zh, en ; tokens (RubyTokens, interlinear pinyin) or legacy pinyin string --}}
+{{-- Canvas "DialogueBubble": avatar + bubble; the right-hand speaker (B) is red and mirrored.
+     side: left|right ; speaker: A/B name ; zh, en ; tokens (RubyTokens, interlinear pinyin) or legacy pinyin string --}}
 @props(['speaker' => null, 'zh', 'pinyin' => null, 'tokens' => null, 'en' => null, 'side' => 'left'])
 <div {{ $attributes->merge(['class' => 'bubble bubble-'.($side === 'right' ? 'right' : 'left')]) }}>
   @if ($speaker)<span class="b-spk" aria-hidden="true">{{ $speaker }}</span>@endif
@@ -6,7 +7,7 @@
     @if ($tokens)
       <x-ruby-line class="b-zh" :tokens="$tokens" />
     @else
-      <div class="b-zh zh">{{ $zh }}</div>
+      <div class="b-zh zh" lang="zh-Hans">{{ $zh }}</div>
       @if ($pinyin)<div class="b-py">{{ $pinyin }}</div>@endif
     @endif
     @if ($en)<div class="b-en">{{ $en }}</div>@endif

@@ -78,25 +78,13 @@ for (const vp of VIEWPORTS) {
           h1: document.querySelectorAll('h1').length,
         }));
         if (m.sw > m.iw) problems.push(`${url}: horizontal scroll (${m.sw} > ${m.iw})`);
-        if (vp.width >= 761) {
-          if (!m.hdr) problems.push(`${url}: header not visible`);
-          if (m.tab) problems.push(`${url}: tab bar visible on desktop`);
-        } else if (!m.tab) problems.push(`${url}: tab bar not visible on phone`);
+        // Design canvas: the header (menus on a second row below 761px) is the only nav; the tab bar is hidden at every width.
+        if (!m.hdr) problems.push(`${url}: header not visible`);
+        if (m.tab) problems.push(`${url}: tab bar visible (canvas hides it)`);
         if (errors.length) problems.push(`${url}: console/page errors: ${errors.join(' | ')}`);
         if (failed.length) problems.push(`${url}: failed requests: ${failed.join(' | ')}`);
 
         if (vp.width <= 760) {
-          // Last content must be reachable above the fixed tab bar.
-          const hidden = await page.evaluate(() => {
-            window.scrollTo(0, document.documentElement.scrollHeight);
-            const tb = document.querySelector('nav.tabbar').getBoundingClientRect();
-            const page = document.querySelector('main') || document.querySelector('.page');
-            const kids = [...page.querySelectorAll('*')].filter((e) => e.getBoundingClientRect().height > 0 && !e.closest('[hidden]'));
-            const bottom = Math.max(...kids.map((e) => e.getBoundingClientRect().bottom));
-            window.scrollTo(0, 0);
-            return bottom > tb.top + 1 ? Math.round(bottom - tb.top) : 0;
-          });
-          if (hidden) problems.push(`${url}: last content hidden ${hidden}px behind the tab bar`);
           const small = await page.evaluate(smallTargets);
           if (small.length) touch[url] = small;
         }

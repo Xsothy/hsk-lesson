@@ -29,6 +29,9 @@ class Icons
         'calendar' => '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
         'home' => '<path d="M3 11l9-8 9 8"/><path d="M5 9.5V21h14V9.5"/>',
         'layers' => '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+        'lesson' => '<path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2z"/><path d="M8 8h6"/>',
+        'pencil' => '<path d="M4 20l4-1 10-10-3-3L5 16z"/><path d="M13 8l3 3"/>',
+        'more' => '<circle cx="5" cy="12" r="1.8" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/><circle cx="19" cy="12" r="1.8" fill="currentColor" stroke="none"/>',
         'tools' => '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>',
     ];
 
@@ -37,6 +40,14 @@ class Icons
         '📖' => 'book', '✍️' => 'pen', '✍' => 'pen', '🔁' => 'repeat', '🔤' => 'hanzi', '⏰' => 'clock', '⭐' => 'star',
         '🔖' => 'bookmark', '🧠' => 'cards', '➡️' => 'arrow-right', '📚' => 'layers', '🏠' => 'home', '📊' => 'chart', '📛' => 'tag', '🐲' => 'calendar', '🔊' => 'audio', '🔍' => 'search', '⚙️' => 'settings', '👤' => 'user',
     ];
+
+    /** Quiz answer mark (canvas "✓ " / "✕ " prefix) as an inline SVG. */
+    public static function mark(bool $correct): string
+    {
+        $d = $correct ? 'M5 12.5l4.5 4.5L19 7.5' : 'M6 6l12 12M18 6L6 18';
+
+        return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="'.$d.'"/></svg>';
+    }
 
     /** Icon name for an icon prop (name or legacy emoji), or null when it is something else. */
     public static function resolve(?string $icon): ?string

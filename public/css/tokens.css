@@ -6,6 +6,8 @@
   --blue:#1d3f8a;--blue-t:#eef4fe;
   --tone1:#c2281f;--tone2:#15803d;--tone3:#1d4ed8;--tone4:#7e22ce;
   --r-s:12px;--r-m:16px;--r-l:22px;--r-xl:24px;
+  /* design-canvas colours with no older token: quiz selected, gold/green tiles, lesson glyph, writing-grid guides */
+  --orange:#7a4510;--orange-t:#fde9d4;--sel:#fffcf7;--gold-s:#fcf7ec;--green-s:#e8f5e9;--brown:#3d2a12;--wg-frame:#e9b9b3;--wg-cross:#f0cfca;--wg-diag:#f5dfdb;
   --on-ink:#fff;--on-red:#fff;--shadow:15,12,8;--scrim:0,0,0;--stroke-out:#ddd5c8;--stroke-ghost:#e4dccf;--stroke-rad:#b8892e;--cs:1;--pad:20px;--gap:44px;
   --font-ui:'Outfit',system-ui,sans-serif;--font-zh:'Noto Serif SC',serif;
 }
@@ -19,6 +21,7 @@
   --gold:#e6bd5c;--gold-t:#352b10;
   --blue:#93b4ff;--blue-t:#1b2639;
   --tone1:#ff7a70;--tone2:#4ade80;--tone3:#86a8ff;--tone4:#c995ff;
+  --orange:#f0bd8a;--orange-t:#403121;--sel:#24211e;--gold-s:#3d3524;--green-s:#2a372b;--brown:#e1c199;--wg-frame:#d88379;--wg-cross:#3a2927;--wg-diag:#3a2a27;
   color-scheme:dark;
 }
 @media (prefers-color-scheme:dark){
@@ -29,6 +32,7 @@
     --gold:#e6bd5c;--gold-t:#352b10;
     --blue:#93b4ff;--blue-t:#1b2639;
     --tone1:#ff7a70;--tone2:#4ade80;--tone3:#86a8ff;--tone4:#c995ff;
+  --orange:#f0bd8a;--orange-t:#403121;--sel:#24211e;--gold-s:#3d3524;--green-s:#2a372b;--brown:#e1c199;--wg-frame:#d88379;--wg-cross:#3a2927;--wg-diag:#3a2a27;
     color-scheme:dark;
   }
 }
