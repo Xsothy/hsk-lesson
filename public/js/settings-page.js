@@ -5,17 +5,21 @@
   var status = $('st-status');
   if (!S) { if (status) { status.textContent = 'Settings are unavailable in this browser.'; status.className = 'st-status is-error'; } return; }
 
+  // charSize is stored as sm|md|lg; tokens.css scales by .85 / 1 / 1.25.
+  var SIZES = ['sm', 'md', 'lg'], SIZE_X = ['0.85×', '1.0×', '1.25×'], SIZE_N = ['Small', 'Medium', 'Large'];
   function say(msg, kind) { status.textContent = msg; status.className = 'st-status ' + (kind ? 'is-' + kind : ''); }
-  // radio-group value <-> stored value (toneColors is a boolean)
-  var toStr = function (k, v) { return k === 'toneColors' ? (v ? 'on' : 'off') : String(v); };
-  var fromStr = function (k, v) { return k === 'toneColors' ? v === 'on' : v; };
-
+  
   function render() {
     var s = S.getSettings();
-    document.querySelectorAll('[data-seg]').forEach(function (fs) {
-      var k = fs.getAttribute('data-seg'), cur = toStr(k, s[k]);
-      fs.querySelectorAll('input').forEach(function (i) { i.checked = i.value === cur; });
+    document.querySelectorAll('[data-check]').forEach(function (c) {
+      var k = c.getAttribute('data-check'), v = k === 'toneColors' ? (s[k] ? '1' : '0') : String(s[k]);
+      c.checked = v === c.getAttribute('data-on');
     });
+    var si = SIZES.indexOf(s.charSize); if (si < 0) si = 1;
+    $('st-size').value = si; $('st-size-out').textContent = SIZE_X[si]; $('st-size').setAttribute('aria-valuetext', SIZE_N[si]);
+    $('st-hsk').value = s.hskVersion;
+    var P = window.HSK_THEME && HSK_THEME.PRESETS, pr = P && P[s.themePreset || 'paper'];
+    $('st-theme-sum') && ($('st-theme-sum').textContent = (pr ? pr.name : 'Custom') + ' · presets, colors, fonts, light / dark');
     $('st-rate').value = s.audioRate; $('st-rate-out').textContent = s.audioRate.toFixed(1) + '×';
     $('st-goal').value = String(s.dailyGoal);
     if (!$('st-goal').value) { var o = document.createElement('option'); o.value = o.textContent = String(s.dailyGoal); $('st-goal').appendChild(o); $('st-goal').value = String(s.dailyGoal); }
@@ -27,11 +31,14 @@
     else $('st-voice').value = '';
   }
 
-  document.querySelectorAll('[data-seg]').forEach(function (fs) {
-    fs.addEventListener('change', function (e) {
-      var k = fs.getAttribute('data-seg'), p = {}; p[k] = fromStr(k, e.target.value); S.setSettings(p);
+  document.querySelectorAll('[data-check]').forEach(function (c) {
+    c.addEventListener('change', function () {
+      var k = c.getAttribute('data-check'), v = c.getAttribute(c.checked ? 'data-on' : 'data-off'), p = {};
+      p[k] = k === 'toneColors' ? v === '1' : v; S.setSettings(p);
     });
   });
+  $('st-size').addEventListener('input', function () { S.setSettings({ charSize: SIZES[parseInt(this.value, 10)] || 'md' }); render(); });
+  $('st-hsk').addEventListener('change', function () { S.setSettings({ hskVersion: this.value }); });
   $('st-rate').addEventListener('input', function () {
     var v = Math.round(parseFloat(this.value) * 10) / 10; $('st-rate-out').textContent = v.toFixed(1) + '×'; S.setSettings({ audioRate: v });
   });

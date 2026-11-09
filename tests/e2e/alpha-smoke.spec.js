@@ -147,13 +147,13 @@ test.describe('interaction sweep (phone)', () => {
     expect(quiz['lesson-1/1']).toMatchObject({ score: n, total: n });
 
     // Settings: dark theme applies live and survives a reload.
-    await page.goto('/settings', { waitUntil: 'networkidle' });
-    await page.locator('input[name="theme"][value="dark"]').check();
+    await page.goto('/settings/appearance', { waitUntil: 'networkidle' });
+    await page.locator('.ap-mode-btn', { hasText: 'Dark' }).click();
     await expect.poll(() => page.evaluate(() => document.documentElement.getAttribute('data-theme'))).toBe('dark');
     await page.reload();
     expect(await page.evaluate(() => document.documentElement.getAttribute('data-theme'))).toBe('dark');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
-    await page.locator('input[name="theme"][value="light"]').check();
+    await page.locator('.ap-mode-btn', { hasText: 'Light' }).click();
 
     // Browse: filters and List/Grid.
     await page.goto('/browse?version=2&level=1', { waitUntil: 'networkidle' });

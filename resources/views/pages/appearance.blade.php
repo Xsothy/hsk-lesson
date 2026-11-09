@@ -3,7 +3,7 @@
 @push('head')<link rel="stylesheet" href="/css/appearance.css">@endpush
 @section('content')
 <nav class="ap-crumb" aria-label="Breadcrumb"><a href="{{ route('settings') }}">Settings</a> / Appearance</nav>
-<x-page-head title="Appearance" sub="Start from a preset, then adjust anything. Changes apply to the whole app on this device, and sync when you're signed in." />
+<x-page-head title="Appearance" sub="Start from a preset, then adjust anything. Changes apply to the whole app on this device." />
 
 <div class="ap-layout">
   <div class="ap-controls">
@@ -18,7 +18,7 @@
         <div class="ap-mode" role="group" aria-labelledby="ap-mode-h" data-ap="modes"></div>
       </div>
       <div class="ap-group">
-        <h2 class="ap-lbl" id="ap-base-h">Base colour</h2>
+        <h2 class="ap-lbl" id="ap-base-h">Base color</h2>
         <div class="ap-bases" role="group" aria-labelledby="ap-base-h" data-ap="bases"></div>
       </div>
       <div class="ap-group">
@@ -59,7 +59,7 @@
         <h3>Lesson 3 · At school</h3>
         <p><span class="zh" lang="zh-Hans">我在学校<b>学</b>中文。</span> I study Chinese at school.</p>
         <div class="ap-pv-bar-track"><i></i></div>
-        <div class="ap-pv-opts"><span class="is-on">to study</span><span>to write</span></div>
+        <div class="ap-pv-opts"><span class="is-on">to study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><span>to write</span></div>
         <div class="ap-pv-btns"><span class="is-primary">Continue</span><span>Review</span></div>
       </div>
     </div>

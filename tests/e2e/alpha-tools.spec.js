@@ -12,7 +12,7 @@ async function open(page, url, errors) {
 }
 
 async function smallTargets(page) {
-  return page.$$eval('.tool .btn, .tool-field, .chip-btn, .tool-seg span, .tools-grid a', (els) =>
+  return page.$$eval('.tl-panel:not([hidden]) :is(.tl-btn, .tl-pill, .tl-input, .tl-select, .tl-w:not(.p), .tl-nm, .tl-link), .tl-tab', (els) =>
     els.filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && (r.height < 44 || r.width < 44); }).map((e) => e.className));
 }
 
@@ -20,10 +20,15 @@ for (const vp of VIEWPORTS) {
   test.describe(`tools @ ${vp.width}`, () => {
     test.use({ viewport: vp });
 
-    test('index lists five tools (incl. worksheet)', async ({ page }) => {
+    test('index shows four tabs that deep-link', async ({ page }) => {
       const errors = [];
       await open(page, '/tools', errors);
-      await expect(page.locator('.tools-grid a')).toHaveCount(5);
+      await expect(page.locator('.tl-tab')).toHaveCount(4);
+      await expect(page.locator('#tl-tab-pinyin')).toHaveAttribute('aria-selected', 'true');
+      await page.click('#tl-tab-zodiac');
+      await expect(page).toHaveURL(/\/tools\/zodiac$/);
+      await expect(page.locator('#tl-p-zodiac')).toBeVisible();
+      await expect(page.locator('#tl-p-pinyin')).toBeHidden();
       expect(await smallTargets(page)).toEqual([]);
       expect(errors).toEqual([]);
     });
@@ -33,7 +38,7 @@ for (const vp of VIEWPORTS) {
       await open(page, '/tools/pinyin', errors);
       await page.fill('#pin-in', 'xue2xi2');
       await expect(page.locator('[data-out]')).toHaveText('xuéxí');
-      await page.getByText('Tone numbers', { exact: true }).click();
+      await page.selectOption('#pin-mode', 'numbers');
       await page.fill('#pin-in', 'nǐ hǎo');
       await expect(page.locator('[data-out]')).toHaveText('ni3 hao3');
       expect(await smallTargets(page)).toEqual([]);
@@ -44,9 +49,8 @@ for (const vp of VIEWPORTS) {
       const errors = [];
       await open(page, '/tools/hsk-check', errors);
       await page.fill('#hsk-in', '我今天学习汉语。');
-      await page.click('[data-run]');
-      await expect(page.locator('[data-result]')).toBeVisible();
-      await expect(page.locator('.hsk-w').first()).toBeVisible();
+      await expect(page.locator('.tl-w.hsk-w').first()).toBeVisible();
+      await expect(page.locator('.tl-bar')).toHaveCount(4);
       expect(await smallTargets(page)).toEqual([]);
       expect(errors).toEqual([]);
     });
@@ -55,12 +59,12 @@ for (const vp of VIEWPORTS) {
       const errors = [];
       await open(page, '/tools/name', errors);
       await page.fill('#nm-in', 'Emma');
-      await page.click('[data-run]');
+      await page.click('#nm-in + [data-run]');
       await expect(page.locator('[data-name]')).not.toBeEmpty();
       await page.click('[data-theme="Beautiful"]');
-      await expect(page.locator('[data-chars] button').first()).toBeVisible();
-      await page.locator('[data-chars] button').first().click();
-      await expect(page.locator('[data-picks]')).not.toHaveText('—');
+      await page.click('[data-theme="Wise"]');
+      await page.click('[data-ideas]');
+      await expect(page.locator('.tl-nm').first()).toBeVisible();
       expect(await smallTargets(page)).toEqual([]);
       expect(errors).toEqual([]);
     });
@@ -69,11 +73,9 @@ for (const vp of VIEWPORTS) {
       const errors = [];
       await open(page, '/tools/zodiac', errors);
       await page.fill('#zd-in', '2024-02-09');
-      await page.click('[data-run]');
-      await expect(page.locator('[data-text]')).toContainText('Rabbit');
+      await expect(page.locator('[data-title]')).toContainText('Rabbit');
       await page.fill('#zd-in', '2024-02-10');
-      await page.click('[data-run]');
-      await expect(page.locator('[data-text]')).toContainText('Dragon');
+      await expect(page.locator('[data-title]')).toContainText('Dragon');
       expect(await smallTargets(page)).toEqual([]);
       expect(errors).toEqual([]);
     });
