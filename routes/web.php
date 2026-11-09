@@ -75,6 +75,7 @@ Route::prefix('tools')->group(function () {
     Route::get('/name', [$c, 'name'])->name('tools.name');
     Route::get('/name/suggest', [$c, 'suggestName'])->middleware('throttle:60,1');
     Route::get('/name/meanings', [$c, 'meanings'])->middleware('throttle:60,1');
+    Route::get('/name/ideas', [$c, 'ideas'])->middleware('throttle:60,1');
     Route::get('/zodiac', [$c, 'zodiac'])->name('tools.zodiac');
     Route::post('/zodiac', [$c, 'zodiacLookup'])->middleware('throttle:60,1');
 });

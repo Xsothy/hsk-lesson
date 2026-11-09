@@ -77,4 +77,16 @@ class ToolsTest extends TestCase
         $this->postJson('/tools/zodiac', ['date' => '2024-02-10'])->assertJsonPath('animal.2', 'Dragon');
         $this->postJson('/tools/zodiac', ['date' => '1899-12-31'])->assertStatus(422);
     }
+
+    public function test_ruby_mode_and_name_ideas(): void
+    {
+        $t = $this->postJson('/tools/pinyin', ['text' => '学习。', 'mode' => 'ruby'])->assertOk()->json('tokens');
+        $this->assertSame('学习', $t[0]['t']);
+        $this->assertTrue($t[0]['han']);
+        $this->assertFalse($t[1]['han']);
+        $this->getJson('/tools/name/ideas?themes[]=Nope&style=balanced')->assertStatus(422);
+        $this->getJson('/tools/name/ideas?themes[]=Beautiful&style=weird')->assertStatus(422);
+        $this->getJson('/tools/name/ideas?themes[]=Beautiful&themes[]=Wise&style=easy')->assertOk()->assertJsonStructure(['names']);
+        $this->get('/tools/zodiac')->assertOk()->assertSee('id="tl-tab-zodiac"', false)->assertSee('aria-selected="true"', false);
+    }
 }

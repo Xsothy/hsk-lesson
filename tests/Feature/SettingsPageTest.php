@@ -9,10 +9,10 @@ class SettingsPageTest extends TestCase
     public function test_settings_page_shell(): void
     {
         $this->get('/settings')->assertOk()
-            ->assertSee('<h1>Settings</h1>', false)
-            ->assertSee('Display')->assertSee('Audio')->assertSee('Study')->assertSee('Data')
+            ->assertSee('Settings</h1>', false)
+            ->assertSee('DISPLAY')->assertSee('AUDIO')->assertSee('STUDY')->assertSee('YOUR DATA')
             ->assertSee('name="pinyinPos"', false)->assertSee('id="st-voice"', false)->assertSee('id="st-rv-first"', false)
-            ->assertSee('Export JSON')->assertSee('Import JSON')
+            ->assertSee('Export progress (JSON)')->assertSee('Import progress')
             ->assertSee('Sign in to sync')->assertSee('beta')
             ->assertSee('/js/settings-page.js', false)->assertSee('/css/settings.css', false);
     }
