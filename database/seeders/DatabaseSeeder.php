@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         );
 
         $this->call(LegacyContentSeeder::class);
+        $this->call(Hsk2ContentSeeder::class);
     }
 }
