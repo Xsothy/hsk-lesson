@@ -13,7 +13,7 @@
   /* ---- Theme data (matches the design canvas) ---- */
   // [bg, card, line, soft, ink, muted] per mode. 'warm' = tokens.css itself (no override).
   var BASES = {
-    warm:  { label: 'Warm',  l: ['#fbf9f5', '#ffffff', '#ece7df', '#f3efe8', '#0f0c08', '#5c5348'], d: ['#14110d', '#1d1914', '#37312a', '#2a251e', '#f4efe7', '#aca295'] },
+    warm:  { label: 'Warm',  l: ['#fbf9f5', '#ffffff', '#ece7df', '#f3efe8', '#2e2a25', '#6b6258'], d: ['#14110d', '#1d1914', '#37312a', '#2a251e', '#f4efe7', '#aca295'] },
     stone: { label: 'Stone', l: ['#fafaf9', '#ffffff', '#e7e5e4', '#f5f5f4', '#292524', '#78716c'], d: ['#1c1917', '#24201e', '#3a3532', '#2a2624', '#e7e5e4', '#a8a29e'] },
     slate: { label: 'Slate', l: ['#f8fafc', '#ffffff', '#e2e8f0', '#f1f5f9', '#1e293b', '#64748b'], d: ['#121821', '#1a2230', '#2c3646', '#202a38', '#e2e8f0', '#94a3b8'] },
     zinc:  { label: 'Zinc',  l: ['#fafafa', '#ffffff', '#e4e4e7', '#f4f4f5', '#27272a', '#71717a'], d: ['#18181b', '#202024', '#34343a', '#27272b', '#e4e4e7', '#a1a1aa'] }
