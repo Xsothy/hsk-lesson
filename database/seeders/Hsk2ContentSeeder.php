@@ -17,9 +17,22 @@ class Hsk2ContentSeeder extends Seeder
 {
     public const FIRST_READING_ID = 25;
 
+    protected const COURSE = '2.0';
+
+    /** Content files, merged in order: each has `words` and `lessons`. */
+    protected function files(): array
+    {
+        return [database_path('content/hsk2.json')];
+    }
+
     public function run(): void
     {
-        $data = json_decode(file_get_contents(database_path('content/hsk2.json')), true, flags: JSON_THROW_ON_ERROR);
+        $data = ['words' => [], 'lessons' => []];
+        foreach ($this->files() as $file) {
+            $part = json_decode(file_get_contents($file), true, flags: JSON_THROW_ON_ERROR);
+            $data['words'] = [...$data['words'], ...($part['words'] ?? [])];
+            $data['lessons'] = [...$data['lessons'], ...($part['lessons'] ?? [])];
+        }
 
         DB::transaction(function () use ($data) {
             $order = (int) Word::max('sort_order') + 1;
@@ -53,11 +66,11 @@ class Hsk2ContentSeeder extends Seeder
             $content = new ContentService;
             $lines = fn (array $rows) => $content->normalizeLines($rows);
 
-            $readingId = self::FIRST_READING_ID;
+            $readingId = static::FIRST_READING_ID;
             foreach ($data['lessons'] as $l) {
                 Lesson::updateOrCreate(['slug' => 'lesson-'.$l['id']], [
                     'number' => $l['id'],
-                    'course' => '2.0',
+                    'course' => static::COURSE,
                     'title' => 'Lesson '.$l['id'],
                     'zh_title' => $l['zhTitle'],
                     'en_title' => $l['enTitle'],

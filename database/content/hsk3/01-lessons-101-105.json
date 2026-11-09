@@ -1,0 +1,338 @@
+{
+ "words": [],
+ "lessons": [
+  {
+   "id": 101,
+   "zhTitle": "你好",
+   "enTitle": "Hello",
+   "description": "Greet people, say thank you and sorry, and ask someone's name",
+   "emoji": "👋",
+   "color": "#e3f2fd",
+   "emojiColor": "#90caf9",
+   "grammarLabel": "Pattern: 是 / 吗 / 叫",
+   "vocab": ["你", "我", "他", "她", "您", "你们", "我们", "他们", "她们", "们", "好", "再见", "谢谢", "不客气", "对不起", "没关系", "请", "请问", "是", "不", "吗", "呢", "叫", "名字", "什么", "老师", "学生", "同学", "朋友", "认识", "高兴", "很"],
+   "grammar": [
+    {"title": "A 是 B — 'A is B'", "pattern": "我是学生。她不是老师。", "note": "是 links two nouns: 我是学生 = I am a student. Put 不 before 是 to say 'is not': 她不是老师. Don't use 是 before adjectives: say 我很好, not 我是好."},
+    {"title": "Yes/no questions with 吗", "pattern": "你是老师吗？— 是。/ 不是。", "note": "Add 吗 to the end of a statement to make a yes/no question. Answer by repeating the verb (是 / 不是). 呢 asks 'and you?': 我很好，你呢？"},
+    {"title": "Saying your name with 叫", "pattern": "你叫什么名字？— 我叫王明。", "note": "叫 means 'to be called'. 什么 ('what') stays where the answer goes: 你叫什么名字？ → 我叫王明。 Chinese question words never move to the front."}
+   ],
+   "sentences": [
+    {"zh": "你好！我叫王明。", "en": "Hello! My name is Wang Ming."},
+    {"zh": "你叫什么名字？", "en": "What's your name?"},
+    {"zh": "我是学生，他是老师。", "en": "I'm a student; he is a teacher."},
+    {"zh": "她是你的同学吗？", "en": "Is she your classmate?"},
+    {"zh": "认识你很高兴。", "en": "Nice to meet you."},
+    {"zh": "对不起！— 没关系。", "en": "Sorry! — That's all right."},
+    {"zh": "谢谢你！— 不客气。", "en": "Thank you! — You're welcome."},
+    {"zh": "请问，您是李老师吗？", "en": "Excuse me, are you Teacher Li?"}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "你好！我叫王明。你叫什么名字？", "en": "Hi! I'm Wang Ming. What's your name?"},
+    {"speaker": "B", "zh": "你好！我叫李月。你是学生吗？", "en": "Hi! I'm Li Yue. Are you a student?"},
+    {"speaker": "A", "zh": "是，我是学生。你呢？", "en": "Yes, I'm a student. And you?"},
+    {"speaker": "B", "zh": "我也是学生。我们是同学！", "en": "I'm a student too. We're classmates!"},
+    {"speaker": "A", "zh": "认识你很高兴！", "en": "Nice to meet you!"},
+    {"speaker": "B", "zh": "认识你我也很高兴。再见！", "en": "Nice to meet you too. Bye!"}
+   ],
+   "readings": [
+    {
+     "type": "dialogue", "difficulty": 1, "title": "新同学", "titleEn": "A New Classmate", "emoji": "🙋",
+     "lines": [
+      {"zh": "老师：你们好！", "en": "Teacher: Hello, everyone!"},
+      {"zh": "学生：老师好！", "en": "Students: Hello, teacher!"},
+      {"zh": "老师：这是我们的新同学，她叫张小月。", "en": "Teacher: This is our new classmate. Her name is Zhang Xiaoyue."},
+      {"zh": "小月：你们好！认识你们很高兴。", "en": "Xiaoyue: Hello, everyone! Nice to meet you."},
+      {"zh": "王明：你好，小月！我叫王明。", "en": "Wang Ming: Hi, Xiaoyue! I'm Wang Ming."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "新同学叫什么名字？", "questionEn": "What is the new classmate's name?", "options": ["王明", "张小月", "李月", "王小月"], "answer": 1},
+      {"id": "q2", "type": "true_false", "question": "张小月是老师。", "questionEn": "Zhang Xiaoyue is a teacher.", "answer": false}
+     ],
+     "focusWords": ["你们", "同学", "认识", "高兴"],
+     "grammarFocus": ["叫 + name", "A 是 B"]
+    },
+    {
+     "type": "story", "difficulty": 1, "title": "我的朋友", "titleEn": "My Friend", "emoji": "🤝",
+     "lines": [
+      {"zh": "我叫李月，我是学生。", "en": "My name is Li Yue. I'm a student."},
+      {"zh": "这是我的朋友，他叫王明。", "en": "This is my friend. His name is Wang Ming."},
+      {"zh": "他也是学生，我们是同学。", "en": "He is a student too. We are classmates."},
+      {"zh": "他的老师是张老师，张老师很好。", "en": "His teacher is Teacher Zhang. Teacher Zhang is very nice."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "王明是李月的朋友。", "questionEn": "Wang Ming is Li Yue's friend.", "answer": true},
+      {"id": "q2", "type": "multiple_choice", "question": "王明的老师是谁？", "questionEn": "Who is Wang Ming's teacher?", "options": ["李老师", "王老师", "张老师", "月老师"], "answer": 2}
+     ],
+     "focusWords": ["朋友", "学生", "同学", "老师"],
+     "grammarFocus": ["A 是 B", "也"]
+    }
+   ]
+  },
+  {
+   "id": 102,
+   "zhTitle": "你几岁",
+   "enTitle": "Numbers and Age",
+   "description": "Count to a hundred, say your age and ask for a phone number",
+   "emoji": "🔢",
+   "color": "#fff3e0",
+   "emojiColor": "#ffcc80",
+   "grammarLabel": "Pattern: 几 / 多少 / 岁",
+   "vocab": ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "百", "两", "几", "多少", "多", "个", "岁", "今年", "号", "手机", "电话", "打电话", "的", "也", "大", "小"],
+   "grammar": [
+    {"title": "Numbers 1–100", "pattern": "十一、二十、九十九、一百", "note": "Build numbers like maths: 十一 = 10+1, 二十 = 2×10, 二十五 = 2×10+5. 100 is 一百. 0 is 零, used in phone numbers and room numbers."},
+    {"title": "Asking age: 几岁 / 多大", "pattern": "你几岁？— 我八岁。/ 你今年多大？— 我二十岁。", "note": "Use 几岁 for young children (under about ten) and 多大 for teens and adults. The answer needs no 是: 我二十岁, not 我是二十岁."},
+    {"title": "两 vs 二, and the measure word 个", "pattern": "两个朋友 · 第二 · 十二", "note": "Before a measure word, 2 is 两: 两个人. Use 二 when counting, in 十二 / 二十, and in phone numbers. Numbers need a measure word before a noun; 个 is the most common."}
+   ],
+   "sentences": [
+    {"zh": "你今年多大？", "en": "How old are you this year?"},
+    {"zh": "我今年二十岁。", "en": "I'm twenty this year."},
+    {"zh": "他有两个朋友。", "en": "He has two friends."},
+    {"zh": "你的手机号是多少？", "en": "What's your mobile number?"},
+    {"zh": "我的手机号是一三九零八六七五四二一。", "en": "My mobile number is 139 0867 5421."},
+    {"zh": "她的孩子几岁？", "en": "How old is her child?"},
+    {"zh": "我们班有三十个学生。", "en": "There are thirty students in our class."},
+    {"zh": "我给你打电话。", "en": "I'll give you a call."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "王明，你今年多大？", "en": "Wang Ming, how old are you this year?"},
+    {"speaker": "B", "zh": "我今年十九岁。你呢？", "en": "I'm nineteen. And you?"},
+    {"speaker": "A", "zh": "我也十九岁！你的手机号是多少？", "en": "I'm nineteen too! What's your mobile number?"},
+    {"speaker": "B", "zh": "一三八、六二七零、四九五一。", "en": "138 6270 4951."},
+    {"speaker": "A", "zh": "好，我晚上给你打电话。", "en": "OK, I'll call you this evening."},
+    {"speaker": "B", "zh": "好的，再见！", "en": "OK, bye!"}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 1, "title": "我们班", "titleEn": "Our Class", "emoji": "🏫",
+     "lines": [
+      {"zh": "我们班有二十个学生。", "en": "There are twenty students in our class."},
+      {"zh": "十二个男生，八个女生。", "en": "Twelve boys and eight girls."},
+      {"zh": "我们的老师今年三十五岁。", "en": "Our teacher is thirty-five this year."},
+      {"zh": "老师有两个孩子，一个六岁，一个九岁。", "en": "The teacher has two children: one is six, the other is nine."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "班里有几个女生？", "questionEn": "How many girls are in the class?", "options": ["二十个", "十二个", "八个", "两个"], "answer": 2},
+      {"id": "q2", "type": "true_false", "question": "老师今年三十五岁。", "questionEn": "The teacher is thirty-five this year.", "answer": true}
+     ],
+     "focusWords": ["个", "两", "岁", "今年"],
+     "grammarFocus": ["number + 个 + noun", "age + 岁"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "你的电话", "titleEn": "Your Phone Number", "emoji": "📱",
+     "lines": [
+      {"zh": "A：你有手机吗？", "en": "A: Do you have a mobile phone?"},
+      {"zh": "B：有。我的手机号是一八六、二零九七、三三五八。", "en": "B: Yes. My number is 186 2097 3358."},
+      {"zh": "A：三三五八？", "en": "A: 3358?"},
+      {"zh": "B：对。你的电话是多少？", "en": "B: Right. What's your number?"},
+      {"zh": "A：好，我给你打电话。", "en": "A: OK, I'll call you."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "B 没有手机。", "questionEn": "B doesn't have a mobile phone.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "B 的手机号是多少？", "questionEn": "What is B's mobile number?", "options": ["一八六二零九七三三五八", "一八六二零九七三五五八", "一三八六二七零四九五一", "一八六二九零七三三五八"], "answer": 0}
+     ],
+     "focusWords": ["手机", "电话", "打电话", "号"],
+     "grammarFocus": ["phone numbers digit by digit"]
+    }
+   ]
+  },
+  {
+   "id": 103,
+   "zhTitle": "我的家",
+   "enTitle": "My Family",
+   "description": "Name family members and say how many people are in your family",
+   "emoji": "👨‍👩‍👧‍👦",
+   "color": "#e8f5e9",
+   "emojiColor": "#a5d6a7",
+   "grammarLabel": "Pattern: 有 / 没有 / 的 / 都",
+   "vocab": ["家", "家人", "爸爸", "妈妈", "爸", "妈", "哥哥", "姐姐", "弟弟", "妹妹", "哥", "姐", "弟", "妹", "爷爷", "奶奶", "儿子", "女儿", "孩子", "小孩儿", "男", "女", "男人", "女人", "老人", "有", "没有", "和", "口", "都"],
+   "grammar": [
+    {"title": "有 / 没有 — have, not have", "pattern": "我有一个哥哥。我没有妹妹。", "note": "有 means 'to have' (also 'there is'). Its negative is always 没有 — never 不有. 你有…吗？ asks 'do you have…?'"},
+    {"title": "家有 + number + 口人", "pattern": "你家有几口人？— 我家有五口人。", "note": "口 is the measure word for counting people in a family. Use 几 for the question."},
+    {"title": "的 for 'my / his', and 都 'all'", "pattern": "我的妈妈 / 我妈妈 · 我们都是学生。", "note": "的 shows possession. With close family you can drop it: 我妈妈. 都 ('all, both') goes before the verb: 他们都是老师, never 都他们."}
+   ],
+   "sentences": [
+    {"zh": "你家有几口人？", "en": "How many people are in your family?"},
+    {"zh": "我家有四口人：爸爸、妈妈、哥哥和我。", "en": "There are four of us: Dad, Mom, my older brother and me."},
+    {"zh": "我没有姐姐，我有一个妹妹。", "en": "I don't have an older sister; I have a younger sister."},
+    {"zh": "他们有两个孩子，一个儿子，一个女儿。", "en": "They have two children, a son and a daughter."},
+    {"zh": "我爷爷和奶奶都是老师。", "en": "My grandpa and grandma are both teachers."},
+    {"zh": "那个小孩儿是你弟弟吗？", "en": "Is that little kid your younger brother?"},
+    {"zh": "这是我的家人。", "en": "This is my family."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "小月，你家有几口人？", "en": "Xiaoyue, how many people are in your family?"},
+    {"speaker": "B", "zh": "我家有五口人：爷爷、奶奶、爸爸、妈妈和我。", "en": "Five: Grandpa, Grandma, Dad, Mom and me."},
+    {"speaker": "A", "zh": "你没有哥哥姐姐吗？", "en": "You don't have older brothers or sisters?"},
+    {"speaker": "B", "zh": "没有。你呢？", "en": "No. What about you?"},
+    {"speaker": "A", "zh": "我有一个姐姐和一个弟弟。", "en": "I have an older sister and a younger brother."},
+    {"speaker": "B", "zh": "你家人真多！", "en": "Your family is so big!"}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 1, "title": "我家有六口人", "titleEn": "There Are Six of Us", "emoji": "🏠",
+     "lines": [
+      {"zh": "我叫王小明，我家有六口人。", "en": "My name is Wang Xiaoming. There are six people in my family."},
+      {"zh": "爷爷、奶奶、爸爸、妈妈、妹妹和我。", "en": "Grandpa, Grandma, Dad, Mom, my younger sister and me."},
+      {"zh": "爸爸妈妈都是医生。", "en": "Dad and Mom are both doctors."},
+      {"zh": "我妹妹今年五岁，她是一个好玩儿的小孩儿。", "en": "My little sister is five this year. She's a fun little kid."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "王小明家有几口人？", "questionEn": "How many people are in Wang Xiaoming's family?", "options": ["四口", "五口", "六口", "七口"], "answer": 2},
+      {"id": "q2", "type": "true_false", "question": "王小明有一个哥哥。", "questionEn": "Wang Xiaoming has an older brother.", "answer": false}
+     ],
+     "focusWords": ["家", "口", "都", "妹妹"],
+     "grammarFocus": ["家有 + number + 口人", "都"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "这是谁？", "titleEn": "Who Is This?", "emoji": "🖼️",
+     "lines": [
+      {"zh": "A：这个男人是谁？", "en": "A: Who is this man?"},
+      {"zh": "B：他是我爸爸。", "en": "B: He's my dad."},
+      {"zh": "A：这个女人呢？是你姐姐吗？", "en": "A: And this woman? Is she your older sister?"},
+      {"zh": "B：不是，她是我妈妈！", "en": "B: No, she's my mom!"},
+      {"zh": "A：你妈妈很好看！", "en": "A: Your mom is so pretty!"}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "那个女人是 B 的姐姐。", "questionEn": "That woman is B's older sister.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "那个男人是谁？", "questionEn": "Who is the man?", "options": ["B 的哥哥", "B 的爸爸", "B 的爷爷", "B 的弟弟"], "answer": 1}
+     ],
+     "focusWords": ["男人", "女人", "爸爸", "妈妈"],
+     "grammarFocus": ["这个 + noun", "是…吗"]
+    }
+   ]
+  },
+  {
+   "id": 104,
+   "zhTitle": "今天几号",
+   "enTitle": "What's the Date?",
+   "description": "Say days, dates and birthdays, and talk about years",
+   "emoji": "📅",
+   "color": "#f3e5f5",
+   "emojiColor": "#ce93d8",
+   "grammarLabel": "Pattern: 年 月 日 / 星期几",
+   "vocab": ["年", "月", "日", "星期", "星期日", "星期天", "今天", "明天", "昨天", "后天", "前天", "去年", "明年", "新年", "生日", "日期", "天", "第", "第二", "快", "了"],
+   "grammar": [
+    {"title": "Dates go big → small", "pattern": "二零二六年十一月九日 / 十一月九号", "note": "Say year, then month, then day: …年…月…日. In speech 号 replaces 日: 九号. Years are read digit by digit: 二零二六年 (èr líng èr liù nián)."},
+    {"title": "Days of the week: 星期 + number", "pattern": "星期一 … 星期六，星期日 / 星期天", "note": "Monday to Saturday are 星期一 to 星期六. Sunday is 星期日 or, in speech, 星期天. Ask with 星期几？"},
+    {"title": "Time words before the verb", "pattern": "我明天去北京。/ 明天我去北京。", "note": "Time words (今天, 明年, 星期六) go before the verb, either before or after the subject, never at the end of the sentence as in English."}
+   ],
+   "sentences": [
+    {"zh": "今天几月几号？", "en": "What's the date today?"},
+    {"zh": "今天十一月九号，星期一。", "en": "Today is November 9th, Monday."},
+    {"zh": "明天星期几？", "en": "What day is it tomorrow?"},
+    {"zh": "你的生日是几月几号？", "en": "When is your birthday?"},
+    {"zh": "我的生日是五月二十日。", "en": "My birthday is May 20th."},
+    {"zh": "昨天是星期天。", "en": "Yesterday was Sunday."},
+    {"zh": "新年快乐！", "en": "Happy New Year!"},
+    {"zh": "我去年八岁，今年九岁了。", "en": "I was eight last year; I'm nine now."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "今天几号？", "en": "What's the date today?"},
+    {"speaker": "B", "zh": "今天五月十八号。", "en": "Today is May 18th."},
+    {"speaker": "A", "zh": "后天是我的生日！", "en": "The day after tomorrow is my birthday!"},
+    {"speaker": "B", "zh": "五月二十号？那是星期几？", "en": "May 20th? What day is that?"},
+    {"speaker": "A", "zh": "星期六。", "en": "Saturday."},
+    {"speaker": "B", "zh": "太好了！生日快乐！", "en": "Great! Happy birthday!"}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 1, "title": "妈妈的生日", "titleEn": "Mom's Birthday", "emoji": "🎂",
+     "lines": [
+      {"zh": "今天是十月三号，星期五。", "en": "Today is October 3rd, Friday."},
+      {"zh": "明天是我妈妈的生日。", "en": "Tomorrow is my mom's birthday."},
+      {"zh": "妈妈去年四十岁，今年四十一岁了。", "en": "Mom was forty last year; she's forty-one this year."},
+      {"zh": "我和爸爸想给妈妈过一个快乐的生日。", "en": "Dad and I want to give Mom a happy birthday."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "妈妈的生日是几号？", "questionEn": "What date is Mom's birthday?", "options": ["十月三号", "十月四号", "十月五号", "四月十号"], "answer": 1},
+      {"id": "q2", "type": "true_false", "question": "妈妈今年四十岁。", "questionEn": "Mom is forty this year.", "answer": false}
+     ],
+     "focusWords": ["生日", "明天", "去年", "今年"],
+     "grammarFocus": ["月 + 号", "了 for a new situation"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "星期几？", "titleEn": "Which Day?", "emoji": "🗓️",
+     "lines": [
+      {"zh": "A：前天是星期几？", "en": "A: What day was the day before yesterday?"},
+      {"zh": "B：前天是星期六。", "en": "B: It was Saturday."},
+      {"zh": "A：那今天是星期一！", "en": "A: So today is Monday!"},
+      {"zh": "B：对，明天星期二。", "en": "B: Right, tomorrow is Tuesday."},
+      {"zh": "A：我不喜欢星期一。", "en": "A: I don't like Mondays."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "今天星期几？", "questionEn": "What day is today?", "options": ["星期六", "星期天", "星期一", "星期二"], "answer": 2},
+      {"id": "q2", "type": "true_false", "question": "A 喜欢星期一。", "questionEn": "A likes Mondays.", "answer": false}
+     ],
+     "focusWords": ["前天", "星期", "明天"],
+     "grammarFocus": ["星期几"]
+    }
+   ]
+  },
+  {
+   "id": 105,
+   "zhTitle": "现在几点",
+   "enTitle": "What Time Is It?",
+   "description": "Tell the time and talk about parts of the day",
+   "emoji": "⏰",
+   "color": "#fffde7",
+   "emojiColor": "#fff59d",
+   "grammarLabel": "Pattern: 点 / 分 / 半",
+   "vocab": ["现在", "点", "分", "半", "小时", "时间", "时候", "上午", "下午", "中午", "早上", "晚上", "白天", "早", "晚", "半天", "一会儿", "等", "到", "在"],
+   "grammar": [
+    {"title": "Clock time: 点 + 分 / 半", "pattern": "八点 · 八点十分 · 八点半", "note": "点 is the hour, 分 the minutes. 半 is half past: 八点半 = 8:30. 2 o'clock is 两点, not 二点."},
+    {"title": "Part of day before the clock time", "pattern": "早上七点 · 下午三点半 · 晚上十点", "note": "Chinese goes from big to small: part of the day first, then the hour. 下午三点 = 3 p.m."},
+    {"title": "什么时候 — when?", "pattern": "你什么时候回家？— 我六点回家。", "note": "什么时候 asks 'when'. Like all question words it stays where the answer goes: the time slot before the verb."}
+   ],
+   "sentences": [
+    {"zh": "现在几点？", "en": "What time is it now?"},
+    {"zh": "现在八点半。", "en": "It's half past eight."},
+    {"zh": "我早上七点起床。", "en": "I get up at seven in the morning."},
+    {"zh": "他下午两点五十分到。", "en": "He arrives at 2:50 in the afternoon."},
+    {"zh": "你什么时候有时间？", "en": "When are you free?"},
+    {"zh": "请等一会儿。", "en": "Please wait a moment."},
+    {"zh": "我等了你半个小时！", "en": "I waited for you for half an hour!"}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "现在几点？", "en": "What time is it now?"},
+    {"speaker": "B", "zh": "十一点四十。", "en": "Eleven forty."},
+    {"speaker": "A", "zh": "中午你有时间吗？我们一起吃饭吧。", "en": "Are you free at noon? Let's eat together."},
+    {"speaker": "B", "zh": "好啊。我们什么时候去？", "en": "Sure. When shall we go?"},
+    {"speaker": "A", "zh": "十二点。你等我一会儿。", "en": "At twelve. Wait for me a bit."},
+    {"speaker": "B", "zh": "好的，我等你。", "en": "OK, I'll wait for you."}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 1, "title": "爸爸的一天", "titleEn": "Dad's Day", "emoji": "🕗",
+     "lines": [
+      {"zh": "我爸爸早上六点半起床。", "en": "My dad gets up at 6:30 in the morning."},
+      {"zh": "他七点到学校，他是老师。", "en": "He gets to school at seven. He is a teacher."},
+      {"zh": "中午他在学校吃饭。", "en": "At noon he eats at school."},
+      {"zh": "他下午五点回家，晚上十点睡觉。", "en": "He goes home at five in the afternoon and goes to bed at ten at night."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "爸爸几点起床？", "questionEn": "What time does Dad get up?", "options": ["六点", "六点半", "七点", "七点半"], "answer": 1},
+      {"id": "q2", "type": "true_false", "question": "爸爸中午回家吃饭。", "questionEn": "Dad goes home for lunch at noon.", "answer": false}
+     ],
+     "focusWords": ["早上", "中午", "下午", "晚上"],
+     "grammarFocus": ["time + verb", "点 / 半"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "你晚了！", "titleEn": "You're Late!", "emoji": "⌛",
+     "lines": [
+      {"zh": "A：你晚了！现在九点半了。", "en": "A: You're late! It's 9:30 already."},
+      {"zh": "B：对不起！我们几点见面？", "en": "B: Sorry! What time were we meeting?"},
+      {"zh": "A：九点。我等了你半个小时。", "en": "A: Nine. I waited half an hour for you."},
+      {"zh": "B：真对不起。中午我请你吃饭！", "en": "B: I'm really sorry. Lunch is on me!"},
+      {"zh": "A：好，没关系。", "en": "A: OK, that's fine."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "他们九点见面。", "questionEn": "They were meeting at nine.", "answer": true},
+      {"id": "q2", "type": "true_false", "question": "A 等了半个小时。", "questionEn": "A waited half an hour.", "answer": true}
+     ],
+     "focusWords": ["晚", "等", "半", "中午"],
+     "grammarFocus": ["了 after a verb", "点 + 分"]
+    }
+   ]
+  }
+ ]
+}

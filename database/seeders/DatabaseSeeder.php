@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
         );
 
         $this->call(LegacyContentSeeder::class);
-        $this->call(Hsk2ContentSeeder::class);
+        $this->call([Hsk2ContentSeeder::class, Hsk3ContentSeeder::class]);
     }
 }

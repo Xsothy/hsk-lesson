@@ -1,0 +1,1121 @@
+{
+ "words": [
+  {
+   "c": "一下儿",
+   "p": "yīxiàr",
+   "e": "(after a verb) a little, briefly",
+   "hsk": 1
+  },
+  {
+   "c": "一些",
+   "p": "yīxiē",
+   "e": "some, a few",
+   "hsk": 1
+  },
+  {
+   "c": "一会儿",
+   "p": "yīhuìr",
+   "e": "a moment, a while",
+   "hsk": 1
+  },
+  {
+   "c": "一半",
+   "p": "yībàn",
+   "e": "half",
+   "hsk": 1
+  },
+  {
+   "c": "一块儿",
+   "p": "yīkuàir",
+   "e": "together",
+   "hsk": 1
+  },
+  {
+   "c": "一点儿",
+   "p": "yīdiǎnr",
+   "e": "a little",
+   "hsk": 1
+  },
+  {
+   "c": "一边",
+   "p": "yībiān",
+   "e": "one side; 一边…一边… = while",
+   "hsk": 1
+  },
+  {
+   "c": "上学",
+   "p": "shàngxué",
+   "e": "to go to school",
+   "hsk": 1
+  },
+  {
+   "c": "上次",
+   "p": "shàngcì",
+   "e": "last time",
+   "hsk": 1
+  },
+  {
+   "c": "上网",
+   "p": "shàngwǎng",
+   "e": "to go online",
+   "hsk": 1
+  },
+  {
+   "c": "下次",
+   "p": "xiàcì",
+   "e": "next time",
+   "hsk": 1
+  },
+  {
+   "c": "下班",
+   "p": "xiàbān",
+   "e": "to finish work",
+   "hsk": 1
+  },
+  {
+   "c": "不大",
+   "p": "bùdà",
+   "e": "not very",
+   "hsk": 1
+  },
+  {
+   "c": "不客气",
+   "p": "bùkèqi",
+   "e": "you're welcome",
+   "hsk": 1
+  },
+  {
+   "c": "不对",
+   "p": "bùduì",
+   "e": "wrong, incorrect",
+   "hsk": 1
+  },
+  {
+   "c": "不用",
+   "p": "bùyòng",
+   "e": "no need to",
+   "hsk": 1
+  },
+  {
+   "c": "东边",
+   "p": "dōngbian",
+   "e": "east side",
+   "hsk": 1
+  },
+  {
+   "c": "中学",
+   "p": "zhōngxué",
+   "e": "middle school",
+   "hsk": 1
+  },
+  {
+   "c": "中间",
+   "p": "zhōngjiān",
+   "e": "middle; between",
+   "hsk": 1
+  },
+  {
+   "c": "书包",
+   "p": "shūbāo",
+   "e": "schoolbag",
+   "hsk": 1
+  },
+  {
+   "c": "书店",
+   "p": "shūdiàn",
+   "e": "bookstore",
+   "hsk": 1
+  },
+  {
+   "c": "先生",
+   "p": "xiānsheng",
+   "e": "Mr; sir; husband",
+   "hsk": 1
+  },
+  {
+   "c": "关上",
+   "p": "guānshàng",
+   "e": "to close (a door)",
+   "hsk": 1
+  },
+  {
+   "c": "出去",
+   "p": "chūqù",
+   "e": "to go out",
+   "hsk": 1
+  },
+  {
+   "c": "别人",
+   "p": "biéren",
+   "e": "other people; others; other person",
+   "hsk": 1
+  },
+  {
+   "c": "别的",
+   "p": "biéde",
+   "e": "other; else",
+   "hsk": 1
+  },
+  {
+   "c": "前天",
+   "p": "qiántiān",
+   "e": "the day before yesterday",
+   "hsk": 1
+  },
+  {
+   "c": "前边",
+   "p": "qiánbian",
+   "e": "front; in front",
+   "hsk": 1
+  },
+  {
+   "c": "动作",
+   "p": "dòngzuò",
+   "e": "movement, action",
+   "hsk": 1
+  },
+  {
+   "c": "包",
+   "p": "bāo",
+   "e": "bag; to wrap",
+   "hsk": 1
+  },
+  {
+   "c": "包子",
+   "p": "bāozi",
+   "e": "steamed stuffed bun",
+   "hsk": 1
+  },
+  {
+   "c": "北边",
+   "p": "běibiān",
+   "e": "north side",
+   "hsk": 1
+  },
+  {
+   "c": "午饭",
+   "p": "wǔfàn",
+   "e": "lunch",
+   "hsk": 1
+  },
+  {
+   "c": "半年",
+   "p": "bànnián",
+   "e": "half a year",
+   "hsk": 1
+  },
+  {
+   "c": "南边",
+   "p": "nánbian",
+   "e": "south side",
+   "hsk": 1
+  },
+  {
+   "c": "后天",
+   "p": "hòutiān",
+   "e": "the day after tomorrow",
+   "hsk": 1
+  },
+  {
+   "c": "后边",
+   "p": "hòubian",
+   "e": "back, behind",
+   "hsk": 1
+  },
+  {
+   "c": "听写",
+   "p": "tīngxiě",
+   "e": "dictation",
+   "hsk": 1
+  },
+  {
+   "c": "听到",
+   "p": "tīngdào",
+   "e": "to hear",
+   "hsk": 1
+  },
+  {
+   "c": "听见",
+   "p": "tīngjiàn",
+   "e": "to hear",
+   "hsk": 1
+  },
+  {
+   "c": "哪些",
+   "p": "nǎxiē",
+   "e": "which ones?",
+   "hsk": 1
+  },
+  {
+   "c": "商场",
+   "p": "shāngchǎng",
+   "e": "shopping mall",
+   "hsk": 1
+  },
+  {
+   "c": "回到",
+   "p": "huídào",
+   "e": "to return to",
+   "hsk": 1
+  },
+  {
+   "c": "回来",
+   "p": "huílai",
+   "e": "to return; to come back",
+   "hsk": 1
+  },
+  {
+   "c": "国外",
+   "p": "guówài",
+   "e": "abroad",
+   "hsk": 1
+  },
+  {
+   "c": "国家",
+   "p": "guójiā",
+   "e": "country; nation; state",
+   "hsk": 1
+  },
+  {
+   "c": "图书馆",
+   "p": "túshūguǎn",
+   "e": "library",
+   "hsk": 1
+  },
+  {
+   "c": "在家",
+   "p": "zàijiā",
+   "e": "to be at home",
+   "hsk": 1
+  },
+  {
+   "c": "地",
+   "p": "de",
+   "e": "(particle) -ly, links an adverbial to a verb",
+   "hsk": 1
+  },
+  {
+   "c": "地上",
+   "p": "dìshang",
+   "e": "on the ground",
+   "hsk": 1
+  },
+  {
+   "c": "地图",
+   "p": "dìtú",
+   "e": "map",
+   "hsk": 1
+  },
+  {
+   "c": "地点",
+   "p": "dìdiǎn",
+   "e": "place",
+   "hsk": 1
+  },
+  {
+   "c": "坏",
+   "p": "huài",
+   "e": "bad; broken",
+   "hsk": 1
+  },
+  {
+   "c": "坐下",
+   "p": "zuòxià",
+   "e": "to sit down",
+   "hsk": 1
+  },
+  {
+   "c": "外国",
+   "p": "wàiguó",
+   "e": "foreign (country)",
+   "hsk": 1
+  },
+  {
+   "c": "外语",
+   "p": "wàiyǔ",
+   "e": "foreign language",
+   "hsk": 1
+  },
+  {
+   "c": "外边",
+   "p": "wàibian",
+   "e": "outside",
+   "hsk": 1
+  },
+  {
+   "c": "大学",
+   "p": "dàxué",
+   "e": "university",
+   "hsk": 1
+  },
+  {
+   "c": "大学生",
+   "p": "dàxuéshēng",
+   "e": "university student",
+   "hsk": 1
+  },
+  {
+   "c": "女孩儿",
+   "p": "nǚháir",
+   "e": "girl",
+   "hsk": 1
+  },
+  {
+   "c": "女朋友",
+   "p": "nǚpéngyou",
+   "e": "girlfriend",
+   "hsk": 1
+  },
+  {
+   "c": "女生",
+   "p": "nǚshēng",
+   "e": "girl; female student",
+   "hsk": 1
+  },
+  {
+   "c": "奶奶",
+   "p": "nǎinai",
+   "e": "grandma (father's mother)",
+   "hsk": 1
+  },
+  {
+   "c": "她们",
+   "p": "tāmen",
+   "e": "they (female)",
+   "hsk": 1
+  },
+  {
+   "c": "好听",
+   "p": "hǎotīng",
+   "e": "pleasant to hear",
+   "hsk": 1
+  },
+  {
+   "c": "好玩儿",
+   "p": "hǎowánr",
+   "e": "fun",
+   "hsk": 1
+  },
+  {
+   "c": "家人",
+   "p": "jiārén",
+   "e": "family member",
+   "hsk": 1
+  },
+  {
+   "c": "家里",
+   "p": "jiālǐ",
+   "e": "home",
+   "hsk": 1
+  },
+  {
+   "c": "小姐",
+   "p": "xiǎojie",
+   "e": "Miss; young lady",
+   "hsk": 1
+  },
+  {
+   "c": "小孩儿",
+   "p": "xiǎoháir",
+   "e": "child",
+   "hsk": 1
+  },
+  {
+   "c": "小朋友",
+   "p": "xiǎopéngyou",
+   "e": "child",
+   "hsk": 1
+  },
+  {
+   "c": "山",
+   "p": "shān",
+   "e": "mountain",
+   "hsk": 1
+  },
+  {
+   "c": "工人",
+   "p": "gōngrén",
+   "e": "worker",
+   "hsk": 1
+  },
+  {
+   "c": "差",
+   "p": "chà",
+   "e": "poor, not good enough; to be short of",
+   "hsk": 1
+  },
+  {
+   "c": "帮",
+   "p": "bāng",
+   "e": "to help",
+   "hsk": 1
+  },
+  {
+   "c": "常常",
+   "p": "chángcháng",
+   "e": "frequently",
+   "hsk": 1
+  },
+  {
+   "c": "干什么",
+   "p": "gànshénme",
+   "e": "to do what",
+   "hsk": 1
+  },
+  {
+   "c": "干净",
+   "p": "gānjìng",
+   "e": "clean",
+   "hsk": 1
+  },
+  {
+   "c": "开玩笑",
+   "p": "kāiwánxiào",
+   "e": "to joke",
+   "hsk": 1
+  },
+  {
+   "c": "开车",
+   "p": "kāichē",
+   "e": "to drive a car",
+   "hsk": 1
+  },
+  {
+   "c": "得到",
+   "p": "dédào",
+   "e": "to get, obtain",
+   "hsk": 1
+  },
+  {
+   "c": "忘",
+   "p": "wàng",
+   "e": "to forget",
+   "hsk": 1
+  },
+  {
+   "c": "房子",
+   "p": "fángzi",
+   "e": "house; flat",
+   "hsk": 1
+  },
+  {
+   "c": "打开",
+   "p": "dǎkāi",
+   "e": "to open; to turn on",
+   "hsk": 1
+  },
+  {
+   "c": "打球",
+   "p": "dǎqiú",
+   "e": "to play ball",
+   "hsk": 1
+  },
+  {
+   "c": "打车",
+   "p": "dǎchē",
+   "e": "to take a taxi",
+   "hsk": 1
+  },
+  {
+   "c": "找到",
+   "p": "zhǎodào",
+   "e": "to find",
+   "hsk": 1
+  },
+  {
+   "c": "拿",
+   "p": "ná",
+   "e": "to take, hold",
+   "hsk": 1
+  },
+  {
+   "c": "放",
+   "p": "fàng",
+   "e": "to put, place",
+   "hsk": 1
+  },
+  {
+   "c": "放假",
+   "p": "fàngjià",
+   "e": "to have a holiday or vacation",
+   "hsk": 1
+  },
+  {
+   "c": "放学",
+   "p": "fàngxué",
+   "e": "to finish school for the day",
+   "hsk": 1
+  },
+  {
+   "c": "教",
+   "p": "jiāo",
+   "e": "to teach",
+   "hsk": 1
+  },
+  {
+   "c": "教学楼",
+   "p": "jiàoxuélóu",
+   "e": "classroom building",
+   "hsk": 1
+  },
+  {
+   "c": "新年",
+   "p": "xīnnián",
+   "e": "New Year",
+   "hsk": 1
+  },
+  {
+   "c": "早饭",
+   "p": "zǎofàn",
+   "e": "breakfast",
+   "hsk": 1
+  },
+  {
+   "c": "明白",
+   "p": "míngbai",
+   "e": "to understand; clear",
+   "hsk": 1
+  },
+  {
+   "c": "星期天",
+   "p": "xīngqītiān",
+   "e": "Sunday",
+   "hsk": 1
+  },
+  {
+   "c": "星期日",
+   "p": "xīngqīrì",
+   "e": "Sunday",
+   "hsk": 1
+  },
+  {
+   "c": "是不是",
+   "p": "shìbùshì",
+   "e": "is it (or not)?",
+   "hsk": 1
+  },
+  {
+   "c": "晚饭",
+   "p": "wǎnfàn",
+   "e": "evening meal",
+   "hsk": 1
+  },
+  {
+   "c": "最后",
+   "p": "zuìhòu",
+   "e": "last; finally",
+   "hsk": 1
+  },
+  {
+   "c": "最好",
+   "p": "zuìhǎo",
+   "e": "best; had better",
+   "hsk": 1
+  },
+  {
+   "c": "有一些",
+   "p": "yǒuyīxiē",
+   "e": "some; somewhat",
+   "hsk": 1
+  },
+  {
+   "c": "有些",
+   "p": "yǒuxiē",
+   "e": "some",
+   "hsk": 1
+  },
+  {
+   "c": "有名",
+   "p": "yǒumíng",
+   "e": "famous",
+   "hsk": 1
+  },
+  {
+   "c": "有时",
+   "p": "yǒushí",
+   "e": "sometimes",
+   "hsk": 1
+  },
+  {
+   "c": "有时候",
+   "p": "yǒushíhou",
+   "e": "sometimes",
+   "hsk": 1
+  },
+  {
+   "c": "有用",
+   "p": "yǒuyòng",
+   "e": "useful",
+   "hsk": 1
+  },
+  {
+   "c": "有的",
+   "p": "yǒude",
+   "e": "some",
+   "hsk": 1
+  },
+  {
+   "c": "本子",
+   "p": "běnzi",
+   "e": "notebook",
+   "hsk": 1
+  },
+  {
+   "c": "来到",
+   "p": "láidào",
+   "e": "to arrive; to come",
+   "hsk": 1
+  },
+  {
+   "c": "楼上",
+   "p": "lóushàng",
+   "e": "upstairs",
+   "hsk": 1
+  },
+  {
+   "c": "楼下",
+   "p": "lóuxià",
+   "e": "downstairs",
+   "hsk": 1
+  },
+  {
+   "c": "汉字",
+   "p": "hànzì",
+   "e": "Chinese character",
+   "hsk": 1
+  },
+  {
+   "c": "没事儿",
+   "p": "méishìr",
+   "e": "it's nothing; never mind",
+   "hsk": 1
+  },
+  {
+   "c": "没什么",
+   "p": "méishénme",
+   "e": "nothing",
+   "hsk": 1
+  },
+  {
+   "c": "洗手间",
+   "p": "xǐshǒujiān",
+   "e": "restroom, toilet",
+   "hsk": 1
+  },
+  {
+   "c": "渴",
+   "p": "kě",
+   "e": "thirsty",
+   "hsk": 1
+  },
+  {
+   "c": "火车",
+   "p": "huǒchē",
+   "e": "train",
+   "hsk": 1
+  },
+  {
+   "c": "爱好",
+   "p": "àihào",
+   "e": "hobby; to be fond of",
+   "hsk": 1
+  },
+  {
+   "c": "爷爷",
+   "p": "yéye",
+   "e": "grandpa (father's father)",
+   "hsk": 1
+  },
+  {
+   "c": "玩儿",
+   "p": "wánr",
+   "e": "to play",
+   "hsk": 1
+  },
+  {
+   "c": "班",
+   "p": "bān",
+   "e": "class (group of students)",
+   "hsk": 1
+  },
+  {
+   "c": "球",
+   "p": "qiú",
+   "e": "ball",
+   "hsk": 1
+  },
+  {
+   "c": "生气",
+   "p": "shēngqì",
+   "e": "to get angry",
+   "hsk": 1
+  },
+  {
+   "c": "电影院",
+   "p": "diànyǐngyuàn",
+   "e": "cinema; movie theater",
+   "hsk": 1
+  },
+  {
+   "c": "电视机",
+   "p": "diànshìjī",
+   "e": "television set",
+   "hsk": 1
+  },
+  {
+   "c": "男孩儿",
+   "p": "nánháir",
+   "e": "boy",
+   "hsk": 1
+  },
+  {
+   "c": "男朋友",
+   "p": "nánpéngyou",
+   "e": "boyfriend",
+   "hsk": 1
+  },
+  {
+   "c": "男生",
+   "p": "nánshēng",
+   "e": "boy; male student",
+   "hsk": 1
+  },
+  {
+   "c": "病",
+   "p": "bìng",
+   "e": "illness; to be ill",
+   "hsk": 1
+  },
+  {
+   "c": "病人",
+   "p": "bìngrén",
+   "e": "patient",
+   "hsk": 1
+  },
+  {
+   "c": "看病",
+   "p": "kànbìng",
+   "e": "to see a doctor",
+   "hsk": 1
+  },
+  {
+   "c": "看见",
+   "p": "kànjiàn",
+   "e": "to see",
+   "hsk": 1
+  },
+  {
+   "c": "真的",
+   "p": "zhēnde",
+   "e": "really, truly",
+   "hsk": 1
+  },
+  {
+   "c": "知识",
+   "p": "zhīshi",
+   "e": "knowledge",
+   "hsk": 1
+  },
+  {
+   "c": "第二",
+   "p": "dì'èr",
+   "e": "second",
+   "hsk": 1
+  },
+  {
+   "c": "网上",
+   "p": "wǎngshàng",
+   "e": "online",
+   "hsk": 1
+  },
+  {
+   "c": "网友",
+   "p": "wǎngyǒu",
+   "e": "online friend",
+   "hsk": 1
+  },
+  {
+   "c": "老人",
+   "p": "lǎorén",
+   "e": "old person",
+   "hsk": 1
+  },
+  {
+   "c": "考",
+   "p": "kǎo",
+   "e": "to take an exam; to test",
+   "hsk": 1
+  },
+  {
+   "c": "肉",
+   "p": "ròu",
+   "e": "meat",
+   "hsk": 1
+  },
+  {
+   "c": "花",
+   "p": "huā",
+   "e": "flower; to spend (money / time)",
+   "hsk": 1
+  },
+  {
+   "c": "见面",
+   "p": "jiànmiàn",
+   "e": "to meet",
+   "hsk": 1
+  },
+  {
+   "c": "认真",
+   "p": "rènzhēn",
+   "e": "serious, conscientious",
+   "hsk": 1
+  },
+  {
+   "c": "记",
+   "p": "jì",
+   "e": "to remember; to write down",
+   "hsk": 1
+  },
+  {
+   "c": "记住",
+   "p": "jìzhù",
+   "e": "to memorise",
+   "hsk": 1
+  },
+  {
+   "c": "记得",
+   "p": "jìde",
+   "e": "to remember",
+   "hsk": 1
+  },
+  {
+   "c": "试",
+   "p": "shì",
+   "e": "to try",
+   "hsk": 1
+  },
+  {
+   "c": "说话",
+   "p": "shuōhuà",
+   "e": "to talk, speak",
+   "hsk": 1
+  },
+  {
+   "c": "请假",
+   "p": "qǐngjià",
+   "e": "to ask for time off",
+   "hsk": 1
+  },
+  {
+   "c": "请坐",
+   "p": "qǐngzuò",
+   "e": "please sit down",
+   "hsk": 1
+  },
+  {
+   "c": "请进",
+   "p": "qǐngjìn",
+   "e": "please come in",
+   "hsk": 1
+  },
+  {
+   "c": "请问",
+   "p": "qǐngwèn",
+   "e": "excuse me, may I ask…",
+   "hsk": 1
+  },
+  {
+   "c": "读书",
+   "p": "dúshū",
+   "e": "to study; to read",
+   "hsk": 1
+  },
+  {
+   "c": "课文",
+   "p": "kèwén",
+   "e": "text",
+   "hsk": 1
+  },
+  {
+   "c": "课本",
+   "p": "kèběn",
+   "e": "textbook",
+   "hsk": 1
+  },
+  {
+   "c": "走路",
+   "p": "zǒulù",
+   "e": "to walk",
+   "hsk": 1
+  },
+  {
+   "c": "起来",
+   "p": "qǐlai",
+   "e": "to get up; to stand up",
+   "hsk": 1
+  },
+  {
+   "c": "跟",
+   "p": "gēn",
+   "e": "with; to follow",
+   "hsk": 1
+  },
+  {
+   "c": "路上",
+   "p": "lùshang",
+   "e": "on the way",
+   "hsk": 1
+  },
+  {
+   "c": "路口",
+   "p": "lùkǒu",
+   "e": "intersection",
+   "hsk": 1
+  },
+  {
+   "c": "身上",
+   "p": "shēnshang",
+   "e": "on one's body",
+   "hsk": 1
+  },
+  {
+   "c": "车上",
+   "p": "chēshang",
+   "e": "on the bus / train / in the car",
+   "hsk": 1
+  },
+  {
+   "c": "车站",
+   "p": "chēzhàn",
+   "e": "station; stop",
+   "hsk": 1
+  },
+  {
+   "c": "还是",
+   "p": "háishi",
+   "e": "or (in questions); still; had better",
+   "hsk": 1
+  },
+  {
+   "c": "还有",
+   "p": "háiyǒu",
+   "e": "there is also; in addition",
+   "hsk": 1
+  },
+  {
+   "c": "这些",
+   "p": "zhèxiē",
+   "e": "these",
+   "hsk": 1
+  },
+  {
+   "c": "这儿",
+   "p": "zhèr",
+   "e": "here",
+   "hsk": 1
+  },
+  {
+   "c": "这里",
+   "p": "zhèlǐ",
+   "e": "here",
+   "hsk": 1
+  },
+  {
+   "c": "那些",
+   "p": "nàxiē",
+   "e": "those",
+   "hsk": 1
+  },
+  {
+   "c": "那儿",
+   "p": "nàr",
+   "e": "there",
+   "hsk": 1
+  },
+  {
+   "c": "那边",
+   "p": "nàbian",
+   "e": "over there",
+   "hsk": 1
+  },
+  {
+   "c": "里边",
+   "p": "lǐbian",
+   "e": "inside",
+   "hsk": 1
+  },
+  {
+   "c": "重",
+   "p": "zhòng",
+   "e": "heavy",
+   "hsk": 1
+  },
+  {
+   "c": "钱包",
+   "p": "qiánbāo",
+   "e": "wallet",
+   "hsk": 1
+  },
+  {
+   "c": "门口",
+   "p": "ménkǒu",
+   "e": "doorway, entrance",
+   "hsk": 1
+  },
+  {
+   "c": "门票",
+   "p": "ménpiào",
+   "e": "admission ticket",
+   "hsk": 1
+  },
+  {
+   "c": "难",
+   "p": "nán",
+   "e": "difficult",
+   "hsk": 1
+  },
+  {
+   "c": "面包",
+   "p": "miànbāo",
+   "e": "bread",
+   "hsk": 1
+  },
+  {
+   "c": "面条儿",
+   "p": "miàntiáor",
+   "e": "noodles",
+   "hsk": 1
+  },
+  {
+   "c": "页",
+   "p": "yè",
+   "e": "page",
+   "hsk": 1
+  },
+  {
+   "c": "风",
+   "p": "fēng",
+   "e": "wind",
+   "hsk": 1
+  },
+  {
+   "c": "饿",
+   "p": "è",
+   "e": "hungry",
+   "hsk": 1
+  },
+  {
+   "c": "马上",
+   "p": "mǎshàng",
+   "e": "right away",
+   "hsk": 1
+  },
+  {
+   "c": "马路",
+   "p": "mǎlù",
+   "e": "road, street",
+   "hsk": 1
+  }
+ ],
+ "lessons": []
+}

@@ -1,0 +1,335 @@
+{
+ "words": [],
+ "lessons": [
+  {
+   "id": 116,
+   "zhTitle": "考试",
+   "enTitle": "The Exam",
+   "description": "Talk about studying, exams, right and wrong answers",
+   "emoji": "📝",
+   "color": "#e0f2f1",
+   "emojiColor": "#80cbc4",
+   "grammarLabel": "Pattern: 对 / 错 / 记住 / 告诉",
+   "vocab": ["考", "考试", "记", "记住", "记得", "忘", "忘记", "知道", "明白", "知识", "问", "回答", "告诉", "对", "不对", "错", "难", "认真", "图书馆", "教学楼", "读书", "最后", "最好"],
+   "grammar": [
+    {"title": "Result verbs: 记住, 听到, 看见", "pattern": "这个字我记住了。", "note": "A second verb after the first shows the result: 记 (note down, memorise) + 住 (firmly) = to have memorised. 记得 = to remember (still know); 忘 / 忘记 = to forget."},
+    {"title": "告诉 / 问 + person + thing", "pattern": "请告诉我你的名字。我问老师。", "note": "告诉 (tell) and 问 (ask) take the person straight after the verb: 告诉他, 问老师. No 'to' is needed."},
+    {"title": "对 / 错 and 最好", "pattern": "你说的不对。这个字写错了。你最好早睡。", "note": "对 = right, correct; 不对 / 错 = wrong. Verb + 错 = do it wrong: 写错, 说错. 最好 + verb = 'you'd better…'."}
+   ],
+   "sentences": [
+    {"zh": "明天我们考汉语。", "en": "We have a Chinese exam tomorrow."},
+    {"zh": "这次考试难不难？", "en": "Was this exam hard?"},
+    {"zh": "我认真学习了，考了九十九分。", "en": "I studied hard and got 99 points."},
+    {"zh": "这个字你记住了吗？", "en": "Have you memorised this character?"},
+    {"zh": "对不起，我忘了你的名字。", "en": "Sorry, I've forgotten your name."},
+    {"zh": "你知道图书馆在哪儿吗？", "en": "Do you know where the library is?"},
+    {"zh": "老师问我，我回答对了。", "en": "The teacher asked me, and I answered correctly."},
+    {"zh": "请告诉我，这个字对不对？", "en": "Please tell me — is this character right?"}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "明天考试，你准备好了吗？", "en": "The exam is tomorrow. Are you ready?"},
+    {"speaker": "B", "zh": "还没有。我很多汉字都记不住。", "en": "Not yet. I can't remember lots of the characters."},
+    {"speaker": "A", "zh": "我们一起去图书馆读书吧。", "en": "Let's go study at the library together."},
+    {"speaker": "B", "zh": "好。你知道图书馆几点关门吗？", "en": "OK. Do you know when the library closes?"},
+    {"speaker": "A", "zh": "晚上十点。你最好拿上课本。", "en": "Ten p.m. You'd better bring your textbook."},
+    {"speaker": "B", "zh": "明白了，谢谢！", "en": "Got it, thanks!"}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "考试", "titleEn": "The Exam", "emoji": "🏆",
+     "lines": [
+      {"zh": "上个星期我们考汉语，考试很难。", "en": "Last week we had a Chinese exam. It was hard."},
+      {"zh": "考试前，我晚上常常在图书馆认真学习。", "en": "Before it, I often studied hard in the library in the evening."},
+      {"zh": "考试的字我都会写。", "en": "I knew how to write all the characters in the exam."},
+      {"zh": "最后有一个字写错了，别的都对！", "en": "In the end one character was wrong, and everything else was right!"}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "考试不难。", "questionEn": "The exam wasn't hard.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "他写错了几个字？", "questionEn": "How many characters did he get wrong?", "options": ["一个", "两个", "三个", "没有"], "answer": 0}
+     ],
+     "focusWords": ["考试", "图书馆", "认真", "最后", "错"],
+     "grammarFocus": ["verb + 错", "都"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "你记得吗？", "titleEn": "Do You Remember?", "emoji": "🤔",
+     "lines": [
+      {"zh": "A：你记得王老师的手机号吗？", "en": "A: Do you remember Teacher Wang's mobile number?"},
+      {"zh": "B：我忘了。你问一下小月吧。", "en": "B: I've forgotten. Ask Xiaoyue."},
+      {"zh": "A：小月在哪儿？", "en": "A: Where's Xiaoyue?"},
+      {"zh": "B：在教学楼里，在三楼上课。", "en": "B: In the classroom building, having class on the third floor."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "B 记得王老师的手机号。", "questionEn": "B remembers Teacher Wang's number.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "小月在几楼？", "questionEn": "Which floor is Xiaoyue on?", "options": ["一楼", "二楼", "三楼", "四楼"], "answer": 2}
+     ],
+     "focusWords": ["记得", "忘", "问", "教学楼"],
+     "grammarFocus": ["问 + person"]
+    }
+   ]
+  },
+  {
+   "id": 117,
+   "zhTitle": "请进",
+   "enTitle": "Come In!",
+   "description": "Welcome a guest, introduce people and move in, out and around",
+   "emoji": "🚪",
+   "color": "#fff3e0",
+   "emojiColor": "#ffb74d",
+   "grammarLabel": "Pattern: 进来 / 出去 / 回来",
+   "vocab": ["进", "进来", "进去", "出", "出去", "出来", "回来", "回去", "回到", "来到", "起", "起来", "坐下", "请进", "请坐", "站", "介绍", "说", "话", "说话", "听", "听到", "听见"],
+   "grammar": [
+    {"title": "Direction: verb + 来 / 去", "pattern": "请进来！· 他出去了。· 我明天回来。", "note": "来 means movement towards the speaker, 去 away from the speaker. 进来 = come in (to where I am), 进去 = go in. The same with 出, 回, 上, 下."},
+    {"title": "听 / 听到 / 听见", "pattern": "你听！· 我听见了。· 你听到了吗？", "note": "听 = to listen. 听到 / 听见 = to hear (the sound reaches you). Negative of the result: 没听见 = didn't hear."},
+    {"title": "介绍 — introduce", "pattern": "我介绍一下，这是我的同学。", "note": "介绍一下 is the polite way to start an introduction. 给 + person + 介绍 = introduce to someone: 我给你介绍一个朋友."}
+   ],
+   "sentences": [
+    {"zh": "请进！请坐！", "en": "Come in! Have a seat!"},
+    {"zh": "我介绍一下，这是我的朋友王明。", "en": "Let me introduce you — this is my friend Wang Ming."},
+    {"zh": "他不在，他出去了。", "en": "He's not here; he's gone out."},
+    {"zh": "你什么时候回来？", "en": "When will you be back?"},
+    {"zh": "我们晚上十点回到家了。", "en": "We got home at ten in the evening."},
+    {"zh": "请站起来。— 好，请坐下。", "en": "Please stand up. — OK, please sit down."},
+    {"zh": "你说什么？我没听见。", "en": "What did you say? I didn't hear."},
+    {"zh": "上课的时候别说话。", "en": "Don't talk during class."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "你好！请进，请进！", "en": "Hello! Come in, come in!"},
+    {"speaker": "B", "zh": "谢谢！这是你的新家吗？", "en": "Thanks! Is this your new home?"},
+    {"speaker": "A", "zh": "是。请坐。我给你介绍一下，这是我妹妹。", "en": "Yes. Have a seat. Let me introduce you — this is my younger sister."},
+    {"speaker": "C", "zh": "你好！我听哥哥说了很多你的事。", "en": "Hi! My brother has told me lots about you."},
+    {"speaker": "B", "zh": "你好！认识你很高兴。", "en": "Hi! Nice to meet you."},
+    {"speaker": "A", "zh": "你们说话，我出去买一点儿水果。", "en": "You two chat — I'll pop out and buy some fruit."}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "来到北京", "titleEn": "Arriving in Beijing", "emoji": "🧳",
+     "lines": [
+      {"zh": "上个月我来到北京学习汉语。", "en": "Last month I came to Beijing to study Chinese."},
+      {"zh": "第一天上课，老师说：“请站起来，介绍一下。”", "en": "On the first day the teacher said, 'Please stand up and introduce yourself.'"},
+      {"zh": "我站起来说：“我叫大明，我是外国人。”", "en": "I stood up and said, 'My name is Daming. I'm from abroad.'"},
+      {"zh": "同学们都听见了，他们说：“你好，大明！”", "en": "My classmates all heard and said, 'Hi, Daming!'"}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "他上个月来到北京。", "questionEn": "He came to Beijing last month.", "answer": true},
+      {"id": "q2", "type": "multiple_choice", "question": "老师请他做什么？", "questionEn": "What did the teacher ask him to do?", "options": ["坐下", "出去", "介绍一下", "回家"], "answer": 2}
+     ],
+     "focusWords": ["来到", "站", "起来", "介绍", "听见"],
+     "grammarFocus": ["站起来", "介绍一下"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "他回来了吗？", "titleEn": "Is He Back?", "emoji": "📞",
+     "lines": [
+      {"zh": "A：你好，王明在家吗？", "en": "A: Hello, is Wang Ming home?"},
+      {"zh": "B：他不在，他出去了。", "en": "B: He's not in; he's gone out."},
+      {"zh": "A：他什么时候回来？", "en": "A: When will he be back?"},
+      {"zh": "B：晚上六点。你六点再打电话吧。", "en": "B: At six this evening. Call again at six."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "王明在家。", "questionEn": "Wang Ming is at home.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "王明几点回来？", "questionEn": "What time will Wang Ming be back?", "options": ["五点", "六点", "七点", "八点"], "answer": 1}
+     ],
+     "focusWords": ["出去", "回来"],
+     "grammarFocus": ["verb + 来 / 去"]
+    }
+   ]
+  },
+  {
+   "id": 118,
+   "zhTitle": "见朋友",
+   "enTitle": "Meeting Friends",
+   "description": "Meet up with friends, help each other and give gifts",
+   "emoji": "🎁",
+   "color": "#fce4ec",
+   "emojiColor": "#f06292",
+   "grammarLabel": "Pattern: 跟 / 给 / 帮",
+   "vocab": ["见", "见面", "看见", "看到", "找", "找到", "帮", "帮忙", "给", "送", "跟", "别人", "先生", "小姐", "男朋友", "女朋友", "小朋友", "男孩儿", "女孩儿", "谁", "人", "笑", "开玩笑"],
+   "grammar": [
+    {"title": "跟 + person + verb — with", "pattern": "我跟朋友见面。他跟我一起去。", "note": "跟 introduces the person you do something with. It goes before the verb, often with 一起."},
+    {"title": "给 + person + thing / 给 + person + verb", "pattern": "我给你一本书。我给妈妈打电话。", "note": "给 as a verb means 'give'. Before another verb it means 'for / to someone': 给他买东西. 送 = give as a present, or see someone off."},
+    {"title": "帮 vs 帮忙", "pattern": "请帮我拿一下。· 你能帮个忙吗？", "note": "帮 takes a person right after it: 帮我. 帮忙 already has its object inside, so you can't say 帮忙我; say 帮我的忙 or just 帮我."}
+   ],
+   "sentences": [
+    {"zh": "我们明天在哪儿见面？", "en": "Where shall we meet tomorrow?"},
+    {"zh": "我在找我的手机，你看见了吗？", "en": "I'm looking for my phone. Have you seen it?"},
+    {"zh": "找到了！在你的书包里。", "en": "Found it! It's in your bag."},
+    {"zh": "你能帮我一下吗？", "en": "Can you help me for a moment?"},
+    {"zh": "这本书是我送你的。", "en": "This book is my present to you."},
+    {"zh": "那个女孩儿是谁？— 她是我女朋友。", "en": "Who's that girl? — She's my girlfriend."},
+    {"zh": "王先生，这是李小姐。", "en": "Mr Wang, this is Ms Li."},
+    {"zh": "别生气，我跟你开玩笑呢！", "en": "Don't be cross, I'm just joking with you!"}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "你在找谁？", "en": "Who are you looking for?"},
+    {"speaker": "B", "zh": "我在找我的朋友小月。你看见她了吗？", "en": "My friend Xiaoyue. Have you seen her?"},
+    {"speaker": "A", "zh": "看见了，她跟她男朋友在饭店里。", "en": "Yes — she's in the restaurant with her boyfriend."},
+    {"speaker": "B", "zh": "真的吗？她有男朋友了？", "en": "Really? She has a boyfriend now?"},
+    {"speaker": "A", "zh": "我跟你开玩笑呢！是她哥哥。", "en": "Haha, I'm kidding! It's her older brother."},
+    {"speaker": "B", "zh": "你真好笑！", "en": "You're so funny!"}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "帮小朋友", "titleEn": "Helping a Little Boy", "emoji": "🧒",
+     "lines": [
+      {"zh": "昨天在路上，我看见一个小男孩儿站在路口。", "en": "Yesterday I saw a little boy standing alone at a street corner."},
+      {"zh": "他说他找不到妈妈了。", "en": "He said he couldn't find his mom."},
+      {"zh": "我帮他给妈妈打电话。", "en": "I helped him call his mom."},
+      {"zh": "一会儿，妈妈就找到了他。小朋友笑了。", "en": "Soon after, his mom found him. The little boy smiled."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "小男孩儿找不到爸爸了。", "questionEn": "The little boy couldn't find his dad.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "最后谁找到了小朋友？", "questionEn": "Who found the little boy in the end?", "options": ["爸爸", "妈妈", "老师", "医生"], "answer": 1}
+     ],
+     "focusWords": ["看见", "找", "帮", "找到", "笑"],
+     "grammarFocus": ["找不到 / 找到", "帮 + person + verb"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "送你一本书", "titleEn": "A Book for You", "emoji": "📕",
+     "lines": [
+      {"zh": "A：小月，这本书送你。", "en": "A: Xiaoyue, this book is for you."},
+      {"zh": "B：给我的？谢谢！", "en": "B: For me? Thank you!"},
+      {"zh": "A：不客气。是别人送我的，我有两本。", "en": "A: You're welcome. Someone gave it to me — I have two copies."},
+      {"zh": "B：你真好！", "en": "B: You're so kind!"}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "这本书 A 有两本。", "questionEn": "A has two copies of this book.", "answer": true},
+      {"id": "q2", "type": "multiple_choice", "question": "A 送小月什么？", "questionEn": "What does A give Xiaoyue?", "options": ["一本书", "一个包", "水果", "衣服"], "answer": 0}
+     ],
+     "focusWords": ["送", "给", "别人"],
+     "grammarFocus": ["送 + person + thing"]
+    }
+   ]
+  },
+  {
+   "id": 119,
+   "zhTitle": "放假了",
+   "enTitle": "Holidays Are Here",
+   "description": "Make plans, give choices and talk about how things are going",
+   "emoji": "🏖️",
+   "color": "#e3f2fd",
+   "emojiColor": "#64b5f6",
+   "grammarLabel": "Pattern: 还是 / 是不是 / 一边…一边…",
+   "vocab": ["放假", "准备", "重要", "行", "得到", "有用", "试", "干", "干什么", "是不是", "还", "还是", "还有", "一下儿", "一边", "一半", "半年", "差", "坏", "慢", "开会", "生气", "没事儿", "没什么", "事"],
+   "grammar": [
+    {"title": "A 还是 B？ — A or B?", "pattern": "你喝茶还是喝水？", "note": "还是 joins two choices in a question. In statements 'or' is 或者 (later level). 还 alone means 'still, also': 他还在睡觉 / 我还要一杯茶."},
+    {"title": "是不是 — isn't it? / is it the case that…?", "pattern": "你是不是生病了？", "note": "是不是 checks a guess: 'Are you ill, by any chance?'. It can go before the verb or at the end: 你生病了，是不是？"},
+    {"title": "一边…一边… — while", "pattern": "他一边吃饭，一边看手机。", "note": "Two actions at the same time, by the same person. Put 一边 before each verb."}
+   ],
+   "sentences": [
+    {"zh": "下个星期就放假了，你准备干什么？", "en": "The holidays start next week. What are you planning to do?"},
+    {"zh": "你想去北京还是在家？", "en": "Do you want to go to Beijing or stay home?"},
+    {"zh": "你是不是不高兴？— 没事儿。", "en": "Are you upset? — I'm fine."},
+    {"zh": "我试一下儿这个包，行吗？— 行。", "en": "Can I try this bag? — Sure."},
+    {"zh": "这个手机坏了，太慢了。", "en": "This phone is broken — it's way too slow."},
+    {"zh": "他一边听歌，一边写汉字。", "en": "He writes characters while listening to music."},
+    {"zh": "明天上午我要开一个重要的会。", "en": "I have an important meeting tomorrow morning."},
+    {"zh": "我的工作做了一半，还有一半。", "en": "I've done half my work; half is left."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "放假了！你准备干什么？", "en": "The holidays are here! What are you going to do?"},
+    {"speaker": "B", "zh": "我还没想好。去北京还是在家休息？", "en": "I haven't decided. Go to Beijing or rest at home?"},
+    {"speaker": "A", "zh": "去北京吧！在家没什么好玩儿的。", "en": "Go to Beijing! There's nothing fun about staying home."},
+    {"speaker": "B", "zh": "我的汉语还差一点儿。", "en": "My Chinese still isn't quite good enough."},
+    {"speaker": "A", "zh": "没事儿，你去试一下儿。说汉语对你很有用。", "en": "Never mind — give it a try. Speaking Chinese will be really useful for you."},
+    {"speaker": "B", "zh": "行，我去！", "en": "OK, I'll go!"}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "爸爸生气了", "titleEn": "Dad Got Cross", "emoji": "😤",
+     "lines": [
+      {"zh": "爸爸今天要开一个很重要的会。", "en": "Dad had a very important meeting today."},
+      {"zh": "他的电脑坏了，非常慢。", "en": "But his computer was broken and really slow."},
+      {"zh": "爸爸生气了，他说：“这个电脑太差了！”", "en": "Dad got cross and said, 'This computer is terrible!'"},
+      {"zh": "我说：“用我的电脑吧！”他笑了：“没事儿了！”", "en": "I said, 'Use my computer!' He smiled: 'All fine now!'"}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "爸爸的电脑坏了。", "questionEn": "Dad's computer was broken.", "answer": true},
+      {"id": "q2", "type": "multiple_choice", "question": "最后爸爸用了谁的电脑？", "questionEn": "Whose computer did Dad use in the end?", "options": ["他的", "妈妈的", "我的", "同学的"], "answer": 2}
+     ],
+     "focusWords": ["重要", "坏", "慢", "生气", "没事儿"],
+     "grammarFocus": ["太…了", "给 + person + verb"]
+    },
+    {
+     "type": "dialogue", "difficulty": 2, "title": "你在干什么？", "titleEn": "What Are You Doing?", "emoji": "🎧",
+     "lines": [
+      {"zh": "A：你在干什么？", "en": "A: What are you doing?"},
+      {"zh": "B：我一边听歌，一边学汉语。", "en": "B: I'm learning Chinese while listening to songs."},
+      {"zh": "A：一边听歌一边学，有用吗？", "en": "A: Does studying while listening help?"},
+      {"zh": "B：很有用！我学了半年，得到了很多新知识。", "en": "B: Very much! I've been doing it for six months and learned a lot."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "B 学了半年。", "questionEn": "B has been studying for six months.", "answer": true},
+      {"id": "q2", "type": "multiple_choice", "question": "B 一边听歌，一边干什么？", "questionEn": "What does B do while listening to songs?", "options": ["吃饭", "睡觉", "学汉语", "打球"], "answer": 2}
+     ],
+     "focusWords": ["干什么", "一边", "有用", "半年", "得到"],
+     "grammarFocus": ["一边…一边…"]
+    }
+   ]
+  },
+  {
+   "id": 120,
+   "zhTitle": "去过中国吗",
+   "enTitle": "Have You Been to China?",
+   "description": "Talk about experiences, actions in progress and famous places",
+   "emoji": "🏯",
+   "color": "#fbe9e7",
+   "emojiColor": "#ff8a65",
+   "grammarLabel": "Pattern: 过 / 正在 / 次",
+   "vocab": ["过", "次", "上次", "下次", "正", "正在", "没", "有一些", "门票", "不大", "国", "国家", "外国", "国外", "有名", "地方", "地点", "动作", "地", "子", "重"],
+   "grammar": [
+    {"title": "Verb + 过 — have ever done", "pattern": "我去过北京。你吃过包子吗？— 没吃过。", "note": "过 after a verb means you have had the experience at some time. Negative: 没 + verb + 过 (没去过). 次 counts times: 去过两次."},
+    {"title": "正在 + verb (+ 呢) — in progress", "pattern": "他正在上课呢。", "note": "正在 (or 正) before a verb means the action is happening right now. 呢 at the end is common in speech. Negative: 没在 + verb."},
+    {"title": "Adjective + 地 + verb — how it's done", "pattern": "他认真地写汉字。", "note": "地 (de) links a description to the verb that follows: 慢慢地走 = walk slowly. It is pronounced like 的 but written differently."}
+   ],
+   "sentences": [
+    {"zh": "你去过中国吗？", "en": "Have you ever been to China?"},
+    {"zh": "我去过两次，上次是去年。", "en": "I've been twice; the last time was last year."},
+    {"zh": "下次我们一起去吧。", "en": "Let's go together next time."},
+    {"zh": "北京有很多有名的地方。", "en": "Beijing has lots of famous places."},
+    {"zh": "你给我打电话的时候，我正在开车。", "en": "When you called me, I was driving."},
+    {"zh": "这个包很重，里边有一些书。", "en": "This bag is heavy; there are some books inside."},
+    {"zh": "门票不大贵，五十块。", "en": "The tickets aren't very expensive — fifty yuan."},
+    {"zh": "很多外国人来中国学习。", "en": "Lots of foreigners come to China to study."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "你去过国外吗？", "en": "Have you ever been abroad?"},
+    {"speaker": "B", "zh": "去过一次。你呢？", "en": "Once. You?"},
+    {"speaker": "A", "zh": "我没去过。你去了哪个国家？", "en": "I never have. Which country did you go to?"},
+    {"speaker": "B", "zh": "中国。我去了北京，看了很多有名的地方。", "en": "China. I went to Beijing and saw lots of famous places."},
+    {"speaker": "A", "zh": "真好！我也想去。", "en": "Lovely! I want to go too."},
+    {"speaker": "B", "zh": "下次我们一起去吧！", "en": "Let's go together next time!"}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "在公园", "titleEn": "In the Park", "emoji": "🧘",
+     "lines": [
+      {"zh": "这是北京一个很有名的地方，门票十块。", "en": "This is a famous place in Beijing; tickets are ten yuan."},
+      {"zh": "早上这里有一些老人，他们正在一起打球。", "en": "In the morning there are some old people here playing ball together."},
+      {"zh": "他们的动作很慢，很好看。", "en": "Their movements are slow and graceful."},
+      {"zh": "我也跟他们认真地学了一会儿。", "en": "I also carefully learned from them for a while."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "门票多少钱？", "questionEn": "How much is a ticket?", "options": ["五块", "十块", "五十块", "一百块"], "answer": 1},
+      {"id": "q2", "type": "true_false", "question": "老人们的动作很快。", "questionEn": "The old people's movements are fast.", "answer": false}
+     ],
+     "focusWords": ["有名", "地方", "门票", "正在", "动作"],
+     "grammarFocus": ["正在 + verb", "adjective + 地 + verb"]
+    },
+    {
+     "type": "dialogue", "difficulty": 2, "title": "你来过这儿吗？", "titleEn": "Have You Been Here Before?", "emoji": "📍",
+     "lines": [
+      {"zh": "A：你来过这儿吗？", "en": "A: Have you been here before?"},
+      {"zh": "B：来过。上次我是跟爸爸妈妈来的。", "en": "B: Yes. Last time I came with my parents."},
+      {"zh": "A：我们见面的地点是哪儿？", "en": "A: Where's our meeting point?"},
+      {"zh": "B：就在门口。我的朋友正在那儿等我们。", "en": "B: Right at the entrance. My friend is waiting for us there."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "B 没来过这儿。", "questionEn": "B has never been here.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "B 的朋友在哪儿等？", "questionEn": "Where is B's friend waiting?", "options": ["车站", "门口", "饭店", "家里"], "answer": 1}
+     ],
+     "focusWords": ["过", "上次", "地点", "正在"],
+     "grammarFocus": ["verb + 过", "是…的"]
+    }
+   ]
+  }
+ ]
+}

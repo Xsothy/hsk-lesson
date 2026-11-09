@@ -1,0 +1,338 @@
+{
+ "words": [],
+ "lessons": [
+  {
+   "id": 106,
+   "zhTitle": "吃饭了吗",
+   "enTitle": "Have You Eaten?",
+   "description": "Talk about meals, say what you want to eat and drink, and order in a restaurant",
+   "emoji": "🍜",
+   "color": "#fbe9e7",
+   "emojiColor": "#ffab91",
+   "grammarLabel": "Pattern: 想 / 要 / 一点儿",
+   "vocab": ["吃", "喝", "饭", "吃饭", "米饭", "面条儿", "包子", "面包", "鸡蛋", "肉", "菜", "水果", "茶", "水", "牛奶", "奶", "杯子", "杯", "早饭", "午饭", "晚饭", "饿", "渴", "好吃", "想", "要", "一点儿", "饭店", "吧"],
+   "grammar": [
+    {"title": "想 vs 要 — would like / want", "pattern": "我想喝茶。我要一杯水。", "note": "想 + verb is a softer 'would like to'. 要 is firmer: 'want, will have' — the normal word when ordering. Negative of both for wishes: 不想 ('don't feel like')."},
+    {"title": "Measure word 杯 — a cup / glass of", "pattern": "一杯茶 · 两杯牛奶", "note": "Drinks are counted with 杯: number + 杯 + drink. The cup itself is 杯子: 这个杯子很好看."},
+    {"title": "吧 for suggestions, 一点儿 'a little'", "pattern": "我们吃面条儿吧！· 我想吃一点儿肉。", "note": "吧 at the end turns a sentence into a suggestion: 'let's…'. 一点儿 after a verb means 'a little (of)': 喝一点儿水."}
+   ],
+   "sentences": [
+    {"zh": "你吃饭了吗？", "en": "Have you eaten?"},
+    {"zh": "我饿了，我想吃米饭。", "en": "I'm hungry. I'd like some rice."},
+    {"zh": "你要喝什么？— 我要一杯茶。", "en": "What would you like to drink? — A cup of tea."},
+    {"zh": "早饭我吃了两个包子和一个鸡蛋。", "en": "For breakfast I had two buns and an egg."},
+    {"zh": "这个饭店的菜很好吃。", "en": "The food at this restaurant is very good."},
+    {"zh": "我不吃肉，我吃水果。", "en": "I don't eat meat; I eat fruit."},
+    {"zh": "我渴了，请给我一杯水。", "en": "I'm thirsty. Please give me a glass of water."},
+    {"zh": "我们中午一起吃面条儿吧。", "en": "Let's have noodles together at noon."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "你好！你们吃什么？", "en": "Hello! What will you have?"},
+    {"speaker": "B", "zh": "我要一个米饭和一个肉菜。", "en": "I'll have rice and a meat dish."},
+    {"speaker": "C", "zh": "我想吃面条儿。", "en": "I'd like noodles."},
+    {"speaker": "A", "zh": "喝什么？我们有茶和牛奶。", "en": "And to drink? We have tea and milk."},
+    {"speaker": "B", "zh": "两杯茶吧。", "en": "Two cups of tea, please."},
+    {"speaker": "A", "zh": "好的，请等一会儿。", "en": "OK, one moment please."}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 1, "title": "我的三顿饭", "titleEn": "My Meals", "emoji": "🥟",
+     "lines": [
+      {"zh": "早上我吃面包，喝一杯牛奶。", "en": "In the morning I eat bread and drink a glass of milk."},
+      {"zh": "午饭我在学校吃米饭和菜。", "en": "For lunch I eat rice and vegetables at school."},
+      {"zh": "晚饭妈妈做面条儿，很好吃。", "en": "For dinner Mom makes noodles. They're delicious."},
+      {"zh": "晚上我饿了，就吃一点儿水果。", "en": "If I'm hungry in the evening, I eat a little fruit."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "早饭他喝什么？", "questionEn": "What does he drink at breakfast?", "options": ["茶", "水", "牛奶", "没喝"], "answer": 2},
+      {"id": "q2", "type": "true_false", "question": "他在学校吃午饭。", "questionEn": "He eats lunch at school.", "answer": true}
+     ],
+     "focusWords": ["面包", "牛奶", "午饭", "晚饭", "一点儿"],
+     "grammarFocus": ["一杯 + drink", "一点儿"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "在饭店", "titleEn": "At the Restaurant", "emoji": "🍵",
+     "lines": [
+      {"zh": "A：我饿了！我们去饭店吃饭吧。", "en": "A: I'm hungry! Let's go eat at a restaurant."},
+      {"zh": "B：好。你想吃什么？", "en": "B: OK. What do you feel like?"},
+      {"zh": "A：我想吃包子。你呢？", "en": "A: I'd like steamed buns. You?"},
+      {"zh": "B：我不饿，我渴了。我喝一杯茶。", "en": "B: I'm not hungry, I'm thirsty. I'll have a cup of tea."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "B 很饿。", "questionEn": "B is very hungry.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "A 想吃什么？", "questionEn": "What does A want to eat?", "options": ["面条儿", "包子", "米饭", "鸡蛋"], "answer": 1}
+     ],
+     "focusWords": ["饿", "渴", "饭店", "想"],
+     "grammarFocus": ["吧 suggestion", "想 + verb"]
+    }
+   ]
+  },
+  {
+   "id": 107,
+   "zhTitle": "在学校",
+   "enTitle": "At School",
+   "description": "Talk about classes, school types and studying Chinese",
+   "emoji": "📚",
+   "color": "#e0f7fa",
+   "emojiColor": "#80deea",
+   "grammarLabel": "Pattern: 在 + place / 第 / 会",
+   "vocab": ["学校", "小学", "中学", "大学", "学院", "小学生", "中学生", "大学生", "男生", "女生", "班", "课", "上课", "下课", "上学", "放学", "课文", "课本", "本子", "书包", "书", "本", "汉语", "中文", "汉字", "外语", "字", "页", "写", "读", "听写", "教", "学", "学习", "会"],
+   "grammar": [
+    {"title": "在 + place + verb", "pattern": "我在大学学习汉语。", "note": "To say where something happens, put 在 + place before the verb: 他在学校上课. Not 他上课在学校."},
+    {"title": "会 — can (learned skill)", "pattern": "我会写汉字。他不会说外语。", "note": "会 + verb means you have learned how to do something: speak a language, write characters, drive. Negative: 不会."},
+    {"title": "第 + number — ordinal", "pattern": "第一课 · 第十页 · 第二个学生", "note": "Put 第 before a number to make 'first, second…': 第一课 = Lesson One. Page numbers use 页: 第十页 = page ten."}
+   ],
+   "sentences": [
+    {"zh": "我是大学生，我在大学学习汉语。", "en": "I'm a university student. I study Chinese at university."},
+    {"zh": "我们八点上课，十二点下课。", "en": "Classes start at eight and end at twelve."},
+    {"zh": "请打开课本，读第五课的课文。", "en": "Please open your textbooks and read the text of Lesson Five."},
+    {"zh": "你会写这个汉字吗？", "en": "Can you write this character?"},
+    {"zh": "王老师教我们中文。", "en": "Teacher Wang teaches us Chinese."},
+    {"zh": "我的书包里有三本书和两个本子。", "en": "There are three books and two notebooks in my schoolbag."},
+    {"zh": "我们班有十个男生，十五个女生。", "en": "Our class has ten boys and fifteen girls."},
+    {"zh": "今天的听写很难。", "en": "Today's dictation was hard."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "你在哪个学校上学？", "en": "Which school do you go to?"},
+    {"speaker": "B", "zh": "我在北京的一个中学上学。", "en": "I go to a middle school in Beijing."},
+    {"speaker": "A", "zh": "你们学外语吗？", "en": "Do you study foreign languages?"},
+    {"speaker": "B", "zh": "学。我学汉语，也学别的外语。", "en": "Yes. I study Chinese and another foreign language too."},
+    {"speaker": "A", "zh": "你会写汉字吗？", "en": "Can you write Chinese characters?"},
+    {"speaker": "B", "zh": "会写一点儿。", "en": "I can write a few."}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 1, "title": "我们的汉语课", "titleEn": "Our Chinese Class", "emoji": "✏️",
+     "lines": [
+      {"zh": "我们的汉语课上午九点上课。", "en": "Our Chinese class starts at nine in the morning."},
+      {"zh": "李老师先教我们读课文。", "en": "First Teacher Li teaches us to read the text."},
+      {"zh": "我们再在本子上写汉字。", "en": "Then we write characters in our notebooks."},
+      {"zh": "最后有一个听写。我们十一点下课。", "en": "At the end there's a dictation. Class ends at eleven."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "汉语课几点上课？", "questionEn": "When does the Chinese class start?", "options": ["八点", "九点", "十点", "十一点"], "answer": 1},
+      {"id": "q2", "type": "true_false", "question": "他们在课本上写汉字。", "questionEn": "They write characters in the textbook.", "answer": false}
+     ],
+     "focusWords": ["上课", "课文", "本子", "听写", "下课"],
+     "grammarFocus": ["先…再…最后", "在 + place"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "放学了", "titleEn": "School's Out", "emoji": "🎒",
+     "lines": [
+      {"zh": "A：放学了！你回家吗？", "en": "A: School's out! Are you going home?"},
+      {"zh": "B：回家。我的书包呢？", "en": "B: Yes. Where's my schoolbag?"},
+      {"zh": "A：你的书包在这儿。", "en": "A: Your schoolbag is here."},
+      {"zh": "B：谢谢！明天我们几点上学？", "en": "B: Thanks! What time is school tomorrow?"},
+      {"zh": "A：七点半。明天见！", "en": "A: Seven thirty. See you tomorrow!"}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "明天他们七点半上学。", "questionEn": "Tomorrow school starts at 7:30.", "answer": true},
+      {"id": "q2", "type": "multiple_choice", "question": "B 找什么？", "questionEn": "What is B looking for?", "options": ["课本", "本子", "书包", "手机"], "answer": 2}
+     ],
+     "focusWords": ["放学", "书包", "上学"],
+     "grammarFocus": ["…呢？ where is…?"]
+    }
+   ]
+  },
+  {
+   "id": 108,
+   "zhTitle": "在哪儿",
+   "enTitle": "Where Is It?",
+   "description": "Say where things and places are with direction and position words",
+   "emoji": "🧭",
+   "color": "#ede7f6",
+   "emojiColor": "#b39ddb",
+   "grammarLabel": "Pattern: 在 + 方位 / 有",
+   "vocab": ["哪儿", "这儿", "那儿", "哪里", "这里", "那里", "上", "下", "前", "后", "里", "外", "中", "左", "右", "东", "南", "西", "北", "上边", "下边", "前边", "后边", "左边", "右边", "里边", "外边", "东边", "西边", "南边", "北边", "中间", "旁边", "这边", "那边", "桌子"],
+   "grammar": [
+    {"title": "Thing + 在 + place", "pattern": "书在桌子上。洗手间在哪儿？", "note": "在 here is the verb 'to be at'. The known thing comes first: 我的手机在桌子上. Ask with 在哪儿 / 在哪里."},
+    {"title": "Place + 有 + thing", "pattern": "桌子上有一本书。", "note": "To say what is somewhere, start with the place and use 有: 'on the table there is a book'. Compare: 那本书在桌子上 (that specific book is on the table)."},
+    {"title": "Position words: noun + 上 / 里 / 边", "pattern": "桌子上 · 书包里 · 学校旁边 · 我左边", "note": "Short 上, 下, 里 attach to a noun: 桌子上. The longer forms (上边, 里边, 前边…) can stand alone too: 他在前边. 中间 is 'between / in the middle'."}
+   ],
+   "sentences": [
+    {"zh": "请问，洗手间在哪儿？", "en": "Excuse me, where's the restroom?"},
+    {"zh": "洗手间在那边，在书店旁边。", "en": "Over there, next to the bookshop."},
+    {"zh": "我的书在桌子上吗？", "en": "Is my book on the table?"},
+    {"zh": "书包里有两本书。", "en": "There are two books in the schoolbag."},
+    {"zh": "学校东边有一个饭店。", "en": "There's a restaurant to the east of the school."},
+    {"zh": "他在我前边，她在我后边。", "en": "He is in front of me; she is behind me."},
+    {"zh": "我坐在爸爸和妈妈中间。", "en": "I sit between Dad and Mom."},
+    {"zh": "外边很冷，我们去里边吧。", "en": "It's cold outside. Let's go inside."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "我的手机在哪儿？", "en": "Where's my phone?"},
+    {"speaker": "B", "zh": "在桌子上吗？", "en": "On the table?"},
+    {"speaker": "A", "zh": "桌子上没有。", "en": "It's not on the table."},
+    {"speaker": "B", "zh": "你看看书包里边。", "en": "Have a look in your schoolbag."},
+    {"speaker": "A", "zh": "对！在这儿。谢谢！", "en": "Right! Here it is. Thanks!"},
+    {"speaker": "B", "zh": "不客气。", "en": "You're welcome."}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 1, "title": "我的学校", "titleEn": "My School", "emoji": "🗺️",
+     "lines": [
+      {"zh": "我的学校在北京的北边。", "en": "My school is in the north of Beijing."},
+      {"zh": "学校前边有一个商店，后边有一个饭店。", "en": "There's a shop in front of the school and a restaurant behind it."},
+      {"zh": "学校里边有很多树。", "en": "There are lots of trees inside the school."},
+      {"zh": "我们班在二楼，左边是老师的房间。", "en": "Our class is on the second floor; on the left is the teachers' room."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "学校后边有什么？", "questionEn": "What is behind the school?", "options": ["商店", "饭店", "树", "医院"], "answer": 1},
+      {"id": "q2", "type": "true_false", "question": "学校在北京的南边。", "questionEn": "The school is in the south of Beijing.", "answer": false}
+     ],
+     "focusWords": ["北边", "前边", "后边", "里边", "左边"],
+     "grammarFocus": ["place + 有 + thing"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "请问，在哪里？", "titleEn": "Excuse Me, Where Is It?", "emoji": "🚻",
+     "lines": [
+      {"zh": "A：请问，这里有洗手间吗？", "en": "A: Excuse me, is there a restroom here?"},
+      {"zh": "B：有，在那边。", "en": "B: Yes, over there."},
+      {"zh": "A：在那个门的右边吗？", "en": "A: To the right of that door?"},
+      {"zh": "B：不是右边，是左边。", "en": "B: Not the right — the left."},
+      {"zh": "A：好的，谢谢！", "en": "A: OK, thanks!"}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "洗手间在门的右边。", "questionEn": "The restroom is to the right of the door.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "洗手间在哪儿？", "questionEn": "Where is the restroom?", "options": ["门的右边", "门的左边", "门的前边", "门里边"], "answer": 1}
+     ],
+     "focusWords": ["这里", "那边", "右边", "左边"],
+     "grammarFocus": ["在 + position word"]
+    }
+   ]
+  },
+  {
+   "id": 109,
+   "zhTitle": "怎么去",
+   "enTitle": "How Do I Get There?",
+   "description": "Talk about transport, travelling to places and how far they are",
+   "emoji": "🚌",
+   "color": "#e8eaf6",
+   "emojiColor": "#9fa8da",
+   "grammarLabel": "Pattern: 怎么 / 坐 / 从…到…",
+   "vocab": ["去", "来", "从", "怎么", "走", "走路", "车", "汽车", "火车", "飞机", "飞", "开", "开车", "打车", "坐", "上车", "下车", "车上", "车站", "机场", "票", "车票", "机票", "路", "马路", "路口", "路上", "地图", "远", "北京", "中国"],
+   "grammar": [
+    {"title": "怎么 + verb — how?", "pattern": "去机场怎么走？· 你怎么去学校？", "note": "怎么 before a verb asks 'how': 怎么去 = how to get to. 怎么走 asks for directions."},
+    {"title": "坐 / 开 + vehicle + 去 + place", "pattern": "我坐火车去北京。他开车去上班。", "note": "Means of transport come before the destination. 坐 = ride as a passenger (bus, train, plane); 开 = drive. On foot: 走路去."},
+    {"title": "从 A 到 B — from A to B", "pattern": "从我家到学校很远。", "note": "从 marks the starting point, 到 the end. Add 远 / 不远 to say how far it is."}
+   ],
+   "sentences": [
+    {"zh": "你怎么去学校？", "en": "How do you get to school?"},
+    {"zh": "我走路去，学校不远。", "en": "I walk; school isn't far."},
+    {"zh": "从我家到北京，坐飞机要两个小时。", "en": "From my home to Beijing takes two hours by plane."},
+    {"zh": "请问，去车站怎么走？", "en": "Excuse me, how do I get to the station?"},
+    {"zh": "车站在前边路口的右边。", "en": "The station is on the right at the next intersection."},
+    {"zh": "我们打车去机场吧。", "en": "Let's take a taxi to the airport."},
+    {"zh": "我买了火车票。", "en": "I bought the train tickets."},
+    {"zh": "过马路的时候要看车。", "en": "Watch for cars when you cross the road."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "明天你怎么去机场？", "en": "How are you getting to the airport tomorrow?"},
+    {"speaker": "B", "zh": "我想坐车去。", "en": "I'm thinking of taking the bus."},
+    {"speaker": "A", "zh": "从你家到机场很远，打车吧。", "en": "It's a long way from your place. Take a taxi."},
+    {"speaker": "B", "zh": "打车很贵。", "en": "Taxis are expensive."},
+    {"speaker": "A", "zh": "那我开车送你去！", "en": "Then I'll drive you there!"},
+    {"speaker": "B", "zh": "太好了，谢谢你！", "en": "Great, thank you!"}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "去北京", "titleEn": "Going to Beijing", "emoji": "🚄",
+     "lines": [
+      {"zh": "明天我和爸爸去北京。", "en": "Tomorrow Dad and I are going to Beijing."},
+      {"zh": "我们不坐飞机，我们坐火车去。", "en": "We're not flying; we're going by train."},
+      {"zh": "从我家到北京要五个小时。", "en": "It takes five hours from home to Beijing."},
+      {"zh": "在车上，我看书，也看外边的山和树。", "en": "On the train I read, and I look at the mountains and trees outside."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "他们怎么去北京？", "questionEn": "How are they getting to Beijing?", "options": ["坐飞机", "坐火车", "开车", "打车"], "answer": 1},
+      {"id": "q2", "type": "true_false", "question": "从他家到北京要五个小时。", "questionEn": "It takes five hours from his home to Beijing.", "answer": true}
+     ],
+     "focusWords": ["火车", "飞机", "车上", "从"],
+     "grammarFocus": ["坐 + vehicle + 去", "从…到…"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "车站在哪儿？", "titleEn": "Where's the Station?", "emoji": "🚏",
+     "lines": [
+      {"zh": "A：请问，去车站怎么走？", "en": "A: Excuse me, how do I get to the station?"},
+      {"zh": "B：你看地图，车站在这儿。", "en": "B: Look at the map — the station is here."},
+      {"zh": "A：远吗？", "en": "A: Is it far?"},
+      {"zh": "B：不远。走到第二个路口就到了。", "en": "B: Not far. Walk to the second intersection and you're there."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "车站很远。", "questionEn": "The station is far away.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "走到第几个路口？", "questionEn": "Which intersection do you walk to?", "options": ["第一个", "第二个", "第三个", "第四个"], "answer": 1}
+     ],
+     "focusWords": ["车站", "地图", "路口", "远"],
+     "grammarFocus": ["怎么走", "就到了"]
+    }
+   ]
+  },
+  {
+   "id": 110,
+   "zhTitle": "买东西",
+   "enTitle": "Shopping",
+   "description": "Ask prices, count money and buy things in shops",
+   "emoji": "🛍️",
+   "color": "#fce4ec",
+   "emojiColor": "#f48fb1",
+   "grammarLabel": "Pattern: 多少钱 / 块 / 太…了",
+   "vocab": ["买", "钱", "块", "元", "毛", "东西", "商店", "商场", "书店", "钱包", "贵", "衣服", "穿", "这些", "那些", "哪些", "一些", "有些", "别的", "包", "少", "太", "这", "那", "哪"],
+   "grammar": [
+    {"title": "Asking the price: 多少钱", "pattern": "这个多少钱？— 二十五块。", "note": "多少钱 = how much money. In speech prices use 块 (yuan) and 毛 (ten fen): 三块五毛 = ¥3.50. 元 is the written form you see on price tags."},
+    {"title": "太 + adjective + 了", "pattern": "太贵了！· 太好了！", "note": "太…了 means 'too…' or 'so…!'. Keep the 了 at the end in speech: 太贵了, not just 太贵."},
+    {"title": "这些 / 那些 / 哪些 — plural this, that, which", "pattern": "这些衣服很好看。你要哪些？", "note": "Add 些 to 这 / 那 / 哪 for plural nouns. 一些 / 有些 mean 'some': 我想买一些水果."}
+   ],
+   "sentences": [
+    {"zh": "这个包多少钱？", "en": "How much is this bag?"},
+    {"zh": "一百二十块，太贵了！", "en": "120 yuan — that's too expensive!"},
+    {"zh": "我想买一些水果。", "en": "I'd like to buy some fruit."},
+    {"zh": "这些水果三块五。", "en": "This fruit is 3.50 yuan."},
+    {"zh": "你还要别的东西吗？", "en": "Do you want anything else?"},
+    {"zh": "我的钱包里没有钱了。", "en": "There's no money left in my wallet."},
+    {"zh": "这个商场很大，东西也很多。", "en": "This mall is big, and it has lots of things."},
+    {"zh": "那个书店有些书很好看。", "en": "Some books at that bookshop are really good."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "你好，这个包多少钱？", "en": "Hello, how much is this bag?"},
+    {"speaker": "B", "zh": "三百块。", "en": "Three hundred yuan."},
+    {"speaker": "A", "zh": "太贵了！有没有别的？", "en": "Too expensive! Do you have anything else?"},
+    {"speaker": "B", "zh": "那个包不太贵，一百五十块。", "en": "That one isn't too expensive — 150 yuan."},
+    {"speaker": "A", "zh": "好，我买这个白的。", "en": "OK, I'll buy this white one."},
+    {"speaker": "B", "zh": "好的。谢谢！", "en": "OK. Thank you!"}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "去商场", "titleEn": "At the Mall", "emoji": "🏬",
+     "lines": [
+      {"zh": "星期六我和妈妈去商场买东西。", "en": "On Saturday Mom and I went shopping at the mall."},
+      {"zh": "妈妈想给我买新衣服。", "en": "Mom wanted to buy me new clothes."},
+      {"zh": "那些衣服太贵了，都五百多块。", "en": "Those clothes were too expensive — all over 500 yuan."},
+      {"zh": "我们没买衣服，买了一些书和水果。", "en": "We didn't buy clothes; we bought some books and fruit."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "她们买了新衣服。", "questionEn": "They bought new clothes.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "那些衣服多少钱？", "questionEn": "How much were those clothes?", "options": ["五十多块", "一百多块", "五百多块", "五块多"], "answer": 2}
+     ],
+     "focusWords": ["商场", "衣服", "太", "一些"],
+     "grammarFocus": ["太…了", "没 + verb"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "在书店", "titleEn": "At the Bookshop", "emoji": "📖",
+     "lines": [
+      {"zh": "A：你好，这本书多少钱？", "en": "A: Hello, how much is this book?"},
+      {"zh": "B：三十八块五。", "en": "B: 38.50 yuan."},
+      {"zh": "A：我买两本。", "en": "A: I'll take two."},
+      {"zh": "B：两本七十七块。", "en": "B: Two books is 77 yuan."},
+      {"zh": "A：给你一百块。", "en": "A: Here's a hundred."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "A 买了几本书？", "questionEn": "How many books did A buy?", "options": ["一本", "两本", "三本", "八本"], "answer": 1},
+      {"id": "q2", "type": "true_false", "question": "一本书三十八块五。", "questionEn": "One book costs 38.50 yuan.", "answer": true}
+     ],
+     "focusWords": ["多少", "块", "本"],
+     "grammarFocus": ["多少钱", "number + 块"]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,338 @@
+{
+ "words": [],
+ "lessons": [
+  {
+   "id": 111,
+   "zhTitle": "我的一天",
+   "enTitle": "My Day",
+   "description": "Describe your daily routine, from getting up to going to bed",
+   "emoji": "🌅",
+   "color": "#fff8e1",
+   "emojiColor": "#ffe082",
+   "grammarLabel": "Pattern: 先…再… / 就 / 常常",
+   "vocab": ["起床", "睡觉", "睡", "洗", "洗手间", "上班", "下班", "工作", "工人", "回家", "在家", "家里", "回", "做", "休息", "累", "忙", "马上", "先", "再", "就", "常", "常常", "有时", "有时候", "看", "电视", "电视机"],
+   "grammar": [
+    {"title": "先…再… — first…, then…", "pattern": "我先洗手，再吃饭。", "note": "先 marks the first action, 再 the next one. Both go before their verbs. 再 also means 'again' for something that hasn't happened yet: 明天再来."},
+    {"title": "就 — as soon as, right after", "pattern": "我七点起床，七点半就上班了。", "note": "就 before a verb shows that something happens early or quickly: 他六点就起床了 = he was already up at six. 马上 means 'right away': 我马上来."},
+    {"title": "常常 / 有时候 — how often", "pattern": "我常常在家吃饭，有时候在饭店吃。", "note": "Frequency words go before the verb. 常常 (or 常) = often; 有时候 (or 有时) = sometimes. The negative of 常常 is 不常."}
+   ],
+   "sentences": [
+    {"zh": "我早上六点半起床。", "en": "I get up at 6:30 in the morning."},
+    {"zh": "我先洗手，再吃早饭。", "en": "First I wash my hands, then I have breakfast."},
+    {"zh": "爸爸八点上班，下午五点下班。", "en": "Dad starts work at eight and finishes at five."},
+    {"zh": "我很累，我想休息一会儿。", "en": "I'm tired; I'd like to rest for a bit."},
+    {"zh": "她工作很忙，常常不在家。", "en": "She's busy at work and often not home."},
+    {"zh": "晚上我有时候看电视，有时候看书。", "en": "In the evening I sometimes watch TV and sometimes read."},
+    {"zh": "你在哪儿？— 我在家里，马上就来！", "en": "Where are you? — At home. I'll be right there!"},
+    {"zh": "他十点就睡觉了。", "en": "He went to bed at ten already."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "你今天忙吗？", "en": "Are you busy today?"},
+    {"speaker": "B", "zh": "很忙。我七点就上班了，现在还没下班。", "en": "Very. I started work at seven and I'm still not done."},
+    {"speaker": "A", "zh": "你累了吧？", "en": "You must be tired."},
+    {"speaker": "B", "zh": "很累。我想先回家睡觉。", "en": "Very. I want to go home and sleep first."},
+    {"speaker": "A", "zh": "好，你好好休息，明天再说。", "en": "OK, get some good rest. We'll talk tomorrow."},
+    {"speaker": "B", "zh": "好，明天见！", "en": "OK, see you tomorrow!"}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "妈妈很忙", "titleEn": "Mom Is Busy", "emoji": "👩‍🔧",
+     "lines": [
+      {"zh": "我妈妈是工人，她的工作很忙。", "en": "My mom is a factory worker. Her job keeps her busy."},
+      {"zh": "她早上六点起床，先做早饭，再去上班。", "en": "She gets up at six, makes breakfast first, then goes to work."},
+      {"zh": "下午六点下班，回家就做晚饭。", "en": "She finishes at six p.m. and makes dinner as soon as she's home."},
+      {"zh": "晚上她常常很累，九点半就睡觉了。", "en": "In the evening she's often tired and goes to bed by 9:30."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "妈妈几点下班？", "questionEn": "When does Mom finish work?", "options": ["五点", "六点", "六点半", "九点半"], "answer": 1},
+      {"id": "q2", "type": "true_false", "question": "妈妈先去上班，再做早饭。", "questionEn": "Mom goes to work first, then makes breakfast.", "answer": false}
+     ],
+     "focusWords": ["工人", "先", "再", "就", "常常"],
+     "grammarFocus": ["先…再…", "就"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "你在干什么？", "titleEn": "What Are You Up To?", "emoji": "📺",
+     "lines": [
+      {"zh": "A：晚上你在家吗？", "en": "A: Are you home this evening?"},
+      {"zh": "B：在家。我想看电视。", "en": "B: Yes. I want to watch TV."},
+      {"zh": "A：你家的电视机是新的吗？", "en": "A: Is your TV new?"},
+      {"zh": "B：是，很大！你来我家看吧。", "en": "B: Yes, it's big! Come over and watch."},
+      {"zh": "A：好，我马上就去。", "en": "A: OK, I'll come right over."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "B 晚上不在家。", "questionEn": "B won't be home this evening.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "B 晚上想做什么？", "questionEn": "What does B want to do this evening?", "options": ["睡觉", "看电视", "上班", "看书"], "answer": 1}
+     ],
+     "focusWords": ["在家", "电视", "电视机", "马上"],
+     "grammarFocus": ["马上就 + verb"]
+    }
+   ]
+  },
+  {
+   "id": 112,
+   "zhTitle": "我的房间",
+   "enTitle": "My Room",
+   "description": "Describe your home and room, and say where you live",
+   "emoji": "🛏️",
+   "color": "#efebe9",
+   "emojiColor": "#bcaaa4",
+   "grammarLabel": "Pattern: 住在 / 着 / 的 phrases",
+   "vocab": ["房子", "房间", "床", "门", "门口", "楼", "楼上", "楼下", "住", "关", "关上", "打开", "放", "拿", "地上", "干净", "新", "老", "有的", "电", "电脑", "着", "间"],
+   "grammar": [
+    {"title": "住在 + place — live in", "pattern": "我住在北京。他住在三楼。", "note": "住在 + place says where someone lives. 楼 is a building or floor: 三楼 = third floor; 楼上 / 楼下 = upstairs / downstairs."},
+    {"title": "Verb + 着 — a lasting state", "pattern": "门开着。桌子上放着电脑。", "note": "着 after a verb shows a state that continues: 门开着 = the door is open (and stays open). Place + verb + 着 + thing describes a scene."},
+    {"title": "放 / 拿 — put and take", "pattern": "书放在桌子上。你拿着什么？", "note": "放 = put, place: 放在床上. 拿 = take, pick up, hold: 你拿着什么？ 打开 / 关上 = open / close (a door, a computer)."}
+   ],
+   "sentences": [
+    {"zh": "你住在哪儿？— 我住在学校旁边。", "en": "Where do you live? — Next to the school."},
+    {"zh": "我们的房子不大，有三个房间。", "en": "Our house isn't big; it has three rooms."},
+    {"zh": "我的房间在楼上，很干净。", "en": "My room is upstairs, and it's clean."},
+    {"zh": "门开着，请关上门。", "en": "The door is open — please close it."},
+    {"zh": "电脑放在桌子上。", "en": "The computer is on the table."},
+    {"zh": "地上有一个包，是谁的？", "en": "There's a bag on the floor. Whose is it?"},
+    {"zh": "这个房子很老，有一间房间的门坏了。", "en": "This house is old; one room's door is broken."},
+    {"zh": "请打开电脑。", "en": "Please turn on the computer."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "你的新房间大吗？", "en": "Is your new room big?"},
+    {"speaker": "B", "zh": "不大，很干净，我很喜欢。", "en": "Not big, but it's clean and I like it."},
+    {"speaker": "A", "zh": "房间里有什么？", "en": "What's in the room?"},
+    {"speaker": "B", "zh": "房间里有床和桌子，桌子上放着电脑。", "en": "There's a bed and a table, with my computer on the table."},
+    {"speaker": "A", "zh": "你住在几楼？", "en": "Which floor do you live on?"},
+    {"speaker": "B", "zh": "五楼。我楼下就是商店。", "en": "The fifth. There's a shop right downstairs."}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "我的新家", "titleEn": "My New Home", "emoji": "🏡",
+     "lines": [
+      {"zh": "我们家住在一个老楼里，我家在四楼。", "en": "We live in an old building, on the fourth floor."},
+      {"zh": "房子不大，有两个房间。", "en": "The flat isn't big — it has two rooms."},
+      {"zh": "我的房间很干净，床在门的左边。", "en": "My room is clean. The bed is to the left of the door."},
+      {"zh": "桌子上放着我的电脑和一些书。", "en": "My computer and some books are on the table."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "他家在几楼？", "questionEn": "Which floor is his home on?", "options": ["二楼", "三楼", "四楼", "五楼"], "answer": 2},
+      {"id": "q2", "type": "true_false", "question": "床在门的右边。", "questionEn": "The bed is to the right of the door.", "answer": false}
+     ],
+     "focusWords": ["楼", "房子", "房间", "干净", "放"],
+     "grammarFocus": ["住在", "place + 放着 + thing"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "开门！", "titleEn": "Open the Door!", "emoji": "🚪",
+     "lines": [
+      {"zh": "A：你在门口干什么？", "en": "A: What are you doing at the door?"},
+      {"zh": "B：门关着，我进不去。", "en": "B: The door is shut and I can't get in."},
+      {"zh": "A：你没拿手机吗？", "en": "A: Didn't you bring your phone?"},
+      {"zh": "B：手机在房间里！", "en": "B: It's in the room!"},
+      {"zh": "A：没事儿，我给你打开。", "en": "A: No problem, I'll open it for you."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "B 的手机在房间里。", "questionEn": "B's phone is in the room.", "answer": true},
+      {"id": "q2", "type": "multiple_choice", "question": "B 在哪儿？", "questionEn": "Where is B?", "options": ["房间里", "门口", "楼下", "床上"], "answer": 1}
+     ],
+     "focusWords": ["门口", "关", "拿", "打开"],
+     "grammarFocus": ["verb + 着"]
+    }
+   ]
+  },
+  {
+   "id": 113,
+   "zhTitle": "天气",
+   "enTitle": "The Weather",
+   "description": "Talk about weather and compare things",
+   "emoji": "🌦️",
+   "color": "#e1f5fe",
+   "emojiColor": "#81d4fa",
+   "grammarLabel": "Pattern: 比 / 一样 / 最",
+   "vocab": ["天气", "冷", "热", "下雨", "雨", "风", "山", "树", "花", "好看", "白", "高", "比", "一样", "最", "非常", "真", "真的", "觉得"],
+   "grammar": [
+    {"title": "A 比 B + adjective", "pattern": "今天比昨天冷。哥哥比我高。", "note": "比 compares two things: 'A is more … than B'. Don't add 很 after 比: say 今天比昨天冷, not 今天比昨天很冷."},
+    {"title": "A 跟 B 一样 — the same as", "pattern": "北京跟这里一样冷。", "note": "跟 … 一样 = 'as … as' / 'the same'. Add an adjective after 一样 to say in what way: 一样高, 一样好看."},
+    {"title": "最 / 非常 / 真 — degree", "pattern": "一月最冷。今天非常热。这儿的花真好看！", "note": "最 = the most. 非常 = very, extremely (stronger than 很). 真 + adjective is an exclamation: 'so…!'. 觉得 = to feel, think: 我觉得今天不冷."}
+   ],
+   "sentences": [
+    {"zh": "今天天气好吗？", "en": "Is the weather nice today?"},
+    {"zh": "今天很冷，下雨了。", "en": "It's cold today, and it's started raining."},
+    {"zh": "今天比昨天热。", "en": "Today is hotter than yesterday."},
+    {"zh": "外边风很大。", "en": "It's very windy outside."},
+    {"zh": "山上的树和花真好看！", "en": "The trees and flowers on the mountain are so pretty!"},
+    {"zh": "我觉得北京跟这里一样冷。", "en": "I think Beijing is as cold as here."},
+    {"zh": "这是我们这儿最高的山。", "en": "This is the highest mountain around here."},
+    {"zh": "明天真的下雨吗？", "en": "Is it really going to rain tomorrow?"}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "外边下雨了吗？", "en": "Is it raining outside?"},
+    {"speaker": "B", "zh": "没下雨，风很大。", "en": "No, but it's very windy."},
+    {"speaker": "A", "zh": "冷不冷？", "en": "Is it cold?"},
+    {"speaker": "B", "zh": "非常冷！比昨天冷多了。", "en": "Really cold! Much colder than yesterday."},
+    {"speaker": "A", "zh": "那我们今天在家吧。", "en": "Then let's stay in today."},
+    {"speaker": "B", "zh": "好，我也觉得在家最好。", "en": "OK, I think staying home is best too."}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "去山上", "titleEn": "Up the Mountain", "emoji": "⛰️",
+     "lines": [
+      {"zh": "星期天天气非常好，不冷也不热。", "en": "Sunday's weather was great — not cold, not hot."},
+      {"zh": "我和朋友去山上玩儿。", "en": "My friend and I went up the mountain."},
+      {"zh": "山很高，山上有很多树和花。", "en": "The mountain is high, with lots of trees and flowers."},
+      {"zh": "白的花最好看，我们都觉得这里真好！", "en": "The white flowers were the prettiest. We both thought it was wonderful here!"}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "星期天天气好吗？", "questionEn": "Was the weather good on Sunday?", "options": ["很冷", "很热", "下雨", "非常好"], "answer": 3},
+      {"id": "q2", "type": "true_false", "question": "他们觉得白的花最好看。", "questionEn": "They thought the white flowers were the prettiest.", "answer": true}
+     ],
+     "focusWords": ["天气", "山", "树", "花", "最"],
+     "grammarFocus": ["不…也不…", "最 + adjective"]
+    },
+    {
+     "type": "dialogue", "difficulty": 2, "title": "哪儿冷？", "titleEn": "Where Is It Colder?", "emoji": "❄️",
+     "lines": [
+      {"zh": "A：北京冷还是这儿冷？", "en": "A: Is Beijing colder, or here?"},
+      {"zh": "B：北京比这儿冷。", "en": "B: Beijing is colder than here."},
+      {"zh": "A：北京常常下雨吗？", "en": "A: Does it rain often in Beijing?"},
+      {"zh": "B：不常下雨，风很大。", "en": "B: Not often, but it's very windy."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "这儿比北京冷。", "questionEn": "It's colder here than in Beijing.", "answer": false},
+      {"id": "q2", "type": "true_false", "question": "北京不常下雨，风很大。", "questionEn": "It doesn't often rain in Beijing, but it's windy.", "answer": true}
+     ],
+     "focusWords": ["比", "冷", "下雨", "风"],
+     "grammarFocus": ["A 比 B + adj", "…还是…？"]
+    }
+   ]
+  },
+  {
+   "id": 114,
+   "zhTitle": "看病",
+   "enTitle": "Seeing a Doctor",
+   "description": "Say you're ill, see a doctor and ask for time off",
+   "emoji": "🏥",
+   "color": "#e8f5e9",
+   "emojiColor": "#81c784",
+   "grammarLabel": "Pattern: 能 / 别 / 不用",
+   "vocab": ["身体", "病", "生病", "看病", "病人", "医生", "医院", "手", "身上", "不用", "请假", "动", "能", "别"],
+   "grammar": [
+    {"title": "能 — can (able / allowed)", "pattern": "我今天不能上课。你能来吗？", "note": "能 + verb says whether you are able or allowed to do something now: 我生病了，不能去. Compare 会 (a learned skill)."},
+    {"title": "别 + verb — don't", "pattern": "别动！· 你别去上班了。", "note": "别 tells someone not to do something. Add 了 at the end to say 'stop / don't anymore'. 不用 + verb = there's no need to: 不用去医院."},
+    {"title": "生病 vs 病", "pattern": "我生病了。· 他的病好了。", "note": "生病 is the verb phrase 'to fall ill'. 病 is the illness itself; 病了 = to be ill, common in speech: 我病了. 看病 = to see a doctor (for the patient) or to treat patients (for the doctor)."}
+   ],
+   "sentences": [
+    {"zh": "我生病了，今天不能去上班。", "en": "I'm ill; I can't go to work today."},
+    {"zh": "你怎么了？— 我的手不能动了。", "en": "What's wrong? — I can't move my hand."},
+    {"zh": "我们去医院看病吧。", "en": "Let's go to the hospital to see a doctor."},
+    {"zh": "医生说我多休息就好了。", "en": "The doctor said I'll be fine if I rest a lot."},
+    {"zh": "别动，我看看你的手。", "en": "Don't move — let me look at your hand."},
+    {"zh": "你身体好吗？", "en": "Are you in good health?"},
+    {"zh": "不用去医院，在家休息吧。", "en": "No need to go to the hospital; rest at home."},
+    {"zh": "我病了，想请假。", "en": "I'm ill and want to take time off."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "王老师，我生病了，想请假。", "en": "Teacher Wang, I'm ill and I'd like to take the day off."},
+    {"speaker": "B", "zh": "你去医院看病了吗？", "en": "Have you been to the hospital?"},
+    {"speaker": "A", "zh": "去了。医生说我要多休息。", "en": "Yes. The doctor said I need plenty of rest."},
+    {"speaker": "B", "zh": "好，你明天别来上课了。", "en": "OK, don't come to class tomorrow."},
+    {"speaker": "A", "zh": "谢谢老师！", "en": "Thank you, teacher!"},
+    {"speaker": "B", "zh": "不客气。身体最重要！", "en": "You're welcome. Your health comes first!"}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "在医院", "titleEn": "At the Hospital", "emoji": "🩺",
+     "lines": [
+      {"zh": "昨天我的手不能动了。", "en": "Yesterday I couldn't move my hand."},
+      {"zh": "妈妈和我去医院看病。", "en": "Mom and I went to the hospital."},
+      {"zh": "医院里病人很多，我们等了一个小时。", "en": "There were lots of patients; we waited an hour."},
+      {"zh": "医生说不是大病，不用住在医院，多休息就好。", "en": "The doctor said it wasn't serious — no need to stay in hospital, just rest."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "他要住在医院里。", "questionEn": "He has to stay in the hospital.", "answer": false},
+      {"id": "q2", "type": "true_false", "question": "他们在医院等了一个小时。", "questionEn": "They waited an hour at the hospital.", "answer": true}
+     ],
+     "focusWords": ["医院", "看病", "病人", "医生", "不用"],
+     "grammarFocus": ["不能 + verb", "不用 + verb"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "你身体好吗？", "titleEn": "Are You Well?", "emoji": "🤒",
+     "lines": [
+      {"zh": "A：你怎么了？", "en": "A: What's the matter?"},
+      {"zh": "B：我身上很热，我病了。", "en": "B: I feel very hot all over. I'm ill."},
+      {"zh": "A：别去上课了，在家休息吧。", "en": "A: Don't go to class. Rest at home."},
+      {"zh": "B：好，我给老师打电话请假。", "en": "B: OK, I'll call my teacher and ask for the day off."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "B 今天去上课。", "questionEn": "B goes to class today.", "answer": false},
+      {"id": "q2", "type": "multiple_choice", "question": "B 给谁打电话？", "questionEn": "Who does B call?", "options": ["医生", "妈妈", "老师", "朋友"], "answer": 2}
+     ],
+     "focusWords": ["身上", "病", "别", "请假"],
+     "grammarFocus": ["别…了", "给 + person + 打电话"]
+    }
+   ]
+  },
+  {
+   "id": 115,
+   "zhTitle": "我的爱好",
+   "enTitle": "My Hobbies",
+   "description": "Talk about what you like doing in your free time",
+   "emoji": "🎤",
+   "color": "#f3e5f5",
+   "emojiColor": "#ba68c8",
+   "grammarLabel": "Pattern: 喜欢 + verb / 一起",
+   "vocab": ["爱好", "喜欢", "爱", "唱", "唱歌", "歌", "好听", "电影", "电影院", "玩儿", "好玩儿", "打", "打球", "球", "上网", "网上", "网友", "一起", "一块儿", "跑", "用"],
+   "grammar": [
+    {"title": "喜欢 / 爱 + verb", "pattern": "我喜欢唱歌。他爱打球。", "note": "喜欢 and 爱 can take a whole activity: 喜欢看电影. 爱 is stronger, 'to love (doing)'. 你的爱好是什么？asks about hobbies."},
+    {"title": "一起 / 一块儿 + verb — together", "pattern": "我们一起去看电影吧！", "note": "一起 goes before the verb. 一块儿 means the same and is very common in northern speech. Often with 跟: 我跟朋友一起打球."},
+    {"title": "好 + verb — good to…", "pattern": "好听 · 好看 · 好吃 · 好玩儿", "note": "好 before a sense verb makes an adjective: 好听 = nice to listen to, 好玩儿 = fun. Negative: 不好听."}
+   ],
+   "sentences": [
+    {"zh": "你的爱好是什么？", "en": "What are your hobbies?"},
+    {"zh": "我喜欢唱歌，也喜欢看电影。", "en": "I like singing and watching films."},
+    {"zh": "这个歌非常好听。", "en": "This song is really nice."},
+    {"zh": "星期六我们一起去电影院吧。", "en": "Let's go to the cinema together on Saturday."},
+    {"zh": "他爱打球，常常跟同学一块儿玩儿。", "en": "He loves playing ball and often plays with classmates."},
+    {"zh": "我早上常常跑一个小时。", "en": "I often run for an hour in the morning."},
+    {"zh": "她喜欢上网，有很多网友。", "en": "She likes going online and has lots of online friends."},
+    {"zh": "我用手机在网上看电影。", "en": "I watch films online on my phone."}
+   ],
+   "dialogue": [
+    {"speaker": "A", "zh": "你有什么爱好？", "en": "What hobbies do you have?"},
+    {"speaker": "B", "zh": "我爱打球。你呢？", "en": "I love playing ball. You?"},
+    {"speaker": "A", "zh": "我喜欢唱歌和看电影。", "en": "I like singing and films."},
+    {"speaker": "B", "zh": "明天有一个新电影，很好看。", "en": "There's a new film out tomorrow. It's supposed to be good."},
+    {"speaker": "A", "zh": "真的吗？我们一起去看吧！", "en": "Really? Let's go see it together!"},
+    {"speaker": "B", "zh": "好！明天下午电影院门口见。", "en": "OK! See you outside the cinema tomorrow afternoon."}
+   ],
+   "readings": [
+    {
+     "type": "story", "difficulty": 2, "title": "我的网友", "titleEn": "My Online Friend", "emoji": "💻",
+     "lines": [
+      {"zh": "我有一个网友，她叫小白。", "en": "I have an online friend called Xiaobai."},
+      {"zh": "我们都爱唱歌，常常在网上一起唱。", "en": "We both love singing and often sing together online."},
+      {"zh": "她唱歌非常好听。", "en": "She sings beautifully."},
+      {"zh": "下个星期她来北京，我们想一块儿去玩儿。", "en": "Next week she's coming to Beijing; we want to go out together."}
+     ],
+     "questions": [
+      {"id": "q1", "type": "multiple_choice", "question": "他们的爱好是什么？", "questionEn": "What hobby do they share?", "options": ["打球", "唱歌", "看电影", "上网"], "answer": 1},
+      {"id": "q2", "type": "true_false", "question": "小白下个星期来北京。", "questionEn": "Xiaobai is coming to Beijing next week.", "answer": true}
+     ],
+     "focusWords": ["网友", "爱", "网上", "一起", "一块儿"],
+     "grammarFocus": ["爱 + verb", "一起 + verb"]
+    },
+    {
+     "type": "dialogue", "difficulty": 1, "title": "打球去！", "titleEn": "Let's Play Ball!", "emoji": "🏀",
+     "lines": [
+      {"zh": "A：下午你有时间吗？我们去打球吧！", "en": "A: Are you free this afternoon? Let's go play ball!"},
+      {"zh": "B：好啊！在哪儿打？", "en": "B: Sure! Where?"},
+      {"zh": "A：在学校。你有球吗？", "en": "A: At school. Do you have a ball?"},
+      {"zh": "B：有，我拿球去。", "en": "B: Yes, I'll bring one."},
+      {"zh": "A：太好了，打球真好玩儿！", "en": "A: Great — playing ball is so much fun!"}
+     ],
+     "questions": [
+      {"id": "q1", "type": "true_false", "question": "他们在学校打球。", "questionEn": "They're playing ball at school.", "answer": true},
+      {"id": "q2", "type": "multiple_choice", "question": "谁拿球？", "questionEn": "Who brings the ball?", "options": ["A", "B", "老师", "没有人"], "answer": 1}
+     ],
+     "focusWords": ["打球", "球", "好玩儿"],
+     "grammarFocus": ["…吧 suggestion"]
+    }
+   ]
+  }
+ ]
+}
