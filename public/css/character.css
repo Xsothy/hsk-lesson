@@ -1,10 +1,12 @@
 /* C1 · Character page (/char/{c}). Mobile first; layout switch at 760px via flex-wrap. */
+main.page:has(.cp){padding:40px 40px 72px}
+@media (max-width:760px){main.page:has(.cp){padding:24px 20px 40px}}
 .cp{display:flex;flex-direction:column;gap:28px;overflow-x:clip}
 .cp-crumbs{display:flex;flex-wrap:wrap;gap:6px;font-size:13px;color:var(--muted)}
 .cp-crumbs a{color:var(--red);text-decoration:none}.cp-crumbs a:hover{color:var(--red-d);text-decoration:underline}
 .cp-cols{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
 .cp-left{flex:1 1 min(380px,100%);min-width:0;display:flex;flex-direction:column;gap:28px}
-.cp-right{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.cp-right{flex:999 1 520px;min-width:0;display:flex;flex-direction:column;gap:28px}
 
 /* hero */
 .cp-hero{display:flex;align-items:center;gap:16px}
@@ -23,8 +25,12 @@
 .cp-round[aria-pressed=true] path{fill:currentColor}
 
 /* cards + headings */
-.cp-card{background:var(--card);border-radius:var(--r-xl);padding:24px;display:flex;flex-direction:column;gap:16px;box-shadow:0 1px 0 var(--line),0 12px 32px rgba(var(--shadow),.04)}
+.cp-card{background:var(--card);border-radius:var(--r-xl);padding:24px;display:flex;flex-direction:column;gap:16px}
+.cp-write{gap:20px;box-shadow:0 1px 0 var(--line),0 12px 32px rgba(var(--shadow),.04)}
 .cp-right .cp-card{border-radius:var(--r-l);gap:10px}
+.cp-right .cp-card:has(.cp-rows),.cp-right .cp-card:has(.cp-examples){gap:4px}
+.cp-right .cp-card:has(.cp-rows)>.cp-h3,.cp-right .cp-card:has(.cp-examples)>.cp-h3{margin-bottom:6px}
+.cp-right .cp-rel-card{gap:12px}
 .cp-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .cp-head>div:first-child{display:flex;flex-direction:column;gap:2px}
 .cp-details-head{padding:0 4px}
@@ -78,11 +84,10 @@
 .cp-lesson-t{flex:1;min-width:0;display:flex;flex-direction:column}
 .cp-lesson-t b{font-size:16px}.cp-lesson-t small{font-size:12px;color:var(--muted)}
 .cp-tag{font-size:11px;font-weight:600;color:var(--on-red);background:var(--red);border-radius:999px;padding:3px 8px}
-.cp-rows{display:flex;flex-direction:column;gap:6px}
+.cp-rows{display:flex;flex-direction:column;gap:4px}
 .cp-rows .word-row{border-color:var(--soft)}
 .cp-examples{list-style:none;margin:0;padding:0}
 .cp-examples li{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--soft)}
-.cp-examples li:first-child{border-top:0}
 .cp-ex-t{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
 .cp-ex-zh{font-size:18px}
 .cp-ex-zh mark{background:var(--gold-t);color:inherit;border-radius:3px}
@@ -96,7 +101,7 @@
 .cp-note{margin:0;align-self:start;font-size:14px;line-height:1.5;background:var(--gold-t);color:var(--text-2);border-radius:var(--r-s);padding:12px}
 .cp-rel{display:flex;flex-direction:column;gap:6px}
 .cp-rel-t{font-size:13px;font-weight:600;color:var(--muted)}
-.cp-rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:6px}
+.cp-rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(64px,100%),1fr));gap:6px}
 .cp-rel-grid .char-tile{min-width:0}
 
 @media (min-width:761px){.cp .cp-char{font-size:104px}}
@@ -104,13 +109,7 @@
 /* 44px hit areas for small text links without changing the visual rhythm */
 .cp-crumbs a,.cp-ex-src{display:inline-flex;align-items:center;align-self:flex-start;min-height:44px;min-width:44px;margin:-13px 0}
 .cp-facts a{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;margin:-12px -10px -12px -12px}
-.cp-worksheet{margin:12px 0 0;text-align:center}
+.cp-print{min-height:48px;border-radius:14px;border:1px solid var(--line);font-size:14px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;color:var(--red)}
+.cp-print:hover{color:var(--red-d);border-color:var(--red)}
+.cp-facts a.zh{font-family:var(--font-zh)}
 
-/* F5 parts */
-.cp-parts{display:flex;flex-direction:column;gap:12px}
-.cp-parts-layout{margin:0;font-size:13px;color:var(--muted)}
-.cp-parts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px}
-.cp-part{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}
-.cp-part .char-tile{min-width:0;width:100%}
-.cp-part.is-radical .char-tile,.cp-part.is-radical .cp-part-plain{outline:2px solid var(--red);outline-offset:-2px;border-radius:10px}
-.cp-part-plain{display:flex;align-items:center;justify-content:center;width:100%;min-height:64px;font-size:28px;color:var(--muted)}

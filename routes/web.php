@@ -17,6 +17,7 @@ Route::get('/lessons/{slug}', [LearnController::class, 'lesson'])->name('lesson'
 Route::get('/lessons/{slug}/reading/{n}', [LearnController::class, 'reading'])->whereNumber('n')->name('reading');
 Route::get('/char/{c}', [\App\Http\Controllers\CharacterController::class, 'show'])->name('char');
 Route::get('/char.html', [\App\Http\Controllers\CharacterController::class, 'legacy'])->name('char.legacy');
+Route::get('/parts', [\App\Http\Controllers\PartsController::class, 'index'])->name('parts');
 Route::get('/browse', [BrowseController::class, 'index'])->name('browse');
 Route::get('/search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
 Route::get('/practice', [\App\Http\Controllers\PracticeController::class, 'index'])->name('practice');

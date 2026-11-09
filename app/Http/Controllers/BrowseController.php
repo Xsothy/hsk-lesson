@@ -76,9 +76,14 @@ class BrowseController extends Controller
             $data['title'] = "Level $label · ".number_format($total).' words';
         }
 
+        $counts = [];
+        foreach ($levels as $lv) {
+            $counts[$lv] = $lv === $level ? $total : $this->search->query(['version' => $version, 'level' => $lv])->count();
+        }
+
         return [
             ...$data,
-            'version' => $version, 'levels' => $levels, 'level' => $level, 'set' => $set, 'sets' => $sets,
+            'version' => $version, 'levels' => $levels, 'levelCounts' => $counts, 'level' => $level, 'set' => $set, 'sets' => $sets,
             'items' => collect($set ? $words : $words->items())->map(fn ($w) => self::wordItem($w)),
             'practice' => array_filter(['version' => $version, 'level' => $level, 'set' => $set]),
         ];
@@ -96,17 +101,19 @@ class BrowseController extends Controller
         $syl = $bySyllable->has($syl) ? $syl : null;
         $tone = in_array((int) $request->query('tone'), [1, 2, 3, 4, 5], true) ? (int) $request->query('tone') : null;
         $toneCounts = [];
+        $toneLabels = [];
 
         if ($syl) {
             $hits = $bySyllable[$syl]->unique(fn ($r) => $r['char']->char.$r['tone']);
             $toneCounts = $hits->countBy('tone')->sortKeys()->all();
+            $toneLabels = $hits->groupBy('tone')->map(fn ($g) => $g->first()['reading'])->all();
             $hits = $tone ? $hits->where('tone', $tone) : $hits;
             $data['items'] = $hits->sortBy(fn ($r) => $r['char']->frequency ?? 999999)->values()
                 ->map(fn ($r) => self::charItem($r['char'], $r['reading']));
             $data['title'] = $syl.($tone ? " · tone $tone" : '').' · '.$data['items']->count().' characters';
         }
 
-        return [...$data, 'groups' => $groups, 'syl' => $syl, 'tone' => $tone, 'toneCounts' => $toneCounts];
+        return [...$data, 'groups' => $groups, 'syl' => $syl, 'tone' => $tone, 'toneCounts' => $toneCounts, 'toneLabels' => $toneLabels];
     }
 
     private function byRadical(Request $request, array $data): array
@@ -125,7 +132,10 @@ class BrowseController extends Controller
                 .' · '.$data['items']->count().' characters';
         }
 
-        return [...$data, 'groups' => $groups, 'radical' => $r];
+        $radPinyin = Character::whereIn('char', $byRadical->keys()->all())->get(['char', 'pinyin'])
+            ->mapWithKeys(fn ($c) => [$c->char => array_values(array_filter((array) $c->pinyin))[0] ?? ''])->all();
+
+        return [...$data, 'groups' => $groups, 'radical' => $r, 'radPinyin' => $radPinyin];
     }
 
     /** HSK characters (2.0 or 3.0) with readings, cached — the pinyin and radical tabs group these. */
