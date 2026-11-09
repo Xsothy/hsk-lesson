@@ -29,6 +29,7 @@ $segment = function (string $n) use ($segs) {
   <h2 id="st-display">Display</h2>
   <div class="st-card">
     @foreach (['pinyin', 'pinyinPos', 'toneColors', 'charSize', 'theme'] as $n){{ $segment($n) }}@endforeach
+    <a class="st-row st-link" href="{{ route('appearance') }}" data-appearance-link><span><b>Appearance</b><span class="st-note">Presets, colours, corner radius and fonts</span></span><x-icon name="chevron-right" /></a>
     <div class="st-preview" aria-label="Preview">
       <ruby>你<rt class="tone-3">nǐ</rt></ruby><ruby>好<rt class="tone-3">hǎo</rt></ruby>
       <span class="st-preview-en">Preview</span>

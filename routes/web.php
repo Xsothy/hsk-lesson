@@ -27,6 +27,7 @@ Route::get('/review', [\App\Http\Controllers\ReviewController::class, 'index'])-
 Route::get('/words', fn () => view('pages.words'))->name('words');
 Route::post('/words/pdf', \App\Http\Controllers\WordsPdfController::class)->middleware('throttle:worksheet')->name('words.pdf'); // F9
 Route::view('/settings', 'pages.settings')->name('settings');
+Route::view('/settings/appearance', 'pages.appearance')->name('appearance');
 
 // S1 accounts: email + password, web session guard only. No email reset: owner runs `hsk:reset-password`.
 Route::middleware('guest')->group(function () {

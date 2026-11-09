@@ -32,3 +32,4 @@
 #st-confirm h2{margin:0 0 8px;font-size:20px}
 .st-btn{text-decoration:none}
 .st-sync{flex-wrap:wrap}
+.st-link{flex-direction:row;align-items:center;justify-content:space-between;min-height:56px;text-decoration:none;color:var(--ink)}.st-link>span{display:flex;flex-direction:column;gap:2px}.st-link:hover b{text-decoration:underline}
