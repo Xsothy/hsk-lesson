@@ -297,7 +297,7 @@
     {"speaker": "B", "zh": "三百块。", "en": "Three hundred yuan."},
     {"speaker": "A", "zh": "太贵了！有没有别的？", "en": "Too expensive! Do you have anything else?"},
     {"speaker": "B", "zh": "那个包不太贵，一百五十块。", "en": "That one isn't too expensive — 150 yuan."},
-    {"speaker": "A", "zh": "好，我买这个白的。", "en": "OK, I'll buy this white one."},
+    {"speaker": "A", "zh": "好，我买那个。", "en": "OK, I'll buy that one."},
     {"speaker": "B", "zh": "好的。谢谢！", "en": "OK. Thank you!"}
    ],
    "readings": [

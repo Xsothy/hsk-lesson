@@ -81,7 +81,7 @@
    "grammar": [
     {"title": "住在 + place — live in", "pattern": "我住在北京。他住在三楼。", "note": "住在 + place says where someone lives. 楼 is a building or floor: 三楼 = third floor; 楼上 / 楼下 = upstairs / downstairs."},
     {"title": "Verb + 着 — a lasting state", "pattern": "门开着。桌子上放着电脑。", "note": "着 after a verb shows a state that continues: 门开着 = the door is open (and stays open). Place + verb + 着 + thing describes a scene."},
-    {"title": "放 / 拿 — put and take", "pattern": "书放在桌子上。你拿着什么？", "note": "放 = put, place: 放在床上. 拿 = take, pick up, hold: 你拿着什么？ 打开 / 关上 = open / close (a door, a computer)."}
+    {"title": "放 / 拿 — put and take", "pattern": "书放在桌子上。你拿着什么？", "note": "放 = put, place: 放在床上. 拿 = take, pick up, hold: 你拿着什么？ 打开 = open, turn on; 关上 = close (a door); 关电脑 = turn off a computer."}
    ],
    "sentences": [
     {"zh": "你住在哪儿？— 我住在学校旁边。", "en": "Where do you live? — Next to the school."},
@@ -90,7 +90,7 @@
     {"zh": "门开着，请关上门。", "en": "The door is open — please close it."},
     {"zh": "电脑放在桌子上。", "en": "The computer is on the table."},
     {"zh": "地上有一个包，是谁的？", "en": "There's a bag on the floor. Whose is it?"},
-    {"zh": "这个房子很老，有一间房间的门坏了。", "en": "This house is old; one room's door is broken."},
+    {"zh": "这个房子很老，有一个房间的门坏了。", "en": "This house is old; one room's door is broken."},
     {"zh": "请打开电脑。", "en": "Please turn on the computer."}
    ],
    "dialogue": [
@@ -288,7 +288,7 @@
     {"zh": "这个歌非常好听。", "en": "This song is really nice."},
     {"zh": "星期六我们一起去电影院吧。", "en": "Let's go to the cinema together on Saturday."},
     {"zh": "他爱打球，常常跟同学一块儿玩儿。", "en": "He loves playing ball and often plays with classmates."},
-    {"zh": "我早上常常跑一个小时。", "en": "I often run for an hour in the morning."},
+    {"zh": "我早上常常走路，走一个小时。", "en": "I often walk for an hour in the morning."},
     {"zh": "她喜欢上网，有很多网友。", "en": "She likes going online and has lots of online friends."},
     {"zh": "我用手机在网上看电影。", "en": "I watch films online on my phone."}
    ],
@@ -296,7 +296,7 @@
     {"speaker": "A", "zh": "你有什么爱好？", "en": "What hobbies do you have?"},
     {"speaker": "B", "zh": "我爱打球。你呢？", "en": "I love playing ball. You?"},
     {"speaker": "A", "zh": "我喜欢唱歌和看电影。", "en": "I like singing and films."},
-    {"speaker": "B", "zh": "明天有一个新电影，很好看。", "en": "There's a new film out tomorrow. It's supposed to be good."},
+    {"speaker": "B", "zh": "明天有一个新电影，听说很好看。", "en": "There's a new film out tomorrow. It's supposed to be good."},
     {"speaker": "A", "zh": "真的吗？我们一起去看吧！", "en": "Really? Let's go see it together!"},
     {"speaker": "B", "zh": "好！明天下午电影院门口见。", "en": "OK! See you outside the cinema tomorrow afternoon."}
    ],

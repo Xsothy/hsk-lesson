@@ -88,7 +88,7 @@
     {"zh": "他不在，他出去了。", "en": "He's not here; he's gone out."},
     {"zh": "你什么时候回来？", "en": "When will you be back?"},
     {"zh": "我们晚上十点回到家了。", "en": "We got home at ten in the evening."},
-    {"zh": "请站起来。— 好，请坐下。", "en": "Please stand up. — OK, please sit down."},
+    {"zh": "请站起来。……好，请坐下。", "en": "Please stand up. … OK, please sit down."},
     {"zh": "你说什么？我没听见。", "en": "What did you say? I didn't hear."},
     {"zh": "上课的时候别说话。", "en": "Don't talk during class."}
    ],
@@ -170,16 +170,16 @@
     {
      "type": "story", "difficulty": 2, "title": "帮小朋友", "titleEn": "Helping a Little Boy", "emoji": "🧒",
      "lines": [
-      {"zh": "昨天在路上，我看见一个小男孩儿站在路口。", "en": "Yesterday I saw a little boy standing alone at a street corner."},
+      {"zh": "昨天在路上，我看见一个小男孩儿站在路口。", "en": "Yesterday I saw a little boy standing at a street corner."},
       {"zh": "他说他找不到妈妈了。", "en": "He said he couldn't find his mom."},
       {"zh": "我帮他给妈妈打电话。", "en": "I helped him call his mom."},
-      {"zh": "一会儿，妈妈就找到了他。小朋友笑了。", "en": "Soon after, his mom found him. The little boy smiled."}
+      {"zh": "过了一会儿，他妈妈就来了。小朋友笑了。", "en": "Soon after, his mom found him. The little boy smiled."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "小男孩儿找不到爸爸了。", "questionEn": "The little boy couldn't find his dad.", "answer": false},
       {"id": "q2", "type": "multiple_choice", "question": "最后谁找到了小朋友？", "questionEn": "Who found the little boy in the end?", "options": ["爸爸", "妈妈", "老师", "医生"], "answer": 1}
      ],
-     "focusWords": ["看见", "找", "帮", "找到", "笑"],
+     "focusWords": ["看见", "找", "帮", "笑"],
      "grammarFocus": ["找不到 / 找到", "帮 + person + verb"]
     },
     {
@@ -219,7 +219,7 @@
     {"zh": "你想去北京还是在家？", "en": "Do you want to go to Beijing or stay home?"},
     {"zh": "你是不是不高兴？— 没事儿。", "en": "Are you upset? — I'm fine."},
     {"zh": "我试一下儿这个包，行吗？— 行。", "en": "Can I try this bag? — Sure."},
-    {"zh": "这个手机坏了，太慢了。", "en": "This phone is broken — it's way too slow."},
+    {"zh": "这个手机坏了，不能用了。", "en": "This phone is broken; it doesn't work anymore."},
     {"zh": "他一边听歌，一边写汉字。", "en": "He writes characters while listening to music."},
     {"zh": "明天上午我要开一个重要的会。", "en": "I have an important meeting tomorrow morning."},
     {"zh": "我的工作做了一半，还有一半。", "en": "I've done half my work; half is left."}
@@ -237,15 +237,15 @@
      "type": "story", "difficulty": 2, "title": "爸爸生气了", "titleEn": "Dad Got Cross", "emoji": "😤",
      "lines": [
       {"zh": "爸爸今天要开一个很重要的会。", "en": "Dad had a very important meeting today."},
-      {"zh": "他的电脑坏了，非常慢。", "en": "But his computer was broken and really slow."},
+      {"zh": "他的电脑非常慢。", "en": "But his computer was really slow."},
       {"zh": "爸爸生气了，他说：“这个电脑太差了！”", "en": "Dad got cross and said, 'This computer is terrible!'"},
       {"zh": "我说：“用我的电脑吧！”他笑了：“没事儿了！”", "en": "I said, 'Use my computer!' He smiled: 'All fine now!'"}
      ],
      "questions": [
-      {"id": "q1", "type": "true_false", "question": "爸爸的电脑坏了。", "questionEn": "Dad's computer was broken.", "answer": true},
+      {"id": "q1", "type": "true_false", "question": "爸爸的电脑很慢。", "questionEn": "Dad's computer was slow.", "answer": true},
       {"id": "q2", "type": "multiple_choice", "question": "最后爸爸用了谁的电脑？", "questionEn": "Whose computer did Dad use in the end?", "options": ["他的", "妈妈的", "我的", "同学的"], "answer": 2}
      ],
-     "focusWords": ["重要", "坏", "慢", "生气", "没事儿"],
+     "focusWords": ["重要", "慢", "生气", "没事儿"],
      "grammarFocus": ["太…了", "给 + person + verb"]
     },
     {
@@ -254,13 +254,13 @@
       {"zh": "A：你在干什么？", "en": "A: What are you doing?"},
       {"zh": "B：我一边听歌，一边学汉语。", "en": "B: I'm learning Chinese while listening to songs."},
       {"zh": "A：一边听歌一边学，有用吗？", "en": "A: Does studying while listening help?"},
-      {"zh": "B：很有用！我学了半年，得到了很多新知识。", "en": "B: Very much! I've been doing it for six months and learned a lot."}
+      {"zh": "B：很有用！我学了半年，学到了很多。", "en": "B: Very much! I've been doing it for six months and learned a lot."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "B 学了半年。", "questionEn": "B has been studying for six months.", "answer": true},
       {"id": "q2", "type": "multiple_choice", "question": "B 一边听歌，一边干什么？", "questionEn": "What does B do while listening to songs?", "options": ["吃饭", "睡觉", "学汉语", "打球"], "answer": 2}
      ],
-     "focusWords": ["干什么", "一边", "有用", "半年", "得到"],
+     "focusWords": ["干什么", "一边", "有用", "半年"],
      "grammarFocus": ["一边…一边…"]
     }
    ]
@@ -277,7 +277,7 @@
    "vocab": ["过", "次", "上次", "下次", "正", "正在", "没", "有一些", "门票", "不大", "国", "国家", "外国", "国外", "有名", "地方", "地点", "动作", "地", "子", "重"],
    "grammar": [
     {"title": "Verb + 过 — have ever done", "pattern": "我去过北京。你吃过包子吗？— 没吃过。", "note": "过 after a verb means you have had the experience at some time. Negative: 没 + verb + 过 (没去过). 次 counts times: 去过两次."},
-    {"title": "正在 + verb (+ 呢) — in progress", "pattern": "他正在上课呢。", "note": "正在 (or 正) before a verb means the action is happening right now. 呢 at the end is common in speech. Negative: 没在 + verb."},
+    {"title": "正在 + verb (+ 呢) — in progress", "pattern": "他正在上课呢。", "note": "正在 (or 正) before a verb means the action is happening right now. 呢 at the end is common in speech. Negative: 没 + verb (他没在上课 / 他没上课)."},
     {"title": "Adjective + 地 + verb — how it's done", "pattern": "他认真地写汉字。", "note": "地 (de) links a description to the verb that follows: 慢慢地走 = walk slowly. It is pronounced like 的 but written differently."}
    ],
    "sentences": [
@@ -319,14 +319,14 @@
      "lines": [
       {"zh": "A：你来过这儿吗？", "en": "A: Have you been here before?"},
       {"zh": "B：来过。上次我是跟爸爸妈妈来的。", "en": "B: Yes. Last time I came with my parents."},
-      {"zh": "A：我们见面的地点是哪儿？", "en": "A: Where's our meeting point?"},
+      {"zh": "A：我们在哪儿见你的朋友？", "en": "A: Where are we meeting your friend?"},
       {"zh": "B：就在门口。我的朋友正在那儿等我们。", "en": "B: Right at the entrance. My friend is waiting for us there."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "B 没来过这儿。", "questionEn": "B has never been here.", "answer": false},
       {"id": "q2", "type": "multiple_choice", "question": "B 的朋友在哪儿等？", "questionEn": "Where is B's friend waiting?", "options": ["车站", "门口", "饭店", "家里"], "answer": 1}
      ],
-     "focusWords": ["过", "上次", "地点", "正在"],
+     "focusWords": ["过", "上次", "正在"],
      "grammarFocus": ["verb + 过", "是…的"]
     }
    ]

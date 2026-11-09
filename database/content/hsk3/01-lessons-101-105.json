@@ -124,13 +124,13 @@
       {"zh": "B：有。我的手机号是一八六、二零九七、三三五八。", "en": "B: Yes. My number is 186 2097 3358."},
       {"zh": "A：三三五八？", "en": "A: 3358?"},
       {"zh": "B：对。你的电话是多少？", "en": "B: Right. What's your number?"},
-      {"zh": "A：好，我给你打电话。", "en": "A: OK, I'll call you."}
+      {"zh": "A：我的是一三八、六二七零、四九五一。", "en": "A: Mine is 138 6270 4951."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "B 没有手机。", "questionEn": "B doesn't have a mobile phone.", "answer": false},
       {"id": "q2", "type": "multiple_choice", "question": "B 的手机号是多少？", "questionEn": "What is B's mobile number?", "options": ["一八六二零九七三三五八", "一八六二零九七三五五八", "一三八六二七零四九五一", "一八六二九零七三三五八"], "answer": 0}
      ],
-     "focusWords": ["手机", "电话", "打电话", "号"],
+     "focusWords": ["手机", "电话", "号"],
      "grammarFocus": ["phone numbers digit by digit"]
     }
    ]
