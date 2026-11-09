@@ -47,8 +47,8 @@ class GuideService
     {
         $fm = [];
         $body = $raw;
-        if (preg_match('/\A---\R(.*?)\R---\R?(.*)\z/s', $raw, $m)) {
-            foreach (preg_split('/\R/', $m[1]) as $line) {
+        if (preg_match('/\A---\R(.*?)\R---\R?(.*)\z/su', $raw, $m)) {
+            foreach (preg_split('/\R/u', $m[1]) as $line) {
                 if (str_contains($line, ':')) {
                     [$k, $v] = explode(':', $line, 2);
                     $fm[trim($k)] = trim($v);
@@ -72,7 +72,7 @@ class GuideService
 
     private function render(string $body): string
     {
-        $parts = preg_split('/^```zh[ \t]*\R(.*?)^```[ \t]*$/ms', $body, -1, PREG_SPLIT_DELIM_CAPTURE);
+        $parts = preg_split('/^```zh[ \t]*\R(.*?)^```[ \t]*$/msu', $body, -1, PREG_SPLIT_DELIM_CAPTURE);
         $html = '';
         foreach ($parts as $i => $part) {
             if ($i % 2 === 0) {
@@ -81,7 +81,7 @@ class GuideService
                 continue;
             }
             $html .= '<div class="guide-examples">';
-            foreach (preg_split('/\R/', trim($part)) as $line) {
+            foreach (preg_split('/\R/u', trim($part)) as $line) { // /u: without it \R matches byte 0x85 inside hanzi like 慢
                 if (trim($line) === '') {
                     continue;
                 }

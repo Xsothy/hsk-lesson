@@ -17,7 +17,7 @@ class LegacyRedirectTest extends TestCase
 
     public function test_root_is_home(): void
     {
-        $this->get('/')->assertOk()->assertSee('Four hubs');
+        $this->get('/')->assertOk()->assertSee('Your course');
     }
 
     public function test_index_html_redirects_to_root(): void
