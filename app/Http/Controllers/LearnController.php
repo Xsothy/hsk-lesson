@@ -55,6 +55,7 @@ class LearnController extends Controller
         return view('pages.home', [
             'lessons' => $this->lessonCards(),
             'cotd' => $cotd,
+            'readingCount' => Reading::where('is_published', true)->count(),
             'hsk2' => $this->levelCounts(2),
             'hsk3' => $this->levelCounts(3),
         ]);

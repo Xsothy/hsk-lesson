@@ -63,7 +63,7 @@ test('Learn -> Write -> My words -> Review persists across reloads', async ({ pa
     localStorage.setItem('hsk.v1.srs', JSON.stringify(s));
   }, ch);
   await page.goto('/home');
-  const homeDue = (await page.locator('[data-today=due] .stat-value').textContent()).trim();
+  const homeDue = (await page.locator('[data-today=due] .ar-icon').textContent()).trim();
   await page.goto('/review');
   await expect(page.locator('#rv-choose')).toBeVisible();
   const reviewDue = (await page.locator('#rv-due-link').textContent()).match(/\d+/)?.[0];

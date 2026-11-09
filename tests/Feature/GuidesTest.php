@@ -25,6 +25,9 @@ class GuidesTest extends TestCase
         $res->assertSee('tone-', false);
         $res->assertSee('my book');
         $res->assertDontSee('```', false);
+        // 慢 is E6 85 A2: a non-/u \R split on byte 0x85 used to break it into invalid UTF-8.
+        $this->assertTrue(mb_check_encoding($res->getContent(), 'UTF-8'));
+        $res->assertSee('慢');
     }
 
     public function test_unknown_or_unsafe_slug_is_404(): void

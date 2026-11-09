@@ -59,6 +59,13 @@
   function render() {
     var box = $('tb-lists'), lists = S.getLists(), ids = Object.keys(lists).sort(function (a, b) { return (lists[b].at || 0) - (lists[a].at || 0); });
     box.textContent = ''; $('tb-empty').hidden = ids.length > 0;
+    var cl = $('tb-count-lists'), cw = $('tb-count-words');
+    if (cl) {
+      var all = {}; ids.forEach(function (id) { (lists[id].words || []).forEach(function (w) { all[w.hanzi || w] = 1; }); });
+      var ws = Object.keys(all), kn = document.querySelector('.cr-known');
+      cl.textContent = ids.length; cw.textContent = ws.length || '—';
+      if (kn) kn.textContent = ws.length ? ws.filter(S.isKnown).length : '—';
+    }
     ids.forEach(function (id) {
       var l = lists[id], sec = el('section', 'tb-list'), head = el('div', 'tb-head');
       head.appendChild(el('h2', null, l.name));

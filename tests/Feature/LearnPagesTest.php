@@ -25,7 +25,7 @@ class LearnPagesTest extends TestCase
 
     public function test_courses_tabs(): void
     {
-        $this->get('/courses')->assertOk()->assertSee('lesson-card', false);
+        $this->get('/courses')->assertOk()->assertSee('lesson-row', false);
         $this->get('/courses?tab=hsk2')->assertOk()->assertSee('Level 6');
         $this->get('/courses?tab=hsk3')->assertOk()->assertSee('Level 7–9');
         $this->get('/courses?tab=textbooks')->assertOk()->assertSee('Upload CSV');
@@ -34,7 +34,7 @@ class LearnPagesTest extends TestCase
     public function test_courses_render_both_hsk_versions_for_the_setting_to_pick(): void
     {
         $this->get('/courses?tab=hsk')->assertOk()
-            ->assertSee('class="hsk-v2"', false)->assertSee('class="hsk-v3"', false)
+            ->assertSee('class="hsk-v2 cr-course"', false)->assertSee('class="hsk-v3 cr-course"', false)
             ->assertSee('Level 6')->assertSee('Level 7–9')->assertSee('Change in Settings');
         $this->get('/courses')->assertOk()
             ->assertSee('data-course="2.0"', false)->assertSee('data-course="3.0"', false)
@@ -73,7 +73,7 @@ class LearnPagesTest extends TestCase
         foreach (Lesson::all() as $l) {
             $n = Reading::where('lesson_number', $l->number)->count();
             for ($i = 1; $i <= $n; $i++) {
-                $this->get("/lessons/{$l->slug}/reading/$i")->assertOk()->assertSee('Quiz');
+                $this->get("/lessons/{$l->slug}/reading/$i")->assertOk()->assertSee('Questions');
                 $count++;
             }
             $this->get('/lessons/'.$l->slug.'/reading/'.($n + 1))->assertNotFound();

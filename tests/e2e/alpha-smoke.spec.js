@@ -141,6 +141,7 @@ test.describe('interaction sweep (phone)', () => {
       const q = qs.nth(i);
       const ans = await q.getAttribute('data-answer');
       await q.locator(`.quiz-option[data-i="${ans}"]`).click();
+      if (i < n - 1) await page.click('#quiz-next'); // one question at a time (canvas Reading board)
     }
     const quiz = await page.evaluate(() => JSON.parse(localStorage.getItem('hsk.v1.quiz') || '{}'));
     expect(quiz['lesson-1/1']).toMatchObject({ score: n, total: n });

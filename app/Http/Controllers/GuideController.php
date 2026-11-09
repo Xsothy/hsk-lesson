@@ -20,13 +20,17 @@ class GuideController extends Controller
         $tag = (string) $r->query('tag', '');
         $list = array_values(array_filter($all, fn ($g) => ($level === '' || $g['level'] === $level) && ($tag === '' || in_array($tag, $g['tags'], true))));
 
-        return view('pages.guides.index', compact('list', 'levels', 'tags', 'level', 'tag'));
+        // Open the first "Start here" guide (titles without "vs"), as the canvas does.
+        $start = collect($list)->first(fn ($g) => ! str_contains($g['title'], ' vs ')) ?? ($list[0] ?? null);
+        $guide = $start ? $this->guides->find($start['slug']) : null;
+
+        return view('pages.guides.index', ['list' => $list, 'guide' => $guide, 'all' => $list]);
     }
 
     public function show(string $slug)
     {
         $guide = $this->guides->find($slug) ?? abort(404);
 
-        return view('pages.guides.show', compact('guide'));
+        return view('pages.guides.show', ['guide' => $guide, 'all' => $this->guides->all()]);
     }
 }

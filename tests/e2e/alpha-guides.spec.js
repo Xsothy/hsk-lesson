@@ -7,9 +7,9 @@ for (const vp of [{ name: 'phone', width: 390, height: 844 }, { name: 'desktop',
     await page.goto('/guides');
     await expect(page.locator('h1')).toContainText('Guides');
     await expect(page.locator('.guide-card')).toHaveCount(6);
-    await page.getByRole('link', { name: '#negation' }).click();
-    await expect(page.locator('.guide-card')).toHaveCount(1);
-    await page.locator('.guide-card').click();
+    await expect(page.locator('.gd-article > h2')).toBeVisible();
+    await page.locator('.guide-card', { hasText: '不 vs 没' }).click();
+    await expect(page.locator('.guide-card.is-on')).toContainText('不 vs 没');
     await expect(page).toHaveURL(/\/guides\/bu-mei/);
     await expect(page.locator('.guide-body ruby').first()).toBeVisible();
     await expect(page.locator('.guide-body [class^="tone-"]').first()).toBeVisible();

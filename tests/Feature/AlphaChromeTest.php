@@ -36,6 +36,6 @@ class AlphaChromeTest extends TestCase
 
     public function test_root_serves_home(): void
     {
-        $this->get('/')->assertOk()->assertSee('Four hubs');
+        $this->get('/')->assertOk()->assertSee('Your course');
     }
 }
