@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     protected $fillable = [
-        'slug', 'number', 'title', 'zh_title', 'en_title', 'description', 'emoji', 'color',
+        'slug', 'number', 'course', 'title', 'zh_title', 'en_title', 'description', 'emoji', 'color',
         'emoji_color', 'grammar_label', 'is_preview', 'is_published', 'content',
         'vocab', 'grammar', 'sentences', 'dialogue',
     ];
@@ -33,6 +33,7 @@ class Lesson extends Model
         return [
             'slug' => $this->slug,
             'id' => $this->number,
+            'course' => $this->course ?? '2.0',
             'title' => $this->title,
             'zhTitle' => $this->zh_title,
             'enTitle' => $this->en_title,

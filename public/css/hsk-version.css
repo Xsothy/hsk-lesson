@@ -1,0 +1,2 @@
+/* html[data-hsk] comes from the hskVersion setting (apply-settings.js): show only the chosen HSK version's content. */
+html:not([data-hsk="3"]) .hsk-v3,html[data-hsk="3"] .hsk-v2{display:none !important}

@@ -103,6 +103,7 @@
     root.setAttribute('data-pinyin', pick(s, 'pinyin', 'show'));
     root.setAttribute('data-pinyin-pos', pick(s, 'pinyinPos', 'above'));
     root.setAttribute('data-char-size', pick(s, 'charSize', 'md'));
+    root.setAttribute('data-hsk', s.hskVersion === '3.0' ? '3' : '2');
     try { theme(s); } catch (e) {}
     audio(s);
   }

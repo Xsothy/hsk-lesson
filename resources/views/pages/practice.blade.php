@@ -31,20 +31,25 @@
     </div>
     <div class="pr-group">
       <h2 class="pr-h2">A lesson</h2>
+      <p class="muted hsk-v3">Our HSK 3.0 course is coming next. Switch to HSK 2.0 in <a href="{{ route('settings') }}#st-study">Settings</a> for our current lessons.</p>
       <div class="pr-chips pr-lessons">
         @foreach ($lessons as $l)
-          <x-chip class="pr-lesson" :href="route('practice', ['lesson' => $l->slug])"><span class="pr-lesson-n">Lesson {{ $l->number }}</span> <span class="zh" lang="zh-Hans">{{ $l->zh_title }}</span></x-chip>
+          <x-chip class="pr-lesson hsk-v{{ ($l->course ?? '2.0') === '3.0' ? 3 : 2 }}" :href="route('practice', ['lesson' => $l->slug])"><span class="pr-lesson-n">Lesson {{ $l->number }}</span> <span class="zh" lang="zh-Hans">{{ $l->zh_title }}</span></x-chip>
         @endforeach
       </div>
     </div>
     <div class="pr-group">
+      <div class="hsk-v2">
       <h2 class="pr-h2">HSK 2.0 level</h2>
       <div class="pr-chips">
         @foreach ($levels2 as $lv)<x-chip :href="route('practice', ['version' => 2, 'level' => $lv])">Level {{ $lv }}</x-chip>@endforeach
       </div>
+      </div>
+      <div class="hsk-v3">
       <h2 class="pr-h2">HSK 3.0 level</h2>
       <div class="pr-chips">
         @foreach ($levels3 as $lv)<x-chip :href="route('practice', ['version' => 3, 'level' => $lv])">Level {{ $lv === 7 ? '7–9' : $lv }}</x-chip>@endforeach
+      </div>
       </div>
       <p class="pr-note">For a 15-word set, open a level in <a href="{{ route('courses') }}">Courses</a> and choose Practise.</p>
     </div>

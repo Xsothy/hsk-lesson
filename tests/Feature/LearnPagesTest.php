@@ -31,6 +31,16 @@ class LearnPagesTest extends TestCase
         $this->get('/courses?tab=textbooks')->assertOk()->assertSee('Upload CSV');
     }
 
+    public function test_courses_render_both_hsk_versions_for_the_setting_to_pick(): void
+    {
+        $this->get('/courses?tab=hsk')->assertOk()
+            ->assertSee('class="hsk-v2"', false)->assertSee('class="hsk-v3"', false)
+            ->assertSee('Level 6')->assertSee('Level 7–9')->assertSee('Change in Settings');
+        $this->get('/courses')->assertOk()
+            ->assertSee('data-course="2.0"', false)->assertSee('data-course="3.0"', false)
+            ->assertSee('Planned');
+    }
+
     public function test_sets_endpoint_chunks_by_fifteen(): void
     {
         \App\Models\HskWord::insert(collect(range(1, 32))->map(fn ($i) => [

@@ -70,6 +70,7 @@ class LessonController extends Controller
             'color' => 'nullable|string|max:32',
             'emoji_color' => 'nullable|string|max:32',
             'grammar_label' => 'nullable|string|max:255',
+            'course' => 'sometimes|in:2.0,3.0',
             'is_preview' => 'sometimes|boolean',
             'is_published' => 'sometimes|boolean',
             'content' => 'nullable|string',

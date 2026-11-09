@@ -39,7 +39,7 @@ class LearnController extends Controller
     {
         return Lesson::where('is_published', true)->orderBy('number')->get()
             ->map(fn (Lesson $l) => (object) [
-                'slug' => $l->slug, 'n' => $l->number, 'title' => $l->en_title ?: $l->title,
+                'slug' => $l->slug, 'n' => $l->number, 'course' => $l->course ?? '2.0', 'title' => $l->en_title ?: $l->title,
                 'zh' => $l->zh_title, 'emoji' => $l->emoji, 'vocab' => $l->vocab ?? [],
             ]);
     }
@@ -62,14 +62,20 @@ class LearnController extends Controller
 
     public function courses(Request $request)
     {
-        $tab = in_array($request->query('tab'), ['ours', 'hsk2', 'hsk3', 'textbooks']) ? $request->query('tab') : 'ours';
-        $version = $tab === 'hsk3' ? 3 : 2;
+        // The HSK version (2.0 / 3.0) is a user setting applied client-side (html[data-hsk]); both versions are
+        // rendered and CSS shows the one that matches. Old ?tab=hsk2|hsk3 links land on the HSK levels tab.
+        $tab = match ($request->query('tab')) {
+            'hsk', 'hsk2', 'hsk3' => 'hsk',
+            'textbooks' => 'textbooks',
+            default => 'ours',
+        };
+        $lessons = $this->lessonCards();
 
         return view('pages.courses', [
             'tab' => $tab,
-            'lessons' => $this->lessonCards(),
-            'version' => $version,
-            'counts' => in_array($tab, ['hsk2', 'hsk3']) ? $this->levelCounts($version) : [],
+            'lessons' => $lessons,
+            'courses' => [2 => $lessons->where('course', '2.0')->values(), 3 => $lessons->where('course', '3.0')->values()],
+            'counts' => $tab === 'hsk' ? [2 => $this->levelCounts(2), 3 => $this->levelCounts(3)] : [],
         ]);
     }
 

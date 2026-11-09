@@ -1,20 +1,46 @@
 @extends('layouts.app')
 @section('title', 'Courses')
-@push('head')<link rel="stylesheet" href="/css/learn.css"><meta name="csrf-token" content="{{ csrf_token() }}">@endpush
+@push('head')<link rel="stylesheet" href="/css/learn.css"><link rel="stylesheet" href="/css/courses.css"><meta name="csrf-token" content="{{ csrf_token() }}">@endpush
 @section('content')
 <x-page-head eyebrow="Learn" title="Courses" />
-<nav class="chips chip-scroll" aria-label="Course">
-  <x-chip :href="route('courses', ['tab' => 'ours'])" :active="$tab === 'ours'">Our course</x-chip>
-  <x-chip :href="route('courses', ['tab' => 'hsk2'])" :active="$tab === 'hsk2'">HSK 2.0</x-chip>
-  <x-chip :href="route('courses', ['tab' => 'hsk3'])" :active="$tab === 'hsk3'">HSK 3.0</x-chip>
-  <x-chip :href="route('courses', ['tab' => 'textbooks'])" :active="$tab === 'textbooks'">Textbooks</x-chip>
-</nav>
+<div class="course-bar">
+  <nav class="chips chip-scroll" aria-label="Course">
+    <x-chip :href="route('courses', ['tab' => 'ours'])" :active="$tab === 'ours'">Our course</x-chip>
+    <x-chip :href="route('courses', ['tab' => 'hsk'])" :active="$tab === 'hsk'">HSK levels</x-chip>
+    <x-chip :href="route('courses', ['tab' => 'textbooks'])" :active="$tab === 'textbooks'">Textbooks</x-chip>
+  </nav>
+  @if ($tab !== 'textbooks')
+    <p class="ver-note"><span class="ver-pill ver-2 hsk-v2">HSK 2.0</span><span class="ver-pill ver-3 hsk-v3">HSK 3.0</span>
+      <a href="{{ route('settings') }}#st-study">Change in Settings</a></p>
+  @endif
+</div>
 
 @if ($tab === 'ours')
-  <div class="card-grid">
-    @foreach ($lessons as $l)
-      <x-lesson-card :n="$l->n" :title="$l->title" :sub="$l->zh" :href="route('lesson', $l->slug)" data-words="{{ json_encode($l->vocab, JSON_UNESCAPED_UNICODE) }}" />
+  <div class="hsk-v2" data-course="2.0">
+    @foreach ($courses[2]->groupBy(fn ($l) => $l->n <= 12 ? 1 : 2) as $level => $group)
+      <h2 class="course-group">HSK {{ $level }} <span class="muted">· Lessons {{ $group->first()->n }}–{{ $group->last()->n }}</span></h2>
+      <div class="card-grid">
+        @foreach ($group as $l)
+          <x-lesson-card :n="$l->n" :title="$l->title" :sub="$l->zh" :href="route('lesson', $l->slug)" data-words="{{ json_encode($l->vocab, JSON_UNESCAPED_UNICODE) }}" />
+        @endforeach
+      </div>
     @endforeach
+  </div>
+  <div class="hsk-v3" data-course="3.0">
+    @if ($courses[3]->isNotEmpty())
+      <div class="card-grid">
+        @foreach ($courses[3] as $l)
+          <x-lesson-card :n="$l->n" :title="$l->title" :sub="$l->zh" :href="route('lesson', $l->slug)" data-words="{{ json_encode($l->vocab, JSON_UNESCAPED_UNICODE) }}" />
+        @endforeach
+      </div>
+    @else
+      <p class="muted">Our HSK 3.0 course is coming next — new lessons built on the HSK 3.0 syllabus. Until then, study the official HSK 3.0 word lists under <a href="{{ route('courses', ['tab' => 'hsk']) }}">HSK levels</a>, or switch to HSK 2.0 in Settings for our current 24 lessons.</p>
+      <ul class="planned">
+        @foreach (\App\Http\Controllers\LearnController::levels(3) as $lv)
+          <li><span>Level {{ \App\Http\Controllers\LearnController::levelLabel(3, $lv) }}</span><span class="tag-planned">Planned</span></li>
+        @endforeach
+      </ul>
+    @endif
   </div>
 @elseif ($tab === 'textbooks')
   <section class="tb" data-textbooks>
@@ -35,10 +61,12 @@
     <template id="tb-row"><x-word-row :word="['hanzi' => '', 'pinyin' => '', 'english' => '']" :audio="false" /></template>
   </section>
 @else
+  @foreach ([2, 3] as $version)
+  <div class="hsk-v{{ $version }}">
   <p class="muted">{{ $version === 2 ? 'HSK 2.0 — 6 levels' : 'HSK 3.0 — levels 1–6 and 7–9' }}. Each level is split into study sets of 15 words, most frequent first.</p>
   <div class="levels">
     @foreach (\App\Http\Controllers\LearnController::levels($version) as $lv)
-      @php $total = $counts[$lv] ?? 0; $label = \App\Http\Controllers\LearnController::levelLabel($version, $lv); @endphp
+      @php $total = $counts[$version][$lv] ?? 0; $label = \App\Http\Controllers\LearnController::levelLabel($version, $lv); @endphp
       <details class="level" data-version="{{ $version }}" data-level="{{ $lv }}">
         <summary>
           <span class="level-n">Level {{ $label }}</span>
@@ -48,6 +76,8 @@
       </details>
     @endforeach
   </div>
+  </div>
+  @endforeach
 @endif
 @endsection
 @push('scripts')<script src="/js/store.js"></script><script src="/js/learn.js"></script>@if ($tab === 'textbooks')<script src="/js/textbooks.js"></script>@endif @endpush

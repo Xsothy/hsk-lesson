@@ -9,9 +9,13 @@
   <button type="submit" class="btn">Search</button>
 </form>
 
+@if (! request()->hasAny(['tab', 'version', 'q']))
+<script>/* No tab chosen: open the HSK list for the version picked in Settings. */
+if (document.documentElement.getAttribute('data-hsk') === '3') location.replace('{{ route('browse', ['tab' => 'hsk3']) }}');</script>
+@endif
 <nav class="chips chip-scroll browse-tabs" aria-label="Browse by">
   @foreach (\App\Http\Controllers\BrowseController::TABS as $key => $label)
-    <x-chip :href="route('browse', ['tab' => $key])" :active="$tab === $key">{{ $label }}</x-chip>
+    <x-chip :class="match ($key) { 'hsk2' => 'hsk-v2', 'hsk3' => 'hsk-v3', default => null }" :href="route('browse', ['tab' => $key])" :active="$tab === $key">{{ $label }}</x-chip>
   @endforeach
 </nav>
 

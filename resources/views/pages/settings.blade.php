@@ -8,7 +8,7 @@ $segs = [
   'toneColors' => ['Tone colours', ['on' => 'On', 'off' => 'Off']],
   'charSize' => ['Character size', ['sm' => 'Small', 'md' => 'Medium', 'lg' => 'Large']],
   'theme' => ['Theme', ['light' => 'Light', 'dark' => 'Dark', 'system' => 'System']],
-  'hskVersion' => ['HSK version', ['2.0' => 'HSK 2.0', '3.0' => 'HSK 3.0']],
+  'hskVersion' => ['HSK version', ['2.0' => 'HSK 2.0', '3.0' => 'HSK 3.0'], 'Switches our course, HSK lists and practice between 2.0 and 3.0'],
 ];
 @endphp
 @section('content')
@@ -17,7 +17,8 @@ $segs = [
 @php
 $segment = function (string $n) use ($segs) {
     [$label, $opts] = $segs[$n];
-    $html = '<fieldset class="st-row" data-seg="'.e($n).'"><legend>'.e($label).'</legend><div class="st-seg">';
+    $html = '<fieldset class="st-row" data-seg="'.e($n).'"><legend>'.e($label).'</legend>'
+        .(isset($segs[$n][2]) ? '<p class="st-note">'.e($segs[$n][2]).'</p>' : '').'<div class="st-seg">';
     foreach ($opts as $val => $text) {
         $html .= '<label><input type="radio" name="'.e($n).'" value="'.e($val).'"><span>'.e($text).'</span></label>';
     }

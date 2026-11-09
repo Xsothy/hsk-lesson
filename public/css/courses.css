@@ -1,0 +1,12 @@
+/* Courses. Version switching (.hsk-v2 / .hsk-v3) lives in hsk-version.css. */
+.course-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px}
+.course-bar .chips{margin:12px 0}
+.ver-note{display:flex;align-items:center;gap:10px;margin:0;font-size:14px}
+.ver-note a{min-height:44px;display:inline-flex;align-items:center}
+.ver-pill{font-size:12px;font-weight:700;border-radius:999px;padding:6px 12px}
+.ver-2{background:var(--green-t);color:var(--green-d)}
+.ver-3{background:var(--blue-t);color:var(--blue)}
+.course-group{font-size:18px;margin:24px 0 8px}
+.planned{list-style:none;padding:0;margin:16px 0;display:flex;flex-direction:column;gap:8px}
+.planned li{display:flex;justify-content:space-between;align-items:center;min-height:52px;padding:0 18px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-m)}
+.tag-planned{font-size:12px;font-weight:600;border-radius:999px;padding:4px 10px;background:var(--soft);color:var(--muted)}

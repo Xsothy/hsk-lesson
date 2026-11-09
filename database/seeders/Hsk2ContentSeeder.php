@@ -57,6 +57,7 @@ class Hsk2ContentSeeder extends Seeder
             foreach ($data['lessons'] as $l) {
                 Lesson::updateOrCreate(['slug' => 'lesson-'.$l['id']], [
                     'number' => $l['id'],
+                    'course' => '2.0',
                     'title' => 'Lesson '.$l['id'],
                     'zh_title' => $l['zhTitle'],
                     'en_title' => $l['enTitle'],

@@ -50,9 +50,10 @@
 
 <section class="sec">
   <div class="sec-head"><h2>Your course</h2><a href="{{ route('courses') }}">All</a></div>
+  @if ($lessons->where('course', '3.0')->isEmpty())<p class="muted hsk-v3">Our HSK 3.0 course is coming next. Switch to HSK 2.0 in <a href="{{ route('settings') }}#st-study">Settings</a> for our current lessons.</p>@endif
   <div class="card-grid">
     @foreach ($lessons as $l)
-      <x-lesson-card :n="$l->n" :title="$l->title" :sub="$l->zh" :href="route('lesson', $l->slug)" data-words="{{ json_encode($l->vocab, JSON_UNESCAPED_UNICODE) }}" />
+      <x-lesson-card class="hsk-v{{ ($l->course ?? '2.0') === '3.0' ? 3 : 2 }}" :n="$l->n" :title="$l->title" :sub="$l->zh" :href="route('lesson', $l->slug)" data-words="{{ json_encode($l->vocab, JSON_UNESCAPED_UNICODE) }}" />
     @endforeach
   </div>
 </section>
@@ -60,11 +61,11 @@
 <section class="sec">
   <div class="sec-head"><h2>HSK path</h2></div>
   @foreach ([2 => $hsk2, 3 => $hsk3] as $v => $counts)
-    <div class="path-row">
+    <div class="path-row hsk-v{{ $v }}">
       <h3 class="path-h">HSK {{ $v }}.0 <span class="muted">{{ $v === 2 ? 'Levels 1–6' : 'Levels 1–6 and 7–9' }}</span></h3>
       <div class="path-grid path-grid-{{ $v }}">
         @foreach (\App\Http\Controllers\LearnController::levels($v) as $lv)
-          <a class="path-card" href="{{ route('courses', ['tab' => 'hsk'.$v]) }}">
+          <a class="path-card" href="{{ route('courses', ['tab' => 'hsk']) }}">
             <span class="path-l">Level {{ \App\Http\Controllers\LearnController::levelLabel($v, $lv) }}</span>
             <span class="muted">{{ number_format($counts[$lv] ?? 0) }} words</span>
           </a>
