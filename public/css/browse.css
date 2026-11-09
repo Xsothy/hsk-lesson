@@ -14,7 +14,7 @@
 .browse-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-right:calc(-1 * var(--pad));padding-right:var(--pad)}
 .browse-tabs .chip{white-space:nowrap;flex:none}
 .sub-chips{margin-top:0}
-.sub-chips .chip.is-active{color:var(--on-ink)}
+.sub-chips .chip.is-active{color:var(--on-red)}
 .set-note{margin:0 0 12px;color:var(--text-2)}
 .set-note a{display:inline-flex;align-items:center;min-height:44px}
 
@@ -27,7 +27,7 @@
 .pick small{font-size:11px;color:var(--muted)}
 .pick-zh .zh{font-size:20px}
 .pick:hover{border-color:var(--red)}
-.pick.is-active{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}.pick.is-active small{color:color-mix(in srgb,var(--on-ink) 80%,var(--ink))}
+.pick.is-active{background:var(--red);border-color:var(--red);color:var(--on-red)}.pick.is-active small{color:var(--on-red)}
 .browse-hint{margin-top:16px}
 
 .browse-results{margin-top:8px}

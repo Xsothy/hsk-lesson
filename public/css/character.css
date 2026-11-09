@@ -19,7 +19,7 @@
 .cp-round{width:56px;height:56px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
 .cp-round:hover{border-color:var(--ink)}
 .cp-round-red{background:var(--red);border-color:var(--red);color:var(--on-red)}.cp-round-red:hover{background:var(--red-d);border-color:var(--red-d)}
-.cp-round[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}
+.cp-round[aria-pressed=true]{background:var(--red);border-color:var(--red);color:var(--on-red)}
 .cp-round[aria-pressed=true] path{fill:currentColor}
 
 /* cards + headings */
@@ -59,7 +59,7 @@
 /* 02 strokes */
 .cp-steppers{display:flex;gap:8px}
 .cp-step{width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
-.cp-step.is-dark{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}
+.cp-step.is-dark{background:var(--red);border-color:var(--red);color:var(--on-red)}
 .cp-step:disabled{opacity:.4;cursor:default}
 .cp-bar{height:6px;border-radius:999px;background:var(--soft);overflow:hidden}
 .cp-bar i{display:block;width:0;height:100%;background:var(--red);border-radius:999px;transition:width .2s}

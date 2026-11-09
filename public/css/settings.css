@@ -11,7 +11,7 @@
 .st-seg label{position:relative}
 .st-seg input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
 .st-seg span{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:72px;padding:0 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--card);color:var(--text-2);font-weight:500}
-.st-seg input:checked+span{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}
+.st-seg input:checked+span{background:var(--red);border-color:var(--red);color:var(--on-red)}
 .st-seg input:focus-visible+span,.st-btn:focus-visible,.st-row select:focus-visible,.st-row input[type=range]:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .st-row select{min-height:44px;padding:0 12px;border:1.5px solid var(--line);border-radius:var(--r-s);background:var(--card);color:var(--ink);font:inherit;max-width:100%;width:fit-content}
 .st-row input[type=range]{width:100%;min-height:44px;accent-color:var(--red)}
