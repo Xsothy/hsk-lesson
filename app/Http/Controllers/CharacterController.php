@@ -66,13 +66,20 @@ class CharacterController extends Controller
             : null;
 
         return array_filter([
-            'Pinyin' => implode(', ', $d['pinyin'] ?? []),
-            'Meaning' => $d['definition'],
             'Radical' => $d['radical'] ? ['char' => $d['radical'], 'meaning' => $radicalMeaning ? mb_strimwidth($radicalMeaning, 0, 32, '…') : null] : null,
             'Parts' => count($parts) > 1 ? $parts : null,
             'Structure' => self::STRUCTURES[mb_substr($ids, 0, 1)] ?? null,
+            'Traditional' => $this->traditional($d['char']),
             'Unicode' => $d['unicode'],
         ]);
+    }
+
+    /** Traditional form from the HSK word list, only when it differs. */
+    private function traditional(string $c): ?string
+    {
+        $t = \App\Models\HskWord::where('simplified', $c)->value('traditional');
+
+        return $t && $t !== $c ? $t : null;
     }
 
     /** Our own lesson note first; otherwise the open-data etymology hint. */

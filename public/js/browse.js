@@ -51,6 +51,24 @@
     if (none) practise.setAttribute('aria-disabled', 'true'); else practise.removeAttribute('aria-disabled');
   }
 
+  /** Status tag on list rows (Known / Due / New) and the counts on the filter buttons. */
+  function paintStatus() {
+    var seen = {}, nKnown = 0, nAll = 0;
+    [].forEach.call(root.querySelectorAll('.word-row[data-word]'), function (row) {
+      var w = row.getAttribute('data-word');
+      var k = known(w), card = null;
+      try { card = S && S.srsGet(w); } catch (e) {}
+      var due = !k && !!card && card.due <= Date.now(), lrn = !k && !due && learning(w);
+      var tag = row.querySelector('.bw-st');
+      if (!tag) { tag = document.createElement('span'); row.appendChild(tag); }
+      tag.className = 'wr-tag bw-st ' + (k ? 'is-known' : due ? 'is-due' : lrn ? 'is-learning' : 'is-new');
+      tag.textContent = k ? 'Known' : due ? 'Due' : lrn ? 'Learning' : 'New';
+      if (!seen[w]) { seen[w] = 1; nAll++; if (k) nKnown++; }
+    });
+    var put = function (k, n) { var el = root.querySelector('[data-count="' + k + '"]'); if (el) el.textContent = n; };
+    put('all', nAll); put('known', nKnown); put('learn', nAll - nKnown);
+  }
+
   function applyFilter() {
     items.forEach(function (el) {
       var k = known(el.getAttribute('data-word'));
@@ -81,5 +99,6 @@
 
   applyView();
   paintDots();
+  paintStatus();
   applyFilter();
 })();

@@ -83,7 +83,6 @@
           <button type="button" class="cp-ctl" data-action="outline" aria-pressed="true"><span class="cp-ctl-i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{!! $icon['outline'] !!}</svg></span>Outline</button>
           <button type="button" class="cp-ctl is-primary" data-action="retry"><span class="cp-ctl-i"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{!! $icon['replay'] !!}</svg></span>Retry</button>
         </div>
-        <p class="cp-worksheet"><x-chip :href="route('worksheet', ['chars' => $c])" data-worksheet-link>Print a worksheet PDF</x-chip></p>
       </section>
 
       {{-- 02 STROKE ORDER: step through --}}
@@ -105,6 +104,7 @@
         <div class="cp-bar" role="progressbar" aria-label="Stroke progress" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><i data-step-bar></i></div>
         <div class="cp-cells" data-cells></div>
         <p class="cp-tip" data-step-tip>Loading stroke data…</p>
+        <a class="cp-print" href="{{ route('worksheet', ['chars' => $c]) }}" data-worksheet-link><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg>Print a practice sheet</a>
       </section>
     </div>
 
@@ -174,8 +174,10 @@
               <dd>
                 @if ($k === 'Radical')
                   <a class="zh" lang="zh-Hans" href="{{ route('char', $v['char']) }}">{{ $v['char'] }}</a>@if($v['meaning']) {{ $v['meaning'] }}@endif
+                @elseif ($k === 'Traditional')
+                  <span class="zh" lang="zh-Hant">{{ $v }}</span>
                 @elseif ($k === 'Parts')
-                  @foreach ($v as $p)<span class="zh" lang="zh-Hans">{{ $p }}</span>@if(! $loop->last) + @endif @endforeach
+                  @foreach ($v as $p)<a class="zh" lang="zh-Hans" href="{{ route('parts', ['c' => $p]) }}">{{ $p }}</a>@if(! $loop->last) + @endif @endforeach
                 @else
                   {{ $v }}
                 @endif
@@ -186,49 +188,15 @@
         @if ($note)<p class="cp-note">{{ $note }}</p>@endif
       </section>
 
-      @if (count($d['parts']['components']) > 1 || $d['parts']['shared'])
-        <section class="cp-card cp-parts" aria-labelledby="sec-parts" data-parts>
-          <h3 id="sec-parts" class="cp-h3">Parts <span class="zh" lang="zh-Hans">部件</span></h3>
-          @if (count($d['parts']['components']) > 1)
-            <p class="cp-parts-layout">
-              @if ($d['parts']['layout'])<span class="zh" lang="zh-Hans">{{ $d['parts']['layout_char'] }}</span> {{ $d['parts']['layout'] }}@endif
-            </p>
-            <div class="cp-parts-grid">
-              @foreach ($d['parts']['components'] as $p)
-                @php $label = ($p['is_radical'] ? 'Radical' : 'Part').($p['meaning'] ? ': '.$p['meaning'] : ''); @endphp
-                <div class="cp-part @if($p['is_radical']) is-radical @endif" data-part="{{ $p['char'] }}" @if($p['is_radical']) data-radical @endif>
-                  @if ($p['exists'])
-                    <x-char-tile :c="$p['char']" :p="$p['pinyin']" variant="compact" :href="route('char', $p['char'])" title="{{ $label }}" />
-                  @else
-                    <span class="cp-part-plain zh" lang="zh-Hans" title="{{ $label }}">{{ $p['char'] }}</span>
-                  @endif
-                  @if ($p['is_radical'])<span class="cp-tag">radical</span>@endif
-                </div>
-              @endforeach
-            </div>
-          @endif
-          @foreach ($d['parts']['shared'] as $g)
-            <div class="cp-rel" data-shared="{{ $g['part'] }}">
-              <span class="cp-rel-t">Characters sharing <span class="zh" lang="zh-Hans">{{ $g['part'] }}</span></span>
-              <div class="cp-rel-grid">
-                @foreach ($g['items'] as $r)
-                  <x-char-tile :c="$r['char']" :p="$r['pinyin']" variant="compact" :href="route('char', $r['char'])" title="{{ $r['meaning'] }}" />
-                @endforeach
-              </div>
-            </div>
-          @endforeach
-        </section>
-      @endif
-
       @if ($related)
-        <section class="cp-card" aria-labelledby="sec-related">
+        <section class="cp-card cp-rel-card" aria-labelledby="sec-related">
           <h3 id="sec-related" class="cp-h3">Related characters</h3>
           @foreach ($related as $g)
             <div class="cp-rel">
               <span class="cp-rel-t">{{ $g['title'] }}</span>
               <div class="cp-rel-grid">
                 @foreach ($g['items'] as $r)
-                  <x-char-tile :c="$r['char']" :p="$r['pinyin']" variant="compact" :href="route('char', $r['char'])" title="{{ $r['meaning'] }}" />
+                  <x-char-tile :c="$r['char']" :p="$r['pinyin']" variant="soft" :href="route('char', $r['char'])" title="{{ $r['meaning'] }}" />
                 @endforeach
               </div>
             </div>

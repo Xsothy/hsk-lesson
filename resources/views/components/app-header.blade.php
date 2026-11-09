@@ -10,10 +10,10 @@ $groups = [
   ], ['home', 'courses', 'lesson', 'reading', 'guides', 'guide']],
   'chars' => ['Characters', [
     ['字', 'Character pages', 'Strokes, meaning, words', route('char', '学'), 'char'],
-    ['部', 'Character parts', 'Meaning & sound clues', route('browse', ['tab' => 'radical']), null],
+    ['部', 'Character parts', 'Meaning & sound clues', route('parts'), 'parts'],
     ['词', 'HSK & Dictionary', 'HSK 2.0 / 3.0, pinyin, radicals', route('browse'), 'browse'],
     ['搜', 'Search', 'Hanzi, pinyin or English', route('search'), 'search'],
-  ], ['char', 'char.legacy', 'browse', 'search']],
+  ], ['char', 'char.legacy', 'parts', 'browse', 'search']],
   'practice' => ['Practice', [
     ['写', 'Write & dictation', 'Stroke-by-stroke feedback', route('practice'), 'practice'],
     ['复', 'Flashcards', 'Spaced-repetition review', route('review'), 'review'],
