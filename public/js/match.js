@@ -132,6 +132,7 @@
     if (c.hanzi === S.sel || (selCard && selCard.pinyin.toLowerCase() === c.pinyin.toLowerCase())) {
       S.placed[i] = S.sel; S.sel = null; S.wrong = null; S.pairs++;
       paint();
+      try { window.HSK_FX.pop(el.board.querySelector('[data-slot="' + i + '"]')); } catch (e) {}
       if (Object.keys(S.placed).length === S.slots.length) boardDone(); else say('Pick a sticker.');
       var nx = el.tray.querySelector('.mt-sticker'); if (nx) nx.focus();
     } else {

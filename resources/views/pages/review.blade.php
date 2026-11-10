@@ -14,26 +14,39 @@
       <a class="rv-reveal" id="rv-start" href="{{ route('review', ['source' => 'due']) }}" hidden>Review cards due</a>
     </div>
 
-    {{-- Study session --}}
+    {{-- Study session: flip the card (tap / Space), then swipe or tap Still learning / Know --}}
     <div id="rv-study" class="rv-study" hidden>
       <div class="rv-top">
+        <span class="rv-pill rv-pill-learn"><b id="rv-n-learn">0</b><span>Still learning</span></span>
         <span class="rv-count" id="rv-count" aria-live="polite"></span>
-        <div class="rv-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Session progress"><i id="rv-bar-fill"></i></div>
-        <span class="rv-title" id="rv-title"></span>
+        <span class="rv-pill rv-pill-know"><span>Know</span><b id="rv-n-know">0</b></span>
+      </div>
+      <div class="rv-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Session progress"><i id="rv-bar-fill"></i></div>
+
+      <div class="rv-stage" id="rv-stage">
+        <div class="rv-flipcard" id="rv-card" tabindex="0" role="button" aria-label="Flashcard. Press Space to flip.">
+          <div class="rv-flip">
+            <div class="rv-card rv-front">
+              <span class="rv-tag" id="rv-tag"></span>
+              <div class="rv-face" id="rv-front"></div>
+              <span class="rv-hint" id="rv-hint">Say it out loud, then tap to flip</span>
+            </div>
+            <div class="rv-card rv-back" inert>
+              <span class="rv-tag" id="rv-title"></span>
+              <div class="rv-face" id="rv-back"></div>
+              <span class="rv-hint">Swipe right if you know it, left to see it again</span>
+            </div>
+          </div>
+          <span class="rv-stamp rv-stamp-know" aria-hidden="true">Know</span>
+          <span class="rv-stamp rv-stamp-learn" aria-hidden="true">Still learning</span>
+        </div>
       </div>
 
-      <div class="rv-card" id="rv-card" tabindex="-1" role="button" aria-label="Flip card">
-        <span class="rv-tag" id="rv-tag"></span>
-        <div class="rv-face rv-front" id="rv-front"></div>
-        <div class="rv-face rv-back" id="rv-back" hidden></div>
-        <span class="rv-hint" id="rv-hint">Say it out loud, then tap to reveal</span>
-      </div>
-
-      <button type="button" class="rv-reveal" id="rv-reveal">Show answer <kbd>Space</kbd></button>
-      <div class="rv-rate" id="rv-rate" hidden>
-        @foreach ([1 => ['Again', 'again'], 2 => ['Hard', 'hard'], 3 => ['Good', 'good'], 4 => ['Easy', 'easy']] as $n => [$label, $cls])
+      <button type="button" class="rv-reveal" id="rv-reveal" hidden>Show answer <kbd>Space</kbd></button>
+      <div class="rv-rate" id="rv-rate">
+        @foreach ([1 => ['Again', 'Still learning', 'again', '←'], 2 => ['Hard', 'Hard', 'hard', '2'], 3 => ['Good', 'Know', 'good', '→'], 4 => ['Easy', 'Easy', 'easy', '4']] as $n => [$full, $simple, $cls, $key])
           <button type="button" class="rv-btn rv-{{ $cls }}" data-rating="{{ $n }}">
-            <b class="rv-btn-l">{{ $label }}</b><span class="rv-btn-n" data-next="{{ $n }}"></span><kbd>{{ $n }}</kbd>
+            <b class="rv-btn-l" data-full="{{ $full }}" data-simple="{{ $simple }}">{{ $simple }}</b><span class="rv-btn-n" data-next="{{ $n }}"></span><kbd data-full="{{ $n }}" data-simple="{{ $key }}">{{ $key }}</kbd>
           </button>
         @endforeach
       </div>
@@ -50,6 +63,7 @@
       <p class="rv-hint" id="rv-done-note"></p>
       <div class="rv-done-actions">
         <a class="pr-btn is-primary" id="rv-again-link" href="{{ route('review', ['source' => 'due']) }}">Review again</a>
+        <a class="pr-btn" id="rv-restart" href="{{ route('review') }}">Study this deck again</a>
         <a class="pr-btn" href="{{ route('home') }}">Back to Today</a>
       </div>
     </div>
@@ -93,6 +107,13 @@
 
     <section class="rv-panel" aria-labelledby="rv-set-h">
       <h2 id="rv-set-h">Review settings</h2>
+      <div class="rv-field">
+        <span class="rv-field-l" id="rv-grade-l">Answer buttons</span>
+        <div class="pr-seg" role="group" aria-labelledby="rv-grade-l">
+          <button type="button" data-grading="simple" aria-pressed="true">Know / Learning</button>
+          <button type="button" data-grading="full" aria-pressed="false">4 grades</button>
+        </div>
+      </div>
       <div class="rv-field">
         <span class="rv-field-l" id="rv-first-l">Show first</span>
         <div class="pr-seg" role="group" aria-labelledby="rv-first-l">

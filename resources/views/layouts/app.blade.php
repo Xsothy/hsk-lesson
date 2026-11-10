@@ -11,16 +11,17 @@
 <link rel="stylesheet" href="/css/hsk-version.css">
 <link rel="stylesheet" href="/css/app.css">
 <link rel="stylesheet" href="/css/components.css">
+<link rel="stylesheet" href="/css/fx.css">
 @stack('head')
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <x-app-header />
 <main id="main" class="page">@yield('content')</main>
-<x-tab-bar />
 <script src="/js/audio-service.js"></script>
 <script src="/js/pinyin-tones.js"></script>
 <script src="/js/chrome.js"></script>
+<script src="/js/fx.js"></script>
 @stack('scripts')
 @auth<script src="/js/sync.js" data-csrf="{{ csrf_token() }}"></script>@endauth
 </body>
