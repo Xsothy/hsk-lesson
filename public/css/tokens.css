@@ -43,3 +43,13 @@
 :root[data-pinyin-pos=below] ruby{ruby-position:under}
 :root[data-tone-colors=off] :is(.tone-1,.tone-2,.tone-3,.tone-4,[class*=tone-]){color:inherit}
 :root[data-tone-colors=off] ruby rt *{color:inherit!important}
+
+/* Card style (Appearance). flat = stock. Done with box-shadow only, so no card changes size. */
+:root{--card-ring:0 0 0 1px var(--line);--card-lift:0 1px 2px rgba(var(--shadow),.05),0 8px 24px rgba(var(--shadow),.08)}
+:root[data-theme=dark]{--card-lift:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35)}
+@media (prefers-color-scheme:dark){:root[data-theme=system]{--card-lift:0 1px 2px rgba(0,0,0,.4),0 10px 28px rgba(0,0,0,.35)}}
+:root[data-cards=outline] :is(.lesson-card,.stat-card,.today,.hub,.path,.rd-lines,.quiz,.gd-article,.browse-list,.bw-card,.cr-panel,.tb-card,.tb-note,.mt-slots,.pt-detail,.pr-card,.pr-setup,.rv-panel,.rv-card,.rv-empty,.sr-card,.st-card,.st-box,.ap-card,.words-week,.words-list,.words-empty,.ws-set){box-shadow:var(--card-ring)}
+:root[data-cards=raised] :is(.lesson-card,.stat-card,.today,.hub,.path,.rd-lines,.quiz,.gd-article,.browse-list,.bw-card,.cr-panel,.tb-card,.tb-note,.mt-slots,.pt-detail,.pr-card,.pr-setup,.rv-panel,.rv-card,.rv-empty,.sr-card,.st-card,.st-box,.ap-card,.words-week,.words-list,.words-empty,.ws-set){box-shadow:var(--card-lift)}
+
+/* Animations off (Appearance → Animations, or the device's reduce-motion setting; fx.js checks the same attribute). */
+:root[data-motion=reduce] *,:root[data-motion=reduce] *::before,:root[data-motion=reduce] *::after{animation-duration:.001ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}

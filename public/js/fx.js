@@ -2,7 +2,8 @@
    Everything is a no-op when the user asks for reduced motion. */
 (function () {
   var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
-  function reduced() { return !!(mq && mq.matches); }
+  // Off when the device asks for reduced motion or the user chose Reduced under Appearance → Animations.
+  function reduced() { return !!(mq && mq.matches) || document.documentElement.getAttribute('data-motion') === 'reduce'; }
 
   // Restart a one-shot CSS animation class on an element.
   function play(el, cls) {

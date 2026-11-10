@@ -146,12 +146,14 @@
      theme 'light'|'dark'|'system' · audioRate 0.5-1.5 · voice voiceURI string ('' = auto)
      hskVersion '2.0'|'3.0' · dailyGoal int 1-100 · hintAfterMisses int 0-10 (0 = never hint)
      Appearance (theme feature): themePreset string ('' = custom) · themeBase 'warm'|'stone'|'slate'|'zinc'
-     themeAccent 'red'|'orange'|'amber'|'jade'|'teal'|'blue'|'indigo'|'plum' · themeRadius 0|8|16|22|28
+     themeAccent 'red'|'orange'|'amber'|'jade'|'teal'|'sky'|'blue'|'indigo'|'violet'|'plum'|'rose' · themeRadius 0|8|16|22|28
+     themeCards 'flat'|'outline'|'raised' · motion 'full'|'reduce' (animations)
      fontHead/fontBody 'outfit'|'inter'|'nunito'|'lora' · fontZh 'serif'|'sans'|'brush'. Defaults = the Paper preset.
      Unknown keys (e.g. browseView) are kept untouched. Invalid values fall back to defaults. */
   var SETTING_DEFAULTS = { pinyin: 'show', pinyinPos: 'above', toneColors: true, charSize: 'md', theme: 'system',
     audioRate: 0.7, voice: '', hskVersion: '2.0', dailyGoal: 10, hintAfterMisses: 2,
-    themePreset: 'paper', themeBase: 'warm', themeAccent: 'red', themeRadius: 16, fontHead: 'outfit', fontBody: 'outfit', fontZh: 'serif' };
+    themePreset: 'paper', themeBase: 'warm', themeAccent: 'red', themeRadius: 16, themeCards: 'flat', motion: 'full',
+    fontHead: 'outfit', fontBody: 'outfit', fontZh: 'serif' };
   function oneOf(list) { return function (v) { return list.indexOf(v) >= 0; }; }
   var SETTING_OK = {
     pinyin: function (v) { return v === 'show' || v === 'hide'; },
@@ -166,7 +168,9 @@
     hintAfterMisses: function (v) { return typeof v === 'number' && v % 1 === 0 && v >= 0 && v <= 10; },
     themePreset: function (v) { return typeof v === 'string' && v.length <= 20; },
     themeBase: oneOf(['warm', 'stone', 'slate', 'zinc']),
-    themeAccent: oneOf(['red', 'orange', 'amber', 'jade', 'teal', 'blue', 'indigo', 'plum']),
+    themeAccent: oneOf(['red', 'orange', 'amber', 'jade', 'teal', 'sky', 'blue', 'indigo', 'violet', 'plum', 'rose']),
+    themeCards: oneOf(['flat', 'outline', 'raised']),
+    motion: oneOf(['full', 'reduce']),
     themeRadius: oneOf([0, 8, 16, 22, 28]),
     fontHead: oneOf(['outfit', 'inter', 'nunito', 'lora']),
     fontBody: oneOf(['outfit', 'inter', 'nunito', 'lora']),

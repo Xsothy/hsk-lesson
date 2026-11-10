@@ -19,9 +19,13 @@
     zinc:  { label: 'Zinc',  l: ['#fafafa', '#ffffff', '#e4e4e7', '#f4f4f5', '#27272a', '#71717a'], d: ['#18181b', '#202024', '#34343a', '#27272b', '#e4e4e7', '#a1a1aa'] }
   };
   var ACCENTS = { red: ['Cinnabar', '#b5302a'], orange: ['Persimmon', '#c2410c'], amber: ['Amber', '#b7791f'], jade: ['Jade', '#2f6b47'],
-    teal: ['Teal', '#0f766e'], blue: ['Ink blue', '#3b5b7a'], indigo: ['Indigo', '#4f46e5'], plum: ['Plum', '#7a3b69'] };
+    teal: ['Teal', '#0f766e'], sky: ['Sky', '#0369a1'], blue: ['Ink blue', '#3b5b7a'], indigo: ['Indigo', '#4f46e5'], violet: ['Violet', '#7c3aed'],
+    plum: ['Plum', '#7a3b69'], rose: ['Rose', '#be185d'] };
   var DARK_ACCENT = { red: '#e8736c' };
   var RADII = [['None', 0], ['S', 8], ['M', 16], ['L', 22], ['XL', 28]];
+  // Card style: flat = stock (cards are told apart by colour only), outline = hairline ring, raised = soft shadow. See app.css.
+  var CARDS = [['flat', 'Flat'], ['outline', 'Outline'], ['raised', 'Raised']];
+  var MOTION = [['full', 'Full'], ['reduce', 'Reduced']];
   var FONTS = {
     head: { title: 'Heading font', sample: 'Aa', opts: { outfit: ['Outfit', "'Outfit',system-ui,sans-serif"], inter: ['Inter', "'Inter',system-ui,sans-serif"], nunito: ['Nunito', "'Nunito',system-ui,sans-serif"], lora: ['Lora', "'Lora',Georgia,serif"] } },
     body: { title: 'Body font', sample: 'Aa', opts: { outfit: ['Outfit', "'Outfit',system-ui,sans-serif"], inter: ['Inter', "'Inter',system-ui,sans-serif"], nunito: ['Nunito', "'Nunito',system-ui,sans-serif"], lora: ['Lora', "'Lora',Georgia,serif"] } },
@@ -29,12 +33,14 @@
   };
   var GFONT = { inter: 'Inter:wght@400;500;600;700', nunito: 'Nunito:wght@400;600;700', lora: 'Lora:wght@500;600;700', sans: 'Noto+Sans+SC:wght@500;700', brush: 'Ma+Shan+Zheng' };
   var PRESETS = {
-    paper:    { name: 'Paper',    sub: 'Warm · cinnabar',  themeBase: 'warm',  themeAccent: 'red',    themeRadius: 16, theme: 'system', fontHead: 'outfit', fontBody: 'outfit', fontZh: 'serif' },
-    inkwash:  { name: 'Ink wash', sub: 'Slate · ink blue', themeBase: 'slate', themeAccent: 'blue',   themeRadius: 8,  theme: 'system', fontHead: 'inter',  fontBody: 'inter',  fontZh: 'serif' },
-    jade:     { name: 'Jade',     sub: 'Stone · jade',     themeBase: 'stone', themeAccent: 'jade',   themeRadius: 22, theme: 'system', fontHead: 'nunito', fontBody: 'nunito', fontZh: 'sans' },
-    plum:     { name: 'Plum',     sub: 'Zinc · plum',      themeBase: 'zinc',  themeAccent: 'plum',   themeRadius: 16, theme: 'system', fontHead: 'lora',   fontBody: 'inter',  fontZh: 'serif' },
-    sunrise:  { name: 'Sunrise',  sub: 'Warm · persimmon', themeBase: 'warm',  themeAccent: 'orange', themeRadius: 28, theme: 'light',  fontHead: 'nunito', fontBody: 'nunito', fontZh: 'sans' },
-    midnight: { name: 'Midnight', sub: 'Slate · amber',    themeBase: 'slate', themeAccent: 'amber',  themeRadius: 16, theme: 'dark',   fontHead: 'outfit', fontBody: 'inter',  fontZh: 'brush' }
+    paper:    { name: 'Paper',    sub: 'Warm · cinnabar',  themeBase: 'warm',  themeAccent: 'red',    themeRadius: 16, themeCards: 'flat',    theme: 'system', fontHead: 'outfit', fontBody: 'outfit', fontZh: 'serif' },
+    inkwash:  { name: 'Ink wash', sub: 'Slate · ink blue', themeBase: 'slate', themeAccent: 'blue',   themeRadius: 8,  themeCards: 'outline', theme: 'system', fontHead: 'inter',  fontBody: 'inter',  fontZh: 'serif' },
+    jade:     { name: 'Jade',     sub: 'Stone · jade',     themeBase: 'stone', themeAccent: 'jade',   themeRadius: 22, themeCards: 'flat',    theme: 'system', fontHead: 'nunito', fontBody: 'nunito', fontZh: 'sans' },
+    plum:     { name: 'Plum',     sub: 'Zinc · plum',      themeBase: 'zinc',  themeAccent: 'plum',   themeRadius: 16, themeCards: 'raised',  theme: 'system', fontHead: 'lora',   fontBody: 'inter',  fontZh: 'serif' },
+    sakura:   { name: 'Sakura',   sub: 'Stone · rose',     themeBase: 'stone', themeAccent: 'rose',   themeRadius: 28, themeCards: 'raised',  theme: 'light',  fontHead: 'nunito', fontBody: 'nunito', fontZh: 'sans' },
+    sunrise:  { name: 'Sunrise',  sub: 'Warm · persimmon', themeBase: 'warm',  themeAccent: 'orange', themeRadius: 28, themeCards: 'flat',    theme: 'light',  fontHead: 'nunito', fontBody: 'nunito', fontZh: 'sans' },
+    midnight: { name: 'Midnight', sub: 'Slate · amber',    themeBase: 'slate', themeAccent: 'amber',  themeRadius: 16, themeCards: 'outline', theme: 'dark',   fontHead: 'outfit', fontBody: 'inter',  fontZh: 'brush' },
+    aurora:   { name: 'Aurora',   sub: 'Zinc · violet',    themeBase: 'zinc',  themeAccent: 'violet', themeRadius: 22, themeCards: 'outline', theme: 'dark',   fontHead: 'inter',  fontBody: 'inter',  fontZh: 'sans' }
   };
   function mix(hex, other, t) {
     var a = [1, 3, 5].map(function (i) { return parseInt(hex.slice(i, i + 2), 16); }), b = [1, 3, 5].map(function (i) { return parseInt(other.slice(i, i + 2), 16); });
@@ -92,7 +98,8 @@
     applied.forEach(function (k) { if (!(k in o)) root.style.removeProperty(k); });
     applied = Object.keys(o);
     applied.forEach(function (k) { root.style.setProperty(k, o[k]); });
-    root.setAttribute('data-theme-preset', typeof s.themePreset === 'string' && PRESETS[s.themePreset] ? s.themePreset : (Object.keys(o).length ? 'custom' : 'paper'));
+    var stock = !Object.keys(o).length && (s.themeCards || 'flat') === 'flat';
+    root.setAttribute('data-theme-preset', typeof s.themePreset === 'string' && PRESETS[s.themePreset] ? s.themePreset : (stock ? 'paper' : 'custom'));
     loadFonts(c);
   }
 
@@ -104,6 +111,8 @@
     root.setAttribute('data-pinyin-pos', pick(s, 'pinyinPos', 'above'));
     root.setAttribute('data-char-size', pick(s, 'charSize', 'md'));
     root.setAttribute('data-hsk', s.hskVersion === '3.0' ? '3' : '2');
+    root.setAttribute('data-cards', ['outline', 'raised'].indexOf(s.themeCards) >= 0 ? s.themeCards : 'flat');
+    root.setAttribute('data-motion', s.motion === 'reduce' ? 'reduce' : 'full');
     try { theme(s); } catch (e) {}
     audio(s);
   }
@@ -122,7 +131,7 @@
       }
     } catch (e) {}
   }
-  window.HSK_THEME = { BASES: BASES, ACCENTS: ACCENTS, RADII: RADII, FONTS: FONTS, PRESETS: PRESETS, choice: choice, tokens: tokens, isDark: isDark };
+  window.HSK_THEME = { BASES: BASES, ACCENTS: ACCENTS, RADII: RADII, CARDS: CARDS, MOTION: MOTION, FONTS: FONTS, PRESETS: PRESETS, choice: choice, tokens: tokens, isDark: isDark };
   apply();
   window.HSK_APPLY_SETTINGS = apply;
   window.addEventListener('hsk:settings', function (e) { apply(e && e.detail); });

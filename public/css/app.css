@@ -1,5 +1,8 @@
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-ui);line-height:1.5}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-ui);line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--red);color:var(--on-red)}
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 h1,h2,h3{font-family:var(--font-head,var(--font-ui))}
 a{color:inherit}
 .zh{font-family:var(--font-zh)}
