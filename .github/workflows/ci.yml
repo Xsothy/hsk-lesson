@@ -53,8 +53,8 @@ jobs:
 
       - run: npm ci
 
-      - name: Store unit test
-        run: node tests/Unit/store.test.js
+      - name: Store unit tests
+        run: npm run test:unit
 
       # Playwright hits a real server, so it needs the seeded DB plus reference data
       # (characters / HSK words, e.g. /char/学). Source files are cached between runs.
