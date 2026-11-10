@@ -1,6 +1,6 @@
 /**
  * Audio Service for Chinese Text-to-Speech
- * Uses Web Speech API with Google TTS as fallback
+ * Uses the device's Chinese voice (Web Speech API) first; an online voice only when the device has none
  */
 (function () {
   'use strict';
@@ -77,6 +77,7 @@
     selectedVoiceURI: localStorage.getItem('hsk1_tts_voice') || '',
     fallbackTTS: {
       enabled: true,
+      timeoutMs: 4000,
       url: text =>
         `https://translate.googleapis.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=zh-CN&client=gtx`
     }
@@ -152,7 +153,6 @@
       u.voice = voice;
       if (window.HSK_DEBUG) console.log(`[audio] Speaking with: ${voice.name}`);
     } else {
-      console.warn('[audio] No Chinese voice found for utterance');
     }
 
     u.onend = () => {
@@ -163,8 +163,7 @@
 
     u.onerror = e => {
       isSpeaking = false;
-      if (e.error !== 'interrupted') {
-        console.error('[audio] Speech error:', e.error);
+      if (e.error !== 'interrupted' && e.error !== 'canceled') {
         reject(new Error(e.error));
       } else {
         resolve(); 
@@ -187,24 +186,56 @@
     });
   }
 
+  // Online voice, used only when the device has no Chinese voice (or its voice fails).
+  // The endpoint is unofficial and can stop working, so it is never the first choice and always has a time limit.
   async function speakWithFallbackTTS(text) {
     return new Promise((resolve, reject) => {
       if (!config.fallbackTTS.enabled) {
         reject(new Error('Fallback TTS disabled'));
         return;
       }
+      if (navigator.onLine === false) { reject(new Error('Offline')); return; }
       const audio        = new Audio(config.fallbackTTS.url(text));
       audio.playbackRate = config.playbackRate;
       currentAudio       = audio;
-      audio.onended      = () => { currentAudio = null; resolve(); };
-      audio.onerror      = e  => { currentAudio = null; reject(new Error(`Fallback failed: ${e.type}`)); };
-      audio.play().catch(e => reject(new Error(`Play failed: ${e.message}`)));
+      let settled = false;
+      const finish = (err) => {
+        if (settled) return;
+        settled = true; clearTimeout(timer);
+        if (currentAudio === audio) currentAudio = null;
+        if (err) { try { audio.pause(); } catch (e) {} reject(err); } else resolve();
+      };
+      // No sound started within the limit: give up so the caller can try something else.
+      const timer = setTimeout(() => { if (audio.currentTime === 0) finish(new Error('Fallback timed out')); }, config.fallbackTTS.timeoutMs);
+      audio.onplaying    = () => clearTimeout(timer);
+      audio.onended      = () => finish();
+      audio.onerror      = e  => finish(new Error(`Fallback failed: ${e.type}`));
+      audio.play().catch(e => finish(new Error(`Play failed: ${e.message}`)));
     });
   }
 
+  // Tell the user once per page when nothing can play, instead of failing silently.
+  let noticeShown = false;
+  function notifyUnavailable() {
+    try { window.dispatchEvent(new CustomEvent('hsk:audio-unavailable')); } catch (e) {}
+    if (noticeShown || !document.body) return;
+    noticeShown = true;
+    const n = document.createElement('div');
+    n.setAttribute('role', 'status');
+    n.textContent = 'Audio is not available: this device has no Chinese voice. Add one in your system text-to-speech settings.';
+    n.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tab-h,0px) + 16px);z-index:120;max-width:min(420px,calc(100vw - 32px));padding:12px 16px;border-radius:12px;background:var(--ink,#2e2a25);color:var(--on-ink,#fff);font-size:14px;line-height:1.4;box-shadow:0 8px 24px rgba(0,0,0,.2)';
+    document.body.appendChild(n);
+    setTimeout(() => n.remove(), 7000);
+  }
+
+  /**
+   * Order: 1. the device's own Chinese voice (works offline, no third party);
+   * 2. the online voice; 3. the device's default voice asked to speak zh-CN (some phones list no voices but still honour the language).
+   * If all fail the user is told once.
+   */
   async function speak(text, options = {}) {
     if (!text?.trim()) { console.warn('[audio] No text to speak'); return; }
-    
+
     // Attempt to load voices if list is empty
     if (synth && synth.getVoices().length === 0) {
       await new Promise(resolve => {
@@ -217,20 +248,17 @@
       });
     }
 
-    try {
-      const voice = getChineseVoice();
-      
-      // If we have a specific voice, or if the user wants 'System Default', or if no voices found but we want to try native
-      if (voice || !config.selectedVoiceURI || (synth && synth.getVoices().length === 0)) {
-        await speakWithWebSpeech(text);
-      } else {
-        console.warn('[audio] No Chinese voice match — using fallback TTS');
-        await speakWithFallbackTTS(text);
-      }
-    } catch (err) {
-      console.error('[audio] Playback error:', err);
-      if (options.onError) options.onError(err);
+    const hasChineseVoice = !!getChineseVoice();
+    const attempts = hasChineseVoice
+      ? [speakWithWebSpeech, speakWithFallbackTTS]
+      : [speakWithFallbackTTS, ...(synth ? [speakWithWebSpeech] : [])];
+    let lastError = null;
+    for (const attempt of attempts) {
+      try { await attempt(text); return; } catch (err) { lastError = err; console.warn('[audio] ' + err.message + ' — trying the next option'); }
     }
+    console.warn('[audio] No way to play audio:', lastError && lastError.message);
+    notifyUnavailable();
+    if (options.onError) options.onError(lastError);
   }
 
   function saveSelectedVoice(voiceURI) {
