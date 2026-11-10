@@ -43,7 +43,7 @@ class SearchPageTest extends TestCase
     public function test_hanzi_query_lists_lessons_and_readings_containing_it(): void
     {
         $res = $this->get('/search?q='.urlencode('你好'))->assertOk();
-        $res->assertSee('Lessons', false);
+        $res->assertSee('In your lessons', false);
         $this->assertStringContainsString('/lessons/', $res->getContent());
     }
 

@@ -74,13 +74,15 @@ for (const vp of VIEWPORTS) {
         const m = await page.evaluate(() => ({
           sw: document.documentElement.scrollWidth, iw: window.innerWidth,
           hdr: !!document.querySelector('header.hdr') && getComputedStyle(document.querySelector('header.hdr')).display !== 'none',
-          tab: !!document.querySelector('nav.tabbar') && getComputedStyle(document.querySelector('nav.tabbar')).display !== 'none',
+          nav: !!document.querySelector('header.hdr .menus') && document.querySelector('header.hdr .menus').getBoundingClientRect().height > 0,
+          navFixed: getComputedStyle(document.querySelector('header.hdr .menus')).position === 'fixed',
           h1: document.querySelectorAll('h1').length,
         }));
         if (m.sw > m.iw) problems.push(`${url}: horizontal scroll (${m.sw} > ${m.iw})`);
-        // Design canvas: the header (menus on a second row below 761px) is the only nav; the tab bar is hidden at every width.
+        // One nav: header dropdowns on desktop, a fixed bottom tab bar on phones.
         if (!m.hdr) problems.push(`${url}: header not visible`);
-        if (m.tab) problems.push(`${url}: tab bar visible (canvas hides it)`);
+        if (!m.nav) problems.push(`${url}: main nav not visible`);
+        if (m.navFixed !== (vp.width <= 760)) problems.push(`${url}: nav should be a bottom tab bar only on phones`);
         if (errors.length) problems.push(`${url}: console/page errors: ${errors.join(' | ')}`);
         if (failed.length) problems.push(`${url}: failed requests: ${failed.join(' | ')}`);
 
@@ -105,9 +107,10 @@ test.describe('header menus (desktop)', () => {
 
   test('open with Enter/Space, close with Esc', async ({ page }) => {
     await page.goto('/home');
-    const btns = page.locator('header.hdr .menu-btn');
-    expect(await btns.count()).toBe(4);
-    for (let i = 0; i < 4; i++) {
+    const btns = page.locator('header.hdr button.menu-btn');
+    expect(await btns.count()).toBe(3);
+    await expect(page.locator('header.hdr a.menu-link')).toHaveText('My words');
+    for (let i = 0; i < 3; i++) {
       for (const key of ['Enter', 'Space']) {
         const b = btns.nth(i);
         await b.focus();

@@ -14,7 +14,6 @@ const AR = { glyph: '写', title: 'Write the characters', sub: '19 characters ·
 const C = [
   ['header', 'AppHeader', `pad=0&gap=0&props=${J({ active: 'learn' })}`, '/home', 'header'],
   ['header-open', 'AppHeader', `pad=0&gap=0&props=${J({ active: 'learn' })}&state=${J({ open: 'learn' })}`, '/home', 'header', { open: true }],
-  ['tabbar', 'TabBar', `pad=0&gap=0&props=${J({ active: 'learn' })}`, '/home', 'nav.tabbar', { force: true }],
   ['chip', 'Chip', `row=1&stack=${J([{ label: 'HSK 2.0', active: true }, { label: 'HSK 3.0', active: false }])}`, '/dev/components', '#b-chip'],
   ['stat-card', 'StatCard', `bw=200&stack=${J([{}, { value: '12', label: 'cards due', color: 'var(--c8f241f)' }, { value: '7', label: 'day streak', color: 'var(--c6e5112)' }, { value: '5/10', label: 'characters today', color: 'var(--c1f4a31)', soft: true }])}`, '/dev/components', '#b-stat'],
   ['char-tile', 'CharTile', `row=1&bw=120&stack=${J([{ c: '学', p: 'xué', m: 'to study', tone: 'var(--c15803d)' }, { c: '你', p: 'nǐ', m: 'you', tone: 'var(--c1d4ed8)', dot: 'var(--cgold)' }, { c: '妈', p: 'mā', m: 'mom', tone: 'var(--cc2281f)', dot: 'var(--cblue)', variant: 'soft' }, { c: '是', p: 'shì', m: 'to be', tone: 'var(--c7e22ce)', dot: 'var(--cgreen)' }, { c: '好', p: 'hǎo', m: 'good', tone: 'var(--c1d4ed8)', large: true }])}`, '/dev/components', '#b-tile'],

@@ -78,7 +78,7 @@ class CharacterPartsTest extends TestCase
 
     public function test_header_links_character_parts_to_parts_page(): void
     {
-        $this->get("/parts")->assertOk()->assertSee("menu-chars is-current", false)->assertSeeInOrder(["href=\"".route("parts")."\"", "aria-current=\"page\""], false);
+        $this->get("/parts")->assertOk()->assertSee("menu-dict is-current", false)->assertSeeInOrder(["href=\"".route("parts")."\"", "aria-current=\"page\""], false);
     }
 
     public function test_json_exposes_decomposition_radical_and_parts(): void
