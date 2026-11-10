@@ -1,0 +1,34 @@
+/* Play feedback (fx.js). One-shot animations for right / wrong answers, pressed buttons and finished sessions. */
+@keyframes fx-pop{0%{transform:scale(1)}40%{transform:scale(1.07)}100%{transform:scale(1)}}
+@keyframes fx-shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
+@keyframes fx-bump{0%{transform:scale(1)}35%{transform:scale(1.35)}100%{transform:scale(1)}}
+@keyframes fx-rise{from{opacity:0;transform:translateY(14px)}}
+@keyframes fx-toast{0%{opacity:0;transform:translate(-50%,8px) scale(.8)}18%{opacity:1;transform:translate(-50%,0) scale(1.06)}30%{transform:translate(-50%,0) scale(1)}75%{opacity:1}100%{opacity:0;transform:translate(-50%,-26px) scale(1)}}
+@keyframes fx-fall{0%{opacity:1;transform:translate(0,-10vh) rotate(0)}85%{opacity:1}100%{opacity:0;transform:translate(var(--x),105vh) rotate(var(--r))}}
+
+.fx-pop{animation:fx-pop .32s ease-out}
+.fx-shake{animation:fx-shake .36s ease-in-out}
+.fx-bump{display:inline-block;animation:fx-bump .34s ease-out}
+
+.fx-confetti{position:fixed;inset:0;z-index:200;pointer-events:none;overflow:hidden}
+.fx-confetti i{position:absolute;top:0;left:50%;width:var(--w);height:calc(var(--w) * 1.6);border-radius:2px;opacity:0;animation:fx-fall var(--d) cubic-bezier(.2,.6,.4,1) forwards}
+
+.fx-toast{position:absolute;left:50%;top:-14px;z-index:3;transform:translateX(-50%);padding:6px 14px;border-radius:999px;background:var(--ink);color:var(--on-ink);font-size:14px;font-weight:700;white-space:nowrap;pointer-events:none;animation:fx-toast 1.25s ease-out forwards}
+
+/* Answers: the right one pops, a wrong pick shakes. The classes are set once per answer by each page's script. */
+.qo-correct,.sp-choice.is-ok,.sp-answer.is-ok,.pr-chip.is-done:last-child{animation:fx-pop .32s ease-out}
+.qo-wrong,.sp-choice.is-bad,.sp-answer.is-bad,.mt-slot.is-bad{animation:fx-shake .36s ease-in-out}
+.mt-sticker.is-sel{transform:translateY(-4px) scale(1.05)}
+.mt-sticker{transition:transform .14s ease-out}
+
+/* Pressed feel on the big play buttons. */
+.pr-btn,.rv-btn,.rv-reveal,.quiz-option,.sp-choice,.mt-sticker{transition:transform .1s ease-out,filter .15s}
+:is(.pr-btn,.rv-btn,.rv-reveal,.quiz-option,.sp-choice):active:not(:disabled){transform:scale(.97)}
+
+/* Session summaries rise in. */
+[data-summary]:not([hidden]),#rv-done:not([hidden]){animation:fx-rise .35s ease-out}
+
+@media (prefers-reduced-motion:reduce){
+  .fx-pop,.fx-shake,.fx-bump,.qo-correct,.qo-wrong,.sp-choice,.sp-answer,.mt-slot,.pr-chip,[data-summary],#rv-done{animation:none!important}
+  .pr-btn,.rv-btn,.rv-reveal,.quiz-option,.sp-choice,.mt-sticker{transition:none}
+}

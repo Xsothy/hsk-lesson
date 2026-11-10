@@ -39,10 +39,11 @@ test('Learn -> Write -> My words -> Review persists across reloads', async ({ pa
   await page.goto('/words');
   await expect(page.locator('main, .page').first()).toContainText(ch);
 
-  // --- Review saved cards: reveal + rate Good
+  // --- Review saved cards: flip the card + answer Know (SRS Good)
   await page.goto('/review?source=saved');
   await expect(page.locator('#rv-study')).toBeVisible();
-  await page.locator('#rv-reveal').click();
+  await page.locator('#rv-card').click();
+  await expect(page.locator('#rv-card')).toHaveClass(/is-flipped/);
   await expect(page.locator('#rv-rate')).toBeVisible();
   await page.locator('[data-rating="3"]').click();
   await expect.poll(async () => Object.keys((await ls(page, 'hsk.v1.srs')) || {}).length).toBeGreaterThanOrEqual(1);

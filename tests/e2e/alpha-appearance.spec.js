@@ -4,7 +4,7 @@ const { test, expect } = require('@playwright/test');
 const { auditContrast } = require('./contrast');
 
 const VIEWPORTS = [{ width: 390, height: 844 }, { width: 1200, height: 900 }];
-const PRESETS = ['Paper', 'Ink wash', 'Jade', 'Plum', 'Sunrise', 'Midnight'];
+const PRESETS = ['Paper', 'Ink wash', 'Jade', 'Plum', 'Sakura', 'Sunrise', 'Aurora', 'Midnight'];
 const rootVar = (page, v) => page.evaluate((n) => document.documentElement.style.getPropertyValue(n), v);
 const settings = (page) => page.evaluate(() => JSON.parse(localStorage.getItem('hsk.v1.settings') || '{}'));
 
@@ -22,7 +22,7 @@ for (const vp of VIEWPORTS) {
       await expect(page).toHaveURL(/\/settings\/appearance$/);
       // Paper (default) sets no overrides: the stock tokens.css look.
       expect(await rootVar(page, '--paper')).toBe('');
-      await expect(page.locator('.ap-preset')).toHaveCount(6);
+      await expect(page.locator('.ap-preset')).toHaveCount(8);
 
       // Touch targets
       const small = await page.$$eval('.ap-controls button', (els) => els.filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && (r.height < 44 || r.width < 44); }).length);

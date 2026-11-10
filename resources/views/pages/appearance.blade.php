@@ -29,7 +29,16 @@
         <h2 class="ap-lbl" id="ap-radius-h">Corner radius</h2>
         <div class="ap-radii" role="group" aria-labelledby="ap-radius-h" data-ap="radii"></div>
       </div>
+      <div class="ap-group">
+        <h2 class="ap-lbl" id="ap-cards-h">Card style</h2>
+        <div class="ap-radii ap-cards" role="group" aria-labelledby="ap-cards-h" data-ap="cards"></div>
+      </div>
       <div data-ap="fonts"></div>
+      <div class="ap-group">
+        <h2 class="ap-lbl" id="ap-motion-h">Animations</h2>
+        <div class="ap-mode ap-motion" role="group" aria-labelledby="ap-motion-h" data-ap="motion"></div>
+        <p class="ap-note">Reduced turns off card flips, confetti and other movement. Your device's own “reduce motion” setting is always respected.</p>
+      </div>
     </section>
 
     <div class="ap-actions">

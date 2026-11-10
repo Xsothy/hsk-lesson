@@ -1,5 +1,8 @@
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-ui);line-height:1.5}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-ui);line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--red);color:var(--on-red)}
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
 h1,h2,h3{font-family:var(--font-head,var(--font-ui))}
 a{color:inherit}
 .zh{font-family:var(--font-zh)}
@@ -22,7 +25,7 @@ a{color:inherit}
 .page-head.has-lead{display:flex;gap:16px;align-items:center}
 .ph-lead{flex:none;display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;background:var(--soft);font-size:30px}
 
-/* App header — design canvas board "AppHeader" (5 · Component library). Collapses below 761px: menus move to a full-width second row. */
+/* App header — design canvas board "AppHeader" (5 · Component library). Below 761px the menus become a fixed bottom tab bar. */
 .hdr{position:sticky;top:0;z-index:50;background:var(--card-2);color:var(--ink);border-bottom:1px solid var(--line);overflow-x:clip;font-family:var(--font-ui);line-height:normal}
 .hdr-row{max-width:1200px;margin:0 auto;height:68px;padding:0 20px;display:flex;align-items:center;gap:24px}
 .logo{flex-shrink:0;display:inline-flex;align-items:center;min-height:44px;font-family:var(--font-zh);font-size:21px;font-weight:700;color:var(--ink);text-decoration:none}
@@ -33,20 +36,24 @@ a{color:inherit}
 .menu.is-current .menu-btn{font-weight:600;color:var(--red-d);background:var(--red-t)}
 .menu-btn:hover,.menu.open .menu-btn{background:var(--soft)}
 .menu.open .menu-btn{color:var(--red-d)}
+/* While another group is open, the current group's highlight steps back so only one thing looks active. */
+.menus:has(.menu.open) :is(.menu.is-current:not(.open) .menu-btn,.menu-link.is-current){color:var(--text-2);background:transparent;font-weight:500}
+.menu-ico{display:none}
+.menu-link{text-decoration:none}
+.menu-link.is-current{font-weight:600;color:var(--red-d);background:var(--red-t)}
 .menu-chev{flex:none;transition:transform .15s}
 .menu.open .menu-chev{transform:rotate(180deg)}
-.menu-list{display:none;position:absolute;top:calc(100% + 8px);left:0;width:290px;padding:8px;border-radius:calc(var(--r-m) * 1.125);background:var(--card);border:1px solid var(--line);box-shadow:0 16px 40px rgba(var(--shadow),.12);flex-direction:column;gap:2px}
-.menu.open .menu-list{display:flex}
-.menu-list a{min-height:68px;padding:8px 10px;border-radius:var(--r-s);display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.menu-list{display:none;position:absolute;top:calc(100% + 8px);left:0;width:236px;padding:6px;border-radius:calc(var(--r-m) * 1.125);background:var(--card);border:1px solid var(--line);box-shadow:0 16px 40px rgba(var(--shadow),.12);flex-direction:column;gap:2px;transform-origin:top left}
+.menu.open .menu-list{display:flex;animation:menu-in .16s ease-out}
+@keyframes menu-in{from{opacity:0;transform:translateY(-6px) scale(.98)}}
+.menu-list a{min-height:48px;padding:6px 8px;border-radius:var(--r-s);display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
 .menu-list a:hover{background:var(--paper)}
-.mi-glyph{width:36px;height:36px;flex-shrink:0;border-radius:calc(var(--r-s) * .8333);display:flex;align-items:center;justify-content:center;font-family:var(--font-zh);font-size:17px;font-weight:700}
+.menu-list a[aria-current=page]{background:var(--soft)}
+.menu-list b{font-size:14px;font-weight:600}
+.mi-glyph{width:34px;height:34px;flex-shrink:0;border-radius:calc(var(--r-s) * .8333);display:flex;align-items:center;justify-content:center;font-family:var(--font-zh);font-size:16px;font-weight:700}
 .menu-learn .mi-glyph{background:var(--orange-t);color:var(--orange)}
-.menu-chars .mi-glyph{background:var(--blue-t);color:var(--blue)}
 .menu-practice .mi-glyph{background:var(--red-t);color:var(--red-d)}
-.menu-more .mi-glyph{background:var(--green-t);color:var(--green-d)}
-.mi-text{display:flex;flex-direction:column;gap:1px}
-.mi-text b{font-size:14px;font-weight:600}
-.mi-text span{font-size:12px;color:var(--muted)}
+.menu-dict .mi-glyph{background:var(--blue-t);color:var(--blue)}
 .icon-btn{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border-radius:var(--r-s);text-decoration:none;color:inherit}
 .icon-btn:hover{background:var(--soft)}
 .hdr .icon-btn{width:44px;height:44px;flex-shrink:0;border-radius:999px;color:var(--text-2)}
@@ -61,18 +68,28 @@ a{color:inherit}
 .hdr-search input::-webkit-search-cancel-button{display:none}
 @media (min-width:761px) and (max-width:1020px){.hdr-search{display:none}.hdr-search-btn{display:inline-flex!important}}
 @media (max-width:760px){
-  .hdr-row{flex-wrap:wrap;height:auto;padding:10px 12px 8px;row-gap:6px}
+  .hdr-row{height:56px;padding:0 12px;gap:4px}
   .logo{margin-right:auto}
-  .menus{order:3;flex:1 0 100%;position:relative;justify-content:space-between}
-  .menu{position:static}
-  .menu-btn{padding:0 10px 0 12px}
-  .menu-list{left:0;right:0;width:auto;top:calc(100% + 6px)}
   .hdr-search{display:none}
   .hdr-search-btn{display:inline-flex!important}
   .hdr .ib-d{display:none}.hdr .ib-m{display:flex}
+  /* Bottom tab bar: the same nav, fixed to the bottom edge; a group opens as a sheet above it. */
+  :root{--tab-h:64px}
+  body{padding-bottom:calc(var(--tab-h) + env(safe-area-inset-bottom,0px))}
+  .menus{position:fixed;left:0;right:0;bottom:0;z-index:50;height:calc(var(--tab-h) + env(safe-area-inset-bottom,0px));padding:0 6px env(safe-area-inset-bottom,0px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;background:var(--card-2);border-top:1px solid var(--line)}
+  .menu{position:static;display:flex}
+  .menu-btn{flex:1;height:auto;padding:0;border-radius:0;flex-direction:column;justify-content:center;gap:2px;font-size:11px;color:var(--muted);background:transparent!important}
+  .menu-ico{display:flex;align-items:center;justify-content:center;width:56px;height:30px;border-radius:999px;transition:background .15s,transform .15s}
+  .menu-btn:active .menu-ico{transform:scale(.92)}
+  .menu-chev{display:none}
+  .menu.is-current .menu-btn,.menu-link.is-current,.menu.open .menu-btn{color:var(--red-d);font-weight:600}
+  .menu.is-current .menu-ico,.menu-link.is-current .menu-ico,.menu.open .menu-ico{background:var(--red-t)}
+  .menus:has(.menu.open) :is(.menu.is-current:not(.open) .menu-btn,.menu-link.is-current){color:var(--muted)}
+  .menus:has(.menu.open) :is(.menu.is-current:not(.open),.menu-link.is-current) .menu-ico{background:transparent}
+  .menu-list{position:fixed;top:auto;left:8px;right:8px;bottom:calc(var(--tab-h) + env(safe-area-inset-bottom,0px) + 8px);width:auto;padding:8px;transform-origin:bottom center;box-shadow:0 -8px 40px rgba(var(--shadow),.16)}
+  .menu.open .menu-list{animation-name:menu-up}
+  .menu-list a{min-height:52px}
+  .menu-list b{font-size:15px}
 }
-/* Tab bar — canvas board "TabBar" hides it at every width (the header menus cover phones). Pill styles kept for parity. */
-.tabbar{display:none!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;height:72px;padding:6px 12px 12px;background:var(--card-2);border-top:1px solid var(--line)}
-.tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;font-weight:500;text-decoration:none;color:var(--muted)}
-.tabbar .tb-pill{width:56px;height:30px;border-radius:999px;display:flex;align-items:center;justify-content:center}
-.tabbar a[aria-current=page]{color:var(--red-d);font-weight:600}.tabbar a[aria-current=page] .tb-pill{background:var(--red-t)}
+@keyframes menu-up{from{opacity:0;transform:translateY(10px)}}
+@media (prefers-reduced-motion:reduce){.menu.open .menu-list{animation:none}}

@@ -1,4 +1,6 @@
-/* D2 Review: flashcards with SRS. Needs store.js. Deck comes from /data/review-deck; scheduling is HSK_STORE.srs*. */
+/* D2 Review: flashcards with SRS. Needs store.js (and fx.js for the animations). Deck comes from /data/review-deck;
+   scheduling is HSK_STORE.srs*. The card flips (tap / Space) and is answered by swiping, the buttons or the keyboard.
+   Answer buttons: 'simple' = Still learning (SRS Again) / Know (SRS Good); 'full' = Again / Hard / Good / Easy after the flip. */
 (function () {
   var S = window.HSK_STORE, root = document.getElementById('rv');
   if (!S || !root) return;
@@ -16,10 +18,10 @@
     show('rv-empty');
   }
 
-  // Settings (keys documented in store.js): reviewFirst zh|en|audio, reviewPinyinFront, reviewAudioReveal.
+  // Settings (keys documented in store.js): reviewFirst zh|en|audio, reviewPinyinFront, reviewAudioReveal, reviewGrading simple|full.
   function opts() {
     var s = S.getSettings();
-    return { first: ['zh', 'en', 'audio'].indexOf(s.reviewFirst) >= 0 ? s.reviewFirst : 'zh', pinyinFront: s.reviewPinyinFront === true, audioReveal: s.reviewAudioReveal !== false };
+    return { first: ['zh', 'en', 'audio'].indexOf(s.reviewFirst) >= 0 ? s.reviewFirst : 'zh', pinyinFront: s.reviewPinyinFront === true, audioReveal: s.reviewAudioReveal !== false, full: s.reviewGrading === 'full' };
   }
 
   // ---- chooser ----
@@ -60,6 +62,7 @@
   function settingsPanel() {
     var o = opts(), s = S.getSettings();
     [].forEach.call(document.querySelectorAll('[data-first]'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-first') === o.first)); });
+    [].forEach.call(document.querySelectorAll('[data-grading]'), function (b) { b.setAttribute('aria-pressed', String((b.getAttribute('data-grading') === 'full') === o.full)); });
     $('rv-pyfront').checked = o.pinyinFront; $('rv-audio-reveal').checked = o.audioReveal;
     var n = Number(s.newPerDay) || 20, sel = $('rv-newday');
     if (![].some.call(sel.options, function (op) { return +op.value === n; })) sel.appendChild(new Option(String(n), String(n)));
@@ -67,11 +70,13 @@
   }
   function changed(patch) {
     S.setSettings(patch); settingsPanel();
-    if (!$('rv-study').hidden && !revealed) card(); // re-draw the front with the new setting
+    if (!$('rv-study').hidden && !busy) card(); // re-draw the card with the new setting
   }
   document.querySelector('.rv-side').addEventListener('click', function (e) {
     var b = e.target.closest('[data-first]');
     if (b) changed({ reviewFirst: b.getAttribute('data-first') });
+    b = e.target.closest('[data-grading]');
+    if (b) changed({ reviewGrading: b.getAttribute('data-grading') });
   });
   $('rv-pyfront').addEventListener('change', function () { changed({ reviewPinyinFront: this.checked }); });
   $('rv-audio-reveal').addEventListener('change', function () { changed({ reviewAudioReveal: this.checked }); });
@@ -100,7 +105,10 @@
     return undefined;
   }
 
-  var queue, cards, idx, revealed, stats, total, deckTitle = '';
+  var queue, cards, idx, revealed, flipped, busy = false, stats, total, streak, deckTitle = '';
+  var FX = window.HSK_FX || { reduced: function () { return true; }, bump: function () {}, toast: function () {}, confetti: function () {}, countUp: function (n, v) { n.textContent = v; } };
+  var cardEl = $('rv-card'), frontEl = cardEl.querySelector('.rv-front'), backEl = cardEl.querySelector('.rv-back');
+  var OUT_MS = 230;
 
   function start(d) {
     cards = {}; d.cards.forEach(function (c) { cards[c.id] = c; });
@@ -110,7 +118,7 @@
       return emptyMsg('Nothing due in “' + d.title + '”. ' + (q.newTotal ? plural(q.newTotal, 'new card') + ' held back by your daily limit.' : 'Come back later.'));
     }
     $('rv-title').textContent = d.title; deckTitle = d.title;
-    idx = 0; total = queue.length; stats = { 1: 0, 2: 0, 3: 0, 4: 0 };
+    idx = 0; total = queue.length; stats = { 1: 0, 2: 0, 3: 0, 4: 0 }; streak = 0;
     show('rv-study'); card();
   }
 
@@ -121,18 +129,36 @@
     return b;
   }
 
+  // Which side faces the user. The hidden side is inert so its audio button is not reachable.
+  function setFlipped(on) {
+    flipped = on;
+    cardEl.classList.toggle('is-flipped', on);
+    frontEl.inert = on; backEl.inert = !on;
+  }
+  function canRate() { return !busy && (revealed || !opts().full); }
+  function controls() {
+    var o = opts(), id = queue[idx], pv = S.srsPreview(id);
+    root.classList.toggle('rv-full', o.full);
+    for (var r = 1; r <= 4; r++) document.querySelector('[data-next="' + r + '"]').textContent = pv[r].label;
+    [].forEach.call(document.querySelectorAll('#rv-rate [data-full]'), function (n) { n.textContent = n.getAttribute(o.full ? 'data-full' : 'data-simple'); });
+    $('rv-rate').hidden = o.full && !revealed;
+    $('rv-reveal').hidden = !o.full || revealed;
+  }
+
   function card() {
     var c = cards[queue[idx]], o = opts(), f = $('rv-front'), b = $('rv-back');
     revealed = false; f.textContent = ''; b.textContent = '';
+    cardEl.classList.add('no-anim'); setFlipped(false); cardEl.style.transform = ''; cardEl.className = 'rv-flipcard no-anim'; stamp(0);
+    void cardEl.offsetWidth; cardEl.classList.remove('no-anim');
+    if (!FX.reduced()) cardEl.classList.add('is-in');
     $('rv-tag').textContent = (S.srsGet(c.id) ? 'REVIEW' : 'NEW CARD') + ' · ' + deckTitle.toUpperCase();
-    $('rv-hint').hidden = false;
     var han = Array.from(c.hanzi).filter(function (ch) { return /\p{Script=Han}/u.test(ch); });
     $('rv-strokes').hidden = !han.length; $('rv-write').hidden = !han.length;
     if (han.length) {
       $('rv-strokes').href = '/char/' + encodeURIComponent(han[0]); $('rv-strokes').textContent = 'Strokes for ' + c.hanzi;
       $('rv-write').href = '/practice?words=' + encodeURIComponent(han.join(''));
     }
-    var hanzi = function () { return el('div', 'rv-hanzi zh', c.hanzi); };
+    var hanzi = function () { return el('div', 'rv-hanzi zh' + (Array.from(c.hanzi).length > 3 ? ' is-long' : ''), c.hanzi); };
     var pinyin = function () {
       if (!c.pinyin) return null;
       var n = el('div', 'rv-pinyin');
@@ -142,67 +168,120 @@
     var english = function () { return el('div', 'rv-en', c.english || '—'); };
     function add(parent, n) { if (n) parent.appendChild(n); }
 
+    // Front: the prompt. Back: the whole word, so the answer is always seen together.
     if (o.first === 'zh') add(f, hanzi()); else if (o.first === 'en') add(f, english()); else add(f, audioBtn(c.hanzi));
-    if (o.pinyinFront) add(f, pinyin());
+    if (o.pinyinFront && o.first !== 'audio') add(f, pinyin());
+    add(b, hanzi()); add(b, pinyin()); add(b, english()); add(b, audioBtn(c.hanzi));
 
-    if (o.first !== 'zh') add(b, hanzi());
-    if (!o.pinyinFront) add(b, pinyin());
-    if (o.first !== 'en') add(b, english());
-    if (o.first !== 'audio') add(b, audioBtn(c.hanzi));
-
-    b.hidden = true; $('rv-rate').hidden = true; $('rv-reveal').hidden = false;
-    progress();
+    controls(); progress();
     if (o.first === 'audio') speak(c.hanzi);
-    $('rv-reveal').focus({ preventScroll: true });
+    if (o.full) $('rv-reveal').focus({ preventScroll: true }); // simple mode needs no focus: keys are handled on the document
   }
 
   function progress() {
     var p = Math.round(Math.min(idx, total) * 100 / total);
-    $('rv-count').textContent = Math.min(idx + 1, total) + ' of ' + total + (qs.get('source') === 'due' ? ' due' : '');
+    $('rv-count').textContent = Math.min(idx + 1, total) + ' / ' + total + (qs.get('source') === 'due' ? ' due' : '');
     document.querySelector('.rv-bar').setAttribute('aria-valuenow', p);
     $('rv-bar-fill').style.width = p + '%';
+    $('rv-n-learn').textContent = stats[1]; $('rv-n-know').textContent = stats[2] + stats[3] + stats[4];
   }
 
-  function reveal() {
+  // Flip the card. The first flip reveals the answer (audio, 4-grade buttons); later flips just turn it over.
+  function flip() {
+    if (busy) return;
+    setFlipped(!flipped);
     if (revealed) return;
     revealed = true;
-    var id = queue[idx], pv = S.srsPreview(id), o = opts();
-    for (var r = 1; r <= 4; r++) document.querySelector('[data-next="' + r + '"]').textContent = pv[r].label;
-    $('rv-back').hidden = false; $('rv-rate').hidden = false; $('rv-reveal').hidden = true; $('rv-hint').hidden = true;
-    if (o.audioReveal && o.first !== 'audio') speak(cards[id].hanzi);
-    document.querySelector('.rv-good').focus({ preventScroll: true });
+    var o = opts();
+    controls();
+    if (o.audioReveal && o.first !== 'audio') speak(cards[queue[idx]].hanzi);
+    if (o.full) document.querySelector('.rv-good').focus({ preventScroll: true });
   }
 
   function rate(r) {
-    if (!revealed) return;
-    var id = queue[idx];
+    if (!canRate()) return;
+    var id = queue[idx], know = r > 1;
     S.srsRate(id, r); stats[r]++;
-    if (r === 1) { queue.push(id); total = queue.length; } // Again: see it once more at the end of this session
+    if (r === 1) { queue.push(id); total = queue.length; } // Still learning: see it once more at the end of this session
+    streak = know ? streak + 1 : 0;
+    FX.bump($(know ? 'rv-n-know' : 'rv-n-learn'));
+    $('rv-n-learn').textContent = stats[1]; $('rv-n-know').textContent = stats[2] + stats[3] + stats[4];
+    if (know && (streak === 3 || streak === 5 || streak % 10 === 0)) FX.toast($('rv-stage'), streak + ' in a row!');
     idx++;
-    if (idx >= queue.length) return done();
-    card();
+    var next = function () { busy = false; if (idx >= queue.length) done(); else card(); };
+    if (FX.reduced()) return next();
+    // Fly the card off to the side it was answered on, then deal the next one.
+    busy = true;
+    cardEl.classList.remove('is-in', 'is-drag');
+    cardEl.classList.add(know ? 'is-out-right' : 'is-out-left');
+    setTimeout(next, OUT_MS);
   }
 
   function done() {
-    var reviewed = stats[1] + stats[2] + stats[3] + stats[4], box = $('rv-stats');
+    var reviewed = stats[1] + stats[2] + stats[3] + stats[4], know = stats[2] + stats[3] + stats[4], box = $('rv-stats');
     box.textContent = '';
-    [['Reviewed', reviewed, 'green'], ['Again', stats[1], 'red'], ['Good / Easy', stats[3] + stats[4], 'gold']].forEach(function (x) {
-      var d = el('div', 'stat-card stat-' + x[2]); d.appendChild(el('div', 'stat-value', x[1])); d.appendChild(el('div', 'stat-label', x[0])); box.appendChild(d);
+    [['Cards', reviewed, 'gold'], ['Know', know, 'green'], ['Still learning', stats[1], 'red']].forEach(function (x) {
+      var d = el('div', 'stat-card stat-' + x[2]), v = el('div', 'stat-value', '0');
+      d.appendChild(v); d.appendChild(el('div', 'stat-label', x[0])); box.appendChild(d);
+      FX.countUp(v, x[1]);
     });
     var left = S.srsDueCount();
     $('rv-done-note').textContent = left ? plural(left, 'card') + ' due now across all decks.' : 'All caught up. Nothing due right now.';
     $('rv-again-link').hidden = !left;
+    $('rv-restart').href = location.href;
     document.querySelector('.rv-bar').setAttribute('aria-valuenow', 100);
     show('rv-done');
+    if (know) FX.confetti(know >= reviewed ? 70 : 40);
   }
 
-  $('rv-reveal').addEventListener('click', reveal);
+  // ---- input: buttons, tap, swipe, keyboard ----
+  $('rv-reveal').addEventListener('click', flip);
   [].forEach.call(document.querySelectorAll('[data-rating]'), function (b) { b.addEventListener('click', function () { rate(+b.getAttribute('data-rating')); }); });
-  $('rv-card').addEventListener('click', function (e) { if (!revealed && !e.target.closest('button')) reveal(); });
+
+  // Drag the card sideways: past the threshold it is answered (right = Know, left = Still learning), otherwise it springs back.
+  var drag = null, SWIPE = 90, swallowClick = false;
+  function stamp(dx) {
+    cardEl.style.setProperty('--know', Math.max(0, Math.min(1, dx / SWIPE)));
+    cardEl.style.setProperty('--learn', Math.max(0, Math.min(1, -dx / SWIPE)));
+  }
+  cardEl.addEventListener('pointerdown', function (e) {
+    if (busy || e.button > 0 || e.target.closest('button')) return;
+    drag = { id: e.pointerId, x: e.clientX, y: e.clientY, dx: 0, on: false };
+  });
+  cardEl.addEventListener('pointermove', function (e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!drag.on) {
+      if (Math.abs(dx) < 10 || Math.abs(dx) < Math.abs(dy)) return;
+      if (!canRate()) { drag = null; return; }
+      drag.on = true; cardEl.classList.remove('is-in'); cardEl.classList.add('is-drag');
+      try { cardEl.setPointerCapture(e.pointerId); } catch (err) {}
+    }
+    drag.dx = dx;
+    cardEl.style.transform = 'translate(' + dx + 'px,' + (dy * 0.25) + 'px) rotate(' + (dx / 22) + 'deg)';
+    stamp(dx);
+  });
+  function endDrag(e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var d = drag; drag = null;
+    if (!d.on) return;
+    swallowClick = true; setTimeout(function () { swallowClick = false; }, 0);
+    cardEl.classList.remove('is-drag');
+    if (e.type === 'pointerup' && Math.abs(d.dx) >= SWIPE) {
+      return rate(d.dx > 0 ? 3 : 1); // flies on from where it was let go
+    }
+    cardEl.style.transform = ''; stamp(0);
+  }
+  cardEl.addEventListener('pointerup', endDrag);
+  cardEl.addEventListener('pointercancel', endDrag);
+  cardEl.addEventListener('click', function (e) { if (!swallowClick && !e.target.closest('button')) flip(); });
+
   document.addEventListener('keydown', function (e) {
-    if (e.ctrlKey || e.metaKey || e.altKey || $('rv-study').hidden) return;
-    if (e.key >= '1' && e.key <= '4') { if (revealed) { e.preventDefault(); rate(+e.key); } }
-    else if (e.key === ' ' && !e.target.closest('button')) { e.preventDefault(); reveal(); }
+    if (e.ctrlKey || e.metaKey || e.altKey || $('rv-study').hidden || e.target.closest('input,select,textarea')) return;
+    var full = opts().full;
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { if (canRate()) { e.preventDefault(); rate(e.key === 'ArrowLeft' ? 1 : 3); } }
+    else if (e.key >= '1' && e.key <= '4') { if (full && canRate()) { e.preventDefault(); rate(+e.key); } }
+    else if ((e.key === ' ' || e.key === 'Enter') && !e.target.closest('button,a,summary')) { e.preventDefault(); flip(); }
   });
 
   // ---- boot ----

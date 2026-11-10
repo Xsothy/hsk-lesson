@@ -55,6 +55,11 @@ if (app()->environment('local', 'testing')) {
 Route::get('/data/char/{char}.json', [\App\Http\Controllers\Api\ReferenceController::class, 'character'])
     ->middleware('throttle:120,1');
 
+// Public read-only stroke data for Hanzi Writer (strokes + medians), so the writing pages need no CDN.
+// A practice session loads one file per character, hence the higher limit.
+Route::get('/data/strokes/{char}.json', [\App\Http\Controllers\Api\ReferenceController::class, 'strokes'])
+    ->middleware('throttle:600,1');
+
 // Public read-only flashcard deck for Review (lesson | HSK level/set | explicit words).
 Route::get('/data/review-deck', [\App\Http\Controllers\ReviewController::class, 'deck'])->middleware('throttle:120,1');
 

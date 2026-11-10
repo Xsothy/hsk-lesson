@@ -4,7 +4,7 @@
   var T = window.HSK_THEME, S = window.HSK_STORE;
   if (!T || !S) return;
   var $ = function (k) { return document.querySelector('[data-ap="' + k + '"]'); };
-  var KEYS = ['theme', 'themeBase', 'themeAccent', 'themeRadius', 'fontHead', 'fontBody', 'fontZh'];
+  var KEYS = ['theme', 'themeBase', 'themeAccent', 'themeRadius', 'themeCards', 'fontHead', 'fontBody', 'fontZh'];
   var showCode = false;
 
   function el(tag, attrs, kids) {
@@ -32,11 +32,13 @@
     Object.keys(T.PRESETS).forEach(function (k) {
       var p = T.PRESETS[k], b = T.BASES[p.themeBase][p.theme === 'dark' ? 'd' : 'l'];
       var accent = p.theme === 'dark' ? T.tokens({ base: p.themeBase, accent: p.themeAccent, radius: 16, head: 'outfit', body: 'outfit', zh: 'serif' }, true)['--red'] || '#e8736c' : T.ACCENTS[p.themeAccent][1];
+      var r = Math.round(p.themeRadius / 2.4), ring = p.themeCards === 'outline' ? '0 0 0 1px ' + b[2] : p.themeCards === 'raised' ? '0 3px 8px rgba(0,0,0,.14)' : 'none';
       var swatch = el('span', { class: 'ap-sw', style: 'background:' + b[0] + ';border-color:' + b[2] }, [
-        el('span', { class: 'ap-sw-zh', lang: 'zh-Hans', text: '学', style: 'color:' + b[4] + ';font-family:' + T.FONTS.zh.opts[p.fontZh][1] }),
-        el('span', { class: 'ap-sw-gap' }),
-        el('span', { class: 'ap-dot', style: 'background:' + accent }),
-        el('span', { class: 'ap-dot', style: 'background:' + b[3] + ';border:1px solid ' + b[2] })
+        el('span', { class: 'ap-sw-card', style: 'background:' + b[1] + ';border-radius:' + r + 'px;box-shadow:' + ring }, [
+          el('span', { class: 'ap-sw-zh', lang: 'zh-Hans', text: '学', style: 'color:' + b[4] + ';font-family:' + T.FONTS.zh.opts[p.fontZh][1] }),
+          el('span', { class: 'ap-sw-lines' }, [el('i', { style: 'background:' + b[4] }), el('i', { style: 'background:' + b[5] })])
+        ]),
+        el('span', { class: 'ap-sw-btn', style: 'background:' + accent + ';border-radius:' + r + 'px' })
       ]);
       presets.appendChild(btn('ap-opt ap-preset', s.themePreset === k, '', function () {
         var patch = { themePreset: k }; KEYS.forEach(function (key) { patch[key] = p[key]; }); S.setSettings(patch);
@@ -67,6 +69,16 @@
     var radii = $('radii'); radii.textContent = '';
     T.RADII.forEach(function (r) {
       radii.appendChild(btn('ap-opt ap-radius', c.radius === r[1], r[0], function () { set({ themeRadius: r[1] }); }));
+    });
+
+    var cards = $('cards'); cards.textContent = '';
+    T.CARDS.forEach(function (x) {
+      cards.appendChild(btn('ap-opt ap-radius ap-cardstyle', (s.themeCards || 'flat') === x[0], x[1], function () { set({ themeCards: x[0] }); }, null, { 'data-cards': x[0] }));
+    });
+    var motion = $('motion'); motion.textContent = '';
+    T.MOTION.forEach(function (x) {
+      // Motion is a comfort setting, not part of the look: changing it keeps the current preset.
+      motion.appendChild(btn('ap-mode-btn', (s.motion || 'full') === x[0], x[1], function () { S.setSettings({ motion: x[0] }); }));
     });
 
     var fonts = $('fonts'); fonts.textContent = '';

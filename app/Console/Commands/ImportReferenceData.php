@@ -40,7 +40,7 @@ class ImportReferenceData extends Command
         $hsk = $this->importHskWords("$dir/complete-hsk.json");
         $chars = $this->importCharacters("$dir/makemeahanzi-dictionary.txt", $hsk);
 
-        $strokes = $this->importStrokes("$dir/makemeahanzi-graphics.txt");
+        $strokes = $this->importStrokes("$dir/makemeahanzi-graphics.txt", "$dir/makemeahanzi-dictionary.txt");
         $parts = $this->importParts();
 
         $this->info("Imported $chars characters, $strokes stroke outlines, $parts part links and ".count($hsk['rows']).' HSK words.');
@@ -161,16 +161,32 @@ class ImportReferenceData extends Command
         return count($rows);
     }
 
-    /** Stroke outlines for worksheets (F2). Medians are not needed server-side. */
-    private function importStrokes(string $path): int
+    /**
+     * Stroke outlines (worksheets, F2) plus the medians and radical strokes Hanzi Writer needs, so the
+     * character and practice pages load stroke data from this site (/data/strokes/{char}.json).
+     */
+    private function importStrokes(string $path, string $dictionaryPath): int
     {
+        $rad = [];
+        foreach (new \SplFileObject($dictionaryPath) as $line) {
+            $c = trim($line) === '' ? null : json_decode($line, true);
+            if ($c && ($r = self::radStrokes($c['decomposition'] ?? '', $c['radical'] ?? '', $c['matches'] ?? []))) {
+                $rad[$c['character']] = $r;
+            }
+        }
+
         $rows = [];
         foreach (new \SplFileObject($path) as $line) {
             $c = trim($line) === '' ? null : json_decode($line, true);
             if (! $c || empty($c['strokes'])) {
                 continue;
             }
-            $rows[] = ['char' => $c['character'], 'strokes' => json_encode($c['strokes'])];
+            $rows[] = [
+                'char' => $c['character'],
+                'strokes' => json_encode($c['strokes']),
+                'medians' => isset($c['medians']) ? json_encode($c['medians']) : null,
+                'rad_strokes' => isset($rad[$c['character']]) ? json_encode($rad[$c['character']]) : null,
+            ];
         }
 
         DB::transaction(function () use ($rows) {
@@ -181,5 +197,49 @@ class ImportReferenceData extends Command
         });
 
         return count($rows);
+    }
+
+    /**
+     * Indices of the strokes that draw the radical. `matches[i]` is the path of stroke i in the decomposition
+     * tree; the radical's strokes are those under the first leaf equal to the radical. A character that is its
+     * own radical has none. Same result as the hanzi-writer-data package for all but one character.
+     *
+     * @param  array<int, array<int, int>|null>  $matches
+     * @return array<int, int>
+     */
+    public static function radStrokes(string $decomposition, string $radical, array $matches): array
+    {
+        if ($radical === '' || $decomposition === '') {
+            return [];
+        }
+        $arity = ['⿰' => 2, '⿱' => 2, '⿴' => 2, '⿵' => 2, '⿶' => 2, '⿷' => 2, '⿸' => 2, '⿹' => 2, '⿺' => 2, '⿻' => 2, '⿲' => 3, '⿳' => 3];
+        $chars = mb_str_split($decomposition);
+        $pos = 0;
+        $found = null;
+        $walk = function (array $path) use (&$walk, &$pos, &$found, $chars, $arity, $radical) {
+            if ($pos >= count($chars)) {
+                return;
+            }
+            $c = $chars[$pos++];
+            if (isset($arity[$c])) {
+                for ($i = 0; $i < $arity[$c]; $i++) {
+                    $walk([...$path, $i]);
+                }
+            } elseif ($found === null && $c === $radical) {
+                $found = $path;
+            }
+        };
+        $walk([]);
+        if (! $found) { // not found, or the whole character is the radical
+            return [];
+        }
+        $out = [];
+        foreach ($matches as $i => $m) {
+            if (is_array($m) && array_slice($m, 0, count($found)) === $found) {
+                $out[] = $i;
+            }
+        }
+
+        return $out;
     }
 }

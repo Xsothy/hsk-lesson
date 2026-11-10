@@ -128,7 +128,7 @@ body:has(.lesson-hero){overflow-x:clip}
 @media (max-width:760px){
   .lesson-hero{padding:20px 16px;margin-bottom:24px}
   .lesson-hero h1{font-size:28px}
-  .secnav{flex:1 0 100%;flex-direction:row;overflow-x:auto;scrollbar-width:none;top:var(--hdr-h,112px);z-index:2;background:var(--paper)}
+  .secnav{flex:1 0 100%;flex-direction:row;overflow-x:auto;scrollbar-width:none;top:var(--hdr-h,57px);z-index:2;background:var(--paper)}
   .secnav a{flex-shrink:0;white-space:nowrap}
 }
 
