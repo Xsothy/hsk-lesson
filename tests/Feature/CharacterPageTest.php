@@ -58,7 +58,7 @@ class CharacterPageTest extends TestCase
             ->assertSee('href="'.route('char', '字').'"', false)
             ->assertSee('/css/character.css', false)
             ->assertSeeInOrder(['/js/store.js', '/js/character.js'], false)
-            ->assertSee('hanzi-writer@3.7.2', false);
+            ->assertSee('/vendor/hanzi-writer-3.7.2.min.js', false)->assertDontSee('cdn.jsdelivr.net', false);
     }
 
     public function test_only_the_first_character_of_the_path_is_used(): void

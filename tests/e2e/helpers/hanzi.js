@@ -1,8 +1,8 @@
 // @ts-check
 // Drive a mounted Hanzi Writer quiz with real mouse strokes along the character's medians.
-// Stroke data comes from the same CDN package the app uses (hanzi-writer-data@2.0.1).
+// Stroke data comes from the same endpoint the app uses (/data/strokes/{char}.json, filled by hsk:import-reference).
 
-const DATA = 'https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0.1/';
+const DATA = '/data/strokes/';
 
 /** @returns {Promise<number[][][]>} medians per stroke, in Hanzi Writer data space. */
 async function medians(page, ch) {

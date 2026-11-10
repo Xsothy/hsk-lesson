@@ -30,6 +30,8 @@ Push to `main` first; the server resets to `origin/main`, so unpushed work is no
 
 It prints the previous and new commit, so note the previous one before a risky deploy.
 
+**Self-hosted stroke data (one-off on the server):** after the deploy that adds `character_strokes.medians`, run `php artisan hsk:import-reference` once more. It fills the medians and radical strokes behind `/data/strokes/{char}.json`. Until then the character and practice pages fall back to jsDelivr for stroke data, as before.
+
 **F2 worksheets (one-off on the server):** after the deploy that adds `character_strokes`, run `php artisan hsk:import-reference` once so stroke outlines are loaded (it downloads Make Me a Hanzi `graphics.txt`, ~30 MB, into `database/sources`). Until then `/worksheet.pdf` answers 422 "No characters with stroke data".
 
 ## Rollback
@@ -56,4 +58,4 @@ HTTPS: not configured, served on IP:8169 (http://43.156.63.70:8169).
 
 ## CI
 
-`.github/workflows/ci.yml` runs on push and PRs to `main`: `php artisan test`, `node tests/Unit/store.test.js`, and the Playwright alpha suite. Playwright needs a seeded database with reference data, so CI runs `migrate --seed` and `hsk:import-reference` (downloads open data once; `database/sources` is cached). The HTML report is uploaded as an artifact on failure.
+`.github/workflows/ci.yml` runs on push and PRs to `main`: `php artisan test`, `npm run test:unit`, and the Playwright suite. Playwright needs a seeded database with reference data, so CI runs `migrate --seed` and `hsk:import-reference` (downloads open data once; `database/sources` is cached). The HTML report is uploaded as an artifact on failure.

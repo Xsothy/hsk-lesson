@@ -20,6 +20,24 @@ class ReferenceController extends Controller
         return response()->json(['data' => $data], 200, [], JSON_UNESCAPED_UNICODE);
     }
 
+    /**
+     * Stroke data in the Hanzi Writer format ({strokes, medians, radStrokes?}), served from our own
+     * database so the writing pages do not depend on a CDN. 404 until `hsk:import-reference` has run.
+     */
+    public function strokes(string $char): JsonResponse
+    {
+        $row = \App\Models\CharacterStroke::where('char', mb_substr($char, 0, 1))->first();
+        abort_if(! $row || empty($row->medians), 404, 'No stroke data for this character.');
+
+        $data = ['strokes' => $row->strokes, 'medians' => $row->medians];
+        if ($row->rad_strokes) {
+            $data['radStrokes'] = $row->rad_strokes;
+        }
+
+        // The data only changes when the reference import is re-run, so browsers may keep it for a week.
+        return response()->json($data, 200, ['Cache-Control' => 'public, max-age=604800']);
+    }
+
     public function characters(Request $request): JsonResponse
     {
         $q = Character::query()->orderByRaw('COALESCE(hsk3_level, 10)')->orderByRaw('COALESCE(frequency, 999999)');

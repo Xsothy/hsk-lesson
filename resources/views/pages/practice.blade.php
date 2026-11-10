@@ -137,7 +137,7 @@
 
 @push('scripts')
 <script src="/js/store.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.7.2/dist/hanzi-writer.min.js"></script>
+<script src="/vendor/hanzi-writer-3.7.2.min.js"></script>
 <script src="/js/character.js"></script>
 <script src="/js/practice.js"></script>
 @endpush

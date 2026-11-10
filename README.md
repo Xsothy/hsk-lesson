@@ -37,7 +37,7 @@ Requires PHP 8.4 (the locked dependencies need it; Laravel Herd works, the CLI p
 composer install
 cp .env.example .env && php artisan key:generate
 php artisan migrate --seed         # creates the SQLite DB and seeds the lesson content
-php artisan hsk:import-reference   # 9.5k characters + HSK 2.0/3.0 words (downloads open data to database/sources/)
+php artisan hsk:import-reference   # 9.5k characters, stroke data, HSK 2.0/3.0 words (downloads open data to database/sources/)
 php artisan serve                  # http://127.0.0.1:8000
 ```
 

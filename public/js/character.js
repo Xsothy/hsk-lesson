@@ -2,22 +2,29 @@
  * Character page logic (C1) + shared Hanzi Writer helpers.
  * - window.HSKCharacter: helpers reused by the legacy char.html (char-page.js) and later by Practice (D1).
  * - Auto-initialises the Blade page /char/{c} when [data-character-page] is present.
- * Stroke data: Make Me a Hanzi via hanzi-writer-data (pinned), loaded from jsDelivr.
+ * Stroke data: Make Me a Hanzi, served by this site from /data/strokes/{char}.json (jsDelivr only as a fallback).
  */
 (function () {
   'use strict';
 
-  var DATA_URL = 'https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0.1/';
+  var DATA_URL = '/data/strokes/';                                        // our own copy (hsk:import-reference)
+  var CDN_URL = 'https://cdn.jsdelivr.net/npm/hanzi-writer-data@2.0.1/';  // only if this server has no data yet
   var NS = 'http://www.w3.org/2000/svg';
   var cache = {};
 
   // ---------- data ----------
+  function fetchJson(url) {
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error(String(r.status));
+      return r.json();
+    });
+  }
   function loadCharData(c) {
     if (!cache[c]) {
-      cache[c] = fetch(DATA_URL + encodeURIComponent(c) + '.json').then(function (r) {
-        if (!r.ok) throw new Error('No stroke data for ' + c);
-        return r.json();
-      });
+      var file = encodeURIComponent(c) + '.json';
+      cache[c] = fetchJson(DATA_URL + file)
+        .catch(function () { return fetchJson(CDN_URL + file); })
+        .catch(function () { throw new Error('No stroke data for ' + c); });
       cache[c].catch(function () { delete cache[c]; });
     }
     return cache[c];
