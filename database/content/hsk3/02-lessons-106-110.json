@@ -241,11 +241,16 @@
       {"zh": "明天我和爸爸去北京。", "en": "Tomorrow Dad and I are going to Beijing."},
       {"zh": "我们不坐飞机，我们坐火车去。", "en": "We're not flying; we're going by train."},
       {"zh": "从我家到北京要五个小时。", "en": "It takes five hours from home to Beijing."},
-      {"zh": "在车上，我看书，也看外边的山和树。", "en": "On the train I read, and I look at the mountains and trees outside."}
+      {"zh": "在车上，我看书，也看外边的山和树。", "en": "On the train I read, and I look at the mountains and trees outside."},
+      {"zh": "下午两点，火车到了北京车站。", "en": "At two in the afternoon the train arrived at Beijing station."},
+      {"zh": "爸爸的朋友开车来车站等我们。", "en": "Dad's friend drove to the station to wait for us."},
+      {"zh": "从车站到他家不远，我们打车去。", "en": "His home isn't far from the station, so we took a taxi."}
      ],
      "questions": [
       {"id": "q1", "type": "multiple_choice", "question": "他们怎么去北京？", "questionEn": "How are they getting to Beijing?", "options": ["坐飞机", "坐火车", "开车", "打车"], "answer": 1},
-      {"id": "q2", "type": "true_false", "question": "从他家到北京要五个小时。", "questionEn": "It takes five hours from his home to Beijing.", "answer": true}
+      {"id": "q2", "type": "true_false", "question": "从他家到北京要五个小时。", "questionEn": "It takes five hours from his home to Beijing.", "answer": true},
+      {"id": "q3", "type": "multiple_choice", "question": "他们几点到北京？", "questionEn": "What time did they arrive in Beijing?", "options": ["下午两点", "上午五点", "晚上两点", "中午十二点"], "answer": 0},
+      {"id": "q4", "type": "true_false", "question": "爸爸在北京有朋友。", "questionEn": "Dad has a friend in Beijing.", "answer": true}
      ],
      "focusWords": ["火车", "飞机", "车上", "从"],
      "grammarFocus": ["坐 + vehicle + 去", "从…到…"]
@@ -307,11 +312,17 @@
       {"zh": "星期六我和妈妈去商场买东西。", "en": "On Saturday Mom and I went shopping at the mall."},
       {"zh": "妈妈想给我买新衣服。", "en": "Mom wanted to buy me new clothes."},
       {"zh": "那些衣服太贵了，都五百多块。", "en": "Those clothes were too expensive — all over 500 yuan."},
-      {"zh": "我们没买衣服，买了一些书和水果。", "en": "We didn't buy clothes; we bought some books and fruit."}
+      {"zh": "我们没买衣服，买了一些书和水果。", "en": "We didn't buy clothes; we bought some books and fruit."},
+      {"zh": "妈妈说：“别的商店有一些衣服不太贵。”", "en": "Mom said, 'Other shops have some clothes that aren't too expensive.'"},
+      {"zh": "下午我们去了学校旁边的一个小商店。", "en": "In the afternoon we went to a small shop next to the school."},
+      {"zh": "那儿有一个好看的书包，五十块。", "en": "There was a nice schoolbag there for fifty yuan."},
+      {"zh": "妈妈买了这个书包，我很高兴。", "en": "Mom bought the schoolbag, and I was very happy."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "她们买了新衣服。", "questionEn": "They bought new clothes.", "answer": false},
-      {"id": "q2", "type": "multiple_choice", "question": "那些衣服多少钱？", "questionEn": "How much were those clothes?", "options": ["五十多块", "一百多块", "五百多块", "五块多"], "answer": 2}
+      {"id": "q2", "type": "multiple_choice", "question": "那些衣服多少钱？", "questionEn": "How much were those clothes?", "options": ["五十多块", "一百多块", "五百多块", "五块多"], "answer": 2},
+      {"id": "q3", "type": "multiple_choice", "question": "妈妈在小商店买了什么？", "questionEn": "What did Mom buy at the small shop?", "options": ["衣服", "手机", "钱包", "书包"], "answer": 3},
+      {"id": "q4", "type": "true_false", "question": "商场的衣服不贵。", "questionEn": "The clothes at the mall weren't expensive.", "answer": false}
      ],
      "focusWords": ["商场", "衣服", "太", "一些"],
      "grammarFocus": ["太…了", "没 + verb"]

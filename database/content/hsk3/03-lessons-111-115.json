@@ -41,11 +41,16 @@
       {"zh": "我妈妈是工人，她的工作很忙。", "en": "My mom is a factory worker. Her job keeps her busy."},
       {"zh": "她早上六点起床，先做早饭，再去上班。", "en": "She gets up at six, makes breakfast first, then goes to work."},
       {"zh": "下午六点下班，回家就做晚饭。", "en": "She finishes at six p.m. and makes dinner as soon as she's home."},
-      {"zh": "晚上她常常很累，九点半就睡觉了。", "en": "In the evening she's often tired and goes to bed by 9:30."}
+      {"zh": "晚上她常常很累，九点半就睡觉了。", "en": "In the evening she's often tired and goes to bed by 9:30."},
+      {"zh": "星期六和星期天妈妈不上班，在家休息。", "en": "On Saturdays and Sundays Mom doesn't work; she rests at home."},
+      {"zh": "她有时候看电视，有时候和我们去饭店吃饭。", "en": "Sometimes she watches TV, sometimes she goes to a restaurant with us."},
+      {"zh": "我和爸爸常常先做饭，再叫妈妈来吃。", "en": "Dad and I often cook first, then call Mom to come and eat."}
      ],
      "questions": [
       {"id": "q1", "type": "multiple_choice", "question": "妈妈几点下班？", "questionEn": "When does Mom finish work?", "options": ["五点", "六点", "六点半", "九点半"], "answer": 1},
-      {"id": "q2", "type": "true_false", "question": "妈妈先去上班，再做早饭。", "questionEn": "Mom goes to work first, then makes breakfast.", "answer": false}
+      {"id": "q2", "type": "true_false", "question": "妈妈先去上班，再做早饭。", "questionEn": "Mom goes to work first, then makes breakfast.", "answer": false},
+      {"id": "q3", "type": "true_false", "question": "星期六妈妈也要上班。", "questionEn": "Mom has to work on Saturdays too.", "answer": false},
+      {"id": "q4", "type": "multiple_choice", "question": "妈妈的工作怎么样？", "questionEn": "What is Mom's job like?", "options": ["不累", "在家工作", "很忙", "下午不上班"], "answer": 2}
      ],
      "focusWords": ["工人", "先", "再", "就", "常常"],
      "grammarFocus": ["先…再…", "就"]
@@ -108,11 +113,16 @@
       {"zh": "我们家住在一个老楼里，我家在四楼。", "en": "We live in an old building, on the fourth floor."},
       {"zh": "房子不大，有两个房间。", "en": "The flat isn't big — it has two rooms."},
       {"zh": "我的房间很干净，床在门的左边。", "en": "My room is clean. The bed is to the left of the door."},
-      {"zh": "桌子上放着我的电脑和一些书。", "en": "My computer and some books are on the table."}
+      {"zh": "桌子上放着我的电脑和一些书。", "en": "My computer and some books are on the table."},
+      {"zh": "电脑旁边有一个新杯子，是妈妈买的。", "en": "Next to the computer is a new cup that Mom bought."},
+      {"zh": "楼下有一个小商店，我常常去那儿买水果。", "en": "There's a small shop downstairs; I often buy fruit there."},
+      {"zh": "晚上我关上门，在房间里看书。", "en": "In the evening I close the door and read in my room."}
      ],
      "questions": [
       {"id": "q1", "type": "multiple_choice", "question": "他家在几楼？", "questionEn": "Which floor is his home on?", "options": ["二楼", "三楼", "四楼", "五楼"], "answer": 2},
-      {"id": "q2", "type": "true_false", "question": "床在门的右边。", "questionEn": "The bed is to the right of the door.", "answer": false}
+      {"id": "q2", "type": "true_false", "question": "床在门的右边。", "questionEn": "The bed is to the right of the door.", "answer": false},
+      {"id": "q3", "type": "multiple_choice", "question": "楼下有什么？", "questionEn": "What is downstairs?", "options": ["小商店", "车站", "饭店", "学校"], "answer": 0},
+      {"id": "q4", "type": "true_false", "question": "他的房间里有床、电脑和书。", "questionEn": "His room has a bed, a computer and books.", "answer": true}
      ],
      "focusWords": ["楼", "房子", "房间", "干净", "放"],
      "grammarFocus": ["住在", "place + 放着 + thing"]
@@ -175,11 +185,16 @@
       {"zh": "星期天天气非常好，不冷也不热。", "en": "Sunday's weather was great — not cold, not hot."},
       {"zh": "我和朋友去山上玩儿。", "en": "My friend and I went up the mountain."},
       {"zh": "山很高，山上有很多树和花。", "en": "The mountain is high, with lots of trees and flowers."},
-      {"zh": "白的花最好看，我们都觉得这里真好！", "en": "The white flowers were the prettiest. We both thought it was wonderful here!"}
+      {"zh": "白的花最好看，我们都觉得这里真好！", "en": "The white flowers were the prettiest. We both thought it was wonderful here!"},
+      {"zh": "山上比山下冷一点儿，风也很大。", "en": "It was a bit colder at the top than below, and very windy."},
+      {"zh": "我们在山上吃了一些面包和水果。", "en": "We ate some bread and fruit on the mountain."},
+      {"zh": "下午四点下雨了，我们就回家了。", "en": "At four in the afternoon it started raining, so we went home."}
      ],
      "questions": [
       {"id": "q1", "type": "multiple_choice", "question": "星期天天气好吗？", "questionEn": "Was the weather good on Sunday?", "options": ["很冷", "很热", "下雨", "非常好"], "answer": 3},
-      {"id": "q2", "type": "true_false", "question": "他们觉得白的花最好看。", "questionEn": "They thought the white flowers were the prettiest.", "answer": true}
+      {"id": "q2", "type": "true_false", "question": "他们觉得白的花最好看。", "questionEn": "They thought the white flowers were the prettiest.", "answer": true},
+      {"id": "q3", "type": "true_false", "question": "山上比山下热。", "questionEn": "It was hotter on the mountain than below.", "answer": false},
+      {"id": "q4", "type": "multiple_choice", "question": "下午四点他们做什么了？", "questionEn": "What did they do at four in the afternoon?", "options": ["上山", "回家", "吃饭", "睡觉"], "answer": 1}
      ],
      "focusWords": ["天气", "山", "树", "花", "最"],
      "grammarFocus": ["不…也不…", "最 + adjective"]
@@ -190,11 +205,17 @@
       {"zh": "A：北京冷还是这儿冷？", "en": "A: Is Beijing colder, or here?"},
       {"zh": "B：北京比这儿冷。", "en": "B: Beijing is colder than here."},
       {"zh": "A：北京常常下雨吗？", "en": "A: Does it rain often in Beijing?"},
-      {"zh": "B：不常下雨，风很大。", "en": "B: Not often, but it's very windy."}
+      {"zh": "B：不常下雨，风很大。", "en": "B: Not often, but it's very windy."},
+      {"zh": "A：北京几月最冷？我明年一月想去北京。", "en": "A: Which month is coldest in Beijing? I want to go next January."},
+      {"zh": "B：一月最冷，你要多穿一点儿衣服。", "en": "B: January is coldest — you should wear more clothes."},
+      {"zh": "A：这儿一月也冷吗？我觉得这儿的天气真好。", "en": "A: Is it cold here in January too? I think the weather here is great."},
+      {"zh": "B：这儿一月不太冷，跟北京的三月一样。", "en": "B: January here isn't very cold — it's like March in Beijing."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "这儿比北京冷。", "questionEn": "It's colder here than in Beijing.", "answer": false},
-      {"id": "q2", "type": "true_false", "question": "北京不常下雨，风很大。", "questionEn": "It doesn't often rain in Beijing, but it's windy.", "answer": true}
+      {"id": "q2", "type": "true_false", "question": "北京不常下雨，风很大。", "questionEn": "It doesn't often rain in Beijing, but it's windy.", "answer": true},
+      {"id": "q3", "type": "multiple_choice", "question": "A 明年几月想去北京？", "questionEn": "Which month does A want to go to Beijing next year?", "options": ["三月", "十月", "五月", "一月"], "answer": 3},
+      {"id": "q4", "type": "true_false", "question": "B 觉得 A 去北京要多穿衣服。", "questionEn": "B thinks A should wear more clothes in Beijing.", "answer": true}
      ],
      "focusWords": ["比", "冷", "下雨", "风"],
      "grammarFocus": ["A 比 B + adj", "…还是…？"]
@@ -241,11 +262,16 @@
       {"zh": "昨天我的手不能动了。", "en": "Yesterday I couldn't move my hand."},
       {"zh": "妈妈和我去医院看病。", "en": "Mom and I went to the hospital."},
       {"zh": "医院里病人很多，我们等了一个小时。", "en": "There were lots of patients; we waited an hour."},
-      {"zh": "医生说不是大病，不用住在医院，多休息就好。", "en": "The doctor said it wasn't serious — no need to stay in hospital, just rest."}
+      {"zh": "医生说不是大病，不用住在医院，多休息就好。", "en": "The doctor said it wasn't serious — no need to stay in hospital, just rest."},
+      {"zh": "第二天我请假了，在家休息了一天。", "en": "The next day I took leave and rested at home all day."},
+      {"zh": "同学们打电话问我：“你的手好了吗？”", "en": "My classmates called and asked, 'Is your hand better?'"},
+      {"zh": "现在我的手好了，明天就能去上课了。", "en": "Now my hand is better, and tomorrow I can go to class."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "他要住在医院里。", "questionEn": "He has to stay in the hospital.", "answer": false},
-      {"id": "q2", "type": "true_false", "question": "他们在医院等了一个小时。", "questionEn": "They waited an hour at the hospital.", "answer": true}
+      {"id": "q2", "type": "true_false", "question": "他们在医院等了一个小时。", "questionEn": "They waited an hour at the hospital.", "answer": true},
+      {"id": "q3", "type": "multiple_choice", "question": "第二天他做什么了？", "questionEn": "What did he do the next day?", "options": ["去上课", "去医院", "在家休息", "去商店"], "answer": 2},
+      {"id": "q4", "type": "true_false", "question": "他的病不是大病。", "questionEn": "His illness wasn't serious.", "answer": true}
      ],
      "focusWords": ["医院", "看病", "病人", "医生", "不用"],
      "grammarFocus": ["不能 + verb", "不用 + verb"]
@@ -307,11 +333,16 @@
       {"zh": "我有一个网友，她叫小白。", "en": "I have an online friend called Xiaobai."},
       {"zh": "我们都爱唱歌，常常在网上一起唱。", "en": "We both love singing and often sing together online."},
       {"zh": "她唱歌非常好听。", "en": "She sings beautifully."},
-      {"zh": "下个星期她来北京，我们想一块儿去玩儿。", "en": "Next week she's coming to Beijing; we want to go out together."}
+      {"zh": "下个星期她来北京，我们想一块儿去玩儿。", "en": "Next week she's coming to Beijing; we want to go out together."},
+      {"zh": "我们先去电影院看电影。", "en": "First we'll go to the cinema to see a film."},
+      {"zh": "那个电影非常好看，我们都很喜欢。", "en": "That film is great; we both like it a lot."},
+      {"zh": "晚上我们去饭店吃饭，她说北京的菜很好吃。", "en": "In the evening we'll eat at a restaurant; she says Beijing food is delicious."}
      ],
      "questions": [
       {"id": "q1", "type": "multiple_choice", "question": "他们的爱好是什么？", "questionEn": "What hobby do they share?", "options": ["打球", "唱歌", "看电影", "上网"], "answer": 1},
-      {"id": "q2", "type": "true_false", "question": "小白下个星期来北京。", "questionEn": "Xiaobai is coming to Beijing next week.", "answer": true}
+      {"id": "q2", "type": "true_false", "question": "小白下个星期来北京。", "questionEn": "Xiaobai is coming to Beijing next week.", "answer": true},
+      {"id": "q3", "type": "multiple_choice", "question": "他们先去哪儿？", "questionEn": "Where will they go first?", "options": ["饭店", "商场", "电影院", "学校"], "answer": 2},
+      {"id": "q4", "type": "true_false", "question": "小白不在北京住。", "questionEn": "Xiaobai doesn't live in Beijing.", "answer": true}
      ],
      "focusWords": ["网友", "爱", "网上", "一起", "一块儿"],
      "grammarFocus": ["爱 + verb", "一起 + verb"]

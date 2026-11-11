@@ -41,11 +41,16 @@
       {"zh": "上个星期我们考汉语，考试很难。", "en": "Last week we had a Chinese exam. It was hard."},
       {"zh": "考试前，我晚上常常在图书馆认真学习。", "en": "Before it, I often studied hard in the library in the evening."},
       {"zh": "考试的字我都会写。", "en": "I knew how to write all the characters in the exam."},
-      {"zh": "最后有一个字写错了，别的都对！", "en": "In the end one character was wrong, and everything else was right!"}
+      {"zh": "最后有一个字写错了，别的都对！", "en": "In the end one character was wrong, and everything else was right!"},
+      {"zh": "老师告诉我们，我考了九十八分。", "en": "The teacher told us I got 98 points."},
+      {"zh": "我很高兴，回家就告诉了妈妈。", "en": "I was very happy and told Mom as soon as I got home."},
+      {"zh": "妈妈说：“学习认真，就能考好。”", "en": "Mom said, 'If you study hard, you'll do well in exams.'"}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "考试不难。", "questionEn": "The exam wasn't hard.", "answer": false},
-      {"id": "q2", "type": "multiple_choice", "question": "他写错了几个字？", "questionEn": "How many characters did he get wrong?", "options": ["一个", "两个", "三个", "没有"], "answer": 0}
+      {"id": "q2", "type": "multiple_choice", "question": "他写错了几个字？", "questionEn": "How many characters did he get wrong?", "options": ["一个", "两个", "三个", "没有"], "answer": 0},
+      {"id": "q3", "type": "multiple_choice", "question": "他考了多少分？", "questionEn": "What score did he get?", "options": ["八十九分", "九十分", "一百分", "九十八分"], "answer": 3},
+      {"id": "q4", "type": "true_false", "question": "妈妈觉得学习要认真。", "questionEn": "Mom thinks you should study seriously.", "answer": true}
      ],
      "focusWords": ["考试", "图书馆", "认真", "最后", "错"],
      "grammarFocus": ["verb + 错", "都"]
@@ -107,11 +112,16 @@
       {"zh": "上个月我来到北京学习汉语。", "en": "Last month I came to Beijing to study Chinese."},
       {"zh": "第一天上课，老师说：“请站起来，介绍一下。”", "en": "On the first day the teacher said, 'Please stand up and introduce yourself.'"},
       {"zh": "我站起来说：“我叫大明，我是外国人。”", "en": "I stood up and said, 'My name is Daming. I'm from abroad.'"},
-      {"zh": "同学们都听见了，他们说：“你好，大明！”", "en": "My classmates all heard and said, 'Hi, Daming!'"}
+      {"zh": "同学们都听见了，他们说：“你好，大明！”", "en": "My classmates all heard and said, 'Hi, Daming!'"},
+      {"zh": "老师说：“请坐。大明，你说的汉语很好！”", "en": "The teacher said, 'Please sit. Daming, your Chinese is very good!'"},
+      {"zh": "下课了，一个同学来我这儿和我说话。", "en": "After class a classmate came over and talked to me."},
+      {"zh": "现在他是我在北京的第一个朋友。", "en": "Now he's my first friend in Beijing."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "他上个月来到北京。", "questionEn": "He came to Beijing last month.", "answer": true},
-      {"id": "q2", "type": "multiple_choice", "question": "老师请他做什么？", "questionEn": "What did the teacher ask him to do?", "options": ["坐下", "出去", "介绍一下", "回家"], "answer": 2}
+      {"id": "q2", "type": "multiple_choice", "question": "老师请他做什么？", "questionEn": "What did the teacher ask him to do?", "options": ["坐下", "出去", "介绍一下", "回家"], "answer": 2},
+      {"id": "q3", "type": "true_false", "question": "老师觉得大明的汉语不好。", "questionEn": "The teacher thinks Daming's Chinese is bad.", "answer": false},
+      {"id": "q4", "type": "multiple_choice", "question": "下课了，谁来和大明说话？", "questionEn": "Who came to talk to Daming after class?", "options": ["老师", "一个同学", "妈妈", "医生"], "answer": 1}
      ],
      "focusWords": ["来到", "站", "起来", "介绍", "听见"],
      "grammarFocus": ["站起来", "介绍一下"]
@@ -173,11 +183,17 @@
       {"zh": "昨天在路上，我看见一个小男孩儿站在路口。", "en": "Yesterday I saw a little boy standing at a street corner."},
       {"zh": "他说他找不到妈妈了。", "en": "He said he couldn't find his mom."},
       {"zh": "我帮他给妈妈打电话。", "en": "I helped him call his mom."},
-      {"zh": "过了一会儿，他妈妈就来了。小朋友笑了。", "en": "Soon after, his mom found him. The little boy smiled."}
+      {"zh": "过了一会儿，他妈妈就来了。小朋友笑了。", "en": "Soon after, his mom found him. The little boy smiled."},
+      {"zh": "他妈妈说：“谢谢你！你真是个好人。”", "en": "His mom said, 'Thank you! You're a really good person.'"},
+      {"zh": "我笑着说：“不客气。”", "en": "I smiled and said, 'You're welcome.'"},
+      {"zh": "她给了小朋友一个面包，小朋友也给了我一个。", "en": "She gave the boy a bun, and he gave me one too."},
+      {"zh": "帮了别人，我也很高兴。", "en": "Having helped someone, I felt happy too."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "小男孩儿找不到爸爸了。", "questionEn": "The little boy couldn't find his dad.", "answer": false},
-      {"id": "q2", "type": "multiple_choice", "question": "最后谁找到了小朋友？", "questionEn": "Who found the little boy in the end?", "options": ["爸爸", "妈妈", "老师", "医生"], "answer": 1}
+      {"id": "q2", "type": "multiple_choice", "question": "最后谁找到了小朋友？", "questionEn": "Who found the little boy in the end?", "options": ["爸爸", "妈妈", "老师", "医生"], "answer": 1},
+      {"id": "q3", "type": "true_false", "question": "小朋友给了我一个面包。", "questionEn": "The little boy gave me a bun.", "answer": true},
+      {"id": "q4", "type": "multiple_choice", "question": "他觉得帮别人怎么样？", "questionEn": "How does he feel about helping others?", "options": ["很累", "很难", "没有用", "很高兴"], "answer": 3}
      ],
      "focusWords": ["看见", "找", "帮", "笑"],
      "grammarFocus": ["找不到 / 找到", "帮 + person + verb"]
@@ -239,11 +255,16 @@
       {"zh": "爸爸今天要开一个很重要的会。", "en": "Dad had a very important meeting today."},
       {"zh": "他的电脑非常慢。", "en": "But his computer was really slow."},
       {"zh": "爸爸生气了，他说：“这个电脑太差了！”", "en": "Dad got cross and said, 'This computer is terrible!'"},
-      {"zh": "我说：“用我的电脑吧！”他笑了：“没事儿了！”", "en": "I said, 'Use my computer!' He smiled: 'All fine now!'"}
+      {"zh": "我说：“用我的电脑吧！”他笑了：“没事儿了！”", "en": "I said, 'Use my computer!' He smiled: 'All fine now!'"},
+      {"zh": "爸爸用我的电脑开了会。", "en": "Dad used my computer for the meeting."},
+      {"zh": "下午爸爸说：“今天你帮了我，谢谢！”", "en": "In the afternoon Dad said, 'You helped me today, thanks!'"},
+      {"zh": "晚上他给我买了一个新包，我很高兴。", "en": "In the evening he bought me a new bag, and I was very happy."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "爸爸的电脑很慢。", "questionEn": "Dad's computer was slow.", "answer": true},
-      {"id": "q2", "type": "multiple_choice", "question": "最后爸爸用了谁的电脑？", "questionEn": "Whose computer did Dad use in the end?", "options": ["他的", "妈妈的", "我的", "同学的"], "answer": 2}
+      {"id": "q2", "type": "multiple_choice", "question": "最后爸爸用了谁的电脑？", "questionEn": "Whose computer did Dad use in the end?", "options": ["他的", "妈妈的", "我的", "同学的"], "answer": 2},
+      {"id": "q3", "type": "multiple_choice", "question": "爸爸的电脑怎么了？", "questionEn": "What was wrong with Dad's computer?", "options": ["太慢了", "坏了", "没电了", "不能开"], "answer": 0},
+      {"id": "q4", "type": "true_false", "question": "爸爸觉得我帮了他。", "questionEn": "Dad feels I helped him.", "answer": true}
      ],
      "focusWords": ["重要", "慢", "生气", "没事儿"],
      "grammarFocus": ["太…了", "给 + person + verb"]
@@ -254,11 +275,17 @@
       {"zh": "A：你在干什么？", "en": "A: What are you doing?"},
       {"zh": "B：我一边听歌，一边学汉语。", "en": "B: I'm learning Chinese while listening to songs."},
       {"zh": "A：一边听歌一边学，有用吗？", "en": "A: Does studying while listening help?"},
-      {"zh": "B：很有用！我学了半年，学到了很多。", "en": "B: Very much! I've been doing it for six months and learned a lot."}
+      {"zh": "B：很有用！我学了半年，学到了很多。", "en": "B: Very much! I've been doing it for six months and learned a lot."},
+      {"zh": "A：你是不是还看汉语书？我也想试一下儿。", "en": "A: Do you also read Chinese books? I want to give it a try too."},
+      {"zh": "B：我还看书。书很重要，有些字听歌学不到。", "en": "B: I still read. Books matter — some characters you can't learn from songs."},
+      {"zh": "A：你能告诉我一些好听的汉语歌吗？", "en": "A: Can you tell me some good Chinese songs?"},
+      {"zh": "B：行！我明天在网上给你找一些。", "en": "B: Sure! I'll find you some online tomorrow."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "B 学了半年。", "questionEn": "B has been studying for six months.", "answer": true},
-      {"id": "q2", "type": "multiple_choice", "question": "B 一边听歌，一边干什么？", "questionEn": "What does B do while listening to songs?", "options": ["吃饭", "睡觉", "学汉语", "打球"], "answer": 2}
+      {"id": "q2", "type": "multiple_choice", "question": "B 一边听歌，一边干什么？", "questionEn": "What does B do while listening to songs?", "options": ["吃饭", "睡觉", "学汉语", "打球"], "answer": 2},
+      {"id": "q3", "type": "true_false", "question": "B 觉得看书不重要。", "questionEn": "B thinks reading isn't important.", "answer": false},
+      {"id": "q4", "type": "multiple_choice", "question": "A 想做什么？", "questionEn": "What does A want to do?", "options": ["去看电影", "听汉语歌学汉语", "买新手机", "去上课"], "answer": 1}
      ],
      "focusWords": ["干什么", "一边", "有用", "半年"],
      "grammarFocus": ["一边…一边…"]
@@ -305,11 +332,16 @@
       {"zh": "这是北京一个很有名的地方，门票十块。", "en": "This is a famous place in Beijing; tickets are ten yuan."},
       {"zh": "早上这里有一些老人，他们正在一起打球。", "en": "In the morning there are some old people here playing ball together."},
       {"zh": "他们的动作很慢，很好看。", "en": "Their movements are slow and graceful."},
-      {"zh": "我也跟他们认真地学了一会儿。", "en": "I also carefully learned from them for a while."}
+      {"zh": "我也跟他们认真地学了一会儿。", "en": "I also carefully learned from them for a while."},
+      {"zh": "一个老人问我：“你是外国人吧？”", "en": "An old man asked me, 'You're a foreigner, right?'"},
+      {"zh": "我说：“是，这是我第一次来这儿。”", "en": "I said, 'Yes, this is my first time here.'"},
+      {"zh": "他笑着说：“下次再来，我们一起打球！”", "en": "He smiled and said, 'Come again next time and we'll play together!'"}
      ],
      "questions": [
       {"id": "q1", "type": "multiple_choice", "question": "门票多少钱？", "questionEn": "How much is a ticket?", "options": ["五块", "十块", "五十块", "一百块"], "answer": 1},
-      {"id": "q2", "type": "true_false", "question": "老人们的动作很快。", "questionEn": "The old people's movements are fast.", "answer": false}
+      {"id": "q2", "type": "true_false", "question": "老人们的动作很快。", "questionEn": "The old people's movements are fast.", "answer": false},
+      {"id": "q3", "type": "true_false", "question": "我不是中国人。", "questionEn": "I am not Chinese.", "answer": true},
+      {"id": "q4", "type": "multiple_choice", "question": "老人说下次做什么？", "questionEn": "What did the old man say they'd do next time?", "options": ["一起吃饭", "买门票", "去国外", "一起打球"], "answer": 3}
      ],
      "focusWords": ["有名", "地方", "门票", "正在", "动作"],
      "grammarFocus": ["正在 + verb", "adjective + 地 + verb"]
@@ -320,11 +352,17 @@
       {"zh": "A：你来过这儿吗？", "en": "A: Have you been here before?"},
       {"zh": "B：来过。上次我是跟爸爸妈妈来的。", "en": "B: Yes. Last time I came with my parents."},
       {"zh": "A：我们在哪儿见你的朋友？", "en": "A: Where are we meeting your friend?"},
-      {"zh": "B：就在门口。我的朋友正在那儿等我们。", "en": "B: Right at the entrance. My friend is waiting for us there."}
+      {"zh": "B：就在门口。我的朋友正在那儿等我们。", "en": "B: Right at the entrance. My friend is waiting for us there."},
+      {"zh": "A：你的朋友是哪国人？", "en": "A: What country is your friend from?"},
+      {"zh": "B：他是外国人，在北京学过一年汉语。", "en": "B: He's a foreigner; he studied Chinese in Beijing for a year."},
+      {"zh": "A：太好了！我们先见他，再一起去吃饭吧。", "en": "A: Great! Let's meet him first, then go eat together."},
+      {"zh": "B：行。从这儿到门口不远，我们走路去。", "en": "B: OK. It's not far from here to the entrance; let's walk."}
      ],
      "questions": [
       {"id": "q1", "type": "true_false", "question": "B 没来过这儿。", "questionEn": "B has never been here.", "answer": false},
-      {"id": "q2", "type": "multiple_choice", "question": "B 的朋友在哪儿等？", "questionEn": "Where is B's friend waiting?", "options": ["车站", "门口", "饭店", "家里"], "answer": 1}
+      {"id": "q2", "type": "multiple_choice", "question": "B 的朋友在哪儿等？", "questionEn": "Where is B's friend waiting?", "options": ["车站", "门口", "饭店", "家里"], "answer": 1},
+      {"id": "q3", "type": "true_false", "question": "B 的朋友不是中国人。", "questionEn": "B's friend is not Chinese.", "answer": true},
+      {"id": "q4", "type": "multiple_choice", "question": "他们怎么去门口？", "questionEn": "How are they getting to the entrance?", "options": ["开车", "打车", "走路", "坐火车"], "answer": 2}
      ],
      "focusWords": ["过", "上次", "正在"],
      "grammarFocus": ["verb + 过", "是…的"]

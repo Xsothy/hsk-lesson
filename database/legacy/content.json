@@ -7711,8 +7711,7 @@
       "有",
       "很",
       "多",
-      "爱",
-      "好",
+      "爱好",
       "。"
      ]
     },
@@ -7731,22 +7730,17 @@
      ]
     },
     {
-     "zh": "我也喜欢运动。",
-     "en": "I also like sports.",
+     "zh": "我也喜欢运动，我每天早上跑步三十分钟。",
+     "en": "I also like sports; I run for thirty minutes every morning.",
      "words": [
       "我",
       "也",
       "喜欢",
       "运动",
-      "。"
-     ]
-    },
-    {
-     "zh": "我每天跑步三十分钟。",
-     "en": "I run for 30 minutes every day.",
-     "words": [
+      "，",
       "我",
       "每天",
+      "早上",
       "跑步",
       "三",
       "十",
@@ -7755,8 +7749,24 @@
      ]
     },
     {
-     "zh": "但是我不太喜欢唱歌。",
-     "en": "But I don't really like singing.",
+     "zh": "星期六下午，我和朋友去游泳。",
+     "en": "On Saturday afternoons, I go swimming with my friends.",
+     "words": [
+      "星期",
+      "六",
+      "下午",
+      "，",
+      "我",
+      "和",
+      "朋友",
+      "去",
+      "游泳",
+      "。"
+     ]
+    },
+    {
+     "zh": "但是我不太喜欢唱歌，我唱歌不好听。",
+     "en": "But I don't really like singing; my singing doesn't sound good.",
      "words": [
       "但是",
       "我",
@@ -7764,6 +7774,43 @@
       "太",
       "喜欢",
       "唱歌",
+      "，",
+      "我",
+      "唱歌",
+      "不",
+      "好听",
+      "。"
+     ]
+    },
+    {
+     "zh": "晚上我在家看书，也看电视。",
+     "en": "In the evening I read books at home, and also watch TV.",
+     "words": [
+      "晚上",
+      "我",
+      "在家",
+      "看",
+      "书",
+      "，",
+      "也",
+      "看电视",
+      "。"
+     ]
+    },
+    {
+     "zh": "我觉得有爱好的人每天都很高兴。",
+     "en": "I think people with hobbies are happy every day.",
+     "words": [
+      "我",
+      "觉得",
+      "有",
+      "爱好",
+      "的",
+      "人",
+      "每天",
+      "都",
+      "很",
+      "高兴",
       "。"
      ]
     }
@@ -7772,35 +7819,48 @@
     {
      "id": "q1",
      "type": "multiple_choice",
-     "question": "他喜欢什么运动？",
-     "questionEn": "What sport does he like?",
+     "question": "他每天什么时候跑步？",
+     "questionEn": "When does he run every day?",
      "options": [
-      "游泳",
-      "跑步",
-      "踢足球",
-      "打篮球"
+      "晚上",
+      "中午",
+      "早上",
+      "下午"
      ],
-     "answer": 1
+     "answer": 2
     },
     {
      "id": "q2",
      "type": "true_false",
-     "question": "他很喜欢唱歌。",
-     "questionEn": "He really likes singing.",
-     "answer": false
+     "question": "星期六下午他和朋友去游泳。",
+     "questionEn": "On Saturday afternoon he goes swimming with friends.",
+     "answer": true
     },
     {
      "id": "q3",
      "type": "multiple_choice",
-     "question": "他每天跑步多久？",
-     "questionEn": "How long does he run every day?",
+     "question": "他为什么不太喜欢唱歌？",
+     "questionEn": "Why doesn't he really like singing?",
      "options": [
-      "二十分钟",
-      "三十分钟",
-      "一个小时",
-      "四十分钟"
+      "他很忙",
+      "他唱歌不好听",
+      "他朋友不喜欢",
+      "他喜欢跑步"
      ],
      "answer": 1
+    },
+    {
+     "id": "q4",
+     "type": "multiple_choice",
+     "question": "这个故事主要说什么？",
+     "questionEn": "What is this story mainly about?",
+     "options": [
+      "他的工作",
+      "他的家",
+      "他的学校",
+      "他的爱好"
+     ],
+     "answer": 3
     }
    ],
    "focusWords": [
@@ -7834,8 +7894,7 @@
       "你",
       "有",
       "什么",
-      "爱",
-      "好",
+      "爱好",
       "？"
      ]
     },
@@ -7904,28 +7963,99 @@
       "运动",
       "。"
      ]
+    },
+    {
+     "zh": "那星期六我和你一起去跑步，好吗？",
+     "en": "Then how about I go running with you on Saturday?",
+     "words": [
+      "那",
+      "星期",
+      "六",
+      "我",
+      "和",
+      "你",
+      "一起",
+      "去",
+      "跑步",
+      "，",
+      "好",
+      "吗",
+      "？"
+     ]
+    },
+    {
+     "zh": "好！我们跑步，然后去看电影。",
+     "en": "Great! We'll go running, and then go see a movie.",
+     "words": [
+      "好",
+      "！",
+      "我们",
+      "跑步",
+      "，",
+      "然后",
+      "去",
+      "看",
+      "电影",
+      "。"
+     ]
+    },
+    {
+     "zh": "太好了！我们星期六上午见！",
+     "en": "Wonderful! See you Saturday morning!",
+     "words": [
+      "太",
+      "好",
+      "了",
+      "！",
+      "我们",
+      "星期",
+      "六",
+      "上午",
+      "见",
+      "！"
+     ]
     }
    ],
    "questions": [
     {
      "id": "q1",
      "type": "true_false",
-     "question": "A 喜欢运动。",
-     "questionEn": "A likes sports.",
+     "question": "A 很喜欢看书。",
+     "questionEn": "A really likes reading books.",
      "answer": false
     },
     {
      "id": "q2",
      "type": "multiple_choice",
-     "question": "B 最喜欢什么？",
-     "questionEn": "What does B like the most?",
+     "question": "B 喜欢什么？",
+     "questionEn": "What does B like?",
+     "options": [
+      "运动",
+      "看电影和听音乐",
+      "唱歌",
+      "游泳"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "q3",
+     "type": "multiple_choice",
+     "question": "他们星期六上午做什么？",
+     "questionEn": "What will they do on Saturday morning?",
      "options": [
       "看书",
-      "看电影",
-      "运动",
-      "听音乐"
+      "听音乐",
+      "先跑步，然后看电影",
+      "去游泳"
      ],
      "answer": 2
+    },
+    {
+     "id": "q4",
+     "type": "true_false",
+     "question": "A 和 B 的爱好不太一样，但是他们想一起做。",
+     "questionEn": "A and B have rather different hobbies, but they want to do things together.",
+     "answer": true
     }
    ],
    "focusWords": [
@@ -7953,8 +8083,8 @@
    "emoji": "🏥",
    "lines": [
     {
-     "zh": "你怎么了？你看起来不好。",
-     "en": "What's wrong? You don't look well.",
+     "zh": "你怎么了？你看起来不太好。",
+     "en": "What's wrong? You don't look very well.",
      "words": [
       "你",
       "怎么",
@@ -7962,16 +8092,16 @@
       "？",
       "你",
       "看",
-      "起",
-      "来",
+      "起来",
       "不",
+      "太",
       "好",
       "。"
      ]
     },
     {
-     "zh": "我有点儿不舒服。头很疼。",
-     "en": "I feel a little unwell. My head hurts a lot.",
+     "zh": "我有点儿不舒服。头很疼，眼睛也疼。",
+     "en": "I feel a little unwell. My head hurts a lot, and my eyes hurt too.",
      "words": [
       "我",
       "有点儿",
@@ -7980,40 +8110,95 @@
       "头",
       "很",
       "疼",
+      "，",
+      "眼睛",
+      "也",
+      "疼",
       "。"
      ]
     },
     {
-     "zh": "你发烧了吗？",
-     "en": "Do you have a fever?",
+     "zh": "你发烧了吗？昨天晚上睡觉了吗？",
+     "en": "Do you have a fever? Did you sleep last night?",
      "words": [
       "你",
       "发烧",
+      "了",
+      "吗",
+      "？",
+      "昨天",
+      "晚上",
+      "睡觉",
       "了",
       "吗",
       "？"
      ]
     },
     {
-     "zh": "有点儿发烧。",
-     "en": "A slight fever.",
+     "zh": "有点儿发烧。昨天我工作到晚上十二点。",
+     "en": "A slight fever. Yesterday I worked until midnight.",
      "words": [
       "有点儿",
       "发烧",
+      "。",
+      "昨天",
+      "我",
+      "工作",
+      "到",
+      "晚上",
+      "十",
+      "二",
+      "点",
       "。"
      ]
     },
     {
-     "zh": "你要去医院看医生！",
-     "en": "You need to go to the hospital to see a doctor!",
+     "zh": "你太累了！你要去医院看医生。",
+     "en": "You're too tired! You need to go to the hospital to see a doctor.",
      "words": [
+      "你",
+      "太",
+      "累",
+      "了",
+      "！",
       "你",
       "要",
       "去",
       "医院",
       "看",
       "医生",
-      "！"
+      "。"
+     ]
+    },
+    {
+     "zh": "可是我今天下午很忙。",
+     "en": "But I'm very busy this afternoon.",
+     "words": [
+      "可",
+      "是",
+      "我",
+      "今天",
+      "下午",
+      "很",
+      "忙",
+      "。"
+     ]
+    },
+    {
+     "zh": "看医生最重要！我和你一起去。",
+     "en": "Seeing a doctor is the most important thing! I'll go with you.",
+     "words": [
+      "看",
+      "医生",
+      "最",
+      "重要",
+      "！",
+      "我",
+      "和",
+      "你",
+      "一起",
+      "去",
+      "。"
      ]
     },
     {
@@ -8035,12 +8220,12 @@
      "question": "他哪里不舒服？",
      "questionEn": "Where does he feel unwell?",
      "options": [
+      "头和眼睛",
       "手",
-      "眼睛",
-      "头",
-      "脚"
+      "手和脚",
+      "只有头"
      ],
-     "answer": 2
+     "answer": 0
     },
     {
      "id": "q2",
@@ -8052,13 +8237,26 @@
     {
      "id": "q3",
      "type": "multiple_choice",
-     "question": "他应该去哪里？",
-     "questionEn": "Where should he go?",
+     "question": "他为什么不舒服？",
+     "questionEn": "Why does he feel unwell?",
      "options": [
-      "学校",
-      "商店",
-      "医院",
-      "饭店"
+      "他吃了很多",
+      "他工作太累了",
+      "天气太热",
+      "他去跑步了"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "q4",
+     "type": "multiple_choice",
+     "question": "朋友为什么说“我和你一起去”？",
+     "questionEn": "Why does the friend say \"I'll go with you\"?",
+     "options": [
+      "他也不舒服",
+      "他要去工作",
+      "他想帮朋友",
+      "他是医生"
      ],
      "answer": 2
     }
@@ -8114,20 +8312,58 @@
      ]
     },
     {
-     "zh": "我去医院看医生。",
-     "en": "I went to the hospital to see a doctor.",
+     "zh": "早上我没有吃饭，也不想去上课。",
+     "en": "In the morning I didn't eat, and didn't want to go to class.",
      "words": [
+      "早上",
       "我",
+      "没有",
+      "吃饭",
+      "，",
+      "也",
+      "不",
+      "想",
       "去",
-      "医院",
-      "看",
-      "医生",
+      "上课",
       "。"
      ]
     },
     {
-     "zh": "医生说我要多喝水，多休息。",
-     "en": "The doctor said I should drink more water and rest more.",
+     "zh": "妈妈说：“你要去医院看医生。”",
+     "en": "Mom said, \"You need to go to the hospital to see a doctor.\"",
+     "words": [
+      "妈妈",
+      "说",
+      "：",
+      "“",
+      "你",
+      "要",
+      "去",
+      "医院",
+      "看",
+      "医生",
+      "。",
+      "”"
+     ]
+    },
+    {
+     "zh": "下午我和妈妈坐出租车去医院。",
+     "en": "In the afternoon Mom and I took a taxi to the hospital.",
+     "words": [
+      "下午",
+      "我",
+      "和",
+      "妈妈",
+      "坐",
+      "出租车",
+      "去",
+      "医院",
+      "。"
+     ]
+    },
+    {
+     "zh": "医生说我要多喝水，多休息，晚上早点儿睡觉。",
+     "en": "The doctor said I should drink more water, rest more, and go to bed early at night.",
      "words": [
       "医生",
       "说",
@@ -8138,19 +8374,31 @@
       "水",
       "，",
       "多",
-      "休",
-      "息",
+      "休息",
+      "，",
+      "晚上",
+      "早",
+      "点",
+      "儿",
+      "睡觉",
       "。"
      ]
     },
     {
-     "zh": "今天我好多了！",
-     "en": "Today I am much better!",
+     "zh": "今天我好多了，我能去学校上课了！",
+     "en": "Today I'm much better, and I can go to school for class!",
      "words": [
       "今天",
       "我",
       "好",
       "多",
+      "了",
+      "，",
+      "我",
+      "能",
+      "去",
+      "学校",
+      "上课",
       "了",
       "！"
      ]
@@ -8160,22 +8408,48 @@
     {
      "id": "q1",
      "type": "true_false",
-     "question": "他昨天很好。",
-     "questionEn": "He was very well yesterday.",
+     "question": "他昨天早上去上课了。",
+     "questionEn": "He went to class yesterday morning.",
      "answer": false
     },
     {
      "id": "q2",
+     "type": "multiple_choice",
+     "question": "他们怎么去医院？",
+     "questionEn": "How did they get to the hospital?",
+     "options": [
+      "坐火车",
+      "坐出租车",
+      "坐飞机",
+      "走路"
+     ],
+     "answer": 1
+    },
+    {
+     "id": "q3",
      "type": "multiple_choice",
      "question": "医生说他要做什么？",
      "questionEn": "What did the doctor say he should do?",
      "options": [
       "多吃饭",
       "多运动",
-      "多喝水",
+      "晚上早点儿睡觉",
       "去学校"
      ],
      "answer": 2
+    },
+    {
+     "id": "q4",
+     "type": "multiple_choice",
+     "question": "今天他为什么能去上课？",
+     "questionEn": "Why can he go to class today?",
+     "options": [
+      "他好多了",
+      "他不想在家",
+      "医生说要去",
+      "妈妈很忙"
+     ],
+     "answer": 0
     }
    ],
    "focusWords": [
@@ -8207,8 +8481,7 @@
      "en": "Which piece of clothing do you think is the most beautiful?",
      "words": [
       "你",
-      "觉",
-      "得",
+      "觉得",
       "哪",
       "件",
       "衣服",
@@ -8218,17 +8491,19 @@
      ]
     },
     {
-     "zh": "我觉得红色的最漂亮！",
-     "en": "I think the red one is the most beautiful!",
+     "zh": "我觉得红色的最漂亮！你呢？",
+     "en": "I think the red one is the most beautiful! And you?",
      "words": [
       "我",
-      "觉",
-      "得",
+      "觉得",
       "红色",
       "的",
       "最",
       "漂亮",
-      "！"
+      "！",
+      "你",
+      "呢",
+      "？"
      ]
     },
     {
@@ -8250,8 +8525,8 @@
      ]
     },
     {
-     "zh": "不一样。红色的比白色的便宜。",
-     "en": "No. The red one is cheaper than the white one.",
+     "zh": "不一样。红色的比白色的便宜一百块。",
+     "en": "No. The red one is 100 kuai cheaper than the white one.",
      "words": [
       "不",
       "一样",
@@ -8261,14 +8536,48 @@
       "比",
       "白色",
       "的",
-      "便",
-      "宜",
+      "便宜",
+      "一",
+      "百",
+      "块",
       "。"
      ]
     },
     {
-     "zh": "好，那我买红色的！",
-     "en": "OK, then I'll buy the red one!",
+     "zh": "黑色的怎么样？黑色的也很漂亮。",
+     "en": "How about the black one? The black one is also very pretty.",
+     "words": [
+      "黑色",
+      "的",
+      "怎么样",
+      "？",
+      "黑色",
+      "的",
+      "也",
+      "很",
+      "漂亮",
+      "。"
+     ]
+    },
+    {
+     "zh": "黑色的太大了，也最贵。",
+     "en": "The black one is too big, and it's the most expensive too.",
+     "words": [
+      "黑色",
+      "的",
+      "太",
+      "大",
+      "了",
+      "，",
+      "也",
+      "最",
+      "贵",
+      "。"
+     ]
+    },
+    {
+     "zh": "好，那我买红色的！红色的便宜，也很漂亮。",
+     "en": "OK, then I'll buy the red one! The red one is cheap and also very pretty.",
      "words": [
       "好",
       "，",
@@ -8277,7 +8586,15 @@
       "买",
       "红色",
       "的",
-      "！"
+      "！",
+      "红色",
+      "的",
+      "便宜",
+      "，",
+      "也",
+      "很",
+      "漂亮",
+      "。"
      ]
     }
    ],
@@ -8285,8 +8602,8 @@
     {
      "id": "q1",
      "type": "multiple_choice",
-     "question": "A 觉得哪件衣服最漂亮？",
-     "questionEn": "Which clothing does A think is the most beautiful?",
+     "question": "B 觉得哪件衣服最漂亮？",
+     "questionEn": "Which clothing does B think is the most beautiful?",
      "options": [
       "白色的",
       "黑色的",
@@ -8305,15 +8622,28 @@
     {
      "id": "q3",
      "type": "multiple_choice",
-     "question": "A 最后买了什么？",
-     "questionEn": "What did A buy in the end?",
+     "question": "为什么不买黑色的？",
+     "questionEn": "Why not buy the black one?",
      "options": [
-      "白色的",
-      "黑色的",
-      "红色的",
-      "没有买"
+      "黑色的太大，也最贵",
+      "黑色的不漂亮",
+      "商店没有黑色的",
+      "黑色的太小"
      ],
-     "answer": 2
+     "answer": 0
+    },
+    {
+     "id": "q4",
+     "type": "multiple_choice",
+     "question": "A 最后为什么买红色的？",
+     "questionEn": "Why does A buy the red one in the end?",
+     "options": [
+      "A 最喜欢红色",
+      "红色的便宜，也漂亮",
+      "妈妈喜欢红色",
+      "白色的太旧"
+     ],
+     "answer": 1
     }
    ],
    "focusWords": [
@@ -8369,6 +8699,24 @@
      ]
     },
     {
+     "zh": "我的旧衣服是黑色的，有点儿小了。",
+     "en": "My old clothes are black and have gotten a little small.",
+     "words": [
+      "我",
+      "的",
+      "旧",
+      "衣服",
+      "是",
+      "黑色",
+      "的",
+      "，",
+      "有点儿",
+      "小",
+      "了",
+      "。"
+     ]
+    },
+    {
      "zh": "这件衣服比我的旧衣服漂亮多了。",
      "en": "This clothing is much more beautiful than my old clothes.",
      "words": [
@@ -8383,6 +8731,23 @@
       "漂亮",
       "多",
       "了",
+      "。"
+     ]
+    },
+    {
+     "zh": "这件衣服不太贵，两百块。",
+     "en": "This clothing isn't too expensive: two hundred kuai.",
+     "words": [
+      "这",
+      "件",
+      "衣服",
+      "不",
+      "太",
+      "贵",
+      "，",
+      "两",
+      "百",
+      "块",
       "。"
      ]
     },
@@ -8404,21 +8769,58 @@
       "衣服",
       "！"
      ]
+    },
+    {
+     "zh": "明天星期六，我要和朋友去饭店吃饭。",
+     "en": "Tomorrow is Saturday, and I'm going to a restaurant with friends.",
+     "words": [
+      "明天",
+      "星期",
+      "六",
+      "，",
+      "我",
+      "要",
+      "和",
+      "朋友",
+      "去",
+      "饭店",
+      "吃饭",
+      "。"
+     ]
+    },
+    {
+     "zh": "我想朋友们也会说这件衣服很漂亮。",
+     "en": "I think my friends will also say this clothing is very beautiful.",
+     "words": [
+      "我",
+      "想",
+      "朋友",
+      "们",
+      "也",
+      "会",
+      "说",
+      "这",
+      "件",
+      "衣服",
+      "很",
+      "漂亮",
+      "。"
+     ]
     }
    ],
    "questions": [
     {
      "id": "q1",
      "type": "multiple_choice",
-     "question": "新衣服是什么颜色？",
-     "questionEn": "What color is the new clothing?",
+     "question": "新衣服多少钱？",
+     "questionEn": "How much was the new clothing?",
      "options": [
-      "白色",
-      "黑色",
-      "红色",
-      "蓝色"
+      "一百块",
+      "两百块",
+      "三百块",
+      "五十块"
      ],
-     "answer": 2
+     "answer": 1
     },
     {
      "id": "q2",
@@ -8426,6 +8828,26 @@
      "question": "新衣服没有旧衣服漂亮。",
      "questionEn": "The new clothing is not as beautiful as the old one.",
      "answer": false
+    },
+    {
+     "id": "q3",
+     "type": "multiple_choice",
+     "question": "他为什么买新衣服？",
+     "questionEn": "Why did he buy new clothing?",
+     "options": [
+      "旧衣服太大",
+      "妈妈不喜欢黑色",
+      "旧衣服太贵",
+      "旧衣服有点儿小了"
+     ],
+     "answer": 3
+    },
+    {
+     "id": "q4",
+     "type": "true_false",
+     "question": "他很喜欢他的新衣服。",
+     "questionEn": "He really likes his new clothing.",
+     "answer": true
     }
    ],
    "focusWords": [

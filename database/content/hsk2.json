@@ -1468,8 +1468,20 @@
        "en": "My older brother is a doctor; his wife is a teacher."
       },
       {
+       "zh": "哥哥和他的妻子没有孩子，他们住在北京。",
+       "en": "My brother and his wife have no children; they live in Beijing."
+      },
+      {
        "zh": "我妹妹今年八岁，她非常喜欢猫。",
        "en": "My younger sister is eight this year. She really likes cats."
+      },
+      {
+       "zh": "我们家没有猫，所以妹妹每天都去看朋友家的猫。",
+       "en": "We don't have a cat, so my sister goes to see her friend's cat every day."
+      },
+      {
+       "zh": "我是学生，我非常喜欢我的家！",
+       "en": "I'm a student, and I really love my family!"
       }
      ],
      "questions": [
@@ -1492,6 +1504,26 @@
        "question": "哥哥的妻子是医生。",
        "questionEn": "The older brother's wife is a doctor.",
        "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "妹妹为什么每天去朋友家？",
+       "questionEn": "Why does the younger sister go to her friend's home every day?",
+       "options": [
+        "她想看猫",
+        "她想吃饭",
+        "她要学习",
+        "她想看哥哥"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "从这个故事看，王小月很喜欢她的家。",
+       "questionEn": "From the story, Wang Xiaoyue really likes her family.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -1520,33 +1552,65 @@
        "en": "This woman is my friend; her surname is Chen."
       },
       {
-       "zh": "她是中国人，她有两个孩子。",
-       "en": "She is Chinese and she has two children."
+       "zh": "她是中国人，她有两个孩子，一个儿子，一个女儿。",
+       "en": "She is Chinese and has two children, a son and a daughter."
       },
       {
-       "zh": "她的丈夫在医院工作。",
-       "en": "Her husband works at a hospital."
+       "zh": "她的丈夫在医院工作，是医生。",
+       "en": "Her husband works at a hospital as a doctor."
+      },
+      {
+       "zh": "陈女士说：“大家好！很高兴认识你们。”",
+       "en": "Ms. Chen said: \"Hello everyone! Nice to meet you.\""
+      },
+      {
+       "zh": "一个男人问：“您贵姓？”她说：“我姓陈。”",
+       "en": "A man asked, \"What's your surname?\" She said, \"My surname is Chen.\""
+      },
+      {
+       "zh": "陈女士说：“我也给大家介绍一下我的丈夫。”",
+       "en": "Ms. Chen said: \"Let me also introduce my husband to everyone.\""
       }
      ],
      "questions": [
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "朋友姓什么？",
-       "questionEn": "What is the friend's surname?",
+       "question": "陈女士有几个孩子？",
+       "questionEn": "How many children does Ms. Chen have?",
        "options": [
-        "王",
-        "陈",
-        "李",
-        "张"
+        "一个",
+        "三个",
+        "没有",
+        "两个"
        ],
-       "answer": 1
+       "answer": 3
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "她的丈夫在医院工作。",
-       "questionEn": "Her husband works at a hospital.",
+       "question": "陈女士的丈夫在学校工作。",
+       "questionEn": "Ms. Chen's husband works at a school.",
+       "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "“您贵姓”是问什么？",
+       "questionEn": "What does \"您贵姓\" ask about?",
+       "options": [
+        "名字里的姓",
+        "年龄",
+        "工作",
+        "家人"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "陈女士最后想介绍她的丈夫。",
+       "questionEn": "At the end Ms. Chen wants to introduce her husband.",
        "answer": true
       }
      ],
@@ -1680,8 +1744,16 @@
        "en": "My dad gets up as early as 5:30 every morning."
       },
       {
+       "zh": "起床以后，他先洗脸，然后吃早饭。",
+       "en": "After getting up, he washes his face first and then eats breakfast."
+      },
+      {
        "zh": "他七点开始上班，每天工作十个小时。",
        "en": "He starts work at seven and works ten hours every day."
+      },
+      {
+       "zh": "他的公司离家很远，坐车要一个小时。",
+       "en": "His company is far from home; it takes an hour by car."
       },
       {
        "zh": "晚上回家以后，他已经很累了。",
@@ -1690,6 +1762,10 @@
       {
        "zh": "吃完饭，他看一会儿电视就睡觉。",
        "en": "After dinner he watches TV for a while and then goes to sleep."
+      },
+      {
+       "zh": "星期天他不上班，在家休息一天。",
+       "en": "On Sundays he doesn't work and rests at home all day."
       }
      ],
      "questions": [
@@ -1697,20 +1773,40 @@
        "id": "q1",
        "type": "multiple_choice",
        "question": "爸爸每天工作几个小时？",
-       "questionEn": "How many hours does Dad work each day?",
+       "questionEn": "How many hours does Dad work every day?",
        "options": [
-        "五个",
-        "七个",
         "八个",
-        "十个"
+        "十个",
+        "五个",
+        "七个"
        ],
-       "answer": 3
+       "answer": 1
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "爸爸七点起床。",
-       "questionEn": "Dad gets up at seven.",
+       "question": "爸爸的公司离家很近。",
+       "questionEn": "Dad's company is close to home.",
+       "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "爸爸晚上为什么很累？",
+       "questionEn": "Why is Dad tired in the evening?",
+       "options": [
+        "他不吃早饭",
+        "他看电视太多",
+        "他起得早，工作时间长",
+        "他星期天上班"
+       ],
+       "answer": 2
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "爸爸每天都去公司上班。",
+       "questionEn": "Dad goes to the company every single day.",
        "answer": false
       }
      ],
@@ -1738,8 +1834,16 @@
        "en": "Xiaoming is very busy today and has no time to eat breakfast."
       },
       {
+       "zh": "他七点半才起床，洗完脸就出门了。",
+       "en": "He only got up at 7:30 and left right after washing his face."
+      },
+      {
        "zh": "八点已经开始上课了，他还没到。",
        "en": "Class already started at eight, and he hasn't arrived yet."
+      },
+      {
+       "zh": "八点二十分，小明才到教室。",
+       "en": "At 8:20 Xiaoming finally got to the classroom."
       },
       {
        "zh": "老师说：每个人都要早一点儿来。",
@@ -1748,28 +1852,52 @@
       {
        "zh": "小明说：明天我六点就起床！",
        "en": "Xiaoming said: tomorrow I'll get up at six!"
+      },
+      {
+       "zh": "老师笑了：“好，我们明天看看。”",
+       "en": "The teacher smiled: \"OK, we'll see tomorrow.\""
       }
      ],
      "questions": [
       {
        "id": "q1",
+       "type": "multiple_choice",
+       "question": "小明今天几点起床？",
+       "questionEn": "What time did Xiaoming get up today?",
+       "options": [
+        "六点",
+        "八点",
+        "七点半",
+        "八点二十"
+       ],
+       "answer": 2
+      },
+      {
+       "id": "q2",
        "type": "true_false",
        "question": "小明今天吃了早饭。",
        "questionEn": "Xiaoming ate breakfast today.",
        "answer": false
       },
       {
-       "id": "q2",
+       "id": "q3",
        "type": "multiple_choice",
-       "question": "明天小明几点起床？",
-       "questionEn": "What time will Xiaoming get up tomorrow?",
+       "question": "老师为什么说每个人都要早一点儿来？",
+       "questionEn": "Why did the teacher say everyone should come earlier?",
        "options": [
-        "五点",
-        "六点",
-        "七点",
-        "八点"
+        "小明来晚了",
+        "老师想休息",
+        "教室太小",
+        "上课时间变了"
        ],
-       "answer": 1
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "老师可能不太相信小明明天六点起床。",
+       "questionEn": "The teacher may not quite believe Xiaoming will get up at six tomorrow.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -1894,16 +2022,28 @@
        "en": "My older brother really loves sports."
       },
       {
-       "zh": "他每个星期踢两次足球。",
-       "en": "He plays football twice every week."
+       "zh": "他每个星期踢两次足球，打一次篮球。",
+       "en": "He plays football twice a week and basketball once."
       },
       {
        "zh": "他跑得很快，踢得也很好。",
        "en": "He runs fast and plays well too."
       },
       {
-       "zh": "他说运动对身体好。",
-       "en": "He says exercise is good for your health."
+       "zh": "早上他还去跑步，每天跑一个小时。",
+       "en": "In the mornings he also goes running, for an hour every day."
+      },
+      {
+       "zh": "我不太喜欢运动，所以身体不太好。",
+       "en": "I don't like sports much, so I'm not very healthy."
+      },
+      {
+       "zh": "哥哥说运动对身体好，让我和他一起去。",
+       "en": "My brother says exercise is good for you and asks me to go with him."
+      },
+      {
+       "zh": "现在我一个星期也跑三次步了。",
+       "en": "Now I go running three times a week too."
       }
      ],
      "questions": [
@@ -1914,11 +2054,11 @@
        "questionEn": "How many times a week does the brother play football?",
        "options": [
         "一次",
-        "两次",
         "三次",
+        "两次",
         "四次"
        ],
-       "answer": 1
+       "answer": 2
       },
       {
        "id": "q2",
@@ -1926,6 +2066,26 @@
        "question": "哥哥跑得很慢。",
        "questionEn": "The brother runs slowly.",
        "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "“我”为什么开始跑步？",
+       "questionEn": "Why did \"I\" start running?",
+       "options": [
+        "哥哥让我和他一起运动",
+        "我想踢足球",
+        "学校要考试",
+        "朋友在跑步"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "“我”现在比以前更喜欢运动了。",
+       "questionEn": "\"I\" now exercise more than before.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -1952,38 +2112,70 @@
        "en": "My younger sister doesn't like basketball; she likes dancing."
       },
       {
-       "zh": "她跳得非常漂亮。",
-       "en": "She dances beautifully."
+       "zh": "她每个星期去学三次跳舞。",
+       "en": "She goes to dance class three times a week."
+      },
+      {
+       "zh": "她跳得非常漂亮，老师很喜欢她。",
+       "en": "She dances beautifully, and her teacher likes her a lot."
       },
       {
        "zh": "我喜欢唱歌，可是我唱得不好。",
        "en": "I like singing, but I don't sing well."
       },
       {
+       "zh": "妹妹说：“没关系，你唱得很高兴就好。”",
+       "en": "My sister said: \"It doesn't matter, as long as you're happy singing.\""
+      },
+      {
        "zh": "周末我们一起去玩，她跳舞，我唱歌。",
        "en": "On weekends we go out together — she dances and I sing."
+      },
+      {
+       "zh": "我们玩得非常快乐。",
+       "en": "We have a really great time."
       }
      ],
      "questions": [
       {
        "id": "q1",
-       "type": "true_false",
-       "question": "妹妹喜欢打篮球。",
-       "questionEn": "The younger sister likes basketball.",
-       "answer": false
+       "type": "multiple_choice",
+       "question": "妹妹喜欢什么？",
+       "questionEn": "What does the younger sister like?",
+       "options": [
+        "打篮球",
+        "唱歌",
+        "游泳",
+        "跳舞"
+       ],
+       "answer": 3
       },
       {
        "id": "q2",
+       "type": "true_false",
+       "question": "“我”唱歌唱得很好。",
+       "questionEn": "\"I\" sing very well.",
+       "answer": false
+      },
+      {
+       "id": "q3",
        "type": "multiple_choice",
-       "question": "\"我\"唱得怎么样？",
-       "questionEn": "How well does the narrator sing?",
+       "question": "妹妹说的话是什么意思？",
+       "questionEn": "What does the sister mean by what she said?",
        "options": [
-        "很好",
-        "不好",
-        "非常好",
-        "很快"
+        "你别唱了",
+        "唱得好不好不重要，快乐最重要",
+        "你要多学唱歌",
+        "你应该去跳舞"
        ],
        "answer": 1
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "周末他们一起出去玩。",
+       "questionEn": "On weekends they go out together.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -2102,12 +2294,16 @@
      "emoji": "🚲",
      "lines": [
       {
-       "zh": "我家离学校不太远。",
-       "en": "My home isn't very far from school."
+       "zh": "我家离学校不太远，走路要二十分钟。",
+       "en": "My home isn't very far from school; it's a twenty-minute walk."
       },
       {
        "zh": "天气好的时候，我骑自行车去学校。",
        "en": "When the weather is nice, I ride my bike to school."
+      },
+      {
+       "zh": "骑自行车很快，十分钟就到了。",
+       "en": "Cycling is fast — I get there in ten minutes."
       },
       {
        "zh": "下雨的时候，我坐公共汽车去。",
@@ -2116,28 +2312,56 @@
       {
        "zh": "从我家到学校，坐车要二十分钟。",
        "en": "From my home to school, it takes twenty minutes by bus."
+      },
+      {
+       "zh": "因为路上车很多，所以公共汽车走得很慢。",
+       "en": "Because there's a lot of traffic, the bus goes slowly."
+      },
+      {
+       "zh": "我最喜欢骑自行车，也对身体好。",
+       "en": "I like cycling best; it's also good for my health."
       }
      ],
      "questions": [
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "下雨的时候，\"我\"怎么去学校？",
-       "questionEn": "How does the narrator go to school when it rains?",
+       "question": "天气好的时候，“我”怎么去学校？",
+       "questionEn": "How do I get to school when the weather is nice?",
        "options": [
-        "走路",
-        "骑自行车",
         "坐公共汽车",
+        "骑自行车",
+        "走路",
         "坐出租车"
        ],
-       "answer": 2
+       "answer": 1
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "\"我\"家离学校非常远。",
-       "questionEn": "The narrator's home is very far from school.",
+       "question": "从“我”家到学校，骑自行车要二十分钟。",
+       "questionEn": "From my home to school, it takes twenty minutes by bike.",
        "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "为什么坐公共汽车不快？",
+       "questionEn": "Why isn't taking the bus fast?",
+       "options": [
+        "车票太贵",
+        "汽车站很远",
+        "路上车很多",
+        "司机开得慢"
+       ],
+       "answer": 2
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "“我”家离学校不太远。",
+       "questionEn": "My home isn't very far from school.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -2164,8 +2388,12 @@
        "en": "Last week, my friend and I went on a boat trip."
       },
       {
-       "zh": "船票不贵，一张五十块钱。",
-       "en": "The boat tickets weren't expensive — fifty kuai each."
+       "zh": "我们早上七点从家里出发，先坐公共汽车到河边。",
+       "en": "We left home at 7 a.m. and first took a bus to the river."
+      },
+      {
+       "zh": "船票不贵，一张五十块钱，我买了两张。",
+       "en": "The boat tickets weren't expensive — fifty kuai each; I bought two."
       },
       {
        "zh": "从早上九点到下午三点，我们都在船上。",
@@ -2174,6 +2402,26 @@
       {
        "zh": "路很长，可是我们玩得很高兴。",
        "en": "It was a long way, but we had a great time."
+      },
+      {
+       "zh": "船上有很多人，大家一起唱歌，一起看外边的山。",
+       "en": "There were lots of people on the boat; everyone sang and looked at the mountains together."
+      },
+      {
+       "zh": "中午我们在船上吃饭，鱼非常好吃。",
+       "en": "At noon we ate on the boat; the fish was delicious."
+      },
+      {
+       "zh": "下午我有点儿累，就在船上睡了一会儿。",
+       "en": "In the afternoon I was a bit tired, so I slept on the boat for a while."
+      },
+      {
+       "zh": "下船以后，我们走路去机场旁边的饭馆吃晚饭。",
+       "en": "After getting off, we walked to a restaurant next to the airport for dinner."
+      },
+      {
+       "zh": "朋友说：“下次我们还坐船吧！”",
+       "en": "My friend said: \"Let's take the boat again next time!\""
       }
      ],
      "questions": [
@@ -2181,20 +2429,53 @@
        "id": "q1",
        "type": "multiple_choice",
        "question": "一张船票多少钱？",
-       "questionEn": "How much is one boat ticket?",
+       "questionEn": "How much was one boat ticket?",
        "options": [
         "五块",
-        "十五块",
-        "五十块",
-        "一百块"
+        "一百块",
+        "五百块",
+        "五十块"
        ],
-       "answer": 2
+       "answer": 3
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "他们在船上玩得不高兴。",
-       "questionEn": "They didn't have a good time on the boat.",
+       "question": "他们在船上一共六个小时。",
+       "questionEn": "They were on the boat for six hours in total.",
+       "answer": true
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "“我”下午为什么在船上睡觉？",
+       "questionEn": "Why did I sleep on the boat in the afternoon?",
+       "options": [
+        "我有点儿累",
+        "船上没有人",
+        "我生病了",
+        "我不想看山"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "multiple_choice",
+       "question": "从朋友最后的话，我们可以知道什么？",
+       "questionEn": "What can we tell from the friend's last words?",
+       "options": [
+        "他觉得船票太贵",
+        "他很喜欢这次坐船",
+        "他不想再坐船",
+        "他想坐飞机"
+       ],
+       "answer": 1
+      },
+      {
+       "id": "q5",
+       "type": "true_false",
+       "question": "他们早上从机场坐船出发。",
+       "questionEn": "They set off on the boat from the airport in the morning.",
        "answer": false
       }
      ],
@@ -2329,34 +2610,66 @@
        "en": "When you come in, the bed is on the left and the desk on the right."
       },
       {
-       "zh": "桌子旁边有一把椅子。",
-       "en": "There's a chair next to the desk."
+       "zh": "桌子旁边有一把椅子，我每天在这儿学习。",
+       "en": "There's a chair next to the desk; I study here every day."
       },
       {
-       "zh": "窗户外边有很多树。",
-       "en": "Outside the window there are lots of trees."
+       "zh": "床旁边是我的小猫，它很喜欢睡觉。",
+       "en": "Next to the bed is my little cat; it loves sleeping."
+      },
+      {
+       "zh": "窗户外边有很多树，也有一家小商店。",
+       "en": "Outside the window there are lots of trees and a small shop."
+      },
+      {
+       "zh": "早上我喜欢在窗户旁边喝咖啡。",
+       "en": "In the morning I like drinking coffee by the window."
+      },
+      {
+       "zh": "我觉得我的房间是家里最好的地方。",
+       "en": "I think my room is the best place in the house."
       }
      ],
      "questions": [
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "床在哪儿？",
-       "questionEn": "Where is the bed?",
+       "question": "进门，右边是什么？",
+       "questionEn": "When you come in, what's on the right?",
        "options": [
-        "左边",
-        "右边",
-        "外边",
-        "桌子上"
+        "床",
+        "椅子",
+        "桌子",
+        "窗户"
        ],
-       "answer": 0
+       "answer": 2
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "\"我\"的房间很大。",
-       "questionEn": "The narrator's room is big.",
+       "question": "“我”的房间很大。",
+       "questionEn": "My room is very big.",
        "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "“我”可能在哪儿学习？",
+       "questionEn": "Where do I probably study?",
+       "options": [
+        "床上",
+        "桌子旁边的椅子上",
+        "商店里",
+        "窗户外边"
+       ],
+       "answer": 1
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "“我”很喜欢自己的房间。",
+       "questionEn": "I really like my own room.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -2387,34 +2700,99 @@
        "en": "It's not in the room, and not under the table either."
       },
       {
+       "zh": "我又去妈妈的房间找，床上也没有。",
+       "en": "I went to look in Mom's room; it wasn't on the bed either."
+      },
+      {
+       "zh": "我很着急，问妈妈：“您看见我的猫了吗？”",
+       "en": "I was worried and asked Mom: \"Have you seen my cat?\""
+      },
+      {
+       "zh": "妈妈说：“没看见。早上门开了一会儿，它可能出去了。”",
+       "en": "Mom said: \"No. The door was open for a while this morning; it may have gone out.\""
+      },
+      {
        "zh": "我出去找，第一个地方是门外。",
        "en": "I went out to look; the first place was outside the door."
       },
       {
        "zh": "它在门旁边睡觉呢！",
        "en": "It was sleeping right next to the door!"
+      },
+      {
+       "zh": "我笑着说：“快进来吧，外边太冷了。”",
+       "en": "I said with a smile: \"Come in quickly, it's too cold outside.\""
+      },
+      {
+       "zh": "我马上抱起它，它身上很冷。",
+       "en": "I picked it up; its body was cold."
+      },
+      {
+       "zh": "它看了看我，慢慢地走进来了。",
+       "en": "It looked at me and slowly walked in."
+      },
+      {
+       "zh": "从那天以后，我每天出门都看看门关了没有。",
+       "en": "Since that day, every time I go out I check whether the door is shut."
+      },
+      {
+       "zh": "妈妈说：“找到了就好，以后别让它一个人出去了。”",
+       "en": "Mom said: \"Good that you found it. Don't let it go out alone again.\""
       }
      ],
      "questions": [
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "猫在哪儿？",
-       "questionEn": "Where was the cat?",
+       "question": "“我”第一个去门外的哪儿找？",
+       "questionEn": "Where outside did I look first?",
        "options": [
-        "房间里",
-        "桌子下面",
-        "门旁边",
-        "学校"
+        "商店",
+        "学校",
+        "门外",
+        "教室"
        ],
        "answer": 2
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "猫在桌子下面睡觉。",
-       "questionEn": "The cat was sleeping under the table.",
+       "question": "猫在妈妈的床上睡觉。",
+       "questionEn": "The cat was sleeping on Mom's bed.",
        "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "猫为什么在外边？",
+       "questionEn": "Why was the cat outside?",
+       "options": [
+        "早上门开了，它出去了",
+        "妈妈带它出去了",
+        "它要找吃的",
+        "“我”让它出去"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "multiple_choice",
+       "question": "“我”现在为什么每天看门关了没有？",
+       "questionEn": "Why do I now check the door every day?",
+       "options": [
+        "家里太冷",
+        "怕猫再出去",
+        "妈妈让我看",
+        "门坏了"
+       ],
+       "answer": 1
+      },
+      {
+       "id": "q5",
+       "type": "true_false",
+       "question": "猫找到以后，它自己走进了家。",
+       "questionEn": "After being found, the cat walked into the house by itself.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -2537,37 +2915,69 @@
        "en": "I eat two eggs every morning."
       },
       {
-       "zh": "我还喝一杯牛奶。",
-       "en": "I also drink a glass of milk."
+       "zh": "我还喝一杯牛奶，有时候也吃一个苹果。",
+       "en": "I also drink a glass of milk, and sometimes eat an apple."
       },
       {
        "zh": "爸爸不喝牛奶，他喜欢喝咖啡。",
        "en": "Dad doesn't drink milk; he likes coffee."
       },
       {
+       "zh": "他每天早上都喝两杯咖啡，可是不吃鸡蛋。",
+       "en": "He drinks two cups of coffee every morning but doesn't eat eggs."
+      },
+      {
        "zh": "妈妈说：早饭要吃好！",
        "en": "Mom says: you must eat a good breakfast!"
+      },
+      {
+       "zh": "她让爸爸少喝咖啡，多吃东西。",
+       "en": "She tells Dad to drink less coffee and eat more."
+      },
+      {
+       "zh": "现在爸爸每天也吃一个鸡蛋了。",
+       "en": "Now Dad eats an egg every day too."
       }
      ],
      "questions": [
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "爸爸早上喝什么？",
-       "questionEn": "What does Dad drink in the morning?",
+       "question": "“我”每天早上吃几个鸡蛋？",
+       "questionEn": "How many eggs do I eat every morning?",
        "options": [
-        "牛奶",
-        "茶",
-        "咖啡",
-        "水"
+        "一个",
+        "三个",
+        "两个",
+        "不吃"
        ],
        "answer": 2
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "\"我\"每天早上吃两个鸡蛋。",
-       "questionEn": "The narrator eats two eggs every morning.",
+       "question": "爸爸喜欢喝牛奶。",
+       "questionEn": "Dad likes drinking milk.",
+       "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "妈妈为什么让爸爸多吃东西？",
+       "questionEn": "Why does Mom tell Dad to eat more?",
+       "options": [
+        "她觉得早饭很重要",
+        "鸡蛋太多了",
+        "咖啡太贵了",
+        "爸爸生病了"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "爸爸听了妈妈的话。",
+       "questionEn": "Dad listened to Mom.",
        "answer": true
       }
      ],
@@ -2592,16 +3002,44 @@
        "en": "Let's go eat at a restaurant tonight."
       },
       {
+       "zh": "好啊！我们去学校旁边那个新饭馆吧。",
+       "en": "Sure! Let's go to that new restaurant next to the school."
+      },
+      {
+       "zh": "服务员说：“欢迎！你们想吃什么？”",
+       "en": "The waiter said: \"Welcome! What would you like?\""
+      },
+      {
+       "zh": "我问他：“你们这儿什么最好吃？”",
+       "en": "I asked him: \"What's best here?\""
+      },
+      {
        "zh": "服务员说这儿的鱼最好吃。",
        "en": "The waiter said the fish here is the best."
       },
       {
-       "zh": "我们要了一个鱼，一个羊肉。",
-       "en": "We ordered a fish and a lamb dish."
+       "zh": "我朋友说：“我不太喜欢吃鱼，我们再要一个羊肉吧。”",
+       "en": "My friend said: \"I don't really like fish; let's also get a lamb dish.\""
       },
       {
-       "zh": "吃完饭，我们还吃了西瓜。",
-       "en": "After the meal we also had watermelon."
+       "zh": "我们要了一个鱼，一个羊肉，还要了两杯茶。",
+       "en": "We ordered a fish, a lamb dish and two cups of tea."
+      },
+      {
+       "zh": "鱼真好吃，羊肉也很好吃，我们都吃完了。",
+       "en": "The fish was really good, and the lamb was good too — we finished everything."
+      },
+      {
+       "zh": "吃完饭，服务员送给我们一个西瓜。",
+       "en": "After the meal, the waiter gave us a watermelon for free."
+      },
+      {
+       "zh": "服务员说：“这个西瓜是送的，欢迎你们再来！”",
+       "en": "The waiter said: \"The watermelon is on the house — come again!\""
+      },
+      {
+       "zh": "我们觉得这个饭馆很好，下次还来吧！",
+       "en": "We think this restaurant is great — let's come again next time!"
       }
      ],
      "questions": [
@@ -2612,18 +3050,51 @@
        "questionEn": "What did the waiter say was best?",
        "options": [
         "羊肉",
-        "鱼",
+        "西瓜",
         "鸡蛋",
-        "西瓜"
+        "鱼"
        ],
-       "answer": 1
+       "answer": 3
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "他们没吃西瓜。",
-       "questionEn": "They didn't eat watermelon.",
+       "question": "西瓜是他们自己买的。",
+       "questionEn": "They bought the watermelon themselves.",
        "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "他们为什么还要了羊肉？",
+       "questionEn": "Why did they also order lamb?",
+       "options": [
+        "鱼太贵了",
+        "朋友不太喜欢吃鱼",
+        "服务员让他们要",
+        "饭馆没有鱼了"
+       ],
+       "answer": 1
+      },
+      {
+       "id": "q4",
+       "type": "multiple_choice",
+       "question": "这篇短文主要说什么？",
+       "questionEn": "What is this passage mainly about?",
+       "options": [
+        "一次很好的饭馆晚饭",
+        "怎么做鱼",
+        "在饭馆工作",
+        "去商店买西瓜"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q5",
+       "type": "true_false",
+       "question": "他们觉得这个饭馆的菜很好吃。",
+       "questionEn": "They thought the food at this restaurant was tasty.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -2762,24 +3233,40 @@
        "en": "Apples are 8 yuan a kilo; watermelon is 3 yuan a kilo."
       },
       {
+       "zh": "别的商店的苹果十二元一公斤。",
+       "en": "At other shops apples are 12 yuan a kilo."
+      },
+      {
        "zh": "我买了两公斤苹果，一个大西瓜。",
        "en": "I bought two kilos of apples and a big watermelon."
       },
       {
+       "zh": "西瓜很大，有八公斤。",
+       "en": "The watermelon was big — eight kilos."
+      },
+      {
        "zh": "一共四十块钱。",
        "en": "Forty kuai altogether."
+      },
+      {
+       "zh": "卖水果的人说：“欢迎再来！”",
+       "en": "The fruit seller said: \"Come again!\""
+      },
+      {
+       "zh": "我想，以后我还来这儿买水果。",
+       "en": "I think I'll keep coming here to buy fruit."
       }
      ],
      "questions": [
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "苹果多少钱一公斤？",
-       "questionEn": "How much are apples per kilo?",
+       "question": "这个商店的苹果多少钱一公斤？",
+       "questionEn": "How much are apples per kilo in this shop?",
        "options": [
         "三元",
         "八元",
-        "十元",
+        "十二元",
         "四十元"
        ],
        "answer": 1
@@ -2787,9 +3274,29 @@
       {
        "id": "q2",
        "type": "true_false",
-       "question": "这个商店的水果很贵。",
-       "questionEn": "The fruit in this shop is expensive.",
+       "question": "这个商店的苹果比别的商店贵。",
+       "questionEn": "Apples in this shop are more expensive than at other shops.",
        "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "“我”为什么以后还想来这儿？",
+       "questionEn": "Why do I want to come here again?",
+       "options": [
+        "这儿的水果便宜",
+        "这儿离家近",
+        "卖水果的人是朋友",
+        "这儿有咖啡"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "“我”一共花了四十块钱。",
+       "questionEn": "I spent forty kuai in total.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -2813,38 +3320,95 @@
        "en": "Tomorrow is Dad's birthday; I want to buy him a watch."
       },
       {
-       "zh": "第一个手表三千元，太贵了。",
-       "en": "The first watch was 3,000 yuan — too expensive."
+       "zh": "下午我和妈妈一起去商店。",
+       "en": "In the afternoon Mom and I went to the shop together."
       },
       {
-       "zh": "第二个只要五百元，也很好看。",
-       "en": "The second one was only 500 yuan, and it looked great."
+       "zh": "卖手表的人给我们看了两个手表。",
+       "en": "The watch seller showed us two watches."
       },
       {
-       "zh": "妈妈说：别告诉爸爸，明天送给他！",
-       "en": "Mom said: don't tell Dad — give it to him tomorrow!"
+       "zh": "第一个手表是黑色的，三千元，太贵了。",
+       "en": "The first watch was black and cost 3,000 yuan — too expensive."
+      },
+      {
+       "zh": "第二个是白色的，只要五百元，也很好看。",
+       "en": "The second was white, only 500 yuan, and it looked great."
+      },
+      {
+       "zh": "妈妈说：“你爸爸不喜欢黑色，白色的更好。”",
+       "en": "Mom said: \"Your dad doesn't like black; the white one is better.\""
+      },
+      {
+       "zh": "我用我的钱买了第二个，妈妈给我一百元买了一件红衣服。",
+       "en": "I bought the second with my own money, and Mom gave me 100 yuan to buy a red shirt."
+      },
+      {
+       "zh": "那件红衣服也是送给爸爸的。",
+       "en": "That red shirt was also for Dad."
+      },
+      {
+       "zh": "回家的路上，妈妈说：别告诉爸爸，明天送给他！",
+       "en": "On the way home, Mom said: don't tell Dad — give it to him tomorrow!"
+      },
+      {
+       "zh": "我希望爸爸明天看见礼物会很高兴。",
+       "en": "I hope Dad will be happy when he sees the gifts tomorrow."
       }
      ],
      "questions": [
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "第二个手表多少钱？",
-       "questionEn": "How much was the second watch?",
+       "question": "“我”买的手表多少钱？",
+       "questionEn": "How much was the watch I bought?",
        "options": [
-        "五十元",
-        "五百元",
         "三千元",
-        "三百元"
+        "一百元",
+        "五百元",
+        "八百元"
        ],
-       "answer": 1
+       "answer": 2
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "妈妈让\"我\"今天告诉爸爸。",
-       "questionEn": "Mom told the narrator to tell Dad today.",
+       "question": "“我”买了黑色的手表。",
+       "questionEn": "I bought the black watch.",
        "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "为什么买第二个手表？",
+       "questionEn": "Why did they buy the second watch?",
+       "options": [
+        "商店只有一个",
+        "便宜、好看，爸爸也喜欢白色",
+        "妈妈喜欢白色",
+        "黑色的卖完了"
+       ],
+       "answer": 1
+      },
+      {
+       "id": "q4",
+       "type": "multiple_choice",
+       "question": "妈妈为什么说“别告诉爸爸”？",
+       "questionEn": "Why did Mom say \"don't tell Dad\"?",
+       "options": [
+        "想让爸爸明天高兴一下",
+        "爸爸不喜欢手表",
+        "手表太贵了",
+        "爸爸明天不在家"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q5",
+       "type": "true_false",
+       "question": "“我”和妈妈一共给爸爸买了两件礼物。",
+       "questionEn": "Mom and I bought Dad two gifts in total.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -2975,8 +3539,20 @@
        "en": "Mom said: it might snow tonight."
       },
       {
+       "zh": "我觉得不会下雪，因为去年冬天没下雪。",
+       "en": "I didn't think it would snow, because it didn't snow last winter."
+      },
+      {
        "zh": "早上起床，外边都是白色的！",
        "en": "When I got up this morning, everything outside was white!"
+      },
+      {
+       "zh": "我和弟弟穿好衣服，就出去玩雪了。",
+       "en": "My younger brother and I got dressed and went out to play in the snow."
+      },
+      {
+       "zh": "我们在雪里跑，玩得非常高兴。",
+       "en": "We ran in the snow and had a wonderful time."
       },
       {
        "zh": "我觉得下雪的时候真漂亮。",
@@ -2992,16 +3568,36 @@
        "options": [
         "晴天，很热",
         "阴天，很冷",
-        "下雨",
-        "下雪"
+        "下雨了",
+        "下雪了"
        ],
        "answer": 1
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "早上外边下雪了。",
-       "questionEn": "This morning there was snow outside.",
+       "question": "“我”以前觉得今天会下雪。",
+       "questionEn": "Before, I thought it would snow today.",
+       "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "“外边都是白色的”是什么意思？",
+       "questionEn": "What does \"everything outside was white\" mean?",
+       "options": [
+        "外边有很多白衣服",
+        "下雪了",
+        "天很晴",
+        "外边有很多人"
+       ],
+       "answer": 1
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "“我”和弟弟在外边玩雪。",
+       "questionEn": "My brother and I played in the snow outside.",
        "answer": true
       }
      ],
@@ -3024,42 +3620,107 @@
      "emoji": "🌧️",
      "lines": [
       {
-       "zh": "快下雨了，我们走快一点儿吧。",
-       "en": "It's about to rain — let's walk faster."
+       "zh": "下午我和妈妈去商店，天很阴。",
+       "en": "In the afternoon Mom and I went to the shop; it was overcast."
+      },
+      {
+       "zh": "妈妈说：“快下雨了，我们走快一点儿吧。”",
+       "en": "Mom said: \"It's about to rain — let's walk faster.\""
+      },
+      {
+       "zh": "可是我们还没到家，雨就开始下了。",
+       "en": "But before we got home, it started raining."
+      },
+      {
+       "zh": "我们坐上了一辆出租车。",
+       "en": "We got into a taxi."
       },
       {
        "zh": "路上人很多，车开得很慢。",
-       "en": "The road is crowded and cars are moving slowly."
+       "en": "The road was crowded and the car moved slowly."
       },
       {
-       "zh": "雨天开车要慢一点儿。",
-       "en": "On rainy days you should drive more slowly."
+       "zh": "司机说：“下雨的时候，每个人都想坐车，所以路上车很多。”",
+       "en": "The driver said: \"When it rains everyone wants a ride, so there are lots of cars.\""
       },
       {
-       "zh": "我希望明天是晴天。",
-       "en": "I hope tomorrow will be sunny."
+       "zh": "我说：“师傅，您能开快一点儿吗？”",
+       "en": "I said: \"Driver, could you drive a bit faster?\""
+      },
+      {
+       "zh": "司机笑着说：“雨天开车要慢一点儿，快了不安全。”",
+       "en": "The driver said with a smile: \"On rainy days you should drive slower; going fast isn't safe.\""
+      },
+      {
+       "zh": "妈妈说：“他说得对，我们不着急。”",
+       "en": "Mom said: \"He's right; we're not in a hurry.\""
+      },
+      {
+       "zh": "一个小时以后，我们才到家。",
+       "en": "An hour later, we finally got home."
+      },
+      {
+       "zh": "我们在车上看外边的雨，也觉得很好看。",
+       "en": "We watched the rain outside from the car and found it pretty too."
+      },
+      {
+       "zh": "我希望明天是晴天，我们可以走路去公园。",
+       "en": "I hope tomorrow will be sunny so we can walk to the park."
       }
      ],
      "questions": [
       {
        "id": "q1",
-       "type": "true_false",
-       "question": "车开得很快。",
-       "questionEn": "The cars are going fast.",
-       "answer": false
+       "type": "multiple_choice",
+       "question": "他们为什么坐出租车？",
+       "questionEn": "Why did they take a taxi?",
+       "options": [
+        "商店离家很远",
+        "开始下雨了",
+        "他们很累",
+        "妈妈不想走路"
+       ],
+       "answer": 1
       },
       {
        "id": "q2",
+       "type": "true_false",
+       "question": "出租车开得很快。",
+       "questionEn": "The taxi drove fast.",
+       "answer": false
+      },
+      {
+       "id": "q3",
        "type": "multiple_choice",
-       "question": "\"我\"希望明天怎么样？",
-       "questionEn": "What does the narrator hope for tomorrow?",
+       "question": "司机为什么开得慢？",
+       "questionEn": "Why did the driver drive slowly?",
        "options": [
-        "下雨",
-        "下雪",
-        "晴天",
-        "阴天"
+        "车坏了",
+        "他不认识路",
+        "他想多要钱",
+        "下雨天开快了不安全"
        ],
-       "answer": 2
+       "answer": 3
+      },
+      {
+       "id": "q4",
+       "type": "multiple_choice",
+       "question": "“我们不着急”说明妈妈觉得怎么样？",
+       "questionEn": "What does \"we're not in a hurry\" show about Mom's view?",
+       "options": [
+        "安全比快更重要",
+        "她想下车",
+        "她觉得司机不好",
+        "她很生气"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q5",
+       "type": "true_false",
+       "question": "“我”希望明天天气好。",
+       "questionEn": "I hope the weather is good tomorrow.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -3186,8 +3847,16 @@
        "en": "I look at my phone for a long time every day."
       },
       {
+       "zh": "晚上我也在床上看手机，很晚才睡觉。",
+       "en": "At night I also look at my phone in bed and go to sleep very late."
+      },
+      {
        "zh": "昨天我的眼睛很不舒服。",
        "en": "Yesterday my eyes felt really uncomfortable."
+      },
+      {
+       "zh": "我去医院看医生。",
+       "en": "I went to the hospital to see a doctor."
       },
       {
        "zh": "医生告诉我：因为你看手机太多，所以眼睛累了。",
@@ -3196,28 +3865,52 @@
       {
        "zh": "医生让我少看手机，多休息。",
        "en": "The doctor told me to look at my phone less and rest more."
+      },
+      {
+       "zh": "现在我每天晚上十点就睡觉了。",
+       "en": "Now I go to sleep at ten every night."
       }
      ],
      "questions": [
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "\"我\"为什么眼睛不舒服？",
-       "questionEn": "Why are the narrator's eyes uncomfortable?",
+       "question": "“我”的眼睛为什么不舒服？",
+       "questionEn": "Why were my eyes uncomfortable?",
        "options": [
         "看书太多",
         "看手机太多",
-        "睡觉太少",
-        "生病了"
+        "生病了",
+        "睡觉太多"
        ],
        "answer": 1
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "医生让\"我\"多看手机。",
-       "questionEn": "The doctor told the narrator to use the phone more.",
+       "question": "医生让“我”多看手机。",
+       "questionEn": "The doctor told me to look at my phone more.",
        "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "“我”现在为什么早一点儿睡觉？",
+       "questionEn": "Why do I go to sleep earlier now?",
+       "options": [
+        "我想听医生的话",
+        "手机坏了",
+        "明天要考试",
+        "妈妈不让看电视"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "以前“我”晚上睡得很晚。",
+       "questionEn": "Before, I went to sleep late at night.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -3244,16 +3937,44 @@
        "en": "My older brother is very busy at work and tired every day."
       },
       {
-       "zh": "上个星期他生病了。",
-       "en": "Last week he got sick."
+       "zh": "他早上七点上班，晚上十点才回家。",
+       "en": "He starts work at 7 a.m. and doesn't get home until 10 p.m."
+      },
+      {
+       "zh": "因为没有时间，所以他常常不吃早饭。",
+       "en": "Because he has no time, he often skips breakfast."
+      },
+      {
+       "zh": "上个星期他生病了，身体很不舒服。",
+       "en": "Last week he got sick and felt really unwell."
+      },
+      {
+       "zh": "他去医院看病，医生让他吃药，在家休息。",
+       "en": "He went to the hospital; the doctor told him to take medicine and rest at home."
       },
       {
        "zh": "他吃了药，在家休息了三天。",
        "en": "He took medicine and rested at home for three days."
       },
       {
-       "zh": "妈妈告诉他：身体最重要！",
-       "en": "Mom told him: your health is the most important thing!"
+       "zh": "妈妈每天给他做饭，还让他多喝水。",
+       "en": "Mom cooked for him every day and had him drink lots of water."
+      },
+      {
+       "zh": "三天以后，他的身体好多了。",
+       "en": "After three days he felt much better."
+      },
+      {
+       "zh": "哥哥问：“为什么我会生病？”",
+       "en": "My brother asked: \"Why did I get sick?\""
+      },
+      {
+       "zh": "妈妈告诉他：“因为你太累了，工作没有身体重要！”",
+       "en": "Mom told him: \"Because you were too tired. Work isn't as important as your health!\""
+      },
+      {
+       "zh": "现在哥哥每天都吃早饭，周末也去跑步。",
+       "en": "Now my brother eats breakfast every day and goes running on weekends."
       }
      ],
      "questions": [
@@ -3273,9 +3994,42 @@
       {
        "id": "q2",
        "type": "true_false",
-       "question": "哥哥工作不忙。",
-       "questionEn": "The brother isn't busy at work.",
+       "question": "哥哥以前每天都吃早饭。",
+       "questionEn": "The brother used to eat breakfast every day.",
        "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "妈妈觉得哥哥为什么会生病？",
+       "questionEn": "Why does Mom think the brother got sick?",
+       "options": [
+        "他吃药太多",
+        "他工作太累了",
+        "他跑步太多",
+        "天气太冷"
+       ],
+       "answer": 1
+      },
+      {
+       "id": "q4",
+       "type": "multiple_choice",
+       "question": "这个故事最想告诉我们什么？",
+       "questionEn": "What is the main message of this story?",
+       "options": [
+        "工作最重要",
+        "要多吃药",
+        "身体比工作重要",
+        "早上要早起床"
+       ],
+       "answer": 2
+      },
+      {
+       "id": "q5",
+       "type": "true_false",
+       "question": "生病以后，哥哥的生活变了。",
+       "questionEn": "After getting sick, the brother changed his habits.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -3408,8 +4162,20 @@
        "en": "The teacher asks questions and we answer."
       },
       {
+       "zh": "刚开始的时候，老师说的话我很多都听不懂。",
+       "en": "At first, I couldn't understand much of what the teacher said."
+      },
+      {
        "zh": "我听不懂的时候，就问老师。",
        "en": "When I don't understand, I ask the teacher."
+      },
+      {
+       "zh": "老师说：“没关系，有问题就问。”",
+       "en": "The teacher said: \"No problem — ask whenever you have a question.\""
+      },
+      {
+       "zh": "我每天晚上也看一会儿中文书。",
+       "en": "I also read some Chinese books every evening."
       },
       {
        "zh": "现在我可以看懂中文报纸了！",
@@ -3420,7 +4186,7 @@
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "他们一个星期有几次汉语课？",
+       "question": "他们每个星期有几次汉语课？",
        "questionEn": "How many Chinese classes do they have a week?",
        "options": [
         "一次",
@@ -3433,8 +4199,28 @@
       {
        "id": "q2",
        "type": "true_false",
-       "question": "\"我\"现在可以看懂中文报纸。",
-       "questionEn": "The narrator can now read Chinese newspapers.",
+       "question": "刚开始的时候，“我”都听得懂。",
+       "questionEn": "At first, I understood everything.",
+       "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "“我”现在为什么可以看懂报纸了？",
+       "questionEn": "Why can I read newspapers now?",
+       "options": [
+        "我常常问问题，也每天看书",
+        "报纸很容易",
+        "老师给我看报纸",
+        "我在中国住"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "老师很喜欢学生问问题。",
+       "questionEn": "The teacher is happy for students to ask questions.",
        "answer": true
       }
      ],
@@ -3458,8 +4244,20 @@
      "emoji": "✅",
      "lines": [
       {
+       "zh": "今天上午我们有汉语考试。",
+       "en": "This morning we had a Chinese exam."
+      },
+      {
+       "zh": "昨天晚上我准备了三个小时，十二点才睡觉。",
+       "en": "Last night I prepared for three hours and only went to bed at twelve."
+      },
+      {
        "zh": "今天的考试有二十个题。",
        "en": "Today's exam had twenty questions."
+      },
+      {
+       "zh": "题不太难，我都看懂了。",
+       "en": "The questions weren't too hard; I understood them all."
       },
       {
        "zh": "我用了一个小时就做完了。",
@@ -3470,20 +4268,36 @@
        "en": "But I got two questions wrong."
       },
       {
-       "zh": "下次我要准备得更好。",
-       "en": "Next time I'll prepare better."
+       "zh": "一个是因为我太快了，没有看完题就回答了。",
+       "en": "One was because I was too fast and answered before reading the whole question."
+      },
+      {
+       "zh": "还有一个字，我不知道它是什么意思。",
+       "en": "The other had a character I didn't know the meaning of."
+      },
+      {
+       "zh": "老师说：“你考得不错，可是做题要慢一点儿。”",
+       "en": "The teacher said: \"You did well, but you should do the questions more slowly.\""
+      },
+      {
+       "zh": "考试以后我问老师，老师告诉我那个字是“帮助”的“助”。",
+       "en": "After the exam I asked the teacher; she told me the character was 助 as in 帮助."
+      },
+      {
+       "zh": "下次我要准备得更好，也要看完题再回答。",
+       "en": "Next time I'll prepare better and read the whole question before answering."
       }
      ],
      "questions": [
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "\"我\"做错了几个题？",
-       "questionEn": "How many questions did the narrator get wrong?",
+       "question": "“我”做错了几个题？",
+       "questionEn": "How many questions did I get wrong?",
        "options": [
         "一个",
         "两个",
-        "十个",
+        "三个",
         "二十个"
        ],
        "answer": 1
@@ -3491,9 +4305,42 @@
       {
        "id": "q2",
        "type": "true_false",
-       "question": "考试有二十个题。",
-       "questionEn": "The exam had twenty questions.",
-       "answer": true
+       "question": "“我”用了两个小时做完考试。",
+       "questionEn": "It took me two hours to finish the exam.",
+       "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "“我”为什么做错了一个题？",
+       "questionEn": "Why did I get one question wrong?",
+       "options": [
+        "我没有准备",
+        "我太累了",
+        "我没看完题就回答了",
+        "老师没说清楚"
+       ],
+       "answer": 2
+      },
+      {
+       "id": "q4",
+       "type": "multiple_choice",
+       "question": "老师说“做题要慢一点儿”是什么意思？",
+       "questionEn": "What did the teacher mean by \"do the questions more slowly\"?",
+       "options": [
+        "要认真看题，别太着急",
+        "考试时间太短",
+        "要多休息",
+        "下次别来考试"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q5",
+       "type": "true_false",
+       "question": "“我”觉得这次考试的题非常难。",
+       "questionEn": "I thought the questions on this exam were very hard.",
+       "answer": false
       }
      ],
      "focusWords": [
@@ -3610,12 +4457,24 @@
      "emoji": "🎁",
      "lines": [
       {
-       "zh": "今天是我妹妹的生日。",
-       "en": "Today is my younger sister's birthday."
+       "zh": "今天是我妹妹的生日，她八岁了。",
+       "en": "Today is my younger sister's birthday; she's turned eight."
+      },
+      {
+       "zh": "她早上一起床就问：“我的礼物呢？”",
+       "en": "As soon as she got up she asked: \"Where's my present?\""
       },
       {
        "zh": "爸爸正在做饭，妈妈正在买蛋糕。",
        "en": "Dad is cooking and Mom is buying a cake."
+      },
+      {
+       "zh": "我正在给妹妹写一张生日卡。",
+       "en": "I'm writing a birthday card for my sister."
+      },
+      {
+       "zh": "晚上，我们一起吃饭，一起唱生日歌。",
+       "en": "In the evening we eat together and sing the birthday song."
       },
       {
        "zh": "我送给妹妹一本书。",
@@ -3624,28 +4483,52 @@
       {
        "zh": "她笑着说：谢谢哥哥！",
        "en": "She said with a smile: thanks, big brother!"
+      },
+      {
+       "zh": "我们都说：“祝你生日快乐！”",
+       "en": "We all said: \"Happy birthday!\""
       }
      ],
      "questions": [
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "妈妈正在做什么？",
-       "questionEn": "What is Mom doing?",
+       "question": "妹妹今年几岁？",
+       "questionEn": "How old is the sister this year?",
        "options": [
-        "做饭",
-        "买蛋糕",
-        "看书",
-        "睡觉"
+        "六岁",
+        "七岁",
+        "八岁",
+        "十岁"
        ],
-       "answer": 1
+       "answer": 2
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "\"我\"送给妹妹一个手机。",
-       "questionEn": "The narrator gave the sister a phone.",
+       "question": "妈妈正在做饭。",
+       "questionEn": "Mom is cooking.",
        "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "妹妹为什么笑？",
+       "questionEn": "Why did the sister smile?",
+       "options": [
+        "她收到礼物，很高兴",
+        "蛋糕不好吃",
+        "爸爸做饭做得不好",
+        "她要去上学"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "true_false",
+       "question": "“我”是妹妹的哥哥。",
+       "questionEn": "\"I\" am the sister's older brother.",
+       "answer": true
       }
      ],
      "focusWords": [
@@ -3668,8 +4551,16 @@
      "emoji": "🎉",
      "lines": [
       {
+       "zh": "今天是我的生日，我请朋友们来家里玩。",
+       "en": "Today is my birthday, and I invited friends over."
+      },
+      {
        "zh": "晚上七点，朋友们都来了。",
        "en": "At seven in the evening, all the friends arrived."
+      },
+      {
+       "zh": "他们送给我很多礼物，有书，也有手表。",
+       "en": "They gave me lots of gifts — books and a watch too."
       },
       {
        "zh": "大家一起唱歌，一起吃蛋糕。",
@@ -3680,6 +4571,26 @@
        "en": "Xiao Li kept looking at his phone; he was waiting for his girlfriend's call."
       },
       {
+       "zh": "我问他：“有什么事情吗？”",
+       "en": "I asked him: \"Is something up?\""
+      },
+      {
+       "zh": "他说：“她说今天晚上给我打电话，可是还没打。”",
+       "en": "He said: \"She said she'd call me tonight, but she hasn't yet.\""
+      },
+      {
+       "zh": "九点的时候，门开着，一个女孩子笑着走进来了。",
+       "en": "At nine, the door was open and a girl walked in smiling."
+      },
+      {
+       "zh": "原来是小李的女朋友，她也来给我过生日！",
+       "en": "It turned out to be Xiao Li's girlfriend — she came for my birthday too!"
+      },
+      {
+       "zh": "小李非常高兴，大家都笑了。",
+       "en": "Xiao Li was overjoyed and everyone laughed."
+      },
+      {
        "zh": "这是我最快乐的一个生日！",
        "en": "This was my happiest birthday ever!"
       }
@@ -3688,21 +4599,54 @@
       {
        "id": "q1",
        "type": "multiple_choice",
-       "question": "小李为什么一直看手机？",
-       "questionEn": "Why did Xiao Li keep looking at his phone?",
+       "question": "朋友们几点来的？",
+       "questionEn": "What time did the friends arrive?",
        "options": [
-        "他在玩游戏",
-        "他在等电话",
-        "他在看电影",
-        "他在工作"
+        "六点",
+        "七点",
+        "八点",
+        "九点"
        ],
        "answer": 1
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "朋友们晚上七点来了。",
-       "questionEn": "The friends came at 7 p.m.",
+       "question": "小李一直在看电视。",
+       "questionEn": "Xiao Li kept watching TV.",
+       "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "小李为什么一直看手机？",
+       "questionEn": "Why did Xiao Li keep looking at his phone?",
+       "options": [
+        "他在玩游戏",
+        "他想看时间",
+        "他在等女朋友的电话",
+        "他不喜欢唱歌"
+       ],
+       "answer": 2
+      },
+      {
+       "id": "q4",
+       "type": "multiple_choice",
+       "question": "女朋友为什么没有打电话？",
+       "questionEn": "Why didn't the girlfriend call?",
+       "options": [
+        "她生病了",
+        "她来这儿了，想让小李高兴一下",
+        "她的手机没有钱",
+        "她忘了"
+       ],
+       "answer": 1
+      },
+      {
+       "id": "q5",
+       "type": "true_false",
+       "question": "“我”觉得这个生日很快乐。",
+       "questionEn": "I thought this birthday was very happy.",
        "answer": true
       }
      ],
@@ -3832,12 +4776,36 @@
        "en": "We took a ten-hour train ride."
       },
       {
+       "zh": "飞机比火车快多了，但是票也贵多了。",
+       "en": "Planes are much faster than trains, but the tickets are much pricier too."
+      },
+      {
        "zh": "虽然路很长，但是我们一点儿也不累。",
        "en": "Although the trip was long, we weren't tired at all."
       },
       {
+       "zh": "我们在火车上唱歌、看书，还认识了新朋友。",
+       "en": "On the train we sang, read and even made new friends."
+      },
+      {
        "zh": "我们住的宾馆很便宜，房间也很大。",
        "en": "Our hotel was cheap and the room was big too."
+      },
+      {
+       "zh": "宾馆离车站很近，走路只要十分钟。",
+       "en": "The hotel was close to the station — only a ten-minute walk."
+      },
+      {
+       "zh": "我们去过很多地方，每天都走很长的路。",
+       "en": "We went to many places and walked a long way every day."
+      },
+      {
+       "zh": "在北京，我们吃过很多好吃的东西。",
+       "en": "In Beijing we ate lots of delicious food."
+      },
+      {
+       "zh": "虽然天气很热，但是我们每天都出去玩。",
+       "en": "Although it was hot, we went out every day."
       },
       {
        "zh": "那是我第一次去北京，我还想再去！",
@@ -3854,15 +4822,48 @@
         "坐飞机",
         "坐火车",
         "坐船",
-        "坐公共汽车"
+        "开车"
        ],
        "answer": 1
       },
       {
        "id": "q2",
        "type": "true_false",
-       "question": "宾馆很贵。",
-       "questionEn": "The hotel was expensive.",
+       "question": "他们住的宾馆很贵。",
+       "questionEn": "Their hotel was expensive.",
+       "answer": false
+      },
+      {
+       "id": "q3",
+       "type": "multiple_choice",
+       "question": "他们为什么不坐飞机？",
+       "questionEn": "Why didn't they fly?",
+       "options": [
+        "飞机票太贵",
+        "没有飞机",
+        "他们怕坐飞机",
+        "飞机太慢"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q4",
+       "type": "multiple_choice",
+       "question": "“我还想再去”说明了什么？",
+       "questionEn": "What does \"I want to go again\" show?",
+       "options": [
+        "我在北京住",
+        "我不喜欢火车",
+        "这次旅游很快乐",
+        "我的朋友住在北京"
+       ],
+       "answer": 2
+      },
+      {
+       "id": "q5",
+       "type": "true_false",
+       "question": "在北京的时候，天气很冷。",
+       "questionEn": "It was cold while they were in Beijing.",
        "answer": false
       }
      ],
@@ -3887,42 +4888,107 @@
      "emoji": "🗺️",
      "lines": [
       {
-       "zh": "我去过很多地方，可是没去过上海。",
-       "en": "I've been to many places, but never Shanghai."
+       "zh": "小王，你去过上海吗？",
+       "en": "Xiao Wang, have you been to Shanghai?"
       },
       {
-       "zh": "我朋友说上海比北京热。",
-       "en": "My friend says Shanghai is hotter than Beijing."
+       "zh": "没有。我去过很多地方，可是没去过上海。",
+       "en": "No. I've been to many places, but never Shanghai."
+      },
+      {
+       "zh": "你去过哪儿？",
+       "en": "Where have you been?"
+      },
+      {
+       "zh": "我去过北京和西安，还坐船去过很多小地方。",
+       "en": "I've been to Beijing and Xi'an, and taken boats to lots of small places."
+      },
+      {
+       "zh": "我朋友说上海比北京热，人也比北京多。",
+       "en": "My friend says Shanghai is hotter than Beijing, and more crowded too."
       },
       {
        "zh": "她还说上海的鱼非常好吃。",
        "en": "She also says the fish in Shanghai is delicious."
       },
       {
-       "zh": "我希望明年可以去上海看看。",
-       "en": "I hope I can go and see Shanghai next year."
+       "zh": "我听说上海的路很长，可以坐船看外边的高楼。",
+       "en": "I hear Shanghai's roads are long, and you can take a boat to see the tall buildings."
+      },
+      {
+       "zh": "虽然我没去过，但是我很想去看看。",
+       "en": "Although I haven't been, I really want to go and see it."
+      },
+      {
+       "zh": "我去过两次，上海真的很漂亮！",
+       "en": "I've been twice — Shanghai is really beautiful!"
+      },
+      {
+       "zh": "我也觉得上海比北京热，可是那儿的东西非常好吃。",
+       "en": "I also found Shanghai hotter than Beijing, but the food there is great."
+      },
+      {
+       "zh": "那你明年还想去吗？我们可以一起去。",
+       "en": "Then do you want to go again next year? We can go together."
+      },
+      {
+       "zh": "好啊！我希望明年可以去上海看看。",
+       "en": "Great! I hope I can go and see Shanghai next year."
       }
      ],
      "questions": [
       {
        "id": "q1",
-       "type": "true_false",
-       "question": "\"我\"去过上海。",
-       "questionEn": "The narrator has been to Shanghai.",
-       "answer": false
+       "type": "multiple_choice",
+       "question": "小王没去过哪儿？",
+       "questionEn": "Where hasn't Xiao Wang been?",
+       "options": [
+        "北京",
+        "西安",
+        "上海",
+        "小地方"
+       ],
+       "answer": 2
       },
       {
        "id": "q2",
+       "type": "true_false",
+       "question": "朋友说上海比北京冷。",
+       "questionEn": "The friend says Shanghai is colder than Beijing.",
+       "answer": false
+      },
+      {
+       "id": "q3",
        "type": "multiple_choice",
-       "question": "朋友说上海怎么样？",
-       "questionEn": "What does the friend say about Shanghai?",
+       "question": "另一个人去过上海几次？",
+       "questionEn": "How many times has the other person been to Shanghai?",
        "options": [
-        "比北京冷",
-        "比北京热",
-        "和北京一样",
-        "很远"
+        "一次",
+        "两次",
+        "三次",
+        "没去过"
        ],
        "answer": 1
+      },
+      {
+       "id": "q4",
+       "type": "multiple_choice",
+       "question": "他们最后决定了什么？",
+       "questionEn": "What did they decide at the end?",
+       "options": [
+        "明年一起去上海",
+        "今年去北京",
+        "不去旅游了",
+        "去吃鱼"
+       ],
+       "answer": 0
+      },
+      {
+       "id": "q5",
+       "type": "true_false",
+       "question": "小王很想去上海。",
+       "questionEn": "Xiao Wang really wants to go to Shanghai.",
+       "answer": true
       }
      ],
      "focusWords": [
