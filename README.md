@@ -15,6 +15,7 @@ HSK lesson site on Laravel (Blade + vanilla JS, SQLite). The core loop is *Learn
 | Home (Today) | `/` , `/home` | continue card, due count, streak, HSK path |
 | Courses | `/courses` | Our courses · HSK 2.0 · HSK 3.0 · your own textbook lists |
 | Lesson / Reading | `/lessons/{slug}`, `/lessons/{slug}/reading/{n}` | grammar, dialogue, readings with quiz |
+| Lesson quiz (beta) | `/lessons/{slug}/quiz` | one question at a time: choose, match, build, listen, speak (scored by sound), write; hearts, XP, chimes |
 | Guides | `/guides` | grammar and pronunciation guides (`resources/guides/*.md`) |
 | Character | `/char/{c}` | Watch / Write (Hanzi Writer), stroke order, details, save word |
 | Character parts | `/parts` | meaning and sound components |

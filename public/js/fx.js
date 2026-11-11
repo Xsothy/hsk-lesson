@@ -61,7 +61,25 @@
     setTimeout(function () { t.remove(); }, 1300);
   }
 
-  window.HSK_FX = { reduced: reduced, pop: pop, shake: shake, bump: bump, countUp: countUp, confetti: confetti, toast: toast };
+  // Short synthesised chimes (no audio files): 'ok', 'no', 'done', 'fail'. Needs a prior click on the page, as browsers require.
+  var actx = null;
+  var CHIMES = { ok: [[659, 0, .12], [988, .1, .22]], no: [[233, 0, .16], [175, .14, .26]], done: [[523, 0, .14], [659, .12, .14], [784, .24, .14], [1047, .36, .4]], fail: [[392, 0, .2], [330, .18, .2], [262, .36, .4]] };
+  function chime(name) {
+    var notes = CHIMES[name];
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === 'suspended') actx.resume();
+      if (!notes) return; // chime() with no name just unlocks audio from a click
+      notes.forEach(function (n) {
+        var o = actx.createOscillator(), g = actx.createGain(), t = actx.currentTime + n[1];
+        o.type = name === 'no' || name === 'fail' ? 'triangle' : 'sine'; o.frequency.value = n[0];
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.22, t + 0.015); g.gain.exponentialRampToValueAtTime(0.0001, t + n[2]);
+        o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + n[2] + 0.05);
+      });
+    } catch (e) {}
+  }
+
+  window.HSK_FX = { chime: chime, reduced: reduced, pop: pop, shake: shake, bump: bump, countUp: countUp, confetti: confetti, toast: toast };
 
   // Write, Sentences and Match announce a finished session with this event; celebrate when something was done.
   window.addEventListener('hsk:practice-done', function (e) {

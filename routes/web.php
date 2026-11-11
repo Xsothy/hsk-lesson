@@ -14,6 +14,9 @@ Route::get('/home', [LearnController::class, 'home'])->name('home');
 Route::get('/courses', [LearnController::class, 'courses'])->name('courses');
 Route::get('/data/hsk/{version}/{level}/sets', [LearnController::class, 'sets'])->whereNumber(['version', 'level']);
 Route::get('/lessons/{slug}', [LearnController::class, 'lesson'])->name('lesson');
+// Lesson quiz (beta): choose, match, build, listen, speak and write, one question at a time.
+Route::get('/lessons/{slug}/quiz', [\App\Http\Controllers\QuizController::class, 'show'])->name('quiz');
+Route::get('/data/sounds', [\App\Http\Controllers\QuizController::class, 'sounds'])->middleware('throttle:120,1');
 Route::get('/lessons/{slug}/reading/{n}', [LearnController::class, 'reading'])->whereNumber('n')->name('reading');
 Route::get('/char/{c}', [\App\Http\Controllers\CharacterController::class, 'show'])->name('char');
 Route::get('/char.html', [\App\Http\Controllers\CharacterController::class, 'legacy'])->name('char.legacy');

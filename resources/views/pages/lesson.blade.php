@@ -114,6 +114,7 @@
   <aside id="practice" class="practice-panel">
     <h2>Practice this lesson</h2>
     <p>Everything below uses only this lesson’s {{ $words->count() }} words.</p>
+    <x-action-row variant="red" glyph="练" title="Lesson quiz" sub="Read, listen, speak and write · beta" cta="Start" :href="route('quiz', $lesson->slug)" />
     <x-action-row variant="light" glyph="写" title="Write the characters" :sub="$chars.' characters · stroke feedback'" :href="route('practice', ['lesson' => $lesson->slug])" />
     <x-action-row variant="light" glyph="听" title="Dictation" sub="Hear it, write it from memory" :href="route('practice', ['lesson' => $lesson->slug, 'mode' => 'dictation'])" />
     <x-action-row variant="light" glyph="复" title="Flashcards" sub="0 due today" :href="route('review', ['lesson' => $lesson->slug])" data-lesson-due="{{ json_encode($words->values(), JSON_UNESCAPED_UNICODE) }}" />
